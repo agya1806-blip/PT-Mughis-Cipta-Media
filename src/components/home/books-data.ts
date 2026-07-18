@@ -1,0 +1,68 @@
+import type { BookData } from "@/components/ui/BookCard"
+
+export const featuredBooks: BookData[] = [
+  {
+    id: "bk-001",
+    title: "Mukhtashar Shahih al-Bukhari",
+    author: "Imam al-Bukhari",
+    price: 145000,
+    cover_image: null,
+    category_name: "Hadits & Musthalah",
+  },
+  {
+    id: "bk-003",
+    title: "Taysir al-Karim ar-Rahman: Tafsir Surat Pilihan",
+    author: "Syaikh Abdurrahman as-Sa'di",
+    price: 120000,
+    cover_image: null,
+    category_name: "Tafsir & Ulumul Qur'an",
+  },
+  {
+    id: "bk-005",
+    title: "Al-Wafi: Syarah Hadits Arba'in",
+    author: "Syaikh Musthafa al-'Adawi",
+    price: 99000,
+    cover_image: null,
+    category_name: "Hadits & Musthalah",
+  },
+  {
+    id: "bk-007",
+    title: "Sirah Nabawiyah untuk Pemula",
+    author: "Dr. Shalih al-Maghamisi",
+    price: 72000,
+    cover_image: null,
+    category_name: "Sejarah & Biografi",
+  },
+  {
+    id: "bk-013",
+    title: "Jami' al-'Ulum wa al-Hikam",
+    author: "Ibnu Rajab al-Hanbali",
+    price: 155000,
+    cover_image: null,
+    category_name: "Hadits & Musthalah",
+  },
+  {
+    id: "bk-009",
+    title: "Aku Cinta Allah: Cerita untuk Anak Muslim",
+    author: "Ummu Ihsan",
+    price: 35000,
+    cover_image: null,
+    category_name: "Buku Anak & Keluarga",
+  },
+  {
+    id: "bk-014",
+    title: "Mudah Menghafal al-Qur'an",
+    author: "Ustadz Abu Yahya al-Mughisi",
+    price: 45000,
+    cover_image: null,
+    category_name: "Tafsir & Ulumul Qur'an",
+  },
+  {
+    id: "bk-018",
+    title: "Al-Mughis: Ensiklopedia Do'a",
+    author: "Tim Ulama Maktabah al-Mughis",
+    price: 110000,
+    cover_image: null,
+    category_name: "Aqidah & Tauhid",
+  },
+]

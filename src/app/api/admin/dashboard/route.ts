@@ -26,7 +26,7 @@ export async function GET() {
       }),
     ])
 
-  const monthSales = monthOrders.reduce((sum, o) => sum + Number(o.total), 0)
+  const monthSales = monthOrders.reduce((sum: number, o) => sum + Number(o.total), 0)
 
   return NextResponse.json({
     totalBooks,

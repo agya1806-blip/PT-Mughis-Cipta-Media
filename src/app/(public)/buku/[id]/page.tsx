@@ -2,6 +2,7 @@ import { notFound } from "next/navigation"
 import Link from "next/link"
 import { prisma } from "@/lib/prisma"
 import { BookDetailClient } from "./BookDetailClient"
+import BookCard from "@/components/BookCard"
 
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params
@@ -20,6 +21,35 @@ export default async function BookDetailPage({ params }: { params: Promise<{ id:
     include: { category: true },
   })
   if (!book) notFound()
+
+  const relatedBooks = await prisma.book.findMany({
+    where: { categoryId: book.categoryId, id: { not: book.id } },
+    include: { category: true },
+    take: 4,
+    orderBy: { createdAt: "desc" },
+  })
+
+  const related = relatedBooks.map((b) => ({
+    id: String(b.id),
+    title: b.title,
+    author: b.author,
+    translator: b.translator,
+    publisher: b.publisher,
+    isbn: b.isbn || "",
+    page_count: b.pageCount,
+    price: Number(b.price),
+    category_id: String(b.categoryId),
+    category_name: b.category.name,
+    cover_image: b.coverImage,
+    synopsis: b.synopsis,
+    preview_pdf_url: b.previewPdfUrl,
+    created_at: b.createdAt.toISOString(),
+    stock: b.stock,
+    weight: b.weight,
+    dimensions: b.dimensions,
+    language: b.language,
+    publication_year: b.publicationYear,
+  }))
 
   const mapped = {
     id: String(book.id),
@@ -132,6 +162,17 @@ export default async function BookDetailPage({ params }: { params: Promise<{ id:
             <h2 className="text-lg font-semibold text-zinc-900 mb-3">Sinopsis</h2>
             <p className="text-zinc-600 leading-relaxed">{mapped.synopsis}</p>
           </div>
+
+          {related.length > 0 && (
+            <div className="border-t border-zinc-200 p-8">
+              <h2 className="text-lg font-semibold text-zinc-900 mb-6">Buku Terkait</h2>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                {related.map((r) => (
+                  <BookCard key={r.id} book={r} />
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>

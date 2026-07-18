@@ -50,6 +50,12 @@ export default async function Footer() {
                 <Link href="/katalog" className="text-sm transition-colors hover:text-emerald-400">Katalog Buku</Link>
               </li>
               <li>
+                <Link href="/blog" className="text-sm transition-colors hover:text-emerald-400">Blog</Link>
+              </li>
+              <li>
+                <Link href="/faq" className="text-sm transition-colors hover:text-emerald-400">FAQ</Link>
+              </li>
+              <li>
                 <Link href="/kontak" className="text-sm transition-colors hover:text-emerald-400">Kontak</Link>
               </li>
             </ul>
@@ -77,6 +83,11 @@ export default async function Footer() {
         </div>
 
         <div className="mt-8 border-t border-gray-800 pt-8 text-center text-sm">
+          <div className="flex flex-wrap justify-center gap-4 mb-3">
+            <Link href="/privacy" className="hover:text-emerald-400 transition-colors">Kebijakan Privasi</Link>
+            <Link href="/terms" className="hover:text-emerald-400 transition-colors">Syarat & Ketentuan</Link>
+            <Link href="/faq" className="hover:text-emerald-400 transition-colors">FAQ</Link>
+          </div>
           <p>&copy; {new Date().getFullYear()} PT Mughis Cipta Media. All rights reserved.</p>
         </div>
       </div>

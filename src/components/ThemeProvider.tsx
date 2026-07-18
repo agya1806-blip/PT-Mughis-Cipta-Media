@@ -1,6 +1,6 @@
 "use client"
 
-import { createContext, useContext, useEffect, useState, ReactNode } from "react"
+import { createContext, useContext, useEffect, useState, useCallback, ReactNode } from "react"
 
 type Theme = "light" | "dark"
 
@@ -13,31 +13,27 @@ export function useTheme() {
   return useContext(ThemeContext)
 }
 
+function getInitialTheme(): Theme {
+  if (typeof window === "undefined") return "light"
+  const stored = localStorage.getItem("theme") as Theme | null
+  if (stored) return stored
+  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"
+}
+
 export default function ThemeProvider({ children }: { children: ReactNode }) {
-  const [theme, setTheme] = useState<Theme>("light")
-  const [mounted, setMounted] = useState(false)
+  const [theme, setTheme] = useState<Theme>(getInitialTheme)
 
   useEffect(() => {
-    setMounted(true)
-    const stored = localStorage.getItem("theme") as Theme | null
-    if (stored) {
-      setTheme(stored)
-      document.documentElement.classList.toggle("dark", stored === "dark")
-    } else {
-      const prefers = window.matchMedia("(prefers-color-scheme: dark)").matches
-      setTheme(prefers ? "dark" : "light")
-      document.documentElement.classList.toggle("dark", prefers)
-    }
+    document.documentElement.classList.toggle("dark", theme === "dark")
+  }, [theme])
+
+  const toggle = useCallback(() => {
+    setTheme((prev) => {
+      const next = prev === "light" ? "dark" : "light"
+      localStorage.setItem("theme", next)
+      return next
+    })
   }, [])
-
-  const toggle = () => {
-    const next = theme === "light" ? "dark" : "light"
-    setTheme(next)
-    localStorage.setItem("theme", next)
-    document.documentElement.classList.toggle("dark", next === "dark")
-  }
-
-  if (!mounted) return <>{children}</>
 
   return (
     <ThemeContext.Provider value={{ theme, toggle }}>

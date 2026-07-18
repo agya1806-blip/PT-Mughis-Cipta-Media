@@ -33,15 +33,12 @@ const testimonials = [
 
 export default function TestimonialsSection() {
   const [current, setCurrent] = useState(0)
-  const [direction, setDirection] = useState(0)
 
   const next = () => {
-    setDirection(1)
     setCurrent((p) => (p + 1) % testimonials.length)
   }
 
   const prev = () => {
-    setDirection(-1)
     setCurrent((p) => (p - 1 + testimonials.length) % testimonials.length)
   }
 
@@ -123,7 +120,7 @@ export default function TestimonialsSection() {
               {testimonials.map((_, i) => (
                 <button
                   key={i}
-                  onClick={() => { setDirection(i > current ? 1 : -1); setCurrent(i) }}
+                  onClick={() => setCurrent(i)}
                   className={`w-2 h-2 rounded-full transition-all duration-300 ${
                     i === current ? "w-6 bg-gold" : "bg-zinc-300 dark:bg-zinc-600"
                   }`}

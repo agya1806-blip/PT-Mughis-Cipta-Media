@@ -1,9 +1,9 @@
 "use client"
 
-import { useEffect, useRef } from "react"
+import { useRef, useState } from "react"
 import Link from "next/link"
 import { motion, useScroll, useTransform } from "framer-motion"
-import { ArrowRight, BookOpen, MessageCircle } from "lucide-react"
+import { ArrowRight, MessageCircle } from "lucide-react"
 
 function FloatingBook() {
   return (
@@ -62,13 +62,15 @@ function FloatingBook() {
 }
 
 function ParticleField() {
-  const particles = Array.from({ length: 20 }).map((_, i) => ({
-    x: Math.random() * 100,
-    y: Math.random() * 100,
-    size: Math.random() * 3 + 1,
-    delay: Math.random() * 5,
-    duration: Math.random() * 5 + 5,
-  }))
+  const [particles] = useState(() =>
+    Array.from({ length: 20 }).map(() => ({
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+      size: Math.random() * 3 + 1,
+      delay: Math.random() * 5,
+      duration: Math.random() * 5 + 5,
+    }))
+  )
 
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -102,13 +104,12 @@ export default function HeroSection() {
   const ref = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] })
   const opacity = useTransform(scrollYProgress, [0, 1], [1, 0])
-  const y = useTransform(scrollYProgress, [0, 1], [0, 100])
 
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.08, delayChildren: 0.2 } as any,
+      transition: { staggerChildren: 0.08, delayChildren: 0.2 },
     },
   }
 
@@ -118,7 +119,7 @@ export default function HeroSection() {
       opacity: 1,
       y: 0,
       filter: "blur(0px)",
-      transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } as any,
+      transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] },
     },
   }
 

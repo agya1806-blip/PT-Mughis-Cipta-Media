@@ -1,0 +1,138 @@
+"use client"
+
+import { useState } from "react"
+import { motion, AnimatePresence } from "framer-motion"
+import { ChevronLeft, ChevronRight, Star, Quote } from "lucide-react"
+
+const testimonials = [
+  {
+    name: "Ahmad Fauzi",
+    role: "Penulis",
+    content: "Proses penerbitan sangat mudah dan cepat. Tim Mughis sangat profesional dalam mendampingi penulis pemula seperti saya. Hasil cetakan berkualitas premium.",
+    rating: 5,
+  },
+  {
+    name: "Dr. Siti Nurhaliza",
+    role: "Dosen Universitas",
+    content: "Kualitas cetakan sangat bagus dan tepat waktu. Saya sudah 3 kali menerbitkan buku di sini dan selalu puas dengan hasilnya. Highly recommended!",
+    rating: 5,
+  },
+  {
+    name: "M. Rizky Pratama",
+    role: "Pimpinan Pesantren",
+    content: "Layanan cetak modul dan buku ajar untuk pesantren kami sangat membantu. Harga bersahabat dengan kualitas terbaik. Proses cepat dan komunikatif.",
+    rating: 5,
+  },
+  {
+    name: "Rina Wulandari",
+    role: "Guru SMA",
+    content: "Self publishing di Mughis memberikan saya kebebasan penuh atas buku saya. Tim editing sangat membantu menyempurnakan naskah saya.",
+    rating: 5,
+  },
+]
+
+export default function TestimonialsSection() {
+  const [current, setCurrent] = useState(0)
+  const [direction, setDirection] = useState(0)
+
+  const next = () => {
+    setDirection(1)
+    setCurrent((p) => (p + 1) % testimonials.length)
+  }
+
+  const prev = () => {
+    setDirection(-1)
+    setCurrent((p) => (p - 1 + testimonials.length) % testimonials.length)
+  }
+
+  const t = testimonials[current]
+
+  return (
+    <section className="py-24 sm:py-32 bg-zinc-50 dark:bg-zinc-900/50 overflow-hidden">
+      <div className="container">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gold/10 border border-gold/20 mb-6">
+            <Quote className="w-3.5 h-3.5 text-gold" />
+            <span className="text-gold text-xs font-medium uppercase tracking-wider">Testimonial</span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-zinc-900 dark:text-white">
+            Apa Kata{" "}
+            <span className="bg-gradient-to-r from-gold to-gold-dark bg-clip-text text-transparent">
+              Mereka
+            </span>
+          </h2>
+        </motion.div>
+
+        <div className="max-w-3xl mx-auto">
+          <div className="relative bg-white dark:bg-zinc-800/50 rounded-2xl border border-zinc-200 dark:border-zinc-700/50 p-8 sm:p-12 shadow-xl">
+            <div className="absolute -top-4 left-8 w-8 h-8 rounded-lg bg-gold flex items-center justify-center">
+              <Quote className="w-4 h-4 text-white" />
+            </div>
+
+            <div className="flex items-center gap-1 mb-6">
+              {Array.from({ length: 5 }).map((_, i) => (
+                <Star
+                  key={i}
+                  className={`w-4 h-4 ${i < t.rating ? "fill-gold text-gold" : "text-zinc-300 dark:text-zinc-600"}`}
+                />
+              ))}
+            </div>
+
+            <AnimatePresence mode="wait">
+              <motion.p
+                key={current}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                className="text-lg sm:text-xl text-zinc-600 dark:text-zinc-300 leading-relaxed mb-8"
+              >
+                &ldquo;{t.content}&rdquo;
+              </motion.p>
+            </AnimatePresence>
+
+            <div className="flex items-center gap-4 pt-6 border-t border-zinc-100 dark:border-zinc-700/50">
+              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-gold/20 to-gold/10 flex items-center justify-center">
+                <span className="text-gold font-bold text-lg">{t.name[0]}</span>
+              </div>
+              <div>
+                <p className="font-semibold text-zinc-900 dark:text-white">{t.name}</p>
+                <p className="text-sm text-zinc-500 dark:text-zinc-400">{t.role}</p>
+              </div>
+              <div className="ml-auto flex gap-2">
+                <button
+                  onClick={prev}
+                  className="w-9 h-9 rounded-full border border-zinc-200 dark:border-zinc-700 flex items-center justify-center hover:bg-zinc-100 dark:hover:bg-zinc-700 transition-colors"
+                >
+                  <ChevronLeft className="w-4 h-4 text-zinc-600 dark:text-zinc-400" />
+                </button>
+                <button
+                  onClick={next}
+                  className="w-9 h-9 rounded-full border border-zinc-200 dark:border-zinc-700 flex items-center justify-center hover:bg-zinc-100 dark:hover:bg-zinc-700 transition-colors"
+                >
+                  <ChevronRight className="w-4 h-4 text-zinc-600 dark:text-zinc-400" />
+                </button>
+              </div>
+            </div>
+
+            <div className="flex justify-center gap-2 mt-6">
+              {testimonials.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => { setDirection(i > current ? 1 : -1); setCurrent(i) }}
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                    i === current ? "w-6 bg-gold" : "bg-zinc-300 dark:bg-zinc-600"
+                  }`}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}

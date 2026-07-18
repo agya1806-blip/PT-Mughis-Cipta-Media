@@ -24,7 +24,7 @@ const footerLinks = {
   ],
 }
 
-export default function Footer() {
+export default function FooterSection() {
   const scrollTop = () => window.scrollTo({ top: 0, behavior: "smooth" })
 
   return (

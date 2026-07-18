@@ -1,4 +1,4 @@
-import { Quote } from "lucide-react"
+﻿import { Quote } from "lucide-react"
 import Avatar from "./Avatar"
 import Badge from "./Badge"
 import RatingStars from "./RatingStars"
@@ -25,7 +25,7 @@ export default function TestimonialCard({ testimonial }: TestimonialCardProps) {
             <p className="font-semibold text-zinc-900 dark:text-white text-sm truncate">{name}</p>
             <p className="text-xs text-zinc-500 dark:text-zinc-400 truncate">
               {role}
-              {institution ? ` -- ${institution}` : ""}
+              {institution ?  --  : ""}
             </p>
           </div>
         </div>

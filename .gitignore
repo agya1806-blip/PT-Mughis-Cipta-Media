@@ -45,6 +45,3 @@ next-env.d.ts
 # database
 *.db
 *.db-journal
-
-# oversized archives
-PT MUGHIS.zip

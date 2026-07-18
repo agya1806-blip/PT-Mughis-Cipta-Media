@@ -1,4 +1,4 @@
-import { Star } from "lucide-react"
+﻿import { Star } from "lucide-react"
 
 interface RatingStarsProps {
   rating: number
@@ -20,15 +20,11 @@ export default function RatingStars({
   className = "",
 }: RatingStarsProps) {
   return (
-    <div className={`flex items-center gap-0.5 ${className}`} aria-label={`Rating: ${rating} dari ${max}`}>
+    <div className={lex items-center gap-0.5 } aria-label={Rating:  dari }>
       {Array.from({ length: max }).map((_, i) => (
         <Star
           key={i}
-          className={`${sizeMap[size]} ${
-            i < rating
-              ? "fill-gold text-gold"
-              : "fill-zinc-200 text-zinc-200 dark:fill-zinc-600 dark:text-zinc-600"
-          }`}
+          className={${sizeMap[size]} }
         />
       ))}
     </div>

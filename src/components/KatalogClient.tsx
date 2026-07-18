@@ -1,6 +1,6 @@
 "use client"
 
-import { useCallback, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
 import BookCard from "./BookCard"
 import type { Book, Category } from "@/lib/data"
@@ -23,35 +23,34 @@ export function KatalogClient() {
 
   const [searchInput, setSearchInput] = useState(search)
 
-  const fetchBooks = useCallback(async () => {
-    setLoading(true)
-    try {
-      const params = new URLSearchParams()
-      params.set("page", String(page))
-      if (category_id) params.set("category_id", category_id)
-      if (search) params.set("search", search)
-      if (sort) params.set("sort", sort)
-
-      const [booksRes, catsRes] = await Promise.all([
-        fetch(`/api/books?${params}`),
-        fetch("/api/categories"),
-      ])
-
-      const booksData: BooksResponse = await booksRes.json()
-      const catsData: { categories: Category[] } = await catsRes.json()
-
-      setBooks(booksData.books)
-      setTotal(booksData.total)
-      setTotalPages(booksData.total_pages)
-      setCategories(catsData.categories)
-    } finally {
-      setLoading(false)
-    }
-  }, [page, category_id, search, sort])
-
   useEffect(() => {
+    async function fetchBooks() {
+      setLoading(true)
+      try {
+        const params = new URLSearchParams()
+        params.set("page", String(page))
+        if (category_id) params.set("category_id", category_id)
+        if (search) params.set("search", search)
+        if (sort) params.set("sort", sort)
+
+        const [booksRes, catsRes] = await Promise.all([
+          fetch(`/api/books?${params}`),
+          fetch("/api/categories"),
+        ])
+
+        const booksData: BooksResponse = await booksRes.json()
+        const catsData: { categories: Category[] } = await catsRes.json()
+
+        setBooks(booksData.books)
+        setTotal(booksData.total)
+        setTotalPages(booksData.total_pages)
+        setCategories(catsData.categories)
+      } finally {
+        setLoading(false)
+      }
+    }
     fetchBooks()
-  }, [fetchBooks])
+  }, [page, category_id, search, sort])
 
   const updateSearchParams = (updates: Record<string, string>) => {
     const params = new URLSearchParams(searchParams.toString())

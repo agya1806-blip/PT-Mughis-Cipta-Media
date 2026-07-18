@@ -16,7 +16,7 @@ export async function POST(req: NextRequest) {
       return Response.json({ error: 'Missing required fields' }, { status: 400 })
     }
 
-    const subtotal = items.reduce((s: number, i: any) => s + i.price * i.quantity, 0)
+    const subtotal = items.reduce((s: number, i: { price: number; quantity: number }) => s + i.price * i.quantity, 0)
     const total = subtotal + (shippingCost || 0)
     const orderId = `INV-${Date.now()}-${Math.random().toString(36).slice(2, 6).toUpperCase()}`
 
@@ -41,7 +41,7 @@ export async function POST(req: NextRequest) {
         total,
         status: 'PENDING',
         items: {
-          create: items.map((i: any) => ({
+          create: items.map((i: { bookId: string; title: string; price: number; quantity: number; weight: number }) => ({
             bookId: parseInt(i.bookId),
             title: i.title || 'Buku',
             price: i.price,

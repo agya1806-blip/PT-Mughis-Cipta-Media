@@ -36,8 +36,9 @@ export async function PUT(
       },
     })
     return NextResponse.json(page)
-  } catch (e: any) {
-    if (e?.code === "P2002") {
+  } catch (e: unknown) {
+    const prismaErr = e as { code?: string }
+    if (prismaErr.code === "P2002") {
       return NextResponse.json({ error: "Slug sudah digunakan" }, { status: 409 })
     }
     return NextResponse.json({ error: "Gagal menyimpan" }, { status: 500 })

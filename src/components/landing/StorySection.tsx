@@ -2,11 +2,11 @@
 
 import { useRef } from "react"
 import { motion, useInView } from "framer-motion"
-import { Eye, BookOpen, Shield, Sparkles, Users, TrendingUp, CheckCircle, Quote, ArrowRight, Target } from "lucide-react"
+import { Eye, BookOpen, Shield, Sparkles, Users, TrendingUp, Quote, ArrowRight, Target } from "lucide-react"
 import Link from "next/link"
 import Badge from "@/components/ui/Badge"
 import Divider from "@/components/ui/Divider"
-import { fadeInLeft, fadeInRight, fadeInUp, staggerContainer, staggerItem, scaleIn } from "./types"
+import { fadeInLeft, fadeInRight, fadeInUp, staggerContainer, staggerItem } from "./types"
 
 const storyIntro = {
   badge: "Cerita Kami",

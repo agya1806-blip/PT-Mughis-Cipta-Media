@@ -18,7 +18,6 @@ export default function QuoteCard({
   author,
   role,
   avatar,
-  rating,
   className = "",
 }: Props) {
   return (

@@ -30,8 +30,8 @@ export default function RegisterPage() {
       if (!res.ok) throw new Error(data.error)
       router.push("/")
       router.refresh()
-    } catch (e: any) {
-      setError(e.message)
+    } catch (e: unknown) {
+      setError(e instanceof Error ? e.message : "Terjadi kesalahan")
     } finally {
       setLoading(false)
     }

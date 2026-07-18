@@ -1,3 +1,5 @@
+import { createHash } from "crypto"
+
 const MIDTRANS_SNAP = process.env.MIDTRANS_SNAP_URL || "https://app.sandbox.midtrans.com/snap/v1"
 const MIDTRANS_SERVER_KEY = process.env.MIDTRANS_SERVER_KEY || ""
 const MIDTRANS_CLIENT_KEY = process.env.MIDTRANS_CLIENT_KEY || ""
@@ -77,8 +79,7 @@ export function verifyMidtransNotification(payload: string, signatureKey: string
   const statusCode = data.status_code
   const grossAmount = data.gross_amount
   const serverKey = MIDTRANS_SERVER_KEY
-  const computed = require("crypto")
-    .createHash("sha512")
+  const computed = createHash("sha512")
     .update(orderId + statusCode + grossAmount + serverKey)
     .digest("hex")
   return computed === expected

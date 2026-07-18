@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import IconWrapper from "./IconWrapper"
+
 import { ReactNode } from "react"
 
 interface Props {

@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation"
 
 export default function CreateBook() {
   const router = useRouter()
-  const [categories, setCategories] = useState<any[]>([])
+  const [categories, setCategories] = useState<{ id: number; name: string }[]>([])
   const [form, setForm] = useState({
     title: "",
     author: "",
@@ -45,7 +45,7 @@ export default function CreateBook() {
       })
       if (!res.ok) throw new Error("Failed to create")
       router.push("/admin/books")
-    } catch (e) {
+    } catch {
       alert("Gagal membuat buku")
     } finally {
       setSubmitting(false)
@@ -105,7 +105,7 @@ export default function CreateBook() {
               onChange={(e) => setForm({ ...form, categoryId: e.target.value })}
             >
               <option value="">Pilih Kategori</option>
-              {categories.map((c: any) => (
+              {categories.map((c: { id: number; name: string }) => (
                 <option key={c.id} value={c.id}>
                   {c.name}
                 </option>

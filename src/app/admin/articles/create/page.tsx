@@ -26,7 +26,7 @@ export default function CreateArticle() {
         throw new Error(data.error || "Gagal")
       }
       router.push("/admin/articles")
-    } catch (e: any) {
+    } catch (e: Record<string, unknown>) {
       alert(e.message)
     } finally {
       setSubmitting(false)

@@ -11,7 +11,7 @@ export async function GET(request: NextRequest) {
     const search = searchParams.get("search")
     const sort = searchParams.get("sort") ?? "latest"
 
-    const where: any = {}
+    const where: Record<string, unknown> = {}
     if (category_id) where.categoryId = parseInt(category_id)
     if (search) {
       where.OR = [
@@ -21,10 +21,10 @@ export async function GET(request: NextRequest) {
       ]
     }
 
-    const orderBy: any =
-      sort === "price_asc" ? { price: "asc" as const } :
-      sort === "price_desc" ? { price: "desc" as const } :
-      { createdAt: "desc" as const }
+    const orderBy: Record<string, "asc" | "desc"> =
+      sort === "price_asc" ? { price: "asc" } :
+      sort === "price_desc" ? { price: "desc" } :
+      { createdAt: "desc" }
 
     const [books, total] = await Promise.all([
       prisma.book.findMany({

@@ -1,3 +1,4 @@
+import Image from "next/image"
 import { ReactNode } from "react"
 
 type Size = "sm" | "md" | "lg"
@@ -29,9 +30,11 @@ export default function Avatar({
 
   if (src) {
     return (
-      <img
+      <Image
         src={src}
         alt={alt || name || "Avatar"}
+        width={48}
+        height={48}
         className={`${sizeMap[size]} rounded-full object-cover ${className}`}
       />
     )

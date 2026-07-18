@@ -42,7 +42,7 @@ export async function POST(req: NextRequest) {
 
     await prisma.order.update({
       where: { orderId },
-      data: { status: newStatus as any },
+      data: { status: newStatus },
     })
 
     if (newStatus === 'PAID') {

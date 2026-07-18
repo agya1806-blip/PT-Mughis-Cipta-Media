@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useCallback } from "react"
 
 interface Reseller {
   id: number
@@ -17,16 +17,16 @@ export default function AdminResellers() {
   const [resellers, setResellers] = useState<Reseller[]>([])
   const [filter, setFilter] = useState("pending")
 
-  function load() {
+  const load = useCallback(() => {
     const params = new URLSearchParams()
     if (filter) params.set("status", filter)
     fetch(`/api/admin/resellers?${params}`)
       .then((r) => r.json())
       .then(setResellers)
       .catch(() => {})
-  }
+  }, [filter])
 
-  useEffect(() => { load() }, [filter])
+  useEffect(() => { load() }, [filter, load])
 
   async function updateStatus(userId: number, status: string) {
     try {

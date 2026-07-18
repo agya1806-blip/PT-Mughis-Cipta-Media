@@ -6,7 +6,7 @@ import { useRouter, useParams } from "next/navigation"
 export default function EditBook() {
   const router = useRouter()
   const params = useParams()
-  const [categories, setCategories] = useState<any[]>([])
+  const [categories, setCategories] = useState<{ id: number; name: string }[]>([])
   const [form, setForm] = useState({
     title: "",
     author: "",
@@ -67,7 +67,7 @@ export default function EditBook() {
       })
       if (!res.ok) throw new Error("Failed to update")
       router.push("/admin/books")
-    } catch (e) {
+    } catch {
       alert("Gagal menyimpan")
     } finally {
       setSubmitting(false)
@@ -127,7 +127,7 @@ export default function EditBook() {
               onChange={(e) => setForm({ ...form, categoryId: e.target.value })}
             >
               <option value="">Pilih Kategori</option>
-              {categories.map((c: any) => (
+              {categories.map((c: { id: number; name: string }) => (
                 <option key={c.id} value={c.id}>
                   {c.name}
                 </option>

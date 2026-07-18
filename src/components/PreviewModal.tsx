@@ -8,6 +8,12 @@ export function PreviewModal() {
   const [isOpen, setIsOpen] = useState(false)
   const iframeRef = useRef<HTMLIFrameElement>(null)
 
+  const closeModal = () => {
+    setIsOpen(false)
+    setBook(null)
+    document.body.style.overflow = ""
+  }
+
   useEffect(() => {
     const handler = (event: Event) => {
       const detail = (event as CustomEvent).detail as { book: Book }
@@ -31,12 +37,6 @@ export function PreviewModal() {
       document.removeEventListener("keydown", handleKeyDown)
     }
   }, [isOpen])
-
-  const closeModal = () => {
-    setIsOpen(false)
-    setBook(null)
-    document.body.style.overflow = ""
-  }
 
   const handleIframeLoad = () => {
     try {

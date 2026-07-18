@@ -1,3 +1,4 @@
+import Image from "next/image"
 import { notFound } from "next/navigation"
 import { prisma } from "@/lib/prisma"
 import Breadcrumb from "@/components/ui/Breadcrumb"
@@ -54,9 +55,11 @@ export default async function ArticleDetailPage({ params }: { params: Promise<{ 
             })}
           </p>
           {article.featuredImage && (
-            <img
+            <Image
               src={article.featuredImage}
               alt={article.title}
+              width={768}
+              height={384}
               className="w-full rounded-xl mb-8 object-cover max-h-96"
             />
           )}

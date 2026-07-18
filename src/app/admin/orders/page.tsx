@@ -24,7 +24,7 @@ const STATUS_LABELS: Record<string, string> = {
 
 export default function AdminOrders() {
   const [orders, setOrders] = useState<Order[]>([])
-  const [total, setTotal] = useState(0)
+  const [, setTotal] = useState(0)
   const [page, setPage] = useState(1)
   const [statusFilter, setStatusFilter] = useState("")
   const [editingId, setEditingId] = useState<number | null>(null)
@@ -42,7 +42,7 @@ export default function AdminOrders() {
       .catch(() => {})
   }, [page, statusFilter])
 
-  async function updateOrder(orderId: number, data: any) {
+  async function updateOrder(orderId: number, data: Record<string, string>) {
     try {
       const res = await fetch(`/api/admin/orders/${orderId}`, {
         method: "PUT",

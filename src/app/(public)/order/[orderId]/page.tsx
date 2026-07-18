@@ -6,7 +6,7 @@ import Link from "next/link"
 
 export default function OrderSuccessPage() {
   const params = useParams()
-  const [order, setOrder] = useState<any>(null)
+  const [, setOrder] = useState<Record<string, unknown> | null>(null)
 
   useEffect(() => {
     fetch(`/api/orders/${params.orderId}`)

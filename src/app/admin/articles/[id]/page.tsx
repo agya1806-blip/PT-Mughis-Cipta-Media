@@ -32,8 +32,9 @@ export default function EditArticle() {
         throw new Error(data.error || "Gagal")
       }
       router.push("/admin/articles")
-    } catch (e: any) {
-      alert(e.message)
+    } catch (e: unknown) {
+      const err = e as Record<string, unknown>
+      alert(err.message as string)
     } finally {
       setSubmitting(false)
     }

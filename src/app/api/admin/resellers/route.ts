@@ -11,7 +11,7 @@ export async function GET(request: Request) {
   const { searchParams } = new URL(request.url)
   const status = searchParams.get("status") || ""
 
-  const where: any = { role: "RESELLER" }
+  const where: { role: string; approvalStatus?: string } = { role: "RESELLER" }
   if (status) where.approvalStatus = status
 
   const resellers = await prisma.user.findMany({
@@ -60,7 +60,7 @@ export async function PUT(request: Request) {
     })
 
     return NextResponse.json(updated)
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: "Failed to update reseller" }, { status: 500 })
   }
 }

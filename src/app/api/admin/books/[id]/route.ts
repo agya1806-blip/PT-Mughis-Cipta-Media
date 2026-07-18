@@ -58,7 +58,7 @@ export async function PUT(
     })
 
     return NextResponse.json(book)
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: "Failed to update book" }, { status: 500 })
   }
 }
@@ -76,7 +76,7 @@ export async function DELETE(
   try {
     await prisma.book.delete({ where: { id: parseInt(id) } })
     return NextResponse.json({ success: true })
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: "Failed to delete book" }, { status: 500 })
   }
 }

@@ -10,7 +10,7 @@ export async function POST(req: NextRequest) {
       return Response.json({ error: 'items and customer are required' }, { status: 400 })
     }
 
-    const subtotal = items.reduce((sum: number, i: any) => sum + i.price * i.quantity, 0)
+    const subtotal = items.reduce((sum: number, i: { price: number; quantity: number }) => sum + i.price * i.quantity, 0)
     const shippingCost = shipping?.cost || 0
     const grandTotal = subtotal + shippingCost
     const orderId = `INV-${Date.now()}-${Math.random().toString(36).slice(2, 6).toUpperCase()}`
@@ -33,7 +33,7 @@ export async function POST(req: NextRequest) {
         total: grandTotal,
         status: 'PENDING',
         items: {
-          create: items.map((i: any) => ({
+          create: items.map((i: { bookId: string; title: string; price: number; quantity: number; weight: number }) => ({
             bookId: parseInt(i.bookId),
             title: i.title || 'Buku',
             price: i.price,

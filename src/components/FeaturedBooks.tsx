@@ -1,8 +1,34 @@
+import { prisma } from "@/lib/prisma"
 import BookCard from "./BookCard"
-import { books } from "@/lib/books"
 
-export default function FeaturedBooks() {
-  const featured = books.slice(0, 4)
+export default async function FeaturedBooks() {
+  const books = await prisma.book.findMany({
+    include: { category: true },
+    orderBy: { createdAt: "desc" },
+    take: 4,
+  })
+
+  const featured = books.map((b) => ({
+    id: String(b.id),
+    title: b.title,
+    author: b.author,
+    translator: b.translator,
+    publisher: b.publisher,
+    isbn: b.isbn || "",
+    page_count: b.pageCount,
+    price: Number(b.price),
+    category_id: String(b.categoryId),
+    category_name: b.category.name,
+    cover_image: b.coverImage,
+    synopsis: b.synopsis,
+    preview_pdf_url: b.previewPdfUrl,
+    created_at: b.createdAt.toISOString(),
+    stock: b.stock,
+    weight: b.weight,
+    dimensions: b.dimensions,
+    language: b.language,
+    publication_year: b.publicationYear,
+  }))
 
   return (
     <section className="bg-zinc-50 py-16">

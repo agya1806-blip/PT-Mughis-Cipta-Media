@@ -1,11 +1,11 @@
 import { notFound } from "next/navigation"
 import Link from "next/link"
-import { getBookById, getCategories } from "@/lib/books"
+import { prisma } from "@/lib/prisma"
 import { BookDetailClient } from "./BookDetailClient"
 
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params
-  const book = getBookById(id)
+  const book = await prisma.book.findUnique({ where: { id: parseInt(id) }, include: { category: true } })
   if (!book) return { title: "Buku Tidak Ditemukan" }
   return {
     title: `${book.title} | Maktabah al-Mughis`,
@@ -15,11 +15,33 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
 
 export default async function BookDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params
-  const book = getBookById(id)
+  const book = await prisma.book.findUnique({
+    where: { id: parseInt(id) },
+    include: { category: true },
+  })
   if (!book) notFound()
 
-  const categories = getCategories()
-  const currentCategory = categories.find((c) => c.id === book.category_id)
+  const mapped = {
+    id: String(book.id),
+    title: book.title,
+    author: book.author,
+    translator: book.translator,
+    publisher: book.publisher,
+    isbn: book.isbn || "",
+    page_count: book.pageCount,
+    price: Number(book.price),
+    category_id: String(book.categoryId),
+    category_name: book.category.name,
+    cover_image: book.coverImage,
+    synopsis: book.synopsis,
+    preview_pdf_url: book.previewPdfUrl,
+    created_at: book.createdAt.toISOString(),
+    stock: book.stock,
+    weight: book.weight,
+    dimensions: book.dimensions,
+    language: book.language,
+    publication_year: book.publicationYear,
+  }
 
   return (
     <div className="flex-1 bg-zinc-50">
@@ -29,7 +51,7 @@ export default async function BookDetailPage({ params }: { params: Promise<{ id:
           <span>/</span>
           <Link href="/katalog" className="hover:text-zinc-900 transition-colors">Katalog</Link>
           <span>/</span>
-          <span className="text-zinc-900 truncate">{book.title}</span>
+          <span className="text-zinc-900 truncate">{mapped.title}</span>
         </nav>
 
         <div className="bg-white rounded-2xl border border-zinc-200 overflow-hidden shadow-sm">
@@ -46,69 +68,69 @@ export default async function BookDetailPage({ params }: { params: Promise<{ id:
             <div className="md:col-span-2 space-y-6">
               <div>
                 <span className="inline-block text-xs font-medium text-amber-700 bg-amber-50 px-3 py-1 rounded-full mb-3">
-                  {currentCategory?.name ?? book.category_name}
+                  {mapped.category_name}
                 </span>
-                <h1 className="text-2xl md:text-3xl font-bold text-zinc-900 leading-tight">{book.title}</h1>
+                <h1 className="text-2xl md:text-3xl font-bold text-zinc-900 leading-tight">{mapped.title}</h1>
               </div>
 
               <div className="grid grid-cols-2 gap-4 text-sm">
                 <div>
                   <span className="text-zinc-500">Penulis</span>
-                  <p className="font-medium text-zinc-800 mt-0.5">{book.author}</p>
+                  <p className="font-medium text-zinc-800 mt-0.5">{mapped.author}</p>
                 </div>
-                {book.translator && (
+                {mapped.translator && (
                   <div>
                     <span className="text-zinc-500">Penerjemah</span>
-                    <p className="font-medium text-zinc-800 mt-0.5">{book.translator}</p>
+                    <p className="font-medium text-zinc-800 mt-0.5">{mapped.translator}</p>
                   </div>
                 )}
                 <div>
                   <span className="text-zinc-500">Penerbit</span>
-                  <p className="font-medium text-zinc-800 mt-0.5">{book.publisher}</p>
+                  <p className="font-medium text-zinc-800 mt-0.5">{mapped.publisher}</p>
                 </div>
                 <div>
                   <span className="text-zinc-500">ISBN</span>
-                  <p className="font-medium text-zinc-800 mt-0.5">{book.isbn}</p>
+                  <p className="font-medium text-zinc-800 mt-0.5">{mapped.isbn}</p>
                 </div>
                 <div>
                   <span className="text-zinc-500">Halaman</span>
-                  <p className="font-medium text-zinc-800 mt-0.5">{book.page_count} hal</p>
+                  <p className="font-medium text-zinc-800 mt-0.5">{mapped.page_count} hal</p>
                 </div>
                 <div>
                   <span className="text-zinc-500">Tahun</span>
-                  <p className="font-medium text-zinc-800 mt-0.5">{book.publication_year}</p>
+                  <p className="font-medium text-zinc-800 mt-0.5">{mapped.publication_year}</p>
                 </div>
                 <div>
                   <span className="text-zinc-500">Bahasa</span>
-                  <p className="font-medium text-zinc-800 mt-0.5">{book.language}</p>
+                  <p className="font-medium text-zinc-800 mt-0.5">{mapped.language}</p>
                 </div>
                 <div>
                   <span className="text-zinc-500">Dimensi</span>
-                  <p className="font-medium text-zinc-800 mt-0.5">{book.dimensions}</p>
+                  <p className="font-medium text-zinc-800 mt-0.5">{mapped.dimensions}</p>
                 </div>
                 <div>
                   <span className="text-zinc-500">Berat</span>
-                  <p className="font-medium text-zinc-800 mt-0.5">{book.weight} gr</p>
+                  <p className="font-medium text-zinc-800 mt-0.5">{mapped.weight} gr</p>
                 </div>
                 <div>
                   <span className="text-zinc-500">Stok</span>
-                  <p className="font-medium text-zinc-800 mt-0.5">{book.stock} eksemplar</p>
+                  <p className="font-medium text-zinc-800 mt-0.5">{mapped.stock} eksemplar</p>
                 </div>
               </div>
 
               <div className="text-3xl font-bold text-amber-800">
-                Rp{book.price.toLocaleString("id-ID")}
+                Rp{mapped.price.toLocaleString("id-ID")}
               </div>
 
               <div className="flex flex-wrap gap-3">
-                <BookDetailClient book={book} />
+                <BookDetailClient book={mapped} />
               </div>
             </div>
           </div>
 
           <div className="border-t border-zinc-200 p-8">
             <h2 className="text-lg font-semibold text-zinc-900 mb-3">Sinopsis</h2>
-            <p className="text-zinc-600 leading-relaxed">{book.synopsis}</p>
+            <p className="text-zinc-600 leading-relaxed">{mapped.synopsis}</p>
           </div>
         </div>
       </div>

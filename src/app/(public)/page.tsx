@@ -8,7 +8,7 @@ import FeaturedBooks from "@/components/home/FeaturedBooks"
 import BookJourneySection from "@/components/landing/BookJourneySection"
 import ServicesSection from "@/components/landing/ServicesSection"
 import WhyUsSection from "@/components/landing/WhyUsSection"
-import TestimonialsSection from "@/components/landing/TestimonialsSection"
+import Testimonials from "@/components/home/Testimonials"
 import WorkProcessSection from "@/components/landing/WorkProcessSection"
 import { PublishingJourneySection } from "@/components/publishing-journey"
 import CTASection from "@/components/landing/CTASection"
@@ -37,7 +37,7 @@ export default function Home() {
       <BookJourneySection />
       <ServicesSection />
       <WhyUsSection />
-      <TestimonialsSection />
+      <Testimonials />
       <PublishingJourneySection />
       <WorkProcessSection />
       <CTASection />

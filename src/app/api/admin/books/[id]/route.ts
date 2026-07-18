@@ -47,7 +47,7 @@ export async function PUT(
         coverImage: body.coverImage,
         isbn: body.isbn || null,
         pageCount: body.pageCount ? parseInt(body.pageCount) : undefined,
-        previewPdfUrl: body.previewPdfUrl || null,
+        previewPdfUrl: body.previewPdfUrl || "",
         weight: body.weight ? parseInt(body.weight) : undefined,
         dimensions: body.dimensions || undefined,
         language: body.language || undefined,

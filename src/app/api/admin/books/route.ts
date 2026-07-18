@@ -52,7 +52,7 @@ export async function POST(request: Request) {
         coverImage: body.coverImage,
         isbn: body.isbn || null,
         pageCount: parseInt(body.pageCount) || 0,
-        previewPdfUrl: body.previewPdfUrl || null,
+        previewPdfUrl: body.previewPdfUrl || "",
         weight: parseInt(body.weight) || 250,
         dimensions: body.dimensions || "",
         language: body.language || "",

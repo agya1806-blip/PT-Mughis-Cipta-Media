@@ -1,32 +1,34 @@
-import { prisma } from "@/lib/prisma"
+import Breadcrumb from "@/components/ui/Breadcrumb"
+import PublishingSolutions from "@/components/services/PublishingSolutions"
 
 export async function generateMetadata() {
-  return { title: "Layanan Penerbitan | Maktabah al-Mughis" }
+  return {
+    title: "Layanan Penerbitan",
+    description: "PT Mughis Cipta Media menyediakan layanan penerbitan buku, editing, desain, layout, ISBN, percetakan, dan distribusi nasional untuk penulis dan penerbit.",
+    openGraph: {
+      title: "Layanan Penerbitan - Maktabah al-Mughis",
+      description: "Layanan penerbitan buku profesional dari Maktabah al-Mughis.",
+    },
+    twitter: {
+      title: "Layanan Penerbitan - Maktabah al-Mughis",
+      description: "Layanan penerbitan buku profesional dari Maktabah al-Mughis.",
+    },
+    alternates: { canonical: "/layanan-penerbitan" },
+  }
 }
 
-export default async function LayananPenerbitanPage() {
-  let page = null
-  try {
-    page = await prisma.page.findUnique({ where: { slug: "layanan-penerbitan" } })
-  } catch {}
-
+export default function LayananPenerbitanPage() {
   return (
     <div className="flex-1 bg-zinc-50">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <h1 className="text-3xl font-bold text-zinc-900 mb-8">
-          {page?.title || "Layanan Penerbitan"}
-        </h1>
-        {page ? (
-          <div
-            className="text-zinc-700 leading-relaxed [&_h2]:text-xl [&_h2]:font-semibold [&_h2]:text-zinc-900 [&_h2]:mb-4 [&_p]:mb-4 [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:mb-4 [&_li]:mb-1"
-            dangerouslySetInnerHTML={{ __html: page.content }}
-          />
-        ) : (
-          <div className="bg-white rounded-xl border border-zinc-200 p-8 text-center text-zinc-500">
-            <p>Halaman belum diisi. Login sebagai admin untuk menambahkan konten.</p>
-          </div>
-        )}
+      <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-10 pt-8 sm:pt-10">
+        <Breadcrumb
+          items={[
+            { label: "Beranda", href: "/" },
+            { label: "Layanan Penerbitan" },
+          ]}
+        />
       </div>
+      <PublishingSolutions />
     </div>
   )
 }

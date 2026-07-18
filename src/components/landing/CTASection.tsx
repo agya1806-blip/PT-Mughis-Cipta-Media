@@ -1,8 +1,24 @@
 "use client"
-
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { ArrowRight, MessageCircle } from "lucide-react"
+
+const containerVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] as const },
+  },
+}
+
+const scaleIcon = {
+  hidden: { scale: 0 },
+  visible: {
+    scale: 1,
+    transition: { type: "spring" as const, stiffness: 200, delay: 0.1 },
+  },
+}
 
 export default function CTASection() {
   return (
@@ -14,68 +30,42 @@ export default function CTASection() {
 
       <div className="container relative">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
           viewport={{ once: true }}
           className="max-w-2xl mx-auto text-center"
         >
           <motion.div
-            initial={{ scale: 0 }}
-            whileInView={{ scale: 1 }}
+            variants={scaleIcon}
+            initial="hidden"
+            whileInView="visible"
             viewport={{ once: true }}
-            transition={{ type: "spring", stiffness: 200, delay: 0.1 }}
-            className="w-16 h-16 mx-auto rounded-2xl bg-gold/10 border border-gold/20 flex items-center justify-center mb-8"
+            className="w-16 h-16 rounded-2xl bg-gold/20 flex items-center justify-center mx-auto mb-6"
           >
             <span className="text-3xl font-bold text-gold">M</span>
           </motion.div>
-
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-[1.15]"
-          >
-            Wujudkan{" "}
-            <span className="bg-gradient-to-r from-gold via-gold-light to-gold bg-clip-text text-transparent">
-              Buku Impian
-            </span>{" "}
-            Anda
-          </motion.h2>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.3 }}
-            className="mt-4 text-lg text-zinc-400"
-          >
-            Konsultasikan kebutuhan penerbitan Anda dengan tim profesional kami.
-            Gratis dan tanpa kewajiban.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.4 }}
-            className="mt-10 flex flex-wrap justify-center gap-4"
-          >
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-[1.15] tracking-tight mb-4">
+            Siap Menerbitkan{" "}
+            <span className="bg-gradient-to-r from-gold via-gold-light to-gold bg-clip-text text-transparent">Buku Anda?</span>
+          </h2>
+          <p className="text-lg text-zinc-400 max-w-lg mx-auto mb-10">
+            Konsultasikan kebutuhan penerbitan, percetakan, dan distribusi buku Anda bersama tim profesional kami.
+          </p>
+          <div className="flex flex-wrap justify-center gap-4">
             <Link
               href="/katalog"
               className="group inline-flex items-center gap-2 px-8 py-4 bg-gold hover:bg-gold-dark text-white font-semibold rounded-full transition-all duration-300 hover:shadow-xl hover:shadow-gold/25 hover:-translate-y-0.5"
             >
-              Mulai Sekarang
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              Mulai Sekarang <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
             <Link
               href="/kontak"
               className="inline-flex items-center gap-2 px-8 py-4 border border-white/20 text-white font-semibold rounded-full hover:bg-white/5 transition-all duration-300 hover:-translate-y-0.5"
             >
-              <MessageCircle className="w-4 h-4" />
-              Hubungi Kami
+              <MessageCircle className="w-4 h-4" /> Konsultasi
             </Link>
-          </motion.div>
+          </div>
         </motion.div>
       </div>
     </section>

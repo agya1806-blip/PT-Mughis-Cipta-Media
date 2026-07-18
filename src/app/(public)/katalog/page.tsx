@@ -2,8 +2,19 @@ import { Suspense } from "react"
 import { KatalogClient } from "@/components/KatalogClient"
 
 export const metadata = {
-  title: "Katalog Buku | Maktabah al-Mughis",
-  description: "Jelajahi koleksi buku-buku islami dari Maktabah al-Mughis",
+  title: "Katalog Buku",
+  description: "Jelajahi koleksi buku-buku islami dari Maktabah al-Mughis. Temukan berbagai kategori buku seperti Aqidah, Fiqih, Tafsir, Hadits, dan lainnya.",
+  openGraph: {
+    title: "Katalog Buku - Maktabah al-Mughis",
+    description: "Jelajahi koleksi buku-buku islami dari Maktabah al-Mughis.",
+  },
+  twitter: {
+    title: "Katalog Buku - Maktabah al-Mughis",
+    description: "Jelajahi koleksi buku-buku islami dari Maktabah al-Mughis.",
+  },
+  alternates: {
+    canonical: "/katalog",
+  },
 }
 
 export default function KatalogPage() {

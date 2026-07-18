@@ -1,21 +1,24 @@
 "use client"
 
 import { motion } from "framer-motion"
+import Badge from "./Badge"
 
 interface Props {
-  badge: string
+  badge?: string
   title: string
   accent?: string
   description?: string
   align?: "center" | "left"
+  className?: string
 }
 
-export default function SectionHeading({
+export default function SectionHeader({
   badge,
   title,
   accent,
   description,
   align = "center",
+  className = "",
 }: Props) {
   const alignClass = align === "center" ? "text-center" : "text-left"
 
@@ -35,18 +38,20 @@ export default function SectionHeading({
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className={`${alignClass} mb-16`}
+      className={`${alignClass} ${className}`}
     >
-      <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/10 border border-gold/20 mb-6">
-        <span className="text-gold text-[11px] font-medium uppercase tracking-[0.1em]">
+      {badge && (
+        <Badge variant="gold" className="mb-6">
           {badge}
-        </span>
-      </div>
-      <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-primary leading-[1.15] tracking-tight text-balance">
+        </Badge>
+      )}
+      <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-zinc-900 dark:text-white leading-[1.15] tracking-tight text-balance">
         {titleEl}
       </h2>
       {description && (
-        <p className="mt-4 text-secondary max-w-2xl mx-auto">{description}</p>
+        <p className="mt-4 text-zinc-500 dark:text-zinc-400 max-w-2xl mx-auto text-base sm:text-lg leading-relaxed">
+          {description}
+        </p>
       )}
     </motion.div>
   )

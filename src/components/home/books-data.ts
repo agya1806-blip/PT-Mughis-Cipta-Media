@@ -8,6 +8,8 @@ export const featuredBooks: BookData[] = [
     price: 145000,
     cover_image: null,
     category_name: "Hadits & Musthalah",
+    publication_year: 2025,
+    badge: "best-seller",
   },
   {
     id: "bk-003",
@@ -16,6 +18,8 @@ export const featuredBooks: BookData[] = [
     price: 120000,
     cover_image: null,
     category_name: "Tafsir & Ulumul Qur'an",
+    publication_year: 2025,
+    badge: "featured",
   },
   {
     id: "bk-005",
@@ -24,6 +28,8 @@ export const featuredBooks: BookData[] = [
     price: 99000,
     cover_image: null,
     category_name: "Hadits & Musthalah",
+    publication_year: 2025,
+    badge: "best-seller",
   },
   {
     id: "bk-007",
@@ -32,6 +38,8 @@ export const featuredBooks: BookData[] = [
     price: 72000,
     cover_image: null,
     category_name: "Sejarah & Biografi",
+    publication_year: 2025,
+    badge: null,
   },
   {
     id: "bk-013",
@@ -40,6 +48,8 @@ export const featuredBooks: BookData[] = [
     price: 155000,
     cover_image: null,
     category_name: "Hadits & Musthalah",
+    publication_year: 2025,
+    badge: "featured",
   },
   {
     id: "bk-009",
@@ -48,6 +58,8 @@ export const featuredBooks: BookData[] = [
     price: 35000,
     cover_image: null,
     category_name: "Buku Anak & Keluarga",
+    publication_year: 2025,
+    badge: "new",
   },
   {
     id: "bk-014",
@@ -56,6 +68,8 @@ export const featuredBooks: BookData[] = [
     price: 45000,
     cover_image: null,
     category_name: "Tafsir & Ulumul Qur'an",
+    publication_year: 2025,
+    badge: "new",
   },
   {
     id: "bk-018",
@@ -64,5 +78,7 @@ export const featuredBooks: BookData[] = [
     price: 110000,
     cover_image: null,
     category_name: "Aqidah & Tauhid",
+    publication_year: 2025,
+    badge: null,
   },
 ]

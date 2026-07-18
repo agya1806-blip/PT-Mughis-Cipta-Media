@@ -5,7 +5,10 @@ export async function generateMetadata() {
 }
 
 export default async function TentangKamiPage() {
-  const page = await prisma.page.findUnique({ where: { slug: "tentang-kami" } })
+  let page = null
+  try {
+    page = await prisma.page.findUnique({ where: { slug: "tentang-kami" } })
+  } catch {}
 
   return (
     <div className="flex-1 bg-zinc-50">

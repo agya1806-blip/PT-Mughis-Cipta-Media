@@ -5,8 +5,12 @@ export async function generateMetadata() {
 }
 
 async function getSetting(key: string): Promise<string> {
-  const s = await prisma.setting.findUnique({ where: { key } })
-  return s?.value || ""
+  try {
+    const s = await prisma.setting.findUnique({ where: { key } })
+    return s?.value || ""
+  } catch {
+    return ""
+  }
 }
 
 export default async function KontakPage() {

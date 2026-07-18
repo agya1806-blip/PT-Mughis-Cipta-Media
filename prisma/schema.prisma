@@ -4,7 +4,7 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
 }
 
 enum Role {
@@ -66,11 +66,11 @@ model Book {
   publisher            String
   isbn                 String?
   pageCount            Int      @map("page_count")
-  price                Decimal  
-  resellerPrice        Decimal? @map("reseller_price") 
+  price                Decimal  @db.Decimal(10, 2)
+  resellerPrice        Decimal? @map("reseller_price") @db.Decimal(10, 2)
   categoryId           Int      @map("category_id")
   coverImage           String   @map("cover_image")
-  synopsis             String   
+  synopsis             String   @db.Text
   previewPdfUrl        String   @map("preview_pdf_url")
   stock                Int      @default(0)
   weight               Int
@@ -102,11 +102,11 @@ model Order {
   subdistrictId  String?        @map("subdistrict_id")
   courier        String?
   courierService String?        @map("courier_service")
-  shippingCost   Decimal        @default(0)  @map("shipping_cost")
+  shippingCost   Decimal        @default(0) @db.Decimal(10, 2) @map("shipping_cost")
   shippingEtd    String?        @map("shipping_etd")
   shippingAwb    String?        @map("shipping_awb")
-  subtotal       Decimal        
-  total          Decimal        
+  subtotal       Decimal        @db.Decimal(10, 2)
+  total          Decimal        @db.Decimal(10, 2)
   status         OrderStatus    @default(PENDING)
   paymentMethod  String?        @map("payment_method")
   paymentChannel PaymentChannel? @map("payment_channel")
@@ -128,7 +128,7 @@ model OrderItem {
   orderId  Int    @map("order_id")
   bookId   Int    @map("book_id")
   title    String
-  price    Decimal 
+  price    Decimal @db.Decimal(10, 2)
   quantity Int    @default(1)
   weight   Int    @default(0)
 
@@ -142,7 +142,7 @@ model Article {
   id            Int      @id @default(autoincrement())
   title         String
   slug          String   @unique
-  content       String   
+  content       String   @db.Text
   featuredImage String   @map("featured_image")
   createdAt     DateTime @default(now()) @map("created_at")
   updatedAt     DateTime @updatedAt @map("updated_at")
@@ -160,7 +160,7 @@ model Page {
   id        Int      @id @default(autoincrement())
   slug      String   @unique
   title     String
-  content   String   
+  content   String   @db.Text
   updatedAt DateTime @updatedAt @map("updated_at")
 
   @@map("pages")

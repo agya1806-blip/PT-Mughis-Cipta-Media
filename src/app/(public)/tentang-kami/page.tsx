@@ -1,32 +1,36 @@
-import { prisma } from "@/lib/prisma"
+import AboutHero from "@/components/about/AboutHero"
+import AboutStory from "@/components/about/AboutStory"
+import VisionMission from "@/components/about/VisionMission"
+import CompanyValues from "@/components/about/CompanyValues"
+import Services from "@/components/about/Services"
+import WhyUs from "@/components/about/WhyUs"
+import Stats from "@/components/about/Stats"
+import Timeline from "@/components/about/Timeline"
+import AboutCTA from "@/components/about/AboutCTA"
 
-export async function generateMetadata() {
-  return { title: "Tentang Kami | Maktabah al-Mughis" }
+export const metadata = {
+  title: "Tentang Kami | Maktabah al-Mughis - PT Mughis Cipta Media",
+  description:
+    "PT Mughis Cipta Media adalah perusahaan penerbitan, percetakan, distribusi buku, dan media kreatif yang berkomitmen menghadirkan karya berkualitas bagi dunia pendidikan dan literasi Indonesia.",
+  openGraph: {
+    title: "Tentang Kami | Maktabah al-Mughis",
+    description:
+      "Perusahaan penerbitan dan media kreatif yang berkomitmen membangun peradaban melalui buku dan pengetahuan.",
+  },
 }
 
-export default async function TentangKamiPage() {
-  let page = null
-  try {
-    page = await prisma.page.findUnique({ where: { slug: "tentang-kami" } })
-  } catch {}
-
+export default function TentangKamiPage() {
   return (
-    <div className="flex-1 bg-zinc-50">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <h1 className="text-3xl font-bold text-zinc-900 mb-8">
-          {page?.title || "Tentang Kami"}
-        </h1>
-        {page ? (
-          <div
-            className="text-zinc-700 leading-relaxed [&_h2]:text-xl [&_h2]:font-semibold [&_h2]:text-zinc-900 [&_h2]:mb-4 [&_p]:mb-4 [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:mb-4 [&_li]:mb-1"
-            dangerouslySetInnerHTML={{ __html: page.content }}
-          />
-        ) : (
-          <div className="bg-white rounded-xl border border-zinc-200 p-8 text-center text-zinc-500">
-            <p>Halaman belum diisi. Login sebagai admin untuk menambahkan konten.</p>
-          </div>
-        )}
-      </div>
-    </div>
+    <main className="min-h-screen">
+      <AboutHero />
+      <AboutStory />
+      <VisionMission />
+      <CompanyValues />
+      <Services />
+      <WhyUs />
+      <Stats />
+      <Timeline />
+      <AboutCTA />
+    </main>
   )
 }

@@ -1,9 +1,9 @@
 import { Shield } from "lucide-react"
-import Breadcrumb from "@/components/ui/Breadcrumb"
+import { LegalLayout, LegalSection } from "@/components/legal"
 
 export const metadata = {
   title: "Kebijakan Privasi",
-  description: "Kebijakan privasi PT Mughis Cipta Media - Maktabah al-Mughis mengenai pengumpulan, penggunaan, dan perlindungan data pribadi pengguna.",
+  description: "Kebijakan privasi PT Mughis Cipta Media mengenai pengumpulan, penggunaan, dan perlindungan data pribadi pengguna.",
   openGraph: {
     title: "Kebijakan Privasi - Maktabah al-Mughis",
     description: "Kebijakan privasi PT Mughis Cipta Media.",
@@ -17,89 +17,67 @@ export const metadata = {
 
 export default function PrivacyPage() {
   return (
-    <div className="flex-1 bg-zinc-50">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <Breadcrumb
-          items={[
-            { label: "Beranda", href: "/" },
-            { label: "Kebijakan Privasi" },
-          ]}
-        />
+    <LegalLayout
+      icon={Shield}
+      iconBg="bg-emerald-100"
+      iconColor="text-emerald-600"
+      title="Kebijakan Privasi"
+      subtitle="PT Mughis Cipta Media"
+      lastUpdated="Juli 2026"
+    >
+      <LegalSection title="1. Informasi yang Kami Kumpulkan">
+        <p>Kami mengumpulkan informasi yang Anda berikan secara langsung saat menggunakan layanan kami, termasuk:</p>
+        <ul className="list-disc pl-5 mt-2 space-y-1">
+          <li>Nama lengkap</li>
+          <li>Alamat email</li>
+          <li>Nomor telepon</li>
+          <li>Alamat pengiriman</li>
+          <li>Informasi pembayaran</li>
+          <li>Data naskah yang Anda unggah</li>
+        </ul>
+      </LegalSection>
 
-        <div className="flex items-center gap-3 mb-8">
-          <div className="w-12 h-12 rounded-xl bg-emerald-100 flex items-center justify-center">
-            <Shield className="w-6 h-6 text-emerald-600" />
-          </div>
-          <div>
-            <h1 className="text-3xl font-bold text-zinc-900">Kebijakan Privasi</h1>
-            <p className="text-sm text-zinc-500">PT Mughis Cipta Media</p>
-          </div>
-        </div>
+      <LegalSection title="2. Penggunaan Informasi">
+        <p>Informasi yang kami kumpulkan digunakan untuk:</p>
+        <ul className="list-disc pl-5 mt-2 space-y-1">
+          <li>Memproses pesanan dan transaksi Anda</li>
+          <li>Memberikan layanan penerbitan dan percetakan</li>
+          <li>Mengirimkan konfirmasi dan update status pesanan</li>
+          <li>Meningkatkan kualitas layanan kami</li>
+          <li>Mengirimkan informasi promosi (dengan persetujuan Anda)</li>
+        </ul>
+      </LegalSection>
 
-        <div className="bg-white rounded-2xl border border-zinc-200 p-8 sm:p-10 space-y-6 text-zinc-600 leading-relaxed">
-          <section>
-            <h2 className="text-xl font-semibold text-zinc-900 mb-3">1. Informasi yang Kami Kumpulkan</h2>
-            <p>Kami mengumpulkan informasi yang Anda berikan secara langsung saat menggunakan layanan kami, termasuk:</p>
-            <ul className="list-disc pl-5 mt-2 space-y-1">
-              <li>Nama lengkap</li>
-              <li>Alamat email</li>
-              <li>Nomor telepon</li>
-              <li>Alamat pengiriman</li>
-              <li>Informasi pembayaran</li>
-              <li>Data naskah yang Anda unggah</li>
-            </ul>
-          </section>
+      <LegalSection title="3. Perlindungan Data">
+        <p>Kami menerapkan langkah-langkah keamanan teknis dan organisasi yang tepat untuk melindungi data pribadi Anda dari akses tidak sah, perubahan, pengungkapan, atau perusakan. Seluruh data disimpan secara aman dengan enkripsi yang sesuai dengan standar industri.</p>
+      </LegalSection>
 
-          <section>
-            <h2 className="text-xl font-semibold text-zinc-900 mb-3">2. Penggunaan Informasi</h2>
-            <p>Informasi yang kami kumpulkan digunakan untuk:</p>
-            <ul className="list-disc pl-5 mt-2 space-y-1">
-              <li>Memproses pesanan dan transaksi Anda</li>
-              <li>Memberikan layanan penerbitan dan percetakan</li>
-              <li>Mengirimkan konfirmasi dan update status pesanan</li>
-              <li>Meningkatkan kualitas layanan kami</li>
-              <li>Mengirimkan informasi promosi (dengan persetujuan Anda)</li>
-            </ul>
-          </section>
+      <LegalSection title="4. Pengungkapan kepada Pihak Ketiga">
+        <p>Kami tidak menjual, menukar, atau mentransfer informasi pribadi Anda kepada pihak ketiga tanpa persetujuan Anda, kecuali diwajibkan oleh hukum. Data hanya dapat dibagikan kepada mitra tepercaya yang membantu kami mengoperasikan website dan menjalankan bisnis, dengan ikatan kerahasiaan yang ketat.</p>
+      </LegalSection>
 
-          <section>
-            <h2 className="text-xl font-semibold text-zinc-900 mb-3">3. Perlindungan Data</h2>
-            <p>Kami menerapkan langkah-langkah keamanan teknis dan organisasi yang tepat untuk melindungi data pribadi Anda dari akses tidak sah, perubahan, pengungkapan, atau perusakan.</p>
-          </section>
+      <LegalSection title="5. Cookie">
+        <p>Website kami menggunakan cookie untuk meningkatkan pengalaman browsing, menganalisis tren, dan mengelola preferensi pengguna. Anda dapat mengontrol penggunaan cookie melalui pengaturan browser Anda. Penonaktifan cookie dapat memengaruhi beberapa fungsi website.</p>
+      </LegalSection>
 
-          <section>
-            <h2 className="text-xl font-semibold text-zinc-900 mb-3">4. Pengungkapan kepada Pihak Ketiga</h2>
-            <p>Kami tidak menjual, menukar, atau mentransfer informasi pribadi Anda kepada pihak ketiga tanpa persetujuan Anda, kecuali diwajibkan oleh hukum.</p>
-          </section>
+      <LegalSection title="6. Hak Anda">
+        <ul className="list-disc pl-5 space-y-1">
+          <li>Mengakses data pribadi yang kami simpan</li>
+          <li>Memperbaiki data yang tidak akurat atau tidak lengkap</li>
+          <li>Menghapus data pribadi Anda sesuai ketentuan yang berlaku</li>
+          <li>Menolak pemrosesan data untuk tujuan pemasaran langsung</li>
+          <li>Membatasi pemrosesan data dalam kondisi tertentu</li>
+          <li>Mengajukan keluhan kepada lembaga pengawas perlindungan data</li>
+        </ul>
+      </LegalSection>
 
-          <section>
-            <h2 className="text-xl font-semibold text-zinc-900 mb-3">5. Cookie</h2>
-            <p>Website kami menggunakan cookie untuk meningkatkan pengalaman browsing. Anda dapat mengontrol penggunaan cookie melalui pengaturan browser Anda.</p>
-          </section>
+      <LegalSection title="7. Perubahan Kebijakan">
+        <p>Kebijakan privasi ini dapat diperbarui dari waktu ke waktu untuk mencerminkan perubahan praktik kami atau kepatuhan terhadap peraturan yang berlaku. Perubahan signifikan akan diinformasikan melalui website kami atau pemberitahuan langsung.</p>
+      </LegalSection>
 
-          <section>
-            <h2 className="text-xl font-semibold text-zinc-900 mb-3">6. Hak Anda</h2>
-            <ul className="list-disc pl-5 space-y-1">
-              <li>Mengakses data pribadi yang kami simpan</li>
-              <li>Memperbaiki data yang tidak akurat</li>
-              <li>Menghapus data pribadi Anda</li>
-              <li>Menolak pemrosesan data untuk tujuan pemasaran</li>
-            </ul>
-          </section>
-
-          <section>
-            <h2 className="text-xl font-semibold text-zinc-900 mb-3">7. Perubahan Kebijakan</h2>
-            <p>Kebijakan privasi ini dapat diperbarui dari waktu ke waktu. Perubahan akan diinformasikan melalui website kami.</p>
-          </section>
-
-          <section>
-            <h2 className="text-xl font-semibold text-zinc-900 mb-3">8. Kontak</h2>
-            <p>Jika Anda memiliki pertanyaan tentang kebijakan privasi ini, silakan hubungi kami melalui halaman Kontak.</p>
-          </section>
-
-          <p className="text-sm text-zinc-400 pt-4 border-t border-zinc-200">Terakhir diperbarui: Juli 2026</p>
-        </div>
-      </div>
-    </div>
+      <LegalSection title="8. Kontak">
+        <p>Jika Anda memiliki pertanyaan, keberatan, atau permintaan terkait kebijakan privasi ini atau data pribadi Anda, silakan hubungi kami melalui halaman Kontak atau kirim email ke admin@pt-mughis-cipta-media.com.</p>
+      </LegalSection>
+    </LegalLayout>
   )
 }

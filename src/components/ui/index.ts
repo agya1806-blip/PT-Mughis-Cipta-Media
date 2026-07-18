@@ -24,5 +24,7 @@ export { default as PageLayout } from "./PageLayout"
 export { default as LoadingState } from "./LoadingState"
 export { default as MetricCard } from "./MetricCard"
 export { default as SolutionCard } from "./SolutionCard"
+export { default as RatingStars } from "./RatingStars"
+export { default as TestimonialCard } from "./TestimonialCard"
 
 export type { BookData } from "./BookCard"

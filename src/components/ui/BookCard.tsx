@@ -1,7 +1,7 @@
-"use client"
-
 import Link from "next/link"
-import { motion } from "framer-motion"
+import Image from "next/image"
+import { BookOpen } from "lucide-react"
+import BookBadge from "./BookBadge"
 
 export interface BookData {
   id: string
@@ -11,6 +11,8 @@ export interface BookData {
   cover_image?: string | null
   synopsis?: string | null
   category_name?: string | null
+  publication_year?: number | null
+  badge?: "best-seller" | "new" | "featured" | null
 }
 
 interface Props {
@@ -23,34 +25,67 @@ export default function BookCard({ book, className = "", href }: Props) {
   const linkHref = href || `/buku/${book.id}`
 
   return (
-    <motion.div
-      whileHover={{ y: -4 }}
-      className={`group relative bg-white dark:bg-zinc-800/50 rounded-2xl border border-zinc-200 dark:border-zinc-700/50 overflow-hidden transition-all duration-300 hover:shadow-lg hover:border-gold/30 ${className}`}
+    <div
+      className={`group relative bg-white dark:bg-zinc-800/50 rounded-xl border border-zinc-200 dark:border-zinc-700/50 overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-gold/30 ${className}`}
     >
       <Link href={linkHref} className="block">
-        <div className="aspect-[3/4] bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center overflow-hidden">
-          <div className="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500 p-4 text-center">
-            <svg className="w-12 h-12 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
-            </svg>
-            <span className="text-xs font-medium line-clamp-2">{book.title}</span>
-          </div>
-        </div>
-        <div className="p-4">
-          {book.category_name && (
-            <span className="inline-block text-[10px] font-medium text-gold bg-gold/10 px-2 py-0.5 rounded-full mb-2 uppercase tracking-wider">
-              {book.category_name}
-            </span>
+        <div className="relative aspect-[3/4] bg-zinc-100 dark:bg-zinc-800 overflow-hidden">
+          {book.cover_image ? (
+            <Image
+              src={book.cover_image}
+              alt={book.title}
+              fill
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+              className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+            />
+          ) : (
+            <div className="absolute inset-0 flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500 p-6 text-center">
+              <BookOpen className="w-10 h-10 mb-2" />
+              <span className="text-xs font-medium line-clamp-2">{book.title}</span>
+            </div>
           )}
-          <h3 className="font-semibold text-zinc-900 dark:text-white leading-snug line-clamp-2 text-sm mb-1">
+
+          {book.badge && (
+            <div className="absolute top-3 left-3 z-10">
+              <BookBadge variant={book.badge} />
+            </div>
+          )}
+
+          {book.category_name && (
+            <div className="absolute top-3 right-3 z-10">
+              <span className="inline-flex items-center px-2 py-1 rounded-full text-[10px] font-medium bg-white/70 dark:bg-zinc-900/70 backdrop-blur-md text-zinc-600 dark:text-zinc-400 border border-white/20 dark:border-zinc-700/50">
+                {book.category_name}
+              </span>
+            </div>
+          )}
+        </div>
+
+        <div className="p-4 sm:p-5">
+          <h3 className="font-semibold text-zinc-900 dark:text-white leading-snug line-clamp-2 text-sm sm:text-base mb-1">
             {book.title}
           </h3>
-          <p className="text-xs text-zinc-500 dark:text-zinc-400 line-clamp-1 mb-2">{book.author}</p>
-          <div className="text-base font-bold text-zinc-900 dark:text-white">
-            Rp{book.price.toLocaleString("id-ID")}
+
+          <p className="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 line-clamp-1 mb-2">
+            {book.author}
+          </p>
+
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              {book.publication_year && (
+                <span className="text-[11px] text-zinc-400 dark:text-zinc-500">
+                  {book.publication_year}
+                </span>
+              )}
+            </div>
+            <span className="text-xs font-medium text-gold inline-flex items-center gap-1 transition-all duration-200 group-hover:gap-1.5">
+              Lihat Detail
+              <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+            </span>
           </div>
         </div>
       </Link>
-    </motion.div>
+    </div>
   )
 }

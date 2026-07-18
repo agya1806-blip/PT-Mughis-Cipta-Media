@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server"
 import { prisma } from "@/lib/prisma"
 import { getCurrentUser } from "@/lib/auth"
+import { $Enums } from "@/lib/__generated__/prisma/client"
 
 export async function GET(request: Request) {
   const user = await getCurrentUser()
@@ -11,11 +12,8 @@ export async function GET(request: Request) {
   const { searchParams } = new URL(request.url)
   const status = searchParams.get("status") || ""
 
-  const where: { role: string; approvalStatus?: string } = { role: "RESELLER" }
-  if (status) where.approvalStatus = status
-
   const resellers = await prisma.user.findMany({
-    where,
+    where: { role: $Enums.Role.RESELLER, ...(status ? { approvalStatus: status } : {}) },
     select: {
       id: true,
       name: true,

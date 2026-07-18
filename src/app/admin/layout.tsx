@@ -1,4 +1,10 @@
+import type { Metadata } from "next"
 import Link from "next/link"
+
+export const metadata: Metadata = {
+  title: "Admin Panel",
+  description: "Panel administrasi PT Mughis Cipta Media — kelola buku, artikel, pesanan, reseller, dan pengaturan.",
+}
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   return (

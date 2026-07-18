@@ -63,7 +63,7 @@ export default function Footer() {
   return (
     <footer className="relative border-t border-border bg-surface overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-gold/[0.02] to-transparent pointer-events-none" />
-      <div className="container relative py-16 lg:py-20">
+      <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-10 relative py-16 lg:py-20">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16">
           <div className="sm:col-span-2 lg:col-span-1 space-y-6">
             <Link href="/" className="inline-flex items-center gap-3 group">
@@ -140,7 +140,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="border-t border-border">
-        <div className="container py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-10 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-secondary">{copyright}</p>
           <div className="flex items-center gap-2">
             {badges.map((badge) => (

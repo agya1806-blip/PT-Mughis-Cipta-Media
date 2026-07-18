@@ -1,10 +1,11 @@
 import { NextRequest } from 'next/server'
 import { prisma } from '@/lib/prisma'
 import { verifyMidtransNotification } from '@/lib/payment'
+import { $Enums } from '@/lib/__generated__/prisma/client'
 
 type MidtransStatus = 'capture' | 'settlement' | 'pending' | 'deny' | 'cancel' | 'expire' | 'failure'
 
-const STATUS_MAP: Record<MidtransStatus, string> = {
+const STATUS_MAP = {
   capture: 'PAID',
   settlement: 'PAID',
   pending: 'PENDING',
@@ -12,7 +13,7 @@ const STATUS_MAP: Record<MidtransStatus, string> = {
   cancel: 'CANCELLED',
   expire: 'CANCELLED',
   failure: 'CANCELLED',
-}
+} as const satisfies Record<MidtransStatus, string>
 
 export async function POST(req: NextRequest) {
   try {
@@ -42,7 +43,7 @@ export async function POST(req: NextRequest) {
 
     await prisma.order.update({
       where: { orderId },
-      data: { status: newStatus },
+      data: { status: newStatus as $Enums.OrderStatus },
     })
 
     if (newStatus === 'PAID') {

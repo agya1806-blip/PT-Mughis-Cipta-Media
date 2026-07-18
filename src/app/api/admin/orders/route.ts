@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server"
 import { prisma } from "@/lib/prisma"
 import { getCurrentUser } from "@/lib/auth"
+import { $Enums } from "@/lib/__generated__/prisma/client"
 
 export async function GET(request: Request) {
   const user = await getCurrentUser()
@@ -13,7 +14,7 @@ export async function GET(request: Request) {
   const limit = parseInt(searchParams.get("limit") || "20")
   const status = searchParams.get("status") || ""
 
-  const where = status ? { status } : {}
+  const where = status ? { status: status as $Enums.OrderStatus } : {}
 
   const [orders, total] = await Promise.all([
     prisma.order.findMany({

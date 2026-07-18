@@ -14,6 +14,7 @@ export default function CreateBook() {
     categoryId: "",
     synopsis: "",
     price: "",
+    resellerPrice: "",
     stock: "0",
     coverImage: "",
     isbn: "",
@@ -120,6 +121,16 @@ export default function CreateBook() {
               className="w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
               value={form.price}
               onChange={(e) => setForm({ ...form, price: e.target.value })}
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-zinc-600 mb-1">Harga Reseller</label>
+            <input
+              type="number"
+              min={0}
+              className="w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+              value={form.resellerPrice}
+              onChange={(e) => setForm({ ...form, resellerPrice: e.target.value })}
             />
           </div>
           <div>

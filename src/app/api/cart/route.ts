@@ -1,23 +1,19 @@
 import { NextRequest } from 'next/server'
-import { books } from '@/lib/data'
-
-export async function GET() {
-  return Response.json({ books })
-}
+import { prisma } from '@/lib/prisma'
 
 export async function POST(req: NextRequest) {
   try {
     const { bookId } = await req.json() as { bookId: string }
-    const book = books.find((b) => b.id === bookId)
+    const book = await prisma.book.findUnique({ where: { id: parseInt(bookId) } })
     if (!book) {
       return Response.json({ error: 'Book not found' }, { status: 404 })
     }
     return Response.json({
-      bookId: book.id,
+      bookId: String(book.id),
       title: book.title,
-      price: book.price,
+      price: Number(book.price),
       weight: book.weight,
-      coverImage: book.cover_image,
+      coverImage: book.coverImage,
       stock: book.stock,
     })
   } catch {

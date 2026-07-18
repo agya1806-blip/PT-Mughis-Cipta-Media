@@ -41,6 +41,9 @@ export async function PUT(request: Request) {
   try {
     const { userId, approvalStatus } = await request.json()
 
+    if (!userId) {
+      return NextResponse.json({ error: "userId required" }, { status: 400 })
+    }
     if (!["approved", "rejected", "pending"].includes(approvalStatus)) {
       return NextResponse.json({ error: "Invalid status" }, { status: 400 })
     }

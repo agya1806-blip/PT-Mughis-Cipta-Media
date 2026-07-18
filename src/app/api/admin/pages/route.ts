@@ -18,6 +18,9 @@ export async function POST(request: Request) {
   }
   try {
     const body = await request.json()
+    if (!body.slug || !body.title) {
+      return NextResponse.json({ error: "Slug dan title wajib diisi" }, { status: 400 })
+    }
     const page = await prisma.page.create({
       data: {
         slug: body.slug,

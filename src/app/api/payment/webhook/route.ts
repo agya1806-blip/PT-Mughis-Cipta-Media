@@ -1,18 +1,17 @@
 import { NextRequest } from 'next/server'
-import { orderStore } from '@/lib/order-store'
-import { books } from '@/lib/data'
+import { prisma } from '@/lib/prisma'
 import { verifyMidtransNotification } from '@/lib/payment'
 
 type MidtransStatus = 'capture' | 'settlement' | 'pending' | 'deny' | 'cancel' | 'expire' | 'failure'
 
 const STATUS_MAP: Record<MidtransStatus, string> = {
-  capture: 'paid',
-  settlement: 'paid',
-  pending: 'pending',
-  deny: 'cancelled',
-  cancel: 'cancelled',
-  expire: 'cancelled',
-  failure: 'cancelled',
+  capture: 'PAID',
+  settlement: 'PAID',
+  pending: 'PENDING',
+  deny: 'CANCELLED',
+  cancel: 'CANCELLED',
+  expire: 'CANCELLED',
+  failure: 'CANCELLED',
 }
 
 export async function POST(req: NextRequest) {
@@ -39,18 +38,24 @@ export async function POST(req: NextRequest) {
       }
     }
 
-    const newStatus = STATUS_MAP[transactionStatus as MidtransStatus] || 'pending'
+    const newStatus = STATUS_MAP[transactionStatus as MidtransStatus] || 'PENDING'
 
-    orderStore.update(orderId, { status: newStatus as 'pending' | 'paid' | 'cancelled' })
+    await prisma.order.update({
+      where: { orderId },
+      data: { status: newStatus as any },
+    })
 
-    if (newStatus === 'paid') {
-      const order = orderStore.get(orderId)
+    if (newStatus === 'PAID') {
+      const order = await prisma.order.findUnique({
+        where: { orderId },
+        include: { items: true },
+      })
       if (order) {
         for (const item of order.items) {
-          const book = books.find((b) => b.id === item.bookId)
-          if (book) {
-            book.stock = Math.max(0, book.stock - item.quantity)
-          }
+          await prisma.book.update({
+            where: { id: item.bookId },
+            data: { stock: { decrement: item.quantity } },
+          })
         }
       }
     }

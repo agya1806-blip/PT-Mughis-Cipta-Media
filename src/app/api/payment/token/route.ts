@@ -1,5 +1,5 @@
 import { NextRequest } from 'next/server'
-import { orderStore } from '@/lib/order-store'
+import { prisma } from '@/lib/prisma'
 import { getSnapTokenMock } from '@/lib/midtrans'
 
 export async function POST(req: NextRequest) {
@@ -11,16 +11,22 @@ export async function POST(req: NextRequest) {
       return Response.json({ error: 'orderId is required' }, { status: 400 })
     }
 
-    const order = orderStore.get(orderId)
+    const order = await prisma.order.findUnique({
+      where: { orderId },
+      include: { items: true },
+    })
     if (!order) {
       return Response.json({ error: 'Order not found' }, { status: 404 })
     }
 
-    const snap = await getSnapTokenMock(order.id)
+    const snap = await getSnapTokenMock(order.orderId)
 
-    orderStore.update(orderId, {
-      snapToken: snap.token,
-      snapRedirectUrl: snap.redirect_url,
+    await prisma.order.update({
+      where: { orderId },
+      data: {
+        paymentToken: snap.token,
+        paymentUrl: snap.redirect_url,
+      },
     })
 
     return Response.json({

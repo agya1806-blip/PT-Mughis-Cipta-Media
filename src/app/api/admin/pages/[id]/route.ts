@@ -30,9 +30,9 @@ export async function PUT(
     const page = await prisma.page.update({
       where: { id: parseInt(id) },
       data: {
-        title: body.title,
-        slug: body.slug,
-        content: body.content,
+        ...(body.title != null ? { title: body.title } : {}),
+        ...(body.slug != null ? { slug: body.slug } : {}),
+        ...(body.content != null ? { content: body.content } : {}),
       },
     })
     return NextResponse.json(page)

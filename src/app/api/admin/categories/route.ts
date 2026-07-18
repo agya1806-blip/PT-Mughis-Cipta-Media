@@ -18,6 +18,9 @@ export async function POST(request: Request) {
   }
   try {
     const body = await request.json()
+    if (!body.name || !body.slug) {
+      return NextResponse.json({ error: "Nama dan slug wajib diisi" }, { status: 400 })
+    }
     const cat = await prisma.category.create({
       data: { name: body.name, slug: body.slug },
     })
@@ -36,7 +39,10 @@ export async function PUT(request: Request) {
     const body = await request.json()
     const cat = await prisma.category.update({
       where: { id: body.id },
-      data: { name: body.name, slug: body.slug },
+      data: {
+        ...(body.name ? { name: body.name } : {}),
+        ...(body.slug ? { slug: body.slug } : {}),
+      },
     })
     return NextResponse.json(cat)
   } catch {

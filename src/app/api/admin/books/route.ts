@@ -39,6 +39,11 @@ export async function POST(request: Request) {
 
   try {
     const body = await request.json()
+
+    if (!body.title || !body.author || !body.categoryId || body.price === undefined) {
+      return NextResponse.json({ error: "Judul, penulis, kategori, dan harga wajib diisi" }, { status: 400 })
+    }
+
     const book = await prisma.book.create({
       data: {
         title: body.title,
@@ -46,10 +51,11 @@ export async function POST(request: Request) {
         translator: body.translator || null,
         publisher: body.publisher || "",
         categoryId: parseInt(body.categoryId),
-        synopsis: body.synopsis,
+        synopsis: body.synopsis || "",
         price: parseFloat(body.price),
+        resellerPrice: body.resellerPrice ? parseFloat(body.resellerPrice) : null,
         stock: parseInt(body.stock) || 0,
-        coverImage: body.coverImage,
+        coverImage: body.coverImage || "",
         isbn: body.isbn || null,
         pageCount: parseInt(body.pageCount) || 0,
         previewPdfUrl: body.previewPdfUrl || "",

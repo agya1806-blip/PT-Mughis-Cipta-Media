@@ -10,8 +10,34 @@ export default function ContactForm() {
   const [phone, setPhone] = useState("")
   const [message, setMessage] = useState("")
 
-  function handleSubmit(e: FormEvent) {
+  const [submitting, setSubmitting] = useState(false)
+  const [success, setSuccess] = useState(false)
+  const [error, setError] = useState("")
+
+  async function handleSubmit(e: FormEvent) {
     e.preventDefault()
+    setSubmitting(true)
+    setError("")
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, phone, message }),
+      })
+      if (!res.ok) {
+        const data = await res.json()
+        throw new Error(data.error || "Gagal mengirim pesan")
+      }
+      setSuccess(true)
+      setName("")
+      setEmail("")
+      setPhone("")
+      setMessage("")
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Terjadi kesalahan")
+    } finally {
+      setSubmitting(false)
+    }
   }
 
   return (
@@ -27,17 +53,17 @@ export default function ContactForm() {
           <div className="text-center mb-12">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/10 border border-gold/20 mb-6">
               <span className="text-gold text-[11px] font-medium uppercase tracking-[0.1em]">
-                Send a Message
+                Kirim Pesan
               </span>
             </div>
             <h2 className="text-3xl sm:text-4xl font-bold text-zinc-900 dark:text-white leading-[1.15] tracking-tight">
-              Ready to{" "}
+              Siap{" "}
               <span className="bg-gradient-to-r from-gold to-gold-dark bg-clip-text text-transparent">
-                Start?
+                Memulai?
               </span>
             </h2>
             <p className="mt-3 text-zinc-500 dark:text-zinc-400">
-              Fill out the form below and we&apos;ll get back to you within 24 hours.
+              Isi form di bawah dan tim kami akan menghubungi Anda dalam 1x24 jam.
             </p>
           </div>
 
@@ -49,14 +75,14 @@ export default function ContactForm() {
               transition={{ delay: 0.05, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
             >
               <label htmlFor="name" className="block text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-1.5">
-                Full Name
+                Nama Lengkap
               </label>
               <input
                 id="name"
                 type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                placeholder="Your name"
+                placeholder="Nama Anda"
                 className="w-full px-4 py-3 rounded-xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800/50 text-zinc-900 dark:text-white placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold/50 transition-all duration-200"
               />
             </motion.div>
@@ -88,7 +114,7 @@ export default function ContactForm() {
                 transition={{ delay: 0.15, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
               >
                 <label htmlFor="phone" className="block text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-1.5">
-                  Phone (optional)
+                  Telepon (opsional)
                 </label>
                 <input
                   id="phone"
@@ -108,14 +134,14 @@ export default function ContactForm() {
               transition={{ delay: 0.2, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
             >
               <label htmlFor="message" className="block text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-1.5">
-                Message
+                Pesan
               </label>
               <textarea
                 id="message"
                 rows={5}
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
-                placeholder="Tell us about your project or question..."
+                placeholder="Ceritakan tentang proyek atau pertanyaan Anda..."
                 className="w-full px-4 py-3 rounded-xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800/50 text-zinc-900 dark:text-white placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold/50 transition-all duration-200 resize-none"
               />
             </motion.div>
@@ -128,11 +154,20 @@ export default function ContactForm() {
             >
               <button
                 type="submit"
-                className="group w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-gold hover:bg-gold-dark text-white font-semibold rounded-full transition-all duration-300 hover:shadow-xl hover:shadow-gold/25 hover:-translate-y-0.5"
+                disabled={submitting}
+                className="group w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-gold hover:bg-gold-dark text-white font-semibold rounded-full transition-all duration-300 hover:shadow-xl hover:shadow-gold/25 hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Send Message
+                {submitting ? "Mengirim..." : "Kirim Pesan"}
                 <Send className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
               </button>
+              {success && (
+                <p className="mt-4 text-sm text-green-600 dark:text-green-400">
+                  Pesan berhasil dikirim! Kami akan menghubungi Anda dalam 1x24 jam.
+                </p>
+              )}
+              {error && (
+                <p className="mt-4 text-sm text-red-600 dark:text-red-400">{error}</p>
+              )}
             </motion.div>
           </form>
         </motion.div>

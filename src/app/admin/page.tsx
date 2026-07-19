@@ -4,12 +4,8 @@ import { useState, useEffect } from "react"
 
 interface DashboardData {
   totalBooks: number
-  totalOrders: number
-  pendingOrders: number
-  paidOrders: number
   activeResellers: number
-  todayOrders: number
-  monthSales: number
+  unreadMessages: number
 }
 
 export default function AdminDashboard() {
@@ -30,14 +26,10 @@ export default function AdminDashboard() {
     <div>
       <h1 className="text-2xl font-bold text-zinc-800 mb-8">Dashboard</h1>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
         <MetricCard title="Total Buku" value={data.totalBooks} />
-        <MetricCard title="Total Pesanan" value={data.totalOrders} />
-        <MetricCard title="Pesanan Baru" value={data.pendingOrders} color="gold" />
-        <MetricCard title="Pesanan Dibayar" value={data.paidOrders} color="green" />
         <MetricCard title="Reseller Aktif" value={data.activeResellers} />
-        <MetricCard title="Pesanan Hari Ini" value={data.todayOrders} color="gold" />
-        <MetricCard title="Penjualan Bulan Ini" value={`Rp ${data.monthSales.toLocaleString("id-ID")}`} color="green" />
+        <MetricCard title="Pesan Belum Dibaca" value={data.unreadMessages} color="gold" />
       </div>
     </div>
   )

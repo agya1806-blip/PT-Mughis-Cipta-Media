@@ -23,6 +23,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           <SidebarLink href="/admin/categories">Kategori</SidebarLink>
           <SidebarLink href="/admin/pages">Halaman</SidebarLink>
           <SidebarLink href="/admin/articles">Artikel</SidebarLink>
+          <SidebarLink href="/admin/contact-submissions">Kontak Masuk</SidebarLink>
           <SidebarLink href="/admin/settings">Pengaturan</SidebarLink>
           <div className="border-t border-zinc-700 pt-4 mt-4">
             <Link

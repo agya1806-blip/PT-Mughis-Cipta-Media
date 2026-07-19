@@ -15,14 +15,14 @@ export interface Book {
   price: number
   category_id: string
   category_name: string
-  cover_image: string
+  cover_image: string | null
   synopsis: string
-  preview_pdf_url: string
+  preview_pdf_url: string | null
   created_at: string
   stock: number
-  weight: number
-  dimensions: string
-  language: string
+  weight: number | null
+  dimensions: string | null
+  language: string | null
   publication_year: number
 }
 

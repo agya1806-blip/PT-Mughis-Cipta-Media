@@ -16,8 +16,8 @@ export default function BookCard({ book }: { book: Book }) {
       title: book.title,
       price: book.price,
       quantity: 1,
-      weight: book.weight,
-      coverImage: book.cover_image,
+      weight: book.weight ?? 0,
+      coverImage: book.cover_image ?? "",
     })
   }
 

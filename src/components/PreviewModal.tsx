@@ -77,7 +77,7 @@ export function PreviewModal() {
         <div className="flex-1 overflow-hidden bg-zinc-900 relative">
           <iframe
             ref={iframeRef}
-            src={`/api/preview?url=${encodeURIComponent(book.preview_pdf_url)}`}
+            src={`/api/preview?url=${encodeURIComponent(book.preview_pdf_url ?? "")}`}
             className="w-full h-full min-h-[70vh]"
             title={`Preview ${book.title}`}
             onLoad={handleIframeLoad}

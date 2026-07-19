@@ -2,7 +2,29 @@ import Link from "next/link"
 import { MapPin, Mail, Phone } from "lucide-react"
 import Badge from "@/components/ui/Badge"
 import IconWrapper from "@/components/ui/IconWrapper"
-import { footerData } from "./footer-data"
+import { prisma } from "@/lib/prisma"
+import { footerData, type FooterData } from "./footer-data"
+
+async function getSettings(): Promise<Partial<FooterData["company"]> & { instagramUrl?: string; facebookUrl?: string }> {
+  try {
+    const settings = await prisma.setting.findMany({
+      where: { key: { in: ["site_name", "contact_phone", "contact_email", "address", "instagram_url", "facebook_url"] } },
+    })
+    const map: Record<string, string> = {}
+    for (const s of settings) map[s.key] = s.value
+    return {
+      name: map.site_name || undefined,
+      whatsapp: map.contact_phone ? `+62 ${map.contact_phone}` : undefined,
+      whatsappNumber: map.contact_phone ? map.contact_phone.replace(/[^0-9]/g, "") : undefined,
+      email: map.contact_email || undefined,
+      address: map.address || undefined,
+      instagramUrl: map.instagram_url || undefined,
+      facebookUrl: map.facebook_url || undefined,
+    }
+  } catch {
+    return {}
+  }
+}
 
 function InstagramIcon({ className }: { className?: string }) {
   return (
@@ -57,8 +79,15 @@ const socialIconMap: Record<string, React.ComponentType<{ className?: string }>>
   LinkedIn: LinkedInIcon,
 }
 
-export default function Footer() {
-  const { company, columns, social, badges, copyright } = footerData
+export default async function Footer() {
+  const db = await getSettings()
+  const company = { ...footerData.company, ...db }
+  const social = footerData.social.map((s) => {
+    if (s.name === "Instagram" && db.instagramUrl) return { ...s, href: db.instagramUrl }
+    if (s.name === "Facebook" && db.facebookUrl) return { ...s, href: db.facebookUrl }
+    return s
+  })
+  const { columns, badges, copyright } = footerData
 
   return (
     <footer className="relative border-t border-border bg-surface overflow-hidden">

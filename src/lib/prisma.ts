@@ -9,7 +9,7 @@ function createPrismaClient() {
     const adapter = new PrismaPg({ connectionString })
     return new PrismaClient({ adapter })
   } catch {
-    return new PrismaClient()
+    return new PrismaClient({} as any)
   }
 }
 

@@ -55,9 +55,9 @@ export async function POST(request: Request) {
     await prisma.order.update({
       where: { id: order.id },
       data: {
-        status: newStatus,
-        paymentMethod: paymentType,
-        paymentChannel: mapPaymentChannel(paymentType),
+        status: newStatus as any,
+        paymentMethod: paymentType as any,
+        paymentChannel: mapPaymentChannel(paymentType) as any,
       },
     })
 

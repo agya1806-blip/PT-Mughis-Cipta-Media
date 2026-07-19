@@ -3,9 +3,16 @@ import { prisma } from "@/lib/prisma"
 export default async function sitemap() {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://pt-mughis-cipta-media.vercel.app"
 
-  const books = await prisma.book.findMany({ select: { id: true, updatedAt: true } })
-  const articles = await prisma.article.findMany({ select: { slug: true, updatedAt: true } })
-  const pages = await prisma.page.findMany({ select: { slug: true, updatedAt: true } })
+  let books: { id: number; updatedAt: Date }[] = []
+  let articles: { slug: string; updatedAt: Date }[] = []
+  let pages: { slug: string; updatedAt: Date }[] = []
+  try {
+    ;[books, articles, pages] = await Promise.all([
+      prisma.book.findMany({ select: { id: true, updatedAt: true } }),
+      prisma.article.findMany({ select: { slug: true, updatedAt: true } }),
+      prisma.page.findMany({ select: { slug: true, updatedAt: true } }),
+    ])
+  } catch {}
 
   const staticPages = [
     { url: baseUrl, lastModified: new Date(), changeFrequency: "weekly" as const, priority: 1 },

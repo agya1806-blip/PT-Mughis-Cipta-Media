@@ -11,11 +11,11 @@ export async function GET(request: Request) {
   const { searchParams } = new URL(request.url)
   const status = searchParams.get("status") || ""
 
-  const where: { role: string; approvalStatus?: string } = { role: "RESELLER" }
+  const where: Record<string, unknown> = { role: "RESELLER" }
   if (status) where.approvalStatus = status
 
   const resellers = await prisma.user.findMany({
-    where,
+    where: where as any,
     select: {
       id: true,
       name: true,
@@ -50,7 +50,7 @@ export async function PUT(request: Request) {
 
     const updated = await prisma.user.update({
       where: { id: parseInt(userId) },
-      data: { approvalStatus },
+      data: { approvalStatus: approvalStatus as any },
       select: {
         id: true,
         name: true,

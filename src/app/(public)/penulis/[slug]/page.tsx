@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation"
 import Link from "next/link"
 import { prisma } from "@/lib/prisma"
+import type { Book } from "@/lib/data"
 import BookCard from "@/components/BookCard"
 import Breadcrumb from "@/components/ui/Breadcrumb"
 import { EmptyState } from "@/components/ui"
@@ -22,35 +23,40 @@ export default async function PenulisDetailPage({ params }: Props) {
   const { slug } = await params
   const author = decodeURIComponent(slug)
 
-  const books = await prisma.book.findMany({
-    where: { author },
-    include: { category: true },
-    orderBy: { createdAt: "desc" },
-  })
+  let mapped: Book[] = []
+  try {
+    const books = await prisma.book.findMany({
+      where: { author },
+      include: { category: true },
+      orderBy: { createdAt: "desc" },
+    })
 
-  if (books.length === 0) notFound()
+    if (books.length === 0) notFound()
 
-  const mapped = books.map((b) => ({
-    id: String(b.id),
-    title: b.title,
-    author: b.author,
-    translator: b.translator,
-    publisher: b.publisher,
-    isbn: b.isbn || "",
-    page_count: b.pageCount,
-    price: Number(b.price),
-    category_id: String(b.categoryId),
-    category_name: b.category.name,
-    cover_image: b.coverImage,
-    synopsis: b.synopsis,
-    preview_pdf_url: b.previewPdfUrl,
-    created_at: b.createdAt.toISOString(),
-    stock: b.stock,
-    weight: b.weight,
-    dimensions: b.dimensions,
-    language: b.language,
-    publication_year: b.publicationYear,
-  }))
+    mapped = books.map((b) => ({
+      id: String(b.id),
+      title: b.title,
+      author: b.author,
+      translator: b.translator,
+      publisher: b.publisher,
+      isbn: b.isbn ?? "",
+      page_count: b.pageCount,
+      price: Number(b.price),
+      category_id: String(b.categoryId),
+      category_name: b.category.name,
+      cover_image: b.coverImage ?? "",
+      synopsis: b.synopsis,
+      preview_pdf_url: b.previewPdfUrl ?? "",
+      created_at: b.createdAt.toISOString(),
+      stock: b.stock,
+      weight: b.weight ?? 0,
+      dimensions: b.dimensions ?? "",
+      language: b.language ?? "",
+      publication_year: b.publicationYear,
+    }))
+  } catch {
+    notFound()
+  }
 
   return (
     <div className="flex-1 bg-zinc-50">

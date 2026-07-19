@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { useRouter, useParams } from "next/navigation"
+import ImageUpload from "@/components/admin/ImageUpload"
 
 export default function EditArticle() {
   const router = useRouter()
@@ -55,8 +56,11 @@ export default function EditArticle() {
           <input type="text" required className="w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm font-mono focus:outline-none focus:ring-2 focus:ring-gold/50" value={form.slug} onChange={(e) => setForm({ ...form, slug: e.target.value })} />
         </div>
         <div>
-          <label className="block text-sm font-medium text-zinc-600 mb-1">URL Gambar (opsional)</label>
-          <input type="url" className="w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50" value={form.featuredImage} onChange={(e) => setForm({ ...form, featuredImage: e.target.value })} />
+          <ImageUpload
+            label="Gambar Utama (opsional)"
+            value={form.featuredImage}
+            onChange={(val) => setForm({ ...form, featuredImage: val })}
+          />
         </div>
         <div>
           <label className="block text-sm font-medium text-zinc-600 mb-1">Konten (HTML)</label>

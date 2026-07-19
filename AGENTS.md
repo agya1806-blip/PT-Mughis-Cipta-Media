@@ -6,8 +6,5 @@ This version has breaking changes — APIs, conventions, and file structure may 
 
 ## Deployment
 
-- **Production branch**: `main` (push dari sini memicu Vercel deploy)
-- **Fallback branch**: `feature/production-ready` (disync dengan main)
-- **Branch kerja aktif**: `feature/core-pages`
+- **Production branch**: `main` (satu-satunya branch, push memicu Vercel deploy)
 - Build: `npm run build` (Compiled + TypeScript + Static Pages)
-- Semua branch deployment harus di-sync sebelum deploy

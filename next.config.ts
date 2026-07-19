@@ -10,6 +10,30 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: "/about",
+        destination: "/tentang-kami",
+        permanent: true,
+      },
+      {
+        source: "/contact",
+        destination: "/kontak",
+        permanent: true,
+      },
+      {
+        source: "/company/faq",
+        destination: "/faq",
+        permanent: true,
+      },
+      {
+        source: "/books/:path*",
+        destination: "/katalog",
+        permanent: true,
+      },
+    ]
+  },
 };
 
 export default nextConfig;

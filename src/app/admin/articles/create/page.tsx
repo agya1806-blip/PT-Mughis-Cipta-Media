@@ -10,7 +10,7 @@ import { useToast } from "@/components/admin/Toast"
 export default function CreateArticle() {
   const router = useRouter()
   const { toast } = useToast()
-  const [form, setForm] = useState({ title: "", slug: "", content: "", featuredImage: "" })
+  const [form, setForm] = useState({ title: "", slug: "", content: "", featuredImage: "", fileUrl: "" })
   const [submitting, setSubmitting] = useState(false)
 
   function generateSlug(title: string) {
@@ -69,6 +69,13 @@ export default function CreateArticle() {
 
         <FormSection title="Gambar Utama" description="Upload atau masukkan URL gambar">
           <ImageUpload label="" value={form.featuredImage} onChange={(val) => setForm({ ...form, featuredImage: val })} />
+        </FormSection>
+
+        <FormSection title="File Pendukung" description="Upload file PDF/DOCX (opsional)">
+          <input type="text"
+            className="w-full rounded-lg border border-zinc-300 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50"
+            value={form.fileUrl} onChange={(e) => setForm({ ...form, fileUrl: e.target.value })}
+            placeholder="https://..." />
         </FormSection>
 
         <FormSection title="Konten Artikel" description="Tulis langsung atau upload file .docx — akan otomatis dikonversi ke HTML">

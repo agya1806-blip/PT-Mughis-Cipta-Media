@@ -154,6 +154,10 @@ export default function EditBook() {
 
         <FormSection title="Cover & Media" description="Upload cover buku dan file pendukung">
           <ImageUpload label="Cover Buku" value={form.coverImage} onChange={(val) => setForm({ ...form, coverImage: val })} />
+          <div className="mt-4">
+            <label className="block text-sm font-medium text-zinc-600 mb-1">URL Preview PDF</label>
+            <input type="text" className={inputClass} value={form.previewPdfUrl} onChange={(e) => setForm({ ...form, previewPdfUrl: e.target.value })} placeholder="https://..." />
+          </div>
         </FormSection>
 
         <FormSection title="Sinopsis" description="Deskripsi singkat buku">

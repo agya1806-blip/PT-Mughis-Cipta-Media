@@ -9,7 +9,7 @@ import { useToast } from "@/components/admin/Toast"
 export default function CreatePage() {
   const router = useRouter()
   const { toast } = useToast()
-  const [form, setForm] = useState({ title: "", slug: "", content: "" })
+  const [form, setForm] = useState({ title: "", slug: "", content: "", fileUrl: "" })
   const [submitting, setSubmitting] = useState(false)
 
   async function handleSubmit(e: React.FormEvent) {
@@ -56,6 +56,13 @@ export default function CreatePage() {
               value={form.slug} onChange={(e) => setForm({ ...form, slug: e.target.value })} placeholder="contoh: profil-perusahaan" />
             <p className="text-xs text-zinc-400 mt-1">Akan muncul di: /{form.slug || "..."}</p>
           </div>
+        </FormSection>
+
+        <FormSection title="File Pendukung" description="URL file PDF/DOCX (opsional)">
+          <input type="text"
+            className="w-full rounded-lg border border-zinc-300 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50"
+            value={form.fileUrl} onChange={(e) => setForm({ ...form, fileUrl: e.target.value })}
+            placeholder="https://..." />
         </FormSection>
 
         <FormSection title="Konten Halaman" description="Tulis langsung atau upload file .docx — akan otomatis dikonversi ke HTML">

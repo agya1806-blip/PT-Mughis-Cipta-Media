@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect } from "react"
+import { useEffect, useRef } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { motion, AnimatePresence } from "framer-motion"
@@ -38,10 +38,12 @@ const itemVariants = {
 
 export default function MobileDrawer({ open, onClose, links }: Props) {
   const pathname = usePathname()
+  const mounted = useRef(false)
 
   useEffect(() => {
+    if (!mounted.current) { mounted.current = true; return }
     onClose()
-  }, [pathname, onClose])
+  }, [pathname])
 
   useEffect(() => {
     if (!open) return

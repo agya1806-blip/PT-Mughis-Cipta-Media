@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useCallback } from "react"
 import { Menu, Moon, Sun } from "lucide-react"
 import { useTheme } from "@/components/ThemeProvider"
 import NavLogo from "./NavLogo"
@@ -23,6 +23,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
   const { theme, toggle } = useTheme()
+  const handleClose = useCallback(() => setOpen(false), [])
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20)
@@ -102,7 +103,7 @@ export default function Navbar() {
         </div>
       </div>
 
-      <MobileDrawer open={open} onClose={() => setOpen(false)} links={navLinks} />
+      <MobileDrawer open={open} onClose={handleClose} links={navLinks} />
     </header>
   )
 }

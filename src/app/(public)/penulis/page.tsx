@@ -1,13 +1,15 @@
 import PageHero from "@/components/PageHero"
-import { authors } from "@/data/authors"
 import { AuthorListClient } from "@/components/authors"
+import { getAllAuthors } from "@/lib/authors"
 
 export const metadata = {
   title: "Penulis | Maktabah al-Mughis",
   description: "Daftar penulis yang telah menerbitkan buku bersama Maktabah al-Mughis",
 }
 
-export default function PenulisPage() {
+export default async function PenulisPage() {
+  const authors = await getAllAuthors()
+
   return (
     <main className="min-h-screen">
       <PageHero

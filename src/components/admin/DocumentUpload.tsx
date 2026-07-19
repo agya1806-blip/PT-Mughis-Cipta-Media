@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useRef } from "react"
-import { FileText, Upload, X, File, Download } from "lucide-react"
+import { FileText, Upload, X, Download } from "lucide-react"
 
 interface Props {
   value: string
@@ -27,14 +27,13 @@ export default function DocumentUpload({ value, onChange, label = "File Dokumen"
     setUploading(true)
     setFileName(file.name)
     try {
-      const formData = new FormData()
-      formData.append("file", file)
-      const res = await fetch("/api/upload", { method: "POST", body: formData })
-      if (!res.ok) throw new Error()
-      const data = await res.json()
-      onChange(data.url)
+      const bytes = await file.arrayBuffer()
+      const base64 = btoa(new Uint8Array(bytes).reduce((data, byte) => data + String.fromCharCode(byte), ""))
+      const mime = ext === "pdf" ? "application/pdf" : "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+      const dataUrl = `data:${mime};base64,${base64}`
+      onChange(dataUrl)
     } catch {
-      alert("Gagal mengunggah file")
+      alert("Gagal membaca file")
       setFileName("")
     } finally {
       setUploading(false)
@@ -47,7 +46,7 @@ export default function DocumentUpload({ value, onChange, label = "File Dokumen"
     if (inputRef.current) inputRef.current.value = ""
   }
 
-  const isFile = value && (value.endsWith(".pdf") || value.endsWith(".doc") || value.endsWith(".docx"))
+  const isFile = value && value.startsWith("data:")
 
   return (
     <div className="space-y-3">
@@ -61,8 +60,8 @@ export default function DocumentUpload({ value, onChange, label = "File Dokumen"
             <FileText className="w-5 h-5 text-gold" />
           </div>
           <div className="flex-1 min-w-0">
-            <p className="text-sm font-medium text-zinc-800 truncate">{fileName || value.split("/").pop()}</p>
-            <p className="text-xs text-zinc-500">File terunggah</p>
+            <p className="text-sm font-medium text-zinc-800 truncate">{fileName || "Dokumen"}</p>
+            <p className="text-xs text-zinc-500">File siap</p>
           </div>
           <div className="flex gap-1">
             <a
@@ -112,7 +111,7 @@ export default function DocumentUpload({ value, onChange, label = "File Dokumen"
       ) : (
         <div className="flex items-center justify-center gap-3 w-full h-32 rounded-xl border-2 border-gold/30 bg-gold/5">
           <div className="w-6 h-6 border-2 border-gold border-t-transparent rounded-full animate-spin" />
-          <span className="text-sm text-zinc-600">Mengunggah...</span>
+          <span className="text-sm text-zinc-600">Memproses...</span>
         </div>
       )}
     </div>

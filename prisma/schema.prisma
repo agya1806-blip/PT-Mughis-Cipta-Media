@@ -1,0 +1,167 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/lib/__generated__/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Role {
+  ADMIN
+  RESELLER
+  CUSTOMER
+}
+
+enum OrderStatus {
+  PENDING
+  PAID
+  PROCESSING
+  SHIPPING
+  DELIVERED
+  CANCELLED
+}
+
+enum PaymentChannel {
+  QRIS
+  E_WALLET
+  VIRTUAL_ACCOUNT
+  CONVENIENCE_STORE
+}
+
+model User {
+  id             Int      @id @default(autoincrement())
+  name           String
+  email          String   @unique
+  password       String
+  phone          String?
+  role           Role     @default(CUSTOMER)
+  approvalStatus String?  @map("approval_status")
+  referralCode   String?  @unique @map("referral_code")
+  createdAt      DateTime @default(now()) @map("created_at")
+  updatedAt      DateTime @updatedAt @map("updated_at")
+
+  orders Order[]
+
+  @@map("users")
+}
+
+model Category {
+  id        Int      @id @default(autoincrement())
+  name      String
+  slug      String   @unique
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  books Book[]
+
+  @@map("categories")
+}
+
+model Book {
+  id                   Int      @id @default(autoincrement())
+  title                String
+  author               String
+  translator           String?
+  publisher            String
+  isbn                 String?
+  pageCount            Int      @map("page_count")
+  price                Decimal  @db.Decimal(10, 2)
+  resellerPrice        Decimal? @map("reseller_price") @db.Decimal(10, 2)
+  categoryId           Int      @map("category_id")
+  coverImage           String?  @map("cover_image")
+  synopsis             String   @db.Text
+  previewPdfUrl        String?  @map("preview_pdf_url")
+  stock                Int      @default(0)
+  weight               Int?
+  dimensions           String?
+  language             String?
+  publicationYear      Int      @map("publication_year")
+  createdAt            DateTime @default(now()) @map("created_at")
+  updatedAt            DateTime @updatedAt @map("updated_at")
+
+  category   Category    @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  orderItems OrderItem[]
+
+  @@map("books")
+}
+
+model Order {
+  id             Int            @id @default(autoincrement())
+  orderId        String         @unique @map("order_id")
+  userId         Int?           @map("user_id")
+  customerName   String         @map("customer_name")
+  customerEmail  String         @map("customer_email")
+  customerPhone  String?        @map("customer_phone")
+  shippingAddress String        @map("shipping_address")
+  province       String
+  provinceId     String?        @map("province_id")
+  city           String
+  cityId         String?        @map("city_id")
+  subdistrict    String
+  subdistrictId  String?        @map("subdistrict_id")
+  courier        String?
+  courierService String?        @map("courier_service")
+  shippingCost   Decimal        @default(0) @db.Decimal(10, 2) @map("shipping_cost")
+  shippingEtd    String?        @map("shipping_etd")
+  shippingAwb    String?        @map("shipping_awb")
+  subtotal       Decimal        @db.Decimal(10, 2)
+  total          Decimal        @db.Decimal(10, 2)
+  status         OrderStatus    @default(PENDING)
+  paymentMethod  String?        @map("payment_method")
+  paymentChannel PaymentChannel? @map("payment_channel")
+  paymentToken   String?        @map("payment_token")
+  paymentUrl     String?        @map("payment_url")
+  isReseller     Boolean        @default(false) @map("is_reseller")
+  notes          String?
+  createdAt      DateTime       @default(now()) @map("created_at")
+  updatedAt      DateTime       @updatedAt @map("updated_at")
+
+  user  User?       @relation(fields: [userId], references: [id], onDelete: SetNull)
+  items OrderItem[]
+
+  @@map("orders")
+}
+
+model OrderItem {
+  id       Int    @id @default(autoincrement())
+  orderId  Int    @map("order_id")
+  bookId   Int    @map("book_id")
+  title    String
+  price    Decimal @db.Decimal(10, 2)
+  quantity Int    @default(1)
+  weight   Int    @default(0)
+
+  order Order @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  book  Book  @relation(fields: [bookId], references: [id], onDelete: Cascade)
+
+  @@map("order_items")
+}
+
+model Article {
+  id            Int      @id @default(autoincrement())
+  title         String
+  slug          String   @unique
+  content       String   @db.Text
+  featuredImage String?  @map("featured_image")
+  createdAt     DateTime @default(now()) @map("created_at")
+  updatedAt     DateTime @updatedAt @map("updated_at")
+
+  @@map("articles")
+}
+
+model Setting {
+  id    Int    @id @default(autoincrement())
+  key   String @unique
+  value String
+}
+
+model Page {
+  id        Int      @id @default(autoincrement())
+  slug      String   @unique
+  title     String
+  content   String   @db.Text
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("pages")
+}

@@ -46,8 +46,8 @@ export const footerData: FooterData = {
       links: [
         { label: "Tentang Kami", href: "/tentang-kami" },
         { label: "Layanan", href: "/layanan-penerbitan" },
-        { label: "Katalog Buku", href: "/katalog" },
-        { label: "Blog", href: "/blog" },
+        { label: "Koleksi Buku", href: "/katalog" },
+        { label: "Media Center", href: "/blog" },
         { label: "Hubungi Kami", href: "/kontak" },
       ],
     },

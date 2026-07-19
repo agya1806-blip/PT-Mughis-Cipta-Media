@@ -13,8 +13,9 @@ const navLinks = [
   { label: "Beranda", href: "/" },
   { label: "Tentang", href: "/tentang-kami" },
   { label: "Layanan", href: "/layanan-penerbitan" },
-  { label: "Katalog", href: "/katalog" },
-  { label: "Blog", href: "/blog" },
+  { label: "Koleksi", href: "/katalog" },
+  { label: "Penulis", href: "/penulis" },
+  { label: "Media", href: "/blog" },
   { label: "Kontak", href: "/kontak" },
 ]
 

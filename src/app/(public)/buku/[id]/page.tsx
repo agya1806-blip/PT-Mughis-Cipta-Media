@@ -6,6 +6,7 @@ import { BookDetailClient } from "./BookDetailClient"
 import BookCard from "@/components/BookCard"
 import Breadcrumb from "@/components/ui/Breadcrumb"
 import { JsonLd } from "@/components/JsonLd"
+import { BookOpen, User, ArrowRight } from "lucide-react"
 
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params
@@ -114,7 +115,7 @@ export default async function BookDetailPage({ params }: { params: Promise<{ id:
         <Breadcrumb
           items={[
             { label: "Beranda", href: "/" },
-            { label: "Katalog", href: "/katalog" },
+            { label: "Koleksi Buku", href: "/katalog" },
             { label: mapped.title },
           ]}
         />
@@ -132,9 +133,7 @@ export default async function BookDetailPage({ params }: { params: Promise<{ id:
                 />
               ) : (
                 <div className="flex flex-col items-center text-zinc-400 p-8 text-center">
-                  <svg className="w-20 h-20 mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
-                  </svg>
+                  <BookOpen className="w-20 h-20 mb-3" />
                   <span className="text-sm font-medium">Sampul Buku</span>
                 </div>
               )}
@@ -148,9 +147,9 @@ export default async function BookDetailPage({ params }: { params: Promise<{ id:
                 <h1 className="text-2xl md:text-3xl font-bold text-zinc-900 leading-tight">{mapped.title}</h1>
               </div>
 
-              <div className="grid grid-cols-2 gap-4 text-sm">
-                <div>
-                  <span className="text-zinc-500">Penulis</span>
+              <div className="grid grid-cols-2 gap-x-6 gap-y-3 text-sm">
+                <div className="col-span-2 sm:col-span-1">
+                  <span className="text-zinc-500 text-xs">Penulis</span>
                   <Link
                     href={`/penulis/${encodeURIComponent(mapped.author)}`}
                     className="font-medium text-zinc-800 mt-0.5 block hover:text-gold transition-colors"
@@ -159,56 +158,35 @@ export default async function BookDetailPage({ params }: { params: Promise<{ id:
                   </Link>
                 </div>
                 {mapped.translator && (
-                  <div>
-                    <span className="text-zinc-500">Penerjemah</span>
+                  <div className="col-span-2 sm:col-span-1">
+                    <span className="text-zinc-500 text-xs">Penerjemah</span>
                     <p className="font-medium text-zinc-800 mt-0.5">{mapped.translator}</p>
                   </div>
                 )}
-                <div>
-                  <span className="text-zinc-500">Penerbit</span>
+                <div className="col-span-2 sm:col-span-1">
+                  <span className="text-zinc-500 text-xs">Penerbit</span>
                   <p className="font-medium text-zinc-800 mt-0.5">{mapped.publisher}</p>
                 </div>
-                <div>
-                  <span className="text-zinc-500">ISBN</span>
-                  <p className="font-medium text-zinc-800 mt-0.5">{mapped.isbn}</p>
+                <div className="col-span-2 sm:col-span-1">
+                  <span className="text-zinc-500 text-xs">ISBN</span>
+                  <p className="font-medium text-zinc-800 mt-0.5">{mapped.isbn || "\u2014"}</p>
                 </div>
-                <div>
-                  <span className="text-zinc-500">Halaman</span>
+                <div className="col-span-2 sm:col-span-1">
+                  <span className="text-zinc-500 text-xs">Jumlah Halaman</span>
                   <p className="font-medium text-zinc-800 mt-0.5">{mapped.page_count} hal</p>
                 </div>
-                <div>
-                  <span className="text-zinc-500">Tahun</span>
-                  <p className="font-medium text-zinc-800 mt-0.5">{mapped.publication_year}</p>
+                <div className="col-span-2 sm:col-span-1">
+                  <span className="text-zinc-500 text-xs">Ukuran Buku</span>
+                  <p className="font-medium text-zinc-800 mt-0.5">{mapped.dimensions || "\u2014"}</p>
                 </div>
-                <div>
-                  <span className="text-zinc-500">Bahasa</span>
-                  <p className="font-medium text-zinc-800 mt-0.5">{mapped.language}</p>
+                <div className="col-span-2 sm:col-span-1">
+                  <span className="text-zinc-500 text-xs">Bahasa</span>
+                  <p className="font-medium text-zinc-800 mt-0.5">{mapped.language || "\u2014"}</p>
                 </div>
-                <div>
-                  <span className="text-zinc-500">Dimensi</span>
-                  <p className="font-medium text-zinc-800 mt-0.5">{mapped.dimensions}</p>
+                <div className="col-span-2 sm:col-span-1">
+                  <span className="text-zinc-500 text-xs">Tahun Terbit</span>
+                  <p className="font-medium text-zinc-800 mt-0.5">{mapped.publication_year || "\u2014"}</p>
                 </div>
-                <div>
-                  <span className="text-zinc-500">Berat</span>
-                  <p className="font-medium text-zinc-800 mt-0.5">{mapped.weight} gr</p>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-3 pt-2">
-                <span className="text-2xl font-bold text-gold-dark">
-                  Rp{mapped.price.toLocaleString("id-ID")}
-                </span>
-                {mapped.stock > 0 ? (
-                  <span className="inline-flex items-center gap-1.5 text-xs font-medium text-green-700 bg-green-50 border border-green-200 px-2.5 py-1 rounded-full">
-                    <span className="w-1.5 h-1.5 rounded-full bg-green-500" />
-                    Tersedia
-                  </span>
-                ) : (
-                  <span className="inline-flex items-center gap-1.5 text-xs font-medium text-zinc-500 bg-zinc-50 border border-zinc-200 px-2.5 py-1 rounded-full">
-                    <span className="w-1.5 h-1.5 rounded-full bg-zinc-400" />
-                    Stok habis
-                  </span>
-                )}
               </div>
 
               <BookDetailClient book={mapped} />
@@ -218,6 +196,28 @@ export default async function BookDetailPage({ params }: { params: Promise<{ id:
           <div className="border-t border-zinc-200 p-8">
             <h2 className="text-lg font-semibold text-zinc-900 mb-3">Sinopsis</h2>
             <p className="text-zinc-600 leading-relaxed">{mapped.synopsis}</p>
+          </div>
+
+          <div className="border-t border-zinc-200 p-8">
+            <h2 className="text-lg font-semibold text-zinc-900 mb-3">Tentang Penulis</h2>
+            <div className="flex items-start gap-4">
+              <div className="w-14 h-14 rounded-xl bg-gold/10 flex items-center justify-center shrink-0">
+                <User className="w-7 h-7 text-gold" />
+              </div>
+              <div>
+                <p className="font-medium text-zinc-900">{mapped.author}</p>
+                <p className="text-sm text-zinc-500 mt-1">
+                  Penulis buku <strong>{mapped.title}</strong> yang diterbitkan oleh {mapped.publisher}.
+                </p>
+                <Link
+                  href={`/penulis/${encodeURIComponent(mapped.author)}`}
+                  className="inline-flex items-center gap-1 text-sm font-medium text-gold hover:text-gold-dark mt-2 transition-colors"
+                >
+                  Lihat profil penulis
+                  <ArrowRight className="w-3 h-3" />
+                </Link>
+              </div>
+            </div>
           </div>
 
           {related.length > 0 && (
@@ -230,6 +230,22 @@ export default async function BookDetailPage({ params }: { params: Promise<{ id:
               </div>
             </div>
           )}
+        </div>
+
+        <div className="mt-10 bg-gradient-to-r from-gold to-gold-dark rounded-2xl p-8 sm:p-10 text-center">
+          <h2 className="text-2xl font-bold text-white mb-3">
+            Tertarik Menerbitkan Buku?
+          </h2>
+          <p className="text-gold/90 mb-6 max-w-xl mx-auto">
+            Dapatkan konsultasi gratis dengan tim penerbitan profesional kami. Dari naskah hingga buku siap edar.
+          </p>
+          <Link
+            href="/kontak"
+            className="group inline-flex items-center gap-2 px-8 py-4 bg-white text-gold-dark font-bold rounded-full hover:shadow-xl hover:-translate-y-0.5 transition-all"
+          >
+            Konsultasi Gratis
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          </Link>
         </div>
       </div>
     </div>

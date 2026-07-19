@@ -2,6 +2,14 @@ import Image from "next/image"
 import { notFound } from "next/navigation"
 import { prisma } from "@/lib/prisma"
 import Breadcrumb from "@/components/ui/Breadcrumb"
+import { Calendar, Clock, ArrowLeft } from "lucide-react"
+import Link from "next/link"
+
+function estimateReadingTime(content: string): number {
+  const text = content.replace(/<[^>]*>/g, "")
+  const words = text.split(/\s+/).length
+  return Math.max(1, Math.ceil(words / 200))
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
@@ -23,6 +31,8 @@ export default async function ArticleDetailPage({ params }: { params: Promise<{ 
   const article = await prisma.article.findUnique({ where: { slug } })
   if (!article) notFound()
 
+  const readingTime = estimateReadingTime(article.content)
+
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -42,32 +52,65 @@ export default async function ArticleDetailPage({ params }: { params: Promise<{ 
         <Breadcrumb
           items={[
             { label: "Beranda", href: "/" },
-            { label: "Blog", href: "/blog" },
+            { label: "Media Center", href: "/blog" },
             { label: article.title },
           ]}
         />
 
+        <Link
+          href="/blog"
+          className="inline-flex items-center gap-1.5 text-sm text-zinc-500 hover:text-gold transition-colors mb-6"
+        >
+          <ArrowLeft className="w-4 h-4" />
+          Kembali ke Media Center
+        </Link>
+
         <article>
-          <h1 className="text-3xl font-bold text-zinc-900 mb-3">{article.title}</h1>
-          <p className="text-sm text-zinc-500 mb-8">
-            {new Date(article.createdAt).toLocaleDateString("id-ID", {
-              year: "numeric", month: "long", day: "numeric",
-            })}
-          </p>
+          <div className="mb-8">
+            <div className="flex flex-wrap items-center gap-3 text-xs text-zinc-400 mb-4">
+              <span className="inline-flex items-center gap-1.5">
+                <Calendar className="w-3.5 h-3.5" />
+                {new Date(article.createdAt).toLocaleDateString("id-ID", {
+                  year: "numeric", month: "long", day: "numeric",
+                })}
+              </span>
+              <span className="inline-flex items-center gap-1.5">
+                <Clock className="w-3.5 h-3.5" />
+                {readingTime} menit baca
+              </span>
+            </div>
+            <h1 className="text-3xl sm:text-4xl font-bold text-zinc-900 leading-tight">{article.title}</h1>
+          </div>
           {article.featuredImage && (
-            <Image
-              src={article.featuredImage}
-              alt={article.title}
-              width={768}
-              height={384}
-              className="w-full rounded-xl mb-8 object-cover max-h-96"
-            />
+            <div className="relative w-full aspect-[2/1] rounded-xl overflow-hidden mb-8">
+              <Image
+                src={article.featuredImage}
+                alt={article.title}
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 768px"
+              />
+            </div>
           )}
           <div
             className="text-zinc-700 leading-relaxed prose prose-zinc max-w-none"
             dangerouslySetInnerHTML={{ __html: article.content }}
           />
         </article>
+
+        <div className="mt-12 pt-8 border-t border-zinc-200 text-center">
+          <p className="text-zinc-500 text-sm mb-4">Bagikan artikel ini</p>
+          <div className="flex justify-center gap-3">
+            {["Salin Tautan", "Twitter", "WhatsApp"].map((label) => (
+              <span
+                key={label}
+                className="inline-flex items-center px-4 py-2 rounded-xl bg-white border border-zinc-200 text-xs font-medium text-zinc-600 cursor-pointer hover:border-gold/30 hover:text-gold transition-colors"
+              >
+                {label}
+              </span>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   )

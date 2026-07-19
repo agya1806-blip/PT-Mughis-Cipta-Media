@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
-import { X } from "lucide-react"
+import { X, Search } from "lucide-react"
 import BookCard from "./BookCard"
 import type { Book, Category } from "@/lib/data"
 import type { BooksResponse } from "@/lib/books"
@@ -99,9 +99,7 @@ export function KatalogClient() {
                   onClick={() => updateSearchParams({ search: searchInput })}
                   className="absolute right-1.5 top-1/2 -translate-y-1/2 p-1.5 text-zinc-400 hover:text-gold"
                 >
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                  </svg>
+                  <Search className="w-4 h-4" />
                 </button>
               </div>
             </div>
@@ -141,9 +139,9 @@ export function KatalogClient() {
         <div className="flex-1 min-w-0">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
             <div>
-              <h1 className="text-2xl font-bold text-zinc-900">Katalog Buku</h1>
+              <h1 className="text-2xl font-bold text-zinc-900">Koleksi Buku</h1>
               <p className="text-sm text-zinc-500 mt-1">
-                {total} buku ditemukan
+                {total} buku tersedia
               </p>
             </div>
             <div className="flex items-center gap-3">

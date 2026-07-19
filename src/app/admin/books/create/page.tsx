@@ -62,7 +62,7 @@ export default function CreateBook() {
             <input
               type="text"
               required
-              className="w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+              className="w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50"
               value={form.title}
               onChange={(e) => setForm({ ...form, title: e.target.value })}
             />
@@ -72,7 +72,7 @@ export default function CreateBook() {
             <input
               type="text"
               required
-              className="w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+              className="w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50"
               value={form.author}
               onChange={(e) => setForm({ ...form, author: e.target.value })}
             />
@@ -81,7 +81,7 @@ export default function CreateBook() {
             <label className="block text-sm font-medium text-zinc-600 mb-1">Penerjemah</label>
             <input
               type="text"
-              className="w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+              className="w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50"
               value={form.translator}
               onChange={(e) => setForm({ ...form, translator: e.target.value })}
             />
@@ -91,7 +91,7 @@ export default function CreateBook() {
             <input
               type="text"
               required
-              className="w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+              className="w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50"
               value={form.publisher}
               onChange={(e) => setForm({ ...form, publisher: e.target.value })}
             />
@@ -100,7 +100,7 @@ export default function CreateBook() {
             <label className="block text-sm font-medium text-zinc-600 mb-1">Kategori</label>
             <select
               required
-              className="w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+              className="w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50"
               value={form.categoryId}
               onChange={(e) => setForm({ ...form, categoryId: e.target.value })}
             >
@@ -118,7 +118,7 @@ export default function CreateBook() {
               type="number"
               required
               min={0}
-              className="w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+              className="w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50"
               value={form.price}
               onChange={(e) => setForm({ ...form, price: e.target.value })}
             />
@@ -128,7 +128,7 @@ export default function CreateBook() {
             <input
               type="number"
               min={0}
-              className="w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+              className="w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50"
               value={form.resellerPrice}
               onChange={(e) => setForm({ ...form, resellerPrice: e.target.value })}
             />
@@ -139,7 +139,7 @@ export default function CreateBook() {
               type="number"
               required
               min={0}
-              className="w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+              className="w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50"
               value={form.stock}
               onChange={(e) => setForm({ ...form, stock: e.target.value })}
             />
@@ -150,7 +150,7 @@ export default function CreateBook() {
               type="number"
               required
               min={0}
-              className="w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+              className="w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50"
               value={form.weight}
               onChange={(e) => setForm({ ...form, weight: e.target.value })}
             />
@@ -159,7 +159,7 @@ export default function CreateBook() {
             <label className="block text-sm font-medium text-zinc-600 mb-1">ISBN</label>
             <input
               type="text"
-              className="w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+              className="w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50"
               value={form.isbn}
               onChange={(e) => setForm({ ...form, isbn: e.target.value })}
             />
@@ -169,7 +169,7 @@ export default function CreateBook() {
             <input
               type="number"
               min={0}
-              className="w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+              className="w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50"
               value={form.pageCount}
               onChange={(e) => setForm({ ...form, pageCount: e.target.value })}
             />
@@ -178,7 +178,7 @@ export default function CreateBook() {
             <label className="block text-sm font-medium text-zinc-600 mb-1">Dimensi</label>
             <input
               type="text"
-              className="w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+              className="w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50"
               value={form.dimensions}
               onChange={(e) => setForm({ ...form, dimensions: e.target.value })}
             />
@@ -187,7 +187,7 @@ export default function CreateBook() {
             <label className="block text-sm font-medium text-zinc-600 mb-1">Bahasa</label>
             <input
               type="text"
-              className="w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+              className="w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50"
               value={form.language}
               onChange={(e) => setForm({ ...form, language: e.target.value })}
             />
@@ -196,7 +196,7 @@ export default function CreateBook() {
             <label className="block text-sm font-medium text-zinc-600 mb-1">Tahun Terbit</label>
             <input
               type="number"
-              className="w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+              className="w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50"
               value={form.publicationYear}
               onChange={(e) => setForm({ ...form, publicationYear: e.target.value })}
             />
@@ -205,7 +205,7 @@ export default function CreateBook() {
             <label className="block text-sm font-medium text-zinc-600 mb-1">URL Cover</label>
             <input
               type="url"
-              className="w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+              className="w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50"
               value={form.coverImage}
               onChange={(e) => setForm({ ...form, coverImage: e.target.value })}
             />
@@ -214,7 +214,7 @@ export default function CreateBook() {
             <label className="block text-sm font-medium text-zinc-600 mb-1">URL Preview PDF</label>
             <input
               type="url"
-              className="w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+              className="w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50"
               value={form.previewPdfUrl}
               onChange={(e) => setForm({ ...form, previewPdfUrl: e.target.value })}
             />
@@ -223,7 +223,7 @@ export default function CreateBook() {
             <label className="block text-sm font-medium text-zinc-600 mb-1">Sinopsis</label>
             <textarea
               rows={4}
-              className="w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+              className="w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50"
               value={form.synopsis}
               onChange={(e) => setForm({ ...form, synopsis: e.target.value })}
             />
@@ -233,7 +233,7 @@ export default function CreateBook() {
           <button
             type="submit"
             disabled={submitting}
-            className="h-11 px-6 rounded-xl bg-amber-700 text-white font-medium hover:bg-amber-800 disabled:opacity-50"
+            className="h-11 px-6 rounded-xl bg-gold text-white font-medium hover:bg-gold-dark disabled:opacity-50"
           >
             {submitting ? "Menyimpan..." : "Simpan"}
           </button>

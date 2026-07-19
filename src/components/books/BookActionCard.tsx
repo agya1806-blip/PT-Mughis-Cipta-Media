@@ -34,7 +34,7 @@ export default function BookActionCard({ price, stock }: Props) {
           {outOfStock ? (
             <p className="text-sm text-red-500 font-medium">Stok habis</p>
           ) : (
-            <p className="text-sm text-emerald-600 dark:text-emerald-400 font-medium">
+            <p className="text-sm text-gold font-medium">
               Stok tersedia: {stock}
             </p>
           )}

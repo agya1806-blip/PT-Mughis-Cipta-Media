@@ -52,7 +52,7 @@ export default function Stats() {
         >
           <h2 className="text-4xl sm:text-5xl font-bold text-white">
             Dampak{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-amber-300">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold to-gold-dark">
               Kami
             </span>
           </h2>
@@ -72,15 +72,15 @@ export default function Stats() {
               className="group relative"
             >
               <div className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 text-center hover:bg-white/10 transition-all duration-300">
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-500/20 to-amber-500/20 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-                  <Icon className="w-6 h-6 text-emerald-400" />
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-gold/20 to-gold-dark/20 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                  <Icon className="w-6 h-6 text-gold" />
                 </div>
                 <div className="text-4xl lg:text-5xl font-bold text-white mb-2">
                   <Counter target={value} suffix={suffix} />
                 </div>
                 <p className="text-zinc-400 text-sm">{label}</p>
 
-                <div className="absolute -bottom-0.5 left-4 right-4 h-0.5 bg-gradient-to-r from-emerald-500/50 to-amber-500/50 rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+                <div className="absolute -bottom-0.5 left-4 right-4 h-0.5 bg-gradient-to-r from-gold/50 to-gold-dark/50 rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
               </div>
             </motion.div>
           ))}

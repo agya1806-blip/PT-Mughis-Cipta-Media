@@ -64,7 +64,7 @@ export default async function PenulisDetailPage({ params }: Props) {
         />
 
         <div className="flex items-center gap-5 mb-10">
-          <div className="w-16 h-16 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-700 font-bold text-2xl shrink-0">
+          <div className="w-16 h-16 rounded-full bg-gold/10 flex items-center justify-center text-gold-dark font-bold text-2xl shrink-0">
             {author.charAt(0)}
           </div>
           <div>
@@ -88,7 +88,7 @@ export default async function PenulisDetailPage({ params }: Props) {
         <div className="mt-10">
           <Link
             href="/penulis"
-            className="text-sm text-emerald-600 hover:text-emerald-700 transition-colors"
+            className="text-sm text-gold hover:text-gold-dark transition-colors"
           >
             &larr; Semua Penulis
           </Link>

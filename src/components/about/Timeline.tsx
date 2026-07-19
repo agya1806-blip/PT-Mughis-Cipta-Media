@@ -47,17 +47,17 @@ export default function Timeline() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="text-emerald-600 font-semibold text-sm tracking-widest uppercase">Perjalanan</span>
+          <span className="text-gold font-semibold text-sm tracking-widest uppercase">Perjalanan</span>
           <h2 className="text-4xl sm:text-5xl font-bold text-zinc-900 mt-4">
             Timeline{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-amber-600">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold to-gold-dark">
               Perusahaan
             </span>
           </h2>
         </motion.div>
 
         <div className="relative max-w-3xl mx-auto">
-          <div className="absolute left-8 top-0 bottom-0 w-px bg-gradient-to-b from-emerald-500 via-amber-500 to-emerald-500 hidden md:block" />
+          <div className="absolute left-8 top-0 bottom-0 w-px bg-gradient-to-b from-gold via-gold to-gold-dark hidden md:block" />
 
           <div className="space-y-12">
             {milestones.map(({ year, title, desc, icon: Icon }, i) => (
@@ -70,13 +70,13 @@ export default function Timeline() {
                 className="relative md:pl-20"
               >
                 <div className="absolute left-4 top-1 w-8 h-8 md:left-4 md:top-1 hidden md:flex items-center justify-center">
-                  <div className="w-8 h-8 rounded-full bg-white border-2 border-emerald-500 flex items-center justify-center z-10">
-                    <Icon className="w-4 h-4 text-emerald-600" />
+                  <div className="w-8 h-8 rounded-full bg-white border-2 border-gold flex items-center justify-center z-10">
+                    <Icon className="w-4 h-4 text-gold-dark" />
                   </div>
                 </div>
 
-                <div className="bg-white rounded-2xl p-6 border border-zinc-200 hover:border-emerald-200 hover:shadow-md transition-all duration-300">
-                  <span className="inline-block text-xs font-semibold text-emerald-600 bg-emerald-50 px-3 py-1 rounded-full mb-3">
+                <div className="bg-white rounded-2xl p-6 border border-zinc-200 hover:border-gold/30 hover:shadow-md transition-all duration-300">
+                  <span className="inline-block text-xs font-semibold text-gold-dark bg-gold/10 px-3 py-1 rounded-full mb-3">
                     {year}
                   </span>
                   <h3 className="text-lg font-bold text-zinc-900 mb-2">{title}</h3>

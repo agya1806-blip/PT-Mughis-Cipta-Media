@@ -67,7 +67,7 @@ export default function AdminOrders() {
         <button
           onClick={() => { setStatusFilter(""); setPage(1) }}
           className={`px-3 py-1.5 rounded-lg text-sm font-medium border transition-colors ${
-            !statusFilter ? "bg-amber-700 text-white border-amber-700" : "border-zinc-300 text-zinc-600 hover:bg-zinc-50"
+            !statusFilter ? "bg-gold text-white border-gold" : "border-zinc-300 text-zinc-600 hover:bg-zinc-50"
           }`}
         >
           Semua
@@ -77,7 +77,7 @@ export default function AdminOrders() {
             key={key}
             onClick={() => { setStatusFilter(key); setPage(1) }}
             className={`px-3 py-1.5 rounded-lg text-sm font-medium border transition-colors ${
-              statusFilter === key ? "bg-amber-700 text-white border-amber-700" : "border-zinc-300 text-zinc-600 hover:bg-zinc-50"
+              statusFilter === key ? "bg-gold text-white border-gold" : "border-zinc-300 text-zinc-600 hover:bg-zinc-50"
             }`}
           >
             {label}
@@ -132,7 +132,7 @@ export default function AdminOrders() {
                       />
                       <button
                         onClick={() => updateOrder(order.id, { shippingAwb: awbInput })}
-                        className="text-xs text-amber-700 hover:underline"
+                        className="text-xs text-gold hover:underline"
                       >
                         Simpan
                       </button>

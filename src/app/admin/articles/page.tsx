@@ -38,7 +38,7 @@ export default function ArticlesPage() {
         <h1 className="text-2xl font-bold text-zinc-800">Artikel</h1>
         <Link
           href="/admin/articles/create"
-          className="h-10 px-5 rounded-xl bg-amber-700 text-white text-sm font-medium hover:bg-amber-800 inline-flex items-center"
+          className="h-10 px-5 rounded-xl bg-gold text-white text-sm font-medium hover:bg-gold-dark inline-flex items-center"
         >
           + Artikel Baru
         </Link>
@@ -70,7 +70,7 @@ export default function ArticlesPage() {
                   <td className="px-4 py-3 text-right">
                     <button
                       onClick={() => router.push(`/admin/articles/${a.id}`)}
-                      className="text-xs font-medium text-amber-700 hover:text-amber-800 mr-3"
+                      className="text-xs font-medium text-gold hover:text-gold-dark mr-3"
                     >
                       Edit
                     </button>

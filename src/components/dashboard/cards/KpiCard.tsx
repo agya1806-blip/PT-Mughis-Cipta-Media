@@ -14,10 +14,10 @@ interface Props {
 }
 
 const colorMap = {
-  gold: "from-gold/10 to-amber-500/5 border-gold/20",
+  gold: "from-gold/10 to-gold-dark/5 border-gold/20",
   blue: "from-blue-500/10 to-sky-500/5 border-blue-200/50",
   violet: "from-violet-500/10 to-purple-500/5 border-violet-200/50",
-  green: "from-green-500/10 to-emerald-500/5 border-green-200/50",
+  green: "from-green-500/10 to-gold/5 border-green-200/50",
 }
 
 const iconColorMap = {

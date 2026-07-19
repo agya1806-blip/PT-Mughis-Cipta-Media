@@ -142,7 +142,7 @@ export default async function BookDetailPage({ params }: { params: Promise<{ id:
 
             <div className="md:col-span-2 space-y-6">
               <div>
-                <span className="inline-block text-xs font-medium text-amber-700 bg-amber-50 px-3 py-1 rounded-full mb-3">
+                <span className="inline-block text-xs font-medium text-gold bg-gold/5 px-3 py-1 rounded-full mb-3">
                   {mapped.category_name}
                 </span>
                 <h1 className="text-2xl md:text-3xl font-bold text-zinc-900 leading-tight">{mapped.title}</h1>
@@ -153,7 +153,7 @@ export default async function BookDetailPage({ params }: { params: Promise<{ id:
                   <span className="text-zinc-500">Penulis</span>
                   <Link
                     href={`/penulis/${encodeURIComponent(mapped.author)}`}
-                    className="font-medium text-zinc-800 mt-0.5 block hover:text-emerald-600 transition-colors"
+                    className="font-medium text-zinc-800 mt-0.5 block hover:text-gold transition-colors"
                   >
                     {mapped.author}
                   </Link>
@@ -198,7 +198,7 @@ export default async function BookDetailPage({ params }: { params: Promise<{ id:
                 </div>
               </div>
 
-              <div className="text-3xl font-bold text-amber-800">
+              <div className="text-3xl font-bold text-gold-dark">
                 Rp{mapped.price.toLocaleString("id-ID")}
               </div>
 

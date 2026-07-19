@@ -32,14 +32,14 @@ export default function CreatePage() {
       <form onSubmit={handleSubmit} className="max-w-2xl space-y-4">
         <div>
           <label className="block text-sm font-medium text-zinc-600 mb-1">Judul</label>
-          <input type="text" required className="w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+          <input type="text" required className="w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50"
             value={form.title}
             onChange={(e) => setForm({ ...form, title: e.target.value })}
           />
         </div>
         <div>
           <label className="block text-sm font-medium text-zinc-600 mb-1">Slug (URL)</label>
-          <input type="text" required className="w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+          <input type="text" required className="w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50"
             value={form.slug}
             onChange={(e) => setForm({ ...form, slug: e.target.value })}
             placeholder="contoh: profil-perusahaan"
@@ -48,14 +48,14 @@ export default function CreatePage() {
         </div>
         <div>
           <label className="block text-sm font-medium text-zinc-600 mb-1">Konten (HTML)</label>
-          <textarea rows={12} className="w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 font-mono"
+          <textarea rows={12} className="w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50 font-mono"
             value={form.content}
             onChange={(e) => setForm({ ...form, content: e.target.value })}
           />
         </div>
         <div className="flex gap-3">
           <button type="submit" disabled={submitting}
-            className="h-11 px-6 rounded-xl bg-amber-700 text-white font-medium hover:bg-amber-800 disabled:opacity-50"
+            className="h-11 px-6 rounded-xl bg-gold text-white font-medium hover:bg-gold-dark disabled:opacity-50"
           >
             {submitting ? "Menyimpan..." : "Simpan"}
           </button>

@@ -10,7 +10,7 @@ export default function CatalogError({ reset }: { reset: () => void }) {
         </p>
         <button
           onClick={reset}
-          className="inline-flex items-center gap-2 px-6 py-3 bg-emerald-600 text-white font-medium rounded-xl hover:bg-emerald-700 transition-colors focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
+          className="inline-flex items-center gap-2 px-6 py-3 bg-gold text-white font-medium rounded-xl hover:bg-gold-dark transition-colors focus:outline-none focus:ring-2 focus:ring-gold/50 focus:ring-offset-2"
         >
           Coba Lagi
         </button>

@@ -51,18 +51,18 @@ export default async function BlogPage({ searchParams }: Props) {
         {featured && currentPage === 1 && (
           <Link
             href={`/blog/${featured.slug}`}
-            className="block bg-gradient-to-br from-emerald-600 to-emerald-800 rounded-2xl p-8 mb-10 text-white hover:shadow-xl transition-shadow"
+            className="block bg-gradient-to-br from-gold to-gold-dark rounded-2xl p-8 mb-10 text-white hover:shadow-xl transition-shadow"
           >
             <span className="inline-block text-xs font-medium uppercase tracking-wider bg-white/20 px-3 py-1 rounded-full mb-3">
               Artikel Unggulan
             </span>
             <h2 className="text-2xl font-bold mb-2">{featured.title}</h2>
-            <p className="text-emerald-100 text-sm mb-4">
+            <p className="text-gold/80 text-sm mb-4">
               {new Date(featured.createdAt).toLocaleDateString("id-ID", {
                 year: "numeric", month: "long", day: "numeric",
               })}
             </p>
-            <p className="text-emerald-50 line-clamp-2">
+            <p className="text-white/90 line-clamp-2">
               {featured.content.replace(/<[^>]*>/g, "").substring(0, 150)}...
             </p>
           </Link>

@@ -20,7 +20,7 @@ export default function AboutHero() {
       {floatingIcons.map(({ Icon, delay, x, y, size }) => (
         <motion.div
           key={Icon.name}
-          className="absolute text-emerald-500/20"
+          className="absolute text-gold/20"
           style={{ left: x, top: y }}
           animate={{ y: [0, -20, 0], opacity: [0.15, 0.3, 0.15] }}
           transition={{ duration: 4, repeat: Infinity, delay, ease: "easeInOut" }}
@@ -40,9 +40,9 @@ export default function AboutHero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.6 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm font-medium mb-6"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gold/10 border border-gold/20 text-gold text-sm font-medium mb-6"
             >
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+              <span className="w-2 h-2 rounded-full bg-gold animate-pulse" />
               PT Mughis Cipta Media
             </motion.p>
 
@@ -53,7 +53,7 @@ export default function AboutHero() {
               className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-[1.1] tracking-tight mb-6"
             >
               Membangun Peradaban{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-emerald-300 to-amber-300">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold via-gold-light to-gold-dark">
                 Melalui Buku dan Pengetahuan
               </span>
             </motion.h1>
@@ -75,7 +75,7 @@ export default function AboutHero() {
             >
               <Link
                 href="/kontak"
-                className="group relative inline-flex items-center gap-2 px-8 py-4 bg-emerald-500 hover:bg-emerald-400 text-zinc-900 font-semibold rounded-2xl transition-all duration-300 overflow-hidden"
+                className="group relative inline-flex items-center gap-2 px-8 py-4 bg-gold hover:bg-gold-dark text-zinc-900 font-semibold rounded-2xl transition-all duration-300 overflow-hidden"
               >
                 <span className="relative z-10">Hubungi Kami</span>
                 <motion.span
@@ -85,12 +85,12 @@ export default function AboutHero() {
                 >
                   →
                 </motion.span>
-                <div className="absolute inset-0 bg-gradient-to-r from-emerald-400 to-emerald-300 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute inset-0 bg-gradient-to-r from-gold to-gold-light opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </Link>
 
               <Link
                 href="/layanan-penerbitan"
-                className="group inline-flex items-center gap-2 px-8 py-4 border border-zinc-600 hover:border-emerald-500/50 text-zinc-300 hover:text-white font-semibold rounded-2xl transition-all duration-300"
+                className="group inline-flex items-center gap-2 px-8 py-4 border border-zinc-600 hover:border-gold/50 text-zinc-300 hover:text-white font-semibold rounded-2xl transition-all duration-300"
               >
                 Lihat Layanan
                 <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -107,11 +107,11 @@ export default function AboutHero() {
             className="hidden lg:block relative"
           >
             <div className="relative aspect-square">
-              <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/20 via-transparent to-amber-500/20 rounded-3xl" />
+              <div className="absolute inset-0 bg-gradient-to-br from-gold/20 via-transparent to-gold-dark/20 rounded-3xl" />
               <div className="relative grid grid-cols-2 gap-4 p-4">
                 {[
-                  { label: "Penerbitan", icon: BookOpen, color: "from-emerald-500 to-emerald-600" },
-                  { label: "Percetakan", icon: Printer, color: "from-amber-500 to-amber-600" },
+                  { label: "Penerbitan", icon: BookOpen, color: "from-gold to-gold-dark" },
+                  { label: "Percetakan", icon: Printer, color: "from-gold to-gold-dark" },
                   { label: "Penulisan", icon: PenLine, color: "from-blue-500 to-blue-600" },
                   { label: "Digital", icon: Monitor, color: "from-violet-500 to-violet-600" },
                 ].map(({ label, icon: Icon, color }, i) => (
@@ -131,12 +131,12 @@ export default function AboutHero() {
                 ))}
               </div>
               <motion.div
-                className="absolute -top-6 -right-6 w-32 h-32 bg-emerald-500/10 rounded-full blur-3xl"
+                className="absolute -top-6 -right-6 w-32 h-32 bg-gold/10 rounded-full blur-3xl"
                 animate={{ scale: [1, 1.2, 1] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
               />
               <motion.div
-                className="absolute -bottom-6 -left-6 w-40 h-40 bg-amber-500/10 rounded-full blur-3xl"
+                className="absolute -bottom-6 -left-6 w-40 h-40 bg-gold/50/10 rounded-full blur-3xl"
                 animate={{ scale: [1.2, 1, 1.2] }}
                 transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
               />
@@ -145,7 +145,7 @@ export default function AboutHero() {
         </div>
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-emerald-500/20 to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
     </section>
   )
 }

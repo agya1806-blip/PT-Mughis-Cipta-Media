@@ -33,7 +33,7 @@ export default function AdminDashboard() {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
         <MetricCard title="Total Buku" value={data.totalBooks} />
         <MetricCard title="Total Pesanan" value={data.totalOrders} />
-        <MetricCard title="Pesanan Baru" value={data.pendingOrders} color="amber" />
+        <MetricCard title="Pesanan Baru" value={data.pendingOrders} color="gold" />
         <MetricCard title="Pesanan Dibayar" value={data.paidOrders} color="green" />
         <MetricCard title="Reseller Aktif" value={data.activeResellers} />
         <MetricCard title="Pesanan Hari Ini" value={data.todayOrders} color="blue" />
@@ -54,7 +54,7 @@ function MetricCard({
 }) {
   const colors: Record<string, string> = {
     zinc: "bg-zinc-50 border-zinc-200 text-zinc-800",
-    amber: "bg-amber-50 border-amber-200 text-amber-800",
+    gold: "bg-gold/5 border-gold/20 text-gold-dark",
     green: "bg-green-50 border-green-200 text-green-800",
     blue: "bg-blue-50 border-blue-200 text-blue-800",
   }

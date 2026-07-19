@@ -35,10 +35,10 @@ export default async function PenulisPage() {
               <Link
                 key={author}
                 href={`/penulis/${encodeURIComponent(author)}`}
-                className="bg-white rounded-xl border border-zinc-200 p-5 hover:shadow-md hover:border-emerald-200 transition-all"
+                className="bg-white rounded-xl border border-zinc-200 p-5 hover:shadow-md hover:border-gold/20 transition-all"
               >
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-700 font-bold text-lg shrink-0">
+                  <div className="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center text-gold-dark font-bold text-lg shrink-0">
                     {author.charAt(0)}
                   </div>
                   <div>

@@ -72,7 +72,7 @@ export const blogArticles: BlogArticle[] = [
     authorRole: "Tim Produksi",
     publishedAt: "8 Juli 2026",
     readingTime: "7 menit",
-    coverGradient: "from-amber-600 to-orange-700",
+    coverGradient: "from-gold to-gold-dark",
     featured: false,
   },
   {
@@ -150,7 +150,7 @@ export const blogArticles: BlogArticle[] = [
     authorRole: "Tim Humas",
     publishedAt: "20 Juni 2026",
     readingTime: "3 menit",
-    coverGradient: "from-yellow-600 to-amber-700",
+    coverGradient: "from-gold-light to-gold",
     featured: false,
   },
 ]

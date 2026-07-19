@@ -28,7 +28,7 @@ export default function OrderSuccessPage() {
         </p>
         <Link
           href="/katalog"
-          className="inline-flex h-11 items-center rounded-xl bg-amber-700 px-6 text-white font-medium hover:bg-amber-800"
+          className="inline-flex h-11 items-center rounded-xl bg-gold px-6 text-white font-medium hover:bg-gold-dark"
         >
           Lanjut Belanja
         </Link>

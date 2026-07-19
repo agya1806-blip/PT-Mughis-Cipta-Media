@@ -19,8 +19,8 @@ export default function TermsPage() {
   return (
     <LegalLayout
       icon={Scale}
-      iconBg="bg-amber-100"
-      iconColor="text-amber-600"
+      iconBg="bg-gold/10"
+      iconColor="text-gold"
       title="Syarat & Ketentuan"
       subtitle="PT Mughis Cipta Media"
       lastUpdated="Juli 2026"

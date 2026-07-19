@@ -63,15 +63,15 @@ export default function AdminCategories() {
       <h1 className="text-2xl font-bold text-zinc-800 mb-6">Kategori</h1>
       <form onSubmit={handleSubmit} className="flex gap-3 mb-6 max-w-lg">
         <input type="text" placeholder="Nama" required
-          className="flex-1 rounded-lg border border-zinc-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+          className="flex-1 rounded-lg border border-zinc-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50"
           value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })}
         />
         <input type="text" placeholder="Slug" required
-          className="flex-1 rounded-lg border border-zinc-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+          className="flex-1 rounded-lg border border-zinc-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50"
           value={form.slug} onChange={(e) => setForm({ ...form, slug: e.target.value })}
         />
         <button type="submit"
-          className="h-10 px-4 rounded-lg bg-amber-700 text-white text-sm font-medium hover:bg-amber-800"
+          className="h-10 px-4 rounded-lg bg-gold text-white text-sm font-medium hover:bg-gold-dark"
         >
           {editingId ? "Update" : "Tambah"}
         </button>
@@ -91,7 +91,7 @@ export default function AdminCategories() {
                 <td className="px-4 py-3 text-zinc-800">{cat.name}</td>
                 <td className="px-4 py-3 text-zinc-500">{cat.slug}</td>
                 <td className="px-4 py-3 text-center space-x-2">
-                  <button onClick={() => handleEdit(cat)} className="text-amber-700 hover:underline text-xs">Edit</button>
+                  <button onClick={() => handleEdit(cat)} className="text-gold hover:underline text-xs">Edit</button>
                   <button onClick={() => handleDelete(cat.id)} className="text-red-500 hover:underline text-xs">Hapus</button>
                 </td>
               </tr>

@@ -59,7 +59,7 @@ function PaymentContent() {
         </p>
         <button
           onClick={() => router.push('/')}
-          className="bg-emerald-600 text-white px-6 py-3 rounded-lg hover:bg-emerald-700 transition-colors"
+          className="bg-gold text-white px-6 py-3 rounded-lg hover:bg-gold-dark transition-colors"
         >
           Kembali ke Toko
         </button>
@@ -94,7 +94,7 @@ function PaymentContent() {
       <div className="mt-4 space-y-3">
         <button
           onClick={checkPayment}
-          className="block w-full bg-emerald-600 text-white px-6 py-3 rounded-lg hover:bg-emerald-700 transition-colors"
+          className="block w-full bg-gold text-white px-6 py-3 rounded-lg hover:bg-gold-dark transition-colors"
         >
           Konfirmasi Pembayaran
         </button>

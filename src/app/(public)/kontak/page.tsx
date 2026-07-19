@@ -47,8 +47,8 @@ export default async function KontakPage() {
           <div className="space-y-6">
             <div className="bg-white rounded-xl border border-zinc-200 p-6">
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-lg bg-emerald-100 flex items-center justify-center">
-                  <MapPin className="w-5 h-5 text-emerald-600" />
+                <div className="w-10 h-10 rounded-lg bg-gold/10 flex items-center justify-center">
+                  <MapPin className="w-5 h-5 text-gold" />
                 </div>
                 <h2 className="text-lg font-semibold text-zinc-900">Alamat</h2>
               </div>
@@ -57,8 +57,8 @@ export default async function KontakPage() {
 
             <div className="bg-white rounded-xl border border-zinc-200 p-6">
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-lg bg-emerald-100 flex items-center justify-center">
-                  <Phone className="w-5 h-5 text-emerald-600" />
+                <div className="w-10 h-10 rounded-lg bg-gold/10 flex items-center justify-center">
+                  <Phone className="w-5 h-5 text-gold" />
                 </div>
                 <h2 className="text-lg font-semibold text-zinc-900">Kontak</h2>
               </div>
@@ -67,7 +67,7 @@ export default async function KontakPage() {
                   <a
                     href={`https://wa.me/${phone}`}
                     target="_blank"
-                    className="flex items-center gap-3 text-emerald-600 hover:text-emerald-700 transition-colors font-medium"
+                    className="flex items-center gap-3 text-gold hover:text-gold-dark transition-colors font-medium"
                   >
                     <Phone className="w-4 h-4" />
                     <span>{phone}</span>
@@ -76,7 +76,7 @@ export default async function KontakPage() {
                 {email && (
                   <a
                     href={`mailto:${email}`}
-                    className="flex items-center gap-3 text-emerald-600 hover:text-emerald-700 transition-colors font-medium"
+                    className="flex items-center gap-3 text-gold hover:text-gold-dark transition-colors font-medium"
                   >
                     <Mail className="w-4 h-4" />
                     <span>{email}</span>
@@ -120,11 +120,11 @@ export default async function KontakPage() {
               <a
                 href={`https://wa.me/${phone}`}
                 target="_blank"
-                className="block bg-emerald-600 text-white rounded-xl p-6 text-center hover:bg-emerald-700 transition-colors"
+                className="block bg-gold text-white rounded-xl p-6 text-center hover:bg-gold-dark transition-colors"
               >
                 <Phone className="w-6 h-6 mx-auto mb-2" />
                 <p className="font-semibold">Hubungi via WhatsApp</p>
-                <p className="text-sm text-emerald-100 mt-1">{phone}</p>
+                <p className="text-sm text-gold/80 mt-1">{phone}</p>
               </a>
             )}
           </div>

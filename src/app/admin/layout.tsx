@@ -11,7 +11,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     <div className="flex flex-1 min-h-0">
       <aside className="w-64 bg-zinc-900 text-white flex-shrink-0 hidden lg:flex flex-col">
         <div className="p-4 border-b border-zinc-700">
-          <Link href="/admin" className="text-lg font-bold text-amber-400">
+          <Link href="/admin" className="text-lg font-bold text-gold">
             Admin Panel
           </Link>
         </div>

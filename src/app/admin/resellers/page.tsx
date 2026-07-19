@@ -51,7 +51,7 @@ export default function AdminResellers() {
             key={s}
             onClick={() => setFilter(s)}
             className={`px-3 py-1.5 rounded-lg text-sm font-medium border transition-colors ${
-              filter === s ? "bg-amber-700 text-white border-amber-700" : "border-zinc-300 text-zinc-600 hover:bg-zinc-50"
+              filter === s ? "bg-gold text-white border-gold" : "border-zinc-300 text-zinc-600 hover:bg-zinc-50"
             }`}
           >
             {s ? s.charAt(0).toUpperCase() + s.slice(1) : "Semua"}
@@ -84,7 +84,7 @@ export default function AdminResellers() {
                         ? "bg-green-100 text-green-700"
                         : r.approvalStatus === "rejected"
                           ? "bg-red-100 text-red-700"
-                          : "bg-amber-100 text-amber-700"
+                          : "bg-gold/10 text-gold"
                     }`}
                   >
                     {r.approvalStatus}

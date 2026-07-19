@@ -56,7 +56,7 @@ export default function AdminSettings() {
             </label>
             <input
               type="text"
-              className="w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+              className="w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50"
               value={settings[field.key] || ""}
               onChange={(e) =>
                 setSettings({ ...settings, [field.key]: e.target.value })
@@ -68,7 +68,7 @@ export default function AdminSettings() {
           <button
             onClick={handleSave}
             disabled={saving}
-            className="h-11 px-6 rounded-xl bg-amber-700 text-white font-medium hover:bg-amber-800 disabled:opacity-50"
+            className="h-11 px-6 rounded-xl bg-gold text-white font-medium hover:bg-gold-dark disabled:opacity-50"
           >
             {saving ? "Menyimpan..." : "Simpan"}
           </button>

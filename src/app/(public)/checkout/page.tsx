@@ -181,7 +181,7 @@ export default function CheckoutPage() {
                 <input
                   type="text"
                   required
-                  className="w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+                  className="w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50"
                   value={form.customerName}
                   onChange={(e) => setForm({ ...form, customerName: e.target.value })}
                 />
@@ -191,7 +191,7 @@ export default function CheckoutPage() {
                 <input
                   type="email"
                   required
-                  className="w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+                  className="w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50"
                   value={form.customerEmail}
                   onChange={(e) => setForm({ ...form, customerEmail: e.target.value })}
                 />
@@ -200,7 +200,7 @@ export default function CheckoutPage() {
                 <label className="block text-sm font-medium text-zinc-600 mb-1">No. WhatsApp</label>
                 <input
                   type="tel"
-                  className="w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+                  className="w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50"
                   value={form.customerPhone}
                   onChange={(e) => setForm({ ...form, customerPhone: e.target.value })}
                 />
@@ -216,7 +216,7 @@ export default function CheckoutPage() {
                 <textarea
                   required
                   rows={3}
-                  className="w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+                  className="w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50"
                   value={form.shippingAddress}
                   onChange={(e) => setForm({ ...form, shippingAddress: e.target.value })}
                 />
@@ -225,7 +225,7 @@ export default function CheckoutPage() {
                 <div>
                   <label className="block text-sm font-medium text-zinc-600 mb-1">Provinsi</label>
                   <select
-                    className="w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+                    className="w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50"
                     value={form.provinceId}
                     onChange={(e) => {
                       const p = provinces.find((p) => p.province_id === e.target.value)
@@ -252,7 +252,7 @@ export default function CheckoutPage() {
                 <div>
                   <label className="block text-sm font-medium text-zinc-600 mb-1">Kota/Kabupaten</label>
                   <select
-                    className="w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+                    className="w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50"
                     value={form.cityId}
                     onChange={(e) => {
                       const c = cities.find((c) => c.city_id === e.target.value)
@@ -278,7 +278,7 @@ export default function CheckoutPage() {
                 <div>
                   <label className="block text-sm font-medium text-zinc-600 mb-1">Kecamatan</label>
                   <select
-                    className="w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+                    className="w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50"
                     value={form.subdistrictId}
                     onChange={(e) => {
                       const s = subdistricts.find((s) => s.subdistrict_id === e.target.value)
@@ -303,7 +303,7 @@ export default function CheckoutPage() {
                 <label className="block text-sm font-medium text-zinc-600 mb-1">Catatan (opsional)</label>
                 <textarea
                   rows={2}
-                  className="w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
+                  className="w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50"
                   value={form.notes}
                   onChange={(e) => setForm({ ...form, notes: e.target.value })}
                   placeholder="Catatan untuk pengiriman..."
@@ -326,7 +326,7 @@ export default function CheckoutPage() {
                   }}
                   className={`px-4 py-2 rounded-lg border text-sm font-medium transition-colors ${
                     selectedCourier === c
-                      ? "bg-amber-700 text-white border-amber-700"
+                      ? "bg-gold text-white border-gold"
                       : "border-zinc-300 text-zinc-600 hover:bg-zinc-50"
                   }`}
                 >
@@ -339,7 +339,7 @@ export default function CheckoutPage() {
               <button
                 onClick={calculateShipping}
                 disabled={loading}
-                className="w-full sm:w-auto px-4 py-2 bg-amber-600 text-white rounded-lg hover:bg-amber-700 disabled:bg-gray-400 transition-colors font-medium mb-4"
+                className="w-full sm:w-auto px-4 py-2 bg-gold text-white rounded-lg hover:bg-gold disabled:bg-gray-400 transition-colors font-medium mb-4"
               >
                 {loading ? "Menghitung..." : "Cek Ongkos Kirim"}
               </button>
@@ -354,7 +354,7 @@ export default function CheckoutPage() {
                     key={idx}
                     className={`flex items-center justify-between p-3 rounded-lg border cursor-pointer transition-colors ${
                       selectedService?.service === cost.service
-                        ? "border-amber-700 bg-amber-50"
+                        ? "border-gold bg-gold/5"
                         : "border-zinc-200 hover:bg-zinc-50"
                     }`}
                   >
@@ -367,7 +367,7 @@ export default function CheckoutPage() {
                           setSelectedService(cost)
                           setShippingCost(cost.cost)
                         }}
-                        className="accent-amber-700"
+                        className="accent-gold"
                       />
                       <div>
                         <p className="font-medium text-sm text-zinc-800">{cost.service}</p>
@@ -426,7 +426,7 @@ export default function CheckoutPage() {
             <button
               onClick={handleSubmit}
               disabled={submitting || !form.customerName || !form.customerEmail || !form.shippingAddress || !selectedService}
-              className="w-full mt-6 h-12 rounded-xl bg-amber-700 text-white font-medium hover:bg-amber-800 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              className="w-full mt-6 h-12 rounded-xl bg-gold text-white font-medium hover:bg-gold-dark disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
             >
               {submitting ? "Memproses..." : "Bayar Sekarang"}
             </button>

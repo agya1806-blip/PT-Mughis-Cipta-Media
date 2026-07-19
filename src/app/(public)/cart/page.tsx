@@ -15,7 +15,7 @@ export default function CartPage() {
         <p className="text-zinc-500 mb-8">Keranjang belanja Anda masih kosong</p>
         <Link
           href="/katalog"
-          className="inline-flex h-11 items-center rounded-xl bg-amber-700 px-6 text-white font-medium hover:bg-amber-800"
+          className="inline-flex h-11 items-center rounded-xl bg-gold px-6 text-white font-medium hover:bg-gold-dark"
         >
           Mulai Belanja
         </Link>
@@ -37,7 +37,7 @@ export default function CartPage() {
             </div>
             <div className="flex-1 min-w-0">
               <h3 className="font-medium text-zinc-800 truncate">{item.title}</h3>
-              <p className="text-amber-700 font-semibold mt-1">
+              <p className="text-gold font-semibold mt-1">
                 Rp {item.price.toLocaleString("id-ID")}
               </p>
               <div className="flex items-center gap-3 mt-3">
@@ -85,7 +85,7 @@ export default function CartPage() {
           </button>
           <Link
             href="/checkout"
-            className="flex-1 flex items-center justify-center h-11 rounded-xl bg-amber-700 text-white font-medium hover:bg-amber-800"
+            className="flex-1 flex items-center justify-center h-11 rounded-xl bg-gold text-white font-medium hover:bg-gold-dark"
           >
             Checkout
           </Link>

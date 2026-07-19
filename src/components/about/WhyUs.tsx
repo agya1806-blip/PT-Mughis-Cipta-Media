@@ -19,8 +19,8 @@ const reasons = [
 export default function WhyUs() {
   return (
     <section className="relative py-24 lg:py-32 bg-white overflow-hidden">
-      <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 left-0 w-80 h-80 bg-amber-500/5 rounded-full blur-3xl" />
+      <div className="absolute top-0 right-0 w-96 h-96 bg-gold/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 left-0 w-80 h-80 bg-gold/5 rounded-full blur-3xl" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -30,10 +30,10 @@ export default function WhyUs() {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6 }}
           >
-            <span className="text-emerald-600 font-semibold text-sm tracking-widest uppercase">Keunggulan</span>
+            <span className="text-gold font-semibold text-sm tracking-widest uppercase">Keunggulan</span>
             <h2 className="text-4xl sm:text-5xl font-bold text-zinc-900 mt-4 mb-6 leading-tight">
               Mengapa Memilih{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-amber-600">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold to-gold-dark">
                 Kami?
               </span>
             </h2>
@@ -51,7 +51,7 @@ export default function WhyUs() {
                   transition={{ delay: i * 0.03, duration: 0.3 }}
                   className="flex items-start gap-3 group"
                 >
-                  <CheckCircle className="w-5 h-5 text-emerald-500 mt-0.5 shrink-0 group-hover:scale-110 transition-transform" />
+                  <CheckCircle className="w-5 h-5 text-gold mt-0.5 shrink-0 group-hover:scale-110 transition-transform" />
                   <span className="text-zinc-700 text-sm">{r}</span>
                 </motion.div>
               ))}
@@ -80,7 +80,7 @@ export default function WhyUs() {
                   ].map(({ label, value }) => (
                     <div key={label} className="flex items-center justify-between py-2 border-b border-white/10 last:border-0">
                       <span className="text-zinc-400 text-sm">{label}</span>
-                      <span className="font-bold text-emerald-400">{value}</span>
+                      <span className="font-bold text-gold">{value}</span>
                     </div>
                   ))}
                 </div>

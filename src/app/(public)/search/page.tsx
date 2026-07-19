@@ -94,11 +94,11 @@ export default async function SearchPage({ searchParams }: Props) {
               name="q"
               defaultValue={query}
               placeholder="Cari buku, artikel, penulis..."
-              className="flex-1 rounded-xl border border-zinc-300 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
+              className="flex-1 rounded-xl border border-zinc-300 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50"
             />
             <button
               type="submit"
-              className="px-6 py-3 rounded-xl bg-emerald-600 text-white font-medium hover:bg-emerald-700 transition-colors text-sm"
+              className="px-6 py-3 rounded-xl bg-gold text-white font-medium hover:bg-gold-dark transition-colors text-sm"
             >
               Cari
             </button>
@@ -126,7 +126,7 @@ export default async function SearchPage({ searchParams }: Props) {
                     href={r.href}
                     className="block bg-white rounded-xl border border-zinc-200 p-5 hover:shadow-md transition-shadow"
                   >
-                    <span className="inline-block text-xs font-medium text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full mb-2">
+                    <span className="inline-block text-xs font-medium text-gold bg-gold/10 px-2 py-0.5 rounded-full mb-2">
                       {r.type}
                     </span>
                     <h2 className="font-semibold text-zinc-900 mb-1">{r.title}</h2>

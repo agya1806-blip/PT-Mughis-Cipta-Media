@@ -34,7 +34,7 @@ export default function AdminPages() {
         <h1 className="text-2xl font-bold text-zinc-800">Halaman</h1>
         <Link
           href="/admin/pages/create"
-          className="h-10 px-4 rounded-lg bg-amber-700 text-white text-sm font-medium hover:bg-amber-800 flex items-center"
+          className="h-10 px-4 rounded-lg bg-gold text-white text-sm font-medium hover:bg-gold-dark flex items-center"
         >
           Tambah Halaman
         </Link>
@@ -54,7 +54,7 @@ export default function AdminPages() {
                 <td className="px-4 py-3 text-zinc-800">{page.title}</td>
                 <td className="px-4 py-3 text-zinc-500">/{page.slug}</td>
                 <td className="px-4 py-3 text-center space-x-2">
-                  <Link href={`/admin/pages/${page.id}`} className="text-amber-700 hover:underline text-xs">
+                  <Link href={`/admin/pages/${page.id}`} className="text-gold hover:underline text-xs">
                     Edit
                   </Link>
                   <button onClick={() => handleDelete(page.id)} className="text-red-500 hover:underline text-xs">

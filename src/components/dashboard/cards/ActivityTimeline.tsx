@@ -18,7 +18,7 @@ const iconMap: Record<string, typeof Send> = {
 
 const colorMap: Record<string, string> = {
   system: "bg-blue-50 text-blue-600 border-blue-200",
-  editor: "bg-amber-50 text-amber-600 border-amber-200",
+  editor: "bg-gold/5 text-gold border-gold/20",
   publishing: "bg-green-50 text-green-600 border-green-200",
   general: "bg-zinc-50 text-zinc-600 border-zinc-200",
 }

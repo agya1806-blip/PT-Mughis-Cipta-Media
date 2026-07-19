@@ -13,7 +13,7 @@ const services = [
   { icon: Hash, label: "ISBN", desc: "Pengurusan ISBN Perpustakaan Nasional RI" },
   { icon: Printer, label: "Percetakan", desc: "Cetak digital & offset dengan kualitas terbaik" },
   { icon: Truck, label: "Distribusi", desc: "Distribusi nasional ke toko buku dan platform online" },
-  { icon: PenTool, label: "Self Publishing", desc: "Kontrol penuh bagi penulis yang ingin mandiri" },
+  { icon: PenTool, label: "Penerbitan Mandiri", desc: "Kontrol penuh bagi penulis yang ingin mandiri" },
   { icon: Monitor, label: "Media Kreatif", desc: "Layanan desain grafis, video, dan konten kreatif" },
 ]
 

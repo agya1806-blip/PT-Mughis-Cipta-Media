@@ -10,11 +10,11 @@ const steps = [
   { icon: FileEdit, label: "Editing" },
   { icon: Search, label: "Proofreading" },
   { icon: Layout, label: "Layout" },
-  { icon: Palette, label: "Cover Design" },
+  { icon: Palette, label: "Desain Cover" },
   { icon: Hash, label: "ISBN" },
-  { icon: Printer, label: "Printing" },
-  { icon: Truck, label: "Distribution" },
-  { icon: Heart, label: "Reader" },
+  { icon: Printer, label: "Percetakan" },
+  { icon: Truck, label: "Distribusi" },
+  { icon: Heart, label: "Pembaca" },
 ]
 
 export default function BookJourneySection() {
@@ -25,7 +25,7 @@ export default function BookJourneySection() {
   return (
     <SectionWrapper ref={sectionRef} muted>
       <SectionHeader
-        badge="Book Journey"
+        badge="Perjalanan Buku"
         title="Perjalanan"
         accent="Sebuah Buku"
         description="Dari ide penulis hingga sampai ke tangan pembaca — setiap tahap kami tangani dengan standar kualitas tertinggi"

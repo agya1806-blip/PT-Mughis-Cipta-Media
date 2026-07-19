@@ -21,7 +21,7 @@ export default function PublishingJourneySection() {
   return (
     <SectionWrapper ref={sectionRef} muted>
       <SectionHeader
-        badge="Publishing Journey"
+        badge="Alur Penerbitan"
         title="Perjalanan Penerbitan"
         accent="Anda Dimulai di Sini"
         description="Proses penerbitan yang transparan, profesional, dan terpandu dari naskah hingga buku jadi."

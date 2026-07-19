@@ -1,7 +1,7 @@
 "use client"
 
 import Image from "next/image"
-import { Globe, Instagram, Facebook, Twitter } from "lucide-react"
+import { ExternalLink } from "lucide-react"
 import Avatar from "@/components/ui/Avatar"
 import type { Author } from "@/data/authors"
 
@@ -10,11 +10,11 @@ interface Props {
   bookCount: number
 }
 
-const socialIcons: Record<string, { icon: typeof Globe; label: string; color: string }> = {
-  website: { icon: Globe, label: "Website", color: "text-zinc-500" },
-  instagram: { icon: Instagram, label: "Instagram", color: "text-pink-500" },
-  facebook: { icon: Facebook, label: "Facebook", color: "text-blue-500" },
-  twitter: { icon: Twitter, label: "Twitter", color: "text-sky-500" },
+const socialLabels: Record<string, string> = {
+  website: "Website",
+  instagram: "Instagram",
+  facebook: "Facebook",
+  twitter: "Twitter",
 }
 
 export default function AuthorProfile({ author, bookCount }: Props) {
@@ -57,23 +57,18 @@ export default function AuthorProfile({ author, bookCount }: Props) {
 
         {socialLinks.length > 0 && (
           <div className="flex flex-wrap items-center gap-3 mt-6 pt-6 border-t border-zinc-100">
-            {socialLinks.map(([platform, url]) => {
-              const info = socialIcons[platform]
-              if (!info) return null
-              const Icon = info.icon
-              return (
-                <a
-                  key={platform}
-                  href={url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-zinc-50 hover:bg-zinc-100 border border-zinc-200 text-xs font-medium text-zinc-600 hover:text-zinc-900 transition-all"
-                >
-                  <Icon className={`w-4 h-4 ${info.color}`} />
-                  {info.label}
-                </a>
-              )
-            })}
+            {socialLinks.map(([platform, url]) => (
+              <a
+                key={platform}
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-zinc-50 hover:bg-zinc-100 border border-zinc-200 text-xs font-medium text-zinc-600 hover:text-zinc-900 transition-all"
+              >
+                <ExternalLink className="w-4 h-4 text-zinc-400" />
+                {socialLabels[platform] || platform}
+              </a>
+            ))}
           </div>
         )}
       </div>

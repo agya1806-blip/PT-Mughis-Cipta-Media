@@ -4,7 +4,7 @@ import { hashPassword, signToken } from "@/lib/auth"
 
 export async function POST(request: Request) {
   try {
-    const { name, email, password, phone, role } = await request.json()
+    const { name, email, password, phone } = await request.json()
 
     if (!name || !email || !password) {
       return NextResponse.json({ error: "Name, email, and password are required" }, { status: 400 })
@@ -16,7 +16,6 @@ export async function POST(request: Request) {
     }
 
     const hashed = await hashPassword(password)
-    const userRole = role === "RESELLER" ? "RESELLER" : "CUSTOMER"
 
     const user = await prisma.user.create({
       data: {
@@ -24,9 +23,8 @@ export async function POST(request: Request) {
         email,
         password: hashed,
         phone,
-        role: userRole,
-        approvalStatus: userRole === "RESELLER" ? "pending" : "approved",
-        referralCode: `MGH${Date.now().toString(36).toUpperCase()}`,
+        role: "CUSTOMER",
+        approvalStatus: "approved",
       },
     })
 

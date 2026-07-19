@@ -35,7 +35,7 @@ export default function BookDetailPage({
         <Breadcrumb
           items={[
             { label: "Beranda", href: "/" },
-            { label: "Katalog", href: "/books" },
+            { label: "Katalog", href: "/katalog" },
             { label: book.title },
           ]}
         />

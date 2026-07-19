@@ -192,14 +192,23 @@ export default async function BookDetailPage({ params }: { params: Promise<{ id:
                   <span className="text-zinc-500">Berat</span>
                   <p className="font-medium text-zinc-800 mt-0.5">{mapped.weight} gr</p>
                 </div>
-                <div>
-                  <span className="text-zinc-500">Stok</span>
-                  <p className="font-medium text-zinc-800 mt-0.5">{mapped.stock} eksemplar</p>
-                </div>
               </div>
 
-              <div className="text-3xl font-bold text-gold-dark">
-                Rp{mapped.price.toLocaleString("id-ID")}
+              <div className="flex items-center gap-3 pt-2">
+                <span className="text-2xl font-bold text-gold-dark">
+                  Rp{mapped.price.toLocaleString("id-ID")}
+                </span>
+                {mapped.stock > 0 ? (
+                  <span className="inline-flex items-center gap-1.5 text-xs font-medium text-green-700 bg-green-50 border border-green-200 px-2.5 py-1 rounded-full">
+                    <span className="w-1.5 h-1.5 rounded-full bg-green-500" />
+                    Tersedia
+                  </span>
+                ) : (
+                  <span className="inline-flex items-center gap-1.5 text-xs font-medium text-zinc-500 bg-zinc-50 border border-zinc-200 px-2.5 py-1 rounded-full">
+                    <span className="w-1.5 h-1.5 rounded-full bg-zinc-400" />
+                    Stok habis
+                  </span>
+                )}
               </div>
 
               <BookDetailClient book={mapped} />

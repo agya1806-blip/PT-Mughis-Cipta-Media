@@ -110,22 +110,7 @@ export default function RegisterPage() {
               onChange={(e) => setForm({ ...form, password: e.target.value })}
             />
           </div>
-          <div>
-            <label className="block text-sm font-medium text-zinc-600 mb-1">Daftar Sebagai</label>
-            <select
-              className="w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50"
-              value={form.role}
-              onChange={(e) => setForm({ ...form, role: e.target.value })}
-            >
-              <option value="CUSTOMER">Pembeli Biasa</option>
-              <option value="RESELLER">Reseller</option>
-            </select>
-          </div>
-          {form.role === "RESELLER" && (
-            <p className="text-xs text-gold bg-gold/5 rounded-lg px-3 py-2">
-              Pendaftaran reseller akan ditinjau oleh admin terlebih dahulu.
-            </p>
-          )}
+          <input type="hidden" name="role" value="CUSTOMER" />
           <button
             type="submit"
             disabled={loading}

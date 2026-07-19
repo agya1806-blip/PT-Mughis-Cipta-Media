@@ -339,11 +339,7 @@ export default function CheckoutPage() {
               <button
                 onClick={calculateShipping}
                 disabled={loading}
-<<<<<<< HEAD
-                className="w-full sm:w-auto px-4 py-2 bg-gold text-white rounded-lg hover:bg-gold-dark disabled:bg-zinc-300 transition-colors font-medium mb-4"
-=======
                 className="w-full sm:w-auto px-4 py-2 bg-gold text-white rounded-lg hover:bg-gold disabled:bg-gray-400 transition-colors font-medium mb-4"
->>>>>>> 3c62a11
               >
                 {loading ? "Menghitung..." : "Cek Ongkos Kirim"}
               </button>
@@ -358,11 +354,7 @@ export default function CheckoutPage() {
                     key={idx}
                     className={`flex items-center justify-between p-3 rounded-lg border cursor-pointer transition-colors ${
                       selectedService?.service === cost.service
-<<<<<<< HEAD
-                        ? "border-gold bg-gold/10"
-=======
                         ? "border-gold bg-gold/5"
->>>>>>> 3c62a11
                         : "border-zinc-200 hover:bg-zinc-50"
                     }`}
                   >

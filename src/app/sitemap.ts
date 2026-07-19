@@ -13,13 +13,19 @@ export default async function sitemap() {
     { url: `${baseUrl}/faq`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.5 },
     { url: `${baseUrl}/privacy`, lastModified: new Date(), changeFrequency: "yearly" as const, priority: 0.3 },
     { url: `${baseUrl}/terms`, lastModified: new Date(), changeFrequency: "yearly" as const, priority: 0.3 },
+    { url: `${baseUrl}/about`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.7 },
+    { url: `${baseUrl}/contact`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.6 },
+    { url: `${baseUrl}/penulis`, lastModified: new Date(), changeFrequency: "weekly" as const, priority: 0.6 },
+    { url: `${baseUrl}/search`, lastModified: new Date(), changeFrequency: "weekly" as const, priority: 0.4 },
+    { url: `${baseUrl}/cart`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.3 },
   ]
 
   try {
-    const [books, articles, pages] = await Promise.all([
+    const [books, articles, pages, penulis] = await Promise.all([
       prisma.book.findMany({ select: { id: true, updatedAt: true } }),
       prisma.article.findMany({ select: { slug: true, updatedAt: true } }),
       prisma.page.findMany({ select: { slug: true, updatedAt: true } }),
+      prisma.book.findMany({ select: { author: true }, distinct: ["author"] }),
     ])
 
     const bookPages = books.map((b) => ({
@@ -43,7 +49,14 @@ export default async function sitemap() {
       priority: 0.5,
     }))
 
-    return [...staticPages, ...bookPages, ...articlePages, ...customPages]
+    const authorPages = penulis.map((p) => ({
+      url: `${baseUrl}/penulis/${encodeURIComponent(p.author)}`,
+      lastModified: new Date(),
+      changeFrequency: "weekly" as const,
+      priority: 0.5,
+    }))
+
+    return [...staticPages, ...bookPages, ...articlePages, ...customPages, ...authorPages]
   } catch {
     return staticPages
   }

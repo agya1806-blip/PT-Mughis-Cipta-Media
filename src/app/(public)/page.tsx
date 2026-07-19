@@ -15,13 +15,13 @@ import CTASection from "@/components/landing/CTASection"
 import FinalCTA from "@/components/home/FinalCTA"
 
 export const metadata: Metadata = {
-  title: "Maktabah al-Mughis - PT Mughis Cipta Media",
+  title: "Penerbit Buku & Percetakan Profesional – Maktabah al-Mughis",
   description:
-    "Penerbit buku islami berkualitas. Menghadirkan literasi berkualitas melalui Maktabah Al-Mughis - Penerbitan, Percetakan, Distribusi Buku, dan Media Kreatif.",
+    "Penerbit buku terpercaya di Indonesia. Layanan penerbitan buku, cetak buku murah, desain cover, editing naskah, pengurusan ISBN, dan distribusi nasional. Wujudkan karya Anda bersama Maktabah al-Mughis, penerbit buku islami dan umum.",
   openGraph: {
-    title: "Maktabah al-Mughis - PT Mughis Cipta Media",
+    title: "Penerbit Buku & Percetakan Profesional – Maktabah al-Mughis",
     description:
-      "Penerbit buku islami berkualitas. Menghadirkan literasi berkualitas melalui Maktabah Al-Mughis.",
+      "Penerbit buku terpercaya di Indonesia. Layanan penerbitan buku, cetak buku murah, dan distribusi nasional.",
   },
 }
 

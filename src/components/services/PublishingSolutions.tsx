@@ -8,33 +8,33 @@ import SolutionCard from "@/components/ui/SolutionCard"
 const solutions = [
   {
     icon: <BookOpen className="w-6 h-6 text-gold" />,
-    title: "Book Publishing",
-    description: "Professional publishing support from manuscript submission to ISBN registration.",
+    title: "Penerbitan Buku",
+    description: "Layanan penerbitan buku profesional dari naskah hingga ISBN. Kami mendampingi penulis dalam setiap tahap penerbitan.",
   },
   {
     icon: <Printer className="w-6 h-6 text-gold" />,
-    title: "Book Printing",
-    description: "High-quality printing with flexible quantities and premium finishing.",
+    title: "Percetakan Buku",
+    description: "Percetakan buku berkualitas tinggi dengan berbagai pilihan finishing premium dan jumlah cetak yang fleksibel.",
   },
   {
     icon: <FileEdit className="w-6 h-6 text-gold" />,
-    title: "Editorial Services",
-    description: "Editing, proofreading, layout, and typesetting handled by experienced professionals.",
+    title: "Editorial & Layout",
+    description: "Layanan editing naskah, proofreading, layout, dan typesetting oleh profesional berpengalaman di bidangnya.",
   },
   {
     icon: <Palette className="w-6 h-6 text-gold" />,
-    title: "Cover Design",
-    description: "Custom cover design crafted to reflect the identity and value of your book.",
+    title: "Desain Cover",
+    description: "Desain cover buku eksklusif yang mencerminkan identitas dan nilai dari buku Anda.",
   },
   {
     icon: <Hash className="w-6 h-6 text-gold" />,
-    title: "ISBN & Legal Administration",
-    description: "Complete assistance with ISBN registration and publishing administration.",
+    title: "ISBN & Administrasi",
+    description: "Bantuan pengurusan ISBN dan administrasi penerbitan secara lengkap dan terpercaya.",
   },
   {
     icon: <Truck className="w-6 h-6 text-gold" />,
-    title: "Distribution Support",
-    description: "Prepare your book for distribution and wider market reach.",
+    title: "Distribusi Buku",
+    description: "Dukungan distribusi buku ke toko buku dan pasar yang lebih luas di seluruh Indonesia.",
   },
 ]
 
@@ -68,17 +68,17 @@ export default function PublishingSolutions() {
         >
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/10 border border-gold/20 mb-6">
             <span className="text-gold text-[11px] font-medium uppercase tracking-[0.1em]">
-              Publishing Solutions
+              Solusi Penerbitan
             </span>
           </div>
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-zinc-900 dark:text-white leading-[1.15] tracking-tight text-balance">
-            Complete{" "}
+            Solusi{" "}
             <span className="bg-gradient-to-r from-gold to-gold-dark bg-clip-text text-transparent">
-              Publishing Solutions
+              Penerbitan Lengkap
             </span>
           </h1>
           <p className="mt-4 text-zinc-500 dark:text-zinc-400 max-w-2xl mx-auto text-base sm:text-lg leading-relaxed">
-            Everything you need to transform your manuscript into a professionally published book.
+            Solusi lengkap untuk mewujudkan naskah Anda menjadi buku yang diterbitkan secara profesional.
           </p>
         </motion.div>
 
@@ -111,7 +111,7 @@ export default function PublishingSolutions() {
             href="/kontak"
             className="group inline-flex items-center gap-2 px-8 py-4 bg-gold hover:bg-gold-dark text-white font-semibold rounded-full transition-all duration-300 hover:shadow-xl hover:shadow-gold/25 hover:-translate-y-0.5"
           >
-            Let&apos;s Publish Your Book
+            Konsultasi Gratis
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
           </Link>
         </motion.div>

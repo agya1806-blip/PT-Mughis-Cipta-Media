@@ -3,7 +3,7 @@ import Link from "next/link"
 
 export const metadata: Metadata = {
   title: "Admin Panel",
-  description: "Panel administrasi PT Mughis Cipta Media — kelola buku, artikel, pesanan, reseller, dan pengaturan.",
+  description: "Panel administrasi PT Mughis Cipta Media — kelola buku, artikel, kategori, halaman, dan pengaturan.",
 }
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
@@ -23,15 +23,13 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           <SidebarLink href="/admin/categories">Kategori</SidebarLink>
           <SidebarLink href="/admin/pages">Halaman</SidebarLink>
           <SidebarLink href="/admin/articles">Artikel</SidebarLink>
-          <SidebarLink href="/admin/orders">Pesanan</SidebarLink>
-          <SidebarLink href="/admin/resellers">Reseller</SidebarLink>
           <SidebarLink href="/admin/settings">Pengaturan</SidebarLink>
           <div className="border-t border-zinc-700 pt-4 mt-4">
             <Link
               href="/"
               className="block text-sm text-zinc-400 hover:text-white transition-colors"
             >
-              &larr; Ke Toko
+              &larr; Ke Beranda
             </Link>
           </div>
         </nav>

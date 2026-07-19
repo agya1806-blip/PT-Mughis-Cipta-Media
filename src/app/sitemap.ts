@@ -17,7 +17,7 @@ export default async function sitemap() {
     { url: `${baseUrl}/contact`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.6 },
     { url: `${baseUrl}/penulis`, lastModified: new Date(), changeFrequency: "weekly" as const, priority: 0.6 },
     { url: `${baseUrl}/search`, lastModified: new Date(), changeFrequency: "weekly" as const, priority: 0.4 },
-    { url: `${baseUrl}/cart`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.3 },
+
   ]
 
   try {

@@ -155,8 +155,8 @@ export function KatalogClient() {
                 className="rounded-lg border border-zinc-300 bg-white px-3 py-2 text-sm text-zinc-700 focus:outline-none focus:ring-2 focus:ring-gold/50"
               >
                 <option value="latest">Terbaru</option>
-                <option value="price_asc">Harga: Rendah ke Tinggi</option>
-                <option value="price_desc">Harga: Tinggi ke Rendah</option>
+                <option value="title_asc">Judul A-Z</option>
+                <option value="title_desc">Judul Z-A</option>
               </select>
             </div>
           </div>
@@ -312,8 +312,8 @@ export function KatalogClient() {
                   className="w-full rounded-lg border border-zinc-300 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50"
                 >
                   <option value="latest">Terbaru</option>
-                  <option value="price_asc">Harga: Rendah ke Tinggi</option>
-                  <option value="price_desc">Harga: Tinggi ke Rendah</option>
+                  <option value="title_asc">Judul A-Z</option>
+                  <option value="title_desc">Judul Z-A</option>
                 </select>
               </div>
             </div>

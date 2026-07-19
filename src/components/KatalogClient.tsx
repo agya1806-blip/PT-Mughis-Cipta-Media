@@ -141,8 +141,7 @@ export function KatalogClient() {
         <div className="flex-1 min-w-0">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
             <div>
-              <h1 className="text-2xl font-bold text-zinc-900">Katalog Buku</h1>
-              <p className="text-sm text-zinc-500 mt-1">
+              <p className="text-sm text-zinc-500">
                 {total} buku ditemukan
               </p>
             </div>

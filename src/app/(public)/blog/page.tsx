@@ -1,7 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { prisma } from "@/lib/prisma"
-import Breadcrumb from "@/components/ui/Breadcrumb"
+import PageHero from "@/components/PageHero"
 import { Pagination, EmptyState } from "@/components/ui"
 
 export const metadata = {
@@ -52,11 +52,19 @@ export default async function BlogPage({ searchParams }: Props) {
   const latest = currentPage === 1 ? articles.slice(1) : articles
 
   return (
-    <div className="flex-1 bg-zinc-50">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <Breadcrumb items={[{ label: "Beranda", href: "/" }, { label: "Blog" }]} />
-
-        <h1 className="text-3xl font-bold text-zinc-900 mb-8">Blog</h1>
+    <main className="min-h-screen">
+      <PageHero
+        title="Artikel &"
+        accent="Blog"
+        description="Baca artikel dan informasi terbaru seputar dunia penerbitan, literasi, dan kegiatan Maktabah al-Mughis."
+        breadcrumb={[
+          { label: "Beranda", href: "/" },
+          { label: "Blog" },
+        ]}
+        icon="blog"
+      />
+      <div className="bg-zinc-50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
 
         {featured && currentPage === 1 && (
           <Link
@@ -141,6 +149,7 @@ export default async function BlogPage({ searchParams }: Props) {
           </>
         )}
       </div>
-    </div>
+      </div>
+    </main>
   )
 }

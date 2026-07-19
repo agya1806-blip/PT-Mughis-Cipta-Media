@@ -1,3 +1,4 @@
+import PageHero from "@/components/PageHero"
 import { authors } from "@/data/authors"
 import { AuthorListClient } from "@/components/authors"
 
@@ -7,5 +8,21 @@ export const metadata = {
 }
 
 export default function PenulisPage() {
-  return <AuthorListClient authors={authors} />
+  return (
+    <main className="min-h-screen">
+      <PageHero
+        title="Para"
+        accent="Penulis"
+        description="Para penulis yang telah berkarya bersama Maktabah al-Mughis dalam menerbitkan buku-buku berkualitas."
+        breadcrumb={[
+          { label: "Beranda", href: "/" },
+          { label: "Penulis" },
+        ]}
+        icon="penulis"
+      />
+      <div className="bg-zinc-50">
+        <AuthorListClient authors={authors} />
+      </div>
+    </main>
+  )
 }

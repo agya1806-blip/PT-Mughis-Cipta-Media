@@ -1,4 +1,4 @@
-import Breadcrumb from "@/components/ui/Breadcrumb"
+import PageHero from "@/components/PageHero"
 import PublishingSolutions from "@/components/services/PublishingSolutions"
 
 export async function generateMetadata() {
@@ -19,16 +19,18 @@ export async function generateMetadata() {
 
 export default function LayananPenerbitanPage() {
   return (
-    <div className="flex-1 bg-zinc-50">
-      <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-10 pt-8 sm:pt-10">
-        <Breadcrumb
-          items={[
-            { label: "Beranda", href: "/" },
-            { label: "Layanan Penerbitan" },
-          ]}
-        />
-      </div>
+    <main className="min-h-screen">
+      <PageHero
+        title="Layanan"
+        accent="Penerbitan"
+        description="Solusi lengkap untuk mewujudkan naskah Anda menjadi buku yang diterbitkan secara profesional."
+        breadcrumb={[
+          { label: "Beranda", href: "/" },
+          { label: "Layanan Penerbitan" },
+        ]}
+        icon="layanan"
+      />
       <PublishingSolutions />
-    </div>
+    </main>
   )
 }

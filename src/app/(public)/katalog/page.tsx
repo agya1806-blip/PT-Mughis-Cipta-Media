@@ -1,4 +1,5 @@
 import { Suspense } from "react"
+import PageHero from "@/components/PageHero"
 import { KatalogClient } from "@/components/KatalogClient"
 
 export const metadata = {
@@ -19,12 +20,24 @@ export const metadata = {
 
 export default function KatalogPage() {
   return (
-    <div className="flex-1 bg-zinc-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pb-20 lg:pb-8">
-        <Suspense fallback={<div className="text-center py-20 text-zinc-500">Memuat katalog...</div>}>
-          <KatalogClient />
-        </Suspense>
+    <main className="min-h-screen">
+      <PageHero
+        title="Katalog"
+        accent="Buku"
+        description="Jelajahi koleksi buku-buku islami dari Maktabah al-Mughis. Temukan berbagai kategori dan penulis."
+        breadcrumb={[
+          { label: "Beranda", href: "/" },
+          { label: "Katalog Buku" },
+        ]}
+        icon="katalog"
+      />
+      <div className="bg-zinc-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
+          <Suspense fallback={<div className="text-center py-20 text-zinc-500">Memuat katalog...</div>}>
+            <KatalogClient />
+          </Suspense>
+        </div>
       </div>
-    </div>
+    </main>
   )
 }

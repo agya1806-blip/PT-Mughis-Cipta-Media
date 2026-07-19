@@ -71,12 +71,12 @@ export default function PublishingSolutions() {
               Solusi Penerbitan
             </span>
           </div>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-zinc-900 dark:text-white leading-[1.15] tracking-tight text-balance">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-zinc-900 dark:text-white leading-[1.15] tracking-tight text-balance">
             Solusi{" "}
             <span className="bg-gradient-to-r from-gold to-gold-dark bg-clip-text text-transparent">
               Penerbitan Lengkap
             </span>
-          </h1>
+          </h2>
           <p className="mt-4 text-zinc-500 dark:text-zinc-400 max-w-2xl mx-auto text-base sm:text-lg leading-relaxed">
             Solusi lengkap untuk mewujudkan naskah Anda menjadi buku yang diterbitkan secara profesional.
           </p>

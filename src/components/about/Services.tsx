@@ -10,14 +10,14 @@ import {
 const services = [
   { icon: BookOpen, title: "Penerbitan Buku", desc: "Proses penerbitan buku yang lengkap dan profesional, dari naskah hingga buku siap edar." },
   { icon: Printer, title: "Percetakan Buku", desc: "Layanan percetakan berkualitas tinggi dengan berbagai pilihan ukuran, kertas, dan finishing." },
-  { icon: PenLine, title: "Self Publishing", desc: "Solusi penerbitan mandiri untuk penulis yang ingin mengontrol penuh proses kreatifnya." },
+  { icon: PenLine, title: "Penerbitan Mandiri", desc: "Solusi penerbitan mandiri untuk penulis yang ingin mengontrol penuh proses kreatifnya." },
   { icon: FileEdit, title: "Editing", desc: "Layanan editing naskah profesional meliputi substansi, bahasa, dan penyempurnaan konten." },
   { icon: Search, title: "Proofreading", desc: "Pemeriksaan detail untuk memastikan naskah bebas dari kesalahan ejaan, tanda baca, dan tata bahasa." },
   { icon: LayoutTemplate, title: "Layout Buku", desc: "Penataan isi buku yang rapi, nyaman dibaca, dan sesuai standar industri penerbitan." },
   { icon: Palette, title: "Desain Cover", desc: "Desain sampul buku yang menarik, profesional, dan mencerminkan isi buku." },
   { icon: QrCode, title: "Pengurusan ISBN", desc: "Bantuan pengurusan ISBN Perpustakaan Nasional RI untuk setiap buku yang diterbitkan." },
   { icon: Truck, title: "Distribusi Buku", desc: "Jaringan distribusi yang luas untuk menjangkau pembaca di seluruh Indonesia." },
-  { icon: ShoppingBag, title: "Penjualan Buku", desc: "Platform penjualan buku yang memudahkan penulis menjangkau pasar yang lebih luas." },
+  { icon: ShoppingBag, title: "Pemasaran Buku", desc: "Strategi pemasaran untuk memperkenalkan buku Anda ke pasar yang lebih luas." },
   { icon: Radio, title: "Media Kreatif", desc: "Layanan media kreatif termasuk konten digital, multimedia, dan promosi buku." },
 ]
 

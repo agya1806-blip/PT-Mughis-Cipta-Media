@@ -5,15 +5,26 @@ import Breadcrumb from "@/components/ui/Breadcrumb"
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://pt-mughis-cipta-media.vercel.app"
   const article = await prisma.article.findUnique({ where: { slug } })
   if (!article) return { title: "Artikel Tidak Ditemukan" }
+  const description = article.content.replace(/<[^>]*>/g, "").substring(0, 160)
   return {
     title: `${article.title} | Maktabah al-Mughis`,
-    description: article.content.replace(/<[^>]*>/g, "").substring(0, 160),
+    description,
     openGraph: {
       title: article.title,
-      description: article.content.replace(/<[^>]*>/g, "").substring(0, 160),
-      ...(article.featuredImage ? { images: [{ url: article.featuredImage }] } : {}),
+      description,
+      ...(article.featuredImage ? { images: [{ url: article.featuredImage, width: 1200, height: 630 }] } : {}),
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${article.title} | Maktabah al-Mughis`,
+      description,
+      ...(article.featuredImage ? { images: [article.featuredImage] } : {}),
+    },
+    alternates: {
+      canonical: `${baseUrl}/blog/${slug}`,
     },
   }
 }

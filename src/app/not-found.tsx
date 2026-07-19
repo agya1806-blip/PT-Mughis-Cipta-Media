@@ -1,5 +1,11 @@
+import type { Metadata } from "next"
 import Link from "next/link"
 import { Search, Home, BookOpen } from "lucide-react"
+
+export const metadata: Metadata = {
+  title: "404 - Halaman Tidak Ditemukan",
+  robots: { index: false, follow: true },
+}
 
 export default function NotFound() {
   return (

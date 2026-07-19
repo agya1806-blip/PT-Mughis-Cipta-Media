@@ -17,9 +17,10 @@ const geistMono = Geist_Mono({
 const siteName = "Maktabah al-Mughis – PT Mughis Cipta Media"
 const siteDescription =
   "Penerbit buku resmi dan percetakan profesional di Indonesia. Layanan penerbitan buku, cetak buku murah, desain cover, editing naskah, pengurusan ISBN, dan distribusi nasional. Percayakan penerbitan buku Anda pada Maktabah al-Mughis."
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://pt-mughis-cipta-media.vercel.app"
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || "https://pt-mughis-cipta-media.vercel.app"),
+  metadataBase: new URL(baseUrl),
   title: {
     default: siteName,
     template: `%s | ${siteName}`,
@@ -43,11 +44,13 @@ export const metadata: Metadata = {
     siteName: "Maktabah al-Mughis",
     title: siteName,
     description: siteDescription,
+    images: [{ url: `${baseUrl}/og-image.png`, width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
     title: siteName,
     description: siteDescription,
+    images: [`${baseUrl}/og-image.png`],
   },
   robots: {
     index: true,
@@ -56,6 +59,13 @@ export const metadata: Metadata = {
   verification: {
     google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION,
   },
+  alternates: {
+    canonical: baseUrl,
+  },
+  icons: {
+    icon: "/favicon.ico",
+  },
+  manifest: "/manifest.json",
 }
 
 export default function RootLayout({
@@ -86,20 +96,35 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col">
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-gold focus:text-white focus:rounded-xl focus:text-sm focus:font-medium focus:shadow-lg"
+        >
+          Langsung ke konten utama
+        </a>
         <JsonLd
           data={{
             "@context": "https://schema.org",
             "@type": "Organization",
             name: "PT Mughis Cipta Media",
             alternateName: "Maktabah al-Mughis",
-            description:
-              "Penerbit, percetakan, dan mitra kreatif untuk mewujudkan karya terbaik Anda. Layanan penerbitan buku, editing, desain, ISBN, dan distribusi nasional.",
-            url: process.env.NEXT_PUBLIC_BASE_URL || "https://pt-mughis-cipta-media.vercel.app",
-            logo: `${process.env.NEXT_PUBLIC_BASE_URL || "https://pt-mughis-cipta-media.vercel.app"}/logo.png`,
+            description: siteDescription,
+            url: baseUrl,
+            logo: `${baseUrl}/logo.png`,
             sameAs: [
               "https://www.instagram.com/maktabahmughis",
               "https://www.facebook.com/maktabahmughis",
             ],
+          }}
+        />
+        <JsonLd
+          data={{
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            name: siteName,
+            url: baseUrl,
+            description: siteDescription,
+            inLanguage: "id",
           }}
         />
         <ThemeProvider>

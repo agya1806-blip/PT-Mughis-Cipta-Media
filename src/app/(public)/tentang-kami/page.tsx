@@ -28,6 +28,7 @@ export const metadata = {
 export default function TentangKamiPage() {
   return (
     <main className="min-h-screen">
+      <h1 className="sr-only">Tentang PT Mughis Cipta Media – Maktabah al-Mughis</h1>
       <AboutHero />
       <AboutStory />
       <VisionMission />

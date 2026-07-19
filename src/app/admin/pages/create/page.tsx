@@ -3,21 +3,19 @@
 import { useState } from "react"
 import { useRouter } from "next/navigation"
 import AdminEditor from "@/components/admin/AdminEditor"
-import DocumentUpload from "@/components/admin/DocumentUpload"
 import FormSection from "@/components/admin/FormSection"
 import { useToast } from "@/components/admin/Toast"
 
 export default function CreatePage() {
   const router = useRouter()
   const { toast } = useToast()
-  const [form, setForm] = useState({ title: "", slug: "", content: "", fileUrl: "" })
+  const [form, setForm] = useState({ title: "", slug: "", content: "" })
   const [submitting, setSubmitting] = useState(false)
-  const [contentMode, setContentMode] = useState<"html" | "file">("html")
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
-    if (!form.content && !form.fileUrl) {
-      toast("error", "Harap isi konten atau upload file")
+    if (!form.content) {
+      toast("error", "Harap isi konten halaman")
       return
     }
     setSubmitting(true)
@@ -60,22 +58,12 @@ export default function CreatePage() {
           </div>
         </FormSection>
 
-        <FormSection title="Konten Halaman">
-          <div className="flex items-center gap-2 bg-zinc-100 rounded-lg p-0.5 w-fit">
-            <button type="button" onClick={() => setContentMode("html")}
-              className={`px-4 py-1.5 rounded-md text-xs font-medium transition-all ${contentMode === "html" ? "bg-white text-zinc-900 shadow-sm" : "text-zinc-500 hover:text-zinc-700"}`}>
-              Tulis Manual
-            </button>
-            <button type="button" onClick={() => setContentMode("file")}
-              className={`px-4 py-1.5 rounded-md text-xs font-medium transition-all ${contentMode === "file" ? "bg-white text-zinc-900 shadow-sm" : "text-zinc-500 hover:text-zinc-700"}`}>
-              Upload File
-            </button>
-          </div>
-          {contentMode === "html" ? (
-            <AdminEditor value={form.content} onChange={(val) => setForm({ ...form, content: val })} placeholder="Tulis konten halaman di sini..." />
-          ) : (
-            <DocumentUpload label="Upload File PDF / Word" value={form.fileUrl} onChange={(val) => setForm({ ...form, fileUrl: val })} />
-          )}
+        <FormSection title="Konten Halaman" description="Tulis langsung atau upload file .docx — akan otomatis dikonversi ke HTML">
+          <AdminEditor
+            value={form.content}
+            onChange={(val) => setForm({ ...form, content: val })}
+            placeholder="Tulis konten halaman di sini, atau klik tombol Upload DOCX di toolbar"
+          />
         </FormSection>
 
         <div className="flex gap-3">

@@ -1,7 +1,7 @@
 "use client"
 
 import { useRef, useState, useCallback } from "react"
-import { Bold, Italic, Heading2, Heading3, List, ListOrdered, Link, Eye, Edit3 } from "lucide-react"
+import { Bold, Italic, Heading2, Heading3, List, ListOrdered, Link, Eye, Edit3, FileUp, Loader2 } from "lucide-react"
 
 interface Props {
   value: string
@@ -13,7 +13,9 @@ interface Props {
 
 export default function AdminEditor({ value, onChange, label = "Konten", placeholder = "Tulis di sini...", minRows = 12 }: Props) {
   const [preview, setPreview] = useState(false)
+  const [converting, setConverting] = useState(false)
   const textareaRef = useRef<HTMLTextAreaElement>(null)
+  const docxInputRef = useRef<HTMLInputElement>(null)
 
   const insert = useCallback((before: string, after: string = "") => {
     const ta = textareaRef.current
@@ -29,6 +31,39 @@ export default function AdminEditor({ value, onChange, label = "Konten", placeho
     })
   }, [value, onChange])
 
+  const handleDocx = async (file: File) => {
+    if (!file.name.endsWith(".docx")) {
+      alert("Hanya file .docx yang didukung")
+      return
+    }
+    setConverting(true)
+    try {
+      const arrayBuffer = await file.arrayBuffer()
+      const mammoth = await import("mammoth")
+      const result = await mammoth.default.convertToHtml({ arrayBuffer })
+      onChange(result.value || "(Gagal mengonversi)")
+    } catch {
+      alert("Gagal mengonversi file. Pastikan file adalah .docx yang valid.")
+    } finally {
+      setConverting(false)
+    }
+  }
+
+  const handlePdf = async (file: File) => {
+    alert("Konversi PDF belum didukung. Silakan salin teks secara manual.")
+  }
+
+  const handleFileInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
+    if (!file) return
+    if (file.name.endsWith(".docx")) {
+      handleDocx(file)
+    } else {
+      handlePdf(file)
+    }
+    e.target.value = ""
+  }
+
   const toolbar = [
     { icon: <Bold className="w-4 h-4" />, label: "Tebal", action: () => insert("<strong>", "</strong>") },
     { icon: <Italic className="w-4 h-4" />, label: "Miring", action: () => insert("<em>", "</em>") },
@@ -41,6 +76,7 @@ export default function AdminEditor({ value, onChange, label = "Konten", placeho
       if (url) insert(`<a href="${url}">`, "</a>")
     }},
     { icon: <Eye className="w-4 h-4" />, label: "Preview", action: () => setPreview(!preview) },
+    { icon: converting ? <Loader2 className="w-4 h-4 animate-spin" /> : <FileUp className="w-4 h-4" />, label: converting ? "Mengonversi..." : "Upload DOCX", action: () => docxInputRef.current?.click() },
   ]
 
   return (
@@ -55,6 +91,13 @@ export default function AdminEditor({ value, onChange, label = "Konten", placeho
       </div>
       <div className="rounded-xl border border-zinc-300 overflow-hidden bg-white">
         <div className="flex flex-wrap items-center gap-0.5 px-2 py-1.5 border-b border-zinc-200 bg-zinc-50">
+          <input
+            ref={docxInputRef}
+            type="file"
+            accept=".docx,.pdf"
+            className="hidden"
+            onChange={handleFileInput}
+          />
           {toolbar.map((item) => (
             <button
               key={item.label}

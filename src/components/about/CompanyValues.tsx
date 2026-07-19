@@ -8,7 +8,7 @@ const values = [
     icon: Shield,
     title: "Integritas",
     desc: "Kami menjunjung tinggi kejujuran, etika, dan tanggung jawab dalam setiap aspek bisnis. Kepercayaan adalah fondasi utama hubungan kami dengan penulis dan mitra.",
-    gradient: "from-emerald-500 to-emerald-600",
+    gradient: "from-gold to-gold-dark",
   },
   {
     icon: Briefcase,
@@ -20,7 +20,7 @@ const values = [
     icon: Lightbulb,
     title: "Inovasi",
     desc: "Kami terus berinovasi dalam teknologi penerbitan, desain, dan distribusi untuk menghadirkan solusi terbaik yang relevan dengan perkembangan zaman.",
-    gradient: "from-amber-500 to-amber-600",
+    gradient: "from-gold to-gold-dark",
   },
   {
     icon: Star,
@@ -53,10 +53,10 @@ export default function CompanyValues() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="text-emerald-600 font-semibold text-sm tracking-widest uppercase">Fundasi Perusahaan</span>
+          <span className="text-gold font-semibold text-sm tracking-widest uppercase">Fundasi Perusahaan</span>
           <h2 className="text-4xl sm:text-5xl font-bold text-zinc-900 mt-4">
             Nilai{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-amber-600">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold to-gold-dark">
               Perusahaan
             </span>
           </h2>

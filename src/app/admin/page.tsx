@@ -54,7 +54,11 @@ function MetricCard({
 }) {
   const colors: Record<string, string> = {
     zinc: "bg-zinc-50 border-zinc-200 text-zinc-800",
+<<<<<<< HEAD
     gold: "bg-gold/10 border-gold/20 text-gold",
+=======
+    gold: "bg-gold/5 border-gold/20 text-gold-dark",
+>>>>>>> 3c62a11
     green: "bg-green-50 border-green-200 text-green-800",
     blue: "bg-blue-50 border-blue-200 text-blue-800",
   }

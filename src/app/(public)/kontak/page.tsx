@@ -124,7 +124,11 @@ export default async function KontakPage() {
               >
                 <Phone className="w-6 h-6 mx-auto mb-2" />
                 <p className="font-semibold">Hubungi via WhatsApp</p>
+<<<<<<< HEAD
                 <p className="text-sm text-gold-light mt-1">{phone}</p>
+=======
+                <p className="text-sm text-gold/80 mt-1">{phone}</p>
+>>>>>>> 3c62a11
               </a>
             )}
           </div>

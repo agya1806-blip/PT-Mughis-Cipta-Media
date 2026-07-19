@@ -122,7 +122,11 @@ export default function RegisterPage() {
             </select>
           </div>
           {form.role === "RESELLER" && (
+<<<<<<< HEAD
             <p className="text-xs text-gold bg-gold/10 rounded-lg px-3 py-2">
+=======
+            <p className="text-xs text-gold bg-gold/5 rounded-lg px-3 py-2">
+>>>>>>> 3c62a11
               Pendaftaran reseller akan ditinjau oleh admin terlebih dahulu.
             </p>
           )}

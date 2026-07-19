@@ -142,7 +142,11 @@ export default async function BookDetailPage({ params }: { params: Promise<{ id:
 
             <div className="md:col-span-2 space-y-6">
               <div>
+<<<<<<< HEAD
                 <span className="inline-block text-xs font-medium text-gold bg-gold/10 px-3 py-1 rounded-full mb-3">
+=======
+                <span className="inline-block text-xs font-medium text-gold bg-gold/5 px-3 py-1 rounded-full mb-3">
+>>>>>>> 3c62a11
                   {mapped.category_name}
                 </span>
                 <h1 className="text-2xl md:text-3xl font-bold text-zinc-900 leading-tight">{mapped.title}</h1>

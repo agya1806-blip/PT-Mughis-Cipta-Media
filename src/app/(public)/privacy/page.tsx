@@ -19,7 +19,11 @@ export default function PrivacyPage() {
   return (
     <LegalLayout
       icon={Shield}
+<<<<<<< HEAD
       iconBg="bg-gold/10"
+=======
+      iconBg="bg-gold/20"
+>>>>>>> 3c62a11
       iconColor="text-gold"
       title="Kebijakan Privasi"
       subtitle="PT Mughis Cipta Media"

@@ -4,25 +4,15 @@ import Link from "next/link"
 import Image from "next/image"
 import { useState } from "react"
 import type { Book } from "@/lib/data"
-import { useCart } from "./CartProvider"
 
 export default function BookCard({ book }: { book: Book }) {
-  const { addItem } = useCart()
   const [imgError, setImgError] = useState(false)
 
-  function handleAddToCart() {
-    addItem({
-      bookId: book.id,
-      title: book.title,
-      price: book.price,
-      quantity: 1,
-      weight: book.weight ?? 0,
-      coverImage: book.cover_image ?? "",
-    })
-  }
-
   return (
-    <div className="group relative flex flex-col overflow-hidden rounded-2xl border border-zinc-200 dark:border-zinc-700/50 bg-white dark:bg-zinc-800/50 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-gold/30">
+    <Link
+      href={`/buku/${book.id}`}
+      className="group relative flex flex-col overflow-hidden rounded-2xl border border-zinc-200 dark:border-zinc-700/50 bg-white dark:bg-zinc-800/50 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-gold/30"
+    >
       <div className="relative aspect-[3/4] bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center overflow-hidden">
         {book.cover_image && !imgError ? (
           <Image
@@ -54,37 +44,14 @@ export default function BookCard({ book }: { book: Book }) {
           {book.title}
         </h3>
         <p className="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 line-clamp-1 mb-2">{book.author}</p>
-        <div className="mt-auto flex items-center justify-between mb-3">
-          <span className="text-base sm:text-lg font-bold text-gold">
-            Rp{book.price.toLocaleString("id-ID")}
-          </span>
-        </div>
-        <div className="flex gap-2">
-          <Link
-            href={`/buku/${book.id}`}
-            className="flex-1 text-center text-sm font-medium text-zinc-700 dark:text-zinc-300 border border-zinc-300 dark:border-zinc-600 rounded-xl py-2 transition-colors hover:bg-zinc-50 dark:hover:bg-zinc-800"
-          >
-            Detail
-          </Link>
-          <button
-            onClick={handleAddToCart}
-            className="flex-1 text-sm font-medium text-white bg-gold rounded-xl py-2 transition-all duration-200 hover:bg-gold-dark hover:shadow-lg hover:shadow-gold/25 focus:ring-2 focus:ring-gold/50"
-          >
-            + Keranjang
-          </button>
-        </div>
-        <div className="mt-2">
-          <button
-            onClick={() => {
-              const event = new CustomEvent("open-preview", { detail: { book } })
-              window.dispatchEvent(event)
-            }}
-            className="w-full text-xs text-center text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-300 transition-colors"
-          >
-            Buka Preview
-          </button>
+        <div className="mt-auto flex items-center justify-between">
+          {book.category_name && (
+            <span className="inline-flex items-center text-xs font-medium text-gold bg-gold/10 px-2.5 py-1 rounded-full">
+              {book.category_name}
+            </span>
+          )}
         </div>
       </div>
-    </div>
+    </Link>
   )
 }

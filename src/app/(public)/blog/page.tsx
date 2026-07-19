@@ -1,3 +1,4 @@
+import Image from "next/image"
 import Link from "next/link"
 import { prisma } from "@/lib/prisma"
 import Breadcrumb from "@/components/ui/Breadcrumb"
@@ -60,20 +61,34 @@ export default async function BlogPage({ searchParams }: Props) {
         {featured && currentPage === 1 && (
           <Link
             href={`/blog/${featured.slug}`}
-            className="block bg-gradient-to-br from-gold to-gold-dark rounded-2xl p-8 mb-10 text-white hover:shadow-xl transition-shadow"
+            className="relative block bg-gradient-to-br from-gold to-gold-dark rounded-2xl overflow-hidden mb-10 text-white hover:shadow-xl transition-shadow"
           >
-            <span className="inline-block text-xs font-medium uppercase tracking-wider bg-white/20 px-3 py-1 rounded-full mb-3">
-              Artikel Unggulan
-            </span>
-            <h2 className="text-2xl font-bold mb-2">{featured.title}</h2>
-            <p className="text-gold/80 text-sm mb-4">
-              {new Date(featured.createdAt).toLocaleDateString("id-ID", {
-                year: "numeric", month: "long", day: "numeric",
-              })}
-            </p>
-            <p className="text-white/90 line-clamp-2">
-              {featured.content.replace(/<[^>]*>/g, "").substring(0, 150)}...
-            </p>
+            {featured.featuredImage && (
+              <div className="relative w-full h-56 sm:h-72">
+                <Image
+                  src={featured.featuredImage}
+                  alt={featured.title}
+                  fill
+                  className="object-cover opacity-30"
+                  sizes="(max-width: 768px) 100vw, 800px"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-gold-dark/60 to-transparent" />
+              </div>
+            )}
+            <div className="p-8 relative z-10">
+              <span className="inline-block text-xs font-medium uppercase tracking-wider bg-white/20 px-3 py-1 rounded-full mb-3">
+                Artikel Unggulan
+              </span>
+              <h2 className="text-2xl font-bold mb-2">{featured.title}</h2>
+              <p className="text-gold/80 text-sm mb-4">
+                {new Date(featured.createdAt).toLocaleDateString("id-ID", {
+                  year: "numeric", month: "long", day: "numeric",
+                })}
+              </p>
+              <p className="text-white/90 line-clamp-2">
+                {featured.content.replace(/<[^>]*>/g, "").substring(0, 150)}...
+              </p>
+            </div>
           </Link>
         )}
 
@@ -89,17 +104,30 @@ export default async function BlogPage({ searchParams }: Props) {
                 <Link
                   key={a.id}
                   href={`/blog/${a.slug}`}
-                  className="block bg-white rounded-xl border border-zinc-200 p-6 hover:shadow-md transition-shadow"
+                  className="group flex flex-col sm:flex-row bg-white rounded-xl border border-zinc-200 overflow-hidden hover:shadow-md transition-shadow"
                 >
-                  <h2 className="text-xl font-semibold text-zinc-900 mb-2">{a.title}</h2>
-                  <p className="text-sm text-zinc-500 mb-3">
-                    {new Date(a.createdAt).toLocaleDateString("id-ID", {
-                      year: "numeric", month: "long", day: "numeric",
-                    })}
-                  </p>
-                  <p className="text-zinc-600 line-clamp-3">
-                    {a.content.replace(/<[^>]*>/g, "").substring(0, 200)}...
-                  </p>
+                  {a.featuredImage && (
+                    <div className="relative w-full sm:w-56 h-48 sm:h-auto shrink-0 bg-zinc-100">
+                      <Image
+                        src={a.featuredImage}
+                        alt={a.title}
+                        fill
+                        className="object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+                        sizes="(max-width: 640px) 100vw, 224px"
+                      />
+                    </div>
+                  )}
+                  <div className="flex-1 p-6">
+                    <h2 className="text-xl font-semibold text-zinc-900 mb-2 group-hover:text-gold transition-colors">{a.title}</h2>
+                    <p className="text-sm text-zinc-500 mb-3">
+                      {new Date(a.createdAt).toLocaleDateString("id-ID", {
+                        year: "numeric", month: "long", day: "numeric",
+                      })}
+                    </p>
+                    <p className="text-zinc-600 line-clamp-3">
+                      {a.content.replace(/<[^>]*>/g, "").substring(0, 200)}...
+                    </p>
+                  </div>
                 </Link>
               ))}
             </div>

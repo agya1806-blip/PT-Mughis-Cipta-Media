@@ -3,7 +3,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { motion } from "framer-motion"
-import { BookOpen, Eye, ShoppingCart } from "lucide-react"
+import { BookOpen, Eye, BookText } from "lucide-react"
 import Badge from "@/components/ui/Badge"
 import Button from "@/components/ui/Button"
 import BookBadge from "@/components/ui/BookBadge"
@@ -107,13 +107,13 @@ export default function BookHero({ book }: Props) {
             </p>
 
             <div className="flex flex-wrap gap-3 pt-2">
-              <Button variant="primary" size="default">
-                <ShoppingCart className="w-4 h-4" />
-                Beli Sekarang
-              </Button>
               <Button variant="outline" size="default">
                 <Eye className="w-4 h-4" />
                 Pratinjau
+              </Button>
+              <Button variant="primary" size="default">
+                <BookText className="w-4 h-4" />
+                Info Lengkap
               </Button>
             </div>
           </motion.div>

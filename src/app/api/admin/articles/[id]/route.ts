@@ -32,8 +32,9 @@ export async function PUT(
       data: {
         ...(body.title != null ? { title: body.title } : {}),
         ...(body.slug != null ? { slug: body.slug } : {}),
-        ...(body.content != null ? { content: body.content } : {}),
+        ...(body.content !== undefined ? { content: body.content } : {}),
         ...(body.featuredImage !== undefined ? { featuredImage: body.featuredImage } : {}),
+        ...(body.fileUrl !== undefined ? { fileUrl: body.fileUrl } : {}),
       },
     })
     return NextResponse.json(article)

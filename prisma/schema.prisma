@@ -144,6 +144,7 @@ model Article {
   slug          String   @unique
   content       String   @db.Text
   featuredImage String?  @map("featured_image")
+  fileUrl       String?  @map("file_url")
   createdAt     DateTime @default(now()) @map("created_at")
   updatedAt     DateTime @updatedAt @map("updated_at")
 
@@ -161,6 +162,7 @@ model Page {
   slug      String   @unique
   title     String
   content   String   @db.Text
+  fileUrl   String?  @map("file_url")
   updatedAt DateTime @updatedAt @map("updated_at")
 
   @@map("pages")

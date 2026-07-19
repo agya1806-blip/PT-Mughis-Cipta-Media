@@ -18,15 +18,16 @@ export async function POST(request: Request) {
   }
   try {
     const body = await request.json()
-    if (!body.title || !body.slug || !body.content) {
-      return NextResponse.json({ error: "Title, slug, dan konten wajib diisi" }, { status: 400 })
+    if (!body.title || !body.slug) {
+      return NextResponse.json({ error: "Judul dan slug wajib diisi" }, { status: 400 })
     }
     const article = await prisma.article.create({
       data: {
         title: body.title,
         slug: body.slug,
-        content: body.content,
+        content: body.content || "",
         featuredImage: body.featuredImage || "",
+        fileUrl: body.fileUrl || null,
       },
     })
     return NextResponse.json(article, { status: 201 })

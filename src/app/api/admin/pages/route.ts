@@ -26,6 +26,7 @@ export async function POST(request: Request) {
         slug: body.slug,
         title: body.title,
         content: body.content || "",
+        fileUrl: body.fileUrl || null,
       },
     })
     return NextResponse.json(page, { status: 201 })

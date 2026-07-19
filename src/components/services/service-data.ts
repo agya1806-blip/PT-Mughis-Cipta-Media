@@ -1,4 +1,4 @@
-import { BookOpen, Printer, Hash, Layout, Palette, FileCheck, Clock, Users, Award, HeadphonesIcon, ArrowRight, BookText, Sparkles, Shield, TrendingUp, Globe, CheckCircle } from "lucide-react"
+import { BookOpen, Printer, Hash, Layout, Palette, FileCheck, Clock, Users, Award, HeadphonesIcon, ArrowRight, BookText, Sparkles, Shield, TrendingUp, Globe, CheckCircle, Building2, FileEdit } from "lucide-react"
 import type { LucideIcon } from "lucide-react"
 
 export interface ServiceDetail {

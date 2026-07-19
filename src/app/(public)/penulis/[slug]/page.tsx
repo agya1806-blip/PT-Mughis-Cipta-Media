@@ -71,11 +71,7 @@ export default async function PenulisDetailPage({ params }: Props) {
         />
 
         <div className="flex items-center gap-5 mb-10">
-<<<<<<< HEAD
-          <div className="w-16 h-16 rounded-full bg-gold/10 flex items-center justify-center text-gold font-bold text-2xl shrink-0">
-=======
           <div className="w-16 h-16 rounded-full bg-gold/10 flex items-center justify-center text-gold-dark font-bold text-2xl shrink-0">
->>>>>>> 3c62a11
             {author.charAt(0)}
           </div>
           <div>

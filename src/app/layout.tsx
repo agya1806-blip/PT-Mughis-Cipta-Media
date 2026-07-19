@@ -15,25 +15,47 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 })
 
+const siteName = "Maktabah al-Mughis – PT Mughis Cipta Media"
+const siteDescription =
+  "Penerbit buku resmi dan percetakan profesional di Indonesia. Layanan penerbitan buku, cetak buku murah, desain cover, editing naskah, pengurusan ISBN, dan distribusi nasional. Percayakan penerbitan buku Anda pada Maktabah al-Mughis."
+
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || "https://pt-mughis-cipta-media.vercel.app"),
   title: {
-    default: "Maktabah al-Mughis - PT Mughis Cipta Media",
-    template: "%s | Maktabah al-Mughis",
+    default: siteName,
+    template: `%s | ${siteName}`,
   },
-  description:
-    "Penerbit, percetakan, dan mitra kreatif untuk mewujudkan karya terbaik Anda. Layanan penerbitan buku, editing, desain, ISBN, dan distribusi nasional.",
+  description: siteDescription,
+  keywords: [
+    "penerbit buku",
+    "percetakan buku",
+    "penerbit buku islami",
+    "cetak buku murah",
+    "penerbit buku Indonesia",
+    "Maktabah al-Mughis",
+    "PT Mughis Cipta Media",
+    "jasa penerbitan buku",
+    "ISBN buku",
+    "distribusi buku nasional",
+  ],
   openGraph: {
     type: "website",
     locale: "id_ID",
     siteName: "Maktabah al-Mughis",
+    title: siteName,
+    description: siteDescription,
   },
   twitter: {
     card: "summary_large_image",
+    title: siteName,
+    description: siteDescription,
   },
   robots: {
     index: true,
     follow: true,
+  },
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION,
   },
 }
 

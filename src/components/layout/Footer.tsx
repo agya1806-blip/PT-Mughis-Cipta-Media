@@ -91,8 +91,8 @@ export default async function Footer() {
   const { columns, badges, copyright } = footerData
 
   return (
-    <footer className="relative border-t border-border bg-surface overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-gold/[0.02] to-transparent pointer-events-none" />
+    <footer className="relative bg-green overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-cream/[0.03] to-transparent pointer-events-none" />
       <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-10 relative py-16 lg:py-20">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16">
           <div className="sm:col-span-2 lg:col-span-1 space-y-6">
@@ -102,32 +102,32 @@ export default async function Footer() {
                 alt="Maktabah Al-Mughis"
                 width={600}
                 height={63}
-                className="h-8 w-auto"
+                className="h-8 w-auto brightness-0 invert"
               />
             </Link>
-            <p className="text-sm text-secondary leading-relaxed">
+            <p className="text-sm text-cream/80 leading-relaxed">
               {company.tagline}
             </p>
             <div className="space-y-3">
               <div className="flex items-start gap-3">
-                <IconWrapper size="sm">
+                <IconWrapper size="sm" variant="gold">
                   <MapPin className="w-3.5 h-3.5" />
                 </IconWrapper>
-                <span className="text-sm text-secondary">{company.address}</span>
+                <span className="text-sm text-cream/80">{company.address}</span>
               </div>
               <a href={`mailto:${company.email}`} className="flex items-center gap-3 group">
-                <IconWrapper size="sm">
+                <IconWrapper size="sm" variant="gold">
                   <Mail className="w-3.5 h-3.5" />
                 </IconWrapper>
-                <span className="text-sm text-secondary group-hover:text-gold transition-colors duration-300">
+                <span className="text-sm text-cream/80 group-hover:text-gold transition-colors duration-300">
                   {company.email}
                 </span>
               </a>
               <a href={`https://wa.me/${company.whatsappNumber}`} className="flex items-center gap-3 group" target="_blank" rel="noopener noreferrer">
-                <IconWrapper size="sm">
+                <IconWrapper size="sm" variant="gold">
                   <Phone className="w-3.5 h-3.5" />
                 </IconWrapper>
-                <span className="text-sm text-secondary group-hover:text-gold transition-colors duration-300">
+                <span className="text-sm text-cream/80 group-hover:text-gold transition-colors duration-300">
                   {company.whatsapp}
                 </span>
               </a>
@@ -143,7 +143,7 @@ export default async function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={item.label}
-                    className="w-9 h-9 rounded-xl border border-border bg-background flex items-center justify-center text-secondary hover:bg-gold hover:text-white hover:border-gold transition-all duration-300"
+                    className="w-9 h-9 rounded-xl border border-gold/20 bg-cream/10 flex items-center justify-center text-cream/80 hover:bg-gold hover:text-green hover:border-gold transition-all duration-300"
                   >
                     <Icon className="w-4 h-4" />
                   </a>
@@ -153,13 +153,13 @@ export default async function Footer() {
           </div>
           {columns.map((col) => (
             <div key={col.title}>
-              <h3 className="font-semibold text-sm text-primary mb-5">{col.title}</h3>
+              <h3 className="font-semibold text-sm text-gold mb-5">{col.title}</h3>
               <ul className="space-y-3">
                 {col.links.map((link) => (
                   <li key={link.label}>
                     <Link
                       href={link.href}
-                      className="text-sm text-secondary hover:text-gold transition-colors duration-300"
+                      className="text-sm text-cream/70 hover:text-gold transition-colors duration-300"
                     >
                       {link.label}
                     </Link>
@@ -170,12 +170,12 @@ export default async function Footer() {
           ))}
         </div>
       </div>
-      <div className="border-t border-border">
+      <div className="border-t border-gold/20">
         <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-10 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-secondary">{copyright}</p>
+          <p className="text-xs text-cream/60">{copyright}</p>
           <div className="flex items-center gap-2">
             {badges.map((badge) => (
-              <Badge key={badge} variant="outline">
+              <Badge key={badge} variant="gold">
                 {badge}
               </Badge>
             ))}

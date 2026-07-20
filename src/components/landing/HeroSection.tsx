@@ -20,7 +20,7 @@ function FloatingBook() {
       >
         <div className="absolute inset-0 bg-gradient-to-br from-gold/20 via-gold/5 to-transparent rounded-2xl blur-3xl" />
         <div className="relative w-full h-full rounded-2xl bg-gradient-to-br from-zinc-900 to-zinc-800 dark:from-zinc-800 dark:to-zinc-900 shadow-2xl overflow-hidden border border-white/5">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_50%,rgba(200,169,106,0.15),transparent_50%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_50%,rgba(211,194,151,0.15),transparent_50%)]" />
           <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-gold via-gold-light to-gold" />
           <div className="p-6 sm:p-8 flex flex-col h-full">
             <div className="w-8 h-8 rounded-lg bg-gold/20 flex items-center justify-center mb-4">
@@ -42,9 +42,9 @@ function FloatingBook() {
           <motion.div
             animate={{
               background: [
-                "radial-gradient(circle at 50% 50%, rgba(200,169,106,0.1), transparent 60%)",
-                "radial-gradient(circle at 60% 40%, rgba(200,169,106,0.2), transparent 60%)",
-                "radial-gradient(circle at 50% 50%, rgba(200,169,106,0.1), transparent 60%)",
+                "radial-gradient(circle at 50% 50%, rgba(211,194,151,0.1), transparent 60%)",
+                "radial-gradient(circle at 60% 40%, rgba(211,194,151,0.2), transparent 60%)",
+                "radial-gradient(circle at 50% 50%, rgba(211,194,151,0.1), transparent 60%)",
               ],
             }}
             transition={{ duration: 4, repeat: Infinity }}
@@ -127,11 +127,11 @@ export default function HeroSection() {
     <motion.section
       ref={ref}
       style={{ opacity }}
-      className="relative min-h-screen flex items-center bg-gradient-to-br from-zinc-900 via-zinc-800 to-zinc-900 overflow-hidden"
+      className="relative min-h-screen flex items-center bg-gradient-to-br from-green via-green-dark to-green overflow-hidden"
     >
       <ParticleField />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(200,169,106,0.08),transparent_50%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(200,169,106,0.05),transparent_50%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(211,194,151,0.12),transparent_50%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(211,194,151,0.08),transparent_50%)]" />
 
       <div className="container relative z-10 pt-24 pb-16">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -164,7 +164,7 @@ export default function HeroSection() {
 
             <motion.p
               variants={itemVariants}
-              className="mt-6 text-lg sm:text-xl text-zinc-400 leading-relaxed max-w-lg"
+              className="mt-6 text-lg sm:text-xl text-cream/70 leading-relaxed max-w-lg"
             >
               PT Mughis Cipta Media membantu penulis, institusi, dan organisasi
               menerbitkan karya berkualitas melalui layanan penerbitan,
@@ -177,14 +177,14 @@ export default function HeroSection() {
             >
               <Link
                 href="/katalog"
-                className="group inline-flex items-center gap-2 px-8 py-4 bg-gold hover:bg-gold-dark text-white font-semibold rounded-full transition-all duration-300 hover:shadow-xl hover:shadow-gold/25 hover:-translate-y-0.5"
+                className="group inline-flex items-center gap-2 px-8 py-4 bg-cream hover:bg-cream/90 text-green font-semibold rounded-full transition-all duration-300 hover:shadow-xl hover:shadow-gold/25 hover:-translate-y-0.5"
               >
                 Terbitkan Buku
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
                 href="/kontak"
-                className="inline-flex items-center gap-2 px-8 py-4 border border-white/20 text-white font-semibold rounded-full hover:bg-white/5 transition-all duration-300 hover:-translate-y-0.5"
+                className="inline-flex items-center gap-2 px-8 py-4 border border-cream/30 text-cream font-semibold rounded-full hover:bg-cream/10 transition-all duration-300 hover:-translate-y-0.5"
               >
                 <MessageCircle className="w-4 h-4" />
                 Konsultasi Gratis
@@ -193,7 +193,7 @@ export default function HeroSection() {
 
             <motion.div
               variants={itemVariants}
-              className="mt-12 flex items-center gap-8 text-sm text-zinc-500"
+              className="mt-12 flex items-center gap-8 text-sm text-cream/60"
             >
               <div className="flex -space-x-2">
                 {[1, 2, 3, 4].map((i) => (

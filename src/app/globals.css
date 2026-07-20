@@ -9,9 +9,13 @@
   --primary: #111827;
   --secondary: #6b7280;
   --border: #e5e7eb;
-  --gold: #c8a96a;
-  --gold-light: #e8d5a0;
-  --gold-dark: #a8884a;
+  --gold: #d3c297;
+  --gold-light: #e8dda8;
+  --gold-dark: #b19b67;
+  --green: #1e5e4a;
+  --green-light: #2a7a62;
+  --green-dark: #154236;
+  --cream: #fdf8f0;
 
   /* Radius */
   --radius-sm: 0.5rem;
@@ -25,7 +29,7 @@
   --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.06);
   --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.08);
   --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.1);
-  --shadow-gold: 0 4px 14px rgba(200, 169, 106, 0.25);
+  --shadow-gold: 0 4px 14px rgba(211, 194, 151, 0.25);
 }
 
 .dark {
@@ -39,7 +43,7 @@
   --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
   --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
   --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.6);
-  --shadow-gold: 0 4px 14px rgba(200, 169, 106, 0.15);
+  --shadow-gold: 0 4px 14px rgba(211, 194, 151, 0.15);
 }
 
 @theme inline {
@@ -51,6 +55,10 @@
   --color-gold: var(--gold);
   --color-gold-light: var(--gold-light);
   --color-gold-dark: var(--gold-dark);
+  --color-green: var(--green);
+  --color-green-light: var(--green-light);
+  --color-green-dark: var(--green-dark);
+  --color-cream: var(--cream);
 
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   --font-serif: "Georgia", "Times New Roman", serif;
@@ -67,7 +75,7 @@
   --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.06);
   --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.08);
   --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.1);
-  --shadow-gold: 0 4px 14px rgba(200, 169, 106, 0.25);
+  --shadow-gold: 0 4px 14px rgba(211, 194, 151, 0.25);
 }
 
 html {
@@ -110,7 +118,7 @@ input, textarea, select {
 }
 
 ::selection {
-  background: rgba(200, 169, 106, 0.25);
+  background: rgba(211, 194, 151, 0.25);
   color: var(--primary);
 }
 
@@ -123,12 +131,12 @@ input, textarea, select {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(200, 169, 106, 0.3);
+  background: rgba(211, 194, 151, 0.3);
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(200, 169, 106, 0.5);
+  background: rgba(211, 194, 151, 0.5);
 }
 
 @keyframes float {

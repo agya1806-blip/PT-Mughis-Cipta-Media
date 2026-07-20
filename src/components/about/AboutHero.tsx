@@ -14,8 +14,8 @@ const floatingIcons = [
 export default function AboutHero() {
   return (
     <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-zinc-900 via-zinc-800 to-zinc-900">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(16,185,129,0.12),transparent_50%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_rgba(217,119,6,0.08),transparent_50%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(211,194,151,0.12),transparent_50%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_rgba(211,194,151,0.08),transparent_50%)]" />
 
       {floatingIcons.map(({ Icon, delay, x, y, size }) => (
         <motion.div
@@ -62,7 +62,7 @@ export default function AboutHero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.6 }}
-              className="text-lg text-zinc-400 leading-relaxed mb-8 max-w-xl"
+              className="text-lg text-cream/70 leading-relaxed mb-8 max-w-xl"
             >
               PT Mughis Cipta Media merupakan perusahaan yang bergerak di bidang penerbitan, percetakan, distribusi buku, dan media kreatif yang berkomitmen menghadirkan karya berkualitas bagi dunia pendidikan, literasi, agama, dan pengembangan sumber daya manusia.
             </motion.p>
@@ -90,7 +90,7 @@ export default function AboutHero() {
 
               <Link
                 href="/layanan-penerbitan"
-                className="group inline-flex items-center gap-2 px-8 py-4 border border-zinc-600 hover:border-gold/50 text-zinc-300 hover:text-white font-semibold rounded-2xl transition-all duration-300"
+                className="group inline-flex items-center gap-2 px-8 py-4 border border-cream/30 hover:border-gold/50 text-cream/80 hover:text-cream font-semibold rounded-2xl transition-all duration-300"
               >
                 Lihat Layanan
                 <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

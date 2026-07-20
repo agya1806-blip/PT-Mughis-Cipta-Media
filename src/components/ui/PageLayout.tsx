@@ -20,7 +20,7 @@ export default function PageLayout({
   maxWidth = "md",
 }: Props) {
   return (
-    <div className="flex-1 bg-zinc-50">
+    <div className="flex-1 bg-cream">
       <div className={`mx-auto px-4 sm:px-6 lg:px-8 py-16 ${maxWidths[maxWidth]} ${className}`}>
         {children}
       </div>

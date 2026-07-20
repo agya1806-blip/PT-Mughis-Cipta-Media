@@ -11,10 +11,10 @@ export default function FinalCTA() {
   const { headline, subtitle, primaryCta, secondaryCta, features } = ctaData
 
   return (
-    <section className="relative py-24 sm:py-32 overflow-hidden bg-gradient-to-br from-zinc-900 via-zinc-800 to-zinc-900">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(200,169,106,0.12),transparent_50%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(200,169,106,0.08),transparent_50%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(200,169,106,0.03),transparent_60%)]" />
+    <section className="relative py-24 sm:py-32 overflow-hidden bg-gradient-to-br from-green-dark to-green">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(211,194,151,0.12),transparent_50%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(211,194,151,0.08),transparent_50%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(211,194,151,0.03),transparent_60%)]" />
 
       <div className="container relative">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -25,7 +25,7 @@ export default function FinalCTA() {
               whileInView={prefersReducedMotion ? {} : { opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.3, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-[1.15] tracking-tight"
+              className="text-3xl sm:text-4xl lg:text-5xl font-bold text-cream leading-[1.15] tracking-tight"
             >
               {headline}
             </motion.h2>
@@ -35,7 +35,7 @@ export default function FinalCTA() {
               whileInView={prefersReducedMotion ? {} : { opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.3, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-              className="mt-4 text-lg text-zinc-400 leading-relaxed"
+              className="mt-4 text-lg text-cream/70 leading-relaxed"
             >
               {subtitle}
             </motion.p>
@@ -85,7 +85,7 @@ export default function FinalCTA() {
                 <div className="relative space-y-4">
                   <Button
                     href={primaryCta.href}
-                    variant="primary"
+                    variant="accent"
                     className="w-full h-12 text-base group"
                   >
                     <MessageCircle className="w-4 h-4" />

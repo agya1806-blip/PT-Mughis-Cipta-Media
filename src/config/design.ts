@@ -6,9 +6,13 @@ export const COLORS = {
   primary: { light: "#111827", dark: "#FAFAFA" },
   secondary: { light: "#6B7280", dark: "#A1A1AA" },
   border: { light: "#E5E7EB", dark: "#27272A" },
-  gold: "#C8A96A",
-  goldLight: "#E8D5A0",
-  goldDark: "#A8884A",
+  gold: "#D3C297",
+  goldLight: "#E8DDA8",
+  goldDark: "#B19B67",
+  green: "#1E5E4A",
+  greenLight: "#2A7A62",
+  greenDark: "#154236",
+  cream: "#FDF8F0",
 } as const
 
 export const SPACING = {

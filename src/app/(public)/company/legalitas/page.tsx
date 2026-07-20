@@ -86,18 +86,18 @@ export default function LegalitasPage() {
 
   return (
     <div className="min-h-screen bg-white dark:bg-zinc-950">
-      <section className="relative overflow-hidden bg-gradient-to-b from-zinc-50 to-white dark:from-zinc-950 dark:to-zinc-900 pt-20 sm:pt-24 lg:pt-32 pb-16 sm:pb-20">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(200,169,106,0.08),transparent_50%)]" />
+      <section className="relative overflow-hidden bg-gradient-to-br from-green via-green-dark to-green pt-20 sm:pt-24 lg:pt-32 pb-16 sm:pb-20">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(211,194,151,0.08),transparent_50%)]" />
         <div className="container relative">
           <Breadcrumb items={[{ label: "Beranda", href: "/" }, { label: "Profil Perusahaan", href: "/company" }, { label: "Legalitas" }]} />
           <motion.div variants={MOTION.fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="mt-8 max-w-3xl">
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/10 border border-gold/20 text-gold text-[11px] font-medium uppercase tracking-[0.1em] mb-6">Legalitas Perusahaan</span>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-zinc-900 dark:text-white leading-[1.1] tracking-tight">Legalitas & <span className="bg-gradient-to-r from-gold to-gold-dark bg-clip-text text-transparent">NIB</span></h1>
-            <p className="mt-6 text-lg sm:text-xl text-zinc-500 dark:text-zinc-400 leading-relaxed">PT Mughis Cipta Media memiliki legalitas lengkap dan terdaftar resmi di instansi pemerintah terkait. Seluruh dokumen legal dapat diverifikasi melalui instansi berwenang.</p>
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cream/10 border border-cream/20 text-gold text-[11px] font-medium uppercase tracking-[0.1em] mb-6">Legalitas Perusahaan</span>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-cream leading-[1.1] tracking-tight">Legalitas & <span className="bg-gradient-to-r from-gold to-gold-dark bg-clip-text text-transparent">NIB</span></h1>
+            <p className="mt-6 text-lg sm:text-xl text-cream/70 leading-relaxed">PT Mughis Cipta Media memiliki legalitas lengkap dan terdaftar resmi di instansi pemerintah terkait. Seluruh dokumen legal dapat diverifikasi melalui instansi berwenang.</p>
           </motion.div>
         </div>
       </section>
-      <section className="py-24 lg:py-32 bg-white dark:bg-zinc-950">
+      <section className="py-24 lg:py-32 bg-cream dark:bg-zinc-950">
         <div className="container">
           <div className="grid lg:grid-cols-2 gap-10 lg:gap-16">
             <div className="space-y-10">
@@ -190,7 +190,7 @@ export default function LegalitasPage() {
         </div>
       </section>
       <section className="relative py-24 overflow-hidden bg-gradient-to-br from-zinc-900 via-zinc-800 to-zinc-900">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(200,169,106,0.12),transparent_50%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(211,194,151,0.12),transparent_50%)]" />
         <div className="container relative text-center max-w-2xl">
           <h2 className="text-3xl sm:text-4xl font-bold text-white leading-[1.15]">Perusahaan <span className="bg-gradient-to-r from-gold to-gold-dark bg-clip-text text-transparent">Terpercaya</span></h2>
           <p className="mt-4 text-lg text-zinc-400">Dengan legalitas lengkap dan komitmen terhadap kualitas, PT Mughis Cipta Media siap menjadi mitra penerbitan Anda.</p>

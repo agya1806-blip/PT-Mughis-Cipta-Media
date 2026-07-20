@@ -2,7 +2,7 @@
 import { useState } from "react"
 import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
-import { ChevronLeft, ChevronRight, ArrowRight, Star } from "lucide-react"
+import { ChevronLeft, ChevronRight, ArrowRight, Star, BookOpen } from "lucide-react"
 import SectionWrapper from "./SectionWrapper"
 import SectionHeader from "./SectionHeader"
 
@@ -66,7 +66,7 @@ export function FeaturedBooksCarousel({ books }: Props) {
                 <div className="relative w-full h-full rounded-2xl bg-gradient-to-br from-zinc-200 to-zinc-300 dark:from-zinc-700 dark:to-zinc-800 shadow-2xl flex items-center justify-center border border-white/5">
                   <div className="text-center p-4">
                     <div className="w-12 h-12 mx-auto rounded-xl bg-gold/20 flex items-center justify-center mb-3">
-                      <span className="text-xl font-bold text-gold">M</span>
+                      <BookOpen className="w-6 h-6 text-gold" />
                     </div>
                     <p className="text-xs text-zinc-400 dark:text-zinc-500 line-clamp-3">{book.title}</p>
                   </div>

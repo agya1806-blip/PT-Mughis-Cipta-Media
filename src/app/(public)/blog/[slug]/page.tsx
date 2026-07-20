@@ -44,7 +44,7 @@ export default async function ArticleDetailPage({ params }: { params: Promise<{ 
   if (!article) notFound()
 
   return (
-    <main className="flex-1 bg-zinc-50">
+    <main className="flex-1 bg-cream">
       <JsonLd
         data={{
           "@context": "https://schema.org",

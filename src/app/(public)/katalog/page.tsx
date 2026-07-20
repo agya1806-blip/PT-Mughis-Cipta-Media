@@ -31,7 +31,7 @@ export default function KatalogPage() {
         ]}
         icon="katalog"
       />
-      <div className="bg-zinc-50">
+      <div className="bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <Suspense fallback={<div className="text-center py-20 text-zinc-500">Memuat katalog...</div>}>
             <KatalogClient />

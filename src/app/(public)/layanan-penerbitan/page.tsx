@@ -37,7 +37,7 @@ export default function LayananPenerbitanPage() {
       {services.map((service, i) => {
         const Icon = service.icon
         return (
-          <section key={service.id} id={service.id} className={i % 2 === 0 ? "bg-white" : "bg-zinc-50"}>
+          <section key={service.id} id={service.id} className={i % 2 === 0 ? "bg-cream" : "bg-cream"}>
             <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10 py-20 lg:py-28">
               <ServiceHero
                 icon={<Icon className="w-8 h-8 text-gold" />}

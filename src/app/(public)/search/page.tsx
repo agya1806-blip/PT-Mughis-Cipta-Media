@@ -85,7 +85,7 @@ export default async function SearchPage({ searchParams }: Props) {
   const totalPages = Math.ceil(total / PER_PAGE)
 
   return (
-    <main className="flex-1 bg-zinc-50">
+    <main className="flex-1 bg-cream">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <Breadcrumb items={[{ label: "Beranda", href: "/" }, { label: "Pencarian" }]} />
 

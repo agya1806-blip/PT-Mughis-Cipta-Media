@@ -23,7 +23,7 @@ export default async function PenulisPage() {
         ]}
         icon="penulis"
       />
-      <div className="bg-zinc-50">
+      <div className="bg-cream">
         <AuthorListClient authors={authors} />
       </div>
     </main>

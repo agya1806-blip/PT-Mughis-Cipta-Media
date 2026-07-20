@@ -2,7 +2,7 @@
 
 export default function CatalogError({ reset }: { reset: () => void }) {
   return (
-    <div className="flex-1 flex items-center justify-center bg-zinc-50 px-4 py-20">
+    <div className="flex-1 flex items-center justify-center bg-cream px-4 py-20">
       <div className="text-center max-w-md">
         <h1 className="text-2xl font-bold text-zinc-900 mb-3">Gagal Memuat Katalog</h1>
         <p className="text-zinc-500 mb-8">

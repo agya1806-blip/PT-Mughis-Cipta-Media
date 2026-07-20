@@ -2,7 +2,7 @@
 
 export default function RootError({ reset }: { reset: () => void }) {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-zinc-50 px-4">
+    <div className="min-h-screen flex items-center justify-center bg-cream px-4">
       <div className="text-center max-w-md">
         <div className="text-6xl mb-4 text-red-400">
           <svg className="w-16 h-16 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>

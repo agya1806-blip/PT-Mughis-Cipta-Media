@@ -10,7 +10,7 @@ interface Props {
 
 export default function Timeline({ items }: Props) {
   return (
-    <section className="py-24 lg:py-32 bg-zinc-50 dark:bg-zinc-950/50 overflow-hidden">
+    <section className="py-24 lg:py-32 bg-cream dark:bg-zinc-950/50 overflow-hidden">
       <div className="container">
         <div className="max-w-2xl mx-auto text-center mb-16">
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/10 border border-gold/20 text-gold text-[11px] font-medium uppercase tracking-[0.1em] mb-6">Perjalanan Perusahaan</span>

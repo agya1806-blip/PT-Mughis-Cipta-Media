@@ -21,7 +21,7 @@ export const metadata = {
 export default function FAQPage() {
   const allItems = getAllFAQItems()
   return (
-    <main className="flex-1 bg-zinc-50">
+    <main className="flex-1 bg-cream">
       <JsonLd
         data={{
           "@context": "https://schema.org",
@@ -36,8 +36,8 @@ export default function FAQPage() {
           })),
         }}
       />
-      <section className="relative py-20 bg-gradient-to-br from-zinc-900 via-zinc-800 to-zinc-900 overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_rgba(200,169,106,0.08),transparent_50%)]" />
+      <section className="relative py-20 bg-gradient-to-br from-green via-green-dark to-green overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_rgba(211,194,151,0.08),transparent_50%)]" />
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <div className="mb-6">
             <Breadcrumb
@@ -45,12 +45,12 @@ export default function FAQPage() {
                 { label: "Beranda", href: "/" },
                 { label: "FAQ" },
               ]}
-              className="[&_a]:text-zinc-400 [&_a:hover]:text-white [&_span]:text-white [&_svg]:text-zinc-500"
+              className="[&_a]:text-cream/70 [&_a:hover]:text-cream [&_span]:text-cream [&_svg]:text-cream/50"
             />
           </div>
           <div className="text-center">
-            <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4">FAQ</h1>
-            <p className="text-zinc-400 text-lg">
+            <h1 className="text-4xl sm:text-5xl font-bold text-cream mb-4">FAQ</h1>
+            <p className="text-cream/70 text-lg">
               Pertanyaan yang sering diajukan
             </p>
           </div>

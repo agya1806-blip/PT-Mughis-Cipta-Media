@@ -74,9 +74,9 @@ export default async function LegalPage() {
     },
   ]
   return (
-    <div className="flex-1 bg-zinc-50">
-      <section className="relative py-20 bg-gradient-to-br from-zinc-900 via-zinc-800 to-zinc-900 overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(200,169,106,0.08),transparent_50%)]" />
+    <div className="flex-1 bg-cream">
+      <section className="relative py-20 bg-gradient-to-br from-green via-green-dark to-green overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(211,194,151,0.08),transparent_50%)]" />
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <div className="mb-6">
             <Breadcrumb
@@ -84,18 +84,18 @@ export default async function LegalPage() {
                 { label: "Beranda", href: "/" },
                 { label: "Legalitas" },
               ]}
-              className="[&_a]:text-zinc-400 [&_a:hover]:text-white [&_span]:text-white [&_svg]:text-zinc-500"
+              className="[&_a]:text-cream/70 [&_a:hover]:text-cream [&_span]:text-cream [&_svg]:text-cream/50"
             />
           </div>
           <div className="text-center">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/10 border border-gold/20 text-gold text-xs font-medium uppercase tracking-wider mb-6">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cream/10 border border-cream/20 text-gold text-xs font-medium uppercase tracking-wider mb-6">
               Legalitas Perusahaan
             </div>
-            <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4">
+            <h1 className="text-4xl sm:text-5xl font-bold text-cream mb-4">
               Informasi{" "}
               <span className="bg-gradient-to-r from-gold to-gold-dark bg-clip-text text-transparent">Legal</span>
             </h1>
-            <p className="text-zinc-400 text-lg max-w-2xl mx-auto">
+            <p className="text-cream/70 text-lg max-w-2xl mx-auto">
               PT Mughis Cipta Media adalah perusahaan penerbitan buku yang berbadan hukum resmi dan terdaftar.
             </p>
           </div>

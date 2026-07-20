@@ -74,7 +74,7 @@ export default function ContactFAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
 
   return (
-    <section className="py-16 sm:py-20 md:py-24 bg-zinc-50 dark:bg-zinc-900/50">
+    <section className="py-16 sm:py-20 md:py-24 bg-cream dark:bg-zinc-900/50">
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

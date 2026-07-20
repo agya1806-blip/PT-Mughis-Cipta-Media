@@ -32,14 +32,14 @@ export default function Navbar() {
   }, [])
 
   const textColor = scrolled
-    ? "text-zinc-600 dark:text-zinc-400 hover:text-gold dark:hover:text-gold-light"
+    ? "text-green-dark hover:text-gold"
     : "text-white/80 hover:text-white"
 
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-white/80 dark:bg-zinc-900/80 backdrop-blur-xl border-b border-zinc-200/50 dark:border-zinc-800/50 shadow-sm"
+          ? "bg-cream/90 dark:bg-green-dark/90 backdrop-blur-xl border-b border-gold/20 dark:border-gold/10"
           : "bg-transparent"
       }`}
     >
@@ -66,7 +66,7 @@ export default function Navbar() {
               onClick={toggle}
               className={`p-2 rounded-xl transition-all duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold ${
                 scrolled
-                  ? "text-zinc-500 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-white"
+                  ? "text-green/60 dark:text-gold/70 hover:bg-gold/10 dark:hover:bg-cream/10 hover:text-green dark:hover:text-cream"
                   : "text-white/70 hover:bg-white/10 hover:text-white"
               }`}
               aria-label="Ganti tema"
@@ -81,7 +81,7 @@ export default function Navbar() {
               onClick={toggle}
               className={`p-2 rounded-xl transition-all duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold ${
                 scrolled
-                  ? "text-zinc-500 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800"
+                  ? "text-green/60 dark:text-gold/70 hover:bg-gold/10 dark:hover:bg-cream/10"
                   : "text-white/70 hover:bg-white/10"
               }`}
               aria-label="Ganti tema"
@@ -92,7 +92,7 @@ export default function Navbar() {
               onClick={() => setOpen(true)}
               className={`p-2 rounded-xl transition-all duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold ${
                 scrolled
-                  ? "text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800"
+                  ? "text-green dark:text-gold hover:bg-gold/10 dark:hover:bg-cream/10"
                   : "text-white/80 hover:bg-white/10"
               }`}
               aria-label="Buka menu"

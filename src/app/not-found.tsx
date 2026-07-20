@@ -3,7 +3,7 @@ import { Search, Home, BookOpen } from "lucide-react"
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-zinc-50 px-4">
+    <div className="min-h-screen flex items-center justify-center bg-cream px-4">
       <div className="text-center max-w-lg">
         <div className="relative mb-8">
           <svg className="w-48 h-48 mx-auto" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">

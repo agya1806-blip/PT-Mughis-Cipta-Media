@@ -6,7 +6,7 @@ import { ArrowRight, MessageCircle } from "lucide-react"
 
 export default function ServiceCTA() {
   return (
-    <section className="py-20 lg:py-28 bg-white">
+    <section className="py-20 lg:py-28 bg-cream">
       <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-10 text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

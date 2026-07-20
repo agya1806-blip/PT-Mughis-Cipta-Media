@@ -14,7 +14,7 @@ const missions = [
 
 export default function VisionMission() {
   return (
-    <section className="relative py-24 lg:py-32 bg-zinc-50">
+    <section className="relative py-24 lg:py-32 bg-cream">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

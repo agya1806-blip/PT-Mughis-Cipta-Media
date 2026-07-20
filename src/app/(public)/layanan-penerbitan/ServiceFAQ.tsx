@@ -35,7 +35,7 @@ export default function ServiceFAQ({ faq }: { faq: { q: string; a: string }[] })
                   transition={{ duration: 0.2 }}
                   className="overflow-hidden"
                 >
-                  <p className="px-5 pb-4 text-sm text-zinc-600 leading-relaxed dark:text-cream">{item.a}</p>
+                  <p className="px-5 pb-4 text-sm text-green/80 leading-relaxed dark:text-cream">{item.a}</p>
                 </motion.div>
               )}
             </AnimatePresence>

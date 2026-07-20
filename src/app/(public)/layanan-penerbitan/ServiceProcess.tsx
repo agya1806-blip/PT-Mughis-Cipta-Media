@@ -20,7 +20,7 @@ export default function ServiceProcess({ process }: { process: { label: string; 
               {i + 1}
             </div>
             <h4 className="font-semibold text-green-dark text-sm mb-1">{step.label}</h4>
-            <p className="text-xs text-zinc-600">{step.desc}</p>
+            <p className="text-xs text-green/80">{step.desc}</p>
             {i < process.length - 1 && (
               <div className="hidden md:block absolute top-1/2 -right-2 w-4 h-[2px] bg-gold/30" />
             )}

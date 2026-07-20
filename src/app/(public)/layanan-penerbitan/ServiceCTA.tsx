@@ -16,7 +16,7 @@ export default function ServiceCTA() {
           <h2 className="text-3xl sm:text-4xl font-bold text-green-dark leading-tight mb-4">
             Siap Menerbitkan Buku?
           </h2>
-          <p className="text-zinc-600 text-lg max-w-xl mx-auto mb-10">
+          <p className="text-green/80 text-lg max-w-xl mx-auto mb-10">
             Konsultasikan naskah Anda dengan tim profesional kami. Kami siap membantu mewujudkan buku Anda.
           </p>
           <div className="flex flex-wrap justify-center gap-4">

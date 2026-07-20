@@ -75,8 +75,7 @@ export default function StorySection() {
                 <div className="mb-6">
                   <Image src="/logo-original.png" alt="Maktabah Al-Mughis" width={600} height={63} className="h-7 sm:h-8 w-auto brightness-[10]" />
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-4">Maktabah al-Mughis</h3>
-                <p className="text-gold/80 leading-relaxed">
+                <p className="text-white leading-relaxed">
                   Menghadirkan karya-karya berkualitas yang mencerahkan, menginspirasi, dan memberdayakan generasi bangsa.
                 </p>
                 <div className="absolute bottom-8 left-8 right-8">

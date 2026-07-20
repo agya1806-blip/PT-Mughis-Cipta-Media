@@ -13,7 +13,7 @@ export default function NavLogo({ scrolled }: Props) {
       <Image
         src="/logo.png"
         alt="Maktabah Al-Mughis"
-        width={320}
+        width={286}
         height={30}
         className={`h-7 sm:h-8 w-auto transition-opacity duration-300 ${
           scrolled ? "opacity-100" : "opacity-100"

@@ -1,5 +1,8 @@
 "use client"
 
+"use client"
+
+import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { FileText, Shield, CheckCircle, Award, Scale, Building2, ExternalLink, Eye } from "lucide-react"
 import { MOTION } from "@/config/design"
@@ -7,9 +10,80 @@ import SectionTitle from "@/components/company/SectionTitle"
 import LegalBadge from "@/components/company/LegalBadge"
 import Breadcrumb from "@/components/ui/Breadcrumb"
 import GlassPanel from "@/components/ui/GlassPanel"
-import { legalDocuments } from "@/components/company/company-data"
+import { legalDocuments as defaultDocs } from "@/components/company/company-data"
+import type { LegalDocument } from "@/components/company/company-data"
 
 export default function LegalitasPage() {
+  const [docs, setDocs] = useState<LegalDocument[]>(defaultDocs)
+  const [settings, setSettings] = useState<Record<string, string>>({})
+
+  useEffect(() => {
+    fetch("/api/public/settings")
+      .then((r) => r.json())
+      .then((data) => {
+        setSettings(data)
+        if (data.legal_nib || data.legal_npwp) {
+          setDocs([
+            {
+              id: "nib",
+              title: "Nomor Induk Berusaha (NIB)",
+              number: data.legal_nib || "1807260050954",
+              date: data.legal_nib_date || "18 Juli 2026",
+              description: "NIB diterbitkan oleh Pemerintah Republik Indonesia melalui sistem OSS-RBA.",
+              icon: FileText,
+              status: "active",
+            },
+            {
+              id: "spp",
+              title: "Status PT Perorangan",
+              number: data.legal_nib || "1807260050954",
+              date: data.legal_nib_date || "18 Juli 2026",
+              description: "PT Perorangan atas nama Muhammad Aghisna — didirikan berdasarkan NIB melalui sistem OSS-RBA, tanpa akta notaris sesuai UU Cipta Kerja.",
+              icon: Building2,
+              status: "active",
+            },
+            {
+              id: "npwp",
+              title: "NPWP Perusahaan",
+              number: data.legal_npwp || "1108043110010001",
+              date: data.legal_npwp_date || "18 Juli 2026",
+              description: "Nomor Pokok Wajib Pajak perusahaan yang terdaftar di DJP.",
+              icon: Scale,
+              status: "active",
+            },
+            {
+              id: "sku",
+              title: "Izin Usaha (NIB)",
+              number: data.legal_nib || "1807260050954",
+              date: data.legal_nib_date || "18 Juli 2026",
+              description: "NIB berlaku sebagai izin usaha. KBLI 58110 (Penerbitan Buku) – sektor Perindustrian. Usaha Mikro.",
+              icon: Shield,
+              status: "active",
+            },
+            {
+              id: "sertifikat",
+              title: "Anggota IKAPI (Dalam Proses)",
+              number: data.legal_ikapi || "-",
+              date: data.legal_ikapi_date || "-",
+              description: "Pendaftaran anggota IKAPI sedang dalam proses pengajuan.",
+              icon: Award,
+              status: "active",
+            },
+            {
+              id: "sppl",
+              title: "SPPL (Pengelolaan Lingkungan)",
+              number: "6A5B3C20125CF",
+              date: "18 Juli 2026",
+              description: "Surat Pengelolaan Lingkungan Hidup terverifikasi otomatis melalui sistem AMDALNET.",
+              icon: FileText,
+              status: "active",
+            },
+          ])
+        }
+      })
+      .catch(() => {})
+  }, [])
+
   return (
     <div className="min-h-screen bg-white dark:bg-zinc-950">
       <section className="relative overflow-hidden bg-gradient-to-b from-zinc-50 to-white dark:from-zinc-950 dark:to-zinc-900 pt-20 sm:pt-24 lg:pt-32 pb-16 sm:pb-20">
@@ -29,7 +103,7 @@ export default function LegalitasPage() {
             <div className="space-y-10">
               <SectionTitle badge="Dokumen Legal" title="Surat & Dokumen" accent="Resmi" description="Dokumen legalitas yang dimiliki PT Mughis Cipta Media sebagai perusahaan berbadan hukum resmi." align="left" />
               <motion.div variants={MOTION.stagger} initial="hidden" whileInView="visible" viewport={{ once: true }} className="space-y-6">
-                {legalDocuments.map((doc) => {
+                {docs.map((doc) => {
                   const Icon = doc.icon
                   return (
                     <motion.div key={doc.id} variants={MOTION.fadeUp} className="group relative bg-white dark:bg-zinc-800/50 rounded-2xl p-6 border border-zinc-200 dark:border-zinc-700/30 hover:border-gold/30 hover:shadow-md transition-all duration-300">
@@ -62,7 +136,7 @@ export default function LegalitasPage() {
                     <div className="w-14 h-14 rounded-2xl bg-gold/10 flex items-center justify-center"><FileText className="w-7 h-7 text-gold" /></div>
                     <div>
                       <p className="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">NIB</p>
-                      <p className="text-xl font-bold text-zinc-900 dark:text-white font-mono tracking-wider">1807260050954</p>
+                      <p className="text-xl font-bold text-zinc-900 dark:text-white font-mono tracking-wider">{settings.legal_nib || "1807260050954"}</p>
                     </div>
                   </div>
                   <div className="h-px bg-zinc-200 dark:bg-zinc-700/50" />
@@ -71,10 +145,10 @@ export default function LegalitasPage() {
                     <div className="grid grid-cols-2 gap-4 text-sm">
                       {[
                         { label: "Pelaku Usaha", value: "Muhammad Aghisna" },
-                        { label: "NPWP", value: "1108043110010001" },
+                        { label: "NPWP", value: settings.legal_npwp || "1108043110010001" },
                         { label: "KBLI", value: "58110 (Penerbitan Buku)" },
                         { label: "Skala Usaha", value: "Usaha Mikro" },
-                        { label: "Tgl Terbit", value: "18 Juli 2026" },
+                        { label: "Tgl Terbit", value: settings.legal_nib_date || "18 Juli 2026" },
                         { label: "Berlaku", value: "Seumur Hidup" },
                       ].map(({ label, value }) => (
                         <div key={label}>

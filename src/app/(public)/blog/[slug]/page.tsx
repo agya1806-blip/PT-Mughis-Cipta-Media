@@ -3,6 +3,7 @@ import Link from "next/link"
 import { notFound } from "next/navigation"
 import { prisma } from "@/lib/prisma"
 import Breadcrumb from "@/components/ui/Breadcrumb"
+import { JsonLd } from "@/components/JsonLd"
 import { Calendar, Clock, ArrowLeft } from "lucide-react"
 
 function readingTime(content: string): string {
@@ -25,8 +26,15 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     openGraph: {
       title: article.title,
       description: excerpt(article.content),
-      ...(article.featuredImage ? { images: [{ url: article.featuredImage }] } : {}),
+      ...(article.featuredImage ? { images: [{ url: article.featuredImage, alt: article.title }] } : {}),
     },
+    twitter: {
+      card: "summary_large_image",
+      title: article.title,
+      description: excerpt(article.content),
+      ...(article.featuredImage ? { images: [article.featuredImage] } : {}),
+    },
+    alternates: { canonical: `/blog/${slug}` },
   }
 }
 
@@ -36,7 +44,22 @@ export default async function ArticleDetailPage({ params }: { params: Promise<{ 
   if (!article) notFound()
 
   return (
-    <div className="flex-1 bg-zinc-50">
+    <main className="flex-1 bg-zinc-50">
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "Article",
+          headline: article.title,
+          description: excerpt(article.content),
+          image: article.featuredImage || undefined,
+          datePublished: article.createdAt,
+          dateModified: article.updatedAt,
+          author: {
+            "@type": "Organization",
+            name: "Maktabah al-Mughis",
+          },
+        }}
+      />
       <article className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <Breadcrumb
           items={[
@@ -92,6 +115,6 @@ export default async function ArticleDetailPage({ params }: { params: Promise<{ 
           </Link>
         </div>
       </article>
-    </div>
+    </main>
   )
 }

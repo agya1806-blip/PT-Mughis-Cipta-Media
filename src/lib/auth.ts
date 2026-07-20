@@ -3,7 +3,12 @@ import jwt from "jsonwebtoken"
 import bcrypt from "bcryptjs"
 import { prisma } from "./prisma"
 
-const JWT_SECRET = process.env.JWT_SECRET || "mughis-jwt-secret-dev"
+function getJwtSecret(): string {
+  if (!process.env.JWT_SECRET) {
+    throw new Error("JWT_SECRET environment variable is required")
+  }
+  return process.env.JWT_SECRET
+}
 
 export interface JwtPayload {
   userId: number
@@ -20,12 +25,12 @@ export async function verifyPassword(password: string, hash: string): Promise<bo
 }
 
 export function signToken(payload: JwtPayload): string {
-  return jwt.sign(payload, JWT_SECRET, { expiresIn: "7d" })
+  return jwt.sign(payload, getJwtSecret(), { expiresIn: "7d" })
 }
 
 export function verifyToken(token: string): JwtPayload | null {
   try {
-    return jwt.verify(token, JWT_SECRET) as JwtPayload
+    return jwt.verify(token, getJwtSecret()) as JwtPayload
   } catch {
     return null
   }

@@ -77,17 +77,17 @@ export default function ContactDetails({ phone, email, address }: ContactInfo) {
         >
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/10 border border-gold/20 mb-6">
             <span className="text-gold text-[11px] font-medium uppercase tracking-[0.1em]">
-              Get in Touch
+              Hubungi Kami
             </span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold text-zinc-900 dark:text-white leading-[1.15] tracking-tight">
-            Our{" "}
+            Kontak{" "}
             <span className="bg-gradient-to-r from-gold to-gold-dark bg-clip-text text-transparent">
-              Contact
+              Kami
             </span>
           </h2>
           <p className="mt-3 text-zinc-500 dark:text-zinc-400 max-w-lg mx-auto">
-            Reach out through any of these channels, and we&apos;ll respond promptly.
+            Hubungi kami melalui saluran berikut, dan tim kami akan merespons dengan cepat.
           </p>
         </motion.div>
 
@@ -100,9 +100,9 @@ export default function ContactDetails({ phone, email, address }: ContactInfo) {
         >
           <ContactCard
             icon={<MapPin className="w-5 h-5 text-gold" />}
-            label="Office Address"
+            label="Alamat Kantor"
           >
-            {address || "Jl. Raya No. 123, Jakarta"}
+            {address || "Perumahan Bumi Asri, Jl. Bawang No. 12, Bandung, Jawa Barat"}
           </ContactCard>
 
           <ContactCard
@@ -118,7 +118,7 @@ export default function ContactDetails({ phone, email, address }: ContactInfo) {
             label="Email"
             href={email ? `mailto:${email}` : undefined}
           >
-            {email || "info@mughis.co.id"}
+            {email || "admin@pt-mughis-cipta-media.com"}
           </ContactCard>
 
           <ContactCard

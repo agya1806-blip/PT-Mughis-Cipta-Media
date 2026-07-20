@@ -21,6 +21,16 @@ export async function generateMetadata({ params }: Props) {
   return {
     title: `${author} | Penulis | Maktabah al-Mughis`,
     description: `Buku-buku karya ${author} yang diterbitkan oleh Maktabah al-Mughis.`,
+    openGraph: {
+      title: `${author} - Penulis | Maktabah al-Mughis`,
+      description: `Buku-buku karya ${author} yang diterbitkan oleh Maktabah al-Mughis.`,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${author} - Penulis | Maktabah al-Mughis`,
+      description: `Buku-buku karya ${author} yang diterbitkan oleh Maktabah al-Mughis.`,
+    },
+    alternates: { canonical: `/penulis/${slug}` },
   }
 }
 

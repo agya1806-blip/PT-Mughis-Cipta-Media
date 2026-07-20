@@ -19,11 +19,12 @@ export const metadata: Metadata = {
     description:
       "Penerbit buku terpercaya di Indonesia. Layanan penerbitan buku, cetak buku murah, dan distribusi nasional.",
   },
+  alternates: { canonical: "/" },
 }
 
 export default function Home() {
   return (
-    <>
+    <main>
       <LoadingScreen />
       <HeroSection />
       <StatsSection />
@@ -34,6 +35,6 @@ export default function Home() {
       <WhyUsSection />
       <Testimonials />
       <FinalCTA />
-    </>
+    </main>
   )
 }

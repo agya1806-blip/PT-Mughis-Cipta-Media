@@ -23,13 +23,13 @@ export default function ContactHero() {
             </span>
           </div>
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-[1.1] tracking-tight">
-            Let&apos;s Discuss{" "}
+            Diskusikan{" "}
             <span className="bg-gradient-to-r from-gold via-gold-light to-gold bg-clip-text text-transparent">
-              Your Book
+              Buku Anda
             </span>
           </h1>
           <p className="mt-4 text-lg sm:text-xl text-zinc-400 max-w-lg leading-relaxed">
-            Have a manuscript ready or questions about publishing? Our team is here to help bring your book to life.
+            Punya naskah siap cetak atau pertanyaan seputar penerbitan? Tim kami siap membantu mewujudkan buku Anda.
           </p>
         </motion.div>
       </div>

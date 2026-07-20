@@ -1,6 +1,6 @@
 "use client"
 
-export default function PublicError({ reset }: { reset: () => void }) {
+export default function AdminError({ reset }: { reset: () => void }) {
   return (
     <div className="flex-1 flex items-center justify-center bg-zinc-50 px-4 py-20">
       <div className="text-center max-w-md">
@@ -11,7 +11,7 @@ export default function PublicError({ reset }: { reset: () => void }) {
         </div>
         <h1 className="text-2xl font-bold text-zinc-900 mb-3">Terjadi Kesalahan</h1>
         <p className="text-zinc-500 mb-8">
-          Maaf, terjadi kesalahan. Silakan coba lagi.
+          Maaf, terjadi kesalahan pada panel admin. Silakan coba lagi.
         </p>
         <button
           onClick={reset}

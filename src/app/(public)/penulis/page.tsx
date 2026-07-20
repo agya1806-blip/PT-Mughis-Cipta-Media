@@ -5,6 +5,7 @@ import { getAllAuthors } from "@/lib/authors"
 export const metadata = {
   title: "Penulis | Maktabah al-Mughis",
   description: "Daftar penulis yang telah menerbitkan buku bersama Maktabah al-Mughis",
+  alternates: { canonical: "/penulis" },
 }
 
 export default async function PenulisPage() {

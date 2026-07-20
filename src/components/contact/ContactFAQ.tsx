@@ -6,24 +6,24 @@ import { ChevronDown } from "lucide-react"
 
 const faqs = [
   {
-    q: "How long does the publishing process take?",
-    a: "The timeline depends on the complexity of your project. On average, book publishing takes 4–8 weeks from manuscript submission to finished book.",
+    q: "Berapa lama proses penerbitan buku?",
+    a: "Waktu penerbitan tergantung pada kompleksitas proyek Anda. Rata-rata, penerbitan buku memakan waktu 4–8 minggu dari pengajuan naskah hingga buku jadi.",
   },
   {
-    q: "What are the costs involved in publishing a book?",
-    a: "Costs vary based on page count, format, quantity, and additional services like editing or cover design. Contact us for a tailored quote.",
+    q: "Berapa biaya yang diperlukan untuk menerbitkan buku?",
+    a: "Biaya bervariasi tergantung jumlah halaman, format, jumlah cetak, dan layanan tambahan seperti editing atau desain cover. Hubungi kami untuk penawaran yang disesuaikan.",
   },
   {
-    q: "Do you handle ISBN registration?",
-    a: "Yes, we provide complete ISBN registration assistance through the National Library of Indonesia as part of our publishing package.",
+    q: "Apakah Anda mengurus pendaftaran ISBN?",
+    a: "Ya, kami menyediakan bantuan pendaftaran ISBN lengkap melalui Perpustakaan Nasional Republik Indonesia sebagai bagian dari paket penerbitan kami.",
   },
   {
-    q: "Can I publish in small quantities?",
-    a: "Absolutely. We offer flexible print runs, from as few as 1 copy for personal projects to large quantities for commercial distribution.",
+    q: "Bisakah saya menerbitkan dalam jumlah sedikit?",
+    a: "Tentu. Kami menawarkan cetak fleksibel, mulai dari 1 eksemplar untuk proyek pribadi hingga jumlah besar untuk distribusi komersial.",
   },
   {
-    q: "What file formats do you accept?",
-    a: "We accept Microsoft Word, PDF, and Google Docs. Our team can also help format your manuscript if needed.",
+    q: "Format file apa yang Anda terima?",
+    a: "Kami menerima Microsoft Word, PDF, dan Google Docs. Tim kami juga dapat membantu memformat naskah Anda jika diperlukan.",
   },
 ]
 
@@ -89,13 +89,13 @@ export default function ContactFAQ() {
             </span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold text-zinc-900 dark:text-white leading-[1.15] tracking-tight">
-            Frequently Asked{" "}
+            Pertanyaan{" "}
             <span className="bg-gradient-to-r from-gold to-gold-dark bg-clip-text text-transparent">
-              Questions
+              Umum
             </span>
           </h2>
           <p className="mt-3 text-zinc-500 dark:text-zinc-400 max-w-lg mx-auto">
-            Quick answers to common questions about our publishing services.
+            Jawaban cepat untuk pertanyaan umum seputar layanan penerbitan kami.
           </p>
         </motion.div>
 

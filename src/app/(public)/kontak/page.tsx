@@ -1,4 +1,5 @@
 import { prisma } from "@/lib/prisma"
+import { JsonLd } from "@/components/JsonLd"
 import ContactHero from "@/components/contact/ContactHero"
 import ContactDetails from "@/components/contact/ContactDetails"
 import ContactForm from "@/components/contact/ContactForm"
@@ -39,11 +40,21 @@ export default async function KontakPage() {
 
   return (
     <div className="flex-1">
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "ContactPoint",
+          contactType: "customer service",
+          telephone: phone || "+62-857-2345-6789",
+          email: email || "admin@pt-mughis-cipta-media.com",
+          availableLanguage: ["Indonesian", "English"],
+        }}
+      />
       <ContactHero />
       <ContactDetails phone={phone} email={email} address={address} />
       <ContactForm />
       <ContactFAQ />
-      <ContactCTA />
+      <ContactCTA phone={phone} />
     </div>
   )
 }

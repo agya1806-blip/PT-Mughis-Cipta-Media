@@ -28,7 +28,7 @@ export default function ServiceCTA() {
               <ArrowRight className="w-4 h-4" />
             </Link>
             <a
-              href="https://wa.me/6281234567890"
+              href="https://wa.me/6285723456789"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-8 py-4 border border-zinc-300 text-zinc-700 font-semibold rounded-full hover:bg-zinc-50 transition-all"

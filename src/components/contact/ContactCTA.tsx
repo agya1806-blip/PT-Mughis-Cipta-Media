@@ -4,7 +4,7 @@ import Link from "next/link"
 import { motion } from "framer-motion"
 import { ArrowRight, MessageCircle } from "lucide-react"
 
-export default function ContactCTA() {
+export default function ContactCTA({ phone = "6285723456789" }: { phone?: string }) {
   return (
     <section className="relative py-24 sm:py-32 overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-zinc-900 via-zinc-800 to-zinc-900" />
@@ -33,7 +33,7 @@ export default function ContactCTA() {
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link
-              href={`https://wa.me/${""}`}
+              href={`https://wa.me/${phone.replace(/[^0-9]/g, "")}`}
               target="_blank"
               className="group inline-flex items-center gap-2 px-8 py-4 bg-gold hover:bg-gold-dark text-white font-semibold rounded-full transition-all duration-300 hover:shadow-xl hover:shadow-gold/25 hover:-translate-y-0.5"
             >
@@ -42,7 +42,7 @@ export default function ContactCTA() {
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
             <Link
-              href="mailto:info@mughis.co.id"
+              href="mailto:admin@pt-mughis-cipta-media.com"
               className="inline-flex items-center gap-2 px-8 py-4 border border-white/20 text-white font-semibold rounded-full hover:bg-white/5 transition-all duration-300 hover:-translate-y-0.5"
             >
               <MessageCircle className="w-4 h-4" />

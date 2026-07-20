@@ -62,7 +62,7 @@ export default function LegalitasPage() {
                     <div className="w-14 h-14 rounded-2xl bg-gold/10 flex items-center justify-center"><FileText className="w-7 h-7 text-gold" /></div>
                     <div>
                       <p className="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">NIB</p>
-                      <p className="text-xl font-bold text-zinc-900 dark:text-white font-mono tracking-wider">1234567890123</p>
+                      <p className="text-xl font-bold text-zinc-900 dark:text-white font-mono tracking-wider">1807260050954</p>
                     </div>
                   </div>
                   <div className="h-px bg-zinc-200 dark:bg-zinc-700/50" />
@@ -73,8 +73,8 @@ export default function LegalitasPage() {
                         { label: "Badan Usaha", value: "PT Mughis Cipta Media" },
                         { label: "Status", value: "Aktif" },
                         { label: "KBLI", value: "58110 (Penerbitan Buku)" },
-                        { label: "Skala Usaha", value: "Usaha Menengah" },
-                        { label: "Tgl Terbit", value: "1 Januari 2020" },
+                        { label: "Skala Usaha", value: "Usaha Mikro" },
+                        { label: "Tgl Terbit", value: "18 Juli 2026" },
                         { label: "Berlaku", value: "Seumur Hidup" },
                       ].map(({ label, value }) => (
                         <div key={label}>

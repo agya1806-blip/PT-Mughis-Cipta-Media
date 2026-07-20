@@ -16,8 +16,8 @@ export const legalDocuments: LegalDocument[] = [
   {
     id: "nib",
     title: "Nomor Induk Berusaha (NIB)",
-    number: "1234567890123",
-    date: "1 Januari 2020",
+    number: "1807260050954",
+    date: "18 Juli 2026",
     description:
       "NIB diterbitkan oleh Pemerintah Indonesia melalui sistem OSS-RBA sebagai bukti legalitas usaha PT Mughis Cipta Media.",
     icon: FileText,
@@ -26,42 +26,42 @@ export const legalDocuments: LegalDocument[] = [
   {
     id: "akta",
     title: "Akta Pendirian Perusahaan",
-    number: "AHU-12345.AH.01.01.TAHUN.2020",
-    date: "15 Januari 2020",
+    number: "-",
+    date: "-",
     description:
-      "Akta pendirian yang disahkan oleh Menteri Hukum dan HAM RI sebagai dasar hukum pendirian perusahaan.",
+      "PT Perorangan — pendirian berdasarkan NIB yang diterbitkan melalui sistem OSS-RBA. Akta notaris dalam proses pengurusan.",
     icon: Building2,
     status: "active",
   },
   {
     id: "npwp",
     title: "NPWP Perusahaan",
-    number: "01.234.567.8-999.000",
-    date: "1 Januari 2020",
+    number: "-",
+    date: "-",
     description:
-      "Nomor Pokok Wajib Pajak (NPWP) perusahaan yang terdaftar di Kantor Pajak, memenuhi kewajiban perpajakan secara rutin.",
+      "NPWP perusahaan sedang dalam proses pengajuan melalui sistem DJP Online.",
     icon: Scale,
     status: "active",
   },
   {
     id: "sku",
     title: "Surat Keterangan Usaha (SKU)",
-    number: "SKU-98765/2020",
-    date: "20 Januari 2020",
+    number: "-",
+    date: "-",
     description:
-      "Surat keterangan usaha dari pemerintah daerah setempat sebagai izin operasional perusahaan.",
+      "SKU diproses setelah NPWP perusahaan terbit. Saat ini menggunakan NIB sebagai izin usaha yang berlaku.",
     icon: Shield,
     status: "active",
   },
   {
     id: "sertifikat",
     title: "Sertifikat Badan Usaha Penerbitan",
-    number: "IKAPI-54321/2020",
-    date: "1 Februari 2020",
+    number: "-",
+    date: "-",
     description:
-      "Sertifikat anggota IKAPI (Ikatan Penerbit Indonesia) yang menegaskan status sebagai penerbit resmi dan terdaftar.",
+      "Sertifikat anggota IKAPI (Ikatan Penerbit Indonesia) akan diurus setelah seluruh dokumen legal lengkap.",
     icon: Award,
-    status: "verified",
+    status: "active",
   },
 ]
 
@@ -119,46 +119,18 @@ export interface Milestone {
 
 export const milestones: Milestone[] = [
   {
-    year: "2020",
-    title: "Pendirian Perusahaan",
+    year: "2026",
+    title: "Pendirian PT Perorangan",
     description:
-      "PT Mughis Cipta Media resmi didirikan dengan akta notaris dan mendapatkan pengesahan dari Kementerian Hukum dan HAM RI.",
+      "PT Mughis Cipta Media resmi berdiri sebagai PT Perorangan dengan NIB 1807260050954 yang diterbitkan melalui sistem OSS-RBA Pemerintah Indonesia.",
     icon: Building2,
   },
   {
-    year: "2021",
-    title: "Memulai Operasional Penerbitan",
+    year: "2026",
+    title: "Membangun Platform Digital",
     description:
-      "Menerbitkan buku-buku pertama yang mendapat sambutan positif. Fokus pada buku-buku keislaman dan pendidikan berkualitas.",
-    icon: BookOpen,
-  },
-  {
-    year: "2022",
-    title: "Pengembangan Divisi Percetakan",
-    description:
-      "Investasi peralatan cetak modern untuk meningkatkan kapasitas produksi dan kualitas hasil cetakan.",
-    icon: Shield,
-  },
-  {
-    year: "2023",
-    title: "Ekspansi Media Kreatif",
-    description:
-      "Memperluas layanan ke media kreatif digital dan pengembangan konten multimedia untuk menjangkau audiens yang lebih luas.",
+      "Meluncurkan website Maktabah al-Mughis sebagai platform penerbitan dan distribusi buku Islami berkualitas.",
     icon: Award,
-  },
-  {
-    year: "2024",
-    title: "Distribusi Nasional & Digital",
-    description:
-      "Memperkuat jaringan distribusi nasional dan mengoptimalkan platform digital untuk menjangkau pembaca di seluruh Indonesia.",
-    icon: FileText,
-  },
-  {
-    year: "2025",
-    title: "Target Penerbit Nasional Terdepan",
-    description:
-      "Terus bertumbuh menjadi penerbit nasional yang berkontribusi dalam meningkatkan literasi dan kualitas pendidikan Indonesia.",
-    icon: Scale,
   },
 ]
 
@@ -220,10 +192,10 @@ export interface Stat {
 }
 
 export const companyStats: Stat[] = [
-  { label: "Penulis Dibantu", value: "100", suffix: "+" },
-  { label: "Proyek Selesai", value: "500", suffix: "+" },
-  { label: "Buku Diterbitkan", value: "1000", suffix: "+" },
-  { label: "Tahun Berpengalaman", value: "5", suffix: "+" },
+  { label: "Penulis Dibantu", value: "1", suffix: "" },
+  { label: "Proyek Selesai", value: "1", suffix: "" },
+  { label: "Buku Diterbitkan", value: "0", suffix: "" },
+  { label: "Tahun Berdiri", value: "2026", suffix: "" },
 ]
 
 export const whyUs: string[] = [

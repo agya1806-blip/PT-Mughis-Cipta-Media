@@ -44,12 +44,12 @@ export default function CompanyPage() {
           <SectionTitle badge="Tentang Perusahaan" title="Mitra Terpercaya untuk" accent="Penerbitan Anda" description="PT Mughis Cipta Media hadir sebagai solusi lengkap bagi para penulis dan penerbit." />
           <motion.div variants={MOTION.stagger} initial="hidden" whileInView="visible" viewport={{ once: true }} className="mt-16 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              { icon: Building2, title: "Berdiri Sejak 2020", description: "Telah berpengalaman lebih dari 5 tahun dalam industri penerbitan dan media kreatif." },
-              { icon: BookText, title: "Ratusan Judul Buku", description: "Telah menerbitkan ratusan judul buku berkualitas di seluruh Indonesia." },
-              { icon: Printer, title: "Percetakan Modern", description: "Fasilitas percetakan dengan teknologi modern untuk hasil cetakan terbaik." },
-              { icon: Globe, title: "Distribusi Nasional", description: "Jaringan distribusi yang menjangkau toko buku dan platform online." },
-              { icon: Shield, title: "Legalitas Lengkap", description: "Badan usaha resmi dengan NIB, Akta, NPWP, dan sertifikasi IKAPI." },
-              { icon: Award, title: "Tim Profesional", description: "Tim berpengalaman yang siap mendampingi penulis dari naskah hingga distribusi." },
+              { icon: Building2, title: "Berdiri Sejak 2026", description: "PT Mughis Cipta Media resmi berdiri sebagai PT Perorangan yang terdaftar di OSS-RBA." },
+              { icon: BookText, title: "Penerbitan Buku", description: "Melayani penerbitan buku Islami dan pendidikan berkualitas untuk penulis Indonesia." },
+              { icon: Printer, title: "Percetakan Profesional", description: "Bermitra dengan percetakan profesional untuk hasil cetakan terbaik." },
+              { icon: Globe, title: "Distribusi Nasional", description: "Jaringan distribusi yang menjangkau toko buku dan platform online di Indonesia." },
+              { icon: Shield, title: "Legalitas Resmi", description: "Badan usaha resmi dengan NIB terdaftar di sistem OSS-RBA Pemerintah Indonesia." },
+              { icon: Award, title: "Tim Profesional", description: "Tim yang siap mendampingi penulis dari naskah hingga distribusi." },
             ].map((item) => (
               <motion.div key={item.title} variants={MOTION.fadeUp} className="relative bg-zinc-50 dark:bg-zinc-800/30 rounded-2xl p-8 border border-zinc-200 dark:border-zinc-700/30 hover:border-gold/30 transition-all duration-300 hover:shadow-lg group">
                 <item.icon className="w-12 h-12 text-gold mb-5" />

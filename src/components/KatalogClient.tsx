@@ -47,6 +47,11 @@ export function KatalogClient() {
         setTotal(booksData.total)
         setTotalPages(booksData.total_pages)
         setCategories(catsData.categories)
+      } catch {
+        setBooks([])
+        setCategories([])
+        setTotal(0)
+        setTotalPages(1)
       } finally {
         setLoading(false)
       }

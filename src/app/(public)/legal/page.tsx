@@ -1,5 +1,6 @@
 import { Building2, BookOpen, Shield, Mail, Phone, MapPin, FileText } from "lucide-react"
 import Breadcrumb from "@/components/ui/Breadcrumb"
+import { prisma } from "@/lib/prisma"
 
 export const metadata = {
   title: "Legalitas Perusahaan",
@@ -9,6 +10,19 @@ export const metadata = {
     description: "Informasi legal resmi perusahaan penerbitan buku.",
   },
   alternates: { canonical: "/legal" },
+}
+
+async function getSettings() {
+  try {
+    const settings = await prisma.setting.findMany({
+      where: { key: { in: ["contact_phone", "contact_email", "address"] } },
+    })
+    const map: Record<string, string> = {}
+    for (const s of settings) map[s.key] = s.value
+    return map
+  } catch {
+    return {}
+  }
 }
 
 const infoItems = [
@@ -34,27 +48,31 @@ const infoItems = [
   },
 ]
 
-const contactItems = [
-  {
-    icon: Mail,
-    label: "Email",
-    value: "admin@pt-mughis-cipta-media.com",
-    href: "mailto:admin@pt-mughis-cipta-media.com",
-  },
-  {
-    icon: Phone,
-    label: "WhatsApp",
-    value: "+62 812-3456-7890",
-    href: "https://wa.me/6281234567890",
-  },
-  {
-    icon: MapPin,
-    label: "Alamat",
-    value: "Perumahan Bumi Asri, Jl. Bawang No. 12, Bandung, Jawa Barat",
-  },
-]
+export default async function LegalPage() {
+  const db = await getSettings()
+  const phone = db.contact_phone ? `+62 ${db.contact_phone}` : "+62 812-3456-7890"
+  const email = db.contact_email || "admin@pt-mughis-cipta-media.com"
+  const address = db.address || "Perumahan Bumi Asri, Jl. Bawang No. 12, Bandung, Jawa Barat"
 
-export default function LegalPage() {
+  const contactItems = [
+    {
+      icon: Mail,
+      label: "Email",
+      value: email,
+      href: `mailto:${email}`,
+    },
+    {
+      icon: Phone,
+      label: "WhatsApp",
+      value: phone,
+      href: `https://wa.me/${db.contact_phone ? db.contact_phone.replace(/[^0-9]/g, "") : "6281234567890"}`,
+    },
+    {
+      icon: MapPin,
+      label: "Alamat",
+      value: address,
+    },
+  ]
   return (
     <div className="flex-1 bg-zinc-50">
       <section className="relative py-20 bg-gradient-to-br from-zinc-900 via-zinc-800 to-zinc-900 overflow-hidden">

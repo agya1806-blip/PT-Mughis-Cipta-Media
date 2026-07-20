@@ -9,6 +9,17 @@ const SETTING_FIELDS = [
   { key: "address", label: "Alamat" },
   { key: "instagram_url", label: "URL Instagram" },
   { key: "facebook_url", label: "URL Facebook" },
+  { key: "legal_nib", label: "NIB" },
+  { key: "legal_nib_date", label: "Tanggal Terbit NIB" },
+  { key: "legal_nib_status", label: "Status NIB" },
+  { key: "legal_akta", label: "Akta Pendirian" },
+  { key: "legal_akta_date", label: "Tanggal Akta" },
+  { key: "legal_npwp", label: "NPWP Perusahaan" },
+  { key: "legal_npwp_date", label: "Tanggal NPWP" },
+  { key: "legal_sku", label: "SKU" },
+  { key: "legal_sku_date", label: "Tanggal SKU" },
+  { key: "legal_ikapi", label: "Sertifikat IKAPI" },
+  { key: "legal_ikapi_date", label: "Tanggal IKAPI" },
 ]
 
 export default function AdminSettings() {

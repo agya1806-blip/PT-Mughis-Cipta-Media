@@ -1,6 +1,7 @@
 "use client"
 
 import { useRef, useState } from "react"
+import Image from "next/image"
 import Link from "next/link"
 import { motion, useScroll, useTransform } from "framer-motion"
 import { ArrowRight, MessageCircle } from "lucide-react"
@@ -23,8 +24,8 @@ function FloatingBook() {
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_50%,rgba(211,194,151,0.15),transparent_50%)]" />
           <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-gold via-gold-light to-gold" />
           <div className="p-6 sm:p-8 flex flex-col h-full">
-            <div className="w-8 h-8 rounded-lg bg-gold/20 flex items-center justify-center mb-4">
-              <span className="text-gold font-bold text-xs">M</span>
+            <div className="mb-4">
+              <Image src="/logo-original.png" alt="" width={600} height={63} className="h-4 w-auto brightness-[10] opacity-70" />
             </div>
             <div className="flex-1 space-y-2">
               <div className="h-3 bg-gold/20 rounded w-3/4" />

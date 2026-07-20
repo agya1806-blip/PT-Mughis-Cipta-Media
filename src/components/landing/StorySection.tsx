@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import { motion } from "framer-motion"
 import { Quote } from "lucide-react"
 import Link from "next/link"
@@ -71,8 +72,8 @@ export default function StorySection() {
               <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PHBhdGggZD0iTTM2IDE4YzEuNjU3IDAgMy0xLjM0MyAzLTNzLTEuMzQzLTMtMy0zLTMgMS4zNDMtMyAzIDEuMzQzIDMgMyAzem0wIDI0YzEuNjU3IDAgMy0xLjM0MyAzLTNzLTEuMzQzLTMtMy0zLTMgMS4zNDMtMyAzIDEuMzQzIDMgMyAzeiIvPjwvZz48L2c+PC9zdmc+')] opacity-20" />
 
               <div className="relative h-full flex flex-col items-center justify-center p-12 text-center">
-                <div className="w-20 h-20 rounded-2xl bg-white/10 backdrop-blur-xl flex items-center justify-center mb-6">
-                  <span className="text-3xl font-bold text-white">M</span>
+                <div className="mb-6">
+                  <Image src="/logo-original.png" alt="Maktabah Al-Mughis" width={600} height={63} className="h-7 sm:h-8 w-auto brightness-[10]" />
                 </div>
                 <h3 className="text-2xl font-bold text-white mb-4">Maktabah al-Mughis</h3>
                 <p className="text-gold/80 leading-relaxed">

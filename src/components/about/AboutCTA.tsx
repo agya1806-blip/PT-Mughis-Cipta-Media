@@ -7,7 +7,7 @@ import Link from "next/link"
 export default function AboutCTA() {
   return (
     <section className="relative py-24 lg:py-32 overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-gold via-gold-dark to-zinc-900" />
+      <div className="absolute inset-0 bg-gradient-to-br from-gold via-gold-dark to-green-dark" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_rgba(251,191,36,0.15),transparent_50%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_rgba(16,185,129,0.15),transparent_50%)]" />
 
@@ -29,7 +29,7 @@ export default function AboutCTA() {
             <Sparkles className="w-8 h-8 text-gold-light" />
           </motion.div>
 
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-cream leading-tight mb-6">
             Wujudkan Buku Impian Anda{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-light to-gold-dark">
               Bersama Kami
@@ -43,7 +43,7 @@ export default function AboutCTA() {
           <div className="flex flex-wrap justify-center gap-4">
             <Link
               href="/kontak"
-              className="group inline-flex items-center gap-2 px-8 py-4 bg-white text-gold-dark font-semibold rounded-2xl hover:bg-gold/10 transition-all duration-300 shadow-lg shadow-gold/20"
+              className="group inline-flex items-center gap-2 px-8 py-4 bg-cream text-green-dark font-semibold rounded-2xl hover:bg-gold/10 transition-all duration-300 shadow-lg shadow-gold/20"
             >
               <MessageCircle className="w-5 h-5" />
               Hubungi Kami
@@ -58,7 +58,7 @@ export default function AboutCTA() {
 
             <Link
               href="/kontak"
-              className="group inline-flex items-center gap-2 px-8 py-4 border-2 border-white/20 text-white font-semibold rounded-2xl hover:bg-white/10 transition-all duration-300"
+              className="group inline-flex items-center gap-2 px-8 py-4 border-2 border-cream/20 text-cream font-semibold rounded-2xl hover:bg-cream/10 transition-all duration-300"
             >
               <Sparkles className="w-5 h-5" />
               Konsultasi Gratis

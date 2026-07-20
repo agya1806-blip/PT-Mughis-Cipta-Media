@@ -65,11 +65,11 @@ export default function WhyUs() {
             transition={{ duration: 0.6 }}
             className="relative"
           >
-            <div className="relative bg-gradient-to-br from-zinc-900 to-zinc-800 rounded-3xl p-10 text-white overflow-hidden">
-              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(16,185,129,0.15),transparent_50%)]" />
+            <div className="relative bg-gradient-to-br from-green-dark to-green rounded-3xl p-10 text-cream overflow-hidden">
+              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(211,194,151,0.15),transparent_50%)]" />
               <div className="relative">
-                <h3 className="text-xl font-bold mb-2">Siap Memulai?</h3>
-                <p className="text-zinc-400 text-sm mb-6">
+                <h3 className="text-xl font-bold mb-2 text-cream">Siap Memulai?</h3>
+                <p className="text-gold/80 text-sm mb-6">
                   Konsultasikan naskah Anda dengan tim kami. Kami siap membantu mewujudkan buku impian Anda.
                 </p>
                 <div className="space-y-4">
@@ -79,8 +79,8 @@ export default function WhyUs() {
                     { label: "Kepuasan Klien", value: "98%" },
                   ].map(({ label, value }) => (
                     <div key={label} className="flex items-center justify-between py-2 border-b border-white/10 last:border-0">
-                      <span className="text-zinc-400 text-sm">{label}</span>
-                      <span className="font-bold text-gold">{value}</span>
+                      <span className="text-gold/70 text-sm">{label}</span>
+                      <span className="font-bold text-cream">{value}</span>
                     </div>
                   ))}
                 </div>

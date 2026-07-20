@@ -58,16 +58,16 @@ export default function AdminSettings() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold text-zinc-800 mb-6">Pengaturan</h1>
+      <h1 className="text-2xl font-bold text-green-dark mb-6">Pengaturan</h1>
       <div className="max-w-lg space-y-4">
         {SETTING_FIELDS.map((field) => (
           <div key={field.key}>
-            <label className="block text-sm font-medium text-zinc-600 mb-1">
+            <label className="block text-sm font-medium text-green/70 mb-1">
               {field.label}
             </label>
             <input
               type="text"
-              className="w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50"
+              className="w-full rounded-lg border border-gold/20 bg-cream px-3 py-2 text-sm text-green-dark placeholder-green/60 focus:outline-none focus:ring-2 focus:ring-gold/50"
               value={settings[field.key] || ""}
               onChange={(e) =>
                 setSettings({ ...settings, [field.key]: e.target.value })

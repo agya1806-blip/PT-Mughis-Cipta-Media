@@ -56,7 +56,7 @@ export function PreviewModal() {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center">
-      <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={closeModal} />
+      <div className="absolute inset-0 bg-green/60 backdrop-blur-sm" onClick={closeModal} />
       <div className="relative z-10 w-full max-w-5xl mx-4 bg-cream rounded-2xl shadow-2xl flex flex-col max-h-[90vh]">
         <div className="flex items-center justify-between px-6 py-4 border-b border-gold/20">
           <div className="min-w-0 flex-1">
@@ -74,7 +74,7 @@ export function PreviewModal() {
           </button>
         </div>
 
-        <div className="flex-1 overflow-hidden bg-zinc-900 relative">
+        <div className="flex-1 overflow-hidden bg-green-dark relative">
           <iframe
             ref={iframeRef}
             src={`/api/preview?url=${encodeURIComponent(book.preview_pdf_url ?? "")}`}

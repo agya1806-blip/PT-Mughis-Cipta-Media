@@ -10,7 +10,7 @@ export default function CTAFeature({ label }: Props) {
       <div className="w-5 h-5 rounded-full bg-gold/20 flex items-center justify-center shrink-0">
         <Check className="w-3 h-3 text-gold" strokeWidth={3} />
       </div>
-      <span className="text-zinc-300 font-medium">{label}</span>
+      <span className="text-cream/90 font-medium">{label}</span>
     </div>
   )
 }

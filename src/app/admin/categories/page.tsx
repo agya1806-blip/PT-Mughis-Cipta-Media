@@ -60,14 +60,14 @@ export default function AdminCategories() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold text-zinc-800 mb-6">Kategori</h1>
+      <h1 className="text-2xl font-bold text-green-dark mb-6">Kategori</h1>
       <form onSubmit={handleSubmit} className="flex gap-3 mb-6 max-w-lg">
         <input type="text" placeholder="Nama" required
-          className="flex-1 rounded-lg border border-zinc-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50"
+          className="flex-1 rounded-lg border border-gold/20 bg-cream px-3 py-2 text-sm text-green-dark placeholder-green/60 focus:outline-none focus:ring-2 focus:ring-gold/50"
           value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })}
         />
         <input type="text" placeholder="Slug" required
-          className="flex-1 rounded-lg border border-zinc-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50"
+          className="flex-1 rounded-lg border border-gold/20 bg-cream px-3 py-2 text-sm text-green-dark placeholder-green/60 focus:outline-none focus:ring-2 focus:ring-gold/50"
           value={form.slug} onChange={(e) => setForm({ ...form, slug: e.target.value })}
         />
         <button type="submit"
@@ -76,20 +76,20 @@ export default function AdminCategories() {
           {editingId ? "Update" : "Tambah"}
         </button>
       </form>
-      <div className="bg-white rounded-xl border border-zinc-200 overflow-hidden max-w-lg">
+      <div className="bg-cream rounded-xl border border-gold/20 overflow-hidden max-w-lg">
         <table className="w-full text-sm">
           <thead>
-            <tr className="bg-zinc-50 border-b border-zinc-200">
-              <th className="text-left px-4 py-3 font-medium text-zinc-600">Nama</th>
-              <th className="text-left px-4 py-3 font-medium text-zinc-600">Slug</th>
-              <th className="text-center px-4 py-3 font-medium text-zinc-600">Aksi</th>
+            <tr className="bg-gold/5 border-b border-gold/20">
+              <th className="text-left px-4 py-3 font-medium text-green/70">Nama</th>
+              <th className="text-left px-4 py-3 font-medium text-green/70">Slug</th>
+              <th className="text-center px-4 py-3 font-medium text-green/70">Aksi</th>
             </tr>
           </thead>
           <tbody>
             {categories.map((cat) => (
-              <tr key={cat.id} className="border-b border-zinc-100 hover:bg-zinc-50">
-                <td className="px-4 py-3 text-zinc-800">{cat.name}</td>
-                <td className="px-4 py-3 text-zinc-500">{cat.slug}</td>
+              <tr key={cat.id} className="border-b border-gold/10 hover:bg-gold/5">
+                <td className="px-4 py-3 text-green-dark">{cat.name}</td>
+                <td className="px-4 py-3 text-green/70">{cat.slug}</td>
                 <td className="px-4 py-3 text-center space-x-2">
                   <button onClick={() => handleEdit(cat)} className="text-gold hover:underline text-xs">Edit</button>
                   <button onClick={() => handleDelete(cat.id)} className="text-red-500 hover:underline text-xs">Hapus</button>

@@ -5,6 +5,8 @@ import { slugifyAuthor } from "@/lib/authors"
 import { AuthorBooks } from "@/components/authors"
 import Breadcrumb from "@/components/ui/Breadcrumb"
 
+export const dynamic = "force-dynamic"
+
 interface Props {
   params: Promise<{ slug: string }>
 }

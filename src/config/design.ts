@@ -1,11 +1,11 @@
 /** Design system constants — single source of truth for all sections */
 
 export const COLORS = {
-  background: { light: "#FAFAFA", dark: "#0A0A0B" },
-  surface: { light: "#FFFFFF", dark: "#18181B" },
-  primary: { light: "#111827", dark: "#FAFAFA" },
-  secondary: { light: "#6B7280", dark: "#A1A1AA" },
-  border: { light: "#E5E7EB", dark: "#27272A" },
+  background: { light: "#FDF8F0", dark: "#1E5E4A" },
+  surface: { light: "#FFFFFF", dark: "#234E43" },
+  primary: { light: "#1E5E4A", dark: "#D3C297" },
+  secondary: { light: "#5F7068", dark: "#E8DDA8" },
+  border: { light: "#E6DCC8", dark: "#2F6D5B" },
   gold: "#D3C297",
   goldLight: "#E8DDA8",
   goldDark: "#B19B67",

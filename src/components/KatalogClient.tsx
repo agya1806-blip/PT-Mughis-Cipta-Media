@@ -248,7 +248,7 @@ export function KatalogClient() {
 
       {mobileFilterOpen && (
         <div className="fixed inset-0 z-50 lg:hidden">
-          <div className="absolute inset-0 bg-black/40" onClick={() => setMobileFilterOpen(false)} />
+          <div className="absolute inset-0 bg-green/40" onClick={() => setMobileFilterOpen(false)} />
           <div className="absolute bottom-0 left-0 right-0 bg-cream rounded-t-2xl max-h-[80vh] overflow-y-auto p-6 pb-24">
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-lg font-semibold text-green-dark">Filter</h2>

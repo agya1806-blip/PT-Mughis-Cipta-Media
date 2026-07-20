@@ -17,18 +17,18 @@ const iconMap: Record<string, typeof Send> = {
 }
 
 const colorMap: Record<string, string> = {
-  system: "bg-blue-50 text-blue-600 border-blue-200",
+  system: "bg-gold/10 text-green-dark border-gold/20",
   editor: "bg-gold/5 text-gold border-gold/20",
-  publishing: "bg-green-50 text-green-600 border-green-200",
-  general: "bg-zinc-50 text-zinc-600 border-zinc-200",
+  publishing: "bg-green/10 text-green-dark border-gold/20",
+  general: "bg-cream text-green/70 border-gold/20",
 }
 
 export default function ActivityTimeline({ activities }: Props) {
   const prefersReducedMotion = useReducedMotion()
 
   return (
-    <div className="bg-white dark:bg-zinc-800/50 rounded-2xl border border-zinc-200 dark:border-zinc-700/50 p-6">
-      <h3 className="text-sm font-semibold text-zinc-900 dark:text-white mb-5 flex items-center gap-2">
+    <div className="bg-cream dark:bg-green-dark/80 rounded-2xl border border-gold/20 dark:border-gold/10 p-6">
+      <h3 className="text-sm font-semibold text-green-dark dark:text-cream mb-5 flex items-center gap-2">
         <FileEdit className="w-4 h-4 text-gold" />
         Aktivitas Terbaru
       </h3>
@@ -45,15 +45,15 @@ export default function ActivityTimeline({ activities }: Props) {
               className="relative flex gap-4 pb-5 last:pb-0"
             >
               {i < activities.length - 1 && (
-                <div className="absolute left-[19px] top-10 bottom-0 w-px bg-zinc-200 dark:bg-zinc-700" />
+                <div className="absolute left-[19px] top-10 bottom-0 w-px bg-gold/20 dark:bg-gold/10" />
               )}
               <div className={`w-10 h-10 rounded-xl border flex items-center justify-center shrink-0 ${colorMap[activity.type]}`}>
                 <Icon className="w-4 h-4" />
               </div>
               <div className="flex-1 min-w-0 pt-1">
-                <p className="text-sm font-medium text-zinc-900 dark:text-white">{activity.action}</p>
-                <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5 line-clamp-2">{activity.description}</p>
-                <p className="text-[11px] text-zinc-400 mt-1">{activity.timestamp}</p>
+                <p className="text-sm font-medium text-green-dark dark:text-cream">{activity.action}</p>
+                <p className="text-xs text-green/70 dark:text-gold/80 mt-0.5 line-clamp-2">{activity.description}</p>
+                <p className="text-[11px] text-green/60 dark:text-gold/70 mt-1">{activity.timestamp}</p>
               </div>
             </motion.div>
           )

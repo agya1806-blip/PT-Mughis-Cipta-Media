@@ -48,13 +48,13 @@ export default function ImageUpload({ value, onChange, label = "Gambar", accept 
   return (
     <div className="space-y-3">
       <div className="flex items-center justify-between">
-        <label className="block text-sm font-medium text-zinc-600">{label}</label>
-        <div className="flex items-center gap-1 bg-zinc-100 rounded-lg p-0.5">
+        <label className="block text-sm font-medium text-green/70">{label}</label>
+        <div className="flex items-center gap-1 bg-gold/10 rounded-lg p-0.5">
           <button
             type="button"
             onClick={() => setMode("upload")}
             className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-all ${
-              mode === "upload" ? "bg-white text-zinc-900 shadow-sm" : "text-zinc-500 hover:text-zinc-700"
+              mode === "upload" ? "bg-cream text-green-dark shadow-sm" : "text-green/70 hover:text-green-dark"
             }`}
           >
             <Upload className="w-3.5 h-3.5" />
@@ -64,7 +64,7 @@ export default function ImageUpload({ value, onChange, label = "Gambar", accept 
             type="button"
             onClick={() => setMode("url")}
             className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-all ${
-              mode === "url" ? "bg-white text-zinc-900 shadow-sm" : "text-zinc-500 hover:text-zinc-700"
+              mode === "url" ? "bg-cream text-green-dark shadow-sm" : "text-green/70 hover:text-green-dark"
             }`}
           >
             <Link className="w-3.5 h-3.5" />
@@ -74,7 +74,7 @@ export default function ImageUpload({ value, onChange, label = "Gambar", accept 
       </div>
 
       {preview && (
-        <div className="relative w-full max-w-xs rounded-lg overflow-hidden border border-zinc-200 bg-zinc-50">
+        <div className="relative w-full max-w-xs rounded-lg overflow-hidden border border-gold/20 bg-cream">
           <img
             src={preview}
             alt="Preview"
@@ -83,7 +83,7 @@ export default function ImageUpload({ value, onChange, label = "Gambar", accept 
           <button
             type="button"
             onClick={clearImage}
-            className="absolute top-2 right-2 w-7 h-7 rounded-full bg-black/50 flex items-center justify-center hover:bg-black/70 transition-colors"
+            className="absolute top-2 right-2 w-7 h-7 rounded-full bg-green/60 flex items-center justify-center hover:bg-green-dark/80 transition-colors"
           >
             <X className="w-4 h-4 text-white" />
           </button>
@@ -99,7 +99,7 @@ export default function ImageUpload({ value, onChange, label = "Gambar", accept 
           className={`relative flex flex-col items-center justify-center gap-2 w-full h-32 rounded-xl border-2 border-dashed cursor-pointer transition-all ${
             dragging
               ? "border-gold bg-gold/5"
-              : "border-zinc-300 hover:border-gold/50 hover:bg-zinc-50"
+              : "border-gold/30 hover:border-gold/50 hover:bg-gold/5"
           }`}
         >
           <input
@@ -115,18 +115,18 @@ export default function ImageUpload({ value, onChange, label = "Gambar", accept 
           <div className="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center">
             <Upload className="w-5 h-5 text-gold" />
           </div>
-          <p className="text-sm text-zinc-500">
+          <p className="text-sm text-green/70">
             <span className="text-gold font-medium">Klik untuk unggah</span> atau seret file ke sini
           </p>
-          <p className="text-xs text-zinc-400">Format: JPG, PNG, WebP (max 5MB)</p>
+          <p className="text-xs text-green/60">Format: JPG, PNG, WebP (max 5MB)</p>
         </div>
       ) : (
         <div className="relative">
-          <Link className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-400 pointer-events-none" />
+          <Link className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-green/60 pointer-events-none" />
           <input
             type="url"
             placeholder="https://contoh.com/gambar.jpg"
-            className="w-full rounded-lg border border-zinc-300 pl-10 pr-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50"
+            className="w-full rounded-lg border border-gold/30 bg-cream pl-10 pr-3 py-2.5 text-sm text-green-dark focus:outline-none focus:ring-2 focus:ring-gold/50"
             value={value && !value.startsWith("data:") ? value : ""}
             onChange={(e) => {
               onChange(e.target.value)

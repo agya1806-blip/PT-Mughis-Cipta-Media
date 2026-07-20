@@ -2,6 +2,8 @@ import PageHero from "@/components/PageHero"
 import { AuthorListClient } from "@/components/authors"
 import { getAllAuthors } from "@/lib/authors"
 
+export const dynamic = "force-dynamic"
+
 export const metadata = {
   title: "Penulis | Maktabah al-Mughis",
   description: "Daftar penulis yang telah menerbitkan buku bersama Maktabah al-Mughis",

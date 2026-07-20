@@ -12,8 +12,8 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     <AdminShell>
     <div className="flex flex-1 min-h-0">
       <MobileSidebar />
-      <aside className="w-64 bg-zinc-900 text-white flex-shrink-0 hidden lg:flex flex-col">
-        <div className="p-4 border-b border-zinc-700">
+      <aside className="w-64 bg-green-dark text-cream flex-shrink-0 hidden lg:flex flex-col">
+        <div className="p-4 border-b border-gold/20">
           <Link href="/admin" className="text-lg font-bold text-gold">
             Admin Panel
           </Link>
@@ -26,17 +26,17 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           <SidebarLink href="/admin/articles">Artikel</SidebarLink>
           <SidebarLink href="/admin/contact-submissions">Kontak Masuk</SidebarLink>
           <SidebarLink href="/admin/settings">Pengaturan</SidebarLink>
-          <div className="border-t border-zinc-700 pt-4 mt-4">
+          <div className="border-t border-gold/20 pt-4 mt-4">
             <Link
               href="/"
-              className="block text-sm text-zinc-400 hover:text-white transition-colors"
+              className="block text-sm text-gold/80 hover:text-cream transition-colors"
             >
               &larr; Ke Beranda
             </Link>
           </div>
         </nav>
       </aside>
-      <main className="flex-1 bg-zinc-50 overflow-y-auto p-4 sm:p-6">{children}</main>
+      <main className="flex-1 bg-cream overflow-y-auto p-4 sm:p-6">{children}</main>
     </div>
     </AdminShell>
   )
@@ -44,7 +44,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
 function MobileSidebar() {
   return (
-    <div className="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-zinc-200 flex items-center justify-around px-2 py-2 safe-area-bottom">
+    <div className="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-cream border-t border-gold/20 flex items-center justify-around px-2 py-2 safe-area-bottom">
       <MobileNav href="/admin" label="Dashboard" icon={<span className="text-xs">📊</span>} />
       <MobileNav href="/admin/books" label="Buku" icon={<span className="text-xs">📚</span>} />
       <MobileNav href="/admin/articles" label="Artikel" icon={<span className="text-xs">📝</span>} />
@@ -56,7 +56,7 @@ function MobileSidebar() {
 
 function MobileNav({ href, label, icon }: { href: string; label: string; icon: React.ReactNode }) {
   return (
-    <Link href={href} className="flex flex-col items-center gap-0.5 px-2 py-1 rounded-lg text-zinc-500 hover:text-gold transition-colors">
+    <Link href={href} className="flex flex-col items-center gap-0.5 px-2 py-1 rounded-lg text-green/70 hover:text-gold transition-colors">
       {icon}
       <span className="text-[10px] font-medium">{label}</span>
     </Link>
@@ -73,7 +73,7 @@ function SidebarLink({
   return (
     <Link
       href={href}
-      className="block px-3 py-2 rounded-lg text-sm text-zinc-300 hover:bg-zinc-800 hover:text-white transition-colors"
+      className="block px-3 py-2 rounded-lg text-sm text-gold/80 hover:bg-green/20 hover:text-cream transition-colors"
     >
       {children}
     </Link>

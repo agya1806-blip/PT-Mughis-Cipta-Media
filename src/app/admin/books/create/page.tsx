@@ -45,13 +45,13 @@ export default function CreateBook() {
     }
   }
 
-  const inputClass = "w-full rounded-lg border border-zinc-300 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50 transition-shadow"
+  const inputClass = "w-full rounded-lg border border-gold/20 bg-cream px-3 py-2.5 text-sm text-green-dark placeholder-green/60 focus:outline-none focus:ring-2 focus:ring-gold/50 transition-shadow"
 
   return (
     <div>
       <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-bold text-zinc-800">Tambah Buku</h1>
-        <button type="button" onClick={() => router.back()} className="text-sm text-zinc-500 hover:text-zinc-700">Batal</button>
+        <h1 className="text-2xl font-bold text-green-dark">Tambah Buku</h1>
+        <button type="button" onClick={() => router.back()} className="text-sm text-green/70 hover:text-green-dark">Batal</button>
       </div>
 
       <form onSubmit={handleSubmit} className="max-w-3xl space-y-6">

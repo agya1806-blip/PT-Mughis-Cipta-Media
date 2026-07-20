@@ -82,15 +82,15 @@ export default function AdminEditor({ value, onChange, label = "Konten", placeho
   return (
     <div className="space-y-2">
       <div className="flex items-center justify-between">
-        <label className="block text-sm font-medium text-zinc-600">{label}</label>
+        <label className="block text-sm font-medium text-green/70">{label}</label>
         {preview && (
           <button type="button" onClick={() => setPreview(false)} className="flex items-center gap-1.5 text-xs text-gold hover:text-gold-dark">
             <Edit3 className="w-3.5 h-3.5" /> Edit
           </button>
         )}
       </div>
-      <div className="rounded-xl border border-zinc-300 overflow-hidden bg-white">
-        <div className="flex flex-wrap items-center gap-0.5 px-2 py-1.5 border-b border-zinc-200 bg-zinc-50">
+      <div className="rounded-xl border border-gold/30 overflow-hidden bg-cream">
+        <div className="flex flex-wrap items-center gap-0.5 px-2 py-1.5 border-b border-gold/20 bg-gold/5">
           <input
             ref={docxInputRef}
             type="file"
@@ -104,15 +104,15 @@ export default function AdminEditor({ value, onChange, label = "Konten", placeho
               type="button"
               onClick={item.action}
               title={item.label}
-              className="p-1.5 rounded-lg text-zinc-500 hover:text-zinc-800 hover:bg-white transition-colors"
+              className="p-1.5 rounded-lg text-green/70 hover:text-green-dark hover:bg-cream transition-colors"
             >
               {item.icon}
             </button>
           ))}
-          <span className="ml-auto text-[10px] text-zinc-400 font-mono">HTML</span>
+          <span className="ml-auto text-[10px] text-green/60 font-mono">HTML</span>
         </div>
         {preview ? (
-          <div className="p-4 sm:p-6 min-h-[200px] prose prose-sm max-w-none text-zinc-800">
+          <div className="p-4 sm:p-6 min-h-[200px] prose prose-sm max-w-none text-green-dark">
             <PreviewRenderer html={value} />
           </div>
         ) : (
@@ -122,7 +122,7 @@ export default function AdminEditor({ value, onChange, label = "Konten", placeho
             onChange={(e) => onChange(e.target.value)}
             placeholder={placeholder}
             rows={minRows}
-            className="w-full px-4 py-3 text-sm font-mono text-zinc-800 placeholder-zinc-400 resize-y focus:outline-none"
+            className="w-full px-4 py-3 text-sm font-mono text-green-dark placeholder-green/60 resize-y focus:outline-none"
           />
         )}
       </div>

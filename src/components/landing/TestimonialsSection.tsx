@@ -68,7 +68,7 @@ export default function TestimonialsSection() {
               <button
                 key={i}
                 onClick={() => setCurrent(i)}
-                className={`w-2 h-2 rounded-full transition-all duration-300 ${i === current ? "w-6 bg-gold" : "bg-zinc-300 dark:bg-zinc-600"}`}
+                className={`w-2 h-2 rounded-full transition-all duration-300 ${i === current ? "w-6 bg-gold" : "bg-gold/20 dark:bg-gold/20"}`}
               />
             ))}
           </div>

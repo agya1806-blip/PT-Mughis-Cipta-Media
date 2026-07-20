@@ -17,8 +17,8 @@ export default function ManuscriptTimeline({ currentStatus }: Props) {
   const currentIndex = steps.indexOf(currentStatus)
 
   return (
-    <div className="bg-white dark:bg-zinc-800/50 rounded-2xl border border-zinc-200 dark:border-zinc-700/50 p-6">
-      <h3 className="text-sm font-semibold text-zinc-900 dark:text-white mb-5">Progress Naskah</h3>
+    <div className="bg-cream dark:bg-green-dark/80 rounded-2xl border border-gold/20 dark:border-gold/10 p-6">
+      <h3 className="text-sm font-semibold text-green-dark dark:text-cream mb-5">Progress Naskah</h3>
       <div className="space-y-0">
         {steps.map((step, i) => {
           const completed = i <= currentIndex
@@ -33,17 +33,17 @@ export default function ManuscriptTimeline({ currentStatus }: Props) {
               className="relative flex gap-3 pb-5 last:pb-0"
             >
               {i < steps.length - 1 && (
-                <div className={`absolute left-[15px] top-7 bottom-0 w-0.5 ${completed ? "bg-gold/40" : "bg-zinc-200 dark:bg-zinc-700"}`} />
+                <div className={`absolute left-[15px] top-7 bottom-0 w-0.5 ${completed ? "bg-gold/40" : "bg-gold/10 dark:bg-gold/10"}`} />
               )}
               <div className="relative z-10 mt-0.5">
                 {completed ? (
                   <CheckCircle2 className={`w-7 h-7 ${isCurrent ? "text-gold" : "text-gold/60"}`} />
                 ) : (
-                  <Circle className="w-7 h-7 text-zinc-300 dark:text-zinc-600" />
+                  <Circle className="w-7 h-7 text-green/30 dark:text-gold/40" />
                 )}
               </div>
               <div className="flex-1 min-w-0 pt-0.5">
-                <p className={`text-sm font-medium ${completed ? "text-zinc-900 dark:text-white" : "text-zinc-400"}`}>
+                <p className={`text-sm font-medium ${completed ? "text-green-dark dark:text-cream" : "text-green/60 dark:text-gold/80"}`}>
                   {statusLabels[step]}
                 </p>
                 {isCurrent && <p className="text-xs text-gold mt-0.5">Sedang dalam proses ini</p>}

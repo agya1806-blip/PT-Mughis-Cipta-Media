@@ -28,7 +28,7 @@ export default function CtaCard({
 }: Props) {
   return (
     <section
-      className={`relative py-24 sm:py-32 overflow-hidden bg-gradient-to-br from-zinc-900 via-zinc-800 to-zinc-900 ${className}`}
+      className={`relative py-24 sm:py-32 overflow-hidden bg-gradient-to-br from-green-dark via-green to-green-light ${className}`}
     >
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(211,194,151,0.12),transparent_50%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(211,194,151,0.08),transparent_50%)]" />
@@ -39,11 +39,11 @@ export default function CtaCard({
           viewport={{ once: true }}
           className="max-w-2xl mx-auto text-center"
         >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-[1.15]">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-cream leading-[1.15]">
             {title}
           </h2>
           {description && (
-            <p className="mt-4 text-lg text-zinc-400">{description}</p>
+            <p className="mt-4 text-lg text-gold/80">{description}</p>
           )}
           {children}
           {(primaryLabel || secondaryLabel) && (

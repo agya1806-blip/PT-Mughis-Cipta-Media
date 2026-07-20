@@ -9,17 +9,17 @@ const mockNotes = [
 
 export default function EditorNotes() {
   return (
-    <div className="bg-white dark:bg-zinc-800/50 rounded-2xl border border-zinc-200 dark:border-zinc-700/50 p-6">
-      <h3 className="text-sm font-semibold text-zinc-900 dark:text-white mb-5 flex items-center gap-2">
+    <div className="bg-cream dark:bg-green-dark/80 rounded-2xl border border-gold/20 dark:border-gold/10 p-6">
+      <h3 className="text-sm font-semibold text-green-dark dark:text-cream mb-5 flex items-center gap-2">
         <MessageSquare className="w-4 h-4 text-gold" />
         Catatan Editor
       </h3>
       {mockNotes.length === 0 ? (
-        <p className="text-sm text-zinc-400">Belum ada catatan dari editor.</p>
+        <p className="text-sm text-green/60 dark:text-gold/70">Belum ada catatan dari editor.</p>
       ) : (
         <div className="space-y-4">
           {mockNotes.map((note) => (
-            <div key={note.id} className="p-4 rounded-xl bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-100 dark:border-zinc-800">
+            <div key={note.id} className="p-4 rounded-xl bg-cream/70 dark:bg-green/20 border border-gold/20 dark:border-gold/10">
               <div className="flex items-start gap-3">
                 <div className="w-8 h-8 rounded-full bg-gold/10 flex items-center justify-center shrink-0 mt-0.5">
                   <User className="w-4 h-4 text-gold" />
@@ -27,12 +27,12 @@ export default function EditorNotes() {
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center justify-between gap-2 mb-1">
                     <div>
-                      <p className="text-xs font-semibold text-zinc-900 dark:text-white">{note.author}</p>
-                      <p className="text-[10px] text-zinc-400">{note.role}</p>
+                      <p className="text-xs font-semibold text-green-dark dark:text-cream">{note.author}</p>
+                      <p className="text-[10px] text-green/60 dark:text-gold/70">{note.role}</p>
                     </div>
-                    <span className="text-[10px] text-zinc-400 shrink-0">{note.date}</span>
+                    <span className="text-[10px] text-green/60 dark:text-gold/70 shrink-0">{note.date}</span>
                   </div>
-                  <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed mt-1.5">{note.note}</p>
+                  <p className="text-xs text-green/80 dark:text-cream/80 leading-relaxed mt-1.5">{note.note}</p>
                 </div>
               </div>
             </div>

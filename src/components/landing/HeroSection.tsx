@@ -19,7 +19,7 @@ function FloatingBook() {
         className="relative w-full h-full [perspective:1000px]"
       >
         <div className="absolute inset-0 bg-gradient-to-br from-gold/20 via-gold/5 to-transparent rounded-2xl blur-3xl" />
-        <div className="relative w-full h-full rounded-2xl bg-gradient-to-br from-zinc-900 to-zinc-800 dark:from-zinc-800 dark:to-zinc-900 shadow-2xl overflow-hidden border border-white/5">
+        <div className="relative w-full h-full rounded-2xl bg-gradient-to-br from-green-dark via-green to-green-light dark:from-green-dark dark:via-green dark:to-green-light shadow-2xl overflow-hidden border border-gold/20">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_50%,rgba(211,194,151,0.15),transparent_50%)]" />
           <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-gold via-gold-light to-gold" />
           <div className="p-6 sm:p-8 flex flex-col h-full">
@@ -27,16 +27,16 @@ function FloatingBook() {
               <span className="text-gold font-bold text-xs">M</span>
             </div>
             <div className="flex-1 space-y-2">
-              <div className="h-3 bg-zinc-700/50 rounded w-3/4" />
-              <div className="h-3 bg-zinc-700/50 rounded w-1/2" />
-              <div className="h-3 bg-zinc-700/50 rounded w-5/6 mt-4" />
-              <div className="h-3 bg-zinc-700/50 rounded w-2/3" />
-              <div className="h-3 bg-zinc-700/50 rounded w-4/5 mt-4" />
-              <div className="h-3 bg-zinc-700/50 rounded w-1/3" />
+              <div className="h-3 bg-gold/20 rounded w-3/4" />
+              <div className="h-3 bg-gold/20 rounded w-1/2" />
+              <div className="h-3 bg-gold/20 rounded w-5/6 mt-4" />
+              <div className="h-3 bg-gold/20 rounded w-2/3" />
+              <div className="h-3 bg-gold/20 rounded w-4/5 mt-4" />
+              <div className="h-3 bg-gold/20 rounded w-1/3" />
             </div>
-            <div className="flex items-center gap-2 pt-4 border-t border-white/10">
+            <div className="flex items-center gap-2 pt-4 border-t border-gold/20">
               <div className="w-6 h-6 rounded-full bg-gold/30" />
-              <div className="h-2 bg-zinc-700/50 rounded w-20" />
+              <div className="h-2 bg-gold/20 rounded w-20" />
             </div>
           </div>
           <motion.div
@@ -199,13 +199,13 @@ export default function HeroSection() {
                 {[1, 2, 3, 4].map((i) => (
                   <div
                     key={i}
-                    className="w-8 h-8 rounded-full border-2 border-zinc-800 bg-zinc-700 flex items-center justify-center text-[10px] text-zinc-400 font-medium"
+                    className="w-8 h-8 rounded-full border-2 border-gold/30 bg-green-dark/80 flex items-center justify-center text-[10px] text-gold/80 font-medium"
                   >
                     {String.fromCharCode(64 + i)}
                   </div>
                 ))}
               </div>
-              <span>Dipercaya <strong className="text-zinc-300">100+</strong> penulis & institusi</span>
+              <span>Dipercaya <strong className="text-gold/90">100+</strong> penulis & institusi</span>
             </motion.div>
           </motion.div>
 

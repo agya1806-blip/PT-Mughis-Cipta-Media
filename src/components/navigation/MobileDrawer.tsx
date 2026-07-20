@@ -72,7 +72,7 @@ export default function MobileDrawer({ open, onClose, links }: Props) {
           animate="visible"
           exit="hidden"
           transition={{ duration: 0.25 }}
-          className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm md:hidden"
+          className="fixed inset-0 z-50 bg-green/60 backdrop-blur-sm md:hidden"
           onClick={onClose}
           aria-hidden="true"
         >

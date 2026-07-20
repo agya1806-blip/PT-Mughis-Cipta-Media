@@ -39,8 +39,8 @@ function Counter({ target, suffix = "" }: { target: number; suffix?: string }) {
 
 export default function Stats() {
   return (
-    <section className="relative py-24 lg:py-32 bg-gradient-to-br from-zinc-900 via-zinc-800 to-zinc-900 overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(16,185,129,0.08),transparent_60%)]" />
+    <section className="relative py-24 lg:py-32 bg-gradient-to-br from-green-dark via-green to-green-light overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(211,194,151,0.08),transparent_60%)]" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <motion.div
@@ -50,13 +50,13 @@ export default function Stats() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold text-white">
+          <h2 className="text-4xl sm:text-5xl font-bold text-cream">
             Dampak{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold to-gold-dark">
               Kami
             </span>
           </h2>
-          <p className="text-zinc-400 mt-4 max-w-2xl mx-auto">
+          <p className="text-gold/80 mt-4 max-w-2xl mx-auto">
             Angka-angka ini adalah bukti komitmen kami dalam mengembangkan literasi di Indonesia.
           </p>
         </motion.div>
@@ -71,14 +71,14 @@ export default function Stats() {
               transition={{ delay: i * 0.1, duration: 0.5 }}
               className="group relative"
             >
-              <div className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 text-center hover:bg-white/10 transition-all duration-300">
+              <div className="relative bg-cream/5 backdrop-blur-xl border border-gold/20 rounded-2xl p-8 text-center hover:bg-cream/10 transition-all duration-300">
                 <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-gold/20 to-gold-dark/20 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
                   <Icon className="w-6 h-6 text-gold" />
                 </div>
-                <div className="text-4xl lg:text-5xl font-bold text-white mb-2">
+                <div className="text-4xl lg:text-5xl font-bold text-cream mb-2">
                   <Counter target={value} suffix={suffix} />
                 </div>
-                <p className="text-zinc-400 text-sm">{label}</p>
+                <p className="text-gold/80 text-sm">{label}</p>
 
                 <div className="absolute -bottom-0.5 left-4 right-4 h-0.5 bg-gradient-to-r from-gold/50 to-gold-dark/50 rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
               </div>

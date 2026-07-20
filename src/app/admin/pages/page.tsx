@@ -31,7 +31,7 @@ export default function AdminPages() {
   return (
     <div>
       <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-bold text-zinc-800">Halaman</h1>
+        <h1 className="text-2xl font-bold text-green-dark">Halaman</h1>
         <Link
           href="/admin/pages/create"
           className="h-10 px-4 rounded-lg bg-gold text-white text-sm font-medium hover:bg-gold-dark flex items-center"
@@ -39,20 +39,20 @@ export default function AdminPages() {
           Tambah Halaman
         </Link>
       </div>
-      <div className="bg-white rounded-xl border border-zinc-200 overflow-hidden">
+      <div className="bg-cream rounded-xl border border-gold/20 overflow-hidden">
         <table className="w-full text-sm">
           <thead>
-            <tr className="bg-zinc-50 border-b border-zinc-200">
-              <th className="text-left px-4 py-3 font-medium text-zinc-600">Judul</th>
-              <th className="text-left px-4 py-3 font-medium text-zinc-600">Slug</th>
-              <th className="text-center px-4 py-3 font-medium text-zinc-600">Aksi</th>
+            <tr className="bg-gold/5 border-b border-gold/20">
+              <th className="text-left px-4 py-3 font-medium text-green/70">Judul</th>
+              <th className="text-left px-4 py-3 font-medium text-green/70">Slug</th>
+              <th className="text-center px-4 py-3 font-medium text-green/70">Aksi</th>
             </tr>
           </thead>
           <tbody>
             {pages.map((page) => (
-              <tr key={page.id} className="border-b border-zinc-100 hover:bg-zinc-50">
-                <td className="px-4 py-3 text-zinc-800">{page.title}</td>
-                <td className="px-4 py-3 text-zinc-500">/{page.slug}</td>
+              <tr key={page.id} className="border-b border-gold/10 hover:bg-gold/5">
+                <td className="px-4 py-3 text-green-dark">{page.title}</td>
+                <td className="px-4 py-3 text-green/70">/{page.slug}</td>
                 <td className="px-4 py-3 text-center space-x-2">
                   <Link href={`/admin/pages/${page.id}`} className="text-gold hover:underline text-xs">
                     Edit

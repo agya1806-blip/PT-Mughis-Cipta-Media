@@ -13,7 +13,7 @@ const floatingIcons = [
 
 export default function AboutHero() {
   return (
-    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-zinc-900 via-zinc-800 to-zinc-900">
+    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-green-dark via-green to-green-light">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(211,194,151,0.12),transparent_50%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_rgba(211,194,151,0.08),transparent_50%)]" />
 
@@ -50,7 +50,7 @@ export default function AboutHero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.6 }}
-              className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-[1.1] tracking-tight mb-6"
+              className="text-4xl sm:text-5xl lg:text-6xl font-bold text-cream leading-[1.1] tracking-tight mb-6"
             >
               Membangun Peradaban{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold via-gold-light to-gold-dark">
@@ -120,12 +120,12 @@ export default function AboutHero() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.5 + i * 0.1, duration: 0.5 }}
-                    className="group relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300"
+                    className="group relative bg-cream/5 backdrop-blur-xl border border-gold/20 rounded-2xl p-6 hover:bg-cream/10 transition-all duration-300"
                   >
                     <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
-                      <Icon className="w-6 h-6 text-white" />
+                      <Icon className="w-6 h-6 text-cream" />
                     </div>
-                    <h3 className="text-white font-semibold text-sm">{label}</h3>
+                    <h3 className="text-cream font-semibold text-sm">{label}</h3>
                     <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </motion.div>
                 ))}

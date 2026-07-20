@@ -8,9 +8,9 @@ interface Props {
 }
 
 const intensityMap = {
-  light: "backdrop-blur-sm bg-white/30 dark:bg-black/30",
-  medium: "backdrop-blur-xl bg-white/60 dark:bg-black/60",
-  heavy: "backdrop-blur-2xl bg-white/80 dark:bg-black/80",
+  light: "backdrop-blur-sm bg-cream/50 dark:bg-green/40",
+  medium: "backdrop-blur-xl bg-white/70 dark:bg-green/50",
+  heavy: "backdrop-blur-2xl bg-cream/90 dark:bg-green/70",
 }
 
 export default function GlassPanel({

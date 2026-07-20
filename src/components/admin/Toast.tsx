@@ -56,8 +56,8 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
             className={`flex items-start gap-3 px-4 py-3 rounded-xl border shadow-lg backdrop-blur-sm ${bgColors[t.type]} animate-slide-up`}
           >
             {icons[t.type]}
-            <p className="text-sm text-zinc-800 flex-1">{t.message}</p>
-            <button onClick={() => remove(t.id)} className="text-zinc-400 hover:text-zinc-600">
+            <p className="text-sm text-green-dark flex-1">{t.message}</p>
+            <button onClick={() => remove(t.id)} className="text-green/60 hover:text-green-dark">
               <X className="w-4 h-4" />
             </button>
           </div>

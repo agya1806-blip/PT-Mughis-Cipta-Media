@@ -19,12 +19,12 @@ export default function AdminDashboard() {
   }, [])
 
   if (!data) {
-    return <div className="text-zinc-500">Memuat...</div>
+    return <div className="text-green/70">Memuat...</div>
   }
 
   return (
     <div>
-      <h1 className="text-2xl font-bold text-zinc-800 mb-8">Dashboard</h1>
+      <h1 className="text-2xl font-bold text-green-dark mb-8">Dashboard</h1>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
         <MetricCard title="Total Buku" value={data.totalBooks} />
@@ -45,7 +45,7 @@ function MetricCard({
   color?: string
 }) {
   const colors: Record<string, string> = {
-    zinc: "bg-zinc-50 border-zinc-200 text-zinc-800",
+    zinc: "bg-gold/5 border-gold/20 text-green-dark",
     gold: "bg-gold/5 border-gold/20 text-gold-dark",
     green: "bg-green-50 border-green-200 text-green-800",
     blue: "bg-blue-50 border-blue-200 text-blue-800",

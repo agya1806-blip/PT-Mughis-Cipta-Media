@@ -19,7 +19,7 @@ const SectionWrapper = forwardRef<HTMLDivElement, Props>(function SectionWrapper
       ref={ref}
       id={id}
       className={`py-24 sm:py-32 overflow-hidden ${
-        muted ? "bg-cream dark:bg-zinc-900/50" : ""
+        muted ? "bg-cream dark:bg-green-dark/80" : ""
       } ${className}`}
     >
       <div className="container">{children}</div>

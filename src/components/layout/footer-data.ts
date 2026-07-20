@@ -48,7 +48,7 @@ export const footerData: FooterData = {
         { label: "Layanan", href: "/layanan-penerbitan" },
         { label: "Katalog Buku", href: "/katalog" },
         { label: "Blog", href: "/blog" },
-        { label: "Legalitas", href: "/legal" },
+        { label: "Legalitas", href: "/company/legalitas" },
       ],
     },
     {
@@ -67,7 +67,6 @@ export const footerData: FooterData = {
         { label: "FAQ", href: "/faq" },
         { label: "Kebijakan Privasi", href: "/privacy" },
         { label: "Syarat & Ketentuan", href: "/terms" },
-        { label: "Legalitas", href: "/legal" },
         { label: "Hubungi Kami", href: "/kontak" },
       ],
     },

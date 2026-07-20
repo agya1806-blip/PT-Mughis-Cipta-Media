@@ -71,7 +71,7 @@ export default function LegalitasPage() {
                     <div className="grid grid-cols-2 gap-4 text-sm">
                       {[
                         { label: "Badan Usaha", value: "PT Mughis Cipta Media" },
-                        { label: "Status", value: "Aktip" },
+                        { label: "Status", value: "Aktif" },
                         { label: "KBLI", value: "58110 (Penerbitan Buku)" },
                         { label: "Skala Usaha", value: "Usaha Menengah" },
                         { label: "Tgl Terbit", value: "1 Januari 2020" },
@@ -107,7 +107,7 @@ export default function LegalitasPage() {
                     ))}
                   </div>
                   <div className="pt-2">
-                    <a href="#" className="inline-flex items-center gap-2 text-sm font-medium text-gold hover:text-gold-dark transition-colors">Verifikasi Dokumen<ExternalLink className="w-3.5 h-3.5" /></a>
+                    <a href="https://oss-rba.bkpm.go.id/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm font-medium text-gold hover:text-gold-dark transition-colors">Verifikasi di OSS-RBA<ExternalLink className="w-3.5 h-3.5" /></a>
                   </div>
                 </GlassPanel>
               </motion.div>

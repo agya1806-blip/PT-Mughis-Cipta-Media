@@ -98,7 +98,7 @@ export default async function Footer() {
           <div className="sm:col-span-2 lg:col-span-1 space-y-6">
             <Link href="/" className="inline-flex items-center gap-3 group">
               <Image
-                src="/logo.png"
+                src="/logo-original.png"
                 alt="Maktabah Al-Mughis"
                 width={600}
                 height={63}

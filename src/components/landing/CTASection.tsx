@@ -45,7 +45,7 @@ export default function CTASection() {
             className="w-16 h-16 rounded-2xl bg-gold/20 flex items-center justify-center mx-auto mb-6"
           >
             <Image
-              src="/logo.png"
+              src="/logo-original.png"
               alt="Maktabah Al-Mughis"
               width={120}
               height={13}

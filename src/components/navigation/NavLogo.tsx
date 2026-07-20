@@ -11,7 +11,7 @@ export default function NavLogo({ scrolled }: Props) {
   return (
     <Link href="/" className="flex items-center gap-2.5 group shrink-0">
       <Image
-        src="/logo.png"
+        src="/logo-original.png"
         alt="Maktabah Al-Mughis"
         width={600}
         height={63}

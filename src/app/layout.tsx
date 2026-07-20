@@ -58,8 +58,8 @@ export const metadata: Metadata = {
     follow: true,
   },
   icons: {
-    icon: "/logo.png",
-    apple: "/logo.png",
+    icon: "/logo-original.png",
+    apple: "/logo-original.png",
   },
   verification: {
     google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION,
@@ -110,7 +110,7 @@ export default function RootLayout({
             description:
               "Penerbit, percetakan, dan mitra kreatif untuk mewujudkan karya terbaik Anda. Layanan penerbitan buku, editing, desain, ISBN, dan distribusi nasional.",
             url: process.env.NEXT_PUBLIC_BASE_URL || "https://mughisciptamedia.com",
-            logo: `${baseUrl}/logo.png`,
+            logo: `${baseUrl}/logo-original.png`,
             sameAs: [
               "https://www.instagram.com/maktabahmughis",
               "https://www.facebook.com/maktabahmughis",

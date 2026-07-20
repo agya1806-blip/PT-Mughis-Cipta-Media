@@ -29,7 +29,7 @@ export default function LoadingScreen() {
           >
             <div className="mx-auto mb-4">
               <Image
-                src="/logo.png"
+                src="/logo-original.png"
                 alt="Maktabah Al-Mughis"
                 width={600}
                 height={63}

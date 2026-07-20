@@ -36,15 +36,15 @@ export default function LegalLayout({
             <Icon className={`w-6 h-6 ${iconColor}`} />
           </div>
           <div>
-            <h1 className="text-3xl font-bold text-zinc-900">{title}</h1>
-            <p className="text-sm text-zinc-500">{subtitle}</p>
+            <h1 className="text-3xl font-bold text-green-dark">{title}</h1>
+            <p className="text-sm text-green/60">{subtitle}</p>
           </div>
         </div>
 
-        <div className="bg-white rounded-2xl border border-zinc-200 p-8 sm:p-10 space-y-6 text-zinc-600 leading-relaxed">
+        <div className="bg-cream rounded-2xl border border-gold/20 p-8 sm:p-10 space-y-6 text-green/80 leading-relaxed">
           {children}
 
-          <p className="text-sm text-zinc-400 pt-4 border-t border-zinc-200">
+          <p className="text-sm text-green/60 pt-4 border-t border-gold/20">
             Terakhir diperbarui: {lastUpdated}
           </p>
         </div>

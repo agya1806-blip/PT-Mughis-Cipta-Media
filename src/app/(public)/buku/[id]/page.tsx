@@ -145,52 +145,52 @@ export default async function BookDetailPage({ params }: { params: Promise<{ id:
                 <span className="inline-block text-xs font-medium text-gold bg-gold/5 px-3 py-1 rounded-full mb-3">
                   {mapped.category_name}
                 </span>
-                <h1 className="text-2xl md:text-3xl font-bold text-zinc-900 leading-tight">{mapped.title}</h1>
+                <h1 className="text-2xl md:text-3xl font-bold text-green-dark leading-tight">{mapped.title}</h1>
               </div>
 
               <div className="grid grid-cols-2 gap-4 text-sm">
                 <div>
-                  <span className="text-zinc-500">Penulis</span>
+                  <span className="text-green/60">Penulis</span>
                   <Link
                     href={`/penulis/${encodeURIComponent(mapped.author)}`}
-                    className="font-medium text-zinc-800 mt-0.5 block hover:text-gold transition-colors"
+                    className="font-medium text-green-dark mt-0.5 block hover:text-gold transition-colors"
                   >
                     {mapped.author}
                   </Link>
                 </div>
                 {mapped.translator && (
                   <div>
-                    <span className="text-zinc-500">Penerjemah</span>
-                    <p className="font-medium text-zinc-800 mt-0.5">{mapped.translator}</p>
+                    <span className="text-green/60">Penerjemah</span>
+                    <p className="font-medium text-green-dark mt-0.5">{mapped.translator}</p>
                   </div>
                 )}
                 <div>
-                  <span className="text-zinc-500">Penerbit</span>
-                  <p className="font-medium text-zinc-800 mt-0.5">{mapped.publisher}</p>
+                  <span className="text-green/60">Penerbit</span>
+                  <p className="font-medium text-green-dark mt-0.5">{mapped.publisher}</p>
                 </div>
                 <div>
-                  <span className="text-zinc-500">ISBN</span>
-                  <p className="font-medium text-zinc-800 mt-0.5">{mapped.isbn}</p>
+                  <span className="text-green/60">ISBN</span>
+                  <p className="font-medium text-green-dark mt-0.5">{mapped.isbn}</p>
                 </div>
                 <div>
-                  <span className="text-zinc-500">Halaman</span>
-                  <p className="font-medium text-zinc-800 mt-0.5">{mapped.page_count} hal</p>
+                  <span className="text-green/60">Halaman</span>
+                  <p className="font-medium text-green-dark mt-0.5">{mapped.page_count} hal</p>
                 </div>
                 <div>
-                  <span className="text-zinc-500">Tahun</span>
-                  <p className="font-medium text-zinc-800 mt-0.5">{mapped.publication_year}</p>
+                  <span className="text-green/60">Tahun</span>
+                  <p className="font-medium text-green-dark mt-0.5">{mapped.publication_year}</p>
                 </div>
                 <div>
-                  <span className="text-zinc-500">Bahasa</span>
-                  <p className="font-medium text-zinc-800 mt-0.5">{mapped.language}</p>
+                  <span className="text-green/60">Bahasa</span>
+                  <p className="font-medium text-green-dark mt-0.5">{mapped.language}</p>
                 </div>
                 <div>
-                  <span className="text-zinc-500">Dimensi</span>
-                  <p className="font-medium text-zinc-800 mt-0.5">{mapped.dimensions}</p>
+                  <span className="text-green/60">Dimensi</span>
+                  <p className="font-medium text-green-dark mt-0.5">{mapped.dimensions}</p>
                 </div>
                 <div>
-                  <span className="text-zinc-500">Berat</span>
-                  <p className="font-medium text-zinc-800 mt-0.5">{mapped.weight} gr</p>
+                  <span className="text-green/60">Berat</span>
+                  <p className="font-medium text-green-dark mt-0.5">{mapped.weight} gr</p>
                 </div>
               </div>
 
@@ -198,14 +198,14 @@ export default async function BookDetailPage({ params }: { params: Promise<{ id:
             </div>
           </div>
 
-          <div className="border-t border-zinc-200 p-8">
-            <h2 className="text-lg font-semibold text-zinc-900 mb-3">Sinopsis</h2>
-            <p className="text-zinc-600 leading-relaxed">{mapped.synopsis}</p>
+          <div className="border-t border-gold/20 p-8">
+            <h2 className="text-lg font-semibold text-green-dark mb-3">Sinopsis</h2>
+            <p className="text-green/80 leading-relaxed">{mapped.synopsis}</p>
           </div>
 
           {related.length > 0 && (
-            <div className="border-t border-zinc-200 p-8">
-              <h2 className="text-lg font-semibold text-zinc-900 mb-6">Buku Terkait</h2>
+            <div className="border-t border-gold/20 p-8">
+              <h2 className="text-lg font-semibold text-green-dark mb-6">Buku Terkait</h2>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                 {related.map((r) => (
                   <BookCard key={r.id} book={r} />

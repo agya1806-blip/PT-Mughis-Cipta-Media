@@ -75,7 +75,7 @@ export default function AboutHero() {
             >
               <Link
                 href="/kontak"
-                className="group relative inline-flex items-center gap-2 px-8 py-4 bg-gold hover:bg-gold-dark text-zinc-900 font-semibold rounded-2xl transition-all duration-300 overflow-hidden"
+                className="group relative inline-flex items-center gap-2 px-8 py-4 bg-green hover:bg-green-dark text-gold font-semibold rounded-2xl transition-all duration-300 overflow-hidden"
               >
                 <span className="relative z-10">Hubungi Kami</span>
                 <motion.span

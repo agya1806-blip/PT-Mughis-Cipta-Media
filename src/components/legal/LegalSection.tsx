@@ -8,7 +8,7 @@ interface Props {
 export default function LegalSection({ title, children }: Props) {
   return (
     <section>
-      <h2 className="text-xl font-semibold text-zinc-900 mb-3">{title}</h2>
+      <h2 className="text-xl font-semibold text-green-dark mb-3">{title}</h2>
       {children}
     </section>
   )

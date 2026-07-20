@@ -31,7 +31,7 @@ export default function WhyUs() {
             transition={{ duration: 0.6 }}
           >
             <span className="text-gold font-semibold text-sm tracking-widest uppercase">Keunggulan</span>
-            <h2 className="text-4xl sm:text-5xl font-bold text-zinc-900 mt-4 mb-6 leading-tight">
+            <h2 className="text-4xl sm:text-5xl font-bold text-green-dark mt-4 mb-6 leading-tight">
               Mengapa Memilih{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold to-gold-dark">
                 Kami?
@@ -52,7 +52,7 @@ export default function WhyUs() {
                   className="flex items-start gap-3 group"
                 >
                   <CheckCircle className="w-5 h-5 text-gold mt-0.5 shrink-0 group-hover:scale-110 transition-transform" />
-                  <span className="text-zinc-700 text-sm">{r}</span>
+                  <span className="text-green/80 text-sm">{r}</span>
                 </motion.div>
               ))}
             </div>

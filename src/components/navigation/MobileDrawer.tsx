@@ -82,20 +82,20 @@ export default function MobileDrawer({ open, onClose, links }: Props) {
             animate="visible"
             exit="hidden"
             transition={{ type: "spring", damping: 28, stiffness: 220 }}
-            className="absolute right-0 top-0 bottom-0 w-80 max-w-[90vw] bg-white dark:bg-zinc-900 shadow-2xl border-l border-zinc-200/50 dark:border-zinc-800/50"
+            className="absolute right-0 top-0 bottom-0 w-80 max-w-[90vw] bg-cream dark:bg-green-dark shadow-2xl border-l border-gold/20 dark:border-gold/10"
             onClick={(e) => e.stopPropagation()}
             role="dialog"
             aria-modal="true"
             aria-label="Navigasi menu"
           >
-            <div className="flex items-center justify-between p-5 border-b border-zinc-100 dark:border-zinc-800">
-              <span className="text-xs font-semibold tracking-[0.15em] uppercase text-zinc-400 dark:text-zinc-500">
+            <div className="flex items-center justify-between p-5 border-b border-gold/20 dark:border-gold/10">
+              <span className="text-xs font-semibold tracking-[0.15em] uppercase text-green/60 dark:text-cream/70">
                 Menu
               </span>
               <button
                 onClick={onClose}
                 aria-label="Tutup menu"
-                className="p-2 rounded-xl text-zinc-500 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-white transition-colors"
+                className="p-2 rounded-xl text-green/60 dark:text-cream/70 hover:bg-cream dark:hover:bg-green-dark/50 hover:text-green-dark dark:hover:text-cream transition-colors"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -120,7 +120,7 @@ export default function MobileDrawer({ open, onClose, links }: Props) {
                       className={`flex items-center px-4 py-3.5 rounded-xl text-sm font-medium transition-all duration-200 ${
                         isActive
                           ? "bg-gold/10 text-gold dark:text-gold-light"
-                          : "text-zinc-600 dark:text-zinc-400 hover:bg-zinc-50 dark:hover:bg-zinc-800/50 hover:text-zinc-900 dark:hover:text-white"
+                          : "text-green/80 dark:text-cream/70 hover:bg-cream dark:hover:bg-green-dark/50 hover:text-green-dark dark:hover:text-cream"
                       }`}
                     >
                       {link.label}
@@ -130,11 +130,11 @@ export default function MobileDrawer({ open, onClose, links }: Props) {
               })}
             </div>
 
-            <div className="absolute bottom-0 inset-x-0 p-5 border-t border-zinc-100 dark:border-zinc-800 bg-white dark:bg-zinc-900">
+            <div className="absolute bottom-0 inset-x-0 p-5 border-t border-gold/20 dark:border-gold/10 bg-cream dark:bg-green-dark">
               <Link
                 href="/kontak"
                 onClick={onClose}
-                className="flex items-center justify-center gap-2 w-full px-5 py-3.5 bg-gold hover:bg-gold-dark text-white text-sm font-semibold rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-gold/25"
+                className="flex items-center justify-center gap-2 w-full px-5 py-3.5 bg-green hover:bg-green-dark text-gold text-sm font-semibold rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-green/25"
               >
                 Hubungi Kami
                 <ArrowRight className="w-4 h-4" />

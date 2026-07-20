@@ -57,15 +57,15 @@ export function PreviewModal() {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center">
       <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={closeModal} />
-      <div className="relative z-10 w-full max-w-5xl mx-4 bg-white rounded-2xl shadow-2xl flex flex-col max-h-[90vh]">
-        <div className="flex items-center justify-between px-6 py-4 border-b border-zinc-200">
+      <div className="relative z-10 w-full max-w-5xl mx-4 bg-cream rounded-2xl shadow-2xl flex flex-col max-h-[90vh]">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-gold/20">
           <div className="min-w-0 flex-1">
-            <h2 className="font-semibold text-zinc-900 truncate pr-4">{book.title}</h2>
-            <p className="text-sm text-zinc-500 truncate">{book.author}</p>
+            <h2 className="font-semibold text-green-dark truncate pr-4">{book.title}</h2>
+            <p className="text-sm text-green/60 truncate">{book.author}</p>
           </div>
           <button
             onClick={closeModal}
-            className="shrink-0 p-2 rounded-lg text-zinc-400 hover:text-zinc-700 hover:bg-zinc-100 transition-colors"
+            className="shrink-0 p-2 rounded-lg text-green/60 hover:text-green-dark hover:bg-cream transition-colors"
             aria-label="Tutup preview"
           >
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -89,7 +89,7 @@ export function PreviewModal() {
           </div>
         </div>
 
-        <div className="px-6 py-3 border-t border-zinc-200 flex items-center justify-between text-xs text-zinc-500">
+        <div className="px-6 py-3 border-t border-gold/20 flex items-center justify-between text-xs text-green/60">
           <span>{book.page_count} halaman</span>
           <span>ISBN: {book.isbn}</span>
         </div>

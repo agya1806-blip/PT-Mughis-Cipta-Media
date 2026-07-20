@@ -19,8 +19,8 @@ export default function NotFound() {
           </svg>
         </div>
 
-        <h1 className="text-2xl font-bold text-zinc-900 mb-3">Halaman Tidak Ditemukan</h1>
-        <p className="text-zinc-500 mb-8 leading-relaxed">
+        <h1 className="text-2xl font-bold text-green-dark mb-3">Halaman Tidak Ditemukan</h1>
+        <p className="text-green/80 mb-8 leading-relaxed">
           Maaf, halaman yang Anda cari tidak ada, telah dipindahkan, atau sedang dalam pengembangan.
         </p>
 

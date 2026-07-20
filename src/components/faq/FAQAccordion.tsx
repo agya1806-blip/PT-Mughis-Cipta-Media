@@ -15,7 +15,7 @@ export default function FAQAccordion({ items, className = "" }: Props) {
 
   if (items.length === 0) {
     return (
-      <div className={`text-center py-12 text-zinc-400 ${className}`}>
+      <div className={`text-center py-12 text-green/60 ${className}`}>
         <p>Tidak ada hasil untuk pencarian Anda</p>
       </div>
     )
@@ -51,7 +51,7 @@ export default function FAQAccordion({ items, className = "" }: Props) {
                 transition={{ duration: 0.2 }}
                 className="overflow-hidden"
               >
-                <p className="px-5 pb-5 text-zinc-600 leading-relaxed border-t border-gold/10 pt-4">
+                <p className="px-5 pb-5 text-green/80 leading-relaxed border-t border-gold/10 pt-4">
                   {item.a}
                 </p>
               </motion.div>

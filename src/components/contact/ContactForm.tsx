@@ -62,7 +62,7 @@ export default function ContactForm() {
                 Memulai?
               </span>
             </h2>
-            <p className="mt-3 text-zinc-500 dark:text-zinc-400">
+            <p className="mt-3 text-green/80 dark:text-cream/70">
               Isi form di bawah dan tim kami akan menghubungi Anda dalam 1x24 jam.
             </p>
           </div>
@@ -83,7 +83,7 @@ export default function ContactForm() {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Nama Anda"
-                className="w-full px-4 py-3 rounded-xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800/50 text-zinc-900 dark:text-white placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold/50 transition-all duration-200"
+                className="w-full px-4 py-3 rounded-xl border border-gold/20 bg-cream text-green-dark placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold/50 transition-all duration-200"
               />
             </motion.div>
 
@@ -103,7 +103,7 @@ export default function ContactForm() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="your@email.com"
-                  className="w-full px-4 py-3 rounded-xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800/50 text-zinc-900 dark:text-white placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold/50 transition-all duration-200"
+                  className="w-full px-4 py-3 rounded-xl border border-gold/20 bg-cream text-green-dark placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold/50 transition-all duration-200"
                 />
               </motion.div>
 
@@ -122,7 +122,7 @@ export default function ContactForm() {
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                   placeholder="+62 812-xxxx-xxxx"
-                  className="w-full px-4 py-3 rounded-xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800/50 text-zinc-900 dark:text-white placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold/50 transition-all duration-200"
+                  className="w-full px-4 py-3 rounded-xl border border-gold/20 bg-cream text-green-dark placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold/50 transition-all duration-200"
                 />
               </motion.div>
             </div>
@@ -142,7 +142,7 @@ export default function ContactForm() {
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 placeholder="Ceritakan tentang proyek atau pertanyaan Anda..."
-                className="w-full px-4 py-3 rounded-xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800/50 text-zinc-900 dark:text-white placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold/50 transition-all duration-200 resize-none"
+                className="w-full px-4 py-3 rounded-xl border border-gold/20 bg-cream text-green-dark placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold/50 transition-all duration-200 resize-none"
               />
             </motion.div>
 

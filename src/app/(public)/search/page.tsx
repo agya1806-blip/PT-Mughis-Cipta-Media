@@ -111,7 +111,7 @@ export default async function SearchPage({ searchParams }: Props) {
 
         {query ? (
           <>
-            <p className="text-sm text-zinc-600 mb-6">
+            <p className="text-sm text-green/80 mb-6">
               {total > 0
                 ? `Menampilkan ${total} hasil untuk "${query}"`
                 : `Tidak ditemukan hasil untuk "${query}"`}
@@ -134,7 +134,7 @@ export default async function SearchPage({ searchParams }: Props) {
                       {r.type}
                     </span>
                     <h2 className="font-semibold text-green-dark mb-1">{r.title}</h2>
-                    <p className="text-sm text-zinc-600 line-clamp-2">{r.description}</p>
+                    <p className="text-sm text-green/80 line-clamp-2">{r.description}</p>
                   </Link>
                 ))}
               </div>
@@ -149,7 +149,7 @@ export default async function SearchPage({ searchParams }: Props) {
             />
           </>
         ) : (
-          <div className="text-center text-zinc-400 py-12">
+          <div className="text-center text-green/60 py-12">
             <p>Masukkan kata kunci untuk memulai pencarian.</p>
           </div>
         )}

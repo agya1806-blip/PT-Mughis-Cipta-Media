@@ -83,17 +83,17 @@ export default async function PenulisDetailPage({ params }: Props) {
           ]}
         />
 
-        <div className="bg-white rounded-2xl border border-zinc-200 overflow-hidden mb-10">
-          <div className="h-32 sm:h-40 bg-gradient-to-r from-gold/10 via-gold/5 to-zinc-100" />
+        <div className="bg-cream rounded-2xl border border-gold/20 overflow-hidden mb-10">
+          <div className="h-32 sm:h-40 bg-gradient-to-r from-gold/10 via-gold/5 to-gold/5" />
           <div className="px-6 sm:px-8 pb-8 -mt-14 sm:-mt-16">
             <div className="flex flex-col sm:flex-row sm:items-end gap-5 mb-6">
               <div className="w-24 h-24 rounded-2xl border-4 border-white bg-gold/10 flex items-center justify-center text-gold-dark font-bold text-3xl shadow-lg shrink-0">
                 {initial}
               </div>
               <div className="pt-14 sm:pt-0">
-                <h1 className="text-2xl sm:text-3xl font-bold text-zinc-900">{authorName}</h1>
+                <h1 className="text-2xl sm:text-3xl font-bold text-green-dark">{authorName}</h1>
                 <div className="flex flex-wrap items-center gap-3 mt-1.5">
-                  <span className="text-xs text-zinc-400">
+                  <span className="text-xs text-green/60">
                     {totalBooks} buku terbitan
                   </span>
                 </div>

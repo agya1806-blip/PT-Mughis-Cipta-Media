@@ -71,13 +71,13 @@ export default function PublishingSolutions() {
               Solusi Penerbitan
             </span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-zinc-900 dark:text-white leading-[1.15] tracking-tight text-balance">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-green-dark dark:text-cream leading-[1.15] tracking-tight text-balance">
             Solusi{" "}
             <span className="bg-gradient-to-r from-gold to-gold-dark bg-clip-text text-transparent">
               Penerbitan Lengkap
             </span>
           </h2>
-          <p className="mt-4 text-zinc-500 dark:text-zinc-400 max-w-2xl mx-auto text-base sm:text-lg leading-relaxed">
+          <p className="mt-4 text-green/80 dark:text-cream/70 max-w-2xl mx-auto text-base sm:text-lg leading-relaxed">
             Solusi lengkap untuk mewujudkan naskah Anda menjadi buku yang diterbitkan secara profesional.
           </p>
         </motion.div>
@@ -109,7 +109,7 @@ export default function PublishingSolutions() {
         >
           <Link
             href="/kontak"
-            className="group inline-flex items-center gap-2 px-8 py-4 bg-gold hover:bg-gold-dark text-white font-semibold rounded-full transition-all duration-300 hover:shadow-xl hover:shadow-gold/25 hover:-translate-y-0.5"
+            className="group inline-flex items-center gap-2 px-8 py-4 bg-green hover:bg-green-dark text-gold font-semibold rounded-full transition-all duration-300 hover:shadow-xl hover:shadow-green/25 hover:-translate-y-0.5"
           >
             Konsultasi Gratis
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />

@@ -40,7 +40,7 @@ export default function StatsSection() {
                   <Counter from={0} to={s.value} inView={inView} />
                   <span>{s.suffix}</span>
                 </div>
-                <p className="text-sm text-zinc-600">{s.label}</p>
+                <p className="text-sm text-green/80">{s.label}</p>
               </div>
             </motion.div>
           ))}

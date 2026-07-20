@@ -37,14 +37,14 @@ export default function Pagination({
       {currentPage > 1 && (
         <Link
           href={buildHref(currentPage - 1)}
-          className="px-4 py-2 rounded-lg bg-white dark:bg-zinc-800/50 border border-zinc-200 dark:border-zinc-700/50 text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:text-white hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-colors text-sm"
+          className="px-4 py-2 rounded-lg bg-cream dark:bg-green-dark/80 border border-gold/20 dark:border-gold/10 text-green/60 dark:text-cream/70 hover:text-green-dark dark:hover:text-cream hover:bg-cream dark:hover:bg-green-dark transition-colors text-sm"
         >
           Sebelumnya
         </Link>
       )}
       {pages.map((p, i) =>
         p === "..." ? (
-          <span key={`ellipsis-${i}`} className="px-2 text-zinc-500 dark:text-zinc-400 text-sm">
+          <span key={`ellipsis-${i}`} className="px-2 text-green/60 dark:text-cream/70 text-sm">
             ...
           </span>
         ) : (
@@ -54,7 +54,7 @@ export default function Pagination({
             className={`w-9 h-9 rounded-lg flex items-center justify-center text-sm font-medium transition-colors ${
               p === currentPage
                 ? "bg-gold text-white"
-                : "bg-white dark:bg-zinc-800/50 border border-zinc-200 dark:border-zinc-700/50 text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:text-white hover:bg-zinc-50 dark:hover:bg-zinc-800"
+                : "bg-cream dark:bg-green-dark/80 border border-gold/20 dark:border-gold/10 text-green/60 dark:text-cream/70 hover:text-green-dark dark:hover:text-cream hover:bg-cream dark:hover:bg-green-dark"
             }`}
           >
             {p}
@@ -64,7 +64,7 @@ export default function Pagination({
       {currentPage < totalPages && (
         <Link
           href={buildHref(currentPage + 1)}
-          className="px-4 py-2 rounded-lg bg-white dark:bg-zinc-800/50 border border-zinc-200 dark:border-zinc-700/50 text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:text-white hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-colors text-sm"
+          className="px-4 py-2 rounded-lg bg-cream dark:bg-green-dark/80 border border-gold/20 dark:border-gold/10 text-green/60 dark:text-cream/70 hover:text-green-dark dark:hover:text-cream hover:bg-cream dark:hover:bg-green-dark transition-colors text-sm"
         >
           Selanjutnya
         </Link>

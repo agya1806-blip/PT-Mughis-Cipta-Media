@@ -64,14 +64,14 @@ export default function FAQPage() {
         </div>
       )}
 
-      <div className="text-center text-sm text-zinc-400 mb-6">
+      <div className="text-center text-sm text-green/60 mb-6">
         {search
           ? `${filteredItems.length} hasil ditemukan`
           : `${currentCategory?.items.length || 0} pertanyaan`}
       </div>
 
       {filteredItems.length === 0 ? (
-        <div className="text-center py-12 text-zinc-400">
+        <div className="text-center py-12 text-green/60">
           <HelpCircle className="w-12 h-12 mx-auto mb-3 opacity-50" />
           <p>Tidak ada hasil untuk pencarian Anda</p>
         </div>

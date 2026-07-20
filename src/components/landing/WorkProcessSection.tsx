@@ -47,7 +47,7 @@ export default function WorkProcessSection() {
               </motion.div>
               <div className="pt-3">
                 <h3 className="font-semibold text-green-dark text-lg">{s.label}</h3>
-                <p className="text-sm text-zinc-600 mt-1">{s.desc}</p>
+                <p className="text-sm text-green/80 mt-1">{s.desc}</p>
               </div>
             </motion.div>
           ))}

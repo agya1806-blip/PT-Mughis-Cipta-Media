@@ -15,14 +15,14 @@ export default function AboutStory() {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
             <span className="text-gold font-semibold text-sm tracking-widest uppercase">Tentang Kami</span>
-            <h2 className="text-4xl sm:text-5xl font-bold text-zinc-900 mt-4 mb-8 leading-tight">
+            <h2 className="text-4xl sm:text-5xl font-bold text-green-dark mt-4 mb-8 leading-tight">
               Cerita{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold to-gold-dark">
                 Kami
               </span>
             </h2>
 
-            <div className="space-y-5 text-zinc-600 leading-relaxed">
+            <div className="space-y-5 text-green/80 leading-relaxed">
               <p className="text-lg">
                 PT Mughis Cipta Media lahir dari keprihatinan terhadap minimnya akses terhadap buku-buku berkualitas di Indonesia. Berdiri sebagai perusahaan yang bergerak di bidang penerbitan dan media kreatif, kami bertekad untuk menjadi jembatan antara penulis dan pembaca, antara ilmu pengetahuan dan masyarakat.
               </p>
@@ -35,8 +35,8 @@ export default function AboutStory() {
             </div>
 
             <div className="relative mt-10 pl-6 border-l-4 border-gold">
-              <Quote className="absolute -left-3 -top-2 w-6 h-6 text-gold bg-white" />
-              <p className="text-xl font-medium text-zinc-800 italic">
+              <Quote className="absolute -left-3 -top-2 w-6 h-6 text-gold bg-cream" />
+              <p className="text-xl font-medium text-green-dark italic">
                 Setiap buku adalah satu langkah menuju peradaban yang lebih cerah.
               </p>
               <p className="text-sm text-zinc-500 mt-2">— Founder PT Mughis Cipta Media</p>

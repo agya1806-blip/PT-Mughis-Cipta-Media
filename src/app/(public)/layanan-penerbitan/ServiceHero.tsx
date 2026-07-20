@@ -26,11 +26,11 @@ export default function ServiceHero({
       <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/10 border border-gold/20 text-gold text-xs font-medium uppercase tracking-wider mb-4">
         Layanan {index + 1} dari 5
       </span>
-      <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-zinc-900 leading-tight mt-3">
+      <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-green-dark leading-tight mt-3">
         {title}
       </h2>
       <p className="mt-2 text-gold-dark font-medium">{tagline}</p>
-      <p className="mt-6 text-zinc-600 max-w-3xl mx-auto text-lg leading-relaxed">
+      <p className="mt-6 text-green/80 max-w-3xl mx-auto text-lg leading-relaxed">
         {description}
       </p>
     </motion.div>

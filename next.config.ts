@@ -8,6 +8,14 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "**.vercel-storage.com",
       },
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+      },
+      {
+        protocol: "https",
+        hostname: "plus.unsplash.com",
+      },
     ],
   },
   async redirects() {
@@ -50,7 +58,7 @@ const nextConfig: NextConfig = {
               "default-src 'self'",
               "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://analytics.vercel.com",
               "style-src 'self' 'unsafe-inline'",
-              "img-src 'self' data: blob: https://*.vercel-storage.com",
+              "img-src 'self' data: blob: https://*.vercel-storage.com https://images.unsplash.com https://plus.unsplash.com",
               "font-src 'self' data:",
               "connect-src 'self' https://vercel.live",
               "frame-src 'self'",

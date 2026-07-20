@@ -4,8 +4,8 @@ export default function NewManuscriptPage() {
   return (
     <div>
       <div className="mb-8">
-        <h1 className="text-2xl font-bold text-zinc-900 dark:text-white">Naskah Baru</h1>
-        <p className="text-sm text-zinc-500 dark:text-zinc-400 mt-1">Lengkapi data naskah Anda untuk diajukan ke tim penerbitan</p>
+        <h1 className="text-2xl font-bold text-green-dark dark:text-cream">Naskah Baru</h1>
+        <p className="text-sm text-green/70 dark:text-gold/80 mt-1">Lengkapi data naskah Anda untuk diajukan ke tim penerbitan</p>
       </div>
       <ManuscriptForm />
     </div>

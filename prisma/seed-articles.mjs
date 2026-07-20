@@ -1,4 +1,4 @@
-import { PrismaClient } from '../src/lib/__generated__/prisma/client.js';
+import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
@@ -113,27 +113,65 @@ const articles = [
   { title: 'Tren Augmented Reality dalam Buku Anak', slug: 'augmented-reality-buku-anak' },
 ];
 
-function generateContent(title) {
-  const paragraphs = [
-    `<p>Industri penerbitan buku di Indonesia terus berkembang seiring dengan meningkatnya kesadaran literasi masyarakat. PT Mughis Cipta Media hadir sebagai mitra terpercaya dalam menerbitkan dan mendistribusikan buku-buku berkualitas. Artikel ini akan membahas secara mendalam tentang <strong>${title}</strong>.</p>`,
-
-    `<p>Dalam perkembangannya, dunia penerbitan menghadapi berbagai tantangan dan peluang. Mulai dari transformasi digital, perubahan perilaku konsumen, hingga hadirnya platform-platform baru yang memudahkan penulis untuk menerbitkan karyanya. Memahami dinamika ini menjadi kunci sukses bagi para pelaku industri.</p>`,
-
-    `<p>PT Mughis Cipta Media berkomitmen untuk selalu memberikan layanan terbaik dalam setiap proses penerbitan. Mulai dari editing, layout, desain sampul, hingga distribusi ke berbagai toko buku di seluruh Indonesia. Dengan pengalaman dan tim profesional, kami siap membantu mewujudkan karya terbaik Anda.</p>`,
-
-    `<p>Aspek penting yang perlu diperhatikan dalam topik ini meliputi pemahaman mendalam tentang pasar, strategi yang tepat, serta konsistensi dalam menjalankan setiap tahapan. Tidak kalah pentingnya adalah kemampuan untuk beradaptasi dengan perubahan tren dan teknologi yang terus berkembang.</p>`,
-
-    `<p>Kami percaya bahwa setiap karya memiliki nilai dan potensinya masing-masing. Oleh karena itu, PT Mughis Cipta Media selalu memberikan pendekatan personal kepada setiap mitra penulis dan penerbit. Dengan kolaborasi yang baik, hasil yang maksimal dapat dicapai bersama.</p>`,
-
-    `<p>Kesimpulannya, pemahaman yang baik tentang ${title.toLowerCase()} akan memberikan manfaat besar bagi perkembangan industri penerbitan di Indonesia. Teruslah belajar dan berkarya bersama PT Mughis Cipta Media.</p>`,
+function getFeaturedImage(title) {
+  const images = [
+    "https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=1200&q=80",
+    "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1200&q=80",
+    "https://images.unsplash.com/photo-1495446815900-4d95f57a0c4e?auto=format&fit=crop&w=1200&q=80",
+    "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80",
   ];
 
-  return `<!DOCTYPE html>
-<html>
-<body>
-${paragraphs.join('\n\n')}
-</body>
-</html>`;
+  const hash = title.split("").reduce((sum, char) => sum + char.charCodeAt(0), 0);
+  return images[hash % images.length];
+}
+
+function generateContent(title) {
+  const topic = title.toLowerCase();
+  const references = [
+    "UNESCO — Global Education Monitoring Report",
+    "International Publishers Association — market and publishing outlook",
+    "Pew Research Center — reading behavior in the digital era",
+    "World Bank — literacy and education development indicators",
+  ];
+
+  return `
+    <section class="space-y-6">
+      <p class="text-lg leading-8 text-green-dark/90">Dalam ekosistem penerbitan modern, <strong>${title}</strong> tidak bisa dipandang sebagai topik teknis semata. Ia merupakan fondasi yang menentukan kualitas buku, daya tarik pasar, dan pengalaman pembaca. PT Mughis Cipta Media memahami bahwa penerbitan yang berkelas perlu menggabungkan riset, desain, dan eksekusi yang konsisten.</p>
+
+      <div class="rounded-2xl border border-gold/20 bg-gold/5 p-5 my-6">
+        <p class="text-sm font-semibold uppercase tracking-[0.2em] text-gold mb-2">Insight Editorial</p>
+        <p class="text-base leading-7 text-green-dark/90">Topik ini penting karena memengaruhi cara karya dibuat, dikemas, dan dipahami audiens. Ketika penulis, editor, dan penerbit bergerak dalam satu arah yang jelas, hasil akhirnya tidak hanya informatif, tetapi juga memorable.</p>
+      </div>
+
+      <h2 class="text-2xl font-bold text-green-dark mt-8 mb-3">Mengapa topik ini penting?</h2>
+      <p>Setiap buku yang lahir dari proses profesional harus memiliki landasan yang kuat: naskah yang rapi, struktur yang jelas, dan narasi yang mampu membangun kepercayaan pembaca. Di sinilah <strong>${title}</strong> menjadi penghubung antara ide yang baik dengan eksekusi yang bisa diterima pasar.</p>
+      <p>Dalam praktiknya, para pelaku industri penerbitan tidak hanya dituntut menulis atau mencetak. Mereka juga harus memahami audiens, tren distribusi, dan kualitas visual yang memberi nilai tambah pada setiap karya. Keputusan yang tepat di tahap awal akan menentukan arah perjalanan buku secara keseluruhan.</p>
+
+      <figure class="my-8 overflow-hidden rounded-2xl border border-gold/20 bg-cream">
+        <img src="${getFeaturedImage(title)}" alt="Visual editorial tentang ${title}" class="w-full h-auto object-cover" />
+        <figcaption class="px-4 py-3 text-sm text-green/70">Visual representatif untuk memperkuat pesan editorial dan menghadirkan suasana premium pada artikel.</figcaption>
+      </figure>
+
+      <h2 class="text-2xl font-bold text-green-dark mt-8 mb-3">Prinsip utama yang perlu diterapkan</h2>
+      <ol class="space-y-3 pl-5">
+        <li><strong>Riset yang tajam:</strong> pahami konteks pasar, kebutuhan pembaca, dan standar kualitas yang sedang berlaku.</li>
+        <li><strong>Desain yang konsisten:</strong> mulai dari sampul, tipografi, hingga alur visual konten harus mendukung pesan utama.</li>
+        <li><strong>Eksekusi yang terukur:</strong> setiap tahap produksi harus dijalankan dengan proses yang jelas, terencana, dan mudah dilacak.</li>
+        <li><strong>Kolaborasi yang sehat:</strong> editor, desainer, dan penerbit harus bekerja dalam satu ritme yang terkoordinasi.</li>
+      </ol>
+
+      <h2 class="text-2xl font-bold text-green-dark mt-8 mb-3">Sumber referensi yang bisa dijadikan pijakan</h2>
+      <ul class="space-y-2 pl-5">
+        ${references.map((ref) => `<li>${ref}</li>`).join("")}
+      </ul>
+
+      <blockquote class="border-l-4 border-gold pl-4 italic text-green-dark/85 my-8">
+        Karya yang unggul biasanya lahir dari proses yang disiplin, bukan sekadar ide yang bagus.
+      </blockquote>
+
+      <p>Kesimpulannya, <strong>${title}</strong> bukan sekadar pembahasan teknis, tetapi bagian dari strategi membangun ekosistem literasi yang sehat dan berkelanjutan. Dengan pendekatan yang tepat, setiap proyek penerbitan dapat tampil lebih profesional, lebih kredibel, dan lebih berdaya saing.</p>
+    </section>
+  `;
 }
 
 function slugify(text) {
@@ -151,10 +189,22 @@ async function main() {
 
   for (const article of articles) {
     const slug = article.slug || slugify(article.title);
+    const content = generateContent(article.title);
+    const featuredImage = getFeaturedImage(article.title);
     const existing = await prisma.article.findUnique({ where: { slug } });
 
     if (existing) {
-      console.log(`SKIP: "${article.title}" (slug: ${slug}) already exists`);
+      await prisma.article.update({
+        where: { slug },
+        data: {
+          title: article.title,
+          content,
+          featuredImage,
+          fileUrl: null,
+        },
+      });
+
+      console.log(`UPDATED: "${article.title}" (slug: ${slug})`);
       skipped++;
       continue;
     }
@@ -163,8 +213,8 @@ async function main() {
       data: {
         title: article.title,
         slug,
-        content: generateContent(article.title),
-        featuredImage: null,
+        content,
+        featuredImage,
         fileUrl: null,
       },
     });

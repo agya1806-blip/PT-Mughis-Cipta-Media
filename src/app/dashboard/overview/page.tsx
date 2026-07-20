@@ -10,8 +10,8 @@ export default function OverviewPage() {
   return (
     <div>
       <div className="mb-8">
-        <h1 className="text-2xl font-bold text-zinc-900 dark:text-white">Overview</h1>
-        <p className="text-sm text-zinc-500 dark:text-zinc-400 mt-1">Selamat datang di dashboard penulis, Ahmad Rizki</p>
+        <h1 className="text-2xl font-bold text-green-dark dark:text-cream">Overview</h1>
+        <p className="text-sm text-green/70 dark:text-gold/80 mt-1">Selamat datang di dashboard penulis, Ahmad Rizki</p>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">

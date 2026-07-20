@@ -12,8 +12,8 @@ export default function ManuscriptsPage() {
     <div>
       <div className="flex items-center justify-between mb-8">
         <div>
-          <h1 className="text-2xl font-bold text-zinc-900 dark:text-white">Naskah Saya</h1>
-          <p className="text-sm text-zinc-500 dark:text-zinc-400 mt-1">Kelola dan pantau progress naskah Anda</p>
+          <h1 className="text-2xl font-bold text-green-dark dark:text-cream">Naskah Saya</h1>
+          <p className="text-sm text-green/70 dark:text-gold/80 mt-1">Kelola dan pantau progress naskah Anda</p>
         </div>
         <Link href="/dashboard/manuscripts/new">
           <Button size="small">

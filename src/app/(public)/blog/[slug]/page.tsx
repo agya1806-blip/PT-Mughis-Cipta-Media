@@ -70,10 +70,10 @@ export default async function ArticleDetailPage({ params }: { params: Promise<{ 
         />
 
         <div className="mt-8 mb-10">
-          <h1 className="text-3xl sm:text-4xl font-bold text-zinc-900 leading-tight mb-4">
+          <h1 className="text-3xl sm:text-4xl font-bold text-green-dark leading-tight mb-4">
             {article.title}
           </h1>
-          <div className="flex flex-wrap items-center gap-4 text-sm text-zinc-400">
+          <div className="flex flex-wrap items-center gap-4 text-sm text-zinc-500">
             <span className="flex items-center gap-1.5">
               <Calendar className="w-4 h-4" />
               {new Date(article.createdAt).toLocaleDateString("id-ID", {
@@ -88,7 +88,7 @@ export default async function ArticleDetailPage({ params }: { params: Promise<{ 
         </div>
 
         {article.featuredImage && (
-          <div className="relative w-full aspect-[2/1] rounded-2xl overflow-hidden mb-10 bg-zinc-100">
+          <div className="relative w-full aspect-[2/1] rounded-2xl overflow-hidden mb-10 bg-cream">
             <Image
               src={article.featuredImage}
               alt={article.title}
@@ -101,11 +101,11 @@ export default async function ArticleDetailPage({ params }: { params: Promise<{ 
         )}
 
         <div
-          className="text-zinc-700 leading-relaxed prose prose-zinc max-w-none prose-headings:text-zinc-900 prose-a:text-gold prose-a:no-underline hover:prose-a:underline prose-img:rounded-xl"
+          className="text-zinc-700 leading-relaxed prose prose-zinc max-w-none prose-headings:text-green-dark prose-a:text-gold prose-a:no-underline hover:prose-a:underline prose-img:rounded-xl"
           dangerouslySetInnerHTML={{ __html: article.content }}
         />
 
-        <div className="mt-12 pt-8 border-t border-zinc-200">
+        <div className="mt-12 pt-8 border-t border-gold/10">
           <Link
             href="/blog"
             className="inline-flex items-center gap-2 text-sm font-medium text-gold hover:text-gold-dark transition-colors"

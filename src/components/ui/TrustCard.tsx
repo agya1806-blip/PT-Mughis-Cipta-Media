@@ -19,7 +19,7 @@ export default function TrustCard({ icon, title, description, index = 0 }: Props
       viewport={{ once: true, margin: "-50px" }}
       transition={{ delay: index * 0.1, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
       whileHover={{ y: -4 }}
-      className="group relative bg-white/70 dark:bg-zinc-800/40 backdrop-blur-xl rounded-2xl border border-zinc-200/50 dark:border-zinc-700/30 p-6 sm:p-8 transition-all duration-300 hover:shadow-xl hover:shadow-zinc-900/5 dark:hover:shadow-black/20 hover:border-gold/30"
+      className="group relative bg-cream rounded-2xl border border-gold/20 p-6 sm:p-8 transition-all duration-300 hover:shadow-xl hover:shadow-gold/5 hover:border-gold/40"
     >
       <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-gold/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
@@ -28,9 +28,9 @@ export default function TrustCard({ icon, title, description, index = 0 }: Props
           {icon}
         </div>
 
-        <h3 className="font-semibold text-zinc-900 dark:text-white text-lg mb-2">{title}</h3>
+        <h3 className="font-semibold text-green-dark text-lg mb-2">{title}</h3>
 
-        <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">{description}</p>
+        <p className="text-sm text-zinc-600 leading-relaxed">{description}</p>
 
         <div className="flex items-center gap-1 text-gold mt-4 opacity-0 group-hover:opacity-100 transition-all duration-300">
           <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />

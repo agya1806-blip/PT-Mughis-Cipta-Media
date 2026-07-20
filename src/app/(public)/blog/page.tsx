@@ -70,11 +70,11 @@ export default async function BlogPage({ searchParams }: Props) {
           {featured && (
             <Link
               href={`/blog/${featured.slug}`}
-              className="group relative block bg-white rounded-2xl border border-zinc-200 overflow-hidden mb-12 hover:shadow-xl transition-all duration-300"
+              className="group relative block bg-cream rounded-2xl border border-gold/20 overflow-hidden mb-12 hover:shadow-xl transition-all duration-300"
             >
               <div className="grid md:grid-cols-2 gap-0">
                 {featured.featuredImage && (
-                  <div className="relative h-64 md:h-full min-h-[280px] bg-zinc-100">
+                  <div className="relative h-64 md:h-full min-h-[280px] bg-cream">
                     <Image
                       src={featured.featuredImage}
                       alt={featured.title}
@@ -88,10 +88,10 @@ export default async function BlogPage({ searchParams }: Props) {
                   <span className="inline-flex items-center gap-1.5 text-xs font-medium text-gold bg-gold/10 px-3 py-1 rounded-full w-fit mb-4">
                     Artikel Unggulan
                   </span>
-                  <h2 className="text-2xl sm:text-3xl font-bold text-zinc-900 mb-3 group-hover:text-gold transition-colors leading-snug">
+                  <h2 className="text-2xl sm:text-3xl font-bold text-green-dark mb-3 group-hover:text-gold transition-colors leading-snug">
                     {featured.title}
                   </h2>
-                  <div className="flex items-center gap-4 text-xs text-zinc-400 mb-4">
+                  <div className="flex items-center gap-4 text-xs text-zinc-500 mb-4">
                     <span className="flex items-center gap-1.5">
                       <Calendar className="w-3.5 h-3.5" />
                       {new Date(featured.createdAt).toLocaleDateString("id-ID", {
@@ -126,10 +126,10 @@ export default async function BlogPage({ searchParams }: Props) {
                   <Link
                     key={a.id}
                     href={`/blog/${a.slug}`}
-                    className="group flex flex-col bg-white rounded-xl border border-zinc-200 overflow-hidden hover:shadow-lg transition-all duration-300"
+                    className="group flex flex-col bg-cream rounded-xl border border-gold/20 overflow-hidden hover:shadow-lg transition-all duration-300"
                   >
                     {a.featuredImage ? (
-                      <div className="relative h-48 bg-zinc-100">
+                      <div className="relative h-48 bg-cream">
                         <Image
                           src={a.featuredImage}
                           alt={a.title}
@@ -144,10 +144,10 @@ export default async function BlogPage({ searchParams }: Props) {
                       </div>
                     )}
                     <div className="flex-1 p-5 flex flex-col">
-                      <h3 className="text-base font-semibold text-zinc-900 mb-2 group-hover:text-gold transition-colors line-clamp-2">
+                      <h3 className="text-base font-semibold text-green-dark mb-2 group-hover:text-gold transition-colors line-clamp-2">
                         {a.title}
                       </h3>
-                      <div className="flex items-center gap-3 text-xs text-zinc-400 mb-3">
+                      <div className="flex items-center gap-3 text-xs text-zinc-500 mb-3">
                         <span className="flex items-center gap-1">
                           <Calendar className="w-3 h-3" />
                           {new Date(a.createdAt).toLocaleDateString("id-ID", {

@@ -89,7 +89,7 @@ export default async function SearchPage({ searchParams }: Props) {
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <Breadcrumb items={[{ label: "Beranda", href: "/" }, { label: "Pencarian" }]} />
 
-        <h1 className="text-3xl font-bold text-zinc-900 mb-8">Pencarian</h1>
+        <h1 className="text-3xl font-bold text-green-dark mb-8">Pencarian</h1>
 
         <form action="/search" method="GET" className="mb-10">
           <div className="flex gap-3">
@@ -98,11 +98,11 @@ export default async function SearchPage({ searchParams }: Props) {
               name="q"
               defaultValue={query}
               placeholder="Cari buku, artikel, penulis..."
-              className="flex-1 rounded-xl border border-zinc-300 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50"
+              className="flex-1 rounded-xl border border-gold/20 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50 bg-cream text-green-dark placeholder-zinc-400"
             />
             <button
               type="submit"
-              className="px-6 py-3 rounded-xl bg-gold text-white font-medium hover:bg-gold-dark transition-colors text-sm"
+              className="px-6 py-3 rounded-xl bg-green text-gold font-medium hover:bg-green-dark transition-colors text-sm"
             >
               Cari
             </button>
@@ -111,7 +111,7 @@ export default async function SearchPage({ searchParams }: Props) {
 
         {query ? (
           <>
-            <p className="text-sm text-zinc-500 mb-6">
+            <p className="text-sm text-zinc-600 mb-6">
               {total > 0
                 ? `Menampilkan ${total} hasil untuk "${query}"`
                 : `Tidak ditemukan hasil untuk "${query}"`}
@@ -128,13 +128,13 @@ export default async function SearchPage({ searchParams }: Props) {
                   <Link
                     key={`${r.href}-${i}`}
                     href={r.href}
-                    className="block bg-white rounded-xl border border-zinc-200 p-5 hover:shadow-md transition-shadow"
+                    className="block bg-cream rounded-xl border border-gold/20 p-5 hover:shadow-md transition-shadow"
                   >
                     <span className="inline-block text-xs font-medium text-gold bg-gold/10 px-2 py-0.5 rounded-full mb-2">
                       {r.type}
                     </span>
-                    <h2 className="font-semibold text-zinc-900 mb-1">{r.title}</h2>
-                    <p className="text-sm text-zinc-500 line-clamp-2">{r.description}</p>
+                    <h2 className="font-semibold text-green-dark mb-1">{r.title}</h2>
+                    <p className="text-sm text-zinc-600 line-clamp-2">{r.description}</p>
                   </Link>
                 ))}
               </div>

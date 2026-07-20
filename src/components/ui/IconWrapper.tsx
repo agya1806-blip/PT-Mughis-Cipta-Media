@@ -15,7 +15,7 @@ const sizeMap = {
 
 const variantMap = {
   gold: "bg-gold/10 text-gold",
-  surface: "bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400",
+  surface: "bg-cream dark:bg-green-dark text-green-dark dark:text-gold",
   subtle: "bg-white/5 text-white/80",
 }
 

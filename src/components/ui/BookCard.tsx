@@ -26,10 +26,10 @@ export default function BookCard({ book, className = "", href }: Props) {
 
   return (
     <div
-      className={`group relative bg-white dark:bg-zinc-800/50 rounded-xl border border-zinc-200 dark:border-zinc-700/50 overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-gold/30 ${className}`}
+      className={`group relative bg-cream rounded-xl border border-gold/20 overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-gold/40 ${className}`}
     >
       <Link href={linkHref} className="block">
-        <div className="relative aspect-[3/4] bg-zinc-100 dark:bg-zinc-800 overflow-hidden">
+        <div className="relative aspect-[3/4] bg-cream overflow-hidden">
           {book.cover_image ? (
             <Image
               src={book.cover_image}
@@ -53,7 +53,7 @@ export default function BookCard({ book, className = "", href }: Props) {
 
           {book.category_name && (
             <div className="absolute top-3 right-3 z-10">
-              <span className="inline-flex items-center px-2 py-1 rounded-full text-[10px] font-medium bg-white/70 dark:bg-zinc-900/70 backdrop-blur-md text-zinc-600 dark:text-zinc-400 border border-white/20 dark:border-zinc-700/50">
+              <span className="inline-flex items-center px-2 py-1 rounded-full text-[10px] font-medium bg-cream/70 backdrop-blur-md text-green-dark/70 border border-gold/20">
                 {book.category_name}
               </span>
             </div>
@@ -61,11 +61,11 @@ export default function BookCard({ book, className = "", href }: Props) {
         </div>
 
         <div className="p-4 sm:p-5">
-          <h3 className="font-semibold text-zinc-900 dark:text-white leading-snug line-clamp-2 text-sm sm:text-base mb-1">
+          <h3 className="font-semibold text-green-dark leading-snug line-clamp-2 text-sm sm:text-base mb-1">
             {book.title}
           </h3>
 
-          <p className="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 line-clamp-1 mb-2">
+          <p className="text-xs sm:text-sm text-zinc-600 line-clamp-1 mb-2">
             {book.author}
           </p>
 

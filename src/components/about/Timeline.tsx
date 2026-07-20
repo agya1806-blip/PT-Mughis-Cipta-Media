@@ -48,7 +48,7 @@ export default function Timeline() {
           className="text-center mb-16"
         >
           <span className="text-gold font-semibold text-sm tracking-widest uppercase">Perjalanan</span>
-          <h2 className="text-4xl sm:text-5xl font-bold text-zinc-900 mt-4">
+          <h2 className="text-4xl sm:text-5xl font-bold text-green-dark mt-4">
             Timeline{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold to-gold-dark">
               Perusahaan
@@ -75,12 +75,12 @@ export default function Timeline() {
                   </div>
                 </div>
 
-                <div className="bg-white rounded-2xl p-6 border border-zinc-200 hover:border-gold/30 hover:shadow-md transition-all duration-300">
+                <div className="bg-cream rounded-2xl p-6 border border-gold/20 hover:border-gold/40 hover:shadow-md transition-all duration-300">
                   <span className="inline-block text-xs font-semibold text-gold-dark bg-gold/10 px-3 py-1 rounded-full mb-3">
                     {year}
                   </span>
-                  <h3 className="text-lg font-bold text-zinc-900 mb-2">{title}</h3>
-                  <p className="text-zinc-500 text-sm leading-relaxed">{desc}</p>
+                  <h3 className="text-lg font-bold text-green-dark mb-2">{title}</h3>
+                  <p className="text-zinc-600 text-sm leading-relaxed">{desc}</p>
                 </div>
               </motion.div>
             ))}

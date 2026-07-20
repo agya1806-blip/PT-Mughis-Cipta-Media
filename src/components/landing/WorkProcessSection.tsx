@@ -24,7 +24,7 @@ export default function WorkProcessSection() {
         description="Proses yang transparan dan terstruktur dari awal hingga buku terbit"
       />
       <div className="relative max-w-3xl mx-auto">
-        <div className="absolute left-8 top-0 bottom-0 w-px bg-zinc-200 dark:bg-zinc-800 hidden sm:block" />
+        <div className="absolute left-8 top-0 bottom-0 w-px bg-gold/20 hidden sm:block" />
         <div className="space-y-8">
           {steps.map((s, i) => (
             <motion.div
@@ -40,14 +40,14 @@ export default function WorkProcessSection() {
                 whileInView={{ scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.15, type: "spring", stiffness: 200 }}
-                className="relative z-10 w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 flex items-center justify-center shadow-lg shrink-0"
+                className="relative z-10 w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-cream border border-gold/20 flex items-center justify-center shadow-lg shrink-0"
               >
                 <s.icon className="w-6 h-6 text-gold" />
                 <span className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-gold text-white text-[10px] font-bold flex items-center justify-center">{i + 1}</span>
               </motion.div>
               <div className="pt-3">
-                <h3 className="font-semibold text-zinc-900 dark:text-white text-lg">{s.label}</h3>
-                <p className="text-sm text-zinc-500 dark:text-zinc-400 mt-1">{s.desc}</p>
+                <h3 className="font-semibold text-green-dark text-lg">{s.label}</h3>
+                <p className="text-sm text-zinc-600 mt-1">{s.desc}</p>
               </div>
             </motion.div>
           ))}

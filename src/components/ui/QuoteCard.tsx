@@ -26,11 +26,11 @@ export default function QuoteCard({
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className={`bg-white dark:bg-zinc-800/50 rounded-2xl border border-zinc-200 dark:border-zinc-700/50 p-6 sm:p-8 shadow-sm ${className}`}
+      className={`bg-cream rounded-2xl border border-gold/20 p-6 sm:p-8 shadow-sm ${className}`}
     >
       <Quote className="w-6 h-6 text-gold/40 mb-4" />
-      <p className="text-zinc-600 dark:text-zinc-300 leading-relaxed">&ldquo;{quote}&rdquo;</p>
-      <div className="mt-6 pt-4 border-t border-zinc-200 dark:border-zinc-700/50 flex items-center gap-3">
+      <p className="text-zinc-600 leading-relaxed">&ldquo;{quote}&rdquo;</p>
+      <div className="mt-6 pt-4 border-t border-gold/10 flex items-center gap-3">
         {avatar ? (
           <div className="shrink-0">{avatar}</div>
         ) : (
@@ -39,8 +39,8 @@ export default function QuoteCard({
           </div>
         )}
         <div>
-          <p className="font-semibold text-zinc-900 dark:text-white text-sm">{author}</p>
-          {role && <p className="text-xs text-zinc-500 dark:text-zinc-400">{role}</p>}
+          <p className="font-semibold text-green-dark text-sm">{author}</p>
+          {role && <p className="text-xs text-zinc-600">{role}</p>}
         </div>
       </div>
     </motion.div>

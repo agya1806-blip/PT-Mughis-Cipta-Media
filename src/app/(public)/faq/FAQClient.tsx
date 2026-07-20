@@ -38,7 +38,7 @@ export default function FAQPage() {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           placeholder="Cari pertanyaan..."
-          className="w-full pl-12 pr-4 py-3.5 rounded-xl bg-white border border-zinc-200 text-zinc-900 placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold shadow-sm"
+          className="w-full pl-12 pr-4 py-3.5 rounded-xl bg-cream border border-gold/20 text-green-dark placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold shadow-sm"
         />
       </motion.div>
 
@@ -52,8 +52,8 @@ export default function FAQPage() {
                 onClick={() => setActiveCategory(cat.id)}
                 className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 ${
                   activeCategory === cat.id
-                    ? "bg-gold text-white shadow-lg shadow-gold/20"
-                    : "bg-white text-zinc-600 border border-zinc-200 hover:border-gold/30 hover:text-gold"
+                    ? "bg-green text-gold shadow-lg shadow-green/20"
+                    : "bg-cream text-green-dark border border-gold/20 hover:border-gold/40 hover:text-gold"
                 }`}
               >
                 <Icon className="w-4 h-4" />

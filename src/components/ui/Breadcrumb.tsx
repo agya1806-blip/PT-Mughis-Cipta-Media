@@ -14,19 +14,19 @@ interface Props {
 export default function Breadcrumb({ items, className = "" }: Props) {
   return (
     <nav aria-label="Breadcrumb" className={`mb-6 ${className}`}>
-      <ol className="flex items-center gap-1.5 text-sm text-zinc-500 dark:text-zinc-400">
+      <ol className="flex items-center gap-1.5 text-sm text-zinc-600">
         {items.map((item, i) => (
           <li key={i} className="flex items-center gap-1.5">
             {i > 0 && <ChevronRight className="w-3.5 h-3.5" />}
             {item.href ? (
               <Link
                 href={item.href}
-                className="hover:text-zinc-900 dark:hover:text-white transition-colors"
+                className="hover:text-green-dark transition-colors"
               >
                 {item.label}
               </Link>
             ) : (
-              <span className="text-zinc-900 dark:text-white font-medium">{item.label}</span>
+              <span className="text-green-dark font-medium">{item.label}</span>
             )}
           </li>
         ))}

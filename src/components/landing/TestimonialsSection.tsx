@@ -26,7 +26,7 @@ export default function TestimonialsSection() {
         accent="Mereka"
       />
       <div className="max-w-3xl mx-auto">
-        <div className="relative bg-white dark:bg-zinc-800/50 rounded-2xl border border-zinc-200 dark:border-zinc-700/50 p-8 sm:p-12 shadow-xl">
+        <div className="relative bg-cream rounded-2xl border border-gold/20 p-8 sm:p-12 shadow-xl">
           <div className="absolute -top-4 left-8 w-8 h-8 rounded-lg bg-gold flex items-center justify-center">
             <Quote className="w-4 h-4 text-white" />
           </div>
@@ -41,25 +41,25 @@ export default function TestimonialsSection() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
-              className="text-lg sm:text-xl text-zinc-600 dark:text-zinc-300 leading-relaxed mb-8"
+              className="text-lg sm:text-xl text-zinc-600 leading-relaxed mb-8"
             >
               &ldquo;{t.content}&rdquo;
             </motion.p>
           </AnimatePresence>
-          <div className="flex items-center gap-4 pt-6 border-t border-zinc-100 dark:border-zinc-700/50">
+          <div className="flex items-center gap-4 pt-6 border-t border-gold/10">
             <div className="w-12 h-12 rounded-full bg-gradient-to-br from-gold/20 to-gold/10 flex items-center justify-center">
               <span className="text-gold font-bold text-lg">{t.name[0]}</span>
             </div>
             <div>
-              <p className="font-semibold text-zinc-900 dark:text-white">{t.name}</p>
-              <p className="text-sm text-zinc-500 dark:text-zinc-400">{t.role}</p>
+              <p className="font-semibold text-green-dark">{t.name}</p>
+              <p className="text-sm text-zinc-600">{t.role}</p>
             </div>
             <div className="ml-auto flex gap-2">
-              <button onClick={prev} className="w-9 h-9 rounded-full border border-zinc-200 dark:border-zinc-700 flex items-center justify-center hover:bg-zinc-100 dark:hover:bg-zinc-700 transition-colors">
-                <ChevronLeft className="w-4 h-4 text-zinc-600 dark:text-zinc-400" />
+              <button onClick={prev} className="w-9 h-9 rounded-full border border-gold/20 flex items-center justify-center hover:bg-cream transition-colors">
+                <ChevronLeft className="w-4 h-4 text-gold" />
               </button>
-              <button onClick={next} className="w-9 h-9 rounded-full border border-zinc-200 dark:border-zinc-700 flex items-center justify-center hover:bg-zinc-100 dark:hover:bg-zinc-700 transition-colors">
-                <ChevronRight className="w-4 h-4 text-zinc-600 dark:text-zinc-400" />
+              <button onClick={next} className="w-9 h-9 rounded-full border border-gold/20 flex items-center justify-center hover:bg-cream transition-colors">
+                <ChevronRight className="w-4 h-4 text-gold" />
               </button>
             </div>
           </div>

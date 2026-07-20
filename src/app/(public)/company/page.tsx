@@ -13,7 +13,7 @@ import { companyValues, milestones, companyStats, whyUs } from "@/components/com
 
 export default function CompanyPage() {
   return (
-    <div className="min-h-screen bg-white dark:bg-zinc-950">
+    <div className="min-h-screen bg-cream">
       <section className="relative overflow-hidden bg-gradient-to-br from-green via-green-dark to-green">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(211,194,151,0.12),transparent_50%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(211,194,151,0.08),transparent_50%)]" />
@@ -30,16 +30,16 @@ export default function CompanyPage() {
           </motion.div>
           <motion.div variants={MOTION.stagger} initial="hidden" whileInView="visible" viewport={{ once: true }} className="mt-16 grid grid-cols-2 sm:grid-cols-4 gap-6">
             {companyStats.map((stat) => (
-              <motion.div key={stat.label} variants={MOTION.fadeUp} className="text-center p-6 rounded-2xl bg-white dark:bg-zinc-800/50 border border-zinc-200 dark:border-zinc-700/30">
+              <motion.div key={stat.label} variants={MOTION.fadeUp} className="text-center p-6 rounded-2xl bg-cream border border-gold/20">
                 <p className="text-3xl sm:text-4xl font-bold text-gold">{stat.value}{stat.suffix}</p>
-                <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">{stat.label}</p>
+                <p className="mt-1 text-sm text-zinc-600">{stat.label}</p>
               </motion.div>
             ))}
           </motion.div>
         </div>
       </section>
 
-      <section className="py-24 lg:py-32 bg-cream dark:bg-zinc-950">
+      <section className="py-24 lg:py-32 bg-cream">
         <div className="container">
           <SectionTitle badge="Tentang Perusahaan" title="Mitra Terpercaya untuk" accent="Penerbitan Anda" description="PT Mughis Cipta Media hadir sebagai solusi lengkap bagi para penulis dan penerbit." />
           <motion.div variants={MOTION.stagger} initial="hidden" whileInView="visible" viewport={{ once: true }} className="mt-16 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -51,32 +51,32 @@ export default function CompanyPage() {
               { icon: Shield, title: "Legalitas Resmi", description: "Badan usaha resmi dengan NIB terdaftar di sistem OSS-RBA Pemerintah Indonesia." },
               { icon: Award, title: "Tim Profesional", description: "Tim yang siap mendampingi penulis dari naskah hingga distribusi." },
             ].map((item) => (
-              <motion.div key={item.title} variants={MOTION.fadeUp} className="relative bg-zinc-50 dark:bg-zinc-800/30 rounded-2xl p-8 border border-zinc-200 dark:border-zinc-700/30 hover:border-gold/30 transition-all duration-300 hover:shadow-lg group">
+              <motion.div key={item.title} variants={MOTION.fadeUp} className="relative bg-cream rounded-2xl p-8 border border-gold/20 hover:border-gold/40 transition-all duration-300 hover:shadow-lg group">
                 <item.icon className="w-12 h-12 text-gold mb-5" />
-                <h3 className="text-lg font-bold text-zinc-900 dark:text-white mb-3">{item.title}</h3>
-                <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">{item.description}</p>
+                <h3 className="text-lg font-bold text-green-dark mb-3">{item.title}</h3>
+                <p className="text-sm text-zinc-600 leading-relaxed">{item.description}</p>
               </motion.div>
             ))}
           </motion.div>
         </div>
       </section>
 
-      <section className="py-24 lg:py-32 bg-cream dark:bg-zinc-950/50">
+      <section className="py-24 lg:py-32 bg-cream">
         <div className="container">
           <SectionTitle badge="Arah & Tujuan" title="Visi &" accent="Misi" description="Landasan yang menjadi panduan setiap langkah dan keputusan perusahaan." />
           <div className="mt-16 grid lg:grid-cols-2 gap-8">
-            <motion.div variants={MOTION.fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="group relative bg-white dark:bg-zinc-800/50 rounded-3xl p-8 lg:p-10 border border-zinc-200 dark:border-zinc-700/30 hover:border-gold/30 transition-all duration-500">
+            <motion.div variants={MOTION.fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="group relative bg-cream rounded-3xl p-8 lg:p-10 border border-gold/20 hover:border-gold/40 transition-all duration-500">
               <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-gold to-gold-dark flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"><Eye className="w-7 h-7 text-white" /></div>
-              <h3 className="text-2xl font-bold text-zinc-900 dark:text-white mb-4">Visi</h3>
-              <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed text-lg">Menjadi perusahaan penerbitan dan media kreatif yang terpercaya, inovatif, serta berkontribusi dalam membangun peradaban melalui ilmu pengetahuan, pendidikan, dan literasi.</p>
+              <h3 className="text-2xl font-bold text-green-dark mb-4">Visi</h3>
+              <p className="text-zinc-600 leading-relaxed text-lg">Menjadi perusahaan penerbitan dan media kreatif yang terpercaya, inovatif, serta berkontribusi dalam membangun peradaban melalui ilmu pengetahuan, pendidikan, dan literasi.</p>
             </motion.div>
-            <motion.div variants={MOTION.fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="group relative bg-white dark:bg-zinc-800/50 rounded-3xl p-8 lg:p-10 border border-zinc-200 dark:border-zinc-700/30 hover:border-gold/30 transition-all duration-500">
+            <motion.div variants={MOTION.fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="group relative bg-cream rounded-3xl p-8 lg:p-10 border border-gold/20 hover:border-gold/40 transition-all duration-500">
               <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-gold to-gold-dark flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"><Target className="w-7 h-7 text-white" /></div>
-              <h3 className="text-2xl font-bold text-zinc-900 dark:text-white mb-6">Misi</h3>
+              <h3 className="text-2xl font-bold text-green-dark mb-6">Misi</h3>
               <ul className="space-y-4">
                 {["Menerbitkan buku berkualitas", "Layanan profesional dan transparan", "Memberdayakan penulis Indonesia", "Mengembangkan ekosistem literasi", "Memanfaatkan teknologi digital"].map((m, i) => (
                   <motion.li key={i} initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 + i * 0.05, duration: 0.4 }} className="flex items-start gap-3">
-                    <CheckCircle className="w-5 h-5 text-gold mt-0.5 shrink-0" /><span className="text-zinc-600 dark:text-zinc-400">{m}</span>
+                    <CheckCircle className="w-5 h-5 text-gold mt-0.5 shrink-0" /><span className="text-zinc-600">{m}</span>
                   </motion.li>
                 ))}
               </ul>
@@ -85,7 +85,7 @@ export default function CompanyPage() {
         </div>
       </section>
 
-      <section className="py-24 lg:py-32 bg-cream dark:bg-zinc-950">
+      <section className="py-24 lg:py-32 bg-cream">
         <div className="container">
           <SectionTitle badge="Fundasi Perusahaan" title="Nilai" accent="Perusahaan" description="Nilai-nilai yang menjadi fondasi setiap langkah dan keputusan kami." />
           <motion.div variants={MOTION.stagger} initial="hidden" whileInView="visible" viewport={{ once: true }} className="mt-16 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -96,7 +96,7 @@ export default function CompanyPage() {
 
       <Timeline items={milestones} />
 
-      <section className="relative py-24 lg:py-32 bg-cream dark:bg-zinc-950 overflow-hidden">
+      <section className="relative py-24 lg:py-32 bg-cream overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 bg-gold/5 rounded-full blur-3xl" />
         <div className="absolute bottom-0 left-0 w-80 h-80 bg-gold/5 rounded-full blur-3xl" />
         <div className="container relative">
@@ -107,7 +107,7 @@ export default function CompanyPage() {
                 {whyUs.map((r, i) => (
                   <motion.div key={i} initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.03, duration: 0.3 }} className="flex items-start gap-3 group">
                     <CheckCircle className="w-5 h-5 text-gold mt-0.5 shrink-0 group-hover:scale-110 transition-transform" />
-                    <span className="text-zinc-700 dark:text-zinc-300 text-sm">{r}</span>
+                    <span className="text-green-dark/80 text-sm">{r}</span>
                   </motion.div>
                 ))}
               </div>
@@ -118,7 +118,7 @@ export default function CompanyPage() {
                 <div className="relative">
                   <h3 className="text-xl font-bold mb-2">Siap Memulai?</h3>
                   <p className="text-zinc-400 text-sm mb-6">Konsultasikan naskah Anda dengan tim kami.</p>
-                  <Link href="/kontak" className="inline-flex items-center gap-2 h-11 px-6 text-sm font-semibold rounded-full bg-gold hover:bg-gold-dark text-white shadow-md transition-all duration-200">Hubungi Kami<ArrowRight className="w-4 h-4" /></Link>
+                  <Link href="/kontak" className="inline-flex items-center gap-2 h-11 px-6 text-sm font-semibold rounded-full bg-green hover:bg-green-dark text-gold shadow-md transition-all duration-200">Hubungi Kami<ArrowRight className="w-4 h-4" /></Link>
                 </div>
               </div>
             </motion.div>

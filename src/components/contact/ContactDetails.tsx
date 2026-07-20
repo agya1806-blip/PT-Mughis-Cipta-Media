@@ -43,19 +43,19 @@ function ContactCard({
     <motion.div
       variants={cardVariants}
       whileHover={{ y: -2 }}
-      className="group relative bg-white dark:bg-zinc-800/50 rounded-2xl border border-zinc-200 dark:border-zinc-700/50 p-6 transition-all duration-300 hover:shadow-lg hover:border-gold/30"
+      className="group relative bg-cream rounded-2xl border border-gold/20 p-6 transition-all duration-300 hover:shadow-lg hover:border-gold/40"
     >
       <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-gold/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
       <div className="relative">
         <div className="w-10 h-10 rounded-xl bg-gold/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
           {icon}
         </div>
-        <h3 className="font-semibold text-zinc-900 dark:text-white text-sm mb-1">{label}</h3>
+        <h3 className="font-semibold text-green-dark text-sm mb-1">{label}</h3>
         <Tag
           href={href as string}
           target={href ? "_blank" : undefined}
           rel={href ? "noopener noreferrer" : undefined}
-          className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed hover:text-gold transition-colors"
+          className="text-sm text-zinc-600 leading-relaxed hover:text-gold transition-colors"
         >
           {children}
         </Tag>
@@ -66,7 +66,7 @@ function ContactCard({
 
 export default function ContactDetails({ phone, email, address }: ContactInfo) {
   return (
-    <section className="py-16 sm:py-20 md:py-24 bg-cream dark:bg-zinc-900/50">
+    <section className="py-16 sm:py-20 md:py-24 bg-cream">
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -80,13 +80,13 @@ export default function ContactDetails({ phone, email, address }: ContactInfo) {
               Hubungi Kami
             </span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-bold text-zinc-900 dark:text-white leading-[1.15] tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-bold text-green-dark leading-[1.15] tracking-tight">
             Kontak{" "}
             <span className="bg-gradient-to-r from-gold to-gold-dark bg-clip-text text-transparent">
               Kami
             </span>
           </h2>
-          <p className="mt-3 text-zinc-500 dark:text-zinc-400 max-w-lg mx-auto">
+          <p className="mt-3 text-zinc-600 max-w-lg mx-auto">
             Hubungi kami melalui saluran berikut, dan tim kami akan merespons dengan cepat.
           </p>
         </motion.div>
@@ -138,7 +138,7 @@ export default function ContactDetails({ phone, email, address }: ContactInfo) {
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
           className="mt-8"
         >
-          <div className="aspect-[21/9] bg-zinc-200 dark:bg-zinc-800 rounded-2xl border border-zinc-300 dark:border-zinc-700 flex items-center justify-center">
+          <div className="aspect-[21/9] bg-cream rounded-2xl border border-gold/20 flex items-center justify-center">
             <div className="text-center p-6">
               <MapPin className="w-10 h-10 text-zinc-400 mx-auto mb-3" />
               <p className="text-zinc-500 dark:text-zinc-400 font-medium">Google Maps</p>

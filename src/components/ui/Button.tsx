@@ -17,11 +17,11 @@ const variantStyles: Record<Variant, string> = {
   primary:
     "bg-green hover:bg-green-dark text-gold shadow-md hover:shadow-lg hover:shadow-gold/25",
   secondary:
-    "bg-zinc-900 hover:bg-zinc-800 text-white dark:bg-white dark:hover:bg-zinc-100 dark:text-zinc-900",
+    "bg-green-dark hover:bg-green/90 text-cream shadow-md hover:shadow-lg hover:shadow-green/25",
   outline:
-    "border border-zinc-200 dark:border-zinc-700/50 text-zinc-900 dark:text-white hover:bg-zinc-50 dark:hover:bg-zinc-800 hover:border-gold/40",
+    "border border-gold/30 dark:border-gold/20 text-green-dark dark:text-cream hover:bg-cream dark:hover:bg-green-dark/50 hover:border-gold",
   ghost:
-    "text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:text-white hover:bg-zinc-50 dark:hover:bg-zinc-800",
+    "text-zinc-500 dark:text-zinc-400 hover:text-green-dark dark:hover:text-cream hover:bg-cream dark:hover:bg-green-dark/50",
   accent:
     "bg-cream hover:bg-cream/90 text-green shadow-md hover:shadow-lg hover:shadow-gold/25",
 }

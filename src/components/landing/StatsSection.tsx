@@ -31,16 +31,16 @@ export default function StatsSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: i * 0.1, duration: 0.5 }}
-              className="group relative bg-white/80 dark:bg-zinc-900/80 backdrop-blur-xl rounded-2xl border border-zinc-200/50 dark:border-zinc-800/50 p-6 sm:p-8 hover:shadow-xl hover:shadow-gold/5 transition-all duration-500"
+              className="group relative bg-cream rounded-2xl border border-gold/20 p-6 sm:p-8 hover:shadow-xl hover:shadow-gold/5 transition-all duration-500"
             >
               <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-gold/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="relative">
                 <s.icon className="w-5 h-5 text-gold mb-4" />
-                <div className="text-3xl sm:text-4xl font-bold text-zinc-900 dark:text-white mb-1">
+                <div className="text-3xl sm:text-4xl font-bold text-green-dark mb-1">
                   <Counter from={0} to={s.value} inView={inView} />
                   <span>{s.suffix}</span>
                 </div>
-                <p className="text-sm text-zinc-500 dark:text-zinc-400">{s.label}</p>
+                <p className="text-sm text-zinc-600">{s.label}</p>
               </div>
             </motion.div>
           ))}

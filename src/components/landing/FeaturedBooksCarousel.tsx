@@ -39,17 +39,17 @@ export function FeaturedBooksCarousel({ books }: Props) {
           className="mb-0"
         />
         <div className="hidden sm:flex items-center gap-2">
-          <button onClick={prev} className="w-10 h-10 rounded-xl border border-zinc-200 dark:border-zinc-700 flex items-center justify-center hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors">
-            <ChevronLeft className="w-4 h-4 text-zinc-600 dark:text-zinc-400" />
+          <button onClick={prev} className="w-10 h-10 rounded-xl border border-gold/20 flex items-center justify-center hover:bg-cream transition-colors">
+            <ChevronLeft className="w-4 h-4 text-gold" />
           </button>
-          <button onClick={next} className="w-10 h-10 rounded-xl border border-zinc-200 dark:border-zinc-700 flex items-center justify-center hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors">
-            <ChevronRight className="w-4 h-4 text-zinc-600 dark:text-zinc-400" />
+          <button onClick={next} className="w-10 h-10 rounded-xl border border-gold/20 flex items-center justify-center hover:bg-cream transition-colors">
+            <ChevronRight className="w-4 h-4 text-gold" />
           </button>
         </div>
       </div>
 
       <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
-        <div className="relative h-[400px] sm:h-[500px] rounded-2xl overflow-hidden bg-zinc-100 dark:bg-zinc-800">
+        <div className="relative h-[400px] sm:h-[500px] rounded-2xl overflow-hidden bg-cream">
           <AnimatePresence mode="wait" custom={direction}>
             <motion.div
               key={book.id}
@@ -96,15 +96,15 @@ export function FeaturedBooksCarousel({ books }: Props) {
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold/10 text-gold text-xs font-medium mb-4">
               {book.category_name}
             </div>
-            <h3 className="text-2xl sm:text-3xl font-bold text-zinc-900 dark:text-white mb-3">{book.title}</h3>
-            <p className="text-zinc-500 dark:text-zinc-400 mb-2">{book.author}</p>
-            <p className="text-zinc-500 dark:text-zinc-400 text-sm leading-relaxed mb-6 line-clamp-3">{book.synopsis}</p>
+            <h3 className="text-2xl sm:text-3xl font-bold text-green-dark mb-3">{book.title}</h3>
+            <p className="text-zinc-600 mb-2">{book.author}</p>
+            <p className="text-zinc-600 text-sm leading-relaxed mb-6 line-clamp-3">{book.synopsis}</p>
             <div className="flex items-center gap-2 mb-6">
               {[1, 2, 3, 4, 5].map((i) => (<Star key={i} className="w-4 h-4 fill-gold text-gold" />))}
             </div>
             <div className="flex items-center gap-4">
-              <span className="text-2xl font-bold text-zinc-900 dark:text-white">Rp{book.price.toLocaleString("id-ID")}</span>
-              <Link href={`/buku/${book.id}`} className="inline-flex items-center gap-2 px-5 py-2.5 bg-gold hover:bg-gold-dark text-white text-sm font-medium rounded-full transition-all hover:shadow-lg hover:shadow-gold/25">
+              <span className="text-2xl font-bold text-green-dark">Rp{book.price.toLocaleString("id-ID")}</span>
+              <Link href={`/buku/${book.id}`} className="inline-flex items-center gap-2 px-5 py-2.5 bg-green hover:bg-green-dark text-gold text-sm font-medium rounded-full transition-all hover:shadow-lg hover:shadow-green/25">
                 Detail <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </div>
@@ -113,11 +113,11 @@ export function FeaturedBooksCarousel({ books }: Props) {
       </div>
 
       <div className="flex sm:hidden items-center justify-center gap-2 mt-6">
-        <button onClick={prev} className="w-10 h-10 rounded-xl border border-zinc-200 dark:border-zinc-700 flex items-center justify-center hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors">
-          <ChevronLeft className="w-4 h-4 text-zinc-600 dark:text-zinc-400" />
+        <button onClick={prev} className="w-10 h-10 rounded-xl border border-gold/20 flex items-center justify-center hover:bg-cream transition-colors">
+          <ChevronLeft className="w-4 h-4 text-gold" />
         </button>
-        <button onClick={next} className="w-10 h-10 rounded-xl border border-zinc-200 dark:border-zinc-700 flex items-center justify-center hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors">
-          <ChevronRight className="w-4 h-4 text-zinc-600 dark:text-zinc-400" />
+        <button onClick={next} className="w-10 h-10 rounded-xl border border-gold/20 flex items-center justify-center hover:bg-cream transition-colors">
+          <ChevronRight className="w-4 h-4 text-gold" />
         </button>
       </div>
     </SectionWrapper>

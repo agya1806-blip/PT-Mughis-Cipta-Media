@@ -31,7 +31,7 @@ export default function BookJourneySection() {
         description="Dari ide penulis hingga sampai ke tangan pembaca — setiap tahap kami tangani dengan standar kualitas tertinggi"
       />
       <div className="relative">
-        <div className="absolute left-0 right-0 top-1/2 h-px bg-zinc-200 dark:bg-zinc-800 -translate-y-1/2 hidden lg:block" />
+        <div className="absolute left-0 right-0 top-1/2 h-px bg-gold/20 -translate-y-1/2 hidden lg:block" />
         <motion.div style={{ width: lineWidth }} className="absolute left-0 top-1/2 h-0.5 bg-gradient-to-r from-gold via-gold-light to-gold -translate-y-1/2 hidden lg:block" />
         <div className="grid grid-cols-3 sm:grid-cols-3 lg:grid-cols-9 gap-4 lg:gap-0">
           {steps.map((step, i) => (
@@ -48,7 +48,7 @@ export default function BookJourneySection() {
                 whileInView={{ scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08, type: "spring", stiffness: 200 }}
-                className="relative z-10 w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 flex items-center justify-center shadow-lg hover:shadow-gold/10 hover:border-gold/30 transition-all duration-300 group cursor-default"
+                className="relative z-10 w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-cream border border-gold/20 flex items-center justify-center shadow-lg hover:shadow-gold/10 hover:border-gold/40 transition-all duration-300 group cursor-default"
               >
                 <step.icon className="w-6 h-6 text-gold group-hover:scale-110 transition-transform" />
                 <motion.div
@@ -57,7 +57,7 @@ export default function BookJourneySection() {
                   className="absolute inset-0 rounded-2xl bg-gradient-to-br from-gold/10 to-transparent"
                 />
               </motion.div>
-              <p className="mt-3 text-xs sm:text-sm font-medium text-zinc-700 dark:text-zinc-300">{step.label}</p>
+              <p className="mt-3 text-xs sm:text-sm font-medium text-green-dark/80">{step.label}</p>
               {i < steps.length - 1 && (
                 <motion.div
                   initial={{ scaleX: 0 }}

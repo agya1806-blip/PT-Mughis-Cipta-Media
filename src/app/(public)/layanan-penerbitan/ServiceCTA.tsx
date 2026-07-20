@@ -13,16 +13,16 @@ export default function ServiceCTA() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl sm:text-4xl font-bold text-zinc-900 leading-tight mb-4">
+          <h2 className="text-3xl sm:text-4xl font-bold text-green-dark leading-tight mb-4">
             Siap Menerbitkan Buku?
           </h2>
-          <p className="text-zinc-500 text-lg max-w-xl mx-auto mb-10">
+          <p className="text-zinc-600 text-lg max-w-xl mx-auto mb-10">
             Konsultasikan naskah Anda dengan tim profesional kami. Kami siap membantu mewujudkan buku Anda.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link
               href="/kontak"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-gold hover:bg-gold-dark text-white font-semibold rounded-full transition-all duration-300 hover:shadow-xl hover:shadow-gold/25"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-green hover:bg-green-dark text-gold font-semibold rounded-full transition-all duration-300 hover:shadow-xl hover:shadow-green/25"
             >
               Konsultasi Gratis
               <ArrowRight className="w-4 h-4" />
@@ -31,7 +31,7 @@ export default function ServiceCTA() {
               href="https://wa.me/6285723456789"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-8 py-4 border border-zinc-300 text-zinc-700 font-semibold rounded-full hover:bg-zinc-50 transition-all"
+              className="inline-flex items-center gap-2 px-8 py-4 border border-gold/30 text-green-dark font-semibold rounded-full hover:bg-cream transition-all"
             >
               <MessageCircle className="w-4 h-4" />
               WhatsApp

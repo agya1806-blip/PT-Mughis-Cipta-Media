@@ -24,7 +24,7 @@ export default function VisionMission() {
           className="text-center mb-16"
         >
           <span className="text-gold font-semibold text-sm tracking-widest uppercase">Arah & Tujuan</span>
-          <h2 className="text-4xl sm:text-5xl font-bold text-zinc-900 mt-4">
+          <h2 className="text-4xl sm:text-5xl font-bold text-green-dark mt-4">
             Visi &{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold to-gold-dark">
               Misi
@@ -40,13 +40,13 @@ export default function VisionMission() {
             transition={{ duration: 0.6 }}
             className="group"
           >
-            <div className="relative h-full bg-white rounded-3xl p-8 lg:p-10 border border-zinc-200 hover:border-gold/30 transition-all duration-500">
+            <div className="relative h-full bg-cream rounded-3xl p-8 lg:p-10 border border-gold/20 hover:border-gold/40 transition-all duration-500">
               <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-gold/5 to-transparent rounded-bl-3xl" />
               <div className="relative">
                 <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-gold to-gold-dark flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                   <Eye className="w-7 h-7 text-white" />
                 </div>
-                <h3 className="text-2xl font-bold text-zinc-900 mb-4">Visi</h3>
+                <h3 className="text-2xl font-bold text-green-dark mb-4">Visi</h3>
                 <p className="text-zinc-600 leading-relaxed text-lg">
                   Menjadi perusahaan penerbitan dan media kreatif yang terpercaya, inovatif, serta berkontribusi dalam membangun peradaban melalui ilmu pengetahuan, pendidikan, dan literasi.
                 </p>
@@ -62,13 +62,13 @@ export default function VisionMission() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="group"
           >
-            <div className="relative h-full bg-white rounded-3xl p-8 lg:p-10 border border-zinc-200 hover:border-gold/20 transition-all duration-500">
+            <div className="relative h-full bg-cream rounded-3xl p-8 lg:p-10 border border-gold/20 hover:border-gold/40 transition-all duration-500">
               <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-gold/5 to-transparent rounded-bl-3xl" />
               <div className="relative">
                 <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-gold to-gold-dark flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                   <Target className="w-7 h-7 text-white" />
                 </div>
-                <h3 className="text-2xl font-bold text-zinc-900 mb-6">Misi</h3>
+                <h3 className="text-2xl font-bold text-green-dark mb-6">Misi</h3>
                 <ul className="space-y-4">
                   {missions.map((m, i) => (
                     <motion.li

@@ -39,18 +39,18 @@ function FAQItem({
   onToggle: () => void
 }) {
   return (
-    <div className="border-b border-zinc-200 dark:border-zinc-700/50 last:border-0">
+    <div className="border-b border-gold/10 last:border-0">
       <button
         onClick={onToggle}
         className="w-full flex items-center justify-between gap-4 py-5 text-left"
       >
-        <span className="font-medium text-zinc-900 dark:text-white text-sm sm:text-base">{question}</span>
+        <span className="font-medium text-green-dark text-sm sm:text-base">{question}</span>
         <motion.div
           animate={{ rotate: isOpen ? 180 : 0 }}
           transition={{ duration: 0.2 }}
           className="shrink-0"
         >
-          <ChevronDown className="w-5 h-5 text-zinc-400" />
+          <ChevronDown className="w-5 h-5 text-gold" />
         </motion.div>
       </button>
       <AnimatePresence>
@@ -62,7 +62,7 @@ function FAQItem({
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
             className="overflow-hidden"
           >
-            <p className="pb-5 text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">{answer}</p>
+            <p className="pb-5 text-sm text-zinc-600 leading-relaxed">{answer}</p>
           </motion.div>
         )}
       </AnimatePresence>
@@ -74,7 +74,7 @@ export default function ContactFAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
 
   return (
-    <section className="py-16 sm:py-20 md:py-24 bg-cream dark:bg-zinc-900/50">
+    <section className="py-16 sm:py-20 md:py-24 bg-cream">
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -88,13 +88,13 @@ export default function ContactFAQ() {
               FAQ
             </span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-bold text-zinc-900 dark:text-white leading-[1.15] tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-bold text-green-dark leading-[1.15] tracking-tight">
             Pertanyaan{" "}
             <span className="bg-gradient-to-r from-gold to-gold-dark bg-clip-text text-transparent">
               Umum
             </span>
           </h2>
-          <p className="mt-3 text-zinc-500 dark:text-zinc-400 max-w-lg mx-auto">
+          <p className="mt-3 text-zinc-600 max-w-lg mx-auto">
             Jawaban cepat untuk pertanyaan umum seputar layanan penerbitan kami.
           </p>
         </motion.div>
@@ -104,7 +104,7 @@ export default function ContactFAQ() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-          className="max-w-2xl mx-auto bg-white dark:bg-zinc-800/50 rounded-2xl border border-zinc-200 dark:border-zinc-700/50 px-6"
+          className="max-w-2xl mx-auto bg-cream rounded-2xl border border-gold/20 px-6"
         >
           {faqs.map((faq, i) => (
             <FAQItem

@@ -33,13 +33,13 @@ export default function Services() {
           className="text-center mb-16"
         >
           <span className="text-gold font-semibold text-sm tracking-widest uppercase">Apa yang Kami Tawarkan</span>
-          <h2 className="text-4xl sm:text-5xl font-bold text-zinc-900 mt-4">
+          <h2 className="text-4xl sm:text-5xl font-bold text-green-dark mt-4">
             Layanan{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold to-gold-dark">
               Kami
             </span>
           </h2>
-          <p className="text-zinc-500 mt-4 max-w-2xl mx-auto">
+          <p className="text-zinc-600 mt-4 max-w-2xl mx-auto">
             Solusi lengkap untuk kebutuhan penerbitan dan media kreatif Anda, dari hulu ke hilir.
           </p>
         </motion.div>
@@ -52,13 +52,13 @@ export default function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ delay: i * 0.03, duration: 0.4 }}
-              className="group relative bg-white rounded-2xl p-6 border border-zinc-200 hover:border-gold/30 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+              className="group relative bg-cream rounded-2xl p-6 border border-gold/20 hover:border-gold/40 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
             >
               <div className="w-10 h-10 rounded-xl bg-gold/10 flex items-center justify-center mb-4 group-hover:bg-gold/20 transition-colors duration-300">
                 <Icon className="w-5 h-5 text-gold-dark" />
               </div>
-              <h3 className="font-semibold text-zinc-900 mb-2">{title}</h3>
-              <p className="text-zinc-500 text-sm leading-relaxed">{desc}</p>
+              <h3 className="font-semibold text-green-dark mb-2">{title}</h3>
+              <p className="text-zinc-600 text-sm leading-relaxed">{desc}</p>
             </motion.div>
           ))}
         </div>

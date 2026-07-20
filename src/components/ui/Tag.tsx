@@ -11,9 +11,9 @@ interface Props {
 
 const variants: Record<Variant, string> = {
   gold: "bg-gold/10 text-gold border-transparent",
-  primary: "bg-zinc-900 text-white dark:bg-white dark:text-zinc-900 border-transparent",
-  secondary: "bg-zinc-100 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400 border-transparent",
-  outline: "bg-transparent text-zinc-500 dark:text-zinc-400 border-zinc-200 dark:border-zinc-700/50",
+  primary: "bg-green text-cream border-transparent",
+  secondary: "bg-cream dark:bg-green-dark text-green-dark dark:text-cream border-transparent",
+  outline: "bg-transparent text-green-dark dark:text-cream border-gold/30",
 }
 
 export default function Tag({

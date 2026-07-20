@@ -54,13 +54,13 @@ export default function CompanyValues() {
           className="text-center mb-16"
         >
           <span className="text-gold font-semibold text-sm tracking-widest uppercase">Fundasi Perusahaan</span>
-          <h2 className="text-4xl sm:text-5xl font-bold text-zinc-900 mt-4">
+          <h2 className="text-4xl sm:text-5xl font-bold text-green-dark mt-4">
             Nilai{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold to-gold-dark">
               Perusahaan
             </span>
           </h2>
-          <p className="text-zinc-500 mt-4 max-w-2xl mx-auto">
+          <p className="text-zinc-600 mt-4 max-w-2xl mx-auto">
             Nilai-nilai yang menjadi fondasi setiap langkah dan keputusan kami dalam melayani penulis dan masyarakat.
           </p>
         </motion.div>
@@ -75,15 +75,15 @@ export default function CompanyValues() {
               transition={{ delay: i * 0.05, duration: 0.5 }}
               className="group relative"
             >
-              <div className="relative h-full bg-zinc-50 rounded-2xl p-8 border border-zinc-200 hover:border-zinc-300 transition-all duration-300 overflow-hidden">
+              <div className="relative h-full bg-cream rounded-2xl p-8 border border-gold/20 hover:border-gold/40 transition-all duration-300 overflow-hidden">
                 <div className={`absolute inset-0 bg-gradient-to-br ${gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500`} />
 
                 <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${gradient} flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300`}>
                   <Icon className="w-6 h-6 text-white" />
                 </div>
 
-                <h3 className="text-lg font-bold text-zinc-900 mb-3">{title}</h3>
-                <p className="text-zinc-500 text-sm leading-relaxed">{desc}</p>
+                <h3 className="text-lg font-bold text-green-dark mb-3">{title}</h3>
+                <p className="text-zinc-600 text-sm leading-relaxed">{desc}</p>
 
                 <div className={`absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r ${gradient} scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left`} />
               </div>

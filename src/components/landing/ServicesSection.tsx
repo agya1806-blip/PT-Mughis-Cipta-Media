@@ -35,15 +35,15 @@ export default function ServicesSection() {
             viewport={{ once: true }}
             transition={{ delay: i * 0.05 }}
             whileHover={{ y: -4 }}
-            className="group relative bg-white dark:bg-zinc-800/50 rounded-2xl border border-zinc-200 dark:border-zinc-700/50 p-6 transition-all duration-300 hover:shadow-xl hover:shadow-gold/5 hover:border-gold/30"
+            className="group relative bg-cream rounded-2xl border border-gold/20 p-6 transition-all duration-300 hover:shadow-xl hover:shadow-gold/5 hover:border-gold/40"
           >
             <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-gold/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             <div className="relative">
               <div className="w-12 h-12 rounded-xl bg-gold/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
                 <s.icon className="w-6 h-6 text-gold" />
               </div>
-              <h3 className="font-semibold text-zinc-900 dark:text-white mb-2">{s.label}</h3>
-              <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">{s.desc}</p>
+              <h3 className="font-semibold text-green-dark mb-2">{s.label}</h3>
+              <p className="text-sm text-zinc-600 leading-relaxed">{s.desc}</p>
             </div>
           </motion.div>
         ))}

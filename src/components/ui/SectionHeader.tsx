@@ -45,11 +45,11 @@ export default function SectionHeader({
           {badge}
         </Badge>
       )}
-      <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-zinc-900 dark:text-white leading-[1.15] tracking-tight text-balance">
+      <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-green-dark leading-[1.15] tracking-tight text-balance">
         {titleEl}
       </h2>
       {description && (
-        <p className="mt-4 text-zinc-500 dark:text-zinc-400 max-w-2xl mx-auto text-base sm:text-lg leading-relaxed">
+        <p className="mt-4 text-zinc-600 max-w-2xl mx-auto text-base sm:text-lg leading-relaxed">
           {description}
         </p>
       )}

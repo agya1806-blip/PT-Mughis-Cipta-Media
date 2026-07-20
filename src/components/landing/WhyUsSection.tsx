@@ -26,11 +26,11 @@ export default function WhyUsSection() {
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gold/10 border border-gold/20 mb-6">
             <span className="text-gold text-xs font-medium uppercase tracking-wider">Mengapa Kami</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-zinc-900 dark:text-white leading-[1.15]">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-green-dark leading-[1.15]">
             Kenapa Memilih{" "}
             <span className="bg-gradient-to-r from-gold to-gold-dark bg-clip-text text-transparent">Kami?</span>
           </h2>
-          <p className="mt-4 text-zinc-500 dark:text-zinc-400 leading-relaxed">
+          <p className="mt-4 text-zinc-600 leading-relaxed">
             Kami berkomitmen memberikan layanan terbaik dengan standar kualitas tertinggi. Setiap proyek ditangani dengan penuh tanggung jawab dan perhatian terhadap detail.
           </p>
         </motion.div>
@@ -43,15 +43,15 @@ export default function WhyUsSection() {
               viewport={{ once: true }}
               transition={{ delay: i * 0.05 }}
               whileHover={{ y: -2 }}
-              className="group relative bg-white dark:bg-zinc-800/50 rounded-2xl border border-zinc-200 dark:border-zinc-700/50 p-5 transition-all duration-300 hover:shadow-lg hover:border-gold/30"
+              className="group relative bg-cream rounded-2xl border border-gold/20 p-5 transition-all duration-300 hover:shadow-lg hover:border-gold/40"
             >
               <div className="flex items-start gap-4">
                 <div className="w-10 h-10 rounded-xl bg-gold/10 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
                   <r.icon className="w-5 h-5 text-gold" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-zinc-900 dark:text-white text-sm">{r.label}</h3>
-                  <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5 leading-relaxed">{r.desc}</p>
+                  <h3 className="font-semibold text-green-dark text-sm">{r.label}</h3>
+                  <p className="text-xs text-zinc-600 mt-0.5 leading-relaxed">{r.desc}</p>
                 </div>
               </div>
             </motion.div>

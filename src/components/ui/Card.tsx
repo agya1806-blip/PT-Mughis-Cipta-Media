@@ -28,7 +28,7 @@ export default function Card({
   radius = "md",
   padding = true,
 }: Props) {
-  const base = `bg-white dark:bg-zinc-800/50 border border-zinc-200 dark:border-zinc-700/50 shadow-sm ${radiusMap[radius]}`
+  const base = `bg-cream border border-gold/20 shadow-sm ${radiusMap[radius]}`
   const withPadding = padding ? "p-6 sm:p-8" : ""
   const hoverClasses = hover
     ? "transition-all duration-300 hover:shadow-lg hover:border-gold/30"

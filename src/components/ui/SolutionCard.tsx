@@ -24,7 +24,7 @@ export default function SolutionCard({
       viewport={{ once: true }}
       transition={{ delay: index * 0.1, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
       whileHover={{ y: -4 }}
-      className="group relative bg-white/70 dark:bg-zinc-800/40 backdrop-blur-xl rounded-2xl border border-zinc-200/50 dark:border-zinc-700/30 p-6 sm:p-8 transition-all duration-300 hover:shadow-xl hover:border-gold/30"
+      className="group relative bg-cream rounded-2xl border border-gold/20 p-6 sm:p-8 transition-all duration-300 hover:shadow-xl hover:border-gold/40"
     >
       <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-gold/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
@@ -33,9 +33,9 @@ export default function SolutionCard({
           {icon}
         </div>
 
-        <h3 className="font-semibold text-zinc-900 dark:text-white text-lg mb-2">{title}</h3>
+        <h3 className="font-semibold text-green-dark text-lg mb-2">{title}</h3>
 
-        <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-4">{description}</p>
+        <p className="text-sm text-zinc-600 leading-relaxed mb-4">{description}</p>
 
         <div className="flex items-center gap-1 text-gold text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
           <span>Learn more</span>

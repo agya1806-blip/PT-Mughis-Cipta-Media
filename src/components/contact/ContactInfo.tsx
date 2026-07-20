@@ -12,22 +12,22 @@ interface Props {
 export default function ContactInfo({ address, email, phone, instagramUrl, facebookUrl }: Props) {
   return (
     <div className="space-y-6">
-      <div className="bg-white rounded-xl border border-zinc-200 p-6">
+      <div className="bg-cream rounded-xl border border-gold/20 p-6">
         <div className="flex items-center gap-3 mb-4">
           <IconWrapper size="sm">
             <MapPin className="w-4 h-4" />
           </IconWrapper>
-          <h2 className="text-lg font-semibold text-zinc-900">Alamat</h2>
+          <h2 className="text-lg font-semibold text-green-dark">Alamat</h2>
         </div>
         <p className="text-zinc-600 text-sm">{address || "Belum diisi"}</p>
       </div>
 
-      <div className="bg-white rounded-xl border border-zinc-200 p-6">
+      <div className="bg-cream rounded-xl border border-gold/20 p-6">
         <div className="flex items-center gap-3 mb-4">
           <IconWrapper size="sm">
             <Phone className="w-4 h-4" />
           </IconWrapper>
-          <h2 className="text-lg font-semibold text-zinc-900">Kontak</h2>
+          <h2 className="text-lg font-semibold text-green-dark">Kontak</h2>
         </div>
         <div className="space-y-3">
           {phone && (
@@ -54,8 +54,8 @@ export default function ContactInfo({ address, email, phone, instagramUrl, faceb
       </div>
 
       {(instagramUrl || facebookUrl) && (
-        <div className="bg-white rounded-xl border border-zinc-200 p-6">
-          <h2 className="text-lg font-semibold text-zinc-900 mb-4">Media Sosial</h2>
+        <div className="bg-cream rounded-xl border border-gold/20 p-6">
+          <h2 className="text-lg font-semibold text-green-dark mb-4">Media Sosial</h2>
           <div className="space-y-3">
             {instagramUrl && (
               <a

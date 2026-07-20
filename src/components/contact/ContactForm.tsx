@@ -56,7 +56,7 @@ export default function ContactForm() {
                 Kirim Pesan
               </span>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-zinc-900 dark:text-white leading-[1.15] tracking-tight">
+            <h2 className="text-3xl sm:text-4xl font-bold text-green-dark leading-[1.15] tracking-tight">
               Siap{" "}
               <span className="bg-gradient-to-r from-gold to-gold-dark bg-clip-text text-transparent">
                 Memulai?
@@ -74,7 +74,7 @@ export default function ContactForm() {
               viewport={{ once: true }}
               transition={{ delay: 0.05, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
             >
-              <label htmlFor="name" className="block text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-1.5">
+              <label htmlFor="name" className="block text-sm font-medium text-green-dark mb-1.5">
                 Nama Lengkap
               </label>
               <input
@@ -94,7 +94,7 @@ export default function ContactForm() {
                 viewport={{ once: true }}
                 transition={{ delay: 0.1, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
               >
-                <label htmlFor="email" className="block text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-1.5">
+                <label htmlFor="email" className="block text-sm font-medium text-green-dark mb-1.5">
                   Email
                 </label>
                 <input
@@ -113,7 +113,7 @@ export default function ContactForm() {
                 viewport={{ once: true }}
                 transition={{ delay: 0.15, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
               >
-                <label htmlFor="phone" className="block text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-1.5">
+                <label htmlFor="phone" className="block text-sm font-medium text-green-dark mb-1.5">
                   Telepon (opsional)
                 </label>
                 <input
@@ -133,7 +133,7 @@ export default function ContactForm() {
               viewport={{ once: true }}
               transition={{ delay: 0.2, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
             >
-              <label htmlFor="message" className="block text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-1.5">
+              <label htmlFor="message" className="block text-sm font-medium text-green-dark mb-1.5">
                 Pesan
               </label>
               <textarea
@@ -155,7 +155,7 @@ export default function ContactForm() {
               <button
                 type="submit"
                 disabled={submitting}
-                className="group w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-gold hover:bg-gold-dark text-white font-semibold rounded-full transition-all duration-300 hover:shadow-xl hover:shadow-gold/25 hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="group w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-green hover:bg-green-dark text-gold font-semibold rounded-full transition-all duration-300 hover:shadow-xl hover:shadow-green/25 hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {submitting ? "Mengirim..." : "Kirim Pesan"}
                 <Send className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />

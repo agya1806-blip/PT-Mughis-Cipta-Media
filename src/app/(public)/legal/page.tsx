@@ -103,14 +103,14 @@ export default async function LegalPage() {
       </section>
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="bg-white rounded-2xl border border-zinc-200 overflow-hidden shadow-sm">
+        <div className="bg-cream rounded-2xl border border-gold/20 overflow-hidden shadow-sm">
           <div className="p-8 sm:p-10">
-            <h2 className="text-2xl font-bold text-zinc-900 mb-8">Identitas Perusahaan</h2>
+            <h2 className="text-2xl font-bold text-green-dark mb-8">Identitas Perusahaan</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {infoItems.map((item) => {
                 const Icon = item.icon
                 return (
-                  <div key={item.label} className="flex items-start gap-4 p-4 rounded-xl bg-zinc-50 border border-zinc-100">
+                  <div key={item.label} className="flex items-start gap-4 p-4 rounded-xl bg-cream border border-gold/10">
                     <div className="w-10 h-10 rounded-lg bg-gold/10 flex items-center justify-center shrink-0">
                       <Icon className="w-5 h-5 text-gold" />
                     </div>
@@ -125,9 +125,9 @@ export default async function LegalPage() {
           </div>
         </div>
 
-        <div className="bg-white rounded-2xl border border-zinc-200 overflow-hidden shadow-sm mt-8">
+        <div className="bg-cream rounded-2xl border border-gold/20 overflow-hidden shadow-sm mt-8">
           <div className="p-8 sm:p-10">
-            <h2 className="text-2xl font-bold text-zinc-900 mb-4">Komitmen Kualitas</h2>
+            <h2 className="text-2xl font-bold text-green-dark mb-4">Komitmen Kualitas</h2>
             <p className="text-zinc-600 leading-relaxed mb-6">
               PT Mughis Cipta Media berkomitmen untuk menerbitkan buku-buku berkualitas tinggi yang 
               bermanfaat bagi masyarakat. Setiap naskah melalui proses kurasi, editing, dan kontrol 
@@ -142,14 +142,14 @@ export default async function LegalPage() {
           </div>
         </div>
 
-        <div className="bg-white rounded-2xl border border-zinc-200 overflow-hidden shadow-sm mt-8">
+        <div className="bg-cream rounded-2xl border border-gold/20 overflow-hidden shadow-sm mt-8">
           <div className="p-8 sm:p-10">
-            <h2 className="text-2xl font-bold text-zinc-900 mb-8">Kontak Resmi</h2>
+            <h2 className="text-2xl font-bold text-green-dark mb-8">Kontak Resmi</h2>
             <div className="space-y-4">
               {contactItems.map((item) => {
                 const Icon = item.icon
                 const content = (
-                  <div className="flex items-center gap-4 p-4 rounded-xl bg-zinc-50 border border-zinc-100 hover:border-gold/20 transition-colors">
+                  <div className="flex items-center gap-4 p-4 rounded-xl bg-cream border border-gold/10 hover:border-gold/30 transition-colors">
                     <div className="w-10 h-10 rounded-lg bg-gold/10 flex items-center justify-center shrink-0">
                       <Icon className="w-5 h-5 text-gold" />
                     </div>

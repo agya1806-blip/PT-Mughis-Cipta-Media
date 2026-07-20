@@ -14,7 +14,7 @@ function SkeletonBlock({
   height,
   className = "",
 }: Props) {
-  const base = "animate-pulse bg-zinc-100 dark:bg-zinc-800 rounded"
+  const base = "animate-pulse bg-cream rounded"
 
   const styles: Record<Variant, string> = {
     card: `${base} rounded-2xl aspect-[3/4]`,
@@ -33,7 +33,7 @@ function SkeletonBlock({
 
 export function BookCardSkeleton() {
   return (
-    <div className="rounded-2xl border border-zinc-200 dark:border-zinc-700/50 bg-white dark:bg-zinc-800/50 overflow-hidden">
+    <div className="rounded-2xl border border-gold/20 bg-cream overflow-hidden">
       <SkeletonBlock variant="card" />
       <div className="p-4 space-y-3">
         <SkeletonBlock variant="text" width="30%" />
@@ -47,7 +47,7 @@ export function BookCardSkeleton() {
 
 export function ArticleCardSkeleton() {
   return (
-    <div className="bg-white dark:bg-zinc-800/50 rounded-2xl border border-zinc-200 dark:border-zinc-700/50 p-6 space-y-3">
+    <div className="bg-cream rounded-2xl border border-gold/20 p-6 space-y-3">
       <SkeletonBlock variant="text" width="75%" height="1.25rem" />
       <SkeletonBlock variant="text" width="33%" />
       <div className="space-y-2 pt-2">
@@ -61,7 +61,7 @@ export function ArticleCardSkeleton() {
 
 export function FeatureCardSkeleton() {
   return (
-    <div className="rounded-2xl border border-zinc-200 dark:border-zinc-700/50 bg-white dark:bg-zinc-800/50 p-6 space-y-4">
+    <div className="rounded-2xl border border-gold/20 bg-cream p-6 space-y-4">
       <SkeletonBlock variant="circle" width="2.5rem" height="2.5rem" />
       <SkeletonBlock variant="text" width="60%" />
       <SkeletonBlock variant="text" width="100%" />

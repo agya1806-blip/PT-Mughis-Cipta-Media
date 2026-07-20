@@ -27,14 +27,14 @@ export default function NotFound() {
         <div className="flex flex-wrap justify-center gap-3 mb-10">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-gold text-white font-medium rounded-xl hover:bg-gold-dark transition-colors"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-green text-gold font-medium rounded-xl hover:bg-green-dark transition-colors"
           >
             <Home className="w-4 h-4" />
             Kembali ke Beranda
           </Link>
           <Link
             href="/katalog"
-            className="inline-flex items-center gap-2 px-6 py-3 border border-zinc-300 text-zinc-700 font-medium rounded-xl hover:bg-zinc-100 transition-colors"
+            className="inline-flex items-center gap-2 px-6 py-3 border border-gold/30 text-green-dark font-medium rounded-xl hover:bg-cream transition-colors"
           >
             <BookOpen className="w-4 h-4" />
             Lihat Katalog
@@ -47,7 +47,7 @@ export default function NotFound() {
             type="text"
             placeholder="Cari di website..."
             readOnly
-            className="w-full pl-11 pr-4 py-3 rounded-xl border border-zinc-200 bg-white text-zinc-900 text-sm placeholder-zinc-400 cursor-default"
+            className="w-full pl-11 pr-4 py-3 rounded-xl border border-gold/20 bg-cream text-green-dark text-sm placeholder-zinc-400 cursor-default"
           />
         </div>
       </div>

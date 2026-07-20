@@ -29,15 +29,15 @@ export default function FAQAccordion({ items, className = "" }: Props) {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: i * 0.03 }}
-          className="bg-white rounded-xl border border-zinc-200 overflow-hidden"
+          className="bg-cream rounded-xl border border-gold/20 overflow-hidden"
         >
           <button
             onClick={() => setOpenIndex(openIndex === i ? null : i)}
-            className="w-full flex items-center justify-between p-5 text-left hover:bg-zinc-50 transition-colors"
+            className="w-full flex items-center justify-between p-5 text-left hover:bg-cream transition-colors"
           >
-            <span className="font-medium text-zinc-900 pr-4">{item.q}</span>
+            <span className="font-medium text-green-dark pr-4">{item.q}</span>
             <ChevronDown
-              className={`w-5 h-5 text-zinc-400 shrink-0 transition-transform duration-200 ${
+              className={`w-5 h-5 text-gold shrink-0 transition-transform duration-200 ${
                 openIndex === i ? "rotate-180" : ""
               }`}
             />
@@ -51,7 +51,7 @@ export default function FAQAccordion({ items, className = "" }: Props) {
                 transition={{ duration: 0.2 }}
                 className="overflow-hidden"
               >
-                <p className="px-5 pb-5 text-zinc-500 leading-relaxed border-t border-zinc-100 pt-4">
+                <p className="px-5 pb-5 text-zinc-600 leading-relaxed border-t border-gold/10 pt-4">
                   {item.a}
                 </p>
               </motion.div>

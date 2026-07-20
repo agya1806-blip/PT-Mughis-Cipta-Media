@@ -70,8 +70,8 @@ export default function LegalitasPage() {
                     <h3 className="font-bold text-zinc-900 dark:text-white">Informasi NIB</h3>
                     <div className="grid grid-cols-2 gap-4 text-sm">
                       {[
-                        { label: "Badan Usaha", value: "PT Mughis Cipta Media" },
-                        { label: "Status", value: "Aktif" },
+                        { label: "Pelaku Usaha", value: "Muhammad Aghisna" },
+                        { label: "NPWP", value: "1108043110010001" },
                         { label: "KBLI", value: "58110 (Penerbitan Buku)" },
                         { label: "Skala Usaha", value: "Usaha Mikro" },
                         { label: "Tgl Terbit", value: "18 Juli 2026" },

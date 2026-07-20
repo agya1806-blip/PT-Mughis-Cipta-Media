@@ -34,9 +34,9 @@ export interface FooterData {
 export const footerData: FooterData = {
   company: {
     name: "PT Mughis Cipta Media",
-    tagline: "Mitra kreatif dalam penerbitan dan percetakan buku Islami sejak 2024.",
-    address: "Perumahan Bumi Asri, Jl. Bawang No. 12, Bandung, Jawa Barat",
-    email: "admin@pt-mughis-cipta-media.com",
+    tagline: "Penerbit buku Islami dan pendidikan berkualitas — Maktabah Al-Mughis.",
+    address: "Dusun Tanjong Sentosa, Gampong Sangso, Kec. Samalanga, Kab. Bireuen, Aceh 24264",
+    email: "Mughisciptamedia@gmail.com",
     whatsapp: "+62 812-3456-7890",
     whatsappNumber: "6281234567890",
   },

@@ -19,7 +19,7 @@ export const legalDocuments: LegalDocument[] = [
     number: "1807260050954",
     date: "18 Juli 2026",
     description:
-      "NIB diterbitkan oleh Pemerintah Indonesia melalui sistem OSS-RBA sebagai bukti legalitas usaha PT Mughis Cipta Media.",
+      "NIB diterbitkan oleh Pemerintah Republik Indonesia melalui sistem OSS-RBA sebagai bukti legalitas usaha Maktabah Al-Mughis.",
     icon: FileText,
     status: "active",
   },
@@ -29,14 +29,14 @@ export const legalDocuments: LegalDocument[] = [
     number: "1807260050954",
     date: "18 Juli 2026",
     description:
-      "PT Perorangan (PT Perseorangan) — didirikan berdasarkan NIB yang diterbitkan melalui sistem OSS-RBA, tanpa akta notaris sesuai UU Cipta Kerja.",
+      "PT Perorangan (PT Perseorangan) atas nama Muhammad Aghisna — didirikan berdasarkan NIB yang diterbitkan melalui sistem OSS-RBA, tanpa akta notaris sesuai UU Cipta Kerja.",
     icon: Building2,
     status: "active",
   },
   {
     id: "npwp",
     title: "NPWP Perusahaan",
-    number: "1000 0000 1042 6923",
+    number: "1108043110010001",
     date: "18 Juli 2026",
     description:
       "Nomor Pokok Wajib Pajak (NPWP) perusahaan yang terdaftar di Direktorat Jenderal Pajak (DJP).",
@@ -45,11 +45,11 @@ export const legalDocuments: LegalDocument[] = [
   },
   {
     id: "sku",
-    title: "Izin Usaha",
+    title: "Izin Usaha (NIB)",
     number: "1807260050954",
     date: "18 Juli 2026",
     description:
-      "NIB berlaku sebagai izin usaha (setara SKU) berdasarkan Peraturan Pemerintah. Tidak diperlukan SKU terpisah untuk PT Perorangan.",
+      "NIB berlaku sebagai izin usaha yang terintegrasi. KBLI 58110 (Penerbitan Buku) – sektor Perindustrian. Usaha Mikro.",
     icon: Shield,
     status: "active",
   },
@@ -59,8 +59,18 @@ export const legalDocuments: LegalDocument[] = [
     number: "-",
     date: "-",
     description:
-      "Pendaftaran anggota IKAPI (Ikatan Penerbit Indonesia) sedang dalam proses pengajuan setelah NIB dan NPWP terbit.",
+      "Pendaftaran anggota IKAPI (Ikatan Penerbit Indonesia) sedang dalam proses pengajuan.",
     icon: Award,
+    status: "active",
+  },
+  {
+    id: "sppl",
+    title: "SPPL (Pengelolaan Lingkungan)",
+    number: "6A5B3C20125CF",
+    date: "18 Juli 2026",
+    description:
+      "Surat Pengelolaan Lingkungan Hidup (SPPL) terverifikasi otomatis melalui sistem AMDALNET untuk kegiatan penerbitan buku.",
+    icon: FileText,
     status: "active",
   },
 ]
@@ -119,17 +129,24 @@ export interface Milestone {
 
 export const milestones: Milestone[] = [
   {
-    year: "2026",
-    title: "Pendirian PT Perorangan",
+    year: "2024",
+    title: "Mulai Operasional",
     description:
-      "PT Mughis Cipta Media resmi berdiri sebagai PT Perorangan dengan NIB 1807260050954 yang diterbitkan melalui sistem OSS-RBA Pemerintah Indonesia.",
+      "Maktabah Al-Mughis memulai kegiatan operasional penerbitan buku Islami dan pendidikan.",
+    icon: BookOpen,
+  },
+  {
+    year: "2026",
+    title: "Pendirian PT Perorangan & NIB",
+    description:
+      "PT Mughis Cipta Media resmi berdiri sebagai PT Perorangan dengan NIB 1807260050954 yang diterbitkan melalui sistem OSS-RBA. NPWP: 1108043110010001.",
     icon: Building2,
   },
   {
     year: "2026",
-    title: "Membangun Platform Digital",
+    title: "Peluncuran Website Resmi",
     description:
-      "Meluncurkan website Maktabah al-Mughis sebagai platform penerbitan dan distribusi buku Islami berkualitas.",
+      "Meluncurkan website Maktabah al-Mughis sebagai platform penerbitan dan distribusi buku.",
     icon: Award,
   },
 ]
@@ -192,10 +209,10 @@ export interface Stat {
 }
 
 export const companyStats: Stat[] = [
-  { label: "Penulis Dibantu", value: "1", suffix: "" },
-  { label: "Proyek Selesai", value: "1", suffix: "" },
-  { label: "Buku Diterbitkan", value: "0", suffix: "" },
-  { label: "Tahun Berdiri", value: "2026", suffix: "" },
+  { label: "Penulis Dibantu", value: "Telah melayani", suffix: "" },
+  { label: "Bidang Usaha", value: "Penerbitan Buku", suffix: "" },
+  { label: "NIB", value: "1807260050954", suffix: "" },
+  { label: "Tahun Berdiri", value: "2024", suffix: "" },
 ]
 
 export const whyUs: string[] = [

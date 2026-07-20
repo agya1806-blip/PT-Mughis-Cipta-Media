@@ -119,9 +119,9 @@ export default async function BookDetailPage({ params }: { params: Promise<{ id:
           ]}
         />
 
-        <div className="bg-white rounded-2xl border border-zinc-200 overflow-hidden shadow-sm">
+        <div className="bg-cream rounded-2xl border border-gold/20 overflow-hidden shadow-sm">
           <div className="grid md:grid-cols-3 gap-8 p-8">
-            <div className="aspect-[3/4] bg-zinc-100 rounded-xl flex items-center justify-center overflow-hidden">
+            <div className="aspect-[3/4] bg-cream rounded-xl flex items-center justify-center overflow-hidden">
               {mapped.cover_image ? (
                 <Image
                   src={mapped.cover_image}

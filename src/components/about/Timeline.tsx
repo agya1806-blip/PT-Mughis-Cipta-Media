@@ -70,7 +70,7 @@ export default function Timeline() {
                 className="relative md:pl-20"
               >
                 <div className="absolute left-4 top-1 w-8 h-8 md:left-4 md:top-1 hidden md:flex items-center justify-center">
-                  <div className="w-8 h-8 rounded-full bg-white border-2 border-gold flex items-center justify-center z-10">
+                  <div className="w-8 h-8 rounded-full bg-cream border-2 border-gold flex items-center justify-center z-10">
                     <Icon className="w-4 h-4 text-gold-dark" />
                   </div>
                 </div>
@@ -80,7 +80,7 @@ export default function Timeline() {
                     {year}
                   </span>
                   <h3 className="text-lg font-bold text-green-dark mb-2">{title}</h3>
-                  <p className="text-zinc-600 text-sm leading-relaxed">{desc}</p>
+                  <p className="text-green/80 text-sm leading-relaxed">{desc}</p>
                 </div>
               </motion.div>
             ))}

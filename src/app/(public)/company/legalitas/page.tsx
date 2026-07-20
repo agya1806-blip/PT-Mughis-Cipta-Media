@@ -85,7 +85,7 @@ export default function LegalitasPage() {
   }, [])
 
   return (
-    <div className="min-h-screen bg-white dark:bg-zinc-950">
+    <div className="min-h-screen bg-cream dark:bg-green-dark">
       <section className="relative overflow-hidden bg-gradient-to-br from-green via-green-dark to-green pt-20 sm:pt-24 lg:pt-32 pb-16 sm:pb-20">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(211,194,151,0.08),transparent_50%)]" />
         <div className="container relative">
@@ -106,20 +106,20 @@ export default function LegalitasPage() {
                 {docs.map((doc) => {
                   const Icon = doc.icon
                   return (
-                    <motion.div key={doc.id} variants={MOTION.fadeUp} className="group relative bg-white dark:bg-zinc-800/50 rounded-2xl p-6 border border-zinc-200 dark:border-zinc-700/30 hover:border-gold/30 hover:shadow-md transition-all duration-300">
+                    <motion.div key={doc.id} variants={MOTION.fadeUp} className="group relative bg-cream dark:bg-green-dark/80 rounded-2xl p-6 border border-gold/20 dark:border-gold/10 hover:border-gold/30 hover:shadow-md transition-all duration-300">
                       <div className="flex items-start gap-4">
                         <div className="shrink-0 w-12 h-12 rounded-xl bg-gold/10 flex items-center justify-center group-hover:bg-gold group-hover:scale-110 transition-all duration-300">
                           <Icon className="w-6 h-6 text-gold group-hover:text-white transition-colors duration-300" />
                         </div>
                         <div className="flex-1 min-w-0">
                           <div className="flex flex-wrap items-center gap-2 mb-2">
-                            <h3 className="text-base font-bold text-zinc-900 dark:text-white">{doc.title}</h3>
+                            <h3 className="text-base font-bold text-green-dark dark:text-cream">{doc.title}</h3>
                             <LegalBadge icon={CheckCircle} title={doc.status === "verified" ? "Terverifikasi" : "Aktif"} status={doc.status} />
                           </div>
-                          <p className="text-sm text-zinc-500 dark:text-zinc-400 mb-3">{doc.description}</p>
-                          <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-zinc-400 dark:text-zinc-500">
+                          <p className="text-sm text-green/60 dark:text-cream/70 mb-3">{doc.description}</p>
+                          <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-green/60 dark:text-cream/70">
                             <span className="font-mono">{doc.number}</span>
-                            {doc.date && <><span className="w-1 h-1 rounded-full bg-zinc-300 dark:bg-zinc-600" /><span>{doc.date}</span></>}
+                            {doc.date && <><span className="w-1 h-1 rounded-full bg-gold/30 dark:bg-gold/20" /><span>{doc.date}</span></>}
                           </div>
                         </div>
                       </div>
@@ -135,13 +135,13 @@ export default function LegalitasPage() {
                   <div className="flex items-center gap-4">
                     <div className="w-14 h-14 rounded-2xl bg-gold/10 flex items-center justify-center"><FileText className="w-7 h-7 text-gold" /></div>
                     <div>
-                      <p className="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">NIB</p>
-                      <p className="text-xl font-bold text-zinc-900 dark:text-white font-mono tracking-wider">{settings.legal_nib || "1807260050954"}</p>
+                      <p className="text-xs font-medium text-green/60 dark:text-cream/70 uppercase tracking-wider">NIB</p>
+                      <p className="text-xl font-bold text-green-dark dark:text-cream font-mono tracking-wider">{settings.legal_nib || "1807260050954"}</p>
                     </div>
                   </div>
-                  <div className="h-px bg-zinc-200 dark:bg-zinc-700/50" />
+                  <div className="h-px bg-gold/20 dark:bg-gold/10" />
                   <div className="space-y-4">
-                    <h3 className="font-bold text-zinc-900 dark:text-white">Informasi NIB</h3>
+                    <h3 className="font-bold text-green-dark dark:text-cream">Informasi NIB</h3>
                     <div className="grid grid-cols-2 gap-4 text-sm">
                       {[
                         { label: "Pelaku Usaha", value: "Muhammad Aghisna" },
@@ -152,19 +152,19 @@ export default function LegalitasPage() {
                         { label: "Berlaku", value: "Seumur Hidup" },
                       ].map(({ label, value }) => (
                         <div key={label}>
-                          <p className="text-zinc-400 dark:text-zinc-500">{label}</p>
-                          <p className="font-medium text-zinc-900 dark:text-white">{value}</p>
+                          <p className="text-green/60 dark:text-cream/70">{label}</p>
+                          <p className="font-medium text-green-dark dark:text-cream">{value}</p>
                         </div>
                       ))}
                     </div>
                   </div>
-                  <div className="h-px bg-zinc-200 dark:bg-zinc-700/50" />
+                  <div className="h-px bg-gold/20 dark:bg-gold/10" />
                   <div className="flex items-center gap-2 text-sm text-gold"><Shield className="w-4 h-4" /><span className="font-medium">Telah terverifikasi oleh OSS-RBA</span></div>
                 </GlassPanel>
               </motion.div>
               <motion.div variants={MOTION.fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
                 <GlassPanel intensity="light" className="p-8 space-y-5">
-                  <div className="flex items-center gap-3"><Award className="w-6 h-6 text-gold" /><h3 className="font-bold text-zinc-900 dark:text-white">Sertifikasi & Keanggotaan</h3></div>
+                  <div className="flex items-center gap-3"><Award className="w-6 h-6 text-gold" /><h3 className="font-bold text-green-dark dark:text-cream">Sertifikasi & Keanggotaan</h3></div>
                   <div className="space-y-4">
                     {[
                       { icon: Building2, label: "Anggota IKAPI", desc: "Terdaftar sebagai anggota Ikatan Penerbit Indonesia" },
@@ -174,8 +174,8 @@ export default function LegalitasPage() {
                       <div key={label} className="flex items-start gap-3">
                         <Icon className="w-5 h-5 text-gold mt-0.5 shrink-0" />
                         <div>
-                          <p className="text-sm font-semibold text-zinc-900 dark:text-white">{label}</p>
-                          <p className="text-xs text-zinc-500 dark:text-zinc-400">{desc}</p>
+                          <p className="text-sm font-semibold text-green-dark dark:text-cream">{label}</p>
+                          <p className="text-xs text-green/60 dark:text-cream/70">{desc}</p>
                         </div>
                       </div>
                     ))}
@@ -194,8 +194,8 @@ export default function LegalitasPage() {
         <div className="container relative text-center max-w-2xl">
           <h2 className="text-3xl sm:text-4xl font-bold text-white leading-[1.15]">Perusahaan <span className="bg-gradient-to-r from-gold to-gold-dark bg-clip-text text-transparent">Terpercaya</span></h2>
           <p className="mt-4 text-lg text-zinc-400">Dengan legalitas lengkap dan komitmen terhadap kualitas, PT Mughis Cipta Media siap menjadi mitra penerbitan Anda.</p>
-          <div className="mt-10 flex flex-wrap justify-center gap-4">
-            <a href="/kontak" className="inline-flex items-center gap-2 h-11 px-6 text-sm font-semibold rounded-full bg-gold hover:bg-gold-dark text-white shadow-md hover:shadow-lg hover:shadow-gold/25 transition-all duration-200">Hubungi Kami<ExternalLink className="w-4 h-4" /></a>
+            <div className="mt-10 flex flex-wrap justify-center gap-4">
+            <a href="/kontak" className="inline-flex items-center gap-2 h-11 px-6 text-sm font-semibold rounded-full bg-green hover:bg-green-dark text-gold shadow-md hover:shadow-lg hover:shadow-green/25 transition-all duration-200">Hubungi Kami<ExternalLink className="w-4 h-4" /></a>
             <a href="/company" className="inline-flex items-center gap-2 h-11 px-6 text-sm font-semibold rounded-full border border-zinc-600 text-zinc-300 hover:bg-zinc-800 transition-all duration-200">Profil Perusahaan</a>
           </div>
         </div>

@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
+import Image from "next/image"
 import { motion, AnimatePresence } from "framer-motion"
 
 export default function LoadingScreen() {
@@ -26,8 +27,15 @@ export default function LoadingScreen() {
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
             className="text-center"
           >
-            <div className="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-br from-gold to-gold-dark flex items-center justify-center mb-4">
-              <span className="text-white font-bold text-2xl">M</span>
+            <div className="w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+              <Image
+                src="/logo.png"
+                alt="Maktabah Al-Mughis"
+                width={170}
+                height={16}
+                className="h-10 w-auto"
+                priority
+              />
             </div>
             <motion.p
               initial={{ opacity: 0 }}

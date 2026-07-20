@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 import { MapPin, Mail, Phone } from "lucide-react"
 import Badge from "@/components/ui/Badge"
 import IconWrapper from "@/components/ui/IconWrapper"
@@ -96,12 +97,13 @@ export default async function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16">
           <div className="sm:col-span-2 lg:col-span-1 space-y-6">
             <Link href="/" className="inline-flex items-center gap-3 group">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-gold to-gold-dark flex items-center justify-center shadow-sm transition-shadow duration-300 group-hover:shadow-gold">
-                <span className="text-white font-bold text-lg">M</span>
-              </div>
-              <span className="font-semibold text-sm tracking-wide text-primary">
-                {company.name}
-              </span>
+              <Image
+                src="/logo.png"
+                alt="Maktabah Al-Mughis"
+                width={170}
+                height={16}
+                className="h-7 w-auto"
+              />
             </Link>
             <p className="text-sm text-secondary leading-relaxed">
               {company.tagline}

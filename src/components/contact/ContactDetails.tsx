@@ -102,7 +102,7 @@ export default function ContactDetails({ phone, email, address }: ContactInfo) {
             icon={<MapPin className="w-5 h-5 text-gold" />}
             label="Alamat Kantor"
           >
-            {address || "Perumahan Bumi Asri, Jl. Bawang No. 12, Bandung, Jawa Barat"}
+            {address || "Dusun Tanjong Sentosa, Samalanga, Bireuen, Aceh"}
           </ContactCard>
 
           <ContactCard

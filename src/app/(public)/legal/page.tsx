@@ -51,8 +51,8 @@ const infoItems = [
 export default async function LegalPage() {
   const db = await getSettings()
   const phone = db.contact_phone ? `+62 ${db.contact_phone}` : "+62 812-3456-7890"
-  const email = db.contact_email || "admin@pt-mughis-cipta-media.com"
-  const address = db.address || "Perumahan Bumi Asri, Jl. Bawang No. 12, Bandung, Jawa Barat"
+  const email = db.contact_email || "Mughisciptamedia@gmail.com"
+  const address = db.address || "Dusun Tanjong Sentosa, Samalanga, Bireuen, Aceh"
 
   const contactItems = [
     {

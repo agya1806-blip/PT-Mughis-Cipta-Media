@@ -73,7 +73,7 @@ export default async function ArticleDetailPage({ params }: { params: Promise<{ 
           <h1 className="text-3xl sm:text-4xl font-bold text-green-dark leading-tight mb-4">
             {article.title}
           </h1>
-          <div className="flex flex-wrap items-center gap-4 text-sm text-zinc-500">
+          <div className="flex flex-wrap items-center gap-4 text-sm text-green/60">
             <span className="flex items-center gap-1.5">
               <Calendar className="w-4 h-4" />
               {new Date(article.createdAt).toLocaleDateString("id-ID", {
@@ -101,7 +101,7 @@ export default async function ArticleDetailPage({ params }: { params: Promise<{ 
         )}
 
         <div
-          className="text-zinc-700 leading-relaxed prose prose-zinc max-w-none prose-headings:text-green-dark prose-a:text-gold prose-a:no-underline hover:prose-a:underline prose-img:rounded-xl"
+          className="text-green-dark/90 leading-relaxed prose max-w-none prose-headings:text-green-dark prose-a:text-gold prose-a:no-underline hover:prose-a:underline prose-img:rounded-xl"
           dangerouslySetInnerHTML={{ __html: article.content }}
         />
 

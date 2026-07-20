@@ -32,7 +32,7 @@ export default function CompanyPage() {
             {companyStats.map((stat) => (
               <motion.div key={stat.label} variants={MOTION.fadeUp} className="text-center p-6 rounded-2xl bg-cream border border-gold/20">
                 <p className="text-3xl sm:text-4xl font-bold text-gold">{stat.value}{stat.suffix}</p>
-                <p className="mt-1 text-sm text-zinc-600">{stat.label}</p>
+                <p className="mt-1 text-sm text-green/80">{stat.label}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -54,7 +54,7 @@ export default function CompanyPage() {
               <motion.div key={item.title} variants={MOTION.fadeUp} className="relative bg-cream rounded-2xl p-8 border border-gold/20 hover:border-gold/40 transition-all duration-300 hover:shadow-lg group">
                 <item.icon className="w-12 h-12 text-gold mb-5" />
                 <h3 className="text-lg font-bold text-green-dark mb-3">{item.title}</h3>
-                <p className="text-sm text-zinc-600 leading-relaxed">{item.description}</p>
+                <p className="text-sm text-green/80 leading-relaxed">{item.description}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -68,7 +68,7 @@ export default function CompanyPage() {
             <motion.div variants={MOTION.fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="group relative bg-cream rounded-3xl p-8 lg:p-10 border border-gold/20 hover:border-gold/40 transition-all duration-500">
               <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-gold to-gold-dark flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"><Eye className="w-7 h-7 text-white" /></div>
               <h3 className="text-2xl font-bold text-green-dark mb-4">Visi</h3>
-              <p className="text-zinc-600 leading-relaxed text-lg">Menjadi perusahaan penerbitan dan media kreatif yang terpercaya, inovatif, serta berkontribusi dalam membangun peradaban melalui ilmu pengetahuan, pendidikan, dan literasi.</p>
+              <p className="text-green/80 leading-relaxed text-lg">Menjadi perusahaan penerbitan dan media kreatif yang terpercaya, inovatif, serta berkontribusi dalam membangun peradaban melalui ilmu pengetahuan, pendidikan, dan literasi.</p>
             </motion.div>
             <motion.div variants={MOTION.fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="group relative bg-cream rounded-3xl p-8 lg:p-10 border border-gold/20 hover:border-gold/40 transition-all duration-500">
               <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-gold to-gold-dark flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"><Target className="w-7 h-7 text-white" /></div>
@@ -76,7 +76,7 @@ export default function CompanyPage() {
               <ul className="space-y-4">
                 {["Menerbitkan buku berkualitas", "Layanan profesional dan transparan", "Memberdayakan penulis Indonesia", "Mengembangkan ekosistem literasi", "Memanfaatkan teknologi digital"].map((m, i) => (
                   <motion.li key={i} initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 + i * 0.05, duration: 0.4 }} className="flex items-start gap-3">
-                    <CheckCircle className="w-5 h-5 text-gold mt-0.5 shrink-0" /><span className="text-zinc-600">{m}</span>
+                    <CheckCircle className="w-5 h-5 text-gold mt-0.5 shrink-0" /><span className="text-green/80">{m}</span>
                   </motion.li>
                 ))}
               </ul>
@@ -117,7 +117,7 @@ export default function CompanyPage() {
                 <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(211,194,151,0.15),transparent_50%)]" />
                 <div className="relative">
                   <h3 className="text-xl font-bold mb-2">Siap Memulai?</h3>
-                  <p className="text-zinc-400 text-sm mb-6">Konsultasikan naskah Anda dengan tim kami.</p>
+                  <p className="text-green/60 text-sm mb-6">Konsultasikan naskah Anda dengan tim kami.</p>
                   <Link href="/kontak" className="inline-flex items-center gap-2 h-11 px-6 text-sm font-semibold rounded-full bg-green hover:bg-green-dark text-gold shadow-md transition-all duration-200">Hubungi Kami<ArrowRight className="w-4 h-4" /></Link>
                 </div>
               </div>
@@ -129,7 +129,7 @@ export default function CompanyPage() {
       <section className="relative py-24 overflow-hidden bg-gradient-to-br from-zinc-900 via-zinc-800 to-zinc-900">
         <div className="container relative text-center max-w-2xl">
           <h2 className="text-3xl sm:text-4xl font-bold text-white leading-[1.15]">Bergabung dengan <span className="bg-gradient-to-r from-gold to-gold-dark bg-clip-text text-transparent">Maktabah al-Mughis</span></h2>
-          <p className="mt-4 text-lg text-zinc-400">Wujudkan karya Anda bersama penerbit terpercaya.</p>
+          <p className="mt-4 text-lg text-green/60">Wujudkan karya Anda bersama penerbit terpercaya.</p>
           <div className="mt-10 flex flex-wrap justify-center gap-4">
             <Button href="/kontak" variant="primary">Konsultasi Gratis<ArrowRight className="w-4 h-4" /></Button>
             <Button href="/layanan-penerbitan" variant="ghost">Lihat Layanan</Button>

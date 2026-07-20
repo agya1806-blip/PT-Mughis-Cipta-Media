@@ -68,7 +68,7 @@ export function FeaturedBooksCarousel({ books }: Props) {
                     <div className="w-12 h-12 mx-auto rounded-xl bg-gold/20 flex items-center justify-center mb-3">
                       <BookOpen className="w-6 h-6 text-gold" />
                     </div>
-                    <p className="text-xs text-zinc-400 dark:text-zinc-500 line-clamp-3">{book.title}</p>
+                    <p className="text-xs text-green/60 line-clamp-3">{book.title}</p>
                   </div>
                 </div>
               </div>
@@ -79,7 +79,7 @@ export function FeaturedBooksCarousel({ books }: Props) {
               <button
                 key={i}
                 onClick={() => { setDirection(i > current ? 1 : -1); setCurrent(i) }}
-                className={`w-2 h-2 rounded-full transition-all duration-300 ${i === current ? "w-6 bg-gold" : "bg-zinc-300 dark:bg-zinc-600"}`}
+                className={`w-2 h-2 rounded-full transition-all duration-300 ${i === current ? "w-6 bg-gold" : "bg-gold/30"}`}
               />
             ))}
           </div>
@@ -97,8 +97,8 @@ export function FeaturedBooksCarousel({ books }: Props) {
               {book.category_name}
             </div>
             <h3 className="text-2xl sm:text-3xl font-bold text-green-dark mb-3">{book.title}</h3>
-            <p className="text-zinc-600 mb-2">{book.author}</p>
-            <p className="text-zinc-600 text-sm leading-relaxed mb-6 line-clamp-3">{book.synopsis}</p>
+            <p className="text-green/80 mb-2">{book.author}</p>
+            <p className="text-green/80 text-sm leading-relaxed mb-6 line-clamp-3">{book.synopsis}</p>
             <div className="flex items-center gap-2 mb-6">
               {[1, 2, 3, 4, 5].map((i) => (<Star key={i} className="w-4 h-4 fill-gold text-gold" />))}
             </div>

@@ -10,7 +10,7 @@ export default function PublicError({ reset }: { reset: () => void }) {
           </svg>
         </div>
         <h1 className="text-2xl font-bold text-green-dark mb-3">Terjadi Kesalahan</h1>
-        <p className="text-zinc-600 mb-8">
+        <p className="text-green/80 mb-8">
           Maaf, terjadi kesalahan. Silakan coba lagi.
         </p>
         <button

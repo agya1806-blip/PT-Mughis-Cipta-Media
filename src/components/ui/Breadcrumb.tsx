@@ -14,7 +14,7 @@ interface Props {
 export default function Breadcrumb({ items, className = "" }: Props) {
   return (
     <nav aria-label="Breadcrumb" className={`mb-6 ${className}`}>
-      <ol className="flex items-center gap-1.5 text-sm text-zinc-600">
+      <ol className="flex items-center gap-1.5 text-sm text-green/60">
         {items.map((item, i) => (
           <li key={i} className="flex items-center gap-1.5">
             {i > 0 && <ChevronRight className="w-3.5 h-3.5" />}

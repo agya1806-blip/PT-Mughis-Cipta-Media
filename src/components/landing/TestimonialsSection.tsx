@@ -32,7 +32,7 @@ export default function TestimonialsSection() {
           </div>
           <div className="flex items-center gap-1 mb-6">
             {Array.from({ length: 5 }).map((_, i) => (
-              <Star key={i} className={`w-4 h-4 ${i < t.rating ? "fill-gold text-gold" : "text-zinc-300 dark:text-zinc-600"}`} />
+              <Star key={i} className={`w-4 h-4 ${i < t.rating ? "fill-gold text-gold" : "text-gold/30"}`} />
             ))}
           </div>
           <AnimatePresence mode="wait">
@@ -41,7 +41,7 @@ export default function TestimonialsSection() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
-              className="text-lg sm:text-xl text-zinc-600 leading-relaxed mb-8"
+              className="text-lg sm:text-xl text-green/80 leading-relaxed mb-8"
             >
               &ldquo;{t.content}&rdquo;
             </motion.p>
@@ -52,7 +52,7 @@ export default function TestimonialsSection() {
             </div>
             <div>
               <p className="font-semibold text-green-dark">{t.name}</p>
-              <p className="text-sm text-zinc-600">{t.role}</p>
+              <p className="text-sm text-green/80">{t.role}</p>
             </div>
             <div className="ml-auto flex gap-2">
               <button onClick={prev} className="w-9 h-9 rounded-full border border-gold/20 flex items-center justify-center hover:bg-cream transition-colors">

@@ -31,7 +31,7 @@ export default function StatisticCard({
           {value}
           {suffix && <span className="text-gold">{suffix}</span>}
         </div>
-        <p className="text-sm text-zinc-600">{label}</p>
+        <p className="text-sm text-green/80">{label}</p>
       </div>
     </motion.div>
   )

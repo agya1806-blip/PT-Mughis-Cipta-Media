@@ -25,7 +25,7 @@ export default function CompanyCard({ icon: Icon, title, description, index = 0 
           <Icon className="w-6 h-6 text-gold group-hover:text-white transition-colors duration-300" />
         </div>
         <h3 className="text-lg font-bold text-green-dark mb-3">{title}</h3>
-        <p className="text-sm text-zinc-600 leading-relaxed">{description}</p>
+        <p className="text-sm text-green/80 leading-relaxed">{description}</p>
         <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-gold to-gold-dark rounded-b-2xl scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
       </div>
     </motion.div>

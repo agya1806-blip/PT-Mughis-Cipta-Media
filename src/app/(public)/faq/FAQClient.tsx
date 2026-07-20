@@ -32,13 +32,13 @@ export default function FAQPage() {
         transition={{ delay: 0.2 }}
         className="relative max-w-xl mx-auto mb-10"
       >
-        <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-zinc-400" />
+        <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-green/60" />
         <input
           type="text"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           placeholder="Cari pertanyaan..."
-          className="w-full pl-12 pr-4 py-3.5 rounded-xl bg-cream border border-gold/20 text-green-dark placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold shadow-sm"
+          className="w-full pl-12 pr-4 py-3.5 rounded-xl bg-cream border border-gold/20 text-green-dark placeholder-green/60 focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold shadow-sm"
         />
       </motion.div>
 

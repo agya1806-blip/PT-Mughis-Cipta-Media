@@ -60,7 +60,7 @@ export default function CompanyValues() {
               Perusahaan
             </span>
           </h2>
-          <p className="text-zinc-600 mt-4 max-w-2xl mx-auto">
+          <p className="text-green/80 mt-4 max-w-2xl mx-auto">
             Nilai-nilai yang menjadi fondasi setiap langkah dan keputusan kami dalam melayani penulis dan masyarakat.
           </p>
         </motion.div>
@@ -83,7 +83,7 @@ export default function CompanyValues() {
                 </div>
 
                 <h3 className="text-lg font-bold text-green-dark mb-3">{title}</h3>
-                <p className="text-zinc-600 text-sm leading-relaxed">{desc}</p>
+                <p className="text-green/80 text-sm leading-relaxed">{desc}</p>
 
                 <div className={`absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r ${gradient} scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left`} />
               </div>

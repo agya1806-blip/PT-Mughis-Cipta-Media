@@ -39,7 +39,7 @@ export default function Services() {
               Kami
             </span>
           </h2>
-          <p className="text-zinc-600 mt-4 max-w-2xl mx-auto">
+          <p className="text-green/80 mt-4 max-w-2xl mx-auto">
             Solusi lengkap untuk kebutuhan penerbitan dan media kreatif Anda, dari hulu ke hilir.
           </p>
         </motion.div>
@@ -58,7 +58,7 @@ export default function Services() {
                 <Icon className="w-5 h-5 text-gold-dark" />
               </div>
               <h3 className="font-semibold text-green-dark mb-2">{title}</h3>
-              <p className="text-zinc-600 text-sm leading-relaxed">{desc}</p>
+              <p className="text-green/80 text-sm leading-relaxed">{desc}</p>
             </motion.div>
           ))}
         </div>

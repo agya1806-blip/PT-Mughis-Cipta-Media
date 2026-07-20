@@ -39,7 +39,7 @@ export default function BookCard({ book, className = "", href }: Props) {
               className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
             />
           ) : (
-            <div className="absolute inset-0 flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500 p-6 text-center">
+            <div className="absolute inset-0 flex flex-col items-center justify-center text-green/60 p-6 text-center">
               <BookOpen className="w-10 h-10 mb-2" />
               <span className="text-xs font-medium line-clamp-2">{book.title}</span>
             </div>
@@ -65,14 +65,14 @@ export default function BookCard({ book, className = "", href }: Props) {
             {book.title}
           </h3>
 
-          <p className="text-xs sm:text-sm text-zinc-600 line-clamp-1 mb-2">
+          <p className="text-xs sm:text-sm text-green/80 line-clamp-1 mb-2">
             {book.author}
           </p>
 
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
               {book.publication_year && (
-                <span className="text-[11px] text-zinc-400 dark:text-zinc-500">
+                <span className="text-[11px] text-green/60">
                   {book.publication_year}
                 </span>
               )}

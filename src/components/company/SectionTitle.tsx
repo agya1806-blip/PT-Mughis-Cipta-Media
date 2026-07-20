@@ -42,7 +42,7 @@ export default function SectionTitle({
         )}
       </h2>
       {description && (
-        <p className="mt-4 text-zinc-600 max-w-2xl mx-auto text-base sm:text-lg leading-relaxed">
+        <p className="mt-4 text-green/80 max-w-2xl mx-auto text-base sm:text-lg leading-relaxed">
           {description}
         </p>
       )}

@@ -39,7 +39,7 @@ export default function AboutStory() {
               <p className="text-xl font-medium text-green-dark italic">
                 Setiap buku adalah satu langkah menuju peradaban yang lebih cerah.
               </p>
-              <p className="text-sm text-zinc-500 mt-2">— Founder PT Mughis Cipta Media</p>
+              <p className="text-sm text-green/80 mt-2">— Founder PT Mughis Cipta Media</p>
             </div>
           </motion.div>
 

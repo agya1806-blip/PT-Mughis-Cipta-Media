@@ -16,14 +16,14 @@ export default function TestimonialCard({ testimonial }: TestimonialCardProps) {
       <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-gold/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
       <div className="relative flex flex-col flex-1">
         <Quote className="w-6 h-6 text-gold/20 mb-4 shrink-0" />
-        <p className="text-zinc-600 leading-relaxed mb-6 flex-1">
+        <p className="text-green/80 leading-relaxed mb-6 flex-1">
           &ldquo;{content}&rdquo;
         </p>
         <div className="flex items-center gap-3 shrink-0">
           <Avatar name={name} size="md" />
           <div className="flex-1 min-w-0">
             <p className="font-semibold text-green-dark text-sm truncate">{name}</p>
-            <p className="text-xs text-zinc-600 truncate">
+            <p className="text-xs text-green/80 truncate">
               {role}
               {institution ? ` -- ${institution}` : ""}
             </p>

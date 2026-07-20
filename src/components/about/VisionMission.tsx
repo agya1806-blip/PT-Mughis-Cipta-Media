@@ -47,7 +47,7 @@ export default function VisionMission() {
                   <Eye className="w-7 h-7 text-white" />
                 </div>
                 <h3 className="text-2xl font-bold text-green-dark mb-4">Visi</h3>
-                <p className="text-zinc-600 leading-relaxed text-lg">
+                <p className="text-green/80 leading-relaxed text-lg">
                   Menjadi perusahaan penerbitan dan media kreatif yang terpercaya, inovatif, serta berkontribusi dalam membangun peradaban melalui ilmu pengetahuan, pendidikan, dan literasi.
                 </p>
               </div>
@@ -80,7 +80,7 @@ export default function VisionMission() {
                       className="flex items-start gap-3"
                     >
                       <CheckCircle className="w-5 h-5 text-gold mt-0.5 shrink-0" />
-                      <span className="text-zinc-600">{m}</span>
+                      <span className="text-green/80">{m}</span>
                     </motion.li>
                   ))}
                 </ul>

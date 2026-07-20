@@ -47,7 +47,7 @@ export default function MetricCard({
           {suffix && <span className="text-gold">{suffix}</span>}
         </div>
         <h3 className="mt-2 font-semibold text-green-dark">{title}</h3>
-        <p className="mt-1 text-sm text-zinc-600 leading-relaxed">
+        <p className="mt-1 text-sm text-green/80 leading-relaxed">
           {description}
         </p>
       </div>

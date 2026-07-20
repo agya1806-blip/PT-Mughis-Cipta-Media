@@ -62,7 +62,7 @@ function FAQItem({
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
             className="overflow-hidden"
           >
-            <p className="pb-5 text-sm text-zinc-600 leading-relaxed">{answer}</p>
+            <p className="pb-5 text-sm text-green/80 leading-relaxed">{answer}</p>
           </motion.div>
         )}
       </AnimatePresence>
@@ -94,7 +94,7 @@ export default function ContactFAQ() {
               Umum
             </span>
           </h2>
-          <p className="mt-3 text-zinc-600 max-w-lg mx-auto">
+          <p className="mt-3 text-green/80 max-w-lg mx-auto">
             Jawaban cepat untuk pertanyaan umum seputar layanan penerbitan kami.
           </p>
         </motion.div>

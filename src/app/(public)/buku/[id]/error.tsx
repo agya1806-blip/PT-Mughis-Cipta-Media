@@ -5,7 +5,7 @@ export default function BookDetailError({ reset }: { reset: () => void }) {
     <div className="flex-1 flex items-center justify-center bg-cream px-4 py-20">
       <div className="text-center max-w-md">
         <h1 className="text-2xl font-bold text-green-dark mb-3">Gagal Memuat Buku</h1>
-        <p className="text-zinc-600 mb-8">
+        <p className="text-green/80 mb-8">
           Maaf, gagal memuat detail buku. Silakan coba lagi.
         </p>
         <button

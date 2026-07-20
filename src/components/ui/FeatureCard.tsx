@@ -28,7 +28,7 @@ export default function FeatureCard({
           {icon}
         </IconWrapper>
         <h3 className="mt-4 font-semibold text-green-dark text-sm sm:text-base">{title}</h3>
-        <p className="mt-1.5 text-sm text-zinc-600 leading-relaxed">{description}</p>
+        <p className="mt-1.5 text-sm text-green/80 leading-relaxed">{description}</p>
       </div>
     </motion.div>
   )

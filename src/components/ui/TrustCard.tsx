@@ -30,7 +30,7 @@ export default function TrustCard({ icon, title, description, index = 0 }: Props
 
         <h3 className="font-semibold text-green-dark text-lg mb-2">{title}</h3>
 
-        <p className="text-sm text-zinc-600 leading-relaxed">{description}</p>
+        <p className="text-sm text-green/80 leading-relaxed">{description}</p>
 
         <div className="flex items-center gap-1 text-gold mt-4 opacity-0 group-hover:opacity-100 transition-all duration-300">
           <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />

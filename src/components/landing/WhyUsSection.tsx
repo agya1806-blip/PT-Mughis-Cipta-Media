@@ -30,7 +30,7 @@ export default function WhyUsSection() {
             Kenapa Memilih{" "}
             <span className="bg-gradient-to-r from-gold to-gold-dark bg-clip-text text-transparent">Kami?</span>
           </h2>
-          <p className="mt-4 text-zinc-600 leading-relaxed">
+          <p className="mt-4 text-green/80 leading-relaxed">
             Kami berkomitmen memberikan layanan terbaik dengan standar kualitas tertinggi. Setiap proyek ditangani dengan penuh tanggung jawab dan perhatian terhadap detail.
           </p>
         </motion.div>
@@ -51,7 +51,7 @@ export default function WhyUsSection() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-green-dark text-sm">{r.label}</h3>
-                  <p className="text-xs text-zinc-600 mt-0.5 leading-relaxed">{r.desc}</p>
+                  <p className="text-xs text-green/80 mt-0.5 leading-relaxed">{r.desc}</p>
                 </div>
               </div>
             </motion.div>

@@ -27,7 +27,7 @@ export default function RatingStars({
           className={`${sizeMap[size]} ${
             i < rating
               ? "fill-gold text-gold"
-              : "fill-zinc-200 text-zinc-200 dark:fill-zinc-600 dark:text-zinc-600"
+              : "fill-gold/20 text-gold/20"
           }`}
         />
       ))}

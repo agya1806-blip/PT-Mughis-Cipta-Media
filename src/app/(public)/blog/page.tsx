@@ -91,7 +91,7 @@ export default async function BlogPage({ searchParams }: Props) {
                   <h2 className="text-2xl sm:text-3xl font-bold text-green-dark mb-3 group-hover:text-gold transition-colors leading-snug">
                     {featured.title}
                   </h2>
-                  <div className="flex items-center gap-4 text-xs text-zinc-500 mb-4">
+                  <div className="flex items-center gap-4 text-xs text-green/60 mb-4">
                     <span className="flex items-center gap-1.5">
                       <Calendar className="w-3.5 h-3.5" />
                       {new Date(featured.createdAt).toLocaleDateString("id-ID", {
@@ -103,7 +103,7 @@ export default async function BlogPage({ searchParams }: Props) {
                       {readingTime(featured.content)}
                     </span>
                   </div>
-                  <p className="text-zinc-600 leading-relaxed line-clamp-3">
+                  <p className="text-green/80 leading-relaxed line-clamp-3">
                     {excerpt(featured.content, 200)}
                   </p>
                   <span className="inline-flex items-center gap-1 text-sm font-medium text-gold mt-4 group-hover:gap-2 transition-all">
@@ -147,7 +147,7 @@ export default async function BlogPage({ searchParams }: Props) {
                       <h3 className="text-base font-semibold text-green-dark mb-2 group-hover:text-gold transition-colors line-clamp-2">
                         {a.title}
                       </h3>
-                      <div className="flex items-center gap-3 text-xs text-zinc-500 mb-3">
+                      <div className="flex items-center gap-3 text-xs text-green/60 mb-3">
                         <span className="flex items-center gap-1">
                           <Calendar className="w-3 h-3" />
                           {new Date(a.createdAt).toLocaleDateString("id-ID", {
@@ -159,7 +159,7 @@ export default async function BlogPage({ searchParams }: Props) {
                           {readingTime(a.content)}
                         </span>
                       </div>
-                      <p className="text-sm text-zinc-600 line-clamp-3 flex-1">
+                      <p className="text-sm text-green/80 line-clamp-3 flex-1">
                         {excerpt(a.content)}
                       </p>
                     </div>

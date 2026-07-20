@@ -43,7 +43,7 @@ export default function ServicesSection() {
                 <s.icon className="w-6 h-6 text-gold" />
               </div>
               <h3 className="font-semibold text-green-dark mb-2">{s.label}</h3>
-              <p className="text-sm text-zinc-600 leading-relaxed">{s.desc}</p>
+              <p className="text-sm text-green/80 leading-relaxed">{s.desc}</p>
             </div>
           </motion.div>
         ))}

@@ -37,7 +37,7 @@ export default function WhyUs() {
                 Kami?
               </span>
             </h2>
-            <p className="text-zinc-500 text-lg mb-8">
+            <p className="text-green/80 text-lg mb-8">
               Kami memahami bahwa setiap penulis memiliki kebutuhan yang unik. Itulah mengapa kami memberikan layanan yang personal, profesional, dan terpercaya.
             </p>
 

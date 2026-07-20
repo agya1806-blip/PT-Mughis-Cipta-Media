@@ -29,7 +29,7 @@ export default function QuoteCard({
       className={`bg-cream rounded-2xl border border-gold/20 p-6 sm:p-8 shadow-sm ${className}`}
     >
       <Quote className="w-6 h-6 text-gold/40 mb-4" />
-      <p className="text-zinc-600 leading-relaxed">&ldquo;{quote}&rdquo;</p>
+      <p className="text-green/80 leading-relaxed">&ldquo;{quote}&rdquo;</p>
       <div className="mt-6 pt-4 border-t border-gold/10 flex items-center gap-3">
         {avatar ? (
           <div className="shrink-0">{avatar}</div>
@@ -40,7 +40,7 @@ export default function QuoteCard({
         )}
         <div>
           <p className="font-semibold text-green-dark text-sm">{author}</p>
-          {role && <p className="text-xs text-zinc-600">{role}</p>}
+          {role && <p className="text-xs text-green/80">{role}</p>}
         </div>
       </div>
     </motion.div>

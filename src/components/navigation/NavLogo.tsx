@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import Link from "next/link"
 
 interface Props {
@@ -9,16 +10,16 @@ interface Props {
 export default function NavLogo({ scrolled }: Props) {
   return (
     <Link href="/" className="flex items-center gap-2.5 group shrink-0">
-      <div className="relative w-9 h-9 rounded-xl bg-gradient-to-br from-gold to-gold-dark flex items-center justify-center shadow-sm transition-shadow duration-300 group-hover:shadow-gold">
-        <span className="text-white font-bold text-sm tracking-tight">M</span>
-      </div>
-      <span
-        className={`text-sm font-semibold tracking-wide transition-colors duration-300 ${
-          scrolled ? "text-zinc-900 dark:text-white" : "text-white"
+      <Image
+        src="/logo.png"
+        alt="Maktabah Al-Mughis"
+        width={130}
+        height={36}
+        className={`h-7 sm:h-8 w-auto transition-opacity duration-300 ${
+          scrolled ? "opacity-100" : "opacity-100"
         }`}
-      >
-        MAKTABAH AL-MUGHIS
-      </span>
+        priority
+      />
     </Link>
   )
 }

@@ -139,8 +139,14 @@ export default async function BlogPage({ searchParams }: Props) {
                         />
                       </div>
                     ) : (
-                      <div className="h-48 bg-gradient-to-br from-gold/10 to-gold/5 flex items-center justify-center">
-                        <span className="text-gold/30 text-6xl font-bold">M</span>
+                      <div className="h-48 bg-gradient-to-br from-gold/10 to-gold/5 flex items-center justify-center p-6">
+                        <Image
+                          src="/logo-original.png"
+                          alt="Maktabah Al-Mughis"
+                          width={240}
+                          height={24}
+                          className="h-10 w-auto opacity-80"
+                        />
                       </div>
                     )}
                     <div className="flex-1 p-5 flex flex-col">

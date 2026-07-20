@@ -19,7 +19,7 @@ const siteDescription =
   "Penerbit buku resmi dan percetakan profesional di Indonesia. Layanan penerbitan buku, cetak buku murah, desain cover, editing naskah, pengurusan ISBN, dan distribusi nasional. Percayakan penerbitan buku Anda pada Maktabah al-Mughis."
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || "https://pt-mughis-cipta-media.vercel.app"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || "https://mughisciptamedia.com"),
   title: {
     default: siteName,
     template: `%s | ${siteName}`,
@@ -99,8 +99,8 @@ export default function RootLayout({
             alternateName: "Maktabah al-Mughis",
             description:
               "Penerbit, percetakan, dan mitra kreatif untuk mewujudkan karya terbaik Anda. Layanan penerbitan buku, editing, desain, ISBN, dan distribusi nasional.",
-            url: process.env.NEXT_PUBLIC_BASE_URL || "https://pt-mughis-cipta-media.vercel.app",
-            logo: `${process.env.NEXT_PUBLIC_BASE_URL || "https://pt-mughis-cipta-media.vercel.app"}/logo.png`,
+            url: process.env.NEXT_PUBLIC_BASE_URL || "https://mughisciptamedia.com",
+            logo: `${process.env.NEXT_PUBLIC_BASE_URL || "https://mughisciptamedia.com"}/logo.png`,
             sameAs: [
               "https://www.instagram.com/maktabahmughis",
               "https://www.facebook.com/maktabahmughis",

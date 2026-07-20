@@ -27,13 +27,13 @@ export default function LoadingScreen() {
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
             className="text-center"
           >
-            <div className="w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+            <div className="mx-auto mb-4">
               <Image
                 src="/logo.png"
                 alt="Maktabah Al-Mughis"
-                width={286}
-                height={30}
-                className="h-10 w-auto"
+                width={600}
+                height={63}
+                className="w-44 sm:w-48 h-auto mx-auto"
                 priority
               />
             </div>

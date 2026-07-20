@@ -100,9 +100,9 @@ export default async function Footer() {
               <Image
                 src="/logo.png"
                 alt="Maktabah Al-Mughis"
-                width={286}
-                height={30}
-                className="h-7 w-auto"
+                width={600}
+                height={63}
+                className="h-8 w-auto"
               />
             </Link>
             <p className="text-sm text-secondary leading-relaxed">

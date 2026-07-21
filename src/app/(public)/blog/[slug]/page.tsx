@@ -60,7 +60,7 @@ export default async function ArticleDetailPage({ params }: { params: Promise<{ 
           },
         }}
       />
-      <article className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <article className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
         <Breadcrumb
           items={[
             { label: "Beranda", href: "/" },
@@ -101,7 +101,7 @@ export default async function ArticleDetailPage({ params }: { params: Promise<{ 
         )}
 
         <div
-          className="text-green-dark/90 leading-relaxed prose max-w-none prose-headings:text-green-dark prose-a:text-gold prose-a:no-underline hover:prose-a:underline prose-img:rounded-xl"
+          className="prose-article max-w-none"
           dangerouslySetInnerHTML={{ __html: article.content }}
         />
 

@@ -30,7 +30,7 @@ export default function AdminSettings() {
   useEffect(() => {
     fetch("/api/admin/settings")
       .then((r) => r.json())
-      .then(setSettings)
+      .then((d) => { if (!d.error) setSettings(d) })
       .catch(() => {})
   }, [])
 

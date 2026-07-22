@@ -21,19 +21,21 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params
   const article = await prisma.article.findUnique({ where: { slug } })
   if (!article) return { title: "Artikel Tidak Ditemukan" }
+  const base = process.env.NEXT_PUBLIC_BASE_URL || "https://mughisciptamedia.com"
+  const imageUrl = article.featuredImage?.startsWith("http") ? article.featuredImage : article.featuredImage ? `${base}${article.featuredImage}` : null
   return {
     title: `${article.title} | Maktabah al-Mughis`,
     description: excerpt(article.content),
     openGraph: {
       title: article.title,
       description: excerpt(article.content),
-      ...(article.featuredImage ? { images: [{ url: article.featuredImage, alt: article.title }] } : {}),
+      ...(imageUrl ? { images: [{ url: imageUrl, alt: article.title }] } : {}),
     },
     twitter: {
       card: "summary_large_image",
       title: article.title,
       description: excerpt(article.content),
-      ...(article.featuredImage ? { images: [article.featuredImage] } : {}),
+      ...(imageUrl ? { images: [imageUrl] } : {}),
     },
     alternates: { canonical: `/blog/${slug}` },
   }

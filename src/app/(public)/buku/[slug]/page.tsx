@@ -15,18 +15,21 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     include: { category: true },
   })
   if (!book) return { title: "Buku Tidak Ditemukan" }
+  const base = process.env.NEXT_PUBLIC_BASE_URL || "https://mughisciptamedia.com"
+  const coverUrl = book.coverImage?.startsWith("http") ? book.coverImage : book.coverImage ? `${base}${book.coverImage}` : null
   return {
     title: book.title,
     description: book.synopsis.substring(0, 160),
     openGraph: {
       title: `${book.title} - Maktabah al-Mughis`,
       description: book.synopsis.substring(0, 160),
-      images: book.coverImage ? [{ url: book.coverImage, alt: book.title }] : undefined,
+      images: coverUrl ? [{ url: coverUrl, alt: book.title }] : undefined,
     },
     twitter: {
       card: "summary_large_image",
       title: `${book.title} - Maktabah al-Mughis`,
       description: book.synopsis.substring(0, 160),
+      images: coverUrl ? [coverUrl] : undefined,
     },
     alternates: {
       canonical: `/buku/${slug}`,

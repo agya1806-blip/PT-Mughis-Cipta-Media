@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useCallback } from "react"
 import { Share2, MessageCircle, Link as LinkIcon, Check, ImageIcon } from "lucide-react"
 import Image from "next/image"
 
@@ -12,6 +12,17 @@ interface ShareButtonProps {
   className?: string
 }
 
+async function fetchAsFile(imageUrl: string, filename = "image.jpg"): Promise<File | null> {
+  try {
+    const res = await fetch(imageUrl, { signal: AbortSignal.timeout(5000) })
+    if (!res.ok) return null
+    const blob = await res.blob()
+    return new File([blob], filename, { type: blob.type || "image/jpeg" })
+  } catch {
+    return null
+  }
+}
+
 export default function ShareButton({ url, title, description = "", image, className = "" }: ShareButtonProps) {
   const [open, setOpen] = useState(false)
   const [copied, setCopied] = useState(false)
@@ -19,8 +30,7 @@ export default function ShareButton({ url, title, description = "", image, class
 
   useEffect(() => {
     if (typeof navigator !== "undefined") {
-      const ua = navigator.userAgent
-      setIsIOS(/iPad|iPhone|iPod/.test(ua) && !("MSStream" in window))
+      setIsIOS(/iPad|iPhone|iPod/.test(navigator.userAgent) && !("MSStream" in window))
     }
   }, [])
 
@@ -28,7 +38,9 @@ export default function ShareButton({ url, title, description = "", image, class
     ? new URL(url, window.location.origin).toString()
     : url
 
-  const shareText = `${title}\n${description ? `${description}\n\n` : "\n"}🔗 ${fullUrl}${image ? `\n🖼️ ${image}` : ""}`
+  const isDataUrl = image?.startsWith("data:")
+  const imageTag = image && !isDataUrl ? `\n🖼️ ${image}` : ""
+  const shareText = `${title}\n${description ? `${description}\n\n` : "\n"}🔗 ${fullUrl}${imageTag}`
 
   useEffect(() => {
     const onEscape = (e: KeyboardEvent) => {
@@ -38,21 +50,37 @@ export default function ShareButton({ url, title, description = "", image, class
     return () => document.removeEventListener("keydown", onEscape)
   }, [open])
 
+  const nativeShare = useCallback(async (withImage = true) => {
+    if (!navigator.share) return false
+
+    // Try file-based share (iOS IG Stories + WhatsApp with image)
+    if (withImage && image && navigator.canShare) {
+      const file = await fetchAsFile(image, "cover.jpg")
+      if (file && navigator.canShare({ files: [file] })) {
+        try {
+          await navigator.share({ files: [file], title, text: description || title, url: fullUrl })
+          return true
+        } catch {}
+      }
+    }
+
+    // Fallback: text + URL share
+    try {
+      await navigator.share({ title, text: description || title, url: fullUrl })
+      return true
+    } catch {}
+
+    return false
+  }, [image, title, description, fullUrl])
+
   const handleShare = async (e: React.MouseEvent) => {
     e.preventDefault()
     e.stopPropagation()
 
-    if (navigator.share) {
-      try {
-        await navigator.share({
-          title,
-          text: description || title,
-          url: fullUrl,
-        })
-        return
-      } catch {}
-    }
-    setOpen(!open)
+    const shared = await nativeShare(true)
+    if (shared) return
+
+    setOpen(o => !o)
   }
 
   const openExternal = (e: React.MouseEvent, link: string) => {
@@ -72,18 +100,21 @@ export default function ShareButton({ url, title, description = "", image, class
     e.preventDefault()
     e.stopPropagation()
 
+    // iOS: try native share with file → shows IG Stories in share sheet
+    if (isIOS) {
+      const shared = await nativeShare(true)
+      if (shared) return
+    }
+
+    // Fallback: copy caption + try deeplink
     const caption = `${title}\n\n${description || "Baca selengkapnya:"}\n${fullUrl}`
-    try {
-      await navigator.clipboard.writeText(caption)
-    } catch {}
+    try { await navigator.clipboard.writeText(caption) } catch {}
 
     if (isIOS) {
       const start = Date.now()
       window.location.href = "instagram-stories://share"
       setTimeout(() => {
-        if (Date.now() - start < 2000) {
-          window.open("https://www.instagram.com/", "_blank")
-        }
+        if (Date.now() - start < 2000) window.open("https://www.instagram.com/", "_blank")
         setOpen(false)
       }, 1500)
     } else {
@@ -100,10 +131,7 @@ export default function ShareButton({ url, title, description = "", image, class
     try {
       await navigator.clipboard.writeText(fullUrl)
       setCopied(true)
-      setTimeout(() => {
-        setCopied(false)
-        setOpen(false)
-      }, 1400)
+      setTimeout(() => { setCopied(false); setOpen(false) }, 1400)
     } catch {
       prompt("Salin link ini:", fullUrl)
       setOpen(false)
@@ -174,7 +202,7 @@ export default function ShareButton({ url, title, description = "", image, class
               </div>
               <div className="min-w-0">
                 <span className="text-green-dark font-medium block">Instagram Story</span>
-                <span className="text-[10px] text-green/40">{isIOS ? "Buka Stories langsung" : "Caption + Buka IG"}</span>
+                <span className="text-[10px] text-green/40">{isIOS ? "Buka dengan gambar" : "Caption + Buka IG"}</span>
               </div>
             </button>
 

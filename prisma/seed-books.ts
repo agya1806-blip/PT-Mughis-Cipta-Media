@@ -9,6 +9,14 @@ function slugify(text: string): string {
   return text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').substring(0, 100);
 }
 
+const COVERS = [
+  'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=600&q=80',
+  'https://images.unsplash.com/photo-1544716278-e513176f20b5?auto=format&fit=crop&w=600&q=80',
+  'https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&w=600&q=80',
+  'https://images.unsplash.com/photo-1621351183012-e2f9972dd9bf?auto=format&fit=crop&w=600&q=80',
+  'https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=600&q=80',
+]
+
 const books = [
   {
     title: 'Jalan Cahaya: Menemukan Makna di Setiap Langkah',
@@ -27,6 +35,7 @@ const books = [
     language: 'Indonesia',
     publicationYear: 2025,
     whatsapp: '085217706587',
+    coverImage: COVERS[0],
   },
   {
     title: 'Pendidikan Karakter untuk Generasi Milenial',
@@ -45,6 +54,7 @@ const books = [
     language: 'Indonesia',
     publicationYear: 2025,
     whatsapp: '085217706587',
+    coverImage: COVERS[1],
   },
   {
     title: 'Fiqh Muamalah Kontemporer',
@@ -63,6 +73,7 @@ const books = [
     language: 'Indonesia',
     publicationYear: 2024,
     whatsapp: '085217706587',
+    coverImage: COVERS[2],
   },
   {
     title: 'Aceh dalam Lintasan Sejarah Nusantara',
@@ -81,6 +92,7 @@ const books = [
     language: 'Indonesia',
     publicationYear: 2024,
     whatsapp: '085217706587',
+    coverImage: COVERS[3],
   },
   {
     title: 'Bisnis Digital untuk Pemula: Panduan Lengkap dari Nol',
@@ -99,6 +111,7 @@ const books = [
     language: 'Indonesia',
     publicationYear: 2025,
     whatsapp: '085217706587',
+    coverImage: COVERS[4],
   },
 ];
 
@@ -141,6 +154,7 @@ async function main() {
         language: b.language,
         publicationYear: b.publicationYear,
         whatsapp: b.whatsapp || null,
+        coverImage: b.coverImage || null,
       },
     });
     console.log('OK:', b.title);

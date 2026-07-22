@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useRef, useCallback } from "react"
-import { Upload, X, Link, Image as ImageIcon } from "lucide-react"
+import { Upload, X, ExternalLink, Image as ImageIcon } from "lucide-react"
 
 interface Props {
   value: string
@@ -67,7 +67,7 @@ export default function ImageUpload({ value, onChange, label = "Gambar", accept 
               mode === "url" ? "bg-cream text-green-dark shadow-sm" : "text-green/70 hover:text-green-dark"
             }`}
           >
-            <Link className="w-3.5 h-3.5" />
+            <ExternalLink className="w-3.5 h-3.5" />
             URL
           </button>
         </div>
@@ -122,7 +122,7 @@ export default function ImageUpload({ value, onChange, label = "Gambar", accept 
         </div>
       ) : (
         <div className="relative">
-          <Link className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-green/60 pointer-events-none" />
+          <ExternalLink className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-green/60 pointer-events-none" />
           <input
             type="url"
             placeholder="https://contoh.com/gambar.jpg"

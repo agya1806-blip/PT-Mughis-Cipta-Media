@@ -1,7 +1,7 @@
 "use client"
 
 import { useRef, useState, useCallback } from "react"
-import { Bold, Italic, Heading2, Heading3, List, ListOrdered, Link, Eye, Edit3, FileUp, Loader2 } from "lucide-react"
+import { Bold, Italic, Heading2, Heading3, List, ListOrdered, ExternalLink, Eye, Edit3, FileUp, Loader2 } from "lucide-react"
 
 interface Props {
   value: string
@@ -71,7 +71,7 @@ export default function AdminEditor({ value, onChange, label = "Konten", placeho
     { icon: <Heading3 className="w-4 h-4" />, label: "Heading 3", action: () => insert("\n<h3>", "</h3>\n") },
     { icon: <List className="w-4 h-4" />, label: "Bullet List", action: () => insert("\n<ul>\n  <li>", "</li>\n</ul>\n") },
     { icon: <ListOrdered className="w-4 h-4" />, label: "Numbered List", action: () => insert("\n<ol>\n  <li>", "</li>\n</ol>\n") },
-    { icon: <Link className="w-4 h-4" />, label: "Link", action: () => {
+    { icon: <ExternalLink className="w-4 h-4" />, label: "Link", action: () => {
       const url = prompt("URL:", "https://")
       if (url) insert(`<a href="${url}">`, "</a>")
     }},

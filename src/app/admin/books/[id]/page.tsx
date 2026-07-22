@@ -48,13 +48,16 @@ export default function EditBook() {
       const res = await fetch(`/api/admin/books/${params.id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, price: form.price || "0" }),
       })
-      if (!res.ok) throw new Error("Gagal menyimpan")
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}))
+        throw new Error(err.error || "Gagal menyimpan")
+      }
       toast("success", "Buku berhasil diperbarui!")
       router.push("/admin/books")
-    } catch {
-      toast("error", "Gagal menyimpan")
+    } catch (e) {
+      toast("error", e instanceof Error ? e.message : "Gagal menyimpan")
     } finally {
       setSubmitting(false)
     }

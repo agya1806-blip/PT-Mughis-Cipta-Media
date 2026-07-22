@@ -33,13 +33,16 @@ export default function CreateBook() {
       const res = await fetch("/api/admin/books", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, price: form.price || "0" }),
       })
-      if (!res.ok) throw new Error("Gagal membuat buku")
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}))
+        throw new Error(err.error || "Gagal membuat buku")
+      }
       toast("success", "Buku berhasil ditambahkan!")
       router.push("/admin/books")
-    } catch {
-      toast("error", "Gagal membuat buku")
+    } catch (e) {
+      toast("error", e instanceof Error ? e.message : "Gagal membuat buku")
     } finally {
       setSubmitting(false)
     }

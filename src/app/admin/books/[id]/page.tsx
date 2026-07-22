@@ -25,7 +25,7 @@ export default function EditBook() {
       fetch("/api/categories").then((r) => r.json()),
       fetch(`/api/admin/books/${params.id}`).then((r) => r.json()),
     ]).then(([cats, book]) => {
-      setCategories(cats)
+      setCategories(Array.isArray(cats) ? cats : cats.categories || [])
       setForm({
         title: book.title, author: book.author, translator: book.translator || "",
         publisher: book.publisher || "", categoryId: String(book.categoryId),

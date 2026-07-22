@@ -22,7 +22,7 @@ export default function CreateBook() {
   useEffect(() => {
     fetch("/api/categories")
       .then((r) => r.json())
-      .then(setCategories)
+      .then((data) => setCategories(Array.isArray(data) ? data : data.categories || []))
       .catch(() => {})
   }, [])
 

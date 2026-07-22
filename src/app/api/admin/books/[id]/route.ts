@@ -53,6 +53,7 @@ export async function PUT(
         ...(body.dimensions !== undefined ? { dimensions: body.dimensions || "" } : {}),
         ...(body.language !== undefined ? { language: body.language || "" } : {}),
         ...(body.publicationYear != null ? { publicationYear: parseInt(body.publicationYear) } : {}),
+        ...(body.whatsapp !== undefined ? { whatsapp: body.whatsapp || null } : {}),
       },
       include: { category: true },
     })

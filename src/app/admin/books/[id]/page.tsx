@@ -16,6 +16,7 @@ export default function EditBook() {
     synopsis: "", price: "", resellerPrice: "", stock: "0",
     coverImage: "", isbn: "", pageCount: "0", previewPdfUrl: "",
     weight: "250", dimensions: "", language: "", publicationYear: "",
+    whatsapp: "",
   })
   const [submitting, setSubmitting] = useState(false)
   const [loading, setLoading] = useState(true)
@@ -36,6 +37,7 @@ export default function EditBook() {
         previewPdfUrl: book.previewPdfUrl || "",
         weight: String(book.weight || 250), dimensions: book.dimensions || "",
         language: book.language || "", publicationYear: String(book.publicationYear || ""),
+        whatsapp: book.whatsapp || "",
       })
     }).catch(() => toast("error", "Gagal memuat data buku"))
       .finally(() => setLoading(false))
@@ -109,6 +111,10 @@ export default function EditBook() {
             <div>
               <label className="block text-sm font-medium text-zinc-600 mb-1">ISBN</label>
               <input type="text" className={inputClass} value={form.isbn} onChange={(e) => setForm({ ...form, isbn: e.target.value })} />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-zinc-600 mb-1">No. WhatsApp</label>
+              <input type="text" className={inputClass} value={form.whatsapp} onChange={(e) => setForm({ ...form, whatsapp: e.target.value })} placeholder="628521706587" />
             </div>
           </div>
         </FormSection>

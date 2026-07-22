@@ -22,6 +22,7 @@ const books = [
     dimensions: '14 x 21 cm',
     language: 'Indonesia',
     publicationYear: 2025,
+    whatsapp: '085217706587',
   },
   {
     title: 'Pendidikan Karakter untuk Generasi Milenial',
@@ -39,6 +40,7 @@ const books = [
     dimensions: '14 x 21 cm',
     language: 'Indonesia',
     publicationYear: 2025,
+    whatsapp: '085217706587',
   },
   {
     title: 'Fiqh Muamalah Kontemporer',
@@ -56,6 +58,7 @@ const books = [
     dimensions: '15 x 23 cm',
     language: 'Indonesia',
     publicationYear: 2024,
+    whatsapp: '085217706587',
   },
   {
     title: 'Aceh dalam Lintasan Sejarah Nusantara',
@@ -73,6 +76,7 @@ const books = [
     dimensions: '15 x 23 cm',
     language: 'Indonesia',
     publicationYear: 2024,
+    whatsapp: '085217706587',
   },
   {
     title: 'Bisnis Digital untuk Pemula: Panduan Lengkap dari Nol',
@@ -90,6 +94,7 @@ const books = [
     dimensions: '14 x 21 cm',
     language: 'Indonesia',
     publicationYear: 2025,
+    whatsapp: '085217706587',
   },
 ];
 
@@ -122,6 +127,7 @@ async function main() {
         dimensions: b.dimensions,
         language: b.language,
         publicationYear: b.publicationYear,
+        whatsapp: b.whatsapp || null,
       },
     });
     console.log('OK:', b.title);

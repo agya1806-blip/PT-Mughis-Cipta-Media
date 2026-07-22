@@ -16,6 +16,7 @@ export default function CreateBook() {
     coverImage: "", isbn: "", pageCount: "0", previewPdfUrl: "",
     weight: "250", dimensions: "", language: "Indonesia",
     publicationYear: String(new Date().getFullYear()),
+    whatsapp: "",
   })
   const [submitting, setSubmitting] = useState(false)
 
@@ -126,6 +127,10 @@ export default function CreateBook() {
             <div>
               <label className="block text-sm font-medium text-zinc-600 mb-1">Bahasa</label>
               <input type="text" className={inputClass} value={form.language} onChange={(e) => setForm({ ...form, language: e.target.value })} />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-zinc-600 mb-1">No. WhatsApp</label>
+              <input type="text" className={inputClass} value={form.whatsapp} onChange={(e) => setForm({ ...form, whatsapp: e.target.value })} placeholder="628521706587" />
             </div>
             <div>
               <label className="block text-sm font-medium text-zinc-600 mb-1">Tahun Terbit</label>

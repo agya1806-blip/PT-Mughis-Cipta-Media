@@ -63,6 +63,7 @@ export async function POST(request: Request) {
         dimensions: body.dimensions || "",
         language: body.language || "",
         publicationYear: parseInt(body.publicationYear) || new Date().getFullYear(),
+        whatsapp: body.whatsapp || null,
       },
       include: { category: true },
     })

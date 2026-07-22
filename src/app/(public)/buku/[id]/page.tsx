@@ -90,6 +90,7 @@ export default async function BookDetailPage({ params }: { params: Promise<{ id:
     dimensions: book.dimensions ?? "",
     language: book.language ?? "",
     publication_year: book.publicationYear,
+    whatsapp: book.whatsapp ?? "",
   }
 
   return (

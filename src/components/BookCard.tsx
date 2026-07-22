@@ -49,6 +49,7 @@ export default function BookCard({ book }: { book: Book }) {
             url={`/buku/${book.slug}`}
             title={book.title}
             description={book.synopsis}
+            image={book.cover_image || undefined}
           />
         </div>
       </div>

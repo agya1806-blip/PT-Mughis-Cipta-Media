@@ -117,6 +117,7 @@ export default async function BlogPage({ searchParams }: Props) {
                      url={`/blog/${featured.slug}`}
                      title={featured.title}
                      description={excerpt(featured.content, 160)}
+                     image={featured.featuredImage || undefined}
                    />
                  </div>
                </div>
@@ -164,6 +165,7 @@ export default async function BlogPage({ searchParams }: Props) {
                             url={`/blog/${a.slug}`}
                             title={a.title}
                             description={excerpt(a.content, 140)}
+                            image={a.featuredImage || undefined}
                           />
                        </div>
                        <h3 className="text-base font-semibold text-green-dark mb-2 group-hover:text-gold transition-colors line-clamp-2">

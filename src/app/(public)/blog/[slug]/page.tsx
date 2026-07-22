@@ -92,6 +92,7 @@ export default async function ArticleDetailPage({ params }: { params: Promise<{ 
             url={`/blog/${article.slug}`}
             title={article.title}
             description={excerpt(article.content)}
+            image={article.featuredImage || undefined}
           />
         </div>
 

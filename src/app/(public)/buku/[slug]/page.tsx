@@ -156,6 +156,7 @@ export default async function BookDetailPage({ params }: { params: Promise<{ slu
                     url={`/buku/${mapped.slug}`}
                     title={mapped.title}
                     description={mapped.synopsis}
+                    image={mapped.cover_image || undefined}
                     className="mt-1"
                   />
                </div>

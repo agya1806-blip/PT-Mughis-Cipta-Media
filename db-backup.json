@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-07-22T09:16:57.496Z",
+  "exportedAt": "2026-07-22T10:01:37.645Z",
   "articles": [
     {
       "id": 97,
@@ -80,9 +80,130 @@
       "fileUrl": null,
       "createdAt": "2026-07-21T11:35:02.281Z",
       "updatedAt": "2026-07-21T11:58:07.385Z"
+    },
+    {
+      "id": 105,
+      "title": "Transformasi Digital Industri Penerbitan: Disrupsi, Adaptasi, dan Peluang Baru bagi Penerbit Indonesia",
+      "slug": "transformasi-digital-penerbitan-indonesia",
+      "content": "<p class=\"text-lg leading-8 text-green-dark/90\">Revolusi digital telah mengubah hampir seluruh lanskap industri penerbitan buku dalam satu dekade terakhir. <strong>Transformasi Digital Industri Penerbitan</strong> bukan lagi sekadar wacana, melainkan kebutuhan mendesak yang menentukan keberlangsungan bisnis penerbit di Indonesia. PT Mughis Cipta Media menyadari bahwa adaptasi terhadap teknologi digital adalah kunci untuk tetap relevan di tengah perubahan perilaku pembaca dan dinamika pasar yang semakin kompetitif.</p>\n\n<div class=\"rounded-2xl border border-gold/20 bg-gold/5 p-5 my-6\">\n  <p class=\"text-sm font-semibold uppercase tracking-[0.2em] text-gold mb-2\">Insight Editorial</p>\n  <p class=\"text-base leading-7 text-green-dark/90\">Transformasi digital tidak hanya mengubah format buku dari cetak ke digital, tetapi juga merombak total model bisnis penerbitan — dari produksi, distribusi, pemasaran, hingga hubungan dengan penulis dan pembaca.</p>\n</div>\n\n<h2 class=\"text-2xl font-bold text-green-dark mt-8 mb-3\">Mengapa transformasi digital penting?</h2>\n<p>Berdasarkan data Ikatan Penerbit Indonesia (IKAPI), lebih dari 60 persen penerbit anggota telah mengadopsi platform digital dalam proses produksi dan distribusi mereka sejak 2023. Sementara itu, Perpustakaan Nasional RI mencatat pertumbuhan produksi buku digital sebesar 45 persen dalam dua tahun terakhir, menunjukkan pergeseran preferensi pembaca dari format cetak ke format elektronik.</p>\n<p>Fenomena ini diperkuat oleh laporan International Publishers Association (IPA) yang menempatkan Indonesia sebagai salah satu pasar penerbitan dengan pertumbuhan digital tercepat di Asia Tenggara, dengan penetrasi e-book yang meningkat 28 persen per tahun sejak 2022.</p>\n\n<figure class=\"my-8 overflow-hidden rounded-2xl border border-gold/20 bg-cream\">\n  <img src=\"https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1200&q=80\" alt=\"Visual transformasi digital penerbitan\" class=\"w-full h-auto object-cover\" />\n  <figcaption class=\"px-4 py-3 text-sm text-green/70\">Ilustrasi transformasi digital yang mengubah wajah industri penerbitan di Indonesia dan global.</figcaption>\n</figure>\n\n<h2 class=\"text-2xl font-bold text-green-dark mt-8 mb-3\">Strategi adaptasi yang perlu diterapkan</h2>\n<ol class=\"space-y-3 pl-5\">\n  <li><strong>Digitalisasi produksi:</strong> migrasi dari workflow manual ke sistem manajemen penerbitan berbasis cloud yang memungkinkan kolaborasi real-time antara penulis, editor, dan desainer.</li>\n  <li><strong>Diversifikasi format:</strong> menghadirkan buku dalam berbagai format — cetak, e-book, audiobook, dan konten interaktif — untuk menjangkau segmen pembaca yang lebih luas.</li>\n  <li><strong>Pemasaran berbasis data:</strong> memanfaatkan analitik digital dan media sosial untuk memahami preferensi pembaca dan mengoptimalkan strategi promosi buku secara lebih terukur.</li>\n  <li><strong>Pengembangan platform sendiri:</strong> membangun toko buku online dan portal konten digital sebagai saluran distribusi langsung yang memberikan margin lebih baik dan data pelanggan yang berharga.</li>\n</ol>\n\n<h2 class=\"text-2xl font-bold text-green-dark mt-8 mb-3\">Daftar Pustaka</h2>\n<ul class=\"space-y-2 pl-5\">\n  <li>Ikatan Penerbit Indonesia (IKAPI). (2025). <em>Laporan Survei Digitalisasi Penerbitan 2024–2025</em>. Jakarta: IKAPI.</li>\n  <li>Perpustakaan Nasional RI. (2026). <em>Statistik Produksi Buku Nasional Tahun 2025</em>. Jakarta: Perpusnas Press.</li>\n  <li>International Publishers Association. (2025). <em>Global Publishing Market Report 2025: Southeast Asia Digital Growth</em>. Geneva: IPA.</li>\n  <li>Badan Pusat Statistik. (2025). <em>Statistik Telekomunikasi Indonesia 2024</em>. Jakarta: BPS.</li>\n  <li>Kementerian Komunikasi dan Informatika RI. (2025). <em>Laporan Tahunan Literasi Digital Indonesia</em>. Jakarta: Kemenkominfo.</li>\n  <li>UNESCO Institute for Statistics. (2025). <em>Global Literacy and Digital Skills Report</em>. Montreal: UIS.</li>\n</ul>\n\n<blockquote class=\"border-l-4 border-gold pl-4 italic text-green-dark/85 my-8\">\n  Penerbit yang bertahan bukanlah yang terbesar, melainkan yang paling adaptif terhadap perubahan teknologi dan perilaku konsumen.\n</blockquote>\n\n<p>Kesimpulannya, <strong>Transformasi Digital Industri Penerbitan</strong> bukanlah ancaman, melainkan peluang besar bagi penerbit yang siap beradaptasi. Dengan strategi yang tepat — mulai dari digitalisasi proses internal hingga diversifikasi format dan saluran distribusi — penerbit Indonesia tidak hanya dapat bertahan, tetapi juga berkembang di era disrupsi digital ini.</p>",
+      "featuredImage": "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1200&q=80",
+      "fileUrl": null,
+      "createdAt": "2026-07-22T09:18:45.703Z",
+      "updatedAt": "2026-07-22T09:18:45.703Z"
     }
   ],
-  "books": [],
+  "books": [
+    {
+      "id": 2,
+      "title": "Jalan Cahaya: Menemukan Makna di Setiap Langkah",
+      "author": "Ahmad Fauzi",
+      "translator": null,
+      "publisher": "PT Mughis Cipta Media",
+      "isbn": "978-602-1234-01-8",
+      "pageCount": 220,
+      "price": "75000",
+      "resellerPrice": "60000",
+      "categoryId": 3,
+      "coverImage": null,
+      "synopsis": "Sebuah novel inspiratif yang mengajak pembaca merenungi setiap perjalanan hidup. Mengisahkan seorang pemuda yang mencari jati diri di tengah hiruk-pikuk kota besar.",
+      "previewPdfUrl": null,
+      "stock": 50,
+      "weight": 300,
+      "dimensions": "14 x 21 cm",
+      "language": "Indonesia",
+      "publicationYear": 2025,
+      "createdAt": "2026-07-22T10:01:29.778Z",
+      "updatedAt": "2026-07-22T10:01:29.778Z"
+    },
+    {
+      "id": 3,
+      "title": "Pendidikan Karakter untuk Generasi Milenial",
+      "author": "Dr. Siti Nurhaliza, M.Pd.",
+      "translator": null,
+      "publisher": "PT Mughis Cipta Media",
+      "isbn": "978-602-1234-02-5",
+      "pageCount": 180,
+      "price": "65000",
+      "resellerPrice": "52000",
+      "categoryId": 5,
+      "coverImage": null,
+      "synopsis": "Buku ini membahas pentingnya pendidikan karakter di era digital. Dilengkapi dengan studi kasus dan strategi praktis untuk pendidik dan orang tua.",
+      "previewPdfUrl": null,
+      "stock": 40,
+      "weight": 250,
+      "dimensions": "14 x 21 cm",
+      "language": "Indonesia",
+      "publicationYear": 2025,
+      "createdAt": "2026-07-22T10:01:29.910Z",
+      "updatedAt": "2026-07-22T10:01:29.910Z"
+    },
+    {
+      "id": 4,
+      "title": "Fiqh Muamalah Kontemporer",
+      "author": "KH. Hasan Basri, Lc., M.E.I.",
+      "translator": null,
+      "publisher": "PT Mughis Cipta Media",
+      "isbn": "978-602-1234-03-2",
+      "pageCount": 350,
+      "price": "95000",
+      "resellerPrice": "76000",
+      "categoryId": 6,
+      "coverImage": null,
+      "synopsis": "Kajian komprehensif tentang fiqh muamalah dalam konteks kekinian. Membahas transaksi keuangan syariah, ekonomi digital, dan etika bisnis Islam.",
+      "previewPdfUrl": null,
+      "stock": 30,
+      "weight": 400,
+      "dimensions": "15 x 23 cm",
+      "language": "Indonesia",
+      "publicationYear": 2024,
+      "createdAt": "2026-07-22T10:01:30.031Z",
+      "updatedAt": "2026-07-22T10:01:30.031Z"
+    },
+    {
+      "id": 5,
+      "title": "Aceh dalam Lintasan Sejarah Nusantara",
+      "author": "Teuku Muhammad Ali, S.S., M.Hum.",
+      "translator": null,
+      "publisher": "PT Mughis Cipta Media",
+      "isbn": "978-602-1234-04-9",
+      "pageCount": 280,
+      "price": "85000",
+      "resellerPrice": "68000",
+      "categoryId": 9,
+      "coverImage": null,
+      "synopsis": "Menelusuri peran penting Aceh dalam perjalanan sejarah Nusantara, dari masa kerajaan Islam hingga era kemerdekaan.",
+      "previewPdfUrl": null,
+      "stock": 25,
+      "weight": 350,
+      "dimensions": "15 x 23 cm",
+      "language": "Indonesia",
+      "publicationYear": 2024,
+      "createdAt": "2026-07-22T10:01:30.162Z",
+      "updatedAt": "2026-07-22T10:01:30.162Z"
+    },
+    {
+      "id": 6,
+      "title": "Bisnis Digital untuk Pemula: Panduan Lengkap dari Nol",
+      "author": "Rizky Pratama, S.Kom., M.M.",
+      "translator": null,
+      "publisher": "PT Mughis Cipta Media",
+      "isbn": "978-602-1234-05-6",
+      "pageCount": 200,
+      "price": "70000",
+      "resellerPrice": "56000",
+      "categoryId": 7,
+      "coverImage": null,
+      "synopsis": "Panduan praktis memulai bisnis digital bagi pemula. Mencakup strategi pemasaran online, manajemen keuangan, dan tips membangun brand.",
+      "previewPdfUrl": null,
+      "stock": 45,
+      "weight": 280,
+      "dimensions": "14 x 21 cm",
+      "language": "Indonesia",
+      "publicationYear": 2025,
+      "createdAt": "2026-07-22T10:01:30.275Z",
+      "updatedAt": "2026-07-22T10:01:30.275Z"
+    }
+  ],
   "categories": [
     {
       "id": 3,
@@ -192,6 +313,61 @@
       "id": 1,
       "key": "instagram_url",
       "value": "https://www.instagram.com/mhdaghisna_?utm_source=qr"
+    },
+    {
+      "id": 64,
+      "key": "legal_akta",
+      "value": "PT Perorangan (UU Cipta Kerja)"
+    },
+    {
+      "id": 65,
+      "key": "legal_akta_date",
+      "value": ""
+    },
+    {
+      "id": 70,
+      "key": "legal_ikapi",
+      "value": ""
+    },
+    {
+      "id": 71,
+      "key": "legal_ikapi_date",
+      "value": ""
+    },
+    {
+      "id": 61,
+      "key": "legal_nib",
+      "value": "1807260050954"
+    },
+    {
+      "id": 62,
+      "key": "legal_nib_date",
+      "value": ""
+    },
+    {
+      "id": 63,
+      "key": "legal_nib_status",
+      "value": "Aktif"
+    },
+    {
+      "id": 66,
+      "key": "legal_npwp",
+      "value": "1108043110010001"
+    },
+    {
+      "id": 67,
+      "key": "legal_npwp_date",
+      "value": ""
+    },
+    {
+      "id": 68,
+      "key": "legal_sku",
+      "value": ""
+    },
+    {
+      "id": 69,
+      "key": "legal_sku_date",
+      "value": ""
     },
     {
       "id": 6,

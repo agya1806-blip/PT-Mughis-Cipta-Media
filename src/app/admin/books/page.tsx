@@ -30,6 +30,17 @@ export default function AdminBooks() {
       .catch(() => {})
   }, [page, search])
 
+  async function handleDelete(id: number) {
+    if (!confirm("Hapus buku ini?")) return
+    try {
+      const res = await fetch(`/api/admin/books/${id}`, { method: "DELETE" })
+      if (res.ok) {
+        setBooks((prev) => prev.filter((b) => b.id !== id))
+        setTotal((t) => t - 1)
+      }
+    } catch {}
+  }
+
   return (
     <div>
       <div className="flex items-center justify-between mb-6">
@@ -80,13 +91,19 @@ export default function AdminBooks() {
                     {book.stock}
                   </span>
                 </td>
-                <td className="px-4 py-3 text-center">
+                <td className="px-4 py-3 text-center space-x-2">
                   <Link
                     href={`/admin/books/${book.id}`}
                     className="text-gold hover:underline text-xs"
                   >
                     Edit
                   </Link>
+                  <button
+                    onClick={() => handleDelete(book.id)}
+                    className="text-red-500 hover:text-red-700 text-xs"
+                  >
+                    Hapus
+                  </button>
                 </td>
               </tr>
             ))}

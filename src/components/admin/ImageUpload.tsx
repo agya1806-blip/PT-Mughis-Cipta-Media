@@ -18,13 +18,23 @@ export default function ImageUpload({ value, onChange, label = "Gambar", accept 
 
   const handleFile = useCallback((file: File) => {
     if (!file.type.startsWith("image/")) return
-    const reader = new FileReader()
-    reader.onload = (e) => {
-      const dataUrl = e.target?.result as string
+    const img = new Image()
+    img.onload = () => {
+      const MAX = 1200
+      let w = img.naturalWidth, h = img.naturalHeight
+      if (w > MAX || h > MAX) {
+        if (w > h) { h = (h / w) * MAX; w = MAX }
+        else { w = (w / h) * MAX; h = MAX }
+      }
+      const c = document.createElement("canvas")
+      c.width = w; c.height = h
+      const ctx = c.getContext("2d")!
+      ctx.drawImage(img, 0, 0, w, h)
+      const dataUrl = c.toDataURL("image/jpeg", 0.6)
       setPreview(dataUrl)
       onChange(dataUrl)
     }
-    reader.readAsDataURL(file)
+    img.src = URL.createObjectURL(file)
   }, [onChange])
 
   const handleDrop = useCallback((e: React.DragEvent) => {

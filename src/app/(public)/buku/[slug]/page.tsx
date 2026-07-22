@@ -16,7 +16,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   })
   if (!book) return { title: "Buku Tidak Ditemukan" }
   const base = process.env.NEXT_PUBLIC_BASE_URL || "https://mughisciptamedia.com"
-  const coverUrl = book.coverImage?.startsWith("http") ? book.coverImage : book.coverImage ? `${base}${book.coverImage}` : null
+  const coverUrl = book.coverImage?.startsWith("http")
+    ? book.coverImage
+    : book.coverImage && !book.coverImage.startsWith("data:")
+      ? `${base}${book.coverImage}`
+      : null
   return {
     title: book.title,
     description: book.synopsis.substring(0, 160),

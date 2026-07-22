@@ -22,7 +22,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const article = await prisma.article.findUnique({ where: { slug } })
   if (!article) return { title: "Artikel Tidak Ditemukan" }
   const base = process.env.NEXT_PUBLIC_BASE_URL || "https://mughisciptamedia.com"
-  const imageUrl = article.featuredImage?.startsWith("http") ? article.featuredImage : article.featuredImage ? `${base}${article.featuredImage}` : null
+  const imageUrl = article.featuredImage?.startsWith("http")
+    ? article.featuredImage
+    : article.featuredImage && !article.featuredImage.startsWith("data:")
+      ? `${base}${article.featuredImage}`
+      : null
   return {
     title: `${article.title} | Maktabah al-Mughis`,
     description: excerpt(article.content),

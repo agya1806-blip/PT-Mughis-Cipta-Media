@@ -38,7 +38,7 @@ export default function LoginPage() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-      className="flex-1 flex items-center justify-center py-16 px-4"
+      className="flex-1 flex items-center justify-center pt-20 pb-16 px-4"
     >
       <motion.div
         initial="hidden"

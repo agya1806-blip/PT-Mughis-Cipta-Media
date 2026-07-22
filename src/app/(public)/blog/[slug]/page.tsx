@@ -60,7 +60,7 @@ export default async function ArticleDetailPage({ params }: { params: Promise<{ 
           },
         }}
       />
-      <article className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+      <article className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-12 lg:pt-24 lg:pb-16">
         <Breadcrumb
           items={[
             { label: "Beranda", href: "/" },

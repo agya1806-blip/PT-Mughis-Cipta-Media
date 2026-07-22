@@ -95,7 +95,7 @@ export default async function BookDetailPage({ params }: { params: Promise<{ id:
 
   return (
     <div className="flex-1 bg-cream">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-8">
         <JsonLd
           data={{
             "@context": "https://schema.org",

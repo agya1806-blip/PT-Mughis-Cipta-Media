@@ -36,7 +36,7 @@ export default function FAQPage() {
           })),
         }}
       />
-      <section className="relative py-20 bg-gradient-to-br from-green via-green-dark to-green overflow-hidden">
+      <section className="relative pt-24 pb-20 bg-gradient-to-br from-green via-green-dark to-green overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_rgba(211,194,151,0.08),transparent_50%)]" />
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <div className="mb-6">

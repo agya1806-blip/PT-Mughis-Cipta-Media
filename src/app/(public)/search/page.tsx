@@ -86,7 +86,7 @@ export default async function SearchPage({ searchParams }: Props) {
 
   return (
     <main className="flex-1 bg-cream">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16">
         <Breadcrumb items={[{ label: "Beranda", href: "/" }, { label: "Pencarian" }]} />
 
         <h1 className="text-3xl font-bold text-green-dark mb-8">Pencarian</h1>

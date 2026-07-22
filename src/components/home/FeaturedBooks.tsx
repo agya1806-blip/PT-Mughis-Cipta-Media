@@ -1,12 +1,23 @@
 "use client"
 
+import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { BookOpen } from "lucide-react"
-import BookCard from "@/components/ui/BookCard"
-import { featuredBooks } from "./books-data"
+import BookCard, { BookData } from "@/components/ui/BookCard"
 import { fadeInUp, staggerContainer, staggerItem } from "@/components/landing/types"
 
 export default function FeaturedBooks() {
+  const [books, setBooks] = useState<BookData[]>([])
+
+  useEffect(() => {
+    fetch("/api/books?limit=8")
+      .then((r) => r.json())
+      .then((d) => setBooks(d.books || []))
+      .catch(() => {})
+  }, [])
+
+  if (books.length === 0) return null
+
   return (
     <section className="py-24 sm:py-32 overflow-hidden">
       <div className="container">
@@ -41,7 +52,7 @@ export default function FeaturedBooks() {
           viewport={{ once: true, margin: "-50px" }}
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
         >
-          {featuredBooks.map((book) => (
+          {books.map((book) => (
             <motion.div key={book.id} variants={staggerItem}>
               <BookCard book={book} />
             </motion.div>

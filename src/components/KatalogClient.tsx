@@ -1,21 +1,28 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
 import { X } from "lucide-react"
 import BookCard from "./BookCard"
 import type { Book, Category } from "@/lib/data"
 import type { BooksResponse } from "@/lib/books"
 
-export function KatalogClient() {
+interface Props {
+  initialBooks: Book[]
+  initialCategories: Category[]
+  initialTotal: number
+  initialTotalPages: number
+}
+
+export function KatalogClient({ initialBooks, initialCategories, initialTotal, initialTotalPages }: Props) {
   const router = useRouter()
   const searchParams = useSearchParams()
 
-  const [books, setBooks] = useState<Book[]>([])
-  const [categories, setCategories] = useState<Category[]>([])
-  const [total, setTotal] = useState(0)
-  const [totalPages, setTotalPages] = useState(1)
-  const [loading, setLoading] = useState(true)
+  const [books, setBooks] = useState<Book[]>(initialBooks)
+  const [categories, setCategories] = useState<Category[]>(initialCategories)
+  const [total, setTotal] = useState(initialTotal)
+  const [totalPages, setTotalPages] = useState(initialTotalPages)
+  const [loading, setLoading] = useState(false)
   const [mobileFilterOpen, setMobileFilterOpen] = useState(false)
 
   const page = parseInt(searchParams.get("page") ?? "1", 10)
@@ -25,7 +32,14 @@ export function KatalogClient() {
 
   const [searchInput, setSearchInput] = useState(search)
 
+  const isFirstRender = useRef(true)
+
   useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false
+      return
+    }
+
     async function fetchBooks() {
       setLoading(true)
       try {

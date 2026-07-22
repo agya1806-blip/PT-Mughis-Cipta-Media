@@ -62,7 +62,13 @@ export async function GET(request: NextRequest) {
       publication_year: b.publicationYear,
     }))
 
-    return Response.json({ books: mapped, total, page, total_pages: totalPages, limit })
+    return new Response(JSON.stringify({ books: mapped, total, page, total_pages: totalPages, limit }), {
+      status: 200,
+      headers: {
+        "Content-Type": "application/json",
+        "Cache-Control": "public, s-maxage=60, stale-while-revalidate=30",
+      },
+    })
   } catch {
     return Response.json({ books: [], total: 0, page: 1, total_pages: 1, limit: 12 }, { status: 500 })
   }

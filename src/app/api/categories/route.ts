@@ -6,12 +6,18 @@ export async function GET() {
     const categories = await prisma.category.findMany({
       orderBy: { name: "asc" },
     })
-    return NextResponse.json({
+    return new Response(JSON.stringify({
       categories: categories.map((c) => ({
         id: String(c.id),
         name: c.name,
         slug: c.slug,
       })),
+    }), {
+      status: 200,
+      headers: {
+        "Content-Type": "application/json",
+        "Cache-Control": "public, s-maxage=300, stale-while-revalidate=60",
+      },
     })
   } catch {
     return NextResponse.json({ categories: [] }, { status: 500 })

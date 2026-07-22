@@ -3,7 +3,7 @@
 import Link from "next/link"
 
 export function BookDetailClient({ book }: { book: { title: string; preview_pdf_url?: string | null; whatsapp?: string } }) {
-  const waNumber = book.whatsapp?.replace(/[^0-9]/g, "")
+  const waNumber = book.whatsapp?.replace(/[^0-9]/g, "").replace(/^0/, "62")
   const waUrl = waNumber ? `https://wa.me/${waNumber}?text=${encodeURIComponent(`Halo, saya tertarik dengan buku "${book.title}". Apakah masih tersedia?`)}` : null
 
   return (

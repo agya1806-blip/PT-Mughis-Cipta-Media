@@ -152,13 +152,12 @@ export default async function BookDetailPage({ params }: { params: Promise<{ slu
                    </span>
                    <h1 className="text-2xl md:text-3xl font-bold text-green-dark leading-tight">{mapped.title}</h1>
                  </div>
-                 <ShareButton
-                   url={`/buku/${mapped.slug}`}
-                   title={mapped.title}
-                   description={mapped.synopsis}
-                   image={mapped.cover_image || undefined}
-                   className="mt-1"
-                 />
+                  <ShareButton
+                    url={`/buku/${mapped.slug}`}
+                    title={mapped.title}
+                    description={mapped.synopsis}
+                    className="mt-1"
+                  />
                </div>
 
               <div className="grid grid-cols-2 gap-4 text-sm">

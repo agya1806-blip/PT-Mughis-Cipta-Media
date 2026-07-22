@@ -1,25 +1,16 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Share2, MessageCircle, Link as LinkIcon, Check } from "lucide-react"
 
 interface ShareButtonProps {
   url: string
   title: string
   description?: string
-  image?: string
   className?: string
-  variant?: "icon" | "button"
 }
 
-export default function ShareButton({ 
-  url, 
-  title, 
-  description = "", 
-  image, 
-  className = "", 
-  variant = "icon" 
-}: ShareButtonProps) {
+export default function ShareButton({ url, title, description = "", className = "" }: ShareButtonProps) {
   const [open, setOpen] = useState(false)
   const [copied, setCopied] = useState(false)
 
@@ -29,7 +20,20 @@ export default function ShareButton({
 
   const shareText = `${title}\n\n${fullUrl}`
 
-  const handleNativeShare = async () => {
+  // Close dropdown on Escape
+  useEffect(() => {
+    const onEscape = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false)
+    }
+    if (open) document.addEventListener("keydown", onEscape)
+    return () => document.removeEventListener("keydown", onEscape)
+  }, [open])
+
+  const handleShare = async (e: React.MouseEvent) => {
+    e.preventDefault()
+    e.stopPropagation()
+
+    // Best experience on mobile
     if (navigator.share) {
       try {
         await navigator.share({
@@ -37,127 +41,113 @@ export default function ShareButton({
           text: description || title,
           url: fullUrl,
         })
-        setOpen(false)
         return
-      } catch {
-        // user cancelled or error, fall through to dropdown
-      }
+      } catch {}
     }
     setOpen(!open)
   }
 
-  const shareToWhatsApp = () => {
-    const text = encodeURIComponent(shareText)
-    window.open(`https://wa.me/?text=${text}`, "_blank")
+  const openExternal = (e: React.MouseEvent, link: string) => {
+    e.preventDefault()
+    e.stopPropagation()
+    window.open(link, "_blank")
     setOpen(false)
   }
 
-  const shareToFacebook = () => {
-    const u = encodeURIComponent(fullUrl)
-    window.open(`https://www.facebook.com/sharer/sharer.php?u=${u}`, "_blank")
-    setOpen(false)
+  const shareWhatsApp = (e: React.MouseEvent) => 
+    openExternal(e, `https://wa.me/?text=${encodeURIComponent(shareText)}`)
+
+  const shareFacebook = (e: React.MouseEvent) => 
+    openExternal(e, `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(fullUrl)}`)
+
+  const shareInstagramStory = async (e: React.MouseEvent) => {
+    e.preventDefault()
+    e.stopPropagation()
+    const caption = `${title}\n\nBaca selengkapnya:\n${fullUrl}`
+    try {
+      await navigator.clipboard.writeText(caption)
+      window.open("https://www.instagram.com/", "_blank")
+      setCopied(true)
+      setTimeout(() => {
+        setCopied(false)
+        setOpen(false)
+      }, 1400)
+    } catch {
+      window.open("https://www.instagram.com/", "_blank")
+      setOpen(false)
+    }
   }
 
-  const copyLink = async () => {
+  const copyLink = async (e: React.MouseEvent) => {
+    e.preventDefault()
+    e.stopPropagation()
     try {
       await navigator.clipboard.writeText(fullUrl)
       setCopied(true)
       setTimeout(() => {
         setCopied(false)
         setOpen(false)
-      }, 1200)
+      }, 1400)
     } catch {
-      // fallback
       prompt("Salin link ini:", fullUrl)
       setOpen(false)
     }
   }
 
-  const shareToInstagramStory = async () => {
-    const caption = `${title}\n\nBaca selengkapnya:\n${fullUrl}`
-    try {
-      await navigator.clipboard.writeText(caption)
-      // Try to open Instagram
-      window.open("https://www.instagram.com/", "_blank")
-      // Show instruction
-      setTimeout(() => {
-        alert("Teks sudah disalin!\n\nBuka Instagram → Buat Story baru → Tempel teksnya.")
-      }, 300)
-    } catch {
-      alert("Gagal menyalin. Coba manual:\n\n" + caption)
-    }
-    setOpen(false)
-  }
-
   return (
-    <div className={`relative ${className}`}>
+    <div className={`relative ${className}`} onClick={e => e.stopPropagation()}>
       <button
-        onClick={(e) => {
-          e.preventDefault()
-          e.stopPropagation()
-          handleNativeShare()
-        }}
-        className="flex items-center justify-center w-8 h-8 rounded-full bg-cream/80 hover:bg-gold/10 text-green/60 hover:text-gold transition-all border border-gold/20"
+        onClick={handleShare}
+        title="Bagikan"
+        className="group flex items-center justify-center w-8 h-8 rounded-full bg-cream border border-gold/20 text-green/60 hover:text-gold hover:bg-gold/10 hover:border-gold/40 transition-all active:scale-95"
         aria-label="Bagikan"
+        aria-expanded={open}
       >
-        <Share2 className="w-4 h-4" />
+        <Share2 className="w-4 h-4 group-hover:scale-110 transition-transform" />
       </button>
 
       {open && (
         <>
-          {/* Backdrop */}
-          <div 
-            className="fixed inset-0 z-40" 
-            onClick={() => setOpen(false)} 
-          />
+          <div className="fixed inset-0 z-40" onClick={() => setOpen(false)} />
           
-          {/* Dropdown */}
-          <div className="absolute right-0 mt-2 w-48 bg-cream border border-gold/20 rounded-xl shadow-lg z-50 py-1 text-sm">
-            <button
-              onClick={shareToWhatsApp}
-              className="flex w-full items-center gap-3 px-4 py-2.5 hover:bg-gold/5 text-left"
-            >
-              <div className="w-6 h-6 rounded-full bg-[#25D366] flex items-center justify-center">
+          <div className="absolute right-0 mt-2 w-52 bg-cream border border-gold/20 rounded-2xl shadow-2xl z-50 text-sm overflow-hidden">
+            <div className="px-4 py-2 text-[10px] font-medium tracking-[0.5px] text-green/50 border-b border-gold/10 bg-cream/50">
+              BAGIKAN
+            </div>
+
+            <button onClick={shareWhatsApp} className="flex w-full items-center gap-3 px-4 py-3 hover:bg-gold/5 active:bg-gold/10 text-left">
+              <div className="w-6 h-6 rounded-full bg-[#25D366] flex items-center justify-center shrink-0">
                 <MessageCircle className="w-3.5 h-3.5 text-white" />
               </div>
-              <span>WhatsApp</span>
+              <span className="text-green-dark">WhatsApp</span>
             </button>
 
-            <button
-              onClick={shareToFacebook}
-              className="flex w-full items-center gap-3 px-4 py-2.5 hover:bg-gold/5 text-left"
-            >
-              <div className="w-6 h-6 rounded-full bg-[#1877F2] flex items-center justify-center">
+            <button onClick={shareFacebook} className="flex w-full items-center gap-3 px-4 py-3 hover:bg-gold/5 active:bg-gold/10 text-left">
+              <div className="w-6 h-6 rounded-full bg-[#1877F2] flex items-center justify-center shrink-0">
                 <span className="text-white text-[11px] font-bold">f</span>
               </div>
-              <span>Facebook</span>
+              <span className="text-green-dark">Facebook</span>
             </button>
 
-            <button
-              onClick={shareToInstagramStory}
-              className="flex w-full items-center gap-3 px-4 py-2.5 hover:bg-gold/5 text-left"
-            >
-              <div className="w-6 h-6 rounded-full bg-gradient-to-br from-[#F56040] via-[#E1306C] to-[#C13584] flex items-center justify-center">
+            <button onClick={shareInstagramStory} className="flex w-full items-center gap-3 px-4 py-3 hover:bg-gold/5 active:bg-gold/10 text-left">
+              <div className="w-6 h-6 rounded-full bg-gradient-to-br from-[#F56040] via-[#E1306C] to-[#C13584] flex items-center justify-center shrink-0">
                 <span className="text-[10px] font-bold text-white">IG</span>
               </div>
-              <span>Instagram Story</span>
+              <span className="text-green-dark">Instagram Story</span>
             </button>
 
-            <div className="h-px bg-gold/10 my-1" />
+            <div className="h-px bg-gold/10 mx-2" />
 
-            <button
-              onClick={copyLink}
-              className="flex w-full items-center gap-3 px-4 py-2.5 hover:bg-gold/5 text-left"
-            >
+            <button onClick={copyLink} className="flex w-full items-center gap-3 px-4 py-3 hover:bg-gold/5 active:bg-gold/10 text-left">
               {copied ? (
                 <>
                   <Check className="w-4 h-4 text-gold" />
-                  <span className="text-gold">Link disalin!</span>
+                  <span className="text-gold font-medium">Link disalin!</span>
                 </>
               ) : (
                 <>
                   <LinkIcon className="w-4 h-4" />
-                  <span>Salin Link</span>
+                  <span className="text-green-dark">Salin Link</span>
                 </>
               )}
             </button>

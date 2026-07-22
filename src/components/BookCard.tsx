@@ -40,12 +40,15 @@ export default function BookCard({ book }: { book: Book }) {
           </div>
         )}
 
-        <div className="absolute bottom-3 right-3 z-10">
+        {/* Share button - always visible on mobile, appears on hover on desktop */}
+        <div 
+          className="absolute top-3 left-3 z-10 md:opacity-0 md:group-hover:opacity-100 transition-opacity"
+          onClick={(e) => e.preventDefault()}
+        >
           <ShareButton
             url={`/buku/${book.slug}`}
             title={book.title}
             description={book.synopsis}
-            image={book.cover_image || undefined}
           />
         </div>
       </div>

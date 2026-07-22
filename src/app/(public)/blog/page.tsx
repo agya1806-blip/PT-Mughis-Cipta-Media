@@ -117,7 +117,6 @@ export default async function BlogPage({ searchParams }: Props) {
                      url={`/blog/${featured.slug}`}
                      title={featured.title}
                      description={excerpt(featured.content, 160)}
-                     image={featured.featuredImage || undefined}
                    />
                  </div>
                </div>
@@ -162,11 +161,10 @@ export default async function BlogPage({ searchParams }: Props) {
                      <div className="flex-1 p-5 flex flex-col relative">
                        <div className="absolute top-3 right-3 z-10">
                          <ShareButton
-                           url={`/blog/${a.slug}`}
-                           title={a.title}
-                           description={excerpt(a.content, 140)}
-                           image={a.featuredImage || undefined}
-                         />
+                            url={`/blog/${a.slug}`}
+                            title={a.title}
+                            description={excerpt(a.content, 140)}
+                          />
                        </div>
                        <h3 className="text-base font-semibold text-green-dark mb-2 group-hover:text-gold transition-colors line-clamp-2">
                          {a.title}

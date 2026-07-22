@@ -34,39 +34,35 @@ export default async function SearchPage({ searchParams }: Props) {
 
   if (query) {
     try {
-      const [books, articles] = await Promise.all([
-        prisma.book.findMany({
-          where: {
-            OR: [
-              { title: { contains: query } },
-              { author: { contains: query } },
-              { synopsis: { contains: query } },
-            ],
-          },
-          skip,
-          take: PER_PAGE,
-          orderBy: { createdAt: "desc" },
-        }),
-        prisma.article.findMany({
-          where: {
-            OR: [
-              { title: { contains: query } },
-              { content: { contains: query } },
-            ],
-          },
-          select: { id: true, title: true, slug: true, createdAt: true },
-          orderBy: { createdAt: "desc" },
-        }),
+      const bookWhere = {
+        OR: [
+          { title: { contains: query } },
+          { author: { contains: query } },
+          { synopsis: { contains: query } },
+        ],
+      }
+      const articleWhere = {
+        OR: [
+          { title: { contains: query } },
+          { content: { contains: query } },
+        ],
+      }
+
+      const [bookRows, articleRows, bookCount, articleCount] = await Promise.all([
+        prisma.book.findMany({ where: bookWhere, orderBy: { createdAt: "desc" } }),
+        prisma.article.findMany({ where: articleWhere, select: { id: true, title: true, slug: true, createdAt: true }, orderBy: { createdAt: "desc" } }),
+        prisma.book.count({ where: bookWhere }),
+        prisma.article.count({ where: articleWhere }),
       ])
 
-      const bookResults = books.map((b) => ({
+      const bookResults = bookRows.map((b) => ({
         type: "Buku" as const,
         title: b.title,
         description: b.synopsis.substring(0, 120),
         href: `/buku/${b.slug}`,
       }))
 
-      const articleResults = articles.map((a) => ({
+      const articleResults = articleRows.map((a) => ({
         type: "Artikel" as const,
         title: a.title,
         description: new Date(a.createdAt).toLocaleDateString("id-ID", {
@@ -75,14 +71,15 @@ export default async function SearchPage({ searchParams }: Props) {
         href: `/blog/${a.slug}`,
       }))
 
-      results = [...bookResults, ...articleResults]
-      total = results.length
+      const combined = [...bookResults, ...articleResults]
+      total = bookCount + articleCount
+      results = combined.slice(skip, skip + PER_PAGE)
     } catch {
       // Database tidak tersedia
     }
   }
 
-  const totalPages = Math.ceil(total / PER_PAGE)
+  const totalPages = Math.max(1, Math.ceil(total / PER_PAGE))
 
   return (
     <main className="flex-1 bg-cream">

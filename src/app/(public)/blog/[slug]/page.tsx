@@ -5,6 +5,7 @@ import { prisma } from "@/lib/prisma"
 import Breadcrumb from "@/components/ui/Breadcrumb"
 import { JsonLd } from "@/components/JsonLd"
 import { Calendar, Clock, ArrowLeft } from "lucide-react"
+import ShareButton from "@/components/ShareButton"
 
 function readingTime(content: string): string {
   const words = content.replace(/<[^>]*>/g, "").split(/\s+/).length
@@ -69,22 +70,30 @@ export default async function ArticleDetailPage({ params }: { params: Promise<{ 
           ]}
         />
 
-        <div className="mt-8 mb-10">
-          <h1 className="text-3xl sm:text-4xl font-bold text-green-dark leading-tight mb-4">
-            {article.title}
-          </h1>
-          <div className="flex flex-wrap items-center gap-4 text-sm text-green/60">
-            <span className="flex items-center gap-1.5">
-              <Calendar className="w-4 h-4" />
-              {new Date(article.createdAt).toLocaleDateString("id-ID", {
-                year: "numeric", month: "long", day: "numeric",
-              })}
-            </span>
-            <span className="flex items-center gap-1.5">
-              <Clock className="w-4 h-4" />
-              {readingTime(article.content)}
-            </span>
+        <div className="mt-8 mb-10 flex items-start justify-between gap-4">
+          <div>
+            <h1 className="text-3xl sm:text-4xl font-bold text-green-dark leading-tight mb-4">
+              {article.title}
+            </h1>
+            <div className="flex flex-wrap items-center gap-4 text-sm text-green/60">
+              <span className="flex items-center gap-1.5">
+                <Calendar className="w-4 h-4" />
+                {new Date(article.createdAt).toLocaleDateString("id-ID", {
+                  year: "numeric", month: "long", day: "numeric",
+                })}
+              </span>
+              <span className="flex items-center gap-1.5">
+                <Clock className="w-4 h-4" />
+                {readingTime(article.content)}
+              </span>
+            </div>
           </div>
+          <ShareButton
+            url={`/blog/${article.slug}`}
+            title={article.title}
+            description={excerpt(article.content)}
+            image={article.featuredImage || undefined}
+          />
         </div>
 
         {article.featuredImage && (

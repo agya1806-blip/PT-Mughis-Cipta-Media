@@ -4,6 +4,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { useState } from "react"
 import type { Book } from "@/lib/data"
+import ShareButton from "./ShareButton"
 
 export default function BookCard({ book }: { book: Book }) {
   const [imgError, setImgError] = useState(false)
@@ -38,6 +39,15 @@ export default function BookCard({ book }: { book: Book }) {
             </span>
           </div>
         )}
+
+        <div className="absolute bottom-3 right-3 z-10">
+          <ShareButton
+            url={`/buku/${book.slug}`}
+            title={book.title}
+            description={book.synopsis}
+            image={book.cover_image || undefined}
+          />
+        </div>
       </div>
       <div className="flex flex-1 flex-col p-4 sm:p-5">
         <h3 className="font-semibold text-green-dark leading-snug line-clamp-2 text-sm sm:text-base mb-1">

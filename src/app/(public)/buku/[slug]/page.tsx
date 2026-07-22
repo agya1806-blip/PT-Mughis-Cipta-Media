@@ -6,6 +6,7 @@ import { BookDetailClient } from "./BookDetailClient"
 import BookCard from "@/components/BookCard"
 import Breadcrumb from "@/components/ui/Breadcrumb"
 import { JsonLd } from "@/components/JsonLd"
+import ShareButton from "@/components/ShareButton"
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
@@ -144,12 +145,21 @@ export default async function BookDetailPage({ params }: { params: Promise<{ slu
             </div>
 
             <div className="md:col-span-2 space-y-6">
-              <div>
-                <span className="inline-block text-xs font-medium text-gold bg-gold/5 px-3 py-1 rounded-full mb-3">
-                  {mapped.category_name}
-                </span>
-                <h1 className="text-2xl md:text-3xl font-bold text-green-dark leading-tight">{mapped.title}</h1>
-              </div>
+               <div className="flex items-start justify-between gap-4">
+                 <div>
+                   <span className="inline-block text-xs font-medium text-gold bg-gold/5 px-3 py-1 rounded-full mb-3">
+                     {mapped.category_name}
+                   </span>
+                   <h1 className="text-2xl md:text-3xl font-bold text-green-dark leading-tight">{mapped.title}</h1>
+                 </div>
+                 <ShareButton
+                   url={`/buku/${mapped.slug}`}
+                   title={mapped.title}
+                   description={mapped.synopsis}
+                   image={mapped.cover_image || undefined}
+                   className="mt-1"
+                 />
+               </div>
 
               <div className="grid grid-cols-2 gap-4 text-sm">
                 <div>

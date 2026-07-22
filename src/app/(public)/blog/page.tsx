@@ -4,6 +4,7 @@ import { prisma } from "@/lib/prisma"
 import PageHero from "@/components/PageHero"
 import { Pagination, EmptyState } from "@/components/ui"
 import { Clock, Calendar, ChevronRight } from "lucide-react"
+import ShareButton from "@/components/ShareButton"
 
 export const metadata = {
   title: "Media Center",
@@ -106,13 +107,22 @@ export default async function BlogPage({ searchParams }: Props) {
                   <p className="text-green/80 leading-relaxed line-clamp-3">
                     {excerpt(featured.content, 200)}
                   </p>
-                  <span className="inline-flex items-center gap-1 text-sm font-medium text-gold mt-4 group-hover:gap-2 transition-all">
-                    Baca Selengkapnya <ChevronRight className="w-4 h-4" />
-                  </span>
-                </div>
-              </div>
-            </Link>
-          )}
+                   <span className="inline-flex items-center gap-1 text-sm font-medium text-gold mt-4 group-hover:gap-2 transition-all">
+                     Baca Selengkapnya <ChevronRight className="w-4 h-4" />
+                   </span>
+                 </div>
+
+                 <div className="absolute top-4 right-4 z-10">
+                   <ShareButton
+                     url={`/blog/${featured.slug}`}
+                     title={featured.title}
+                     description={excerpt(featured.content, 160)}
+                     image={featured.featuredImage || undefined}
+                   />
+                 </div>
+               </div>
+             </Link>
+           )}
 
           {articles.length === 0 ? (
             <EmptyState
@@ -147,12 +157,20 @@ export default async function BlogPage({ searchParams }: Props) {
                           height={24}
                           className="h-10 w-auto opacity-80"
                         />
-                      </div>
-                    )}
-                    <div className="flex-1 p-5 flex flex-col">
-                      <h3 className="text-base font-semibold text-green-dark mb-2 group-hover:text-gold transition-colors line-clamp-2">
-                        {a.title}
-                      </h3>
+                       </div>
+                     )}
+                     <div className="flex-1 p-5 flex flex-col relative">
+                       <div className="absolute top-3 right-3 z-10">
+                         <ShareButton
+                           url={`/blog/${a.slug}`}
+                           title={a.title}
+                           description={excerpt(a.content, 140)}
+                           image={a.featuredImage || undefined}
+                         />
+                       </div>
+                       <h3 className="text-base font-semibold text-green-dark mb-2 group-hover:text-gold transition-colors line-clamp-2">
+                         {a.title}
+                       </h3>
                       <div className="flex items-center gap-3 text-xs text-green/60 mb-3">
                         <span className="flex items-center gap-1">
                           <Calendar className="w-3 h-3" />

@@ -1,11 +1,12 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
+import { useState } from "react"
+import Link from "next/link"
 import { useRouter, useSearchParams } from "next/navigation"
 import { X } from "lucide-react"
 import BookCard from "./BookCard"
+import Pagination from "@/components/ui/Pagination"
 import type { Book, Category } from "@/lib/data"
-import type { BooksResponse } from "@/lib/books"
 
 interface Props {
   initialBooks: Book[]
@@ -18,11 +19,12 @@ export function KatalogClient({ initialBooks, initialCategories, initialTotal, i
   const router = useRouter()
   const searchParams = useSearchParams()
 
-  const [books, setBooks] = useState<Book[]>(initialBooks)
-  const [categories, setCategories] = useState<Category[]>(initialCategories)
-  const [total, setTotal] = useState(initialTotal)
-  const [totalPages, setTotalPages] = useState(initialTotalPages)
-  const [loading, setLoading] = useState(false)
+  // Data comes directly from server props (no client fetch)
+  const books = initialBooks
+  const categories = initialCategories
+  const total = initialTotal
+  const totalPages = initialTotalPages
+
   const [mobileFilterOpen, setMobileFilterOpen] = useState(false)
 
   const page = parseInt(searchParams.get("page") ?? "1", 10)
@@ -31,47 +33,6 @@ export function KatalogClient({ initialBooks, initialCategories, initialTotal, i
   const sort = (searchParams.get("sort") ?? "latest") as string
 
   const [searchInput, setSearchInput] = useState(search)
-
-  const isFirstRender = useRef(true)
-
-  useEffect(() => {
-    if (isFirstRender.current) {
-      isFirstRender.current = false
-      return
-    }
-
-    async function fetchBooks() {
-      setLoading(true)
-      try {
-        const params = new URLSearchParams()
-        params.set("page", String(page))
-        if (category_id) params.set("category_id", category_id)
-        if (search) params.set("search", search)
-        if (sort) params.set("sort", sort)
-
-        const [booksRes, catsRes] = await Promise.all([
-          fetch(`/api/books?${params}`),
-          fetch("/api/categories"),
-        ])
-
-        const booksData: BooksResponse = await booksRes.json()
-        const catsData: { categories: Category[] } = await catsRes.json()
-
-        setBooks(booksData.books)
-        setTotal(booksData.total)
-        setTotalPages(booksData.total_pages)
-        setCategories(catsData.categories)
-      } catch {
-        setBooks([])
-        setCategories([])
-        setTotal(0)
-        setTotalPages(1)
-      } finally {
-        setLoading(false)
-      }
-    }
-    fetchBooks()
-  }, [page, category_id, search, sort])
 
   const updateSearchParams = (updates: Record<string, string>) => {
     const params = new URLSearchParams(searchParams.toString())
@@ -127,24 +88,27 @@ export function KatalogClient({ initialBooks, initialCategories, initialTotal, i
 
             <div>
               <h3 className="text-sm font-medium text-green-dark mb-3">Kategori</h3>
-              <div className="space-y-2">
-                {categories.map((cat) => (
-                  <label
-                    key={cat.id}
-                    className="flex items-center gap-2.5 cursor-pointer group"
-                  >
-                    <input
-                      type="radio"
-                      name="category"
-                      checked={category_id === cat.id}
-                      onChange={() => updateSearchParams({ category_id: cat.id })}
-                      className="h-4 w-4 text-gold border-gold/20 focus:ring-gold/50"
-                    />
-                    <span className="text-sm text-green/80 group-hover:text-green-dark transition-colors">
+              <div className="space-y-1">
+                {categories.map((cat) => {
+                  const isActive = category_id === cat.id
+                  const params = new URLSearchParams(searchParams.toString())
+                  params.set("category_id", cat.id)
+                  params.set("page", "1")
+                  const href = `/katalog?${params.toString()}`
+                  return (
+                    <Link
+                      key={cat.id}
+                      href={href}
+                      className={`block px-3 py-1.5 rounded-lg text-sm transition-colors ${
+                        isActive
+                          ? "bg-gold/10 text-gold font-medium"
+                          : "text-green/80 hover:bg-cream hover:text-green-dark"
+                      }`}
+                    >
                       {cat.name}
-                    </span>
-                  </label>
-                ))}
+                    </Link>
+                  )
+                })}
               </div>
             </div>
 
@@ -179,21 +143,7 @@ export function KatalogClient({ initialBooks, initialCategories, initialTotal, i
             </div>
           </div>
 
-          {loading ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {Array.from({ length: 6 }).map((_, i) => (
-                <div key={i} className="rounded-xl border border-gold/20 bg-cream overflow-hidden animate-pulse">
-                  <div className="aspect-[3/4] bg-cream" />
-                  <div className="p-4 space-y-3">
-                    <div className="h-4 bg-cream rounded w-1/3" />
-                    <div className="h-5 bg-cream rounded w-3/4" />
-                    <div className="h-4 bg-cream rounded w-1/2" />
-                    <div className="h-6 bg-cream rounded w-1/4" />
-                  </div>
-                </div>
-              ))}
-            </div>
-          ) : books.length === 0 ? (
+          {books.length === 0 ? (
             <div className="text-center py-20">
               <svg className="w-16 h-16 mx-auto text-green/40 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
@@ -212,37 +162,17 @@ export function KatalogClient({ initialBooks, initialCategories, initialTotal, i
                 ))}
               </div>
 
-              {totalPages > 1 && (
-                <div className="flex items-center justify-center gap-2 mt-10">
-                  <button
-                    disabled={page <= 1}
-                    onClick={() => updateSearchParams({ page: String(page - 1) })}
-                    className="px-3 py-2 rounded-lg border border-gold/20 text-sm font-medium text-green/80 hover:bg-cream disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
-                  >
-                    Sebelumnya
-                  </button>
-                  {Array.from({ length: totalPages }, (_, i) => i + 1).map((p) => (
-                    <button
-                      key={p}
-                      onClick={() => updateSearchParams({ page: String(p) })}
-                      className={`w-9 h-9 rounded-lg text-sm font-medium transition-colors ${
-                        p === page
-                          ? "bg-gold text-white"
-                          : "text-green/80 border border-gold/20 hover:bg-cream"
-                      }`}
-                    >
-                      {p}
-                    </button>
-                  ))}
-                  <button
-                    disabled={page >= totalPages}
-                    onClick={() => updateSearchParams({ page: String(page + 1) })}
-                    className="px-3 py-2 rounded-lg border border-gold/20 text-sm font-medium text-green/80 hover:bg-cream disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
-                  >
-                    Selanjutnya
-                  </button>
-                </div>
-              )}
+              <Pagination
+                currentPage={page}
+                totalPages={totalPages}
+                basePath="/katalog"
+                searchParams={{
+                  ...(category_id ? { category_id } : {}),
+                  ...(search ? { search } : {}),
+                  ...(sort !== "latest" ? { sort } : {}),
+                }}
+                className="mt-10"
+              />
             </>
           )}
         </div>

@@ -60,6 +60,7 @@
   --color-green-light: var(--green-light);
   --color-green-dark: var(--green-dark);
   --color-cream: var(--cream);
+  --color-cream-dark: #f5ede0;
 
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   --font-serif: "Georgia", "Times New Roman", serif;

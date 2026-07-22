@@ -78,11 +78,14 @@ export default function ShareButton({ url, title, description = "", image, class
     } catch {}
 
     if (isIOS) {
+      const start = Date.now()
       window.location.href = "instagram-stories://share"
       setTimeout(() => {
-        window.open("https://www.instagram.com/", "_blank")
+        if (Date.now() - start < 2000) {
+          window.open("https://www.instagram.com/", "_blank")
+        }
         setOpen(false)
-      }, 500)
+      }, 1500)
     } else {
       window.open("https://www.instagram.com/", "_blank")
       setOpen(false)
@@ -121,7 +124,7 @@ export default function ShareButton({ url, title, description = "", image, class
 
       {open && (
         <>
-          <div className="fixed inset-0 z-40" onClick={() => setOpen(false)} />
+          <div className="fixed inset-0 z-40" onClick={(e) => { e.stopPropagation(); setOpen(false) }} />
 
           <div className="absolute right-0 mt-2 w-56 bg-cream border border-gold/20 rounded-2xl shadow-2xl z-50 text-sm overflow-hidden">
             <div className="px-4 py-2 text-[10px] font-medium tracking-[0.5px] text-green/50 border-b border-gold/10 bg-cream/50 flex items-center justify-between">

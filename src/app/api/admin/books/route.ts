@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server"
 import { prisma } from "@/lib/prisma"
 import { getCurrentUser } from "@/lib/auth"
+import { slugify } from "@/lib/slug"
 
 export async function GET(request: Request) {
   const user = await getCurrentUser()
@@ -44,9 +45,19 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Judul, penulis, kategori, dan harga wajib diisi" }, { status: 400 })
     }
 
+    let slug = slugify(body.title)
+    if (!slug) slug = "book-" + Date.now()
+    let finalSlug = slug
+    let slugIdx = 1
+    while (await prisma.book.findUnique({ where: { slug: finalSlug } })) {
+      finalSlug = slug + "-" + slugIdx
+      slugIdx++
+    }
+
     const book = await prisma.book.create({
       data: {
         title: body.title,
+        slug: finalSlug,
         author: body.author,
         translator: body.translator || null,
         publisher: body.publisher || "",

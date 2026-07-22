@@ -5,6 +5,10 @@ const connectionString = process.env.DATABASE_URL || '';
 const adapter = new PrismaPg({ connectionString });
 const prisma = new PrismaClient({ adapter });
 
+function slugify(text: string): string {
+  return text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').substring(0, 100);
+}
+
 const books = [
   {
     title: 'Jalan Cahaya: Menemukan Makna di Setiap Langkah',
@@ -110,9 +114,18 @@ async function main() {
       console.log('SKIP (exists):', b.title);
       continue;
     }
+    let slug = slugify(b.title);
+    if (!slug) slug = 'book-' + b.isbn;
+    let finalSlug = slug;
+    let slugIdx = 1;
+    while (await prisma.book.findUnique({ where: { slug: finalSlug } })) {
+      finalSlug = slug + '-' + slugIdx;
+      slugIdx++;
+    }
     await prisma.book.create({
       data: {
         title: b.title,
+        slug: finalSlug,
         author: b.author,
         translator: b.translator || null,
         publisher: b.publisher,

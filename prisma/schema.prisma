@@ -61,6 +61,7 @@ model Category {
 model Book {
   id                   Int      @id @default(autoincrement())
   title                String
+  slug                 String   @unique
   author               String
   translator           String?
   publisher            String

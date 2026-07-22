@@ -25,7 +25,7 @@ export default function CompanyPage() {
             <p className="mt-6 text-lg sm:text-xl text-cream/70 leading-relaxed max-w-2xl">Perusahaan penerbitan, percetakan, dan media kreatif yang berkomitmen menghadirkan karya berkualitas bagi dunia pendidikan dan literasi Indonesia melalui Maktabah al-Mughis.</p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Button href="/company/legalitas" variant="primary">Legalitas Perusahaan<ArrowRight className="w-4 h-4" /></Button>
-              <Button href="/company/faq" variant="outline">FAQ Perusahaan</Button>
+              <Button href="/faq" variant="outline">FAQ Perusahaan</Button>
             </div>
           </motion.div>
           <motion.div variants={MOTION.stagger} initial="hidden" whileInView="visible" viewport={{ once: true }} className="mt-16 grid grid-cols-2 sm:grid-cols-4 gap-6">

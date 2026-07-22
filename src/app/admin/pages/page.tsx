@@ -16,7 +16,7 @@ export default function AdminPages() {
   function load() {
     fetch("/api/admin/pages")
       .then((r) => r.json())
-      .then(setPages)
+      .then((data) => setPages(Array.isArray(data) ? data : data?.pages || []))
       .catch(() => {})
   }
 

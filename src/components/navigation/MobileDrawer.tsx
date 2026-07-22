@@ -119,8 +119,8 @@ export default function MobileDrawer({ open, onClose, links }: Props) {
                       onClick={onClose}
                       className={`flex items-center px-4 py-3.5 rounded-xl text-sm font-medium transition-all duration-200 ${
                         isActive
-                          ? "bg-gold/10 text-gold dark:text-gold-light"
-                          : "text-green dark:text-cream hover:bg-cream dark:hover:bg-green-dark/50 hover:text-green-dark dark:hover:text-cream"
+                          ? "bg-gold text-white font-semibold"
+                          : "text-green-dark dark:text-cream hover:bg-gold/20 hover:text-green-dark dark:hover:text-green-dark"
                       }`}
                     >
                       {link.label}

@@ -22,7 +22,7 @@ function useFetch() {
     setLoading(true)
     try {
       const res = await fetch("/api/admin/contact-submissions")
-      if (res.ok) setSubmissions(await res.json())
+      if (res.ok) { const d = await res.json(); setSubmissions(Array.isArray(d) ? d : d?.submissions || []) }
     } catch {
       // ignore
     } finally {

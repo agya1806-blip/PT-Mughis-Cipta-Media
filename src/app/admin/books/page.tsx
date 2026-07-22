@@ -24,8 +24,8 @@ export default function AdminBooks() {
     fetch(`/api/admin/books?${params}`)
       .then((r) => r.json())
       .then((data) => {
-        setBooks(data.books)
-        setTotal(data.total)
+        if (data?.books) setBooks(data.books)
+        if (data?.total !== undefined) setTotal(data.total)
       })
       .catch(() => {})
   }, [page, search])

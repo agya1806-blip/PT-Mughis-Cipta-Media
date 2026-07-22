@@ -16,7 +16,7 @@ export default function AdminCategories() {
   function load() {
     fetch("/api/admin/categories")
       .then((r) => r.json())
-      .then(setCategories)
+      .then((data) => setCategories(Array.isArray(data) ? data : []))
       .catch(() => {})
   }
 

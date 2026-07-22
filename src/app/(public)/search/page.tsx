@@ -63,7 +63,7 @@ export default async function SearchPage({ searchParams }: Props) {
         type: "Buku" as const,
         title: b.title,
         description: b.synopsis.substring(0, 120),
-        href: `/buku/${b.id}`,
+        href: `/buku/${b.slug}`,
       }))
 
       const articleResults = articles.map((a) => ({

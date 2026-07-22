@@ -17,6 +17,7 @@ export async function GET(
 
     const mapped = {
       id: String(book.id),
+      slug: book.slug,
       title: book.title,
       author: book.author,
       translator: book.translator,

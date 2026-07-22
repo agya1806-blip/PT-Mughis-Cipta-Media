@@ -51,6 +51,7 @@ export default async function PenulisDetailPage({ params }: Props) {
     .filter((b) => b.author.trim() === authorName)
     .map((b) => ({
       id: String(b.id),
+      slug: b.slug,
       title: b.title,
       author: b.author,
       translator: b.translator,

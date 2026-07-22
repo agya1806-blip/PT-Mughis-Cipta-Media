@@ -7,7 +7,7 @@ import SectionWrapper from "./SectionWrapper"
 import SectionHeader from "./SectionHeader"
 
 interface Book {
-  id: string; title: string; author: string; price: number
+  id: string; slug: string; title: string; author: string; price: number
   cover_image: string; synopsis: string; category_name: string
 }
 interface Props { books: Book[] }
@@ -104,7 +104,7 @@ export function FeaturedBooksCarousel({ books }: Props) {
             </div>
             <div className="flex items-center gap-4">
               <span className="text-2xl font-bold text-green-dark">Rp{book.price.toLocaleString("id-ID")}</span>
-              <Link href={`/buku/${book.id}`} className="inline-flex items-center gap-2 px-5 py-2.5 bg-green hover:bg-green-dark text-gold text-sm font-medium rounded-full transition-all hover:shadow-lg hover:shadow-green/25">
+              <Link href={`/buku/${book.slug}`} className="inline-flex items-center gap-2 px-5 py-2.5 bg-green hover:bg-green-dark text-gold text-sm font-medium rounded-full transition-all hover:shadow-lg hover:shadow-green/25">
                 Detail <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </div>

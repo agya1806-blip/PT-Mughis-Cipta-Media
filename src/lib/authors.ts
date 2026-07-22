@@ -50,6 +50,7 @@ export async function getAuthorBooks(authorName: string) {
 
   return prismaBooks.map((b) => ({
     id: String(b.id),
+    slug: b.slug,
     title: b.title,
     author: b.author,
     translator: b.translator,

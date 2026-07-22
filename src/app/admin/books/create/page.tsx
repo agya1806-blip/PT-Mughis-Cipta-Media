@@ -11,7 +11,7 @@ export default function CreateBook() {
   const { toast } = useToast()
   const [categories, setCategories] = useState<{ id: number; name: string }[]>([])
   const [form, setForm] = useState({
-    title: "", author: "", translator: "", publisher: "", categoryId: "",
+    title: "", slug: "", author: "", translator: "", publisher: "", categoryId: "",
     synopsis: "", price: "", resellerPrice: "", stock: "0",
     coverImage: "", isbn: "", pageCount: "0", previewPdfUrl: "",
     weight: "250", dimensions: "", language: "Indonesia",
@@ -19,6 +19,11 @@ export default function CreateBook() {
     whatsapp: "",
   })
   const [submitting, setSubmitting] = useState(false)
+
+  function autoSlug(title: string) {
+    const s = title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").substring(0, 100)
+    setForm((prev) => ({ ...prev, slug: prev.slug || s }))
+  }
 
   useEffect(() => {
     fetch("/api/categories")
@@ -63,7 +68,11 @@ export default function CreateBook() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="sm:col-span-2">
               <label className="block text-sm font-medium text-zinc-600 mb-1">Judul Buku</label>
-              <input type="text" required className={inputClass} value={form.title} onChange={(e) => setForm({ ...form, title: e.target.value })} />
+              <input type="text" required className={inputClass} value={form.title} onChange={(e) => { setForm({ ...form, title: e.target.value }); autoSlug(e.target.value) }} />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-zinc-600 mb-1">Slug</label>
+              <input type="text" required className={inputClass} value={form.slug} onChange={(e) => setForm({ ...form, slug: e.target.value })} placeholder="judul-buku" />
             </div>
             <div>
               <label className="block text-sm font-medium text-zinc-600 mb-1">Penulis</label>

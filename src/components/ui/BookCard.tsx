@@ -5,6 +5,7 @@ import BookBadge from "./BookBadge"
 
 export interface BookData {
   id: string
+  slug: string
   title: string
   author: string
   price: number
@@ -22,7 +23,7 @@ interface Props {
 }
 
 export default function BookCard({ book, className = "", href }: Props) {
-  const linkHref = href || `/buku/${book.id}`
+  const linkHref = href || `/buku/${book.slug}`
 
   return (
     <div

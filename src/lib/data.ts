@@ -6,6 +6,7 @@ export interface Category {
 
 export interface Book {
   id: string
+  slug: string
   title: string
   author: string
   translator: string | null

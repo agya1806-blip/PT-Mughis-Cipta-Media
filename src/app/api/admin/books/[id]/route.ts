@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server"
 import { prisma } from "@/lib/prisma"
 import { getCurrentUser } from "@/lib/auth"
+import { slugify } from "@/lib/slug"
 
 export async function GET(
   _request: Request,
@@ -37,6 +38,7 @@ export async function PUT(
       where: { id: parseInt(id) },
       data: {
         ...(body.title != null ? { title: body.title } : {}),
+        ...(body.slug != null ? { slug: body.slug || slugify(body.title || "") } : {}),
         ...(body.author != null ? { author: body.author } : {}),
         ...(body.translator !== undefined ? { translator: body.translator || null } : {}),
         ...(body.publisher !== undefined ? { publisher: body.publisher || "" } : {}),

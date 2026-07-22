@@ -45,19 +45,10 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Judul, penulis, kategori, dan harga wajib diisi" }, { status: 400 })
     }
 
-    let slug = slugify(body.title)
-    if (!slug) slug = "book-" + Date.now()
-    let finalSlug = slug
-    let slugIdx = 1
-    while (await prisma.book.findUnique({ where: { slug: finalSlug } })) {
-      finalSlug = slug + "-" + slugIdx
-      slugIdx++
-    }
-
     const book = await prisma.book.create({
       data: {
         title: body.title,
-        slug: finalSlug,
+        slug: body.slug || slugify(body.title),
         author: body.author,
         translator: body.translator || null,
         publisher: body.publisher || "",

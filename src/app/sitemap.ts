@@ -24,14 +24,14 @@ export default async function sitemap() {
 
   try {
     const [books, articles, pages, penulis] = await Promise.all([
-      prisma.book.findMany({ select: { id: true, updatedAt: true } }),
+      prisma.book.findMany({ select: { slug: true, updatedAt: true } }),
       prisma.article.findMany({ select: { slug: true, updatedAt: true } }),
       prisma.page.findMany({ select: { slug: true, updatedAt: true } }),
       prisma.book.findMany({ select: { author: true }, distinct: ["author"] }),
     ])
 
     const bookPages = books.map((b) => ({
-      url: `${baseUrl}/buku/${b.id}`,
+      url: `${baseUrl}/buku/${b.slug}`,
       lastModified: b.updatedAt,
       changeFrequency: "weekly" as const,
       priority: 0.6,

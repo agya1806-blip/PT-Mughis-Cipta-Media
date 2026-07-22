@@ -10,7 +10,7 @@ export default function BookCard({ book }: { book: Book }) {
 
   return (
     <Link
-      href={`/buku/${book.id}`}
+      href={`/buku/${book.slug}`}
       className="group relative flex flex-col overflow-hidden rounded-2xl border border-gold/20 bg-cream transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-gold/40"
     >
       <div className="relative aspect-[3/4] bg-cream flex items-center justify-center overflow-hidden">

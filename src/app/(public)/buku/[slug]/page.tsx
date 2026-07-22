@@ -50,7 +50,7 @@ export default async function BookDetailPage({ params }: { params: Promise<{ slu
 
   const related = relatedBooks.map((b) => ({
     id: String(b.id),
-    slug: b.slug,
+    slug: b.slug!,
     title: b.title,
     author: b.author,
     translator: b.translator,

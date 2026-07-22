@@ -12,7 +12,7 @@ export default function EditBook() {
   const { toast } = useToast()
   const [categories, setCategories] = useState<{ id: number; name: string }[]>([])
   const [form, setForm] = useState({
-    title: "", author: "", translator: "", publisher: "", categoryId: "",
+    title: "", slug: "", author: "", translator: "", publisher: "", categoryId: "",
     synopsis: "", price: "", resellerPrice: "", stock: "0",
     coverImage: "", isbn: "", pageCount: "0", previewPdfUrl: "",
     weight: "250", dimensions: "", language: "", publicationYear: "",
@@ -28,7 +28,7 @@ export default function EditBook() {
     ]).then(([cats, book]) => {
       setCategories(Array.isArray(cats) ? cats : cats.categories || [])
       setForm({
-        title: book.title, author: book.author, translator: book.translator || "",
+        title: book.title, slug: book.slug, author: book.author, translator: book.translator || "",
         publisher: book.publisher || "", categoryId: String(book.categoryId),
         synopsis: book.synopsis, price: String(book.price),
         resellerPrice: book.resellerPrice ? String(book.resellerPrice) : "",
@@ -86,6 +86,10 @@ export default function EditBook() {
             <div className="sm:col-span-2">
               <label className="block text-sm font-medium text-zinc-600 mb-1">Judul Buku</label>
               <input type="text" required className={inputClass} value={form.title} onChange={(e) => setForm({ ...form, title: e.target.value })} />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-zinc-600 mb-1">Slug</label>
+              <input type="text" required className={inputClass} value={form.slug} onChange={(e) => setForm({ ...form, slug: e.target.value })} placeholder="judul-buku" />
             </div>
             <div>
               <label className="block text-sm font-medium text-zinc-600 mb-1">Penulis</label>

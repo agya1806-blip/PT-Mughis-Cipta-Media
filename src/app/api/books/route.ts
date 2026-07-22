@@ -41,6 +41,7 @@ export async function GET(request: NextRequest) {
 
     const mapped = books.map((b) => ({
       id: String(b.id),
+      slug: b.slug,
       title: b.title,
       author: b.author,
       translator: b.translator,

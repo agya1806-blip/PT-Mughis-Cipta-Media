@@ -82,7 +82,7 @@ model Book {
   createdAt            DateTime @default(now()) @map("created_at")
   updatedAt            DateTime @updatedAt @map("updated_at")
 
-  category   Category    @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  category   Category    @relation(fields: [categoryId], references: [id], onDelete: NoAction)
   orderItems OrderItem[]
 
   @@map("books")
@@ -134,8 +134,8 @@ model OrderItem {
   quantity Int    @default(1)
   weight   Int    @default(0)
 
-  order Order @relation(fields: [orderId], references: [id], onDelete: Cascade)
-  book  Book  @relation(fields: [bookId], references: [id], onDelete: Cascade)
+  order Order @relation(fields: [orderId], references: [id], onDelete: NoAction)
+  book  Book  @relation(fields: [bookId], references: [id], onDelete: NoAction)
 
   @@map("order_items")
 }

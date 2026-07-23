@@ -2,6 +2,7 @@ import { notFound } from "next/navigation"
 import Link from "next/link"
 import Image from "next/image"
 import { prisma } from "@/lib/prisma"
+import { slugifyAuthor } from "@/lib/authors"
 import { BookDetailClient } from "./BookDetailClient"
 import BookCard from "@/components/BookCard"
 import Breadcrumb from "@/components/ui/Breadcrumb"
@@ -172,7 +173,7 @@ export default async function BookDetailPage({ params }: { params: Promise<{ slu
                 <div>
                   <span className="text-green/60">Penulis</span>
                   <Link
-                    href={`/penulis/${encodeURIComponent(mapped.author)}`}
+                    href={`/penulis/${slugifyAuthor(mapped.author)}`}
                     className="font-medium text-green-dark mt-0.5 block hover:text-gold transition-colors"
                   >
                     {mapped.author}

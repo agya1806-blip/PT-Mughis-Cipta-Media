@@ -9,6 +9,13 @@ export async function GET(request: NextRequest) {
 
   const decodedUrl = decodeURIComponent(url)
 
+  const safeUrl = decodedUrl
+    .replace(/&/g, "&amp;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+
   const html = `<!DOCTYPE html>
 <html lang="id">
 <head>
@@ -75,7 +82,7 @@ export async function GET(request: NextRequest) {
     <span>|</span>
     <span>Hak cipta Maktabah al-Mughis</span>
   </div>
-  <iframe src="${decodedUrl}#toolbar=0&navpanes=0&scrollbar=1&view=FitH" allow="fullscreen" sandbox="allow-scripts allow-same-origin"></iframe>
+  <iframe src="${safeUrl}#toolbar=0&amp;navpanes=0&amp;scrollbar=1&amp;view=FitH" allow="fullscreen" sandbox="allow-scripts allow-same-origin"></iframe>
 </div>
 <div class="watermark">&copy; Maktabah al-Mughis</div>
 <script>

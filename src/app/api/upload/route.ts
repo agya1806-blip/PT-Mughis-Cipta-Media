@@ -1,8 +1,14 @@
 import { NextResponse } from "next/server"
 import { writeFile, mkdir } from "fs/promises"
 import path from "path"
+import { getCurrentUser } from "@/lib/auth"
 
 export async function POST(request: Request) {
+  const user = await getCurrentUser()
+  if (!user || user.role !== "ADMIN") {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 403 })
+  }
+
   try {
     const formData = await request.formData()
     const file = formData.get("file") as File | null

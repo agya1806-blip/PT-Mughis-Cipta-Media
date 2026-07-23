@@ -21,6 +21,11 @@ export default function EditBook() {
   const [submitting, setSubmitting] = useState(false)
   const [loading, setLoading] = useState(true)
 
+  function autoSlug(title: string) {
+    const s = title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").substring(0, 100)
+    setForm((prev) => ({ ...prev, slug: prev.slug || s }))
+  }
+
   useEffect(() => {
     Promise.all([
       fetch("/api/categories").then((r) => r.json()),
@@ -85,7 +90,7 @@ export default function EditBook() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="sm:col-span-2">
               <label className="block text-sm font-medium text-zinc-600 mb-1">Judul Buku</label>
-              <input type="text" required className={inputClass} value={form.title} onChange={(e) => setForm({ ...form, title: e.target.value })} />
+              <input type="text" required className={inputClass} value={form.title} onChange={(e) => { setForm({ ...form, title: e.target.value }); autoSlug(e.target.value) }} />
             </div>
             <div>
               <label className="block text-sm font-medium text-zinc-600 mb-1">Slug</label>

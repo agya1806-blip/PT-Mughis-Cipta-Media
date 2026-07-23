@@ -14,7 +14,7 @@ export default function AdminDashboard() {
   useEffect(() => {
     fetch("/api/admin/dashboard")
       .then((r) => r.json())
-      .then(setData)
+      .then((d) => { if (d && typeof d === "object" && !d.error) setData(d) })
       .catch(() => {})
   }, [])
 

@@ -31,7 +31,6 @@ export async function POST(request: Request) {
         approvalStatus: user.approvalStatus,
         phone: user.phone,
       },
-      token,
     })
 
     response.cookies.set("token", token, {

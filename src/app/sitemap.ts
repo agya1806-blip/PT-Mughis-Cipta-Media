@@ -1,4 +1,5 @@
 import { prisma } from "@/lib/prisma"
+import { slugifyAuthor } from "@/lib/authors"
 
 export default async function sitemap() {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://mughisciptamedia.com"
@@ -52,7 +53,7 @@ export default async function sitemap() {
     }))
 
     const authorPages = penulis.map((p) => ({
-      url: `${baseUrl}/penulis/${encodeURIComponent(p.author)}`,
+      url: `${baseUrl}/penulis/${slugifyAuthor(p.author)}`,
       lastModified: new Date(),
       changeFrequency: "weekly" as const,
       priority: 0.5,

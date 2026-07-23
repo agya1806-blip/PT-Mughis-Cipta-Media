@@ -100,17 +100,11 @@ export default function MobileDrawer({ open, onClose, links }: Props) {
             animate={{ y: 0 }}
             exit={{ y: "100%" }}
             transition={spring}
-            className="absolute bottom-0 inset-x-0 max-h-[85vh] bg-cream dark:bg-green-dark rounded-t-3xl shadow-2xl flex flex-col"
+            className="fixed bottom-0 inset-x-0 max-h-[85vh] bg-cream dark:bg-green-dark rounded-t-3xl shadow-2xl flex flex-col"
             onClick={(e) => e.stopPropagation()}
             role="dialog"
             aria-modal="true"
             aria-label="Navigasi menu"
-            drag={prefersReducedMotion ? false : "y"}
-            dragConstraints={{ top: 0, bottom: 150 }}
-            dragElastic={0.2}
-            onDragEnd={(_, info) => {
-              if (info.offset.y > 100) onClose()
-            }}
           >
             <div className="shrink-0">
               <div className="flex items-center justify-center pt-3 pb-1">

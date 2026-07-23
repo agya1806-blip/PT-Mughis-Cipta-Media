@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import Link from "next/link"
+import { LayoutDashboard, BookOpen, FileText, FolderTree, Home } from "lucide-react"
 import AdminShell from "@/components/admin/AdminShell"
 
 export const metadata: Metadata = {
@@ -44,21 +45,21 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
 function MobileSidebar() {
   return (
-    <div className="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-cream border-t border-gold/20 flex items-center justify-around px-2 py-2 safe-area-bottom">
-      <MobileNav href="/admin" label="Dashboard" icon={<span className="text-xs">📊</span>} />
-      <MobileNav href="/admin/books" label="Buku" icon={<span className="text-xs">📚</span>} />
-      <MobileNav href="/admin/articles" label="Artikel" icon={<span className="text-xs">📝</span>} />
-      <MobileNav href="/admin/categories" label="Kategori" icon={<span className="text-xs">🏷️</span>} />
-      <MobileNav href="/" label="Site" icon={<span className="text-xs">🌐</span>} />
+    <div className="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-cream border-t border-gold/20 flex items-center justify-around safe-area-bottom" style={{ padding: "env(safe-area-inset-bottom, 0px) 0 0" }}>
+      <MobileNav href="/admin" label="Dashboard" icon={<LayoutDashboard className="w-5 h-5" />} />
+      <MobileNav href="/admin/books" label="Buku" icon={<BookOpen className="w-5 h-5" />} />
+      <MobileNav href="/admin/articles" label="Artikel" icon={<FileText className="w-5 h-5" />} />
+      <MobileNav href="/admin/categories" label="Kategori" icon={<FolderTree className="w-5 h-5" />} />
+      <MobileNav href="/" label="Site" icon={<Home className="w-5 h-5" />} />
     </div>
   )
 }
 
 function MobileNav({ href, label, icon }: { href: string; label: string; icon: React.ReactNode }) {
   return (
-    <Link href={href} className="flex flex-col items-center gap-0.5 px-2 py-1 rounded-lg text-green/70 hover:text-gold transition-colors">
+    <Link href={href} className="flex flex-col items-center gap-0.5 min-w-[60px] py-2 rounded-lg text-green/70 hover:text-gold transition-colors">
       {icon}
-      <span className="text-[10px] font-medium">{label}</span>
+      <span className="text-[11px] font-medium">{label}</span>
     </Link>
   )
 }

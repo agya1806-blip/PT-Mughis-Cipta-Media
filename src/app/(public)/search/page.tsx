@@ -127,7 +127,7 @@ export default async function SearchPage({ searchParams }: Props) {
                     href={r.href}
                     className="block bg-cream rounded-xl border border-gold/20 p-5 hover:shadow-md transition-shadow"
                   >
-                    <span className="inline-block text-xs font-medium text-green-dark bg-gold/10 px-2 py-0.5 rounded-full mb-2">
+                    <span className="inline-block text-xs font-medium text-green-dark dark:text-gold bg-gold/10 px-2 py-0.5 rounded-full mb-2">
                       {r.type}
                     </span>
                     <h2 className="font-semibold text-green-dark mb-1">{r.title}</h2>

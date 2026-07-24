@@ -93,7 +93,7 @@ export function KatalogClient({ initialBooks, initialCategories, initialTotal, i
                 />
                 <button
                   onClick={() => updateFilters({ search: searchInput })}
-                  className="absolute right-1.5 top-1/2 -translate-y-1/2 p-1.5 text-green/60 hover:text-green-dark"
+                  className="absolute right-1.5 top-1/2 -translate-y-1/2 p-1.5 text-green/60 dark:text-gold/70 hover:text-green-dark dark:hover:text-cream"
                 >
                   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -113,7 +113,7 @@ export function KatalogClient({ initialBooks, initialCategories, initialTotal, i
                       onClick={() => updateFilters({ category_id: isActive ? "" : cat.id })}
                       className={`block w-full text-left px-3 py-1.5 rounded-lg text-sm transition-colors ${
                         isActive
-                          ? "bg-gold/10 text-green-dark font-medium"
+                          ? "bg-gold/10 text-green-dark dark:text-gold font-medium"
                           : "text-green/80 hover:bg-cream hover:text-green-dark"
                       }`}
                     >
@@ -126,7 +126,7 @@ export function KatalogClient({ initialBooks, initialCategories, initialTotal, i
 
             <button
               onClick={resetFilters}
-              className="w-full rounded-lg border border-gold/20 px-4 py-2 text-sm font-medium text-green/80 transition-colors hover:bg-cream hover:text-green-dark"
+              className="w-full rounded-lg border border-gold/20 px-4 py-2 text-sm font-medium text-green/80 dark:text-gold/80 transition-colors hover:bg-cream dark:hover:bg-green-dark/80 hover:text-green-dark dark:hover:text-cream"
             >
               Reset Filter
             </button>
@@ -174,7 +174,7 @@ export function KatalogClient({ initialBooks, initialCategories, initialTotal, i
                 </svg>
                 <h3 className="text-lg font-medium text-green/80 mb-1">Tidak ada buku ditemukan</h3>
                 <p className="text-sm text-green/60 mb-4">Coba ubah kata kunci atau filter pencarian</p>
-                <button onClick={resetFilters} className="text-sm font-medium text-green-dark hover:text-green">
+                <button onClick={resetFilters} className="text-sm font-medium text-green-dark dark:text-gold hover:text-green dark:hover:text-cream">
                   Reset Filter
                 </button>
               </div>
@@ -205,7 +205,7 @@ export function KatalogClient({ initialBooks, initialCategories, initialTotal, i
         >
           Filter
         </button>
-        <button onClick={resetFilters} className="flex-1 text-center text-sm font-medium text-green-dark border border-gold/30 rounded-lg py-2.5">
+        <button onClick={resetFilters} className="flex-1 text-center text-sm font-medium text-green-dark dark:text-gold border border-gold/30 rounded-lg py-2.5">
           Reset
         </button>
       </div>

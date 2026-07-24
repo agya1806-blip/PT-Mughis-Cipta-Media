@@ -63,7 +63,7 @@ function DetailModal({
           {!submission.isRead && (
             <button
               onClick={() => { onMarkRead(submission.id); onClose() }}
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-gold/10 text-green-dark text-sm font-medium hover:bg-gold/20 transition-colors"
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-gold/10 text-green-dark dark:text-gold text-sm font-medium hover:bg-gold/20 transition-colors"
             >
               <MailOpen className="w-4 h-4" />
               Tandai Dibaca

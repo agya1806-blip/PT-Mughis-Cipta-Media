@@ -4,11 +4,11 @@ interface TextLogoProps {
 }
 
 const styles = {
-  navbar: { wrapper: "flex items-center gap-1.5", pt: "text-gold text-[10px] sm:text-xs font-semibold tracking-wider", name: "text-green-dark font-bold text-sm sm:text-base" },
+  navbar: { wrapper: "flex items-center gap-1.5", pt: "text-gold text-[10px] sm:text-xs font-semibold tracking-wider", name: "text-green-dark dark:text-cream font-bold text-sm sm:text-base" },
   footer: { wrapper: "inline-flex items-center gap-1.5", pt: "text-gold text-xs font-semibold tracking-wider", name: "text-cream font-bold text-lg" },
   loading: { wrapper: "flex flex-col items-center", pt: "text-gold text-sm sm:text-base font-semibold tracking-wider", name: "text-cream font-bold text-2xl sm:text-3xl" },
-  card: { wrapper: "flex items-center gap-1.5", pt: "text-green-dark text-xs font-semibold tracking-wider", name: "text-green-dark font-bold text-base" },
-  inline: { wrapper: "flex items-center gap-1", pt: "text-green-dark text-[10px] font-semibold tracking-wider", name: "text-green-dark font-bold text-xs" },
+  card: { wrapper: "flex items-center gap-1.5", pt: "text-green-dark dark:text-gold text-xs font-semibold tracking-wider", name: "text-green-dark dark:text-cream font-bold text-base" },
+  inline: { wrapper: "flex items-center gap-1", pt: "text-green-dark dark:text-gold text-[10px] font-semibold tracking-wider", name: "text-green-dark dark:text-cream font-bold text-xs" },
 }
 
 export default function TextLogo({ variant = "navbar", className = "" }: TextLogoProps) {

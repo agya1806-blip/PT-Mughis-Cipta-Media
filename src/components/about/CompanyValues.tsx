@@ -53,8 +53,8 @@ export default function CompanyValues() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-           <span className="text-green-dark font-semibold text-sm tracking-widest uppercase">Fundasi Perusahaan</span>
-          <h2 className="text-4xl sm:text-5xl font-bold text-green-dark mt-4">
+           <span className="text-green-dark dark:text-gold font-semibold text-sm tracking-widest uppercase">Fundasi Perusahaan</span>
+          <h2 className="text-4xl sm:text-5xl font-bold text-green-dark dark:text-cream mt-4">
             Nilai{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold to-gold-dark">
               Perusahaan

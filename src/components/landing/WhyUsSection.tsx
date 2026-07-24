@@ -24,9 +24,9 @@ export default function WhyUsSection() {
           viewport={{ once: true }}
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gold/10 border border-gold/20 mb-6">
-            <span className="text-green-dark text-xs font-medium uppercase tracking-wider">Mengapa Kami</span>
+            <span className="text-green-dark dark:text-gold text-xs font-medium uppercase tracking-wider">Mengapa Kami</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-green-dark leading-[1.15]">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-green-dark dark:text-cream leading-[1.15]">
             Kenapa Memilih{" "}
             <span className="bg-gradient-to-r from-gold to-gold-dark bg-clip-text text-transparent">Kami?</span>
           </h2>

@@ -9,7 +9,7 @@ interface Props {
 }
 
 const variants: Record<Variant, string> = {
-  gold: "bg-gold/10 border-gold/20 text-green-dark",
+  gold: "bg-gold/10 border-gold/20 text-green-dark dark:text-gold",
   primary: "bg-green border-green text-cream",
   secondary: "bg-cream dark:bg-green-dark border-gold/20 dark:border-gold/10 text-green-dark dark:text-cream",
   outline: "bg-transparent border-gold/30 text-green-dark dark:text-cream",

@@ -42,7 +42,7 @@ export default function Avatar({
 
   return (
     <div
-      className={`${sizeMap[size]} rounded-full bg-gold/10 flex items-center justify-center text-green-dark font-semibold shrink-0 ${className}`}
+      className={`${sizeMap[size]} rounded-full bg-gold/10 flex items-center justify-center text-green-dark dark:text-gold font-semibold shrink-0 ${className}`}
       aria-label={name || "Avatar"}
     >
       {children || initial}

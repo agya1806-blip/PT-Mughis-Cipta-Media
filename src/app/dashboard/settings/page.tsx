@@ -41,7 +41,7 @@ export default function SettingsPage() {
                 onClick={() => setActiveSection(section.id)}
                 className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 ${
                   activeSection === section.id
-                    ? "bg-gold/10 text-green-dark"
+                    ? "bg-gold/10 text-green-dark dark:text-gold"
                     : "text-green/70 dark:text-gold/80 hover:text-green-dark dark:hover:text-cream hover:bg-gold/5 dark:hover:bg-green/20"
                 }`}
               >
@@ -110,7 +110,7 @@ export default function SettingsPage() {
                   <div className="flex gap-3">
                     {["Light", "Dark", "System"].map((mode) => (
                       <button key={mode} className={`flex-1 px-4 py-3 rounded-xl border text-sm font-medium transition-all duration-200 ${
-                        mode === "Light" ? "bg-gold/10 border-gold/30 text-green-dark" : "border-gold/20 dark:border-gold/10 text-green/70 dark:text-gold/80 hover:border-gold/30"
+                        mode === "Light" ? "bg-gold/10 border-gold/30 text-green-dark dark:text-gold" : "border-gold/20 dark:border-gold/10 text-green/70 dark:text-gold/80 hover:border-gold/30"
                       }`}>{mode}</button>
                     ))}
                   </div>

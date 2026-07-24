@@ -1,6 +1,6 @@
 "use client"
 import { motion } from "framer-motion"
-import { MessageCircle, FileText, FileEdit, Palette, Hash, Printer, CheckCircle } from "lucide-react"
+import { MessageCircle, FileText, FileEdit, Palette, Printer, CheckCircle } from "lucide-react"
 import SectionWrapper from "./SectionWrapper"
 import SectionHeader from "./SectionHeader"
 
@@ -9,7 +9,6 @@ const steps = [
   { icon: FileText, label: "Naskah", desc: "Pengiriman dan review naskah" },
   { icon: FileEdit, label: "Editing", desc: "Penyuntingan substansi dan bahasa" },
   { icon: Palette, label: "Desain", desc: "Layout, cover, dan ilustrasi" },
-  { icon: Hash, label: "ISBN", desc: "Pengurusan ISBN Perpustakaan Nasional" },
   { icon: Printer, label: "Cetak", desc: "Produksi dengan kualitas terbaik" },
   { icon: CheckCircle, label: "Selesai", desc: "Buku siap distribusi dan terbit" },
 ]

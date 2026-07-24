@@ -46,7 +46,7 @@ export default function CTASection() {
           >
             <Image
               src="/logo-original.png"
-              alt="Maktabah Al-Mughis"
+              alt="PT Mughis Cipta Media"
               width={120}
               height={13}
               className="h-8 w-auto brightness-0 invert"

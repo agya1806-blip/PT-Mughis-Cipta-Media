@@ -5,12 +5,12 @@ export const metadata = {
   title: "Syarat & Ketentuan",
   description: "Syarat dan ketentuan penggunaan website dan layanan PT Mughis Cipta Media.",
   openGraph: {
-    title: "Syarat & Ketentuan - Maktabah al-Mughis",
-    description: "Syarat dan ketentuan penggunaan layanan Maktabah al-Mughis.",
+    title: "Syarat & Ketentuan - PT Mughis Cipta Media",
+    description: "Syarat dan ketentuan penggunaan layanan PT Mughis Cipta Media.",
   },
   twitter: {
-    title: "Syarat & Ketentuan - Maktabah al-Mughis",
-    description: "Syarat dan ketentuan penggunaan layanan Maktabah al-Mughis.",
+    title: "Syarat & Ketentuan - PT Mughis Cipta Media",
+    description: "Syarat dan ketentuan penggunaan layanan PT Mughis Cipta Media.",
   },
   alternates: { canonical: "/terms" },
 }

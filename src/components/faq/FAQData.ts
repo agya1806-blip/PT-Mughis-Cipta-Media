@@ -16,7 +16,7 @@ export const faqCategories: FAQCategory[] = [
     label: "Penerbitan",
     icon: "BookOpen",
     items: [
-      { q: "Bagaimana cara menerbitkan buku di Maktabah al-Mughis?", a: "Anda bisa menghubungi kami melalui halaman Kontak atau mengirimkan naskah Anda. Tim kami akan melakukan review dan memberikan proposal penerbitan yang sesuai dengan kebutuhan Anda." },
+      { q: "Bagaimana cara menerbitkan buku di PT Mughis Cipta Media?", a: "Anda bisa menghubungi kami melalui halaman Kontak atau mengirimkan naskah Anda. Tim kami akan melakukan review dan memberikan proposal penerbitan yang sesuai dengan kebutuhan Anda." },
       { q: "Berapa lama proses penerbitan buku?", a: "Proses penerbitan buku umumnya memakan waktu 2-4 bulan, tergantung pada kompleksitas naskah, kebutuhan editing, desain, dan proses produksi." },
       { q: "Apakah saya bisa self publishing?", a: "Tentu! Kami menyediakan layanan self publishing bagi penulis yang ingin mengontrol penuh proses kreatif dan distribusi buku mereka." },
       { q: "Apakah naskah saya akan diedit?", a: "Ya, setiap naskah yang masuk akan melalui proses editing profesional meliputi editing substansi, bahasa, dan proofreading untuk memastikan kualitas terbaik." },
@@ -34,17 +34,7 @@ export const faqCategories: FAQCategory[] = [
       { q: "Apakah saya bisa memilih jenis kertas?", a: "Ya, kami menyediakan berbagai pilihan jenis kertas sesuai kebutuhan dan anggaran Anda, mulai dari HVS, book paper, art paper, hingga kertas khusus." },
     ],
   },
-  {
-    id: "isbn",
-    label: "ISBN",
-    icon: "Hash",
-    items: [
-      { q: "Apa itu ISBN?", a: "ISBN (International Standard Book Number) adalah kode identifikasi unik untuk setiap buku yang diterbitkan secara internasional. ISBN diperlukan untuk distribusi buku di toko buku dan platform online." },
-      { q: "Apakah buku saya akan memiliki ISBN?", a: "Ya, kami mengurus pengajuan ISBN Perpustakaan Nasional RI untuk setiap buku yang kami terbitkan secara mayor." },
-      { q: "Berapa lama pengurusan ISBN?", a: "Proses pengurusan ISBN umumnya memakan waktu 3-7 hari kerja setelah pengajuan ke Perpustakaan Nasional." },
-      { q: "Apakah self publishing juga bisa mendapatkan ISBN?", a: "Ya, penulis self publishing juga bisa mendapatkan ISBN melalui layanan kami. Biaya pengurusan ISBN akan ditambahkan ke paket layanan yang dipilih." },
-    ],
-  },
+
   {
     id: "pembayaran",
     label: "Pembayaran",

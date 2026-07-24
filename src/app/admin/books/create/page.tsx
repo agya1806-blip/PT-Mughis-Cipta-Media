@@ -13,7 +13,7 @@ export default function CreateBook() {
   const [form, setForm] = useState({
     title: "", slug: "", author: "", translator: "", publisher: "", categoryId: "",
     synopsis: "", price: "", resellerPrice: "", stock: "0",
-    coverImage: "", isbn: "", pageCount: "0", previewPdfUrl: "",
+    coverImage: "", pageCount: "0", previewPdfUrl: "",
     weight: "250", dimensions: "", language: "Indonesia",
     publicationYear: String(new Date().getFullYear()),
     whatsapp: "",
@@ -94,10 +94,6 @@ export default function CreateBook() {
                   <option key={c.id} value={c.id}>{c.name}</option>
                 ))}
               </select>
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-zinc-600 mb-1">ISBN</label>
-              <input type="text" className={inputClass} value={form.isbn} onChange={(e) => setForm({ ...form, isbn: e.target.value })} placeholder="978-xxx-xxx-xxx-x" />
             </div>
           </div>
         </FormSection>

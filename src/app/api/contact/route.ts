@@ -14,9 +14,9 @@ async function sendEmailNotification(name: string, email: string, phone: string 
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        from: "Maktabah al-Mughis <noreply@mughisciptamedia.com>",
+        from: "PT Mughis Cipta Media <noreply@mughisciptamedia.com>",
         to: adminEmail,
-        subject: `Pesan Baru dari ${name} - Form Kontak Maktabah al-Mughis`,
+        subject: `Pesan Baru dari ${name} - Form Kontak PT Mughis Cipta Media`,
         html: `
           <h2>Pesan Baru dari Form Kontak</h2>
           <table style="border-collapse:collapse;width:100%">

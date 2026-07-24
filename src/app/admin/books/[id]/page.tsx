@@ -14,7 +14,7 @@ export default function EditBook() {
   const [form, setForm] = useState({
     title: "", slug: "", author: "", translator: "", publisher: "", categoryId: "",
     synopsis: "", price: "", resellerPrice: "", stock: "0",
-    coverImage: "", isbn: "", pageCount: "0", previewPdfUrl: "",
+    coverImage: "", pageCount: "0", previewPdfUrl: "",
     weight: "250", dimensions: "", language: "", publicationYear: "",
     whatsapp: "",
   })
@@ -38,7 +38,7 @@ export default function EditBook() {
         synopsis: book.synopsis, price: String(book.price),
         resellerPrice: book.resellerPrice ? String(book.resellerPrice) : "",
         stock: String(book.stock), coverImage: book.coverImage || "",
-        isbn: book.isbn || "", pageCount: String(book.pageCount),
+        pageCount: String(book.pageCount),
         previewPdfUrl: book.previewPdfUrl || "",
         weight: String(book.weight || 250), dimensions: book.dimensions || "",
         language: book.language || "", publicationYear: String(book.publicationYear || ""),
@@ -116,10 +116,6 @@ export default function EditBook() {
                   <option key={c.id} value={c.id}>{c.name}</option>
                 ))}
               </select>
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-zinc-600 mb-1">ISBN</label>
-              <input type="text" className={inputClass} value={form.isbn} onChange={(e) => setForm({ ...form, isbn: e.target.value })} />
             </div>
             <div>
               <label className="block text-sm font-medium text-zinc-600 mb-1">No. WhatsApp</label>

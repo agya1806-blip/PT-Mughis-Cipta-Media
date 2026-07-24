@@ -26,13 +26,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title: book.title,
     description: book.synopsis.substring(0, 160),
     openGraph: {
-      title: `${book.title} - Maktabah al-Mughis`,
+      title: `${book.title} - PT Mughis Cipta Media`,
       description: book.synopsis.substring(0, 160),
       images: coverUrl ? [{ url: coverUrl, alt: book.title }] : undefined,
     },
     twitter: {
       card: "summary_large_image",
-      title: `${book.title} - Maktabah al-Mughis`,
+      title: `${book.title} - PT Mughis Cipta Media`,
       description: book.synopsis.substring(0, 160),
       images: coverUrl ? [coverUrl] : undefined,
     },
@@ -64,7 +64,6 @@ export default async function BookDetailPage({ params }: { params: Promise<{ slu
     author: b.author,
     translator: b.translator,
     publisher: b.publisher,
-    isbn: b.isbn || "",
     page_count: b.pageCount,
     price: Number(b.price),
     category_id: String(b.categoryId),
@@ -87,7 +86,6 @@ export default async function BookDetailPage({ params }: { params: Promise<{ slu
     author: book.author,
     translator: book.translator,
     publisher: book.publisher,
-    isbn: book.isbn || "",
     page_count: book.pageCount,
     price: Number(book.price),
     category_id: String(book.categoryId),
@@ -115,7 +113,6 @@ export default async function BookDetailPage({ params }: { params: Promise<{ slu
             author: mapped.author,
             translator: mapped.translator || undefined,
             publisher: mapped.publisher,
-            isbn: mapped.isbn || undefined,
             numberOfPages: mapped.page_count,
             bookFormat: "Paperback",
             inLanguage: mapped.language,
@@ -188,10 +185,6 @@ export default async function BookDetailPage({ params }: { params: Promise<{ slu
                 <div>
                   <span className="text-green/60">Penerbit</span>
                   <p className="font-medium text-green-dark mt-0.5">{mapped.publisher}</p>
-                </div>
-                <div>
-                  <span className="text-green/60">ISBN</span>
-                  <p className="font-medium text-green-dark mt-0.5">{mapped.isbn}</p>
                 </div>
                 <div>
                   <span className="text-green/60">Halaman</span>

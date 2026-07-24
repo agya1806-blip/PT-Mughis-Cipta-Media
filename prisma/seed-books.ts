@@ -23,7 +23,6 @@ const books = [
     author: 'Ahmad Fauzi',
     translator: '',
     publisher: 'PT Mughis Cipta Media',
-    isbn: '978-602-1234-01-8',
     pageCount: 220,
     price: 75000,
     resellerPrice: 60000,
@@ -42,7 +41,6 @@ const books = [
     author: 'Dr. Siti Nurhaliza, M.Pd.',
     translator: '',
     publisher: 'PT Mughis Cipta Media',
-    isbn: '978-602-1234-02-5',
     pageCount: 180,
     price: 65000,
     resellerPrice: 52000,
@@ -61,7 +59,6 @@ const books = [
     author: 'KH. Hasan Basri, Lc., M.E.I.',
     translator: '',
     publisher: 'PT Mughis Cipta Media',
-    isbn: '978-602-1234-03-2',
     pageCount: 350,
     price: 95000,
     resellerPrice: 76000,
@@ -80,7 +77,6 @@ const books = [
     author: 'Teuku Muhammad Ali, S.S., M.Hum.',
     translator: '',
     publisher: 'PT Mughis Cipta Media',
-    isbn: '978-602-1234-04-9',
     pageCount: 280,
     price: 85000,
     resellerPrice: 68000,
@@ -99,7 +95,6 @@ const books = [
     author: 'Rizky Pratama, S.Kom., M.M.',
     translator: '',
     publisher: 'PT Mughis Cipta Media',
-    isbn: '978-602-1234-05-6',
     pageCount: 200,
     price: 70000,
     resellerPrice: 56000,
@@ -122,13 +117,13 @@ async function main() {
       console.log('SKIP (category not found):', b.title);
       continue;
     }
-    const existing = await prisma.book.findFirst({ where: { isbn: b.isbn } });
+    const existing = await prisma.book.findFirst({ where: { slug: slugify(b.title) } });
     if (existing) {
       console.log('SKIP (exists):', b.title);
       continue;
     }
     let slug = slugify(b.title);
-    if (!slug) slug = 'book-' + b.isbn;
+    if (!slug) slug = 'book-' + Math.random().toString(36).substring(2, 8);
     let finalSlug = slug;
     let slugIdx = 1;
     while (await prisma.book.findUnique({ where: { slug: finalSlug } })) {
@@ -142,7 +137,6 @@ async function main() {
         author: b.author,
         translator: b.translator || null,
         publisher: b.publisher,
-        isbn: b.isbn,
         pageCount: b.pageCount,
         price: b.price,
         resellerPrice: b.resellerPrice,

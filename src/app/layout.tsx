@@ -14,9 +14,9 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 })
 
-const siteName = "Maktabah al-Mughis – PT Mughis Cipta Media"
+const siteName = "PT Mughis Cipta Media"
 const siteDescription =
-  "Penerbit buku resmi dan percetakan profesional di Indonesia. Layanan penerbitan buku, cetak buku murah, desain cover, editing naskah, pengurusan ISBN, dan distribusi nasional. Percayakan penerbitan buku Anda pada Maktabah al-Mughis."
+  "Penerbit buku resmi dan percetakan profesional di Indonesia. Layanan penerbitan buku, cetak buku murah, desain cover, editing naskah, dan distribusi nasional. Percayakan penerbitan buku Anda pada PT Mughis Cipta Media."
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://mughisciptamedia.com"
 const ogImageUrl = `${baseUrl}/og-image.jpg`
 
@@ -33,16 +33,14 @@ export const metadata: Metadata = {
     "penerbit buku islami",
     "cetak buku murah",
     "penerbit buku Indonesia",
-    "Maktabah al-Mughis",
     "PT Mughis Cipta Media",
     "jasa penerbitan buku",
-    "ISBN buku",
     "distribusi buku nasional",
   ],
   openGraph: {
     type: "website",
     locale: "id_ID",
-    siteName: "Maktabah al-Mughis",
+    siteName: "PT Mughis Cipta Media",
     title: siteName,
     description: siteDescription,
     images: [{ url: ogImageUrl, width: 1200, height: 630 }],
@@ -107,14 +105,13 @@ export default function RootLayout({
             "@context": "https://schema.org",
             "@type": "Organization",
             name: "PT Mughis Cipta Media",
-            alternateName: "Maktabah al-Mughis",
             description:
-              "Penerbit, percetakan, dan mitra kreatif untuk mewujudkan karya terbaik Anda. Layanan penerbitan buku, editing, desain, ISBN, dan distribusi nasional.",
+              "Penerbit, percetakan, dan mitra kreatif untuk mewujudkan karya terbaik Anda. Layanan penerbitan buku, editing, desain, dan distribusi nasional.",
             url: process.env.NEXT_PUBLIC_BASE_URL || "https://mughisciptamedia.com",
             logo: `${baseUrl}/logo-original.png`,
             sameAs: [
-              "https://www.instagram.com/maktabahmughis",
-              "https://www.facebook.com/maktabahmughis",
+              "https://www.instagram.com/ptmughis",
+              "https://www.facebook.com/ptmughis",
             ],
           }}
         />
@@ -122,7 +119,7 @@ export default function RootLayout({
           data={{
             "@context": "https://schema.org",
             "@type": "WebSite",
-            name: "Maktabah al-Mughis",
+            name: "PT Mughis Cipta Media",
             url: baseUrl,
             potentialAction: {
               "@type": "SearchAction",

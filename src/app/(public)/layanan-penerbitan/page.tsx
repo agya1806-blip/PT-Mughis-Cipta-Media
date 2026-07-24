@@ -11,9 +11,9 @@ export async function generateMetadata() {
   return {
     title: "Layanan Penerbitan",
     description:
-      "PT Mughis Cipta Media menyediakan layanan penerbitan buku, percetakan, pengurusan ISBN, layout, dan desain cover profesional.",
+      "PT Mughis Cipta Media menyediakan layanan penerbitan buku, percetakan, layout, dan desain cover profesional.",
     openGraph: {
-      title: "Layanan Penerbitan - Maktabah al-Mughis",
+      title: "Layanan Penerbitan - PT Mughis Cipta Media",
       description: "Solusi lengkap penerbitan dan percetakan buku profesional.",
     },
     alternates: { canonical: "/layanan-penerbitan" },

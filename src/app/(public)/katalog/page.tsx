@@ -5,14 +5,14 @@ import type { Book, Category } from "@/lib/data"
 
 export const metadata = {
   title: "Katalog Buku",
-  description: "Jelajahi koleksi buku-buku islami dari Maktabah al-Mughis. Temukan berbagai kategori buku seperti Aqidah, Fiqih, Tafsir, Hadits, dan lainnya.",
+  description: "Jelajahi koleksi buku dari PT Mughis Cipta Media. Temukan berbagai kategori buku.",
   openGraph: {
-    title: "Katalog Buku - Maktabah al-Mughis",
-    description: "Jelajahi koleksi buku-buku islami dari Maktabah al-Mughis.",
+    title: "Katalog Buku - PT Mughis Cipta Media",
+    description: "Jelajahi koleksi buku dari PT Mughis Cipta Media.",
   },
   twitter: {
-    title: "Katalog Buku - Maktabah al-Mughis",
-    description: "Jelajahi koleksi buku-buku islami dari Maktabah al-Mughis.",
+    title: "Katalog Buku - PT Mughis Cipta Media",
+    description: "Jelajahi koleksi buku dari PT Mughis Cipta Media.",
   },
   alternates: {
     canonical: "/katalog",
@@ -60,7 +60,7 @@ export default async function KatalogPage({ searchParams }: PageParams) {
       <PageHero
         title="Katalog"
         accent="Buku"
-        description="Jelajahi koleksi buku-buku islami dari Maktabah al-Mughis. Temukan berbagai kategori dan penulis."
+        description="Jelajahi koleksi buku dari PT Mughis Cipta Media. Temukan berbagai kategori dan penulis."
         breadcrumb={[
           { label: "Beranda", href: "/" },
           { label: "Katalog Buku" },

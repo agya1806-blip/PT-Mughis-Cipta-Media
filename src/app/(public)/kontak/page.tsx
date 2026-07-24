@@ -9,13 +9,13 @@ import ContactCTA from "@/components/contact/ContactCTA"
 export async function generateMetadata() {
   return {
     title: "Kontak",
-    description: "Hubungi PT Mughis Cipta Media - Maktabah al-Mughis untuk informasi penerbitan, percetakan, dan layanan kreatif lainnya.",
+    description: "Hubungi PT Mughis Cipta Media untuk informasi penerbitan, percetakan, dan layanan kreatif lainnya.",
     openGraph: {
-      title: "Kontak - Maktabah al-Mughis",
+      title: "Kontak - PT Mughis Cipta Media",
       description: "Hubungi kami untuk informasi penerbitan dan layanan kreatif.",
     },
     twitter: {
-      title: "Kontak - Maktabah al-Mughis",
+      title: "Kontak - PT Mughis Cipta Media",
       description: "Hubungi kami untuk informasi penerbitan dan layanan kreatif.",
     },
     alternates: { canonical: "/kontak" },

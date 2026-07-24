@@ -3,7 +3,7 @@
 import { motion } from "framer-motion"
 import {
   BookOpen, Printer, PenLine, FileEdit, Search,
-  LayoutTemplate, Palette, QrCode, Truck, ShoppingBag,
+  LayoutTemplate, Palette, Truck, ShoppingBag,
   Radio,
 } from "lucide-react"
 
@@ -15,7 +15,7 @@ const services = [
   { icon: Search, title: "Proofreading", desc: "Pemeriksaan detail untuk memastikan naskah bebas dari kesalahan ejaan, tanda baca, dan tata bahasa." },
   { icon: LayoutTemplate, title: "Layout Buku", desc: "Penataan isi buku yang rapi, nyaman dibaca, dan sesuai standar industri penerbitan." },
   { icon: Palette, title: "Desain Cover", desc: "Desain sampul buku yang menarik, profesional, dan mencerminkan isi buku." },
-  { icon: QrCode, title: "Pengurusan ISBN", desc: "Bantuan pengurusan ISBN Perpustakaan Nasional RI untuk setiap buku yang diterbitkan." },
+
   { icon: Truck, title: "Distribusi Buku", desc: "Jaringan distribusi yang luas untuk menjangkau pembaca di seluruh Indonesia." },
   { icon: ShoppingBag, title: "Pemasaran Buku", desc: "Strategi pemasaran untuk memperkenalkan buku Anda ke pasar yang lebih luas." },
   { icon: Radio, title: "Media Kreatif", desc: "Layanan media kreatif termasuk konten digital, multimedia, dan promosi buku." },

@@ -34,7 +34,7 @@ export interface FooterData {
 export const footerData: FooterData = {
   company: {
     name: "PT Mughis Cipta Media",
-    tagline: "Penerbit buku Islami dan pendidikan berkualitas — Maktabah Al-Mughis.",
+    tagline: "Penerbit buku Islami dan pendidikan berkualitas — PT Mughis Cipta Media.",
     address: "Dusun Tanjong Sentosa, Samalanga, Bireuen, Aceh",
     email: "Mughisciptamedia@gmail.com",
     whatsapp: "+62 857-2345-6789",
@@ -56,7 +56,6 @@ export const footerData: FooterData = {
       links: [
         { label: "Penerbitan Buku", href: "/layanan-penerbitan#penerbitan-buku" },
         { label: "Percetakan Buku", href: "/layanan-penerbitan#percetakan-buku" },
-        { label: "Pengurusan ISBN", href: "/layanan-penerbitan#pengurusan-isbn" },
         { label: "Layout Buku", href: "/layanan-penerbitan#layout-buku" },
         { label: "Desain Cover", href: "/layanan-penerbitan#desain-cover" },
       ],
@@ -78,6 +77,6 @@ export const footerData: FooterData = {
     { name: "YouTube", href: "https://youtube.com/@ptmughis", label: "YouTube" },
     { name: "LinkedIn", href: "https://linkedin.com/company/ptmughis", label: "LinkedIn" },
   ],
-  badges: ["NIB Ready", "PT Ready", "ISBN Ready"],
+  badges: ["NIB Ready", "PT Ready"],
   copyright: "© 2026 PT Mughis Cipta Media. Seluruh Hak Cipta Dilindungi.",
 }

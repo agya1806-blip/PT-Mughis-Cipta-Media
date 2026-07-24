@@ -6,7 +6,6 @@ export interface Book {
   weight: number
   coverImage: string
   stock: number
-  isbn: string
   category: string
 }
 

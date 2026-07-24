@@ -22,7 +22,6 @@ export async function GET(
       author: book.author,
       translator: book.translator,
       publisher: book.publisher,
-      isbn: book.isbn || "",
       page_count: book.pageCount,
       price: Number(book.price),
       category_id: String(book.categoryId),

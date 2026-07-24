@@ -2,14 +2,14 @@
 
 import Link from "next/link"
 import { motion } from "framer-motion"
-import { BookOpen, Printer, FileEdit, Palette, Hash, Truck, ArrowRight } from "lucide-react"
+import { BookOpen, Printer, FileEdit, Palette, Truck, ArrowRight } from "lucide-react"
 import SolutionCard from "@/components/ui/SolutionCard"
 
 const solutions = [
   {
     icon: <BookOpen className="w-6 h-6 text-gold" />,
     title: "Penerbitan Buku",
-    description: "Layanan penerbitan buku profesional dari naskah hingga ISBN. Kami mendampingi penulis dalam setiap tahap penerbitan.",
+    description: "Layanan penerbitan buku profesional dari naskah hingga produksi. Kami mendampingi penulis dalam setiap tahap penerbitan.",
   },
   {
     icon: <Printer className="w-6 h-6 text-gold" />,
@@ -25,11 +25,6 @@ const solutions = [
     icon: <Palette className="w-6 h-6 text-gold" />,
     title: "Desain Cover",
     description: "Desain cover buku eksklusif yang mencerminkan identitas dan nilai dari buku Anda.",
-  },
-  {
-    icon: <Hash className="w-6 h-6 text-gold" />,
-    title: "ISBN & Administrasi",
-    description: "Bantuan pengurusan ISBN dan administrasi penerbitan secara lengkap dan terpercaya.",
   },
   {
     icon: <Truck className="w-6 h-6 text-gold" />,

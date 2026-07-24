@@ -23,7 +23,7 @@ export default function ContactCTA({ phone = "6285723456789" }: { phone?: string
           <div className="mx-auto mb-6 flex items-center justify-center">
             <Image
               src="/logo-original.png"
-              alt="Maktabah Al-Mughis"
+              alt="PT Mughis Cipta Media"
               width={160}
               height={17}
               className="h-10 w-auto brightness-0 invert"

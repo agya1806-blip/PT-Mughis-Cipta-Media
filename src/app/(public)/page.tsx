@@ -11,11 +11,11 @@ import Testimonials from "@/components/home/Testimonials"
 import FinalCTA from "@/components/home/FinalCTA"
 
 export const metadata: Metadata = {
-  title: "Penerbit Buku & Percetakan Profesional – Maktabah al-Mughis",
+  title: "Penerbit Buku & Percetakan Profesional – PT Mughis Cipta Media",
   description:
-    "Penerbit buku terpercaya di Indonesia. Layanan penerbitan buku, cetak buku murah, desain cover, editing naskah, pengurusan ISBN, dan distribusi nasional. Wujudkan karya Anda bersama Maktabah al-Mughis, penerbit buku islami dan umum.",
+    "Penerbit buku terpercaya di Indonesia. Layanan penerbitan buku, cetak buku murah, desain cover, editing naskah, dan distribusi nasional. Wujudkan karya Anda bersama PT Mughis Cipta Media.",
   openGraph: {
-    title: "Penerbit Buku & Percetakan Profesional – Maktabah al-Mughis",
+    title: "Penerbit Buku & Percetakan Profesional – PT Mughis Cipta Media",
     description:
       "Penerbit buku terpercaya di Indonesia. Layanan penerbitan buku, cetak buku murah, dan distribusi nasional.",
   },

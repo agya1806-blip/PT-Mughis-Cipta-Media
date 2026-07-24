@@ -13,12 +13,12 @@ export const metadata = {
   description:
     "PT Mughis Cipta Media adalah perusahaan penerbitan, percetakan, distribusi buku, dan media kreatif yang berkomitmen menghadirkan karya berkualitas bagi dunia pendidikan dan literasi Indonesia.",
   openGraph: {
-    title: "Tentang Kami - Maktabah al-Mughis",
+    title: "Tentang Kami - PT Mughis Cipta Media",
     description:
       "Perusahaan penerbitan dan media kreatif yang berkomitmen membangun peradaban melalui buku dan pengetahuan.",
   },
   twitter: {
-    title: "Tentang Kami - Maktabah al-Mughis",
+    title: "Tentang Kami - PT Mughis Cipta Media",
     description:
       "Perusahaan penerbitan dan media kreatif yang berkomitmen membangun peradaban melalui buku dan pengetahuan.",
   },

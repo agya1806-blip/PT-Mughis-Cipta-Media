@@ -11,7 +11,6 @@ export interface Book {
   author: string
   translator: string | null
   publisher: string
-  isbn: string
   page_count: number
   price: number
   category_id: string

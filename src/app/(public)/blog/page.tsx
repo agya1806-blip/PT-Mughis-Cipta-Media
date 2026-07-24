@@ -10,7 +10,7 @@ export const metadata = {
   title: "Media Center",
   description: "Baca artikel dan informasi terbaru seputar dunia penerbitan, literasi, dan kegiatan PT Mughis Cipta Media.",
   openGraph: {
-    title: "Media Center - Maktabah al-Mughis",
+    title: "Media Center - PT Mughis Cipta Media",
     description: "Artikel dan informasi terbaru dari PT Mughis Cipta Media.",
   },
   alternates: { canonical: "/blog" },
@@ -131,7 +131,7 @@ export default async function BlogPage({ searchParams }: Props) {
           {articles.length === 0 ? (
             <EmptyState
               title="Belum ada artikel"
-              description="Kembali lagi nanti untuk membaca artikel-artikel terbaru dari Maktabah al-Mughis."
+              description="Kembali lagi nanti untuk membaca artikel-artikel terbaru dari PT Mughis Cipta Media."
             />
           ) : (
             <>
@@ -156,7 +156,7 @@ export default async function BlogPage({ searchParams }: Props) {
                       <div className="h-48 bg-gradient-to-br from-gold/10 to-gold/5 flex items-center justify-center p-6">
                         <Image
                           src="/logo-original.png"
-                          alt="Maktabah Al-Mughis"
+                          alt="PT Mughis Cipta Media"
                           width={240}
                           height={24}
                           className="h-10 w-auto opacity-80"

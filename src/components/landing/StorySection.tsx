@@ -73,7 +73,7 @@ export default function StorySection() {
 
               <div className="relative h-full flex flex-col items-center justify-center p-12 text-center">
                 <div className="mb-6">
-                  <Image src="/logo-original.png" alt="Maktabah Al-Mughis" width={600} height={63} className="h-7 sm:h-8 w-auto brightness-[10]" />
+                  <Image src="/logo-original.png" alt="PT Mughis Cipta Media" width={600} height={63} className="h-7 sm:h-8 w-auto brightness-[10]" />
                 </div>
                 <p className="text-white leading-relaxed">
                   Menghadirkan karya-karya berkualitas yang mencerahkan, menginspirasi, dan memberdayakan generasi bangsa.

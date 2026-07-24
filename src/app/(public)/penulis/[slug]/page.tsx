@@ -21,16 +21,16 @@ export async function generateMetadata({ params }: Props) {
   const author = authorNames.find((n) => slugifyAuthor(n) === slug)
   if (!author) return { title: "Penulis Tidak Ditemukan" }
   return {
-    title: `${author} | Penulis | Maktabah al-Mughis`,
-    description: `Buku-buku karya ${author} yang diterbitkan oleh Maktabah al-Mughis.`,
+    title: `${author} | Penulis | PT Mughis Cipta Media`,
+    description: `Buku-buku karya ${author} yang diterbitkan oleh PT Mughis Cipta Media.`,
     openGraph: {
-      title: `${author} - Penulis | Maktabah al-Mughis`,
-      description: `Buku-buku karya ${author} yang diterbitkan oleh Maktabah al-Mughis.`,
+      title: `${author} - Penulis | PT Mughis Cipta Media`,
+      description: `Buku-buku karya ${author} yang diterbitkan oleh PT Mughis Cipta Media.`,
     },
     twitter: {
       card: "summary_large_image",
-      title: `${author} - Penulis | Maktabah al-Mughis`,
-      description: `Buku-buku karya ${author} yang diterbitkan oleh Maktabah al-Mughis.`,
+      title: `${author} - Penulis | PT Mughis Cipta Media`,
+      description: `Buku-buku karya ${author} yang diterbitkan oleh PT Mughis Cipta Media.`,
     },
     alternates: { canonical: `/penulis/${slug}` },
   }
@@ -56,7 +56,6 @@ export default async function PenulisDetailPage({ params }: Props) {
       author: b.author,
       translator: b.translator,
       publisher: b.publisher,
-      isbn: b.isbn || "",
       page_count: b.pageCount,
       price: Number(b.price),
       category_id: String(b.categoryId),

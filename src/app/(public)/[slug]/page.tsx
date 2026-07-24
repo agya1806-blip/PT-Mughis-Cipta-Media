@@ -7,7 +7,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const page = await prisma.page.findUnique({ where: { slug } })
   if (!page) return { title: "Halaman Tidak Ditemukan" }
   return {
-    title: `${page.title} | Maktabah al-Mughis`,
+    title: `${page.title} | PT Mughis Cipta Media`,
     description: page.content.replace(/<[^>]*>/g, "").substring(0, 160),
     alternates: { canonical: `/${slug}` },
   }

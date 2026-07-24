@@ -99,7 +99,7 @@ export default async function Footer() {
             <Link href="/" className="inline-flex items-center gap-3 group">
               <Image
                 src="/logo-original.png"
-                alt="Maktabah Al-Mughis"
+                alt="PT Mughis Cipta Media"
                 width={600}
                 height={63}
                 className="h-8 w-auto brightness-0 invert"

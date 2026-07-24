@@ -169,7 +169,7 @@ export default function HeroSection() {
             >
               PT Mughis Cipta Media membantu penulis, institusi, dan organisasi
               menerbitkan karya berkualitas melalui layanan penerbitan,
-              percetakan, ISBN, dan distribusi buku secara profesional.
+              percetakan, dan distribusi buku secara profesional.
             </motion.p>
 
             <motion.div

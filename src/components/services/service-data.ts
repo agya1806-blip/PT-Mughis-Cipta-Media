@@ -1,4 +1,4 @@
-import { BookOpen, Printer, Hash, Layout, Palette, FileCheck, Clock, Users, Award, HeadphonesIcon, Sparkles, Globe, CheckCircle, Building2, FileEdit, MessageCircle } from "lucide-react"
+import { BookOpen, Printer, Layout, Palette, FileCheck, Clock, Users, Award, HeadphonesIcon, Sparkles, Globe, CheckCircle, Building2, FileEdit, MessageCircle } from "lucide-react"
 import type { LucideIcon } from "lucide-react"
 
 export interface ServiceDetail {
@@ -19,7 +19,7 @@ export const services: ServiceDetail[] = [
     title: "Penerbitan Buku",
     tagline: "Dari naskah menjadi buku berkualitas tinggi",
     description:
-      "Layanan penerbitan buku profesional yang mendampingi penulis dari proses pengajuan naskah, editing, layout, desain cover, pengurusan ISBN, hingga produksi dan distribusi. Kami memastikan setiap buku yang terbit memenuhi standar kualitas industri penerbitan nasional.",
+      "Layanan penerbitan buku profesional yang mendampingi penulis dari proses pengajuan naskah, editing, layout, desain cover, hingga produksi dan distribusi. Kami memastikan setiap buku yang terbit memenuhi standar kualitas industri penerbitan nasional.",
     benefits: [
       "Pendampingan penuh dari naskah hingga distribusi",
       "Proses transparan dengan timeline yang jelas",
@@ -34,14 +34,13 @@ export const services: ServiceDetail[] = [
       { label: "Kurasi & Kontrak", desc: "Evaluasi naskah dan penandatanganan kontrak" },
       { label: "Editing", desc: "Penyuntingan substansi, bahasa, dan ejaan" },
       { label: "Layout & Desain", desc: "Tata letak isi dan desain cover profesional" },
-      { label: "ISBN", desc: "Pengurusan ISBN Perpustakaan Nasional" },
       { label: "Cetak", desc: "Produksi buku dengan kualitas terbaik" },
       { label: "Distribusi", desc: "Buku siap didistribusikan ke seluruh Indonesia" },
     ],
     faq: [
       { q: "Berapa lama proses penerbitan buku?", a: "Proses penerbitan buku umumnya memakan waktu 2–4 bulan tergantung kompleksitas naskah dan jenis layanan yang dipilih. Tim kami akan memberikan timeline detail di awal kerja sama." },
       { q: "Apakah semua naskah bisa diterbitkan?", a: "Kami menerima berbagai genre buku, termasuk buku pendidikan, keislaman, akademik, fiksi, non-fiksi, dan buku anak. Setiap naskah akan melalui proses kurasi untuk memastikan kualitas dan kesesuaian dengan visi penerbit." },
-      { q: "Apa saja yang termasuk dalam biaya penerbitan?", a: "Biaya penerbitan meliputi editing, layout, desain cover, pengurusan ISBN, proofreading, dan cetak. Konsultasikan kebutuhan Anda untuk mendapatkan penawaran yang sesuai." },
+      { q: "Apa saja yang termasuk dalam biaya penerbitan?", a: "Biaya penerbitan meliputi editing, layout, desain cover, proofreading, dan cetak. Konsultasikan kebutuhan Anda untuk mendapatkan penawaran yang sesuai." },
     ],
   },
   {
@@ -71,33 +70,6 @@ export const services: ServiceDetail[] = [
       { q: "Berapa minimal cetak buku?", a: "Untuk cetak digital, minimal 1 eksemplar. Untuk cetak offset, minimal 100 eksemplar. Kami fleksibel menyesuaikan kebutuhan Anda." },
       { q: "Jenis kertas apa yang tersedia?", a: "Kami menyediakan berbagai pilihan kertas: HVS 70gr/80gr, Book Paper, Art Paper, dan Matte Paper, dengan berbagai ukuran standar maupun kustom." },
       { q: "Berapa lama proses cetak?", a: "Cetak digital selesai dalam 1–3 hari. Cetak offset memakan waktu 1–2 minggu tergantung jumlah dan kerumitan." },
-    ],
-  },
-  {
-    id: "pengurusan-isbn",
-    icon: Hash,
-    title: "Pengurusan ISBN",
-    tagline: "Legalitas buku Anda terjamin",
-    description:
-      "Layanan pengurusan ISBN (International Standard Book Number) melalui Perpustakaan Nasional RI secara cepat dan resmi. ISBN adalah identitas unik buku Anda yang diperlukan untuk distribusi resmi di toko buku dan platform online.",
-    benefits: [
-      "Proses cepat dan resmi melalui Perpustakaan Nasional",
-      "Barcode otomatis untuk cover belakang buku",
-      "Pendaftaran data buku di katalog nasional",
-      "Legalitas buku untuk distribusi resmi",
-      "Pendampingan administrasi lengkap",
-      "Data terintegrasi dengan sistem ISBN nasional",
-    ],
-    process: [
-      { label: "Data Buku", desc: "Lengkapi data buku (judul, penulis, penerbit, dll)" },
-      { label: "Pendaftaran", desc: "Kami daftarkan ke Perpustakaan Nasional" },
-      { label: "Verifikasi", desc: "Proses verifikasi data oleh tim Perpusnas" },
-      { label: "ISBN Terbit", desc: "ISBN dan barcode siap digunakan" },
-    ],
-    faq: [
-      { q: "Apa itu ISBN?", a: "ISBN (International Standard Book Number) adalah nomor identifikasi unik untuk setiap buku yang diterbitkan. Di Indonesia, ISBN dikelola oleh Perpustakaan Nasional RI." },
-      { q: "Berapa lama pengurusan ISBN?", a: "Proses pengurusan ISBN umumnya selesai dalam 1–7 hari kerja setelah data lengkap dan benar." },
-      { q: "Apakah ISBN diperlukan untuk semua buku?", a: "ISBN sangat disarankan untuk buku yang akan didistribusikan secara resmi di toko buku, perpustakaan, atau platform online. ISBN juga memudahkan katalogisasi dan pelacakan buku." },
     ],
   },
   {

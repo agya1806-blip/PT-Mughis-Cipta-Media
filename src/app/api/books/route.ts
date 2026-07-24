@@ -44,7 +44,6 @@ const getCachedBooks = unstable_cache(
       author: b.author,
       translator: b.translator,
       publisher: b.publisher,
-      isbn: b.isbn || "",
       page_count: b.pageCount,
       price: Number(b.price),
       category_id: String(b.categoryId),

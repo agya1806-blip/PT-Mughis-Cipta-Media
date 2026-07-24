@@ -1,7 +1,7 @@
 "use client"
 import { useRef } from "react"
 import { motion, useScroll, useTransform } from "framer-motion"
-import { Lightbulb, FileEdit, Search, Layout, Palette, Hash, Printer, Truck, Heart } from "lucide-react"
+import { Lightbulb, FileEdit, Search, Layout, Palette, Printer, Truck, Heart } from "lucide-react"
 import SectionWrapper from "./SectionWrapper"
 import SectionHeader from "./SectionHeader"
 
@@ -11,7 +11,6 @@ const steps = [
   { icon: Search, label: "Proofreading" },
   { icon: Layout, label: "Layout" },
   { icon: Palette, label: "Desain Cover" },
-  { icon: Hash, label: "ISBN" },
   { icon: Printer, label: "Percetakan" },
   { icon: Truck, label: "Distribusi" },
   { icon: Heart, label: "Pembaca" },

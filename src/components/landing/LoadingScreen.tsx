@@ -30,7 +30,7 @@ export default function LoadingScreen() {
             <div className="mx-auto mb-4">
               <Image
                 src="/logo-original.png"
-                alt="Maktabah Al-Mughis"
+                alt="PT Mughis Cipta Media"
                 width={600}
                 height={63}
                 className="w-44 sm:w-48 h-auto mx-auto"

@@ -6,14 +6,14 @@ import FAQClient from "./FAQClient"
 export const metadata = {
   title: "FAQ",
   description:
-    "Pertanyaan yang sering diajukan tentang PT Mughis Cipta Media, layanan penerbitan, percetakan, ISBN, pembayaran, pengiriman, dan informasi penting lainnya.",
+    "Pertanyaan yang sering diajukan tentang PT Mughis Cipta Media, layanan penerbitan, percetakan, pembayaran, pengiriman, dan informasi penting lainnya.",
   openGraph: {
-    title: "FAQ - Maktabah al-Mughis",
-    description: "Pertanyaan yang sering diajukan seputar layanan Maktabah al-Mughis.",
+    title: "FAQ - PT Mughis Cipta Media",
+    description: "Pertanyaan yang sering diajukan seputar layanan PT Mughis Cipta Media.",
   },
   twitter: {
-    title: "FAQ - Maktabah al-Mughis",
-    description: "Pertanyaan yang sering diajukan seputar layanan Maktabah al-Mughis.",
+    title: "FAQ - PT Mughis Cipta Media",
+    description: "Pertanyaan yang sering diajukan seputar layanan PT Mughis Cipta Media.",
   },
   alternates: { canonical: "/faq" },
 }

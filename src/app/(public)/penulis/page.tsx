@@ -5,8 +5,8 @@ import { getAllAuthors } from "@/lib/authors"
 export const dynamic = "force-dynamic"
 
 export const metadata = {
-  title: "Penulis | Maktabah al-Mughis",
-  description: "Daftar penulis yang telah menerbitkan buku bersama Maktabah al-Mughis",
+  title: "Penulis | PT Mughis Cipta Media",
+  description: "Daftar penulis yang telah menerbitkan buku bersama PT Mughis Cipta Media",
   alternates: { canonical: "/penulis" },
 }
 
@@ -18,7 +18,7 @@ export default async function PenulisPage() {
       <PageHero
         title="Para"
         accent="Penulis"
-        description="Para penulis yang telah berkarya bersama Maktabah al-Mughis dalam menerbitkan buku-buku berkualitas."
+        description="Para penulis yang telah berkarya bersama PT Mughis Cipta Media dalam menerbitkan buku-buku berkualitas."
         breadcrumb={[
           { label: "Beranda", href: "/" },
           { label: "Penulis" },

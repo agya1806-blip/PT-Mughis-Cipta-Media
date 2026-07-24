@@ -5,11 +5,11 @@ export const metadata = {
   title: "Kebijakan Privasi",
   description: "Kebijakan privasi PT Mughis Cipta Media mengenai pengumpulan, penggunaan, dan perlindungan data pribadi pengguna.",
   openGraph: {
-    title: "Kebijakan Privasi - Maktabah al-Mughis",
+    title: "Kebijakan Privasi - PT Mughis Cipta Media",
     description: "Kebijakan privasi PT Mughis Cipta Media.",
   },
   twitter: {
-    title: "Kebijakan Privasi - Maktabah al-Mughis",
+    title: "Kebijakan Privasi - PT Mughis Cipta Media",
     description: "Kebijakan privasi PT Mughis Cipta Media.",
   },
   alternates: { canonical: "/privacy" },

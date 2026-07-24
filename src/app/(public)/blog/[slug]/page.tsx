@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       ? `${base}${article.featuredImage}`
       : null
   return {
-    title: `${article.title} | Maktabah al-Mughis`,
+    title: `${article.title} | PT Mughis Cipta Media`,
     description: excerpt(article.content),
     openGraph: {
       title: article.title,
@@ -63,7 +63,7 @@ export default async function ArticleDetailPage({ params }: { params: Promise<{ 
           dateModified: article.updatedAt,
           author: {
             "@type": "Organization",
-            name: "Maktabah al-Mughis",
+            name: "PT Mughis Cipta Media",
           },
         }}
       />

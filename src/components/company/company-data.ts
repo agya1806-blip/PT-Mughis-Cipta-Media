@@ -19,7 +19,7 @@ export const legalDocuments: LegalDocument[] = [
     number: "1807260050954",
     date: "18 Juli 2026",
     description:
-      "NIB diterbitkan oleh Pemerintah Republik Indonesia melalui sistem OSS-RBA sebagai bukti legalitas usaha Maktabah Al-Mughis.",
+      "NIB diterbitkan oleh Pemerintah Republik Indonesia melalui sistem OSS-RBA sebagai bukti legalitas usaha PT Mughis Cipta Media.",
     icon: FileText,
     status: "active",
   },
@@ -132,7 +132,7 @@ export const milestones: Milestone[] = [
     year: "2024",
     title: "Mulai Operasional",
     description:
-      "Maktabah Al-Mughis memulai kegiatan operasional penerbitan buku Islami dan pendidikan.",
+      "PT Mughis Cipta Media memulai kegiatan operasional penerbitan buku Islami dan pendidikan.",
     icon: BookOpen,
   },
   {
@@ -146,7 +146,7 @@ export const milestones: Milestone[] = [
     year: "2026",
     title: "Peluncuran Website Resmi",
     description:
-      "Meluncurkan website Maktabah al-Mughis sebagai platform penerbitan dan distribusi buku.",
+      "Meluncurkan website PT Mughis Cipta Media sebagai platform penerbitan dan distribusi buku.",
     icon: Award,
   },
 ]
@@ -162,7 +162,7 @@ export const companyFAQ: { category: string; items: FAQItem[] }[] = [
     items: [
       {
         q: "Apa itu PT Mughis Cipta Media?",
-        a: "PT Mughis Cipta Media adalah perusahaan yang bergerak di bidang penerbitan, percetakan, distribusi buku, dan media kreatif. Kami berkomitmen menghadirkan karya berkualitas bagi dunia pendidikan dan literasi Indonesia melalui brand Maktabah al-Mughis.",
+        a: "PT Mughis Cipta Media adalah perusahaan yang bergerak di bidang penerbitan, percetakan, distribusi buku, dan media kreatif. Kami berkomitmen menghadirkan karya berkualitas bagi dunia pendidikan dan literasi Indonesia.",
       },
       {
         q: "Kapan PT Mughis Cipta Media didirikan?",
@@ -178,7 +178,7 @@ export const companyFAQ: { category: string; items: FAQItem[] }[] = [
     category: "Penerbitan",
     items: [
       {
-        q: "Bagaimana cara menerbitkan buku di Maktabah al-Mughis?",
+        q: "Bagaimana cara menerbitkan buku di PT Mughis Cipta Media?",
         a: "Anda dapat menghubungi kami melalui halaman Kontak atau mengirimkan naskah langsung. Tim kami akan melakukan review dan memberikan proposal penerbitan yang sesuai dengan kebutuhan Anda.",
       },
       {
@@ -192,7 +192,7 @@ export const companyFAQ: { category: string; items: FAQItem[] }[] = [
     items: [
       {
         q: "Apa saja layanan yang ditawarkan?",
-        a: "Kami menawarkan layanan penerbitan (mayor dan self publishing), percetakan (digital dan offset), editing dan proofreading, desain dan layout, ISBN, distribusi nasional, serta media kreatif digital.",
+        a: "Kami menawarkan layanan penerbitan (mayor dan self publishing), percetakan (digital dan offset), editing dan proofreading, desain dan layout, distribusi nasional, serta media kreatif digital.",
       },
       {
         q: "Apakah buku didistribusikan secara nasional?",

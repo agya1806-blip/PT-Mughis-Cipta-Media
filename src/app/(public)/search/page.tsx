@@ -5,14 +5,14 @@ import { EmptyState, Pagination } from "@/components/ui"
 
 export const metadata = {
   title: "Pencarian",
-  description: "Cari buku, artikel, dan konten di Maktabah al-Mughis - PT Mughis Cipta Media.",
+  description: "Cari buku, artikel, dan konten di PT Mughis Cipta Media.",
   openGraph: {
-    title: "Pencarian - Maktabah al-Mughis",
-    description: "Cari buku dan konten di Maktabah al-Mughis.",
+    title: "Pencarian - PT Mughis Cipta Media",
+    description: "Cari buku dan konten di PT Mughis Cipta Media.",
   },
   twitter: {
-    title: "Pencarian - Maktabah al-Mughis",
-    description: "Cari buku dan konten di Maktabah al-Mughis.",
+    title: "Pencarian - PT Mughis Cipta Media",
+    description: "Cari buku dan konten di PT Mughis Cipta Media.",
   },
   alternates: { canonical: "/search" },
 }

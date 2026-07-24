@@ -28,7 +28,6 @@ export const ctaData: CtaData = {
   features: [
     "Konsultasi Gratis",
     "Pendampingan Profesional",
-    "ISBN Resmi",
     "Cetak Berkualitas",
   ],
 }

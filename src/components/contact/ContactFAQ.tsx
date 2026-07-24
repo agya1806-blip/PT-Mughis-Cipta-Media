@@ -14,10 +14,6 @@ const faqs = [
     a: "Biaya bervariasi tergantung jumlah halaman, format, jumlah cetak, dan layanan tambahan seperti editing atau desain cover. Hubungi kami untuk penawaran yang disesuaikan.",
   },
   {
-    q: "Apakah Anda mengurus pendaftaran ISBN?",
-    a: "Ya, kami menyediakan bantuan pendaftaran ISBN lengkap melalui Perpustakaan Nasional Republik Indonesia sebagai bagian dari paket penerbitan kami.",
-  },
-  {
     q: "Bisakah saya menerbitkan dalam jumlah sedikit?",
     a: "Tentu. Kami menawarkan cetak fleksibel, mulai dari 1 eksemplar untuk proyek pribadi hingga jumlah besar untuk distribusi komersial.",
   },

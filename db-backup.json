@@ -11,11 +11,11 @@
       "createdAt": "2026-07-20T18:59:44.860Z",
       "updatedAt": "2026-07-21T11:58:06.748Z"
     },
-    {
+{
       "id": 98,
-      "title": "Peran ISBN dalam Distribusi Buku Nasional dan Internasional",
-      "slug": "peran-isbn-dalam-distribusi-buku-nasional-dan-internasional",
-      "content": "<p>Waktu itu Juli 2019. Saya bersama tiga rekan penulis lain menerbitkan buku antologi secara mandiri. Dicetak 500 eksemplar, dijual dari pintu ke pintu. Dalam enam bulan, buku yang sama ditolak masuk Gramedia dan Gunung Agung karena \"tidak memiliki ISBN.\" Saat itu saya sadar: sederet angka di belakang cover adalah kunci yang membuka — atau menutup — pintu distribusi.</p>\n\n<p>ISBN (International Standard Book Number) bukan sekadar identitas administratif. Dalam kerangka sistem informasi global, ISBN adalah <em>unique identifier</em> yang memungkinkan buku dilacak, dicari, dan diperdagangkan di seluruh dunia. Tanpanya, buku Anda tidak ada dalam sistem.</p>\n\n<h2>Sejarah dan Standarisasi ISBN</h2>\n<p>Sistem ISBN pertama kali dikembangkan oleh Gordon Foster di Britania Raya pada tahun 1966, kemudian diadopsi sebagai standar internasional ISO 2108 pada tahun 1970 (International ISBN Agency, 2025). Sejak saat itu, lebih dari 200 juta ISBN unik telah diterbitkan di seluruh dunia. Indonesia bergabung dalam sistem ini pada tahun 1986 melalui Perpustakaan Nasional RI.</p>\n\n<p>Pada tahun 2007, sistem ISBN bertransformasi dari 10 digit menjadi 13 digit untuk menyesuaikan dengan sistem EAN (<em>European Article Number</em>) — kode batang yang digunakan di seluruh rantai pasok ritel global. Perubahan ini memungkinkan integrasi penuh antara sistem perbukuan dan sistem perdagangan internasional.</p>\n\n<h2>Fungsi ISBN dalam Rantai Distribusi</h2>\n<p>Untuk memahami mengapa ISBN begitu krusial, kita harus melihat rantai distribusi buku. Berdasarkan kerangka <em>supply chain management</em> yang dirumuskan oleh Chopra dan Meindl (2022) dalam <em>Supply Chain Management: Strategy, Planning, and Operation</em>, setiap produk dalam rantai pasok memerlukan <em>unique identifier</em> untuk:</p>\n<ul>\n<li><strong>Inventory management:</strong> Pelacakan stok di gudang penerbit, distributor, dan toko buku.</li>\n<li><strong>Order processing:</strong> Sistem pemesanan toko buku menggunakan ISBN untuk memastikan judul yang tepat sampai ke rak yang tepat.</li>\n<li><strong>Sales tracking:</strong> Data penjualan dikumpulkan per ISBN — inilah yang digunakan penerbit untuk menghitung royalti dan menentukan cetak ulang.</li>\n<li><strong>Market intelligence:</strong> Lembaga seperti Nielsen BookScan melacak tren pasar berdasarkan agregasi data penjualan per ISBN.</li>\n</ul>\n\n<blockquote>Wawancara saya dengan Kepala Gudang Distributor Buku Nasional (nama dirahasiakan, 2024) mengungkap fakta menarik: \"Setiap bulan, kami menolak rata-rata 15-20 pengajuan dari penulis indie yang ingin bukunya masuk ke sistem kami. Dari jumlah itu, 90% ditolak karena alasan yang sama — tidak punya ISBN. Selebihnya karena cover tidak memenuhi standar dan data bibliografis tidak lengkap.\"</blockquote>\n\n<h2>ISBN sebagai Jembatan ke Pasar Internasional</h2>\n<p>Jika buku Anda akan didistribusikan secara global — baik melalui Amazon KDP, IngramSpark, atau platform internasional lainnya — ISBN adalah syarat mutlak. Amazon mensyaratkan ISBN untuk buku cetak yang dijual di platformnya (Amazon KDP, 2025). Google Play Books dan Apple Books juga mewajibkan ISBN untuk buku digital.</p>\n\n<p>Berdasarkan data International ISBN Agency (2025), Indonesia menempati peringkat ke-12 di Asia dalam hal jumlah ISBN yang diterbitkan, dengan total lebih dari 70.000 ISBN aktif. Ini menunjukkan bahwa industri perbukuan Indonesia tumbuh, tetapi masih tertinggal jauh dari Tiongkok (peringkat 1, lebih dari 2 juta ISBN aktif) atau Jepang (peringkat 3, lebih dari 400.000 ISBN aktif).</p>\n\n<h2>Perbedaan ISBN untuk Cetak dan Digital</h2>\n<p>Satu hal yang jarang diketahui penulis pemula: format buku yang berbeda — cetak, EPUB, PDF, audiobook — idealnya memiliki ISBN yang berbeda. Standar ISO 2108:2017 menetapkan bahwa ISBN bersifat <em>format-specific</em>. Artinya, buku yang sama dalam format cetak dan digital harus memiliki dua nomor ISBN berbeda.</p>\n\n<p>Mengapa ini penting? Karena royalti, penjualan, dan pelacakan stok dihitung per format. Jika cetak dan digital menggunakan ISBN yang sama, Anda tidak akan pernah tahu berapa banyak penjualan versi cetak versus versi digital. Dalam praktiknya, banyak penerbit — termasuk saya dulu — mengabaikan aturan ini. Konsekuensinya: data penjualan kacau, keputusan bisnis jadi buta.</p>\n\n<h2>Prosedur Pengajuan ISBN di Indonesia</h2>\n<p>Perpustakaan Nasional RI telah mengembangkan sistem pengajuan ISBN berbasis web di alamat isbn.perpusnas.go.id. Prosedurnya sebagai berikut:</p>\n<ol>\n<li>Penerbit mendaftar sebagai anggota sistem ISBN Nasional</li>\n<li>Setelah terverifikasi, penerbit mendapatkan <em>publisher prefix</em> — kode identitas unik untuk penerbit</li>\n<li>Untuk setiap judul buku, penerbit mengajukan permohonan ISBN dengan melengkapi metadata: judul, penulis, tahun terbit, jumlah halaman, ukuran, jenis kertas, edisi, dan sinopsis</li>\n<li>Tim verifikasi Perpusnas memeriksa kelengkapan dan kesesuaian data</li>\n<li>ISBN diterbitkan dalam 3–7 hari kerja</li>\n<li>Buku otomatis tercatat dalam Katalog Terbitan Nasional (KATANAS)</li>\n</ol>\n\n<h2>Rekomendasi Kebijakan untuk Penulis</h2>\n<p>Berdasarkan pengalaman dan analisis saya, berikut langkah strategis yang sebaiknya diambil penulis terkait ISBN:</p>\n<ul>\n<li>Jika menerbitkan melalui penerbit (mayor/indie), pastikan ISBN diurus oleh penerbit. Ini biasanya sudah termasuk dalam biaya produksi.</li>\n<li>Jika self publishing, alokasikan anggaran untuk ISBN. Jangan pernah menerbitkan buku tanpa ISBN jika Anda berniat menjualnya secara komersial.</li>\n<li>Untuk buku yang terbit dalam multiple format (cetak dan digital), ajukan ISBN terpisah untuk masing-masing format.</li>\n<li>Simpan dokumen konfirmasi ISBN sebagai arsip legal penerbitan.</li>\n</ul>\n\n<h2>Referensi</h2>\n<ul>\n<li>International ISBN Agency (2025). <em>ISBN Users' Manual: International Standard Book Number</em>, 8th ed. London: International ISBN Agency.</li>\n<li>ISO 2108:2017. <em>Information and documentation — International Standard Book Number (ISBN)</em>. Geneva: International Organization for Standardization.</li>\n<li>Chopra, S. & Meindl, P. (2022). <em>Supply Chain Management: Strategy, Planning, and Operation</em>, 8th ed. London: Pearson.</li>\n<li>Perpustakaan Nasional RI (2025). <em>Sistem ISBN Nasional: Panduan Pengguna</em>. Jakarta: Perpusnas.</li>\n<li>Amazon KDP (2025). <em>Kindle Direct Publishing Guidelines</em>. Seattle: Amazon.</li>\n<li>Nielsen BookScan (2024). <em>Global Book Market Report 2024</em>. London: Nielsen.</li>\n</ul>",
+      "title": "Tips Memilih Penerbit Buku yang Tepat untuk Naskah Anda",
+      "slug": "tips-memilih-penerbit-buku-yang-tepat",
+      "content": "<p>Memilih penerbit yang tepat adalah salah satu keputusan paling penting dalam perjalanan seorang penulis. Penerbit yang baik tidak hanya akan menerbitkan buku Anda, tetapi juga membantu memasarkan, mendistribusikan, dan mengembangkan karya Anda. Berikut adalah tips untuk memilih penerbit yang sesuai dengan kebutuhan Anda.</p><h2>1. Kenali Jenis Penerbit</h2><p>Ada dua jenis utama penerbit: penerbit mayor yang menanggung seluruh biaya produksi dan memberikan royalti kepada penulis, serta penerbit indie yang menawarkan kerja sama dengan berbagai model bisnis. Pahami perbedaan ini sebelum memilih.</p><h2>2. Cek Reputasi dan Kredibilitas</h2><p>Pastikan penerbit memiliki legalitas yang jelas, track record yang baik, dan portofolio buku yang berkualitas. Cari ulasan dari penulis yang sudah bekerja sama dengan mereka.</p><h2>3. Perhatikan Kontrak dan Royalti</h2><p>Baca kontrak dengan teliti. Perhatikan persentase royalti, hak cipta, jangka waktu kontrak, dan kewajiban kedua belah pihak. Jangan ragu untuk bertanya jika ada hal yang kurang jelas.</p><h2>4. Layanan yang Ditawarkan</h2><p>Pastikan penerbit menawarkan layanan yang Anda butuhkan: editing, desain cover, layout, percetakan, dan distribusi. Penerbit yang baik akan mendampingi Anda dari naskah hingga buku jadi.</p><h2>5. Jaringan Distribusi</h2><p>Pertimbangkan jaringan distribusi penerbit. Buku yang baik perlu sampai ke tangan pembaca melalui toko buku, platform online, dan pameran. Pastikan penerbit memiliki saluran distribusi yang memadai.</p>",
       "featuredImage": "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=1200&q=80",
       "fileUrl": null,
       "createdAt": "2026-07-20T18:59:44.951Z",
@@ -98,8 +98,8 @@
       "title": "Pengantar Ilmu Maqulat",
       "author": "Muhammad Zulfa",
       "translator": null,
-      "publisher": "Maktabah Al-Mughis",
-      "isbn": "Dalam Proses",
+      "publisher": "PT Mughis Cipta Media",
+      "isbn": "",
       "pageCount": 96,
       "price": "40000",
       "resellerPrice": null,
@@ -122,7 +122,7 @@
       "author": "Ahmad Fauzi",
       "translator": null,
       "publisher": "PT Mughis Cipta Media",
-      "isbn": "978-602-1234-01-8",
+      "isbn": "",
       "pageCount": 220,
       "price": "75000",
       "resellerPrice": "60000",
@@ -145,7 +145,7 @@
       "author": "Dr. Siti Nurhaliza, M.Pd.",
       "translator": null,
       "publisher": "PT Mughis Cipta Media",
-      "isbn": "978-602-1234-02-5",
+      "isbn": "",
       "pageCount": 180,
       "price": "65000",
       "resellerPrice": "52000",
@@ -168,7 +168,7 @@
       "author": "KH. Hasan Basri, Lc., M.E.I.",
       "translator": null,
       "publisher": "PT Mughis Cipta Media",
-      "isbn": "978-602-1234-03-2",
+      "isbn": "",
       "pageCount": 350,
       "price": "95000",
       "resellerPrice": "76000",
@@ -191,7 +191,7 @@
       "author": "Teuku Muhammad Ali, S.S., M.Hum.",
       "translator": null,
       "publisher": "PT Mughis Cipta Media",
-      "isbn": "978-602-1234-04-9",
+      "isbn": "",
       "pageCount": 280,
       "price": "85000",
       "resellerPrice": "68000",
@@ -214,7 +214,7 @@
       "author": "Rizky Pratama, S.Kom., M.M.",
       "translator": null,
       "publisher": "PT Mughis Cipta Media",
-      "isbn": "978-602-1234-05-6",
+      "isbn": "",
       "pageCount": 200,
       "price": "70000",
       "resellerPrice": "56000",
@@ -400,7 +400,7 @@
     {
       "id": 6,
       "key": "site_name",
-      "value": "Maktabah al-Mughis"
+      "value": "PT Mughis Cipta Media"
     }
   ],
   "users": [

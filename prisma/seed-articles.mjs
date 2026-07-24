@@ -8,7 +8,6 @@ const articles = [
   { title: 'Cara Menulis Buku yang Laris di Pasaran', slug: 'cara-menulis-buku-laris' },
   { title: 'Tips Memilih Penerbit untuk Naskah Pertama Anda', slug: 'tips-memilih-penerbit' },
   { title: 'Proses Penerbitan Buku dari Naskah ke Rak Toko', slug: 'proses-penerbitan-buku' },
-  { title: 'Mengenal ISBN: Fungsi dan Cara Mendapatkannya', slug: 'mengenal-isbn' },
   { title: 'Perbedaan Penerbit Mayor dan Penerbit Indie', slug: 'penerbit-mayor-vs-indie' },
   { title: 'Kontrak Penerbitan: Hal Penting yang Harus Diketahui Penulis', slug: 'kontrak-penerbitan' },
   { title: 'Royalti Penulis: Cara Kerja dan Tips Negosiasi', slug: 'royalti-penulis' },

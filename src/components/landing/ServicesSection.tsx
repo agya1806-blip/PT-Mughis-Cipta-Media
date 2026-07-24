@@ -1,6 +1,6 @@
 "use client"
 import { motion } from "framer-motion"
-import { BookOpen, FileEdit, Search, Layout, Palette, Hash, Printer, Truck, PenTool, Monitor } from "lucide-react"
+import { BookOpen, FileEdit, Search, Layout, Palette, Printer, Truck, PenTool, Monitor } from "lucide-react"
 import SectionWrapper from "./SectionWrapper"
 import SectionHeader from "./SectionHeader"
 
@@ -10,7 +10,7 @@ const services = [
   { icon: Search, label: "Proofreading", desc: "Pemeriksaan detail untuk hasil akhir yang sempurna" },
   { icon: Layout, label: "Layout", desc: "Tata letak halaman yang rapi, nyaman, dan estetis" },
   { icon: Palette, label: "Desain Cover", desc: "Desain cover premium yang menarik dan profesional" },
-  { icon: Hash, label: "ISBN", desc: "Pengurusan ISBN Perpustakaan Nasional RI" },
+
   { icon: Printer, label: "Percetakan", desc: "Cetak digital & offset dengan kualitas terbaik" },
   { icon: Truck, label: "Distribusi", desc: "Distribusi nasional ke toko buku dan platform online" },
   { icon: PenTool, label: "Penerbitan Mandiri", desc: "Kontrol penuh bagi penulis yang ingin mandiri" },

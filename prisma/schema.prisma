@@ -65,7 +65,6 @@ model Book {
   author               String
   translator           String?
   publisher            String
-  isbn                 String?
   pageCount            Int      @map("page_count")
   price                Decimal  @db.Decimal(10, 2)
   resellerPrice        Decimal? @map("reseller_price") @db.Decimal(10, 2)

@@ -6,11 +6,11 @@ const adapter = new PrismaPg({ connectionString });
 const prisma = new PrismaClient({ adapter });
 
 const settings: { key: string; value: string }[] = [
-  { key: 'site_name', value: 'Maktabah al-Mughis' },
+  { key: 'site_name', value: 'PT Mughis Cipta Media' },
   { key: 'contact_phone', value: '085217706587' },
   { key: 'contact_email', value: 'mughisciptamedia@gmail.com' },
   { key: 'address', value: 'Samalanga, Bireuen, Aceh' },
-  { key: 'instagram_url', value: 'https://www.instagram.com/mhdaghisna_?utm_source=qr' },
+  { key: 'instagram_url', value: 'https://www.instagram.com/ptmughis' },
   { key: 'facebook_url', value: '' },
   { key: 'legal_nib', value: '1807260050954' },
   { key: 'legal_nib_date', value: '' },

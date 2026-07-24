@@ -104,14 +104,13 @@ export function PreviewModal() {
           />
           <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4 pointer-events-none">
             <p className="text-white/80 text-xs text-center">
-              Hak Cipta Dilindungi &copy; {new Date().getFullYear()} Maktabah al-Mughis
+              Hak Cipta Dilindungi &copy; {new Date().getFullYear()} PT Mughis Cipta Media
             </p>
           </div>
         </div>
 
         <div className="px-6 py-3 border-t border-gold/20 flex items-center justify-between text-xs text-green/60">
           <span>{book.page_count} halaman</span>
-          <span>ISBN: {book.isbn}</span>
         </div>
       </div>
     </div>

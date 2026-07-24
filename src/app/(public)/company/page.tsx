@@ -22,7 +22,7 @@ export default function CompanyPage() {
           <motion.div variants={MOTION.fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="mt-8 max-w-3xl">
             <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cream/10 border border-cream/20 text-gold text-[11px] font-medium uppercase tracking-[0.1em] mb-6">Profil Perusahaan</span>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-cream leading-[1.1] tracking-tight">PT Mughis <span className="bg-gradient-to-r from-gold to-gold-dark bg-clip-text text-transparent">Cipta Media</span></h1>
-            <p className="mt-6 text-lg sm:text-xl text-cream/70 leading-relaxed max-w-2xl">Perusahaan penerbitan, percetakan, dan media kreatif yang berkomitmen menghadirkan karya berkualitas bagi dunia pendidikan dan literasi Indonesia melalui Maktabah al-Mughis.</p>
+            <p className="mt-6 text-lg sm:text-xl text-cream/70 leading-relaxed max-w-2xl">Perusahaan penerbitan, percetakan, dan media kreatif yang berkomitmen menghadirkan karya berkualitas bagi dunia pendidikan dan literasi Indonesia.</p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Button href="/company/legalitas" variant="primary">Legalitas Perusahaan<ArrowRight className="w-4 h-4" /></Button>
               <Button href="/faq" variant="outline">FAQ Perusahaan</Button>
@@ -128,7 +128,7 @@ export default function CompanyPage() {
 
       <section className="relative py-24 overflow-hidden bg-gradient-to-br from-zinc-900 via-zinc-800 to-zinc-900">
         <div className="container relative text-center max-w-2xl">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white leading-[1.15]">Bergabung dengan <span className="bg-gradient-to-r from-gold to-gold-dark bg-clip-text text-transparent">Maktabah al-Mughis</span></h2>
+          <h2 className="text-3xl sm:text-4xl font-bold text-white leading-[1.15]">Bergabung dengan <span className="bg-gradient-to-r from-gold to-gold-dark bg-clip-text text-transparent">PT Mughis Cipta Media</span></h2>
           <p className="mt-4 text-lg text-green/60">Wujudkan karya Anda bersama penerbit terpercaya.</p>
           <div className="mt-10 flex flex-wrap justify-center gap-4">
             <Button href="/kontak" variant="primary">Konsultasi Gratis<ArrowRight className="w-4 h-4" /></Button>

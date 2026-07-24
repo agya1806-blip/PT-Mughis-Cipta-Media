@@ -80,11 +80,11 @@ export async function GET(request: NextRequest) {
   <div class="toolbar">
     <span>Preview</span>
     <span>|</span>
-    <span>Hak cipta Maktabah al-Mughis</span>
+    <span>Hak cipta PT Mughis Cipta Media</span>
   </div>
   <iframe src="${safeUrl}#toolbar=0&amp;navpanes=0&amp;scrollbar=1&amp;view=FitH" allow="fullscreen" sandbox="allow-scripts allow-same-origin"></iframe>
 </div>
-<div class="watermark">&copy; Maktabah al-Mughis</div>
+<div class="watermark">&copy; PT Mughis Cipta Media</div>
 <script>
   document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
   document.addEventListener('keydown', function(e) {

@@ -18,10 +18,27 @@ function svgText(w, h, fs1, fs2, subY) {
 </svg>`);
 }
 
+// Vector logo untuk PWA manifest — tajam di ukuran berapapun
+function svgLogo(w, h) {
+  const mSize = Math.round(w * 0.38);
+  const textSize = Math.round(w * 0.09);
+  const subSize = Math.round(w * 0.045);
+  const rx = Math.round(w * 0.04);
+  return Buffer.from(`<svg width="${w}" height="${h}" xmlns="http://www.w3.org/2000/svg">
+  <rect width="${w}" height="${h}" rx="${rx}" fill="#1e5e4a"/>
+  <text x="${w/2}" y="${h*0.43}" text-anchor="middle" font-family="Arial,sans-serif" font-weight="800" font-size="${mSize}" fill="${GOLD}">M</text>
+  <text x="${w/2}" y="${h*0.65}" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="${textSize}" fill="${CREAM}">PT Mughis Cipta Media</text>
+  <text x="${w/2}" y="${h*0.78}" text-anchor="middle" font-family="Arial,sans-serif" font-weight="500" font-size="${subSize}" fill="${GOLD}">Penerbit · Percetakan</text>
+</svg>`);
+}
+
 async function main() {
   await sharp(src).resize(512, 512)
     .composite([{ input: svgText(512, 512, 36, 16, 296), top: 0, left: 0 }])
-    .png().toFile(join(t, 'logo.png'));
+    .png().toFile(join(t, 'logo.png.bak')); // keep for legacy
+
+  // Vector logo untuk manifest
+  await sharp(svgLogo(512, 512)).resize(512, 512).png().toFile(join(t, 'logo.png'));
 
   await sharp(src).resize(512, 512)
     .png().toFile(join(t, 'favicon.png'));
@@ -33,7 +50,6 @@ async function main() {
 </svg>`);
   await sharp(icoSvg).resize(64, 64).png().toFile(join(t, 'favicon.ico'));
 
-  // OG image
   const ogSvg = Buffer.from(`<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
 <defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="rgba(30,94,74,0.7)"/><stop offset="1" stop-color="rgba(15,63,48,0.95)"/></linearGradient></defs>
 <rect width="1200" height="630" fill="url(#g)"/>
@@ -53,7 +69,6 @@ async function main() {
     ])
     .jpeg({ quality: 92 }).toFile(join(t, 'og-image.jpg'));
 
-  // Swap
   for (const f of ['logo.png', 'favicon.png', 'favicon.ico', 'og-image.jpg']) {
     unlinkSync(join(p, f));
     renameSync(join(t, f), join(p, f));
@@ -61,6 +76,9 @@ async function main() {
   }
   rmSync(t, { recursive: true });
   console.log('Selesai');
+
+  // hapus backup
+  try { unlinkSync(join(p, 'logo.png.bak')); } catch {}
 }
 
 main().catch(e => { console.error(e.message); process.exit(1); });

@@ -1,15 +1,11 @@
 import { NextRequest } from "next/server"
+import { unstable_cache } from "next/cache"
 import { prisma } from "@/lib/prisma"
 
-export async function GET(request: NextRequest) {
-  try {
-    const { searchParams } = request.nextUrl
-
-    const page = parseInt(searchParams.get("page") ?? "1", 10)
-    const limit = parseInt(searchParams.get("limit") ?? "12", 10)
-    const category_id = searchParams.get("category_id")
-    const search = searchParams.get("search")
-    const sort = searchParams.get("sort") ?? "latest"
+const getCachedBooks = unstable_cache(
+  async (page: string, limit: string, category_id: string, search: string, sort: string) => {
+    const p = parseInt(page, 10)
+    const l = parseInt(limit, 10)
 
     const where: Record<string, unknown> = {}
     if (category_id) where.categoryId = parseInt(category_id)
@@ -31,13 +27,13 @@ export async function GET(request: NextRequest) {
         where,
         include: { category: true },
         orderBy,
-        skip: (page - 1) * limit,
-        take: limit,
+        skip: (p - 1) * l,
+        take: l,
       }),
       prisma.book.count({ where }),
     ])
 
-    const totalPages = Math.max(1, Math.ceil(total / limit))
+    const totalPages = Math.max(1, Math.ceil(total / l))
 
     const mapped = books.map((b) => ({
       id: String(b.id),
@@ -62,11 +58,29 @@ export async function GET(request: NextRequest) {
       publication_year: b.publicationYear,
     }))
 
-    return new Response(JSON.stringify({ books: mapped, total, page, total_pages: totalPages, limit }), {
+    return { books: mapped, total, page: p, total_pages: totalPages, limit: l }
+  },
+  ["api-books"],
+  { revalidate: 600, tags: ["books"] }
+)
+
+export async function GET(request: NextRequest) {
+  try {
+    const { searchParams } = request.nextUrl
+
+    const page = searchParams.get("page") ?? "1"
+    const limit = searchParams.get("limit") ?? "12"
+    const category_id = searchParams.get("category_id") ?? ""
+    const search = searchParams.get("search") ?? ""
+    const sort = searchParams.get("sort") ?? "latest"
+
+    const data = await getCachedBooks(page, limit, category_id, search, sort)
+
+    return Response.json(data, {
       status: 200,
       headers: {
         "Content-Type": "application/json",
-        "Cache-Control": "public, s-maxage=60, stale-while-revalidate=30",
+        "Cache-Control": "public, s-maxage=300, stale-while-revalidate=60",
       },
     })
   } catch {

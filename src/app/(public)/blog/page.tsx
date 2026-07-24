@@ -46,7 +46,7 @@ export default async function BlogPage({ searchParams }: Props) {
 
   try {
     const res = await fetch(`${baseUrl}/api/articles?page=${currentPage}&limit=${PER_PAGE}`, {
-      next: { revalidate: 60 },
+      next: { revalidate: 300 },
     })
     const data = await res.json()
     articles = data.articles ?? []

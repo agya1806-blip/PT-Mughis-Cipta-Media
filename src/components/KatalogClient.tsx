@@ -1,8 +1,6 @@
 "use client"
 
-import { useState } from "react"
-import Link from "next/link"
-import { useRouter, useSearchParams } from "next/navigation"
+import { useState, useCallback, useEffect, useRef } from "react"
 import { X } from "lucide-react"
 import BookCard from "./BookCard"
 import Pagination from "@/components/ui/Pagination"
@@ -16,42 +14,64 @@ interface Props {
 }
 
 export function KatalogClient({ initialBooks, initialCategories, initialTotal, initialTotalPages }: Props) {
-  const router = useRouter()
-  const searchParams = useSearchParams()
-
-  // Data comes directly from server props (no client fetch)
-  const books = initialBooks
-  const categories = initialCategories
-  const total = initialTotal
-  const totalPages = initialTotalPages
-
+  const [books, setBooks] = useState<Book[]>(initialBooks)
+  const [total, setTotal] = useState(initialTotal)
+  const [totalPages, setTotalPages] = useState(initialTotalPages)
+  const [loading, setLoading] = useState(false)
   const [mobileFilterOpen, setMobileFilterOpen] = useState(false)
+  const [searchInput, setSearchInput] = useState("")
+  const [categoryId, setCategoryId] = useState("")
+  const [sort, setSort] = useState("latest")
+  const [page, setPage] = useState(1)
+  const [search, setSearch] = useState("")
+  const mounted = useRef(false)
 
-  const page = parseInt(searchParams.get("page") ?? "1", 10)
-  const category_id = searchParams.get("category_id") ?? ""
-  const search = searchParams.get("search") ?? ""
-  const sort = (searchParams.get("sort") ?? "latest") as string
-
-  const [searchInput, setSearchInput] = useState(search)
-
-  const updateSearchParams = (updates: Record<string, string>) => {
-    const params = new URLSearchParams(searchParams.toString())
-    Object.entries(updates).forEach(([key, value]) => {
-      if (value) {
-        params.set(key, value)
-      } else {
-        params.delete(key)
-      }
-    })
-    if (updates.category_id !== undefined || updates.search !== undefined || updates.sort !== undefined) {
-      params.set("page", "1")
+  const fetchBooks = useCallback(async (opts: { page?: number; category_id?: string; search?: string; sort?: string }) => {
+    setLoading(true)
+    try {
+      const params = new URLSearchParams()
+      if (opts.page && opts.page > 1) params.set("page", String(opts.page))
+      if (opts.category_id) params.set("category_id", opts.category_id)
+      if (opts.search) params.set("search", opts.search)
+      if (opts.sort && opts.sort !== "latest") params.set("sort", opts.sort)
+      const res = await fetch(`/api/books?${params.toString()}`)
+      const data = await res.json()
+      setBooks(data.books ?? [])
+      setTotal(data.total ?? 0)
+      setTotalPages(data.total_pages ?? 1)
+    } catch {
+      // keep current data on error
+    } finally {
+      setLoading(false)
     }
-    router.push(`/katalog?${params.toString()}`)
-  }
+  }, [])
+
+  const updateFilters = useCallback((updates: { category_id?: string; search?: string; sort?: string; page?: number }) => {
+    const next = { page: 1, ...updates }
+    if (updates.category_id !== undefined) setCategoryId(updates.category_id)
+    if (updates.search !== undefined) setSearch(updates.search)
+    if (updates.sort !== undefined) setSort(updates.sort)
+    if (updates.page !== undefined) setPage(updates.page)
+    fetchBooks({
+      page: next.page,
+      category_id: updates.category_id ?? categoryId,
+      search: updates.search ?? search,
+      sort: updates.sort ?? sort,
+    })
+  }, [categoryId, search, sort, fetchBooks])
+
+  useEffect(() => {
+    if (!mounted.current) { mounted.current = true; return }
+    // Re-fetch when URL-based initial data changes (e.g. from server navigation)
+  }, [])
 
   const resetFilters = () => {
     setSearchInput("")
-    router.push("/katalog")
+    setCategoryId("")
+    setSearch("")
+    setSort("latest")
+    setPage(1)
+    fetchBooks({})
   }
 
   return (
@@ -70,13 +90,13 @@ export function KatalogClient({ initialBooks, initialCategories, initialTotal, i
                   value={searchInput}
                   onChange={(e) => setSearchInput(e.target.value)}
                   onKeyDown={(e) => {
-                    if (e.key === "Enter") updateSearchParams({ search: searchInput })
+                    if (e.key === "Enter") updateFilters({ search: searchInput })
                   }}
                   placeholder="Judul, penulis..."
                   className="w-full rounded-lg border border-gold/20 bg-cream px-3 py-2.5 pr-10 text-sm text-green-dark placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-gold/50"
                 />
                 <button
-                  onClick={() => updateSearchParams({ search: searchInput })}
+                  onClick={() => updateFilters({ search: searchInput })}
                   className="absolute right-1.5 top-1/2 -translate-y-1/2 p-1.5 text-green/60 hover:text-gold"
                 >
                   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -89,24 +109,20 @@ export function KatalogClient({ initialBooks, initialCategories, initialTotal, i
             <div>
               <h3 className="text-sm font-medium text-green-dark mb-3">Kategori</h3>
               <div className="space-y-1">
-                {categories.map((cat) => {
-                  const isActive = category_id === cat.id
-                  const params = new URLSearchParams(searchParams.toString())
-                  params.set("category_id", cat.id)
-                  params.set("page", "1")
-                  const href = `/katalog?${params.toString()}`
+                {initialCategories.map((cat) => {
+                  const isActive = categoryId === cat.id
                   return (
-                    <Link
+                    <button
                       key={cat.id}
-                      href={href}
-                      className={`block px-3 py-1.5 rounded-lg text-sm transition-colors ${
+                      onClick={() => updateFilters({ category_id: isActive ? "" : cat.id })}
+                      className={`block w-full text-left px-3 py-1.5 rounded-lg text-sm transition-colors ${
                         isActive
                           ? "bg-gold/10 text-gold font-medium"
                           : "text-green/80 hover:bg-cream hover:text-green-dark"
                       }`}
                     >
                       {cat.name}
-                    </Link>
+                    </button>
                   )
                 })}
               </div>
@@ -133,7 +149,7 @@ export function KatalogClient({ initialBooks, initialCategories, initialTotal, i
               <select
                 id="sort"
                 value={sort}
-                onChange={(e) => updateSearchParams({ sort: e.target.value })}
+                onChange={(e) => updateFilters({ sort: e.target.value })}
                 className="rounded-lg border border-gold/20 bg-cream px-3 py-2 text-sm text-green-dark focus:outline-none focus:ring-2 focus:ring-gold/50"
               >
                 <option value="latest">Terbaru</option>
@@ -143,38 +159,46 @@ export function KatalogClient({ initialBooks, initialCategories, initialTotal, i
             </div>
           </div>
 
-          {books.length === 0 ? (
-            <div className="text-center py-20">
-              <svg className="w-16 h-16 mx-auto text-green/40 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
-              </svg>
-              <h3 className="text-lg font-medium text-green/80 mb-1">Tidak ada buku ditemukan</h3>
-              <p className="text-sm text-green/60 mb-4">Coba ubah kata kunci atau filter pencarian</p>
-              <button onClick={resetFilters} className="text-sm font-medium text-gold hover:text-gold-dark">
-                Reset Filter
-              </button>
-            </div>
-          ) : (
-            <>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {books.map((book) => (
-                  <BookCard key={book.id} book={book} />
-                ))}
+          <div className="relative">
+            {loading && (
+              <div className="absolute inset-0 z-10 flex items-center justify-center bg-cream/60 rounded-xl">
+                <div className="flex items-center gap-2 text-sm text-green/60">
+                  <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24" fill="none">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                  </svg>
+                  Memuat...
+                </div>
               </div>
+            )}
+            {books.length === 0 && !loading ? (
+              <div className="text-center py-20">
+                <svg className="w-16 h-16 mx-auto text-green/40 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+                </svg>
+                <h3 className="text-lg font-medium text-green/80 mb-1">Tidak ada buku ditemukan</h3>
+                <p className="text-sm text-green/60 mb-4">Coba ubah kata kunci atau filter pencarian</p>
+                <button onClick={resetFilters} className="text-sm font-medium text-gold hover:text-gold-dark">
+                  Reset Filter
+                </button>
+              </div>
+            ) : (
+              <>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {books.map((book) => (
+                    <BookCard key={book.id} book={book} />
+                  ))}
+                </div>
 
-              <Pagination
-                currentPage={page}
-                totalPages={totalPages}
-                basePath="/katalog"
-                searchParams={{
-                  ...(category_id ? { category_id } : {}),
-                  ...(search ? { search } : {}),
-                  ...(sort !== "latest" ? { sort } : {}),
-                }}
-                className="mt-10"
-              />
-            </>
-          )}
+                <Pagination
+                  currentPage={page}
+                  totalPages={totalPages}
+                  onPageChange={(p) => updateFilters({ page: p })}
+                  className="mt-10"
+                />
+              </>
+            )}
+          </div>
         </div>
       </div>
 
@@ -210,7 +234,7 @@ export function KatalogClient({ initialBooks, initialCategories, initialTotal, i
                   onChange={(e) => setSearchInput(e.target.value)}
                   onKeyDown={(e) => {
                     if (e.key === "Enter") {
-                      updateSearchParams({ search: searchInput })
+                      updateFilters({ search: searchInput })
                       setMobileFilterOpen(false)
                     }
                   }}
@@ -219,7 +243,7 @@ export function KatalogClient({ initialBooks, initialCategories, initialTotal, i
                 />
                 <button
                   onClick={() => {
-                    updateSearchParams({ search: searchInput })
+                    updateFilters({ search: searchInput })
                     setMobileFilterOpen(false)
                   }}
                   className="mt-2 w-full rounded-lg bg-green text-gold py-2.5 text-sm font-medium hover:bg-green-dark"
@@ -231,14 +255,14 @@ export function KatalogClient({ initialBooks, initialCategories, initialTotal, i
               <div>
               <h3 className="text-sm font-medium text-green-dark mb-3">Kategori</h3>
                 <div className="space-y-2">
-                  {categories.map((cat) => (
+                  {initialCategories.map((cat) => (
                     <label key={cat.id} className="flex items-center gap-2.5 cursor-pointer">
                       <input
                         type="radio"
                         name="mobile_category"
-                        checked={category_id === cat.id}
+                        checked={categoryId === cat.id}
                         onChange={() => {
-                          updateSearchParams({ category_id: cat.id })
+                          updateFilters({ category_id: cat.id })
                           setMobileFilterOpen(false)
                         }}
                         className="h-4 w-4 text-gold border-gold/20 focus:ring-gold/50"
@@ -254,7 +278,7 @@ export function KatalogClient({ initialBooks, initialCategories, initialTotal, i
                 <select
                   value={sort}
                   onChange={(e) => {
-                    updateSearchParams({ sort: e.target.value })
+                    updateFilters({ sort: e.target.value })
                     setMobileFilterOpen(false)
                   }}
                   className="w-full rounded-lg border border-gold/20 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50 bg-cream text-green-dark placeholder-zinc-400"

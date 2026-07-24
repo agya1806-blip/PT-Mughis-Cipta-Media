@@ -40,11 +40,11 @@ export default async function KatalogPage({ searchParams }: PageParams) {
   if (params.search) qs.set("search", params.search)
   if (params.sort) qs.set("sort", params.sort)
 
-  const fetchOpts = { next: { revalidate: 60 } } as const
+  const fetchOpts = { next: { revalidate: 300 } } as const
 
   const [booksRes, catsRes] = await Promise.all([
     fetch(`${baseUrl}/api/books?${qs.toString()}`, fetchOpts),
-    fetch(`${baseUrl}/api/categories`, { next: { revalidate: 300 } }),
+    fetch(`${baseUrl}/api/categories`, { next: { revalidate: 600 } }),
   ])
 
   const booksData: { books: Book[]; total: number; total_pages: number } = await booksRes.json()

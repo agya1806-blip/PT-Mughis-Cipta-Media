@@ -1,6 +1,7 @@
 "use client"
 
-import { useState, useCallback, useEffect, useRef } from "react"
+import { useState, useCallback } from "react"
+import { useSearchParams } from "next/navigation"
 import { X } from "lucide-react"
 import BookCard from "./BookCard"
 import Pagination from "@/components/ui/Pagination"
@@ -14,17 +15,17 @@ interface Props {
 }
 
 export function KatalogClient({ initialBooks, initialCategories, initialTotal, initialTotalPages }: Props) {
+  const urlParams = useSearchParams()
   const [books, setBooks] = useState<Book[]>(initialBooks)
   const [total, setTotal] = useState(initialTotal)
   const [totalPages, setTotalPages] = useState(initialTotalPages)
   const [loading, setLoading] = useState(false)
   const [mobileFilterOpen, setMobileFilterOpen] = useState(false)
-  const [searchInput, setSearchInput] = useState("")
-  const [categoryId, setCategoryId] = useState("")
-  const [sort, setSort] = useState("latest")
-  const [page, setPage] = useState(1)
-  const [search, setSearch] = useState("")
-  const mounted = useRef(false)
+  const [searchInput, setSearchInput] = useState(urlParams.get("search") ?? "")
+  const [categoryId, setCategoryId] = useState(urlParams.get("category_id") ?? "")
+  const [sort, setSort] = useState(urlParams.get("sort") ?? "latest")
+  const [page, setPage] = useState(parseInt(urlParams.get("page") ?? "1", 10))
+  const [search, setSearch] = useState(urlParams.get("search") ?? "")
 
   const fetchBooks = useCallback(async (opts: { page?: number; category_id?: string; search?: string; sort?: string }) => {
     setLoading(true)
@@ -59,11 +60,6 @@ export function KatalogClient({ initialBooks, initialCategories, initialTotal, i
       sort: updates.sort ?? sort,
     })
   }, [categoryId, search, sort, fetchBooks])
-
-  useEffect(() => {
-    if (!mounted.current) { mounted.current = true; return }
-    // Re-fetch when URL-based initial data changes (e.g. from server navigation)
-  }, [])
 
   const resetFilters = () => {
     setSearchInput("")

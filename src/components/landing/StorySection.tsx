@@ -16,7 +16,7 @@ export default function StorySection() {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
-            <span className="text-gold font-semibold text-sm tracking-widest uppercase">Tentang Kami</span>
+            <span className="text-green-dark font-semibold text-sm tracking-widest uppercase">Tentang Kami</span>
             <h2 className="text-4xl sm:text-5xl font-bold text-green-dark mt-4 mb-8 leading-tight">
               Cerita{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold to-gold-dark">
@@ -34,7 +34,7 @@ export default function StorySection() {
             </div>
 
             <div className="relative mt-10 pl-6 border-l-4 border-gold">
-              <Quote className="absolute -left-3 -top-2 w-6 h-6 text-gold bg-cream" />
+              <Quote className="absolute -left-3 -top-2 w-6 h-6 text-green-dark bg-cream" />
               <p className="text-xl font-medium text-green-dark italic">
                 Setiap buku adalah satu langkah menuju peradaban yang lebih cerah.
               </p>
@@ -50,7 +50,7 @@ export default function StorySection() {
             >
               <Link
                 href="/tentang-kami"
-                className="inline-flex items-center gap-2 text-sm font-medium text-gold hover:text-gold-dark transition-colors group"
+                className="inline-flex items-center gap-2 text-sm font-medium text-green-dark hover:text-green transition-colors group"
               >
                 Baca Cerita Lengkap
                 <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

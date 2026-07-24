@@ -94,7 +94,7 @@ export default function AdminBooks() {
                 <td className="px-4 py-3 text-center space-x-2">
                   <Link
                     href={`/admin/books/${book.id}`}
-                    className="text-gold hover:underline text-xs"
+                    className="text-green-dark hover:underline text-xs"
                   >
                     Edit
                   </Link>

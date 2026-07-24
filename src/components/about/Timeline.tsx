@@ -47,7 +47,7 @@ export default function Timeline() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="text-gold font-semibold text-sm tracking-widest uppercase">Perjalanan</span>
+           <span className="text-green-dark font-semibold text-sm tracking-widest uppercase">Perjalanan</span>
           <h2 className="text-4xl sm:text-5xl font-bold text-green-dark mt-4">
             Timeline{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold to-gold-dark">

@@ -87,9 +87,9 @@ export default function ContactFAQ() {
           className="text-center mb-12"
         >
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/10 border border-gold/20 mb-6">
-            <span className="text-gold text-[11px] font-medium uppercase tracking-[0.1em]">
-              FAQ
-            </span>
+            <span className="text-green-dark text-[11px] font-medium uppercase tracking-[0.1em]">
+                FAQ
+              </span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold text-green-dark leading-[1.15] tracking-tight">
             Pertanyaan{" "}

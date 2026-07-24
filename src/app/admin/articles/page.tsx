@@ -70,7 +70,7 @@ export default function ArticlesPage() {
                   <td className="px-4 py-3 text-right">
                     <button
                       onClick={() => router.push(`/admin/articles/${a.id}`)}
-                      className="text-xs font-medium text-gold hover:text-gold-dark mr-3"
+                      className="text-xs font-medium text-green-dark hover:text-green mr-3"
                     >
                       Edit
                     </button>

@@ -167,7 +167,7 @@ export default function HeroSection() {
 
             <motion.p
               variants={itemVariants}
-              className="mt-6 text-lg sm:text-xl text-cream/70 leading-relaxed max-w-lg"
+              className="mt-6 text-lg sm:text-xl text-cream/80 leading-relaxed max-w-lg"
             >
               PT Mughis Cipta Media membantu penulis, institusi, dan organisasi
               menerbitkan karya berkualitas melalui layanan penerbitan,
@@ -196,7 +196,7 @@ export default function HeroSection() {
 
             <motion.div
               variants={itemVariants}
-              className="mt-12 flex items-center gap-8 text-sm text-cream/60"
+              className="mt-12 flex items-center gap-8 text-sm text-cream/70"
             >
               <div className="flex -space-x-2">
                 {[1, 2, 3, 4].map((i) => (

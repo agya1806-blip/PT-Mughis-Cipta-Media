@@ -55,7 +55,7 @@ export const statusLabels: Record<string, string> = {
 export const statusColors: Record<string, string> = {
   draft: "bg-zinc-100 text-zinc-600 border-zinc-200",
   submitted: "bg-blue-50 text-blue-600 border-blue-200",
-  review: "bg-gold/5 text-gold border-gold/20",
+  review: "bg-amber-50 text-amber-700 border-amber-200",
   editing: "bg-violet-50 text-violet-600 border-violet-200",
   layout: "bg-cyan-50 text-cyan-600 border-cyan-200",
   printing: "bg-orange-50 text-orange-600 border-orange-200",

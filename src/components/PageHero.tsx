@@ -46,11 +46,11 @@ export default function PageHero({ title, accent, description, breadcrumb, icon 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="flex items-center gap-2 text-cream/60 text-sm mb-6"
+          className="flex items-center gap-2 text-cream/70 text-sm mb-6"
         >
           {breadcrumb.map((item, i) => (
             <span key={item.label} className="flex items-center gap-2">
-              {i > 0 && <span className="text-cream/40">/</span>}
+              {i > 0 && <span className="text-cream/50">/</span>}
               {item.href ? (
                 <a href={item.href} className="hover:text-gold transition-colors">
                   {item.label}
@@ -91,7 +91,7 @@ export default function PageHero({ title, accent, description, breadcrumb, icon 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.35, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-6 text-lg sm:text-xl text-cream/70 leading-relaxed max-w-lg"
+            className="mt-6 text-lg sm:text-xl text-cream/80 leading-relaxed max-w-lg"
           >
             {description}
           </motion.p>

@@ -93,7 +93,7 @@ export function FeaturedBooksCarousel({ books }: Props) {
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.3 }}
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold/10 text-gold text-xs font-medium mb-4">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold/10 text-green-dark text-xs font-medium mb-4">
               {book.category_name}
             </div>
             <h3 className="text-2xl sm:text-3xl font-bold text-green-dark mb-3">{book.title}</h3>

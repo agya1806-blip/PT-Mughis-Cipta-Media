@@ -56,7 +56,7 @@ export default function Stats() {
               Kami
             </span>
           </h2>
-          <p className="text-gold/80 mt-4 max-w-2xl mx-auto">
+          <p className="text-gold mt-4 max-w-2xl mx-auto">
             Angka-angka ini adalah bukti komitmen kami dalam mengembangkan literasi di Indonesia.
           </p>
         </motion.div>
@@ -78,7 +78,7 @@ export default function Stats() {
                 <div className="text-4xl lg:text-5xl font-bold text-cream mb-2">
                   <Counter target={value} suffix={suffix} />
                 </div>
-                <p className="text-gold/80 text-sm">{label}</p>
+                <p className="text-gold text-sm">{label}</p>
 
                 <div className="absolute -bottom-0.5 left-4 right-4 h-0.5 bg-gradient-to-r from-gold/50 to-gold-dark/50 rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
               </div>

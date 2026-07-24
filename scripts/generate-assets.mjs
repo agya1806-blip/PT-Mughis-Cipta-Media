@@ -26,8 +26,12 @@ async function main() {
   await sharp(src).resize(512, 512)
     .png().toFile(join(t, 'favicon.png'));
 
-  await sharp(src).resize(32, 32)
-    .png().toFile(join(t, 'favicon.ico'));
+  const icoSvg = Buffer.from(
+`<svg width="64" height="64" xmlns="http://www.w3.org/2000/svg">
+  <rect width="64" height="64" rx="10" fill="#1e5e4a"/>
+  <text x="32" y="44" text-anchor="middle" font-family="Arial,sans-serif" font-weight="800" font-size="36" fill="${GOLD}">M</text>
+</svg>`);
+  await sharp(icoSvg).resize(64, 64).png().toFile(join(t, 'favicon.ico'));
 
   // OG image
   const ogSvg = Buffer.from(`<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">

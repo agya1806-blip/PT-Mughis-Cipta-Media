@@ -1,4 +1,4 @@
-import { BookOpen, Printer, Hash, Layout, Palette, FileCheck, Clock, Users, Award, HeadphonesIcon, ArrowRight, BookText, Sparkles, Shield, TrendingUp, Globe, CheckCircle, Building2, FileEdit } from "lucide-react"
+import { BookOpen, Printer, Hash, Layout, Palette, FileCheck, Clock, Users, Award, HeadphonesIcon, Sparkles, Globe, CheckCircle, Building2, FileEdit, MessageCircle } from "lucide-react"
 import type { LucideIcon } from "lucide-react"
 
 export interface ServiceDetail {
@@ -203,4 +203,4 @@ export const serviceProcessSteps = [
   { icon: CheckCircle, label: "Deliver", desc: "Serah terima hasil tepat waktu" },
 ]
 
-import { MessageCircle } from "lucide-react"
+

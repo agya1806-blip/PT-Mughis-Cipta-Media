@@ -6,14 +6,21 @@ export async function GET(
   _request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
-  const user = await getCurrentUser()
-  if (!user || user.role !== "ADMIN") {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 403 })
+  try {
+    const user = await getCurrentUser()
+    if (!user || user.role !== "ADMIN") {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 403 })
+    }
+    const { id } = await params
+    const idNum = parseInt(id)
+    if (isNaN(idNum)) return NextResponse.json({ error: "ID tidak valid" }, { status: 400 })
+
+    const page = await prisma.page.findUnique({ where: { id: idNum } })
+    if (!page) return NextResponse.json({ error: "Not found" }, { status: 404 })
+    return NextResponse.json(page)
+  } catch {
+    return NextResponse.json({ error: "Gagal memuat" }, { status: 500 })
   }
-  const { id } = await params
-  const page = await prisma.page.findUnique({ where: { id: parseInt(id) } })
-  if (!page) return NextResponse.json({ error: "Not found" }, { status: 404 })
-  return NextResponse.json(page)
 }
 
 export async function PUT(

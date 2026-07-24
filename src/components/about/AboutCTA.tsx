@@ -36,7 +36,7 @@ export default function AboutCTA() {
             </span>
           </h2>
 
-          <p className="text-lg text-gold/80/80 max-w-2xl mx-auto mb-10 leading-relaxed">
+          <p className="text-lg text-gold/80 max-w-2xl mx-auto mb-10 leading-relaxed">
             Dari naskah mentah hingga menjadi buku yang siap dinikmati masyarakat. Tim profesional kami siap mendampingi setiap langkah perjalanan penerbitan Anda.
           </p>
 

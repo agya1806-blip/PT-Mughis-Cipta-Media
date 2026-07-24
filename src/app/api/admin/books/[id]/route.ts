@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server"
+import { revalidateTag } from "next/cache"
 import { prisma } from "@/lib/prisma"
 import { getCurrentUser } from "@/lib/auth"
 import { slugify } from "@/lib/slug"
@@ -7,19 +8,26 @@ export async function GET(
   _request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
-  const user = await getCurrentUser()
-  if (!user || user.role !== "ADMIN") {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 403 })
+  try {
+    const user = await getCurrentUser()
+    if (!user || user.role !== "ADMIN") {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 403 })
+    }
+
+    const { id } = await params
+    const idNum = parseInt(id)
+    if (isNaN(idNum)) return NextResponse.json({ error: "ID tidak valid" }, { status: 400 })
+
+    const book = await prisma.book.findUnique({
+      where: { id: idNum },
+      include: { category: true },
+    })
+    if (!book) return NextResponse.json({ error: "Not found" }, { status: 404 })
+
+    return NextResponse.json(book)
+  } catch {
+    return NextResponse.json({ error: "Gagal memuat" }, { status: 500 })
   }
-
-  const { id } = await params
-  const book = await prisma.book.findUnique({
-    where: { id: parseInt(id) },
-    include: { category: true },
-  })
-  if (!book) return NextResponse.json({ error: "Not found" }, { status: 404 })
-
-  return NextResponse.json(book)
 }
 
 export async function PUT(
@@ -60,6 +68,7 @@ export async function PUT(
       include: { category: true },
     })
 
+    revalidateTag("books", "max")
     return NextResponse.json(book)
   } catch (e) {
     console.error("Update book error:", e)
@@ -80,6 +89,7 @@ export async function DELETE(
   const { id } = await params
   try {
     await prisma.book.delete({ where: { id: parseInt(id) } })
+    revalidateTag("books", "max")
     return NextResponse.json({ success: true })
   } catch {
     return NextResponse.json({ error: "Failed to delete book" }, { status: 500 })

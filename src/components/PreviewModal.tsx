@@ -8,6 +8,9 @@ export function PreviewModal() {
   const [isOpen, setIsOpen] = useState(false)
   const iframeRef = useRef<HTMLIFrameElement>(null)
 
+  const dialogRef = useRef<HTMLDivElement>(null)
+  const closeRef = useRef<HTMLButtonElement>(null)
+
   const closeModal = () => {
     setIsOpen(false)
     setBook(null)
@@ -26,10 +29,26 @@ export function PreviewModal() {
 
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") closeModal()
+      if (e.key === "Tab" && dialogRef.current) {
+        const focusable = dialogRef.current.querySelectorAll<HTMLElement>(
+          'button, [href], input, [tabindex]:not([tabindex="-1"])'
+        )
+        if (focusable.length === 0) return
+        const first = focusable[0]
+        const last = focusable[focusable.length - 1]
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault()
+          last.focus()
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault()
+          first.focus()
+        }
+      }
     }
 
     if (isOpen) {
       document.addEventListener("keydown", handleKeyDown)
+      queueMicrotask(() => closeRef.current?.focus())
     }
 
     return () => {
@@ -55,15 +74,16 @@ export function PreviewModal() {
   if (!isOpen || !book) return null
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center">
-      <div className="absolute inset-0 bg-green/60 backdrop-blur-sm" onClick={closeModal} />
-      <div className="relative z-10 w-full max-w-5xl mx-4 bg-cream rounded-2xl shadow-2xl flex flex-col max-h-[90vh]">
+    <div className="fixed inset-0 z-50 flex items-center justify-center" role="dialog" aria-modal="true" aria-label={`Preview ${book.title}`}>
+      <div className="absolute inset-0 bg-green/60 backdrop-blur-sm" onClick={closeModal} aria-hidden="true" />
+      <div ref={dialogRef} className="relative z-10 w-full max-w-5xl mx-4 bg-cream rounded-2xl shadow-2xl flex flex-col max-h-[90vh]">
         <div className="flex items-center justify-between px-6 py-4 border-b border-gold/20">
           <div className="min-w-0 flex-1">
             <h2 className="font-semibold text-green-dark truncate pr-4">{book.title}</h2>
             <p className="text-sm text-green/60 truncate">{book.author}</p>
           </div>
           <button
+            ref={closeRef}
             onClick={closeModal}
             className="shrink-0 p-2 rounded-lg text-green/60 hover:text-green-dark hover:bg-cream transition-colors"
             aria-label="Tutup preview"

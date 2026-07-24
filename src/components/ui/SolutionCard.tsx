@@ -38,7 +38,7 @@ export default function SolutionCard({
         <p className="text-sm text-green/80 leading-relaxed mb-4">{description}</p>
 
         <div className="flex items-center gap-1 text-gold text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <span>Learn more</span>
+          <span>Selengkapnya</span>
           <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
         </div>
       </div>

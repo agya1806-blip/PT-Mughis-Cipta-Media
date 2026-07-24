@@ -1,35 +1,40 @@
 import { NextResponse } from "next/server"
+import { revalidateTag } from "next/cache"
 import { prisma } from "@/lib/prisma"
 import { getCurrentUser } from "@/lib/auth"
 import { slugify } from "@/lib/slug"
 
 export async function GET(request: Request) {
-  const user = await getCurrentUser()
-  if (!user || user.role !== "ADMIN") {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 403 })
+  try {
+    const user = await getCurrentUser()
+    if (!user || user.role !== "ADMIN") {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 403 })
+    }
+
+    const { searchParams } = new URL(request.url)
+    const page = Math.max(1, parseInt(searchParams.get("page") || "1") || 1)
+    const limit = Math.max(1, Math.min(100, parseInt(searchParams.get("limit") || "20") || 20))
+    const search = searchParams.get("search") || ""
+
+    const where: Record<string, unknown> = search
+      ? { OR: [{ title: { contains: search, mode: "insensitive" } }, { author: { contains: search, mode: "insensitive" } }] }
+      : {}
+
+    const [books, total] = await Promise.all([
+      prisma.book.findMany({
+        where,
+        include: { category: true },
+        orderBy: { createdAt: "desc" },
+        skip: (page - 1) * limit,
+        take: limit,
+      }),
+      prisma.book.count({ where }),
+    ])
+
+    return NextResponse.json({ books, total, page, totalPages: Math.ceil(total / limit) })
+  } catch {
+    return NextResponse.json({ error: "Gagal memuat" }, { status: 500 })
   }
-
-  const { searchParams } = new URL(request.url)
-  const page = parseInt(searchParams.get("page") || "1")
-  const limit = parseInt(searchParams.get("limit") || "20")
-  const search = searchParams.get("search") || ""
-
-  const where = search
-    ? { OR: [{ title: { contains: search } }, { author: { contains: search } }] }
-    : {}
-
-  const [books, total] = await Promise.all([
-    prisma.book.findMany({
-      where,
-      include: { category: true },
-      orderBy: { createdAt: "desc" },
-      skip: (page - 1) * limit,
-      take: limit,
-    }),
-    prisma.book.count({ where }),
-  ])
-
-  return NextResponse.json({ books, total, page, totalPages: Math.ceil(total / limit) })
 }
 
 export async function POST(request: Request) {
@@ -70,6 +75,7 @@ export async function POST(request: Request) {
       include: { category: true },
     })
 
+    revalidateTag("books", "max")
     return NextResponse.json(book, { status: 201 })
   } catch (e) {
     console.error("Create book error:", e)

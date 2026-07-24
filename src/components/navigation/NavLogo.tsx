@@ -15,9 +15,7 @@ export default function NavLogo({ scrolled }: Props) {
         alt="Maktabah Al-Mughis"
         width={600}
         height={63}
-        className={`h-7 sm:h-8 w-auto transition-opacity duration-300 ${
-          scrolled ? "opacity-100" : "opacity-100"
-        }`}
+        className="h-7 sm:h-8 w-auto transition-opacity duration-300 opacity-100"
         priority
       />
     </Link>

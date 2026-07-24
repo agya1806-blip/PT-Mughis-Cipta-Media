@@ -1,14 +1,19 @@
 import { NextResponse } from "next/server"
+import { revalidateTag } from "next/cache"
 import { prisma } from "@/lib/prisma"
 import { getCurrentUser } from "@/lib/auth"
 
 export async function GET() {
-  const user = await getCurrentUser()
-  if (!user || user.role !== "ADMIN") {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 403 })
+  try {
+    const user = await getCurrentUser()
+    if (!user || user.role !== "ADMIN") {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 403 })
+    }
+    const articles = await prisma.article.findMany({ orderBy: { createdAt: "desc" } })
+    return NextResponse.json({ articles })
+  } catch {
+    return NextResponse.json({ error: "Gagal memuat" }, { status: 500 })
   }
-  const articles = await prisma.article.findMany({ orderBy: { createdAt: "desc" } })
-  return NextResponse.json({ articles })
 }
 
 export async function POST(request: Request) {
@@ -30,6 +35,7 @@ export async function POST(request: Request) {
         fileUrl: body.fileUrl || null,
       },
     })
+    revalidateTag("articles", "max")
     return NextResponse.json(article, { status: 201 })
   } catch (e: unknown) {
     const prismaErr = e as { code?: string }

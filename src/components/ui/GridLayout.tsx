@@ -6,7 +6,6 @@ interface Props {
   children: ReactNode
   className?: string
   cols?: Cols
-  tabletCols?: 1 | 2 | 3
   gap?: string
 }
 

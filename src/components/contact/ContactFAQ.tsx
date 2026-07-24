@@ -32,16 +32,20 @@ function FAQItem({
   answer,
   isOpen,
   onToggle,
+  id,
 }: {
   question: string
   answer: string
   isOpen: boolean
   onToggle: () => void
+  id: string
 }) {
   return (
     <div className="border-b border-gold/10 last:border-0">
       <button
         onClick={onToggle}
+        aria-expanded={isOpen}
+        aria-controls={id}
         className="w-full flex items-center justify-between gap-4 py-5 text-left"
       >
         <span className="font-medium text-green-dark text-sm sm:text-base">{question}</span>
@@ -56,6 +60,9 @@ function FAQItem({
       <AnimatePresence>
         {isOpen && (
           <motion.div
+            id={id}
+            role="region"
+            aria-labelledby={`${id}-btn`}
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
@@ -109,6 +116,7 @@ export default function ContactFAQ() {
           {faqs.map((faq, i) => (
             <FAQItem
               key={i}
+              id={`faq-${i}`}
               question={faq.q}
               answer={faq.a}
               isOpen={openIndex === i}

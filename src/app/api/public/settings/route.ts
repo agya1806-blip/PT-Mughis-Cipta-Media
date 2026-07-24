@@ -4,6 +4,8 @@ import { prisma } from "@/lib/prisma"
 const PUBLIC_KEYS = new Set([
   "site_name", "contact_phone", "contact_email", "address",
   "instagram_url", "facebook_url",
+  "legal_nib", "legal_npwp", "legal_ikapi",
+  "legal_nib_date", "legal_npwp_date", "legal_ikapi_date",
 ])
 
 export async function GET() {

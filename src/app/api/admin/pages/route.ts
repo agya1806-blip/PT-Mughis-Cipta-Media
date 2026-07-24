@@ -3,12 +3,16 @@ import { prisma } from "@/lib/prisma"
 import { getCurrentUser } from "@/lib/auth"
 
 export async function GET() {
-  const user = await getCurrentUser()
-  if (!user || user.role !== "ADMIN") {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 403 })
+  try {
+    const user = await getCurrentUser()
+    if (!user || user.role !== "ADMIN") {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 403 })
+    }
+    const pages = await prisma.page.findMany({ orderBy: { id: "asc" } })
+    return NextResponse.json(pages)
+  } catch {
+    return NextResponse.json({ error: "Gagal memuat" }, { status: 500 })
   }
-  const pages = await prisma.page.findMany({ orderBy: { id: "asc" } })
-  return NextResponse.json(pages)
 }
 
 export async function POST(request: Request) {

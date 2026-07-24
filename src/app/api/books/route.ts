@@ -20,6 +20,8 @@ const getCachedBooks = unstable_cache(
     const orderBy: Record<string, "asc" | "desc"> =
       sort === "price_asc" ? { price: "asc" } :
       sort === "price_desc" ? { price: "desc" } :
+      sort === "title_asc" ? { title: "asc" } :
+      sort === "title_desc" ? { title: "desc" } :
       { createdAt: "desc" }
 
     const [books, total] = await Promise.all([

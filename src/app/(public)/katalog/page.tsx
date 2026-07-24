@@ -1,4 +1,4 @@
-import { prisma } from "@/lib/prisma"
+import { headers } from "next/headers"
 import PageHero from "@/components/PageHero"
 import { KatalogClient } from "@/components/KatalogClient"
 import type { Book, Category } from "@/lib/data"
@@ -19,75 +19,41 @@ export const metadata = {
   },
 }
 
+async function getBaseUrl() {
+  const h = await headers()
+  const host = h.get("x-forwarded-host") || h.get("host") || "localhost:3000"
+  const proto = h.get("x-forwarded-proto") || (process.env.NODE_ENV === "development" ? "http" : "https")
+  return `${proto}://${host}`
+}
+
 interface PageParams {
   searchParams: Promise<Record<string, string | undefined>>
 }
 
 export default async function KatalogPage({ searchParams }: PageParams) {
   const params = await searchParams
+  const baseUrl = await getBaseUrl()
 
-  const page = Math.max(1, parseInt(params.page ?? "1", 10) || 1)
-  const categoryId = params.category_id ? parseInt(params.category_id) : undefined
-  const search = params.search ?? ""
-  const sort = params.sort ?? "latest"
-  const limit = 12
+  const qs = new URLSearchParams()
+  if (params.page) qs.set("page", params.page)
+  if (params.category_id) qs.set("category_id", params.category_id)
+  if (params.search) qs.set("search", params.search)
+  if (params.sort) qs.set("sort", params.sort)
 
-  const where: Record<string, unknown> = {}
-  if (categoryId) where.categoryId = categoryId
-  if (search) {
-    where.OR = [
-      { title: { contains: search, mode: "insensitive" as const } },
-      { author: { contains: search, mode: "insensitive" as const } },
-    ]
-  }
+  const fetchOpts = { next: { revalidate: 60 } } as const
 
-  const orderBy: Record<string, "asc" | "desc"> =
-    sort === "title_asc" ? { title: "asc" } :
-    sort === "title_desc" ? { title: "desc" } :
-    { createdAt: "desc" }
-
-  const [booksRaw, total, categoriesRaw] = await Promise.all([
-    prisma.book.findMany({
-      where,
-      include: { category: true },
-      orderBy,
-      skip: (page - 1) * limit,
-      take: limit,
-    }),
-    prisma.book.count({ where }),
-    prisma.category.findMany({ orderBy: { name: "asc" } }),
+  const [booksRes, catsRes] = await Promise.all([
+    fetch(`${baseUrl}/api/books?${qs.toString()}`, fetchOpts),
+    fetch(`${baseUrl}/api/categories`, { next: { revalidate: 300 } }),
   ])
 
-  const totalPages = Math.max(1, Math.ceil(total / limit))
+  const booksData: { books: Book[]; total: number; total_pages: number } = await booksRes.json()
+  const catsData: { categories: Category[] } = await catsRes.json()
 
-  const books: Book[] = booksRaw.map((b) => ({
-    id: String(b.id),
-    slug: b.slug,
-    title: b.title,
-    author: b.author,
-    translator: b.translator,
-    publisher: b.publisher,
-    isbn: b.isbn || "",
-    page_count: b.pageCount,
-    price: Number(b.price),
-    category_id: String(b.categoryId),
-    category_name: b.category.name,
-    cover_image: b.coverImage,
-    synopsis: b.synopsis,
-    preview_pdf_url: b.previewPdfUrl,
-    created_at: b.createdAt.toISOString(),
-    stock: b.stock,
-    weight: b.weight,
-    dimensions: b.dimensions,
-    language: b.language,
-    publication_year: b.publicationYear,
-  }))
-
-  const categories: Category[] = categoriesRaw.map((c) => ({
-    id: String(c.id),
-    name: c.name,
-    slug: c.slug,
-  }))
+  const books: Book[] = booksData.books ?? []
+  const total = booksData.total ?? 0
+  const totalPages = booksData.total_pages ?? 1
+  const categories: Category[] = catsData.categories ?? []
 
   return (
     <main className="min-h-screen">

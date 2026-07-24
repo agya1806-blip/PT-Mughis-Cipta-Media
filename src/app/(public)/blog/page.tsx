@@ -1,6 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
-import { prisma } from "@/lib/prisma"
+import { headers } from "next/headers"
 import PageHero from "@/components/PageHero"
 import { Pagination, EmptyState } from "@/components/ui"
 import { Clock, Calendar, ChevronRight } from "lucide-react"
@@ -35,21 +35,25 @@ interface Props {
 export default async function BlogPage({ searchParams }: Props) {
   const params = await searchParams
   const currentPage = Math.max(1, parseInt(params.page || "1") || 1)
-  const skip = (currentPage - 1) * PER_PAGE
 
-  let articles: Array<{ id: number; title: string; slug: string; content: string; featuredImage: string; createdAt: Date }> = []
+  const h = await headers()
+  const host = h.get("x-forwarded-host") || h.get("host") || "localhost:3000"
+  const proto = h.get("x-forwarded-proto") || (process.env.NODE_ENV === "development" ? "http" : "https")
+  const baseUrl = `${proto}://${host}`
+
+  let articles: Array<{ id: number; title: string; slug: string; content: string; featuredImage: string; published: boolean; createdAt: string }> = []
   let total = 0
 
   try {
-    const [result, count] = await Promise.all([
-      prisma.article.findMany({ orderBy: { createdAt: "desc" }, skip, take: PER_PAGE }),
-      prisma.article.count(),
-    ])
-    articles = result as typeof articles
-    total = count
+    const res = await fetch(`${baseUrl}/api/articles?page=${currentPage}&limit=${PER_PAGE}`, {
+      next: { revalidate: 60 },
+    })
+    const data = await res.json()
+    articles = data.articles ?? []
+    total = data.total ?? 0
   } catch {}
 
-  const totalPages = Math.ceil(total / PER_PAGE)
+  const totalPages = Math.max(1, Math.ceil(total / PER_PAGE))
   const featured = currentPage === 1 && articles.length > 0 ? articles[0] : null
   const latest = featured ? articles.slice(1) : articles
 

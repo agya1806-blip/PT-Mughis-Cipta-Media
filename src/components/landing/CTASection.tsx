@@ -1,8 +1,8 @@
 "use client"
-import Image from "next/image"
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { ArrowRight, MessageCircle } from "lucide-react"
+import TextLogo from "@/components/TextLogo"
 
 const containerVariants = {
   hidden: { opacity: 0, y: 20 },
@@ -44,13 +44,7 @@ export default function CTASection() {
             viewport={{ once: true }}
             className="w-16 h-16 rounded-2xl bg-gold/20 flex items-center justify-center mx-auto mb-6"
           >
-            <Image
-              src="/logo-original.png"
-              alt="PT Mughis Cipta Media"
-              width={120}
-              height={13}
-              className="h-8 w-auto brightness-0 invert"
-            />
+            <TextLogo variant="inline" className="[&_span:first-child]:text-cream [&_span:last-child]:text-cream" />
           </motion.div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-cream leading-[1.15] tracking-tight mb-4">
             Siap Menerbitkan{" "}

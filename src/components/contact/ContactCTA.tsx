@@ -1,9 +1,9 @@
 "use client"
 
-import Image from "next/image"
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { ArrowRight, MessageCircle } from "lucide-react"
+import TextLogo from "@/components/TextLogo"
 
 export default function ContactCTA({ phone = "6285723456789" }: { phone?: string }) {
   return (
@@ -21,13 +21,7 @@ export default function ContactCTA({ phone = "6285723456789" }: { phone?: string
           className="max-w-2xl mx-auto text-center"
         >
           <div className="mx-auto mb-6 flex items-center justify-center">
-            <Image
-              src="/logo-original.png"
-              alt="PT Mughis Cipta Media"
-              width={160}
-              height={17}
-              className="h-10 w-auto brightness-0 invert"
-            />
+            <TextLogo variant="footer" />
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-cream leading-[1.15] tracking-tight mb-4">
             Konsultasi{" "}

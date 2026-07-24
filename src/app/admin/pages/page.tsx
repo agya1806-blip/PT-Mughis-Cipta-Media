@@ -54,7 +54,7 @@ export default function AdminPages() {
                 <td className="px-4 py-3 text-green-dark">{page.title}</td>
                 <td className="px-4 py-3 text-green/70">/{page.slug}</td>
                 <td className="px-4 py-3 text-center space-x-2">
-                  <Link href={`/admin/pages/${page.id}`} className="text-green-dark dark:text-gold hover:underline text-xs">
+                  <Link href={`/admin/pages/${page.id}`} className="text-green dark:text-gold hover:underline text-xs">
                     Edit
                   </Link>
                   <button onClick={() => handleDelete(page.id)} className="text-red-500 hover:underline text-xs">

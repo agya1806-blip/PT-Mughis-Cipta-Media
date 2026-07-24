@@ -42,7 +42,7 @@ export default function SectionHeader({
       className={`${alignClass} mb-16 ${className}`}
     >
       <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gold/10 border border-gold/20 mb-6">
-        <span className="text-green-dark dark:text-gold text-xs font-medium uppercase tracking-wider">
+        <span className="text-gold-dark dark:text-gold text-xs font-medium uppercase tracking-wider">
           {badge}
         </span>
       </div>

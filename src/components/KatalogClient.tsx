@@ -113,7 +113,7 @@ export function KatalogClient({ initialBooks, initialCategories, initialTotal, i
                       onClick={() => updateFilters({ category_id: isActive ? "" : cat.id })}
                       className={`block w-full text-left px-3 py-1.5 rounded-lg text-sm transition-colors ${
                         isActive
-                          ? "bg-gold/10 text-green-dark dark:text-gold font-medium"
+                          ? "bg-gold/10 text-gold-dark dark:text-gold font-medium"
                           : "text-green/80 hover:bg-cream hover:text-green-dark"
                       }`}
                     >
@@ -174,7 +174,7 @@ export function KatalogClient({ initialBooks, initialCategories, initialTotal, i
                 </svg>
                 <h3 className="text-lg font-medium text-green/80 mb-1">Tidak ada buku ditemukan</h3>
                 <p className="text-sm text-green/60 mb-4">Coba ubah kata kunci atau filter pencarian</p>
-                <button onClick={resetFilters} className="text-sm font-medium text-green-dark dark:text-gold hover:text-green dark:hover:text-cream">
+                <button onClick={resetFilters} className="text-sm font-medium text-green dark:text-gold hover:text-green-dark dark:hover:text-cream">
                   Reset Filter
                 </button>
               </div>
@@ -205,7 +205,7 @@ export function KatalogClient({ initialBooks, initialCategories, initialTotal, i
         >
           Filter
         </button>
-        <button onClick={resetFilters} className="flex-1 text-center text-sm font-medium text-green-dark dark:text-gold border border-gold/30 rounded-lg py-2.5">
+        <button onClick={resetFilters} className="flex-1 text-center text-sm font-medium text-green dark:text-gold border border-gold/30 rounded-lg py-2.5">
           Reset
         </button>
       </div>

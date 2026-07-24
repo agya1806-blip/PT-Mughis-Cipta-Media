@@ -35,7 +35,7 @@ export default function ContactInfo({ address, email, phone, instagramUrl, faceb
               href={`https://wa.me/${phone}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-3 text-green-dark dark:text-gold hover:text-green dark:hover:text-cream transition-colors font-medium text-sm"
+              className="flex items-center gap-3 text-green dark:text-gold hover:text-green-dark dark:hover:text-cream transition-colors font-medium text-sm"
             >
               <Phone className="w-4 h-4" />
               <span>{phone}</span>
@@ -44,7 +44,7 @@ export default function ContactInfo({ address, email, phone, instagramUrl, faceb
           {email && (
             <a
               href={`mailto:${email}`}
-              className="flex items-center gap-3 text-green-dark dark:text-gold hover:text-green dark:hover:text-cream transition-colors font-medium text-sm"
+              className="flex items-center gap-3 text-green dark:text-gold hover:text-green-dark dark:hover:text-cream transition-colors font-medium text-sm"
             >
               <Mail className="w-4 h-4" />
               <span>{email}</span>

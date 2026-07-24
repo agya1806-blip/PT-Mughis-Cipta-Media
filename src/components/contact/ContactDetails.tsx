@@ -76,7 +76,7 @@ export default function ContactDetails({ phone, email, address }: ContactInfo) {
           className="text-center mb-12"
         >
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/10 border border-gold/20 mb-6">
-            <span className="text-green-dark dark:text-gold text-[11px] font-medium uppercase tracking-[0.1em]">
+            <span className="text-gold-dark dark:text-gold text-[11px] font-medium uppercase tracking-[0.1em]">
               Hubungi Kami
             </span>
           </div>

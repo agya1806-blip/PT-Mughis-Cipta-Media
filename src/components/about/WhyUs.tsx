@@ -30,7 +30,7 @@ export default function WhyUs() {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6 }}
           >
-            <span className="text-green-dark dark:text-gold font-semibold text-sm tracking-widest uppercase">Keunggulan</span>
+            <span className="text-green dark:text-gold font-semibold text-sm tracking-widest uppercase">Keunggulan</span>
             <h2 className="text-4xl sm:text-5xl font-bold text-green-dark dark:text-cream mt-4 mb-6 leading-tight">
               Mengapa Memilih{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold to-gold-dark">

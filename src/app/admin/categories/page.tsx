@@ -91,7 +91,7 @@ export default function AdminCategories() {
                 <td className="px-4 py-3 text-green-dark">{cat.name}</td>
                 <td className="px-4 py-3 text-green/70">{cat.slug}</td>
                 <td className="px-4 py-3 text-center space-x-2">
-                  <button onClick={() => handleEdit(cat)} className="text-green-dark dark:text-gold hover:underline text-xs">Edit</button>
+                  <button onClick={() => handleEdit(cat)} className="text-green dark:text-gold hover:underline text-xs">Edit</button>
                   <button onClick={() => handleDelete(cat.id)} className="text-red-500 hover:underline text-xs">Hapus</button>
                 </td>
               </tr>

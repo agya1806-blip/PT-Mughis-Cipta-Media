@@ -15,7 +15,7 @@ export default function AboutStory() {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
-            <span className="text-green-dark dark:text-gold font-semibold text-sm tracking-widest uppercase">Tentang Kami</span>
+            <span className="text-green dark:text-gold font-semibold text-sm tracking-widest uppercase">Tentang Kami</span>
             <h2 className="text-4xl sm:text-5xl font-bold text-green-dark dark:text-cream mt-4 mb-8 leading-tight">
               Cerita{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold to-gold-dark">

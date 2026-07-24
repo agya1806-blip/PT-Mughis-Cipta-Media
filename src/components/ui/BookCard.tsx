@@ -78,7 +78,7 @@ export default function BookCard({ book, className = "", href }: Props) {
                 </span>
               )}
             </div>
-            <span className="text-xs font-medium text-green-dark dark:text-gold inline-flex items-center gap-1 transition-all duration-200 group-hover:gap-1.5">
+            <span className="text-xs font-medium text-green dark:text-gold inline-flex items-center gap-1 transition-all duration-200 group-hover:gap-1.5">
               Lihat Detail
               <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />

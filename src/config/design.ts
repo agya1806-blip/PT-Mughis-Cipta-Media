@@ -100,7 +100,7 @@ export const MOTION = {
 
 /** Section badge pattern */
 export const SECTION_BADGE = "inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/10 border border-gold/20 mb-6"
-export const SECTION_BADGE_TEXT = "text-green-dark dark:text-gold text-[11px] font-medium uppercase tracking-[0.1em]"
+export const SECTION_BADGE_TEXT = "text-gold-dark dark:text-gold text-[11px] font-medium uppercase tracking-[0.1em]"
 
 /** Gradient heading pattern */
 export function goldGradient(text: string) {

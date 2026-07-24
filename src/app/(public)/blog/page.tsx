@@ -154,13 +154,10 @@ export default async function BlogPage({ searchParams }: Props) {
                       </div>
                     ) : (
                       <div className="h-48 bg-gradient-to-br from-gold/10 to-gold/5 flex items-center justify-center p-6">
-                        <Image
-                          src="/logo-original.png"
-                          alt="PT Mughis Cipta Media"
-                          width={240}
-                          height={24}
-                          className="h-10 w-auto opacity-80"
-                        />
+                        <div className="flex items-center gap-1 opacity-80">
+                          <span className="text-gold text-[10px] font-semibold tracking-wider">PT</span>
+                          <span className="text-green-dark text-xs font-bold">Mughis Cipta Media</span>
+                        </div>
                        </div>
                      )}
                      <div className="flex-1 p-5 flex flex-col relative">

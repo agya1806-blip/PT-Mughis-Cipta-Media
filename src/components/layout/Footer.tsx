@@ -1,10 +1,10 @@
 import Link from "next/link"
-import Image from "next/image"
 import { MapPin, Mail, Phone } from "lucide-react"
 import Badge from "@/components/ui/Badge"
 import IconWrapper from "@/components/ui/IconWrapper"
 import { prisma } from "@/lib/prisma"
 import { footerData, type FooterData } from "./footer-data"
+import TextLogo from "@/components/TextLogo"
 
 async function getSettings(): Promise<Partial<FooterData["company"]> & { instagramUrl?: string; facebookUrl?: string }> {
   try {
@@ -97,13 +97,7 @@ export default async function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16">
           <div className="sm:col-span-2 lg:col-span-1 space-y-6">
             <Link href="/" className="inline-flex items-center gap-3 group">
-              <Image
-                src="/logo-original.png"
-                alt="PT Mughis Cipta Media"
-                width={600}
-                height={63}
-                className="h-8 w-auto brightness-0 invert"
-              />
+              <TextLogo variant="footer" />
             </Link>
             <p className="text-sm text-cream/80 leading-relaxed">
               {company.tagline}

@@ -1,8 +1,8 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import Image from "next/image"
 import { motion, AnimatePresence } from "framer-motion"
+import TextLogo from "@/components/TextLogo"
 
 export default function LoadingScreen() {
   const [show, setShow] = useState(true)
@@ -28,14 +28,7 @@ export default function LoadingScreen() {
             className="text-center"
           >
             <div className="mx-auto mb-4">
-              <Image
-                src="/logo-original.png"
-                alt="PT Mughis Cipta Media"
-                width={600}
-                height={63}
-                className="w-44 sm:w-48 h-auto mx-auto"
-                priority
-              />
+              <TextLogo variant="loading" />
             </div>
             <motion.p
               initial={{ opacity: 0 }}

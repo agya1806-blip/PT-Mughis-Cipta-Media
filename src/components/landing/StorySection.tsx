@@ -1,9 +1,9 @@
 "use client"
 
-import Image from "next/image"
 import { motion } from "framer-motion"
 import { Quote } from "lucide-react"
 import Link from "next/link"
+import TextLogo from "@/components/TextLogo"
 
 export default function StorySection() {
   return (
@@ -73,7 +73,7 @@ export default function StorySection() {
 
               <div className="relative h-full flex flex-col items-center justify-center p-12 text-center">
                 <div className="mb-6">
-                  <Image src="/logo-original.png" alt="PT Mughis Cipta Media" width={600} height={63} className="h-7 sm:h-8 w-auto brightness-[10]" />
+                  <TextLogo variant="inline" className="[&_span:last-child]:text-cream" />
                 </div>
                 <p className="text-white leading-relaxed">
                   Menghadirkan karya-karya berkualitas yang mencerahkan, menginspirasi, dan memberdayakan generasi bangsa.

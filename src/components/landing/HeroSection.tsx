@@ -1,7 +1,6 @@
 "use client"
 
 import { useRef, useState } from "react"
-import Image from "next/image"
 import Link from "next/link"
 import { motion, useScroll, useTransform } from "framer-motion"
 import { ArrowRight, MessageCircle } from "lucide-react"
@@ -25,7 +24,10 @@ function FloatingBook() {
           <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-gold via-gold-light to-gold" />
           <div className="p-6 sm:p-8 flex flex-col h-full">
             <div className="mb-4">
-              <Image src="/logo-original.png" alt="" width={600} height={63} className="h-4 w-auto brightness-[10] opacity-70" />
+              <div className="flex items-center gap-1">
+                <span className="text-gold text-[10px] font-semibold tracking-wider opacity-70">PT</span>
+                <span className="text-cream text-xs font-bold opacity-70">Mughis Cipta Media</span>
+              </div>
             </div>
             <div className="flex-1 space-y-2">
               <div className="h-3 bg-gold/20 rounded w-3/4" />

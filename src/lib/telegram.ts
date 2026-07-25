@@ -33,6 +33,24 @@ export async function sendTelegramPhoto(
   caption: string
 ): Promise<void> {
   const { token, chatId } = getConfig()
+
+  if (filePath.startsWith("http://") || filePath.startsWith("https://")) {
+    const res = await fetch(`${TELEGRAM_API}${token}/sendPhoto`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        chat_id: chatId,
+        photo: filePath,
+        caption,
+      }),
+    })
+    if (!res.ok) {
+      const body = await res.text()
+      throw new Error(`Telegram sendPhoto failed (${res.status}): ${body}`)
+    }
+    return
+  }
+
   const fs = await import("fs/promises")
   const pathModule = await import("path")
 

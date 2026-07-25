@@ -102,12 +102,15 @@ export async function POST(request: Request) {
       "fileBuktiFollowFounder"
     ) as File | null
 
+    const save = (f: File | null, dir: string) =>
+      f instanceof File ? saveFile(f, dir) : Promise.resolve(null)
+
     const [naskahUrl, coverUrl, buktiUrl, buktiFounderUrl] = await Promise.all(
       [
-        saveFile(fileNaskah!, "campaign/naskah"),
-        saveFile(fileCover!, "campaign/cover"),
-        saveFile(fileBuktiFollow!, "campaign/bukti"),
-        saveFile(fileBuktiFollowFounder!, "campaign/bukti"),
+        save(fileNaskah, "campaign/naskah"),
+        save(fileCover, "campaign/cover"),
+        save(fileBuktiFollow, "campaign/bukti"),
+        save(fileBuktiFollowFounder, "campaign/bukti"),
       ]
     )
 
@@ -117,23 +120,13 @@ export async function POST(request: Request) {
       .slice(-4)
       .padStart(4, "0")}`
 
-    // Send to Telegram
+    // Send to Telegram (non-blocking — don't block registration on notification)
     const text = buildTelegramMessage(data, registrationNumber)
-    await sendTelegramMessage(text)
-
-    // Send bukti follow photos if available
-    if (buktiUrl) {
-      await sendTelegramPhoto(
-        buktiUrl,
-        "Bukti Follow Instagram PT Mughis Cipta Media"
-      )
-    }
-    if (buktiFounderUrl) {
-      await sendTelegramPhoto(
-        buktiFounderUrl,
-        "Bukti Follow Instagram Founder @mhdaghisna_"
-      )
-    }
+    Promise.all([
+      sendTelegramMessage(text).catch(() => {}),
+      buktiUrl ? sendTelegramPhoto(buktiUrl, "Bukti Follow Instagram PT Mughis Cipta Media").catch(() => {}) : Promise.resolve(),
+      buktiFounderUrl ? sendTelegramPhoto(buktiFounderUrl, "Bukti Follow Instagram Founder @mhdaghisna_").catch(() => {}) : Promise.resolve(),
+    ])
 
     const payload = {
       id,

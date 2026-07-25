@@ -245,7 +245,7 @@ export function RegistrationForm() {
           </div>
 
           {/* SUBMIT */}
-          <div className="text-center">
+          <div className="text-center space-y-4">
             <button
               type="submit"
               disabled={submitting || campLoading || !isOpen}
@@ -265,6 +265,17 @@ export function RegistrationForm() {
                 <><span className="tracking-wider">DAFTAR SEKARANG</span> <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" /></>
               )}
             </button>
+            <p className="text-sm text-green/60">
+              Kesulitan mengisi formulir?{" "}
+              <a
+                href="https://wa.me/6285121576433"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gold-dark font-medium hover:text-gold transition-colors"
+              >
+                Hubungi Admin via WhatsApp
+              </a>
+            </p>
           </div>
         </motion.form>
       </div>

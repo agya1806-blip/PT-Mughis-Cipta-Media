@@ -54,34 +54,34 @@ export function Countdown() {
           <div className="text-xl sm:text-2xl font-bold text-white tabular-nums">
             {pad(timeLeft.days)}
           </div>
-          <div className="text-[10px] text-cream/80 uppercase tracking-wider mt-0.5">
+          <div className="text-[10px] text-cream uppercase tracking-wider mt-0.5">
             Hari
           </div>
         </div>
-        <span className="text-gold/60 text-lg font-bold">:</span>
+        <span className="text-gold text-lg font-bold">:</span>
         <div className={boxClass}>
           <div className="text-xl sm:text-2xl font-bold text-white tabular-nums">
             {pad(timeLeft.hours)}
           </div>
-          <div className="text-[10px] text-cream/80 uppercase tracking-wider mt-0.5">
+          <div className="text-[10px] text-cream uppercase tracking-wider mt-0.5">
             Jam
           </div>
         </div>
-        <span className="text-gold/60 text-lg font-bold">:</span>
+        <span className="text-gold text-lg font-bold">:</span>
         <div className={boxClass}>
           <div className="text-xl sm:text-2xl font-bold text-white tabular-nums">
             {pad(timeLeft.minutes)}
           </div>
-          <div className="text-[10px] text-cream/80 uppercase tracking-wider mt-0.5">
+          <div className="text-[10px] text-cream uppercase tracking-wider mt-0.5">
             Menit
           </div>
         </div>
-        <span className="text-gold/60 text-lg font-bold">:</span>
+        <span className="text-gold text-lg font-bold">:</span>
         <div className={boxClass}>
           <div className="text-xl sm:text-2xl font-bold text-white tabular-nums">
             {pad(timeLeft.seconds)}
           </div>
-          <div className="text-[10px] text-cream/80 uppercase tracking-wider mt-0.5">
+          <div className="text-[10px] text-cream uppercase tracking-wider mt-0.5">
             Detik
           </div>
         </div>

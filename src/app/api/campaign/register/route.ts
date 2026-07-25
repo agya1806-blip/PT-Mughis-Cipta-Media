@@ -96,7 +96,6 @@ export async function POST(request: Request) {
     }
 
     const fileNaskah = formData.get("fileNaskah") as File | null
-    const fileCover = formData.get("fileCover") as File | null
     const fileBuktiFollow = formData.get("fileBuktiFollow") as File | null
     const fileBuktiFollowFounder = formData.get(
       "fileBuktiFollowFounder"
@@ -105,10 +104,9 @@ export async function POST(request: Request) {
     const save = (f: File | null, dir: string) =>
       f instanceof File ? saveFile(f, dir) : Promise.resolve(null)
 
-    const [naskahUrl, coverUrl, buktiUrl, buktiFounderUrl] = await Promise.all(
+    const [naskahUrl, buktiUrl, buktiFounderUrl] = await Promise.all(
       [
         save(fileNaskah, "campaign/naskah"),
-        save(fileCover, "campaign/cover"),
         save(fileBuktiFollow, "campaign/bukti"),
         save(fileBuktiFollowFounder, "campaign/bukti"),
       ]
@@ -120,39 +118,32 @@ export async function POST(request: Request) {
       .slice(-4)
       .padStart(4, "0")}`
 
-    // Send to Telegram (non-blocking — don't block registration on notification)
     const text = buildTelegramMessage(data, registrationNumber)
     const telegramTasks: Promise<void>[] = [
-      sendTelegramMessage(text).catch(() => {}),
+      sendTelegramMessage(text).catch((e) => console.error("Telegram msg fail:", e)),
     ]
-    if (coverUrl) {
-      telegramTasks.push(
-        sendTelegramPhoto(coverUrl, "📖 Cover Buku").catch(() => {})
-      )
-    }
     if (naskahUrl) {
       telegramTasks.push(
-        sendTelegramDocument(naskahUrl, "📄 File Naskah").catch(() => {})
+        sendTelegramDocument(naskahUrl, "📄 File Naskah").catch((e) => console.error("Telegram doc fail:", e))
       )
     }
     if (buktiUrl) {
       telegramTasks.push(
-        sendTelegramPhoto(buktiUrl, "📸 Bukti Follow Instagram PT Mughis Cipta Media").catch(() => {})
+        sendTelegramPhoto(buktiUrl, "📸 Bukti Follow Instagram PT Mughis Cipta Media").catch((e) => console.error("Telegram bukti fail:", e))
       )
     }
     if (buktiFounderUrl) {
       telegramTasks.push(
-        sendTelegramPhoto(buktiFounderUrl, "📸 Bukti Follow Instagram Founder @mhdaghisna_").catch(() => {})
+        sendTelegramPhoto(buktiFounderUrl, "📸 Bukti Follow Instagram Founder @mhdaghisna_").catch((e) => console.error("Telegram bukti founder fail:", e))
       )
     }
-    Promise.all(telegramTasks)
+    await Promise.all(telegramTasks)
 
     const payload = {
       id,
       registrationNumber,
       ...data,
       fileNaskahUrl: naskahUrl,
-      fileCoverUrl: coverUrl,
       fileBuktiFollowUrl: buktiUrl,
       fileBuktiFollowFounderUrl: buktiFounderUrl,
       createdAt: new Date().toISOString(),

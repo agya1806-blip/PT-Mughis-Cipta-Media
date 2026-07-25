@@ -17,7 +17,7 @@ import { getMicrocopy } from "@/lib/campaign/microcopy"
 const initialForm: CampaignFormData = {
   nama: "", whatsapp: "", email: "", provinsi: "", kota: "", alamat: "",
   judulBuku: "", kategoriBuku: "", jumlahHalaman: "", statusNaskah: "", targetTerbit: "",
-  deskripsiBuku: "", fileNaskah: null, fileCover: null, fileBuktiFollow: null,
+  deskripsiBuku: "", fileNaskah: null, fileBuktiFollow: null,
   fileBuktiFollowFounder: null, persetujuan: false,
 }
 
@@ -55,8 +55,17 @@ export function RegistrationForm() {
         else if (val !== null) fd.append(key, String(val))
       })
       const res = await fetch("/api/campaign/register", { method: "POST", body: fd })
+      if (!res.ok) {
+        let msg = "Gagal mendaftar"
+        try {
+          const data = await res.json()
+          msg = data.error || msg
+        } catch {
+          msg = `Server error (${res.status}) — File terlalu besar atau koneksi terputus`
+        }
+        throw new Error(msg)
+      }
       const data = await res.json()
-      if (!res.ok) throw new Error(data.error || "Gagal mendaftar")
       const number = data.registrationNumber || `${CAMPAIGN.registrationPrefix}-${String(data.id).padStart(4, "0")}`
       setRegNumber(number)
       setSubmitted(true)
@@ -197,15 +206,6 @@ export function RegistrationForm() {
                 hint="Format .docx atau .pdf"
                 value={form.fileNaskah}
                 onChange={(f) => update("fileNaskah", f)}
-              />
-              <FileUpload
-                accept=".jpg,.jpeg,.png"
-                maxSizeMB={UPLOAD_LIMITS.coverMaxMB}
-                label="Upload Cover"
-                hint={`Format .jpg atau .png — maks. ${UPLOAD_LIMITS.coverMaxMB} MB`}
-                value={form.fileCover}
-                onChange={(f) => update("fileCover", f)}
-                preview="image"
               />
               <div className="space-y-2">
                 <FileUpload

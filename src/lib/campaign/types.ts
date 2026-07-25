@@ -14,7 +14,6 @@ export interface CampaignFormData {
   targetTerbit: string
   deskripsiBuku: string
   fileNaskah: File | null
-  fileCover: File | null
   fileBuktiFollow: File | null
   fileBuktiFollowFounder: File | null
   persetujuan: boolean
@@ -36,7 +35,6 @@ export interface CampaignSubmission {
   targetTerbit: string
   deskripsiBuku: string
   fileNaskahUrl: string | null
-  fileCoverUrl: string | null
   fileBuktiFollowUrl: string | null
   fileBuktiFollowFounderUrl: string | null
   createdAt: string

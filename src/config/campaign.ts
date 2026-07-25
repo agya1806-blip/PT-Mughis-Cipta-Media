@@ -1,9 +1,8 @@
 import type { TimelineEvent, WhyCard, FlowStep, FAQItem, Requirement } from "@/lib/campaign/types"
 
 export const UPLOAD_LIMITS = {
-  coverMaxMB: 10,
-  naskahMaxMB: 10,
-  buktiMaxMB: 5,
+  naskahMaxMB: 1,
+  buktiMaxMB: 0.5,
 }
 
 export const CAMPAIGN = {
@@ -13,7 +12,7 @@ export const CAMPAIGN = {
   },
   registrationPrefix: "MCM",
   whatsappAdmin: "6285121576433",
-  instagramUrl: "https://www.instagram.com/mhdaghisna_?utm_source=qr",
+  instagramUrl: "https://www.instagram.com/percetakanmurah.co?igsh=MWFqdmF3anY2dHFrYw%3D%3D&utm_source=qr",
   founderInstagram: "mhdaghisna_",
 }
 

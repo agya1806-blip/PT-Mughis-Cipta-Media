@@ -9,7 +9,6 @@ import {
   SECTION_BADGE_TEXT,
   SPACING,
 } from "@/config/design"
-import { TEAM_CONFIG } from "@/config/team"
 import { TeamCard } from "./TeamCard"
 import type { TeamMemberPublic } from "@/lib/team/types"
 
@@ -38,7 +37,11 @@ export function TeamGrid() {
     fetch("/api/team")
       .then((r) => r.json())
       .then((data) => {
-        if (Array.isArray(data)) setMembers(data)
+        if (Array.isArray(data)) {
+          setMembers(data)
+          const divisions = new Set(data.map((m: TeamMemberPublic) => m.division || "other"))
+          setExpandedDivisions(divisions)
+        }
       })
       .catch(() => {})
       .finally(() => setLoading(false))
@@ -151,12 +154,6 @@ export function TeamGrid() {
                   </div>
                 )}
 
-                {expandedDivisions.has(division) &&
-                  division !== "executive" && (
-                    <div className="mt-4 px-4 py-3 rounded-xl bg-gold/5 border border-gold/10 text-sm text-green/60">
-                      {TEAM_CONFIG.internalTeamNotice}
-                    </div>
-                  )}
               </motion.div>
             ))}
           </div>

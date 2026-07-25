@@ -53,6 +53,7 @@ function MobileSidebar() {
       <MobileNav href="/admin/articles" label="Artikel" icon={<FileText className="w-5 h-5" />} />
       <MobileNav href="/admin/categories" label="Kategori" icon={<FolderTree className="w-5 h-5" />} />
       <MobileNav href="/admin/team" label="Tim" icon={<Users className="w-5 h-5" />} />
+      <MobileNav href="/admin/campaign" label="Campaign" icon={<Calendar className="w-5 h-5" />} />
       <MobileNav href="/" label="Site" icon={<Home className="w-5 h-5" />} />
     </div>
   )

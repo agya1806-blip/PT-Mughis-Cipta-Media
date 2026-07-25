@@ -30,6 +30,7 @@ export const mainNav: NavGroup[] = [
     ],
   },
   { label: "Program Penulis", href: "/penulis" },
+  { label: "Transformasi", href: "/transformasi" },
   { label: "Artikel", href: "/blog" },
   { label: "Kontak", href: "/kontak" },
 ]
@@ -58,6 +59,7 @@ export const footerNavLinks: NavLink[] = [
   { label: "Tentang Kami", href: "/tentang-kami" },
   { label: "Tim Profesional", href: "/tim" },
   { label: "Layanan", href: "/layanan-penerbitan" },
+  { label: "Transformasi", href: "/transformasi" },
   { label: "Program Penulis", href: "/penulis" },
   { label: "Artikel", href: "/blog" },
   { label: "Kontak", href: "/kontak" },

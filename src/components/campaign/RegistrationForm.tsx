@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useCallback } from "react"
+import { useState, useCallback, useEffect } from "react"
 import { motion } from "framer-motion"
 import { ArrowRight, Loader2 } from "lucide-react"
 import { MOTION } from "@/config/design"
@@ -16,12 +16,13 @@ import { getMicrocopy } from "@/lib/campaign/microcopy"
 
 const initialForm: CampaignFormData = {
   nama: "", whatsapp: "", email: "", provinsi: "", kota: "", alamat: "",
-  judulBuku: "", kategoriBuku: "", jumlahHalaman: "", statusNaskah: "", targetTerbit: "",
+  judulBuku: "", kategoriBuku: "", jenisTerbitan: "", jumlahHalaman: "", statusNaskah: "", targetTerbit: "",
   deskripsiBuku: "", fileNaskah: null, fileBuktiFollow: null,
   fileBuktiFollowFounder: null, persetujuan: false,
 }
 
 export function RegistrationForm() {
+  const [pubTypes, setPubTypes] = useState<{ id: string; name: string }[]>([])
   const [form, setForm] = useState<CampaignFormData>(initialForm)
   const [errors, setErrors] = useState<FormErrors>({})
   const [submitting, setSubmitting] = useState(false)
@@ -29,6 +30,13 @@ export function RegistrationForm() {
   const [regNumber, setRegNumber] = useState("")
   const { showToast } = useToast()
   const { status, isOpen, loading: campLoading } = useCampaignStatus()
+
+  useEffect(() => {
+    fetch("/api/publication-types")
+      .then((r) => r.json())
+      .then((data) => setPubTypes(Array.isArray(data) ? data : []))
+      .catch(() => {})
+  }, [])
 
   const update = useCallback(<K extends keyof CampaignFormData>(key: K, value: CampaignFormData[K]) => {
     setForm((prev) => ({ ...prev, [key]: value }))
@@ -173,6 +181,11 @@ export function RegistrationForm() {
                 <select className={errors.kategoriBuku ? errorClass : inputClass} value={form.kategoriBuku} onChange={(e) => update("kategoriBuku", e.target.value)}>
                   <option value="">Pilih kategori</option>
                   {KATEGORI_BUKU.map((k) => <option key={k} value={k}>{k}</option>)}
+                </select>)}
+              {renderField("Jenis Terbitan", "jenisTerbitan",
+                <select className={errors.jenisTerbitan ? errorClass : inputClass} value={form.jenisTerbitan} onChange={(e) => update("jenisTerbitan", e.target.value)}>
+                  <option value="">Pilih jenis terbitan</option>
+                  {pubTypes.map((t) => <option key={t.id} value={t.id}>{t.name}</option>)}
                 </select>)}
               {renderField("Jumlah Halaman", "jumlahHalaman",
                 <input type="number" className={errors.jumlahHalaman ? errorClass : inputClass} value={form.jumlahHalaman} onChange={(e) => update("jumlahHalaman", e.target.value)} placeholder="Contoh: 200" min="1" />)}

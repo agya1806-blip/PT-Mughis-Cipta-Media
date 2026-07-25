@@ -3,12 +3,13 @@ import { unstable_cache } from "next/cache"
 import { prisma } from "@/lib/prisma"
 
 const getCachedBooks = unstable_cache(
-  async (page: string, limit: string, category_id: string, search: string, sort: string) => {
+  async (page: string, limit: string, category_id: string, publication_type_id: string, search: string, sort: string) => {
     const p = parseInt(page, 10)
     const l = parseInt(limit, 10)
 
     const where: Record<string, unknown> = {}
     if (category_id) where.categoryId = parseInt(category_id)
+    if (publication_type_id) where.publicationTypeId = parseInt(publication_type_id)
     if (search) {
       where.OR = [
         { title: { contains: search, mode: "insensitive" } },
@@ -27,7 +28,7 @@ const getCachedBooks = unstable_cache(
     const [books, total] = await Promise.all([
       prisma.book.findMany({
         where,
-        include: { category: true },
+        include: { category: true, publicationType: true },
         orderBy,
         skip: (p - 1) * l,
         take: l,
@@ -48,6 +49,10 @@ const getCachedBooks = unstable_cache(
       price: Number(b.price),
       category_id: String(b.categoryId),
       category_name: b.category.name,
+      publication_type_id: b.publicationTypeId ? String(b.publicationTypeId) : null,
+      publication_type_name: b.publicationType?.name || null,
+      publication_type_icon: b.publicationType?.icon || null,
+      publication_type_badge_color: b.publicationType?.badgeColor || null,
       cover_image: b.coverImage,
       synopsis: b.synopsis,
       preview_pdf_url: b.previewPdfUrl,
@@ -72,10 +77,11 @@ export async function GET(request: NextRequest) {
     const page = searchParams.get("page") ?? "1"
     const limit = searchParams.get("limit") ?? "12"
     const category_id = searchParams.get("category_id") ?? ""
+    const publication_type_id = searchParams.get("publication_type_id") ?? ""
     const search = searchParams.get("search") ?? ""
     const sort = searchParams.get("sort") ?? "latest"
 
-    const data = await getCachedBooks(page, limit, category_id, search, sort)
+    const data = await getCachedBooks(page, limit, category_id, publication_type_id, search, sort)
 
     return Response.json(data, {
       status: 200,

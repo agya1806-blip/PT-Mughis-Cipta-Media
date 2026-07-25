@@ -46,6 +46,23 @@ model User {
   @@map("users")
 }
 
+model PublicationType {
+  id          Int      @id @default(autoincrement())
+  name        String
+  slug        String   @unique
+  icon        String?
+  badgeColor  String?  @map("badge_color")
+  description String?
+  status      Boolean  @default(true)
+  sortOrder   Int      @default(0) @map("sort_order")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  books Book[]
+
+  @@map("publication_types")
+}
+
 model Category {
   id        Int      @id @default(autoincrement())
   name      String
@@ -68,21 +85,30 @@ model Book {
   pageCount            Int      @map("page_count")
   price                Decimal  @db.Decimal(10, 2)
   resellerPrice        Decimal? @map("reseller_price") @db.Decimal(10, 2)
-  categoryId           Int      @map("category_id")
-  coverImage           String?  @map("cover_image")
-  synopsis             String   @db.Text
-  previewPdfUrl        String?  @map("preview_pdf_url")
-  stock                Int      @default(0)
+  categoryId           Int               @map("category_id")
+  publicationTypeId    Int?              @map("publication_type_id")
+  coverImage           String?           @map("cover_image")
+  synopsis             String            @db.Text
+  previewPdfUrl        String?           @map("preview_pdf_url")
+  stock                Int               @default(0)
   weight               Int?
   dimensions           String?
   language             String?
-  whatsapp             String?  @map("whatsapp")
-  publicationYear      Int      @map("publication_year")
-  createdAt            DateTime @default(now()) @map("created_at")
-  updatedAt            DateTime @updatedAt @map("updated_at")
+  whatsapp             String?           @map("whatsapp")
+  publicationYear      Int               @map("publication_year")
+  editor               String?
+  layoutBy             String?           @map("layout_by")
+  subject              String?
+  cityOfPublication    String?           @map("city_of_publication")
+  edition              String?
+  keywords             String?
+  publisherName        String?           @map("publisher_name")
+  createdAt            DateTime          @default(now()) @map("created_at")
+  updatedAt            DateTime          @updatedAt @map("updated_at")
 
-  category   Category    @relation(fields: [categoryId], references: [id], onDelete: NoAction)
-  orderItems OrderItem[]
+  category        Category          @relation(fields: [categoryId], references: [id], onDelete: NoAction)
+  publicationType PublicationType?  @relation(fields: [publicationTypeId], references: [id], onDelete: SetNull)
+  orderItems      OrderItem[]
 
   @@map("books")
 }

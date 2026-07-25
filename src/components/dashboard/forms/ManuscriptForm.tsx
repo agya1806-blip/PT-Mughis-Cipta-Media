@@ -24,6 +24,19 @@ export default function ManuscriptForm() {
             <input id="title" type="text" placeholder="Masukkan judul naskah" className="w-full h-11 px-4 bg-cream border border-gold/30 rounded-xl text-sm text-green-dark placeholder-green-dark/80 focus:outline-none focus:border-gold/50 focus:ring-2 focus:ring-gold/10 transition-all duration-200" />
           </div>
           <div>
+            <label htmlFor="pubType" className="block text-sm font-medium text-green-dark mb-1.5">Jenis Terbitan</label>
+            <select id="pubType" className="w-full h-11 px-4 bg-cream border border-gold/30 rounded-xl text-sm text-green-dark focus:outline-none focus:border-gold/50 focus:ring-2 focus:ring-gold/10 transition-all duration-200" defaultValue="">
+              <option value="" disabled>Pilih jenis terbitan</option>
+              <option value="Buku">Buku</option>
+              <option value="Modul">Modul</option>
+              <option value="Diktat">Diktat</option>
+              <option value="Monograf">Monograf</option>
+              <option value="Novel">Novel</option>
+              <option value="Antologi">Antologi</option>
+              <option value="Lainnya">Lainnya</option>
+            </select>
+          </div>
+          <div>
             <label htmlFor="category" className="block text-sm font-medium text-green-dark mb-1.5">Kategori</label>
             <select id="category" className="w-full h-11 px-4 bg-cream border border-gold/30 rounded-xl text-sm text-green-dark focus:outline-none focus:border-gold/50 focus:ring-2 focus:ring-gold/10 transition-all duration-200" defaultValue="">
               <option value="" disabled>Pilih kategori</option>

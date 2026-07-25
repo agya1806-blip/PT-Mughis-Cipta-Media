@@ -1,14 +1,18 @@
 import { Shield } from "lucide-react"
 import { LegalLayout, LegalSection } from "@/components/legal"
 
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://mughisciptamedia.com"
+
 export const metadata = {
   title: "Kebijakan Privasi",
   description: "Kebijakan privasi PT Mughis Cipta Media mengenai pengumpulan, penggunaan, dan perlindungan data pribadi pengguna.",
   openGraph: {
     title: "Kebijakan Privasi - PT Mughis Cipta Media",
-    description: "Kebijakan privasi PT Mughis Cipta Media.",
+    description: "Kebijakan privasi PT Mughis Cipta Media mengenai pengumpulan, penggunaan, dan perlindungan data pribadi.",
+    url: `${baseUrl}/privacy`,
   },
   twitter: {
+    card: "summary_large_image",
     title: "Kebijakan Privasi - PT Mughis Cipta Media",
     description: "Kebijakan privasi PT Mughis Cipta Media.",
   },

@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import { LayoutDashboard, BookOpen, FileText, FolderTree, Home, Users, Calendar } from "lucide-react"
+import { LayoutDashboard, BookOpen, FileText, FolderTree, Home, Users, Calendar, Layers, FileSearch } from "lucide-react"
 import AdminShell from "@/components/admin/AdminShell"
 
 export const metadata: Metadata = {
@@ -21,7 +21,8 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         </div>
         <nav className="flex-1 p-4 space-y-1 overflow-y-auto">
           <SidebarLink href="/admin">Dashboard</SidebarLink>
-          <SidebarLink href="/admin/books">Buku</SidebarLink>
+          <SidebarLink href="/admin/books">Data Terbitan</SidebarLink>
+          <SidebarLink href="/admin/publication-types">Master Jenis Terbitan</SidebarLink>
           <SidebarLink href="/admin/categories">Kategori</SidebarLink>
           <SidebarLink href="/admin/pages">Halaman</SidebarLink>
           <SidebarLink href="/admin/articles">Artikel</SidebarLink>
@@ -29,6 +30,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           <SidebarLink href="/admin/team">Tim</SidebarLink>
           <SidebarLink href="/admin/campaign">Campaign</SidebarLink>
           <SidebarLink href="/admin/settings">Pengaturan</SidebarLink>
+          <SidebarLink href="/admin/metadata-isbn">Metadata ISBN</SidebarLink>
           <div className="border-t border-gold/20 pt-4 mt-4">
             <Link
               href="/"
@@ -49,7 +51,7 @@ function MobileSidebar() {
   return (
     <div className="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-cream border-t border-gold/20 flex items-center justify-around safe-area-bottom" style={{ padding: "env(safe-area-inset-bottom, 0px) 0 0" }}>
       <MobileNav href="/admin" label="Dashboard" icon={<LayoutDashboard className="w-5 h-5" />} />
-      <MobileNav href="/admin/books" label="Buku" icon={<BookOpen className="w-5 h-5" />} />
+      <MobileNav href="/admin/books" label="Terbitan" icon={<BookOpen className="w-5 h-5" />} />
       <MobileNav href="/admin/articles" label="Artikel" icon={<FileText className="w-5 h-5" />} />
       <MobileNav href="/admin/categories" label="Kategori" icon={<FolderTree className="w-5 h-5" />} />
       <MobileNav href="/admin/team" label="Tim" icon={<Users className="w-5 h-5" />} />

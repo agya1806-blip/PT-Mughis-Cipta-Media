@@ -9,6 +9,7 @@ export interface CampaignFormData {
   alamat: string
   judulBuku: string
   kategoriBuku: string
+  jenisTerbitan: string
   jumlahHalaman: string
   statusNaskah: NaskahStatus | ""
   targetTerbit: string

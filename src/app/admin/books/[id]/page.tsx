@@ -11,8 +11,12 @@ export default function EditBook() {
   const params = useParams()
   const { toast } = useToast()
   const [categories, setCategories] = useState<{ id: number; name: string }[]>([])
+  const [pubTypes, setPubTypes] = useState<{ id: number; name: string }[]>([])
   const [form, setForm] = useState({
     title: "", slug: "", author: "", translator: "", publisher: "", categoryId: "",
+    publicationTypeId: "",
+    editor: "", layoutBy: "", subject: "", cityOfPublication: "",
+    edition: "", keywords: "", publisherName: "",
     synopsis: "", price: "", resellerPrice: "", stock: "0",
     coverImage: "", pageCount: "0", previewPdfUrl: "",
     weight: "250", dimensions: "", language: "", publicationYear: "",
@@ -29,12 +33,19 @@ export default function EditBook() {
   useEffect(() => {
     Promise.all([
       fetch("/api/categories").then((r) => r.json()),
+      fetch("/api/publication-types").then((r) => r.json()),
       fetch(`/api/admin/books/${params.id}`).then((r) => r.json()),
-    ]).then(([cats, book]) => {
+    ]).then(([cats, types, book]) => {
       setCategories(Array.isArray(cats) ? cats : cats.categories || [])
+      setPubTypes(Array.isArray(types) ? types : [])
       setForm({
         title: book.title, slug: book.slug, author: book.author, translator: book.translator || "",
         publisher: book.publisher || "", categoryId: String(book.categoryId),
+        publicationTypeId: book.publicationTypeId ? String(book.publicationTypeId) : "",
+        editor: book.editor || "", layoutBy: book.layoutBy || "",
+        subject: book.subject || "", cityOfPublication: book.cityOfPublication || "",
+        edition: book.edition || "", keywords: book.keywords || "",
+        publisherName: book.publisherName || "",
         synopsis: book.synopsis, price: String(book.price),
         resellerPrice: book.resellerPrice ? String(book.resellerPrice) : "",
         stock: String(book.stock), coverImage: book.coverImage || "",
@@ -118,6 +129,15 @@ export default function EditBook() {
               </select>
             </div>
             <div>
+              <label className="block text-sm font-medium text-green-dark/80 mb-1">Jenis Terbitan</label>
+              <select className={inputClass} value={form.publicationTypeId} onChange={(e) => setForm({ ...form, publicationTypeId: e.target.value })}>
+                <option value="">Pilih Jenis Terbitan</option>
+                {pubTypes.map((t: { id: number; name: string }) => (
+                  <option key={t.id} value={t.id}>{t.name}</option>
+                ))}
+              </select>
+            </div>
+            <div>
               <label className="block text-sm font-medium text-green-dark/80 mb-1">No. WhatsApp</label>
               <input type="text" className={inputClass} value={form.whatsapp} onChange={(e) => setForm({ ...form, whatsapp: e.target.value })} placeholder="628521706587" />
             </div>
@@ -162,6 +182,39 @@ export default function EditBook() {
             <div>
               <label className="block text-sm font-medium text-green-dark/80 mb-1">Tahun Terbit</label>
               <input type="number" className={inputClass} value={form.publicationYear} onChange={(e) => setForm({ ...form, publicationYear: e.target.value })} />
+            </div>
+          </div>
+        </FormSection>
+
+        <FormSection title="Informasi Tambahan" description="Editor, layout, subjek, dan metadata lainnya">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-sm font-medium text-green-dark/80 mb-1">Nama Penerbit</label>
+              <input type="text" className={inputClass} value={form.publisherName} onChange={(e) => setForm({ ...form, publisherName: e.target.value })} placeholder="PT Mughis Cipta Media" />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-green-dark/80 mb-1">Editor</label>
+              <input type="text" className={inputClass} value={form.editor} onChange={(e) => setForm({ ...form, editor: e.target.value })} placeholder="Nama editor" />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-green-dark/80 mb-1">Layout</label>
+              <input type="text" className={inputClass} value={form.layoutBy} onChange={(e) => setForm({ ...form, layoutBy: e.target.value })} placeholder="Nama layout" />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-green-dark/80 mb-1">Subjek</label>
+              <input type="text" className={inputClass} value={form.subject} onChange={(e) => setForm({ ...form, subject: e.target.value })} placeholder="Subjek buku" />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-green-dark/80 mb-1">Kota Terbit</label>
+              <input type="text" className={inputClass} value={form.cityOfPublication} onChange={(e) => setForm({ ...form, cityOfPublication: e.target.value })} placeholder="Kota" />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-green-dark/80 mb-1">Edisi</label>
+              <input type="text" className={inputClass} value={form.edition} onChange={(e) => setForm({ ...form, edition: e.target.value })} placeholder="Contoh: Edisi Pertama" />
+            </div>
+            <div className="sm:col-span-2">
+              <label className="block text-sm font-medium text-green-dark/80 mb-1">Kata Kunci</label>
+              <input type="text" className={inputClass} value={form.keywords} onChange={(e) => setForm({ ...form, keywords: e.target.value })} placeholder="Pisahkan dengan koma" />
             </div>
           </div>
         </FormSection>

@@ -1,7 +1,10 @@
 import Link from "next/link"
 import { prisma } from "@/lib/prisma"
+import { JsonLd } from "@/components/JsonLd"
 import Breadcrumb from "@/components/ui/Breadcrumb"
 import { EmptyState, Pagination } from "@/components/ui"
+
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://mughisciptamedia.com"
 
 export const metadata = {
   title: "Pencarian",
@@ -9,8 +12,10 @@ export const metadata = {
   openGraph: {
     title: "Pencarian - PT Mughis Cipta Media",
     description: "Cari buku dan konten di PT Mughis Cipta Media.",
+    url: `${baseUrl}/search`,
   },
   twitter: {
+    card: "summary_large_image",
     title: "Pencarian - PT Mughis Cipta Media",
     description: "Cari buku dan konten di PT Mughis Cipta Media.",
   },
@@ -34,13 +39,22 @@ export default async function SearchPage({ searchParams }: Props) {
 
   if (query) {
     try {
-      const bookWhere = {
-        OR: [
-          { title: { contains: query } },
-          { author: { contains: query } },
-          { synopsis: { contains: query } },
-        ],
+      const publicationTypeIds = (await prisma.publicationType.findMany({
+        where: { name: { contains: query, mode: "insensitive" } },
+        select: { id: true },
+      })).map((pt) => pt.id)
+
+      const bookWhere: Record<string, unknown> = {}
+      const conditions: Record<string, unknown>[] = [
+        { title: { contains: query } },
+        { author: { contains: query } },
+        { synopsis: { contains: query } },
+      ]
+      if (publicationTypeIds.length > 0) {
+        conditions.push({ publicationTypeId: { in: publicationTypeIds } })
       }
+      bookWhere.OR = conditions
+
       const articleWhere = {
         OR: [
           { title: { contains: query } },
@@ -49,14 +63,14 @@ export default async function SearchPage({ searchParams }: Props) {
       }
 
       const [bookRows, articleRows, bookCount, articleCount] = await Promise.all([
-        prisma.book.findMany({ where: bookWhere, orderBy: { createdAt: "desc" } }),
+        prisma.book.findMany({ where: bookWhere, include: { publicationType: true }, orderBy: { createdAt: "desc" } }),
         prisma.article.findMany({ where: articleWhere, select: { id: true, title: true, slug: true, createdAt: true }, orderBy: { createdAt: "desc" } }),
         prisma.book.count({ where: bookWhere }),
         prisma.article.count({ where: articleWhere }),
       ])
 
       const bookResults = bookRows.map((b) => ({
-        type: "Buku" as const,
+        type: b.publicationType?.name || "Buku",
         title: b.title,
         description: b.synopsis.substring(0, 120),
         href: `/buku/${b.slug}`,
@@ -83,6 +97,21 @@ export default async function SearchPage({ searchParams }: Props) {
 
   return (
     <main className="flex-1 bg-cream">
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          name: "Pencarian - PT Mughis Cipta Media",
+          description: "Cari buku, artikel, dan konten di PT Mughis Cipta Media.",
+          publisher: { "@type": "Organization", name: "PT Mughis Cipta Media" },
+          url: `${baseUrl}/search`,
+          potentialAction: {
+            "@type": "SearchAction",
+            target: { "@type": "EntryPoint", urlTemplate: `${baseUrl}/search?q={search_term_string}` },
+            "query-input": "required name=search_term_string",
+          },
+        }}
+      />
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16">
         <Breadcrumb items={[{ label: "Beranda", href: "/" }, { label: "Pencarian" }]} />
 

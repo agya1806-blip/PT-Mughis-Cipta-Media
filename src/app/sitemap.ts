@@ -16,11 +16,14 @@ export default async function sitemap() {
     { url: `${baseUrl}/terms`, lastModified: new Date(), changeFrequency: "yearly" as const, priority: 0.3 },
 
     { url: `${baseUrl}/penulis`, lastModified: new Date(), changeFrequency: "weekly" as const, priority: 0.6 },
+    { url: `${baseUrl}/tim`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.6 },
+    { url: `${baseUrl}/company`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.7 },
+    { url: `${baseUrl}/company/legalitas`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.6 },
+    { url: `${baseUrl}/transformasi`, lastModified: new Date(), changeFrequency: "weekly" as const, priority: 0.7 },
     { url: `${baseUrl}/search`, lastModified: new Date(), changeFrequency: "weekly" as const, priority: 0.4 },
     { url: `${baseUrl}/legal`, lastModified: new Date(), changeFrequency: "yearly" as const, priority: 0.3 },
     { url: `${baseUrl}/register`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.4 },
     { url: `${baseUrl}/login`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.4 },
-
   ]
 
   try {

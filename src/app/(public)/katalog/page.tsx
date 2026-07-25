@@ -3,16 +3,20 @@ import PageHero from "@/components/PageHero"
 import { KatalogClient } from "@/components/KatalogClient"
 import type { Book, Category } from "@/lib/data"
 
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://mughisciptamedia.com"
+
 export const metadata = {
-  title: "Katalog Buku",
-  description: "Jelajahi koleksi buku dari PT Mughis Cipta Media. Temukan berbagai kategori buku.",
+  title: "Katalog Terbitan",
+  description: "Jelajahi koleksi terbitan dari PT Mughis Cipta Media. Temukan berbagai jenis terbitan, kategori, dan penulis.",
   openGraph: {
-    title: "Katalog Buku - PT Mughis Cipta Media",
-    description: "Jelajahi koleksi buku dari PT Mughis Cipta Media.",
+    title: "Katalog Terbitan - PT Mughis Cipta Media",
+    description: "Jelajahi koleksi terbitan dari PT Mughis Cipta Media.",
+    url: `${baseUrl}/katalog`,
   },
   twitter: {
-    title: "Katalog Buku - PT Mughis Cipta Media",
-    description: "Jelajahi koleksi buku dari PT Mughis Cipta Media.",
+    card: "summary_large_image",
+    title: "Katalog Terbitan - PT Mughis Cipta Media",
+    description: "Jelajahi koleksi terbitan dari PT Mughis Cipta Media.",
   },
   alternates: {
     canonical: "/katalog",
@@ -42,28 +46,31 @@ export default async function KatalogPage({ searchParams }: PageParams) {
 
   const fetchOpts = { next: { revalidate: 300 } } as const
 
-  const [booksRes, catsRes] = await Promise.all([
+  const [booksRes, catsRes, pubTypesRes] = await Promise.all([
     fetch(`${baseUrl}/api/books?${qs.toString()}`, fetchOpts),
     fetch(`${baseUrl}/api/categories`, { next: { revalidate: 600 } }),
+    fetch(`${baseUrl}/api/publication-types`, { next: { revalidate: 600 } }),
   ])
 
   const booksData: { books: Book[]; total: number; total_pages: number } = await booksRes.json()
   const catsData: { categories: Category[] } = await catsRes.json()
+  const pubTypes = await pubTypesRes.json()
 
   const books: Book[] = booksData.books ?? []
   const total = booksData.total ?? 0
   const totalPages = booksData.total_pages ?? 1
   const categories: Category[] = catsData.categories ?? []
+  const initialPubTypes = Array.isArray(pubTypes) ? pubTypes : []
 
   return (
     <main className="min-h-screen">
       <PageHero
         title="Katalog"
-        accent="Buku"
-        description="Jelajahi koleksi buku dari PT Mughis Cipta Media. Temukan berbagai kategori dan penulis."
+        accent="Terbitan"
+        description="Jelajahi koleksi terbitan dari PT Mughis Cipta Media. Temukan berbagai jenis terbitan, kategori, dan penulis."
         breadcrumb={[
           { label: "Beranda", href: "/" },
-          { label: "Katalog Buku" },
+          { label: "Katalog Terbitan" },
         ]}
         icon="katalog"
       />
@@ -72,6 +79,7 @@ export default async function KatalogPage({ searchParams }: PageParams) {
           <KatalogClient
             initialBooks={books}
             initialCategories={categories}
+            initialPubTypes={initialPubTypes}
             initialTotal={total}
             initialTotalPages={totalPages}
           />

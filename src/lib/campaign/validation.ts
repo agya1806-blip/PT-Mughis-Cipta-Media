@@ -22,6 +22,7 @@ export function validateForm(data: Partial<CampaignFormData>): FormErrors {
   if (!data.alamat?.trim()) errors.alamat = "Alamat wajib diisi"
   if (!data.judulBuku?.trim()) errors.judulBuku = "Judul buku wajib diisi"
   if (!data.kategoriBuku?.trim()) errors.kategoriBuku = "Kategori buku wajib diisi"
+  if (!data.jenisTerbitan?.trim()) errors.jenisTerbitan = "Jenis terbitan wajib dipilih"
   if (!data.jumlahHalaman?.trim()) errors.jumlahHalaman = "Jumlah halaman wajib diisi"
   else if (isNaN(Number(data.jumlahHalaman)) || Number(data.jumlahHalaman) < 1) {
     errors.jumlahHalaman = "Jumlah halaman harus angka positif"

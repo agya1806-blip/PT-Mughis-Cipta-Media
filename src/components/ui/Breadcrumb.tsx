@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { ChevronRight } from "lucide-react"
+import { JsonLd } from "@/components/JsonLd"
 
 interface BreadcrumbItem {
   label: string
@@ -13,7 +14,20 @@ interface Props {
 
 export default function Breadcrumb({ items, className = "" }: Props) {
   return (
-    <nav aria-label="Breadcrumb" className={`mb-6 ${className}`}>
+    <>
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: items.map((item, i) => ({
+            "@type": "ListItem",
+            position: i + 1,
+            name: item.label,
+            ...(item.href ? { item: `${process.env.NEXT_PUBLIC_BASE_URL || "https://mughisciptamedia.com"}${item.href}` } : {}),
+          })),
+        }}
+      />
+      <nav aria-label="Breadcrumb" className={`mb-6 ${className}`}>
       <ol className="flex items-center gap-1.5 text-sm text-green-dark/80">
         {items.map((item, i) => (
           <li key={i} className="flex items-center gap-1.5">
@@ -32,5 +46,6 @@ export default function Breadcrumb({ items, className = "" }: Props) {
         ))}
       </ol>
     </nav>
+    </>
   )
 }

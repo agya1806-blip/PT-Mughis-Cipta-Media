@@ -23,7 +23,7 @@ export async function GET(request: Request) {
     const [books, total] = await Promise.all([
       prisma.book.findMany({
         where,
-        include: { category: true },
+        include: { category: true, publicationType: true },
         orderBy: { createdAt: "desc" },
         skip: (page - 1) * limit,
         take: limit,
@@ -58,6 +58,7 @@ export async function POST(request: Request) {
         translator: body.translator || null,
         publisher: body.publisher || "",
         categoryId: parseInt(body.categoryId),
+        publicationTypeId: body.publicationTypeId ? parseInt(body.publicationTypeId) : null,
         synopsis: body.synopsis || "",
         price: parseFloat(body.price),
         resellerPrice: body.resellerPrice ? parseFloat(body.resellerPrice) : null,
@@ -70,8 +71,15 @@ export async function POST(request: Request) {
         language: body.language || "",
         publicationYear: parseInt(body.publicationYear) || new Date().getFullYear(),
         whatsapp: body.whatsapp || null,
+        editor: body.editor || null,
+        layoutBy: body.layoutBy || null,
+        subject: body.subject || null,
+        cityOfPublication: body.cityOfPublication || null,
+        edition: body.edition || null,
+        keywords: body.keywords || null,
+        publisherName: body.publisherName || null,
       },
-      include: { category: true },
+      include: { category: true, publicationType: true },
     })
 
     revalidateTag("books", "max")

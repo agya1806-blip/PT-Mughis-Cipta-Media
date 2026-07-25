@@ -20,7 +20,7 @@ export async function GET(
 
     const book = await prisma.book.findUnique({
       where: { id: idNum },
-      include: { category: true },
+      include: { category: true, publicationType: true },
     })
     if (!book) return NextResponse.json({ error: "Not found" }, { status: 404 })
 
@@ -51,6 +51,7 @@ export async function PUT(
         ...(body.translator !== undefined ? { translator: body.translator || null } : {}),
         ...(body.publisher !== undefined ? { publisher: body.publisher || "" } : {}),
         ...(body.categoryId != null ? { categoryId: parseInt(body.categoryId) } : {}),
+        ...(body.publicationTypeId !== undefined ? { publicationTypeId: body.publicationTypeId ? parseInt(body.publicationTypeId) : null } : {}),
         ...(body.synopsis != null ? { synopsis: body.synopsis } : {}),
         ...(body.price != null ? { price: parseFloat(body.price) } : {}),
         ...(body.resellerPrice !== undefined ? { resellerPrice: body.resellerPrice ? parseFloat(body.resellerPrice) : null } : {}),
@@ -63,6 +64,13 @@ export async function PUT(
         ...(body.language !== undefined ? { language: body.language || "" } : {}),
         ...(body.publicationYear != null ? { publicationYear: parseInt(body.publicationYear) } : {}),
         ...(body.whatsapp !== undefined ? { whatsapp: body.whatsapp || null } : {}),
+        ...(body.editor !== undefined ? { editor: body.editor || null } : {}),
+        ...(body.layoutBy !== undefined ? { layoutBy: body.layoutBy || null } : {}),
+        ...(body.subject !== undefined ? { subject: body.subject || null } : {}),
+        ...(body.cityOfPublication !== undefined ? { cityOfPublication: body.cityOfPublication || null } : {}),
+        ...(body.edition !== undefined ? { edition: body.edition || null } : {}),
+        ...(body.keywords !== undefined ? { keywords: body.keywords || null } : {}),
+        ...(body.publisherName !== undefined ? { publisherName: body.publisherName || null } : {}),
       },
       include: { category: true },
     })

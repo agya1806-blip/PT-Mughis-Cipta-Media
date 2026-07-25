@@ -2,10 +2,18 @@ import { Building2, BookOpen, Shield, Mail, Phone, MapPin, FileText } from "luci
 import Breadcrumb from "@/components/ui/Breadcrumb"
 import { prisma } from "@/lib/prisma"
 
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://mughisciptamedia.com"
+
 export const metadata = {
   title: "Legalitas Perusahaan",
   description: "Informasi legal dan profil resmi PT Mughis Cipta Media, perusahaan penerbitan buku yang berbadan hukum.",
   openGraph: {
+    title: "Legalitas Perusahaan - PT Mughis Cipta Media",
+    description: "Informasi legal resmi perusahaan penerbitan buku.",
+    url: `${baseUrl}/legal`,
+  },
+  twitter: {
+    card: "summary_large_image",
     title: "Legalitas Perusahaan - PT Mughis Cipta Media",
     description: "Informasi legal resmi perusahaan penerbitan buku.",
   },

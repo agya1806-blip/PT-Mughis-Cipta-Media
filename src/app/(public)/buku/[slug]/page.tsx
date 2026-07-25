@@ -13,7 +13,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params
   const book = await prisma.book.findUnique({
     where: { slug },
-    include: { category: true },
+    include: { category: true, publicationType: true },
   })
   if (!book) return { title: "Buku Tidak Ditemukan" }
   const base = process.env.NEXT_PUBLIC_BASE_URL || "https://mughisciptamedia.com"
@@ -22,18 +22,19 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     : book.coverImage && !book.coverImage.startsWith("data:")
       ? `${base}${book.coverImage}`
       : null
+  const typeLabel = book.publicationType?.name || "Buku"
   return {
-    title: book.title,
-    description: book.synopsis.substring(0, 160),
+    title: `${book.title} | ${typeLabel} - PT Mughis Cipta Media`,
+    description: `${typeLabel}: ${book.synopsis.substring(0, 155)}`,
     openGraph: {
-      title: `${book.title} - PT Mughis Cipta Media`,
-      description: book.synopsis.substring(0, 160),
+      title: `${book.title} - ${typeLabel} | PT Mughis Cipta Media`,
+      description: `${typeLabel}: ${book.synopsis.substring(0, 155)}`,
       images: coverUrl ? [{ url: coverUrl, alt: book.title }] : undefined,
     },
     twitter: {
       card: "summary_large_image",
-      title: `${book.title} - PT Mughis Cipta Media`,
-      description: book.synopsis.substring(0, 160),
+      title: `${book.title} - ${typeLabel} | PT Mughis Cipta Media`,
+      description: `${typeLabel}: ${book.synopsis.substring(0, 155)}`,
       images: coverUrl ? [coverUrl] : undefined,
     },
     alternates: {
@@ -46,13 +47,13 @@ export default async function BookDetailPage({ params }: { params: Promise<{ slu
   const { slug } = await params
   const book = await prisma.book.findUnique({
     where: { slug },
-    include: { category: true },
+    include: { category: true, publicationType: true },
   })
   if (!book) notFound()
 
   const relatedBooks = await prisma.book.findMany({
     where: { categoryId: book.categoryId, id: { not: book.id } },
-    include: { category: true },
+    include: { category: true, publicationType: true },
     take: 4,
     orderBy: { createdAt: "desc" },
   })
@@ -64,10 +65,16 @@ export default async function BookDetailPage({ params }: { params: Promise<{ slu
     author: b.author,
     translator: b.translator,
     publisher: b.publisher,
+    editor: b.editor,
+    layoutBy: b.layoutBy,
+    publisherName: b.publisherName,
     page_count: b.pageCount,
     price: Number(b.price),
     category_id: String(b.categoryId),
     category_name: b.category.name,
+    publication_type_name: b.publicationType?.name || null,
+    publication_type_icon: b.publicationType?.icon || null,
+    publication_type_badge_color: b.publicationType?.badgeColor || null,
     cover_image: b.coverImage ?? "",
     synopsis: b.synopsis,
     preview_pdf_url: b.previewPdfUrl ?? "",
@@ -86,10 +93,20 @@ export default async function BookDetailPage({ params }: { params: Promise<{ slu
     author: book.author,
     translator: book.translator,
     publisher: book.publisher,
+    editor: book.editor,
+    layoutBy: book.layoutBy,
+    subject: book.subject,
+    cityOfPublication: book.cityOfPublication,
+    edition: book.edition,
+    keywords: book.keywords,
+    publisherName: book.publisherName,
     page_count: book.pageCount,
     price: Number(book.price),
     category_id: String(book.categoryId),
     category_name: book.category.name,
+    publication_type_name: book.publicationType?.name || null,
+    publication_type_icon: book.publicationType?.icon || null,
+    publication_type_badge_color: book.publicationType?.badgeColor || null,
     cover_image: book.coverImage ?? "",
     synopsis: book.synopsis,
     preview_pdf_url: book.previewPdfUrl ?? "",
@@ -112,14 +129,31 @@ export default async function BookDetailPage({ params }: { params: Promise<{ slu
             name: mapped.title,
             author: mapped.author,
             translator: mapped.translator || undefined,
-            publisher: mapped.publisher,
+            publisher: mapped.publisherName || mapped.publisher,
             numberOfPages: mapped.page_count,
             bookFormat: "Paperback",
             inLanguage: mapped.language,
             description: mapped.synopsis.substring(0, 200),
             image: mapped.cover_image || undefined,
+            editor: mapped.editor || undefined,
+            keywords: mapped.keywords || undefined,
+            edition: mapped.edition || undefined,
           }}
         />
+        {mapped.publication_type_name && (
+          <JsonLd
+            data={{
+              "@context": "https://schema.org",
+              "@type": "CreativeWork",
+              name: mapped.title,
+              author: mapped.author,
+              publisher: mapped.publisherName || mapped.publisher,
+              about: mapped.subject || mapped.publication_type_name,
+              keywords: mapped.keywords || undefined,
+              editor: mapped.editor || undefined,
+            }}
+          />
+        )}
         <Breadcrumb
           items={[
             { label: "Beranda", href: "/" },
@@ -152,9 +186,22 @@ export default async function BookDetailPage({ params }: { params: Promise<{ slu
             <div className="md:col-span-2 space-y-6">
                <div className="flex items-start justify-between gap-4">
                  <div>
-                   <span className="inline-block text-xs font-medium text-green-dark bg-gold/5 px-3 py-1 rounded-full mb-3">
-                     {mapped.category_name}
-                   </span>
+                   <div className="flex flex-wrap gap-2 mb-3">
+                    <span className="inline-block text-xs font-medium text-green-dark bg-gold/5 px-3 py-1 rounded-full">
+                      {mapped.category_name}
+                    </span>
+                    {mapped.publication_type_name && (
+                      <span
+                        className="inline-block text-xs font-medium px-3 py-1 rounded-full"
+                        style={{
+                          backgroundColor: mapped.publication_type_badge_color ? `${mapped.publication_type_badge_color}20` : "#D3C29720",
+                          color: mapped.publication_type_badge_color || "#8B7355",
+                        }}
+                      >
+                        {mapped.publication_type_name}
+                      </span>
+                    )}
+                   </div>
                    <h1 className="text-2xl md:text-3xl font-bold text-green-dark leading-tight">{mapped.title}</h1>
                  </div>
                   <ShareButton
@@ -207,6 +254,66 @@ export default async function BookDetailPage({ params }: { params: Promise<{ slu
                   <p className="font-medium text-green-dark mt-0.5">{mapped.weight} gr</p>
                 </div>
               </div>
+
+              {(mapped.editor || mapped.layoutBy || mapped.publisherName || mapped.cityOfPublication || mapped.edition || mapped.keywords) && (
+                <div className="border-t border-gold/10 pt-4 mt-2">
+                  <p className="text-xs font-semibold uppercase tracking-[0.15em] text-green-dark/70 mb-3">Metadata Terbitan</p>
+                  <div className="grid grid-cols-2 gap-x-4 gap-y-2.5 text-sm">
+                    {mapped.publisherName && (
+                      <div>
+                        <span className="text-green-dark/80 text-xs">Penerbit</span>
+                        <p className="font-medium text-green-dark">{mapped.publisherName}</p>
+                      </div>
+                    )}
+                    {mapped.editor ? (
+                      <div>
+                        <span className="text-green-dark/80 text-xs">Editor</span>
+                        <p className="font-medium text-green-dark">{mapped.editor}</p>
+                      </div>
+                    ) : (
+                      <div>
+                        <span className="text-green-dark/80 text-xs">Editor</span>
+                        <p className="text-green-dark/60 italic">Belum Ditentukan</p>
+                      </div>
+                    )}
+                    {mapped.layoutBy ? (
+                      <div>
+                        <span className="text-green-dark/80 text-xs">Layout</span>
+                        <p className="font-medium text-green-dark">{mapped.layoutBy}</p>
+                      </div>
+                    ) : (
+                      <div>
+                        <span className="text-green-dark/80 text-xs">Layout</span>
+                        <p className="text-green-dark/60 italic">Belum Ditentukan</p>
+                      </div>
+                    )}
+                    {mapped.cityOfPublication && (
+                      <div>
+                        <span className="text-green-dark/80 text-xs">Kota Terbit</span>
+                        <p className="font-medium text-green-dark">{mapped.cityOfPublication}</p>
+                      </div>
+                    )}
+                    {mapped.edition && (
+                      <div>
+                        <span className="text-green-dark/80 text-xs">Edisi</span>
+                        <p className="font-medium text-green-dark">{mapped.edition}</p>
+                      </div>
+                    )}
+                    {mapped.subject && (
+                      <div className="col-span-2">
+                        <span className="text-green-dark/80 text-xs">Subjek</span>
+                        <p className="font-medium text-green-dark">{mapped.subject}</p>
+                      </div>
+                    )}
+                    {mapped.keywords && (
+                      <div className="col-span-2">
+                        <span className="text-green-dark/80 text-xs">Kata Kunci</span>
+                        <p className="text-green-dark/80 text-xs">{mapped.keywords}</p>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              )}
 
               <BookDetailClient book={mapped} />
             </div>

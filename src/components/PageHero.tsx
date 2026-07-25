@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion"
 import { BookOpen, FileText, Users, Package, Sparkles } from "lucide-react"
+import { JsonLd } from "@/components/JsonLd"
 
 interface Props {
   title: string
@@ -21,8 +22,23 @@ const icons = {
 export default function PageHero({ title, accent, description, breadcrumb, icon }: Props) {
   const Icon = icon ? icons[icon] : Sparkles
 
+  const baseUrl = typeof window !== "undefined" ? window.location.origin : "https://mughisciptamedia.com"
+
   return (
-    <section className="relative min-h-[75vh] sm:min-h-[80vh] flex items-center overflow-hidden bg-gradient-to-br from-green via-green-dark to-green">
+    <>
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: breadcrumb.map((item, i) => ({
+            "@type": "ListItem",
+            position: i + 1,
+            name: item.label,
+            ...(item.href ? { item: `${baseUrl}${item.href}` } : {}),
+          })),
+        }}
+      />
+      <section className="relative min-h-[75vh] sm:min-h-[80vh] flex items-center overflow-hidden bg-gradient-to-br from-green via-green-dark to-green">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(211,194,151,0.12),transparent_50%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(211,194,151,0.08),transparent_50%)]" />
 
@@ -100,5 +116,6 @@ export default function PageHero({ title, accent, description, breadcrumb, icon 
 
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
     </section>
+    </>
   )
 }

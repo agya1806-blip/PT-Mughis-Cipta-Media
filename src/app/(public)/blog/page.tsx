@@ -6,10 +6,18 @@ import { Pagination, EmptyState } from "@/components/ui"
 import { Clock, Calendar, ChevronRight } from "lucide-react"
 import ShareButton from "@/components/ShareButton"
 
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://mughisciptamedia.com"
+
 export const metadata = {
   title: "Media Center",
   description: "Baca artikel dan informasi terbaru seputar dunia penerbitan, literasi, dan kegiatan PT Mughis Cipta Media.",
   openGraph: {
+    title: "Media Center - PT Mughis Cipta Media",
+    description: "Artikel dan informasi terbaru dari PT Mughis Cipta Media.",
+    url: `${baseUrl}/blog`,
+  },
+  twitter: {
+    card: "summary_large_image",
     title: "Media Center - PT Mughis Cipta Media",
     description: "Artikel dan informasi terbaru dari PT Mughis Cipta Media.",
   },

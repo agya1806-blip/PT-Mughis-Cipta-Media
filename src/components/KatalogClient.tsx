@@ -7,14 +7,23 @@ import BookCard from "./BookCard"
 import Pagination from "@/components/ui/Pagination"
 import type { Book, Category } from "@/lib/data"
 
+interface PubType {
+  id: string
+  name: string
+  slug: string
+  icon?: string | null
+  badgeColor?: string | null
+}
+
 interface Props {
   initialBooks: Book[]
   initialCategories: Category[]
+  initialPubTypes?: PubType[]
   initialTotal: number
   initialTotalPages: number
 }
 
-export function KatalogClient({ initialBooks, initialCategories, initialTotal, initialTotalPages }: Props) {
+export function KatalogClient({ initialBooks, initialCategories, initialPubTypes = [], initialTotal, initialTotalPages }: Props) {
   const urlParams = useSearchParams()
   const [books, setBooks] = useState<Book[]>(initialBooks)
   const [total, setTotal] = useState(initialTotal)
@@ -23,16 +32,18 @@ export function KatalogClient({ initialBooks, initialCategories, initialTotal, i
   const [mobileFilterOpen, setMobileFilterOpen] = useState(false)
   const [searchInput, setSearchInput] = useState(urlParams.get("search") ?? "")
   const [categoryId, setCategoryId] = useState(urlParams.get("category_id") ?? "")
+  const [pubTypeId, setPubTypeId] = useState(urlParams.get("publication_type_id") ?? "")
   const [sort, setSort] = useState(urlParams.get("sort") ?? "latest")
   const [page, setPage] = useState(parseInt(urlParams.get("page") ?? "1", 10))
   const [search, setSearch] = useState(urlParams.get("search") ?? "")
 
-  const fetchBooks = useCallback(async (opts: { page?: number; category_id?: string; search?: string; sort?: string }) => {
+  const fetchBooks = useCallback(async (opts: { page?: number; category_id?: string; publication_type_id?: string; search?: string; sort?: string }) => {
     setLoading(true)
     try {
       const params = new URLSearchParams()
       if (opts.page && opts.page > 1) params.set("page", String(opts.page))
       if (opts.category_id) params.set("category_id", opts.category_id)
+      if (opts.publication_type_id) params.set("publication_type_id", opts.publication_type_id)
       if (opts.search) params.set("search", opts.search)
       if (opts.sort && opts.sort !== "latest") params.set("sort", opts.sort)
       const res = await fetch(`/api/books?${params.toString()}`)
@@ -47,23 +58,26 @@ export function KatalogClient({ initialBooks, initialCategories, initialTotal, i
     }
   }, [])
 
-  const updateFilters = useCallback((updates: { category_id?: string; search?: string; sort?: string; page?: number }) => {
+  const updateFilters = useCallback((updates: { category_id?: string; publication_type_id?: string; search?: string; sort?: string; page?: number }) => {
     const next = { page: 1, ...updates }
     if (updates.category_id !== undefined) setCategoryId(updates.category_id)
+    if (updates.publication_type_id !== undefined) setPubTypeId(updates.publication_type_id)
     if (updates.search !== undefined) setSearch(updates.search)
     if (updates.sort !== undefined) setSort(updates.sort)
     if (updates.page !== undefined) setPage(updates.page)
     fetchBooks({
       page: next.page,
       category_id: updates.category_id ?? categoryId,
+      publication_type_id: updates.publication_type_id ?? pubTypeId,
       search: updates.search ?? search,
       sort: updates.sort ?? sort,
     })
-  }, [categoryId, search, sort, fetchBooks])
+  }, [categoryId, pubTypeId, search, sort, fetchBooks])
 
   const resetFilters = () => {
     setSearchInput("")
     setCategoryId("")
+    setPubTypeId("")
     setSearch("")
     setSort("latest")
     setPage(1)
@@ -124,6 +138,43 @@ export function KatalogClient({ initialBooks, initialCategories, initialTotal, i
               </div>
             </div>
 
+            {initialPubTypes.length > 0 && (
+              <div>
+                <h3 className="text-sm font-medium text-green-dark mb-3">Jenis Terbitan</h3>
+                <div className="space-y-1">
+                  <button
+                    onClick={() => updateFilters({ publication_type_id: "" })}
+                    className={`block w-full text-left px-3 py-1.5 rounded-lg text-sm transition-colors ${
+                      !pubTypeId
+                        ? "bg-gold/10 text-green-dark font-medium"
+                        : "text-green-dark/80 hover:bg-cream hover:text-green-dark"
+                    }`}
+                  >
+                    Semua Terbitan
+                  </button>
+                  {initialPubTypes.map((pt) => {
+                    const isActive = pubTypeId === pt.id
+                    return (
+                      <button
+                        key={pt.id}
+                        onClick={() => updateFilters({ publication_type_id: isActive ? "" : pt.id })}
+                        className={`block w-full text-left px-3 py-1.5 rounded-lg text-sm transition-colors ${
+                          isActive
+                            ? "bg-gold/10 text-green-dark font-medium"
+                            : "text-green-dark/80 hover:bg-cream hover:text-green-dark"
+                        }`}
+                      >
+                        <span className="flex items-center gap-2">
+                          <span className="w-2 h-2 rounded-full inline-block shrink-0" style={{ backgroundColor: pt.badgeColor || "#D3C297" }} />
+                          <span>{pt.name}</span>
+                        </span>
+                      </button>
+                    )
+                  })}
+                </div>
+              </div>
+            )}
+
             <button
               onClick={resetFilters}
               className="w-full rounded-lg border border-gold/20 px-4 py-2 text-sm font-medium text-green-dark/80 transition-colors hover:bg-cream hover:text-green-dark"
@@ -137,7 +188,7 @@ export function KatalogClient({ initialBooks, initialCategories, initialTotal, i
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
             <div>
               <p className="text-sm text-green-dark/80">
-                {total} buku ditemukan
+                {total} terbitan ditemukan
               </p>
             </div>
             <div className="flex items-center gap-3">
@@ -172,7 +223,7 @@ export function KatalogClient({ initialBooks, initialCategories, initialTotal, i
                 <svg className="w-16 h-16 mx-auto text-green-dark/70 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
                 </svg>
-                <h3 className="text-lg font-medium text-green-dark/80 mb-1">Tidak ada buku ditemukan</h3>
+                <h3 className="text-lg font-medium text-green-dark/80 mb-1">Tidak ada terbitan ditemukan</h3>
                 <p className="text-sm text-green-dark/80 mb-4">Coba ubah kata kunci atau filter pencarian</p>
                 <button onClick={resetFilters} className="text-sm font-medium text-green hover:text-green-dark">
                   Reset Filter
@@ -268,6 +319,45 @@ export function KatalogClient({ initialBooks, initialCategories, initialTotal, i
                   ))}
                 </div>
               </div>
+
+              {initialPubTypes.length > 0 && (
+                <div>
+                  <h3 className="text-sm font-medium text-green-dark mb-3">Jenis Terbitan</h3>
+                  <div className="space-y-2">
+                    <label className="flex items-center gap-2.5 cursor-pointer">
+                      <input
+                        type="radio"
+                        name="mobile_pub_type"
+                        checked={!pubTypeId}
+                        onChange={() => {
+                          updateFilters({ publication_type_id: "" })
+                          setMobileFilterOpen(false)
+                        }}
+                        className="h-4 w-4 text-gold border-gold/20 focus:ring-gold/50"
+                      />
+                      <span className="text-sm text-green-dark/80">Semua Terbitan</span>
+                    </label>
+                    {initialPubTypes.map((pt) => (
+                      <label key={pt.id} className="flex items-center gap-2.5 cursor-pointer">
+                        <input
+                          type="radio"
+                          name="mobile_pub_type"
+                          checked={pubTypeId === pt.id}
+                          onChange={() => {
+                            updateFilters({ publication_type_id: pt.id })
+                            setMobileFilterOpen(false)
+                          }}
+                          className="h-4 w-4 text-gold border-gold/20 focus:ring-gold/50"
+                        />
+                        <span className="flex items-center gap-2 text-sm text-green-dark/80">
+                          <span className="w-2 h-2 rounded-full inline-block shrink-0" style={{ backgroundColor: pt.badgeColor || "#D3C297" }} />
+                          {pt.name}
+                        </span>
+                      </label>
+                    ))}
+                  </div>
+                </div>
+              )}
 
               <div>
                 <h3 className="text-sm font-medium text-green-dark mb-3">Urutkan</h3>

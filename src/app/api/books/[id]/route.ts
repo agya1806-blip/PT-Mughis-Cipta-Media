@@ -8,7 +8,7 @@ export async function GET(
     const { id } = await params
     const book = await prisma.book.findUnique({
       where: { id: parseInt(id) },
-      include: { category: true },
+      include: { category: true, publicationType: true },
     })
 
     if (!book) {
@@ -26,6 +26,10 @@ export async function GET(
       price: Number(book.price),
       category_id: String(book.categoryId),
       category_name: book.category.name,
+      publication_type_id: book.publicationTypeId ? String(book.publicationTypeId) : null,
+      publication_type_name: book.publicationType?.name || null,
+      publication_type_icon: book.publicationType?.icon || null,
+      publication_type_badge_color: book.publicationType?.badgeColor || null,
       cover_image: book.coverImage,
       synopsis: book.synopsis,
       preview_pdf_url: book.previewPdfUrl,

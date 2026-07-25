@@ -41,7 +41,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       description: excerpt(article.content),
       ...(imageUrl ? { images: [imageUrl] } : {}),
     },
-    alternates: { canonical: `/blog/${slug}` },
+    alternates: { canonical: `${base}/blog/${slug}` },
   }
 }
 
@@ -64,6 +64,18 @@ export default async function ArticleDetailPage({ params }: { params: Promise<{ 
           author: {
             "@type": "Organization",
             name: "PT Mughis Cipta Media",
+          },
+          publisher: {
+            "@type": "Organization",
+            name: "PT Mughis Cipta Media",
+            logo: {
+              "@type": "ImageObject",
+              url: "https://mughisciptamedia.com/logo-original.png",
+            },
+          },
+          mainEntityOfPage: {
+            "@type": "WebPage",
+            "@id": `${process.env.NEXT_PUBLIC_BASE_URL || "https://mughisciptamedia.com"}/blog/${article.slug}`,
           },
         }}
       />

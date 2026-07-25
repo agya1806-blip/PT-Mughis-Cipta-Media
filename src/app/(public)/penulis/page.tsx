@@ -4,9 +4,21 @@ import { getAllAuthors } from "@/lib/authors"
 
 export const dynamic = "force-dynamic"
 
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://mughisciptamedia.com"
+
 export const metadata = {
   title: "Penulis | PT Mughis Cipta Media",
   description: "Daftar penulis yang telah menerbitkan buku bersama PT Mughis Cipta Media",
+  openGraph: {
+    title: "Penulis - PT Mughis Cipta Media",
+    description: "Daftar penulis yang telah menerbitkan buku bersama PT Mughis Cipta Media.",
+    url: `${baseUrl}/penulis`,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Penulis - PT Mughis Cipta Media",
+    description: "Daftar penulis yang telah menerbitkan buku bersama PT Mughis Cipta Media.",
+  },
   alternates: { canonical: "/penulis" },
 }
 

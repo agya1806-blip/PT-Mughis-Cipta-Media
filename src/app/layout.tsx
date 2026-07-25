@@ -23,7 +23,7 @@ const ogImageUrl = `${baseUrl}/og-image.jpg`
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: siteName,
+    default: `${siteName} — Penerbit Buku & Percetakan Profesional Indonesia`,
     template: `%s | ${siteName}`,
   },
   description: siteDescription,
@@ -36,6 +36,21 @@ export const metadata: Metadata = {
     "PT Mughis Cipta Media",
     "jasa penerbitan buku",
     "distribusi buku nasional",
+    "penerbit profesional",
+    "penerbit Aceh",
+    "penerbit buku pendidikan",
+    "penerbit novel",
+    "penerbit buku puisi",
+    "penerbit buku anak",
+    "penerbit buku umum",
+    "editing buku",
+    "layout buku",
+    "jasa editing buku",
+    "ISBN Indonesia",
+    "penerbitan buku",
+    "cara menerbitkan buku",
+    "syarat menerbitkan buku",
+    "perusahaan penerbitan buku",
   ],
   openGraph: {
     type: "website",
@@ -43,7 +58,8 @@ export const metadata: Metadata = {
     siteName: "PT Mughis Cipta Media",
     title: siteName,
     description: siteDescription,
-    images: [{ url: ogImageUrl, width: 1200, height: 630 }],
+    url: baseUrl,
+    images: [{ url: ogImageUrl, width: 1200, height: 630, alt: siteName }],
   },
   twitter: {
     card: "summary_large_image",
@@ -56,11 +72,14 @@ export const metadata: Metadata = {
     follow: true,
   },
   icons: {
-    icon: "/logo-original.png",
+    icon: "/favicon.png",
     apple: "/logo-original.png",
   },
   verification: {
     google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION,
+  },
+  alternates: {
+    canonical: baseUrl,
   },
 }
 
@@ -84,6 +103,10 @@ export default function RootLayout({
       <head>
         <link rel="icon" type="image/png" href="/favicon.png" sizes="512x512" />
         <link rel="manifest" href="/manifest.json" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preload" href="/logo-original.png" as="image" />
+        <link rel="preload" href="/og-image.jpg" as="image" />
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -107,11 +130,60 @@ export default function RootLayout({
             name: "PT Mughis Cipta Media",
             description:
               "Penerbit, percetakan, dan mitra kreatif untuk mewujudkan karya terbaik Anda. Layanan penerbitan buku, editing, desain, dan distribusi nasional.",
-            url: process.env.NEXT_PUBLIC_BASE_URL || "https://mughisciptamedia.com",
+            url: baseUrl,
             logo: `${baseUrl}/logo-original.png`,
+            foundingDate: "2026-07-18",
+            legalName: "PT Mughis Cipta Media",
+            vatID: "1108043110010001",
+            taxID: "1108043110010001",
             sameAs: [
               "https://www.instagram.com/ptmughis",
               "https://www.facebook.com/ptmughis",
+            ],
+            address: {
+              "@type": "PostalAddress",
+              addressCountry: "ID",
+              addressRegion: "Aceh",
+            },
+            contactPoint: [
+              {
+                "@type": "ContactPoint",
+                telephone: "+62-857-2345-6789",
+                contactType: "customer service",
+                availableLanguage: ["Indonesian"],
+              },
+            ],
+          }}
+        />
+        <JsonLd
+          data={{
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            parentOrganization: {
+              "@type": "Organization",
+              name: "PT Mughis Cipta Media",
+            },
+            name: "PT Mughis Cipta Media",
+            description: siteDescription,
+            url: baseUrl,
+            logo: `${baseUrl}/logo-original.png`,
+            image: ogImageUrl,
+            sameAs: [
+              "https://www.instagram.com/ptmughis",
+              "https://www.facebook.com/ptmughis",
+            ],
+            address: {
+              "@type": "PostalAddress",
+              addressCountry: "ID",
+              addressRegion: "Aceh",
+            },
+            contactPoint: [
+              {
+                "@type": "ContactPoint",
+                telephone: "+62-857-2345-6789",
+                contactType: "customer service",
+                availableLanguage: ["Indonesian"],
+              },
             ],
           }}
         />

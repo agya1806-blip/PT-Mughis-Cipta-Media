@@ -11,6 +11,7 @@ interface FormDataEntry {
   alamat: string
   judulBuku: string
   kategoriBuku: string
+  jenisTerbitan: string
   jumlahHalaman: number
   statusNaskah: string
   targetTerbit: string
@@ -58,9 +59,10 @@ function buildTelegramMessage(data: FormDataEntry, regNumber: string): string {
 • Email         : ${data.email || "-"}
 
 <b>📖 Data Buku</b>
-• Judul Buku    : ${data.judulBuku || "-"}
-• Kategori      : ${data.kategoriBuku || "-"}
-• Status Naskah : ${statusLabel[data.statusNaskah] || data.statusNaskah || "-"}
+• Judul Buku      : ${data.judulBuku || "-"}
+• Kategori        : ${data.kategoriBuku || "-"}
+• Jenis Terbitan  : ${data.jenisTerbitan || "-"}
+• Status Naskah   : ${statusLabel[data.statusNaskah] || data.statusNaskah || "-"}
 
 <b>🆔 Informasi Pendaftaran</b>
 • No. Registrasi : <b>${regNumber}</b>
@@ -82,6 +84,7 @@ export async function POST(request: Request) {
       alamat: (formData.get("alamat") as string) || "",
       judulBuku: (formData.get("judulBuku") as string) || "",
       kategoriBuku: (formData.get("kategoriBuku") as string) || "",
+      jenisTerbitan: (formData.get("jenisTerbitan") as string) || "",
       jumlahHalaman: parseInt(formData.get("jumlahHalaman") as string) || 0,
       statusNaskah: (formData.get("statusNaskah") as string) || "",
       targetTerbit: (formData.get("targetTerbit") as string) || "",

@@ -10,6 +10,7 @@ interface Book {
   price: string
   stock: number
   category: { name: string }
+  publicationType?: { name: string; icon?: string; badgeColor?: string } | null
 }
 
 export default function AdminBooks() {

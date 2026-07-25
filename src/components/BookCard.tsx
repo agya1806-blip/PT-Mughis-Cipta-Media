@@ -33,10 +33,23 @@ export default function BookCard({ book }: { book: Book }) {
           </div>
         )}
         {book.category_name && (
-          <div className="absolute top-3 right-3 z-10">
+          <div className="absolute top-3 right-3 z-10 flex flex-col gap-1 items-end">
             <span className="inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-medium bg-cream/90 backdrop-blur-md text-green-dark border border-gold/20">
               {book.category_name}
             </span>
+            {(book as any).publication_type_name && (
+              <span
+                className="inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-medium backdrop-blur-md border border-gold/20"
+                style={{
+                  backgroundColor: (book as any).publication_type_badge_color
+                    ? `${(book as any).publication_type_badge_color}20`
+                    : "#D3C29720",
+                  color: (book as any).publication_type_badge_color || "#8B7355",
+                }}
+              >
+                {(book as any).publication_type_name}
+              </span>
+            )}
           </div>
         )}
 

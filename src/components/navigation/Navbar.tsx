@@ -1,26 +1,25 @@
 "use client"
 
-import { useState, useEffect, useCallback } from "react"
+import { useState, useEffect, useCallback, useRef } from "react"
 import { Menu, Moon, Sun, Search } from "lucide-react"
 import { useTheme } from "@/components/ThemeProvider"
-import { useRouter } from "next/navigation"
 import NavLogo from "./NavLogo"
 import NavItem from "./NavItem"
 import NavCTA from "./NavCTA"
-import NavSearch from "./NavSearch"
+import SearchModal from "./SearchModal"
 import MobileDrawer from "./MobileDrawer"
-import { mainNavLinks } from "@/config/navigation"
+import { mainNav } from "@/config/navigation"
 
 const btnClass = "min-w-[44px] min-h-[44px] flex items-center justify-center rounded-xl transition-all duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
 const btnScrolled = "text-green/60 dark:text-gold/70 hover:bg-gold/10 dark:hover:bg-cream/10 hover:text-green dark:hover:text-cream"
 const btnTransparent = "text-white/70 hover:bg-white/10 hover:text-white"
 
 export default function Navbar() {
-  const router = useRouter()
   const [scrolled, setScrolled] = useState(false)
-  const [open, setOpen] = useState(false)
+  const [mobileOpen, setMobileOpen] = useState(false)
+  const [searchOpen, setSearchOpen] = useState(false)
   const { theme, toggle } = useTheme()
-  const handleClose = useCallback(() => setOpen(false), [])
+  const headerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20)
@@ -28,16 +27,23 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll)
   }, [])
 
-  const textColor = scrolled
-    ? "text-green-dark hover:text-gold"
+  const handleCloseMobile = useCallback(() => setMobileOpen(false), [])
+
+  const navItemClass = scrolled
+    ? "text-green-dark hover:text-green"
+    : "text-white/80 hover:text-white"
+
+  const megaItemClass = scrolled
+    ? "text-green-dark hover:text-green"
     : "text-white/80 hover:text-white"
 
   return (
     <>
       <header
+        ref={headerRef}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled
-            ? "bg-cream/90 dark:bg-green-dark/90 backdrop-blur-xl border-b border-gold/20 dark:border-gold/10"
+            ? "bg-cream/90 dark:bg-green-dark/90 backdrop-blur-2xl border-b border-gold/20 dark:border-gold/10 shadow-lg shadow-green/5 dark:shadow-black/20"
             : "bg-transparent"
         }`}
       >
@@ -47,19 +53,33 @@ export default function Navbar() {
               <NavLogo scrolled={scrolled} />
             </div>
 
-            <nav
-              className="hidden md:flex items-center justify-center gap-8"
-              aria-label="Navigasi utama"
-            >
-              {mainNavLinks.map((link) => (
-                <NavItem key={link.href} href={link.href} className={textColor}>
-                  {link.label}
-                </NavItem>
-              ))}
+            <nav className="hidden md:flex items-center justify-center gap-7" aria-label="Navigasi utama">
+              {mainNav.map((group) =>
+                group.href ? (
+                  <NavItem key={group.href} href={group.href} className={navItemClass}>
+                    {group.label}
+                  </NavItem>
+                ) : (
+                  <NavItem
+                    key={group.label}
+                    className={megaItemClass}
+                    label={group.label}
+                    megaItems={group.children || []}
+                  >
+                    {group.label}
+                  </NavItem>
+                )
+              )}
             </nav>
 
             <div className="hidden md:flex items-center gap-2">
-              <NavSearch scrolled={scrolled} />
+              <button
+                onClick={() => setSearchOpen(true)}
+                className={`${btnClass} ${scrolled ? btnScrolled : btnTransparent}`}
+                aria-label="Cari"
+              >
+                <Search className="w-4 h-4" />
+              </button>
               <button
                 onClick={toggle}
                 className={`${btnClass} ${scrolled ? btnScrolled : btnTransparent}`}
@@ -72,7 +92,7 @@ export default function Navbar() {
 
             <div className="flex items-center gap-1 md:hidden">
               <button
-                onClick={() => router.push("/search")}
+                onClick={() => setSearchOpen(true)}
                 className={`${btnClass} ${scrolled ? btnScrolled : btnTransparent}`}
                 aria-label="Cari"
               >
@@ -86,7 +106,7 @@ export default function Navbar() {
                 {theme === "light" ? <Moon className="w-5 h-5" /> : <Sun className="w-5 h-5" />}
               </button>
               <button
-                onClick={() => setOpen(true)}
+                onClick={() => setMobileOpen(true)}
                 className={`${btnClass} ${scrolled ? "text-green dark:text-gold hover:bg-gold/10 dark:hover:bg-cream/10" : "text-white/80 hover:bg-white/10"}`}
                 aria-label="Buka menu"
               >
@@ -97,7 +117,8 @@ export default function Navbar() {
         </div>
       </header>
 
-      <MobileDrawer open={open} onClose={handleClose} links={mainNavLinks} />
+      <MobileDrawer open={mobileOpen} onClose={handleCloseMobile} />
+      <SearchModal open={searchOpen} onClose={() => setSearchOpen(false)} />
     </>
   )
 }

@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
-import { User, Save, Loader2, LogOut, ArrowLeft } from "lucide-react"
+import { Save, Loader2, LogOut, ArrowLeft } from "lucide-react"
+import { TeamPhotoUpload } from "@/components/team/TeamPhotoUpload"
 
 interface ProfileData {
   id: number
@@ -154,27 +155,20 @@ export default function TeamProfilePage() {
 
         {profile && (
           <div className="bg-cream rounded-2xl border border-gold/20 p-6 sm:p-8 mb-6">
-            <div className="flex items-center gap-4 mb-6 pb-6 border-b border-gold/10">
-              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-gold/20 to-gold/5 border-2 border-gold/20 flex items-center justify-center shrink-0">
-                {profile.photo ? (
-                  <img
-                    src={profile.photo}
-                    alt={profile.name}
-                    className="w-full h-full rounded-full object-cover"
-                  />
-                ) : (
-                  <User className="w-6 h-6 text-gold-dark" />
-                )}
-              </div>
-              <div>
-                <h2 className="text-lg font-bold text-green-dark">
-                  {profile.name}
-                </h2>
-                <p className="text-sm text-green/60">{profile.position}</p>
-              </div>
+            <div className="mb-6 pb-6 border-b border-gold/10">
+              <h2 className="text-lg font-bold text-green-dark">
+                {profile.name}
+              </h2>
+              <p className="text-sm text-green/60">{profile.position}</p>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-6">
+              <TeamPhotoUpload
+                value={form.photo}
+                onChange={(val) => setForm({ ...form, photo: val })}
+                label="Foto Profil"
+              />
+
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div>
                   <label className="block text-sm font-medium text-green-dark mb-1">
@@ -229,20 +223,6 @@ export default function TeamProfilePage() {
                       setForm({ ...form, instagram: e.target.value })
                     }
                     placeholder="https://instagram.com/..."
-                  />
-                </div>
-                <div className="sm:col-span-2">
-                  <label className="block text-sm font-medium text-green-dark mb-1">
-                    Foto URL
-                  </label>
-                  <input
-                    type="text"
-                    className={inputClass}
-                    value={form.photo}
-                    onChange={(e) =>
-                      setForm({ ...form, photo: e.target.value })
-                    }
-                    placeholder="https://example.com/photo.jpg"
                   />
                 </div>
               </div>

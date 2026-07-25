@@ -4,6 +4,7 @@ import Badge from "@/components/ui/Badge"
 import IconWrapper from "@/components/ui/IconWrapper"
 import { prisma } from "@/lib/prisma"
 import { footerData, type FooterData } from "./footer-data"
+import { footerNavLinks, secondaryNavLinks, mainNav } from "@/config/navigation"
 import TextLogo from "@/components/TextLogo"
 
 async function getSettings(): Promise<Partial<FooterData["company"]> & { instagramUrl?: string; facebookUrl?: string }> {
@@ -88,7 +89,7 @@ export default async function Footer() {
     if (s.name === "Facebook" && db.facebookUrl) return { ...s, href: db.facebookUrl }
     return s
   })
-  const { columns, badges, copyright } = footerData
+  const { badges, copyright } = footerData
 
   return (
     <footer className="relative bg-green overflow-hidden">
@@ -145,23 +146,51 @@ export default async function Footer() {
               })}
             </div>
           </div>
-          {columns.map((col) => (
-            <div key={col.title}>
-              <h3 className="font-semibold text-sm text-gold mb-5">{col.title}</h3>
-              <ul className="space-y-3">
-                {col.links.map((link) => (
-                  <li key={link.label}>
-                    <Link
-                      href={link.href}
-                      className="text-sm text-cream/80 hover:text-gold transition-colors duration-300"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+          <div>
+            <h3 className="font-semibold text-sm text-gold mb-5">Navigasi</h3>
+            <ul className="space-y-3">
+              {footerNavLinks.map((link) => (
+                <li key={link.label}>
+                  <Link
+                    href={link.href}
+                    className="text-sm text-cream/80 hover:text-gold transition-colors duration-300"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h3 className="font-semibold text-sm text-gold mb-5">Bantuan</h3>
+            <ul className="space-y-3">
+              {secondaryNavLinks.map((link) => (
+                <li key={link.label}>
+                  <Link
+                    href={link.href}
+                    className="text-sm text-cream/80 hover:text-gold transition-colors duration-300"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h3 className="font-semibold text-sm text-gold mb-5">Layanan</h3>
+            <ul className="space-y-3">
+              {mainNav.find(g => g.children)?.children?.map((link) => (
+                <li key={link.label}>
+                  <Link
+                    href={link.href}
+                    className="text-sm text-cream/80 hover:text-gold transition-colors duration-300"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
       <div className="border-t border-gold/20">

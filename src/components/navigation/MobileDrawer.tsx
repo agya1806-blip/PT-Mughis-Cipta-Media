@@ -1,35 +1,30 @@
 "use client"
 
-import { useEffect, useRef, useState, useCallback } from "react"
+import { useEffect, useRef, useCallback } from "react"
 import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
-import { motion, AnimatePresence, useReducedMotion } from "framer-motion"
-import { X, ArrowRight, Search, ChevronRight } from "lucide-react"
-import type { NavLink } from "@/config/navigation"
-import { secondaryNavLinks } from "@/config/navigation"
+import { motion, AnimatePresence } from "framer-motion"
+import { X, Search, ArrowRight, ChevronDown } from "lucide-react"
+import { mainNav } from "@/config/navigation"
+import TextLogo from "@/components/TextLogo"
+import type { MegaMenuItem } from "@/config/navigation"
 
 interface Props {
   open: boolean
   onClose: () => void
-  links: NavLink[]
 }
 
-export default function MobileDrawer({ open, onClose, links }: Props) {
+export default function MobileDrawer({ open, onClose }: Props) {
   const pathname = usePathname()
   const router = useRouter()
-  const prefersReducedMotion = useReducedMotion()
   const drawerRef = useRef<HTMLDivElement>(null)
   const closeRef = useRef<HTMLButtonElement>(null)
-  const searchInputRef = useRef<HTMLInputElement>(null)
-  const [searchQuery, setSearchQuery] = useState("")
-  const prevOverflow = useRef("")
 
   useEffect(() => {
     if (!open) return
-    prevOverflow.current = document.body.style.overflow
     document.body.style.overflow = "hidden"
     closeRef.current?.focus()
-    return () => { document.body.style.overflow = prevOverflow.current }
+    return () => { document.body.style.overflow = "" }
   }, [open])
 
   useEffect(() => {
@@ -56,31 +51,14 @@ export default function MobileDrawer({ open, onClose, links }: Props) {
     return () => document.removeEventListener("keydown", handleKey)
   }, [open, onClose])
 
-  const mounted = useRef(false)
+  // Close on route change
   useEffect(() => {
-    if (!mounted.current) { mounted.current = true; return }
     onClose()
-    setSearchQuery("")
   }, [pathname])
-
-  const handleSearch = useCallback((e: React.FormEvent) => {
-    e.preventDefault()
-    const q = searchQuery.trim()
-    if (q) router.push(`/search?q=${encodeURIComponent(q)}`)
-    onClose()
-  }, [searchQuery, router, onClose])
 
   function isActive(href: string) {
     return pathname === href || (href !== "/" && pathname.startsWith(href))
   }
-
-  const spring = prefersReducedMotion
-    ? { duration: 0.1 }
-    : { type: "spring" as const, damping: 30, stiffness: 260 }
-
-  const itemTransition = prefersReducedMotion
-    ? { duration: 0.05 }
-    : { delay: 0.04, duration: 0.3, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }
 
   return (
     <AnimatePresence>
@@ -96,109 +74,98 @@ export default function MobileDrawer({ open, onClose, links }: Props) {
         >
           <motion.div
             ref={drawerRef}
-            initial={{ y: "100%" }}
-            animate={{ y: 0 }}
-            exit={{ y: "100%" }}
-            transition={spring}
-            className="fixed bottom-0 inset-x-0 max-h-[85vh] bg-cream dark:bg-green-dark rounded-t-3xl shadow-2xl flex flex-col"
+            initial={{ x: "100%" }}
+            animate={{ x: 0 }}
+            exit={{ x: "100%" }}
+            transition={{ type: "spring", damping: 28, stiffness: 260 }}
+            className="fixed right-0 top-0 bottom-0 w-full max-w-sm bg-cream dark:bg-green-dark shadow-2xl flex flex-col"
             onClick={(e) => e.stopPropagation()}
             role="dialog"
             aria-modal="true"
             aria-label="Navigasi menu"
           >
-            <div className="shrink-0">
-              <div className="flex items-center justify-center pt-3 pb-1">
-                <div className="w-10 h-1 rounded-full bg-green/30 dark:bg-cream/30" />
-              </div>
-              <div className="flex items-center justify-between px-6 pb-3 border-b border-gold/20 dark:border-gold/10">
-                <span className="text-xs font-semibold tracking-[0.15em] uppercase text-green/60 dark:text-cream/70">
-                  Menu
-                </span>
-                <button
-                  ref={closeRef}
-                  onClick={onClose}
-                  aria-label="Tutup menu"
-                  className="min-w-[44px] min-h-[44px] flex items-center justify-center rounded-xl text-green/60 dark:text-cream/70 hover:bg-gold/10 dark:hover:bg-cream/10 hover:text-green-dark dark:hover:text-cream transition-colors"
-                >
-                  <X className="w-5 h-5" />
-                </button>
-              </div>
+            {/* Header */}
+            <div className="flex items-center justify-between px-5 h-16 border-b border-gold/20 dark:border-gold/10 shrink-0">
+              <TextLogo variant="card" />
+              <button
+                ref={closeRef}
+                onClick={onClose}
+                aria-label="Tutup menu"
+                className="min-w-[44px] min-h-[44px] flex items-center justify-center rounded-xl text-green/60 dark:text-cream/70 hover:bg-gold/10 dark:hover:bg-cream/10 hover:text-green-dark dark:hover:text-cream transition-colors"
+              >
+                <X className="w-5 h-5" />
+              </button>
             </div>
 
-            <form onSubmit={handleSearch} className="shrink-0 px-4 pt-3 pb-2">
-              <div className="relative">
-                <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-green/60 dark:text-cream/60 pointer-events-none" />
-                <input
-                  ref={searchInputRef}
-                  type="text"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Cari buku atau artikel..."
-                  className="w-full h-11 pl-10 pr-3 rounded-xl bg-gold/5 dark:bg-cream/5 border border-gold/20 dark:border-cream/20 text-sm text-green-dark dark:text-cream placeholder-green/50 dark:placeholder-cream/50 focus:outline-none focus:ring-2 focus:ring-gold/50 dark:focus:ring-cream/50 transition-all"
-                />
-              </div>
-            </form>
-
-            <div className="flex-1 overflow-y-auto px-4 pb-2 space-y-0.5">
-              {links.map((link) => (
-                <motion.div
-                  key={link.href}
-                  initial={{ opacity: 0, x: 16 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={itemTransition}
-                >
-                  <Link
-                    href={link.href}
-                    onClick={onClose}
-                    className={`flex items-center justify-between min-h-[48px] px-4 rounded-xl text-sm font-medium transition-all duration-200 ${
-                      isActive(link.href)
-                        ? "bg-gold text-white font-semibold"
-                        : "text-green-dark dark:text-cream hover:bg-gold/10 dark:hover:bg-cream/10"
-                    }`}
-                  >
-                    <span>{link.label}</span>
-                    {!isActive(link.href) && (
-                      <ChevronRight className="w-4 h-4 text-green/40 dark:text-cream/40" />
-                    )}
-                  </Link>
-                </motion.div>
-              ))}
-
-              <div className="border-t border-gold/20 dark:border-cream/10 my-2 pt-2">
-                <p className="px-4 pb-1 text-[11px] font-semibold tracking-[0.12em] uppercase text-green/50 dark:text-cream/50">
-                  Lainnya
-                </p>
-                {secondaryNavLinks.map((link) => (
-                  <motion.div
-                    key={link.href}
-                    initial={{ opacity: 0, x: 16 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={itemTransition}
-                  >
-                    <Link
-                      href={link.href}
-                      onClick={onClose}
-                      className={`flex items-center justify-between min-h-[44px] px-4 rounded-xl text-sm font-medium transition-all duration-200 ${
-                        isActive(link.href)
-                          ? "bg-gold text-white font-semibold"
-                          : "text-green/70 dark:text-cream/70 hover:bg-gold/10 dark:hover:bg-cream/10"
-                      }`}
-                    >
-                      <span>{link.label}</span>
-                      {!isActive(link.href) && (
-                        <ChevronRight className="w-3.5 h-3.5 text-green/40 dark:text-cream/40" />
-                      )}
-                    </Link>
-                  </motion.div>
-                ))}
-              </div>
+            {/* Search */}
+            <div className="px-4 pt-4 pb-2 shrink-0">
+              <button
+                onClick={() => {
+                  onClose()
+                  router.push("/search")
+                }}
+                className="flex items-center gap-3 w-full h-11 px-4 rounded-xl bg-gold/5 dark:bg-cream/5 border border-gold/20 dark:border-cream/20 text-sm text-green/60 dark:text-cream/60 text-left transition-all hover:bg-gold/10 dark:hover:bg-cream/10"
+              >
+                <Search className="w-4 h-4 shrink-0" />
+                <span>Cari buku, artikel...</span>
+              </button>
             </div>
 
-            <div className="shrink-0 px-4 pb-6 pt-3 border-t border-gold/20 dark:border-cream/10 bg-cream dark:bg-green-dark" style={{ paddingBottom: "calc(1.5rem + env(safe-area-inset-bottom, 0px))" }}>
+            {/* Menu Items */}
+            <nav className="flex-1 overflow-y-auto px-4 py-2" aria-label="Navigasi mobile">
+              <ul className="space-y-1">
+                {mainNav.map((group) => {
+                  const hasChildren = group.children && group.children.length > 0
+                  const isItemActive = group.href ? isActive(group.href) : false
+
+                  if (!hasChildren) {
+                    return (
+                      <li key={group.href}>
+                        <Link
+                          href={group.href || "#"}
+                          onClick={onClose}
+                          className={`flex items-center justify-between min-h-[48px] px-4 rounded-xl text-sm font-medium transition-all duration-200 ${
+                            isItemActive
+                              ? "bg-gold text-white font-semibold"
+                              : "text-green-dark dark:text-cream hover:bg-gold/10 dark:hover:bg-cream/10"
+                          }`}
+                        >
+                          <span>{group.label}</span>
+                          {!isItemActive && (
+                            <ArrowRight className="w-4 h-4 text-green/40 dark:text-cream/40" />
+                          )}
+                        </Link>
+                      </li>
+                    )
+                  }
+
+                  return (
+                    <MobileMegaItem
+                      key={group.label}
+                      label={group.label}
+                      items={group.children || []}
+                      onClose={onClose}
+                      isActive={isItemActive}
+                    />
+                  )
+                })}
+              </ul>
+            </nav>
+
+            {/* Bottom CTA */}
+            <div className="shrink-0 px-4 pb-6 pt-4 border-t border-gold/20 dark:border-gold/10 space-y-3">
+              <Link
+                href="/penulis"
+                onClick={onClose}
+                className="flex items-center justify-center gap-2 w-full min-h-[48px] px-5 bg-emerald-600 hover:bg-gold text-white hover:text-green-dark text-sm font-semibold rounded-xl transition-all duration-300"
+              >
+                Daftar Program
+                <ArrowRight className="w-4 h-4" />
+              </Link>
               <Link
                 href="/kontak"
                 onClick={onClose}
-                className="flex items-center justify-center gap-2 w-full min-h-[48px] px-5 bg-green hover:bg-green-dark text-gold text-sm font-semibold rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-green/25"
+                className="flex items-center justify-center gap-2 w-full min-h-[48px] px-5 border border-gold/30 dark:border-gold/20 text-gold text-sm font-medium rounded-xl hover:bg-gold/10 dark:hover:bg-cream/10 transition-all duration-300"
               >
                 Hubungi Kami
                 <ArrowRight className="w-4 h-4" />
@@ -208,5 +175,43 @@ export default function MobileDrawer({ open, onClose, links }: Props) {
         </motion.div>
       )}
     </AnimatePresence>
+  )
+}
+
+function MobileMegaItem({ label, items, onClose, isActive }: {
+  label: string
+  items: MegaMenuItem[]
+  onClose: () => void
+  isActive: boolean
+}) {
+  return (
+    <div>
+      <div
+        className={`flex items-center justify-between min-h-[48px] px-4 rounded-xl text-sm font-medium ${
+          isActive ? "bg-gold text-white" : "text-green-dark dark:text-cream"
+        }`}
+      >
+        <span>{label}</span>
+        <ChevronDown className="w-4 h-4 text-green/40 dark:text-cream/40" />
+      </div>
+      <div className="ml-4 mt-1 mb-3 space-y-1">
+        {items.map((item) => (
+          <Link
+            key={item.href}
+            href={item.href}
+            onClick={onClose}
+            className="flex items-center gap-3 min-h-[44px] px-4 rounded-xl text-sm text-green/70 dark:text-cream/70 hover:bg-gold/10 dark:hover:bg-cream/10 hover:text-green-dark dark:hover:text-cream transition-all duration-200"
+          >
+            <div className="w-6 h-6 rounded-lg bg-gold/10 dark:bg-cream/10 flex items-center justify-center shrink-0">
+              <div className="w-2.5 h-2.5 rounded-full bg-gold" />
+            </div>
+            <div className="flex-1 min-w-0">
+              <span className="font-medium">{item.label}</span>
+              <p className="text-[11px] text-green/50 dark:text-cream/50 line-clamp-1">{item.description}</p>
+            </div>
+          </Link>
+        ))}
+      </div>
+    </div>
   )
 }

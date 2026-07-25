@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 import { useRouter, useParams } from "next/navigation"
 import FormSection from "@/components/admin/FormSection"
 import { TeamRole, TeamMemberStatus } from "@/lib/team/types"
+import { TeamPhotoUpload } from "@/components/team/TeamPhotoUpload"
 
 const ROLE_OPTIONS = [
   { value: "FOUNDER", label: "Founder" },
@@ -317,15 +318,10 @@ export default function EditTeamMember() {
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-green-dark mb-1">
-                Foto URL
-              </label>
-              <input
-                type="text"
-                className={inputClass}
+              <TeamPhotoUpload
                 value={form.photo}
-                onChange={(e) => setForm({ ...form, photo: e.target.value })}
-                placeholder="https://..."
+                onChange={(val) => setForm({ ...form, photo: val })}
+                label="Foto Profil"
               />
             </div>
             <div>

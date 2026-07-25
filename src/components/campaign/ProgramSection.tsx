@@ -1,0 +1,61 @@
+"use client"
+
+import { motion } from "framer-motion"
+import { CheckCircle, Gift } from "lucide-react"
+import { MOTION } from "@/config/design"
+
+export function ProgramSection({ onCtaClick }: { onCtaClick: () => void }) {
+  return (
+    <section className="relative py-24 sm:py-32 bg-cream overflow-hidden">
+      <div className="absolute top-0 right-0 w-96 h-96 bg-gold/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 left-0 w-80 h-80 bg-gold/5 rounded-full blur-3xl" />
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10 relative">
+        <motion.div variants={MOTION.fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="max-w-3xl mx-auto">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/10 border border-gold/20 mb-6">
+            <span className="text-gold-dark text-[11px] font-medium uppercase tracking-[0.1em]">Program Spesial</span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-green-dark leading-[1.15] tracking-tight">
+            Program Apresiasi{" "}
+            <span className="bg-gradient-to-r from-gold to-gold-dark bg-clip-text text-transparent">Penulis</span>
+          </h2>
+          <p className="mt-4 text-green/80 text-lg leading-relaxed">
+            Dalam rangka transformasi menjadi PT Mughis Cipta Media, kami menghadirkan Program Apresiasi Penulis.
+            Program ini memberikan pendampingan administrasi penerbitan secara GRATIS sesuai ketentuan yang berlaku.
+          </p>
+
+          <div className="mt-10 space-y-4">
+            {[
+              "Pendampingan administrasi penerbitan",
+              "Konsultasi penerbitan dengan tim profesional",
+              "Pendampingan proses ISBN sesuai ketentuan Perpustakaan Nasional RI",
+            ].map((item, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 + i * 0.1 }}
+                className="flex items-start gap-4"
+              >
+                <div className="w-7 h-7 rounded-full bg-green/10 flex items-center justify-center shrink-0 mt-0.5">
+                  <CheckCircle className="w-4 h-4 text-green" />
+                </div>
+                <span className="text-green-dark/90">{item}</span>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.div variants={MOTION.fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="mt-10">
+            <button
+              onClick={onCtaClick}
+              className="group inline-flex items-center gap-2 h-12 sm:h-14 px-7 sm:px-8 text-sm font-semibold rounded-full bg-green hover:bg-green-dark text-gold shadow-md hover:shadow-xl hover:shadow-green/25 transition-all duration-300 hover:-translate-y-0.5"
+            >
+              <Gift className="w-4 h-4" />
+              Daftar Program Sekarang
+            </button>
+          </motion.div>
+        </motion.div>
+      </div>
+    </section>
+  )
+}

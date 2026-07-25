@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server"
 import { writeFile, mkdir } from "fs/promises"
 import path from "path"
+import { sendTelegramMessage, sendTelegramPhoto } from "@/lib/telegram"
 
 interface FormDataEntry {
   nama: string
@@ -28,6 +29,53 @@ async function saveFile(file: File, dir: string): Promise<string | null> {
   return `/uploads/${dir}/${filename}`
 }
 
+function formatWhatsApp(wa: string): string {
+  const digits = wa.replace(/\D/g, "")
+  if (digits.startsWith("0")) return "62" + digits.slice(1)
+  if (digits.startsWith("62")) return digits
+  return digits
+}
+
+function buildTelegramMessage(data: FormDataEntry, regNumber: string): string {
+  const now = new Date()
+  const dateStr = now.toLocaleDateString("id-ID", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  })
+  const timeStr = now.toLocaleTimeString("id-ID", {
+    hour: "2-digit",
+    minute: "2-digit",
+  })
+
+  const statusLabel: Record<string, string> = {
+    belum_selesai: "Belum selesai",
+    sedang_ditulis: "Sedang ditulis",
+    sudah_selesai: "Sudah selesai",
+  }
+
+  return `
+<b>📚 PENDAFTARAN BARU</b>
+<b>🏢 Program Apresiasi Penulis</b>
+─────────────────────
+
+<b>👤 Data Diri</b>
+• Nama Lengkap  : ${data.nama || "-"}
+• WhatsApp      : <a href="https://wa.me/${formatWhatsApp(data.whatsapp)}">${data.whatsapp}</a>
+• Email         : ${data.email || "-"}
+
+<b>📖 Data Buku</b>
+• Judul Buku    : ${data.judulBuku || "-"}
+• Kategori      : ${data.kategoriBuku || "-"}
+• Status Naskah : ${statusLabel[data.statusNaskah] || data.statusNaskah || "-"}
+
+<b>🆔 Informasi Pendaftaran</b>
+• No. Registrasi : <b>${regNumber}</b>
+• Tanggal        : ${dateStr}
+• Jam            : ${timeStr}
+`.trim()
+}
+
 export async function POST(request: Request) {
   try {
     const formData = await request.formData()
@@ -48,24 +96,51 @@ export async function POST(request: Request) {
     }
 
     if (!data.nama || !data.whatsapp || !data.email) {
-      return NextResponse.json({ error: "Data wajib tidak lengkap" }, { status: 400 })
+      return NextResponse.json(
+        { error: "Data wajib tidak lengkap" },
+        { status: 400 }
+      )
     }
 
     const fileNaskah = formData.get("fileNaskah") as File | null
     const fileCover = formData.get("fileCover") as File | null
     const fileBuktiFollow = formData.get("fileBuktiFollow") as File | null
-    const fileBuktiFollowFounder = formData.get("fileBuktiFollowFounder") as File | null
+    const fileBuktiFollowFounder = formData.get(
+      "fileBuktiFollowFounder"
+    ) as File | null
 
-    const [naskahUrl, coverUrl, buktiUrl, buktiFounderUrl] = await Promise.all([
-      saveFile(fileNaskah!, "campaign/naskah"),
-      saveFile(fileCover!, "campaign/cover"),
-      saveFile(fileBuktiFollow!, "campaign/bukti"),
-      saveFile(fileBuktiFollowFounder!, "campaign/bukti"),
-    ])
+    const [naskahUrl, coverUrl, buktiUrl, buktiFounderUrl] = await Promise.all(
+      [
+        saveFile(fileNaskah!, "campaign/naskah"),
+        saveFile(fileCover!, "campaign/cover"),
+        saveFile(fileBuktiFollow!, "campaign/bukti"),
+        saveFile(fileBuktiFollowFounder!, "campaign/bukti"),
+      ]
+    )
 
     const id = Date.now()
     const year = new Date().getFullYear()
-    const registrationNumber = `MCM-${year}-${String(id).slice(-4).padStart(4, "0")}`
+    const registrationNumber = `MCM-${year}-${String(id)
+      .slice(-4)
+      .padStart(4, "0")}`
+
+    // Send to Telegram
+    const text = buildTelegramMessage(data, registrationNumber)
+    await sendTelegramMessage(text)
+
+    // Send bukti follow photos if available
+    if (buktiUrl) {
+      await sendTelegramPhoto(
+        buktiUrl,
+        "Bukti Follow Instagram PT Mughis Cipta Media"
+      )
+    }
+    if (buktiFounderUrl) {
+      await sendTelegramPhoto(
+        buktiFounderUrl,
+        "Bukti Follow Instagram Founder @mhdaghisna_"
+      )
+    }
 
     const payload = {
       id,
@@ -81,6 +156,14 @@ export async function POST(request: Request) {
     return NextResponse.json(payload, { status: 201 })
   } catch (error) {
     console.error("Campaign registration error:", error)
-    return NextResponse.json({ error: "Terjadi kesalahan server" }, { status: 500 })
+    return NextResponse.json(
+      {
+        error:
+        error instanceof Error
+          ? error.message
+          : "Terjadi kesalahan server",
+      },
+      { status: 500 }
+    )
   }
 }

@@ -10,7 +10,7 @@ interface SuccessPageProps {
 }
 
 export function SuccessPage({ registrationNumber }: SuccessPageProps) {
-  const waUrl = `https://wa.me/${CAMPAIGN.whatsappAdmin}?text=Halo%20saya%20telah%20mendaftar%20Program%20Apresiasi%20Penulis%20dengan%20nomor%20registrasi%20${registrationNumber}`
+  const waUrl = `https://wa.me/${CAMPAIGN.whatsappAdmin}?text=Halo%20Admin%20PT%20Mughis%20Cipta%20Media%2C%20saya%20sudah%20mendaftar%20Program%20Apresiasi%20Penulis.`
 
   return (
     <section className="relative min-h-screen flex items-center bg-gradient-to-br from-green via-green-dark to-green overflow-hidden">

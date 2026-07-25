@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server"
-import { sendTelegramMessage, sendTelegramPhoto } from "@/lib/telegram"
+import { sendTelegramMessage, sendTelegramPhoto, sendTelegramDocument } from "@/lib/telegram"
 import { uploadFile } from "@/lib/upload"
 
 interface FormDataEntry {
@@ -122,11 +122,30 @@ export async function POST(request: Request) {
 
     // Send to Telegram (non-blocking — don't block registration on notification)
     const text = buildTelegramMessage(data, registrationNumber)
-    Promise.all([
+    const telegramTasks: Promise<void>[] = [
       sendTelegramMessage(text).catch(() => {}),
-      buktiUrl ? sendTelegramPhoto(buktiUrl, "Bukti Follow Instagram PT Mughis Cipta Media").catch(() => {}) : Promise.resolve(),
-      buktiFounderUrl ? sendTelegramPhoto(buktiFounderUrl, "Bukti Follow Instagram Founder @mhdaghisna_").catch(() => {}) : Promise.resolve(),
-    ])
+    ]
+    if (coverUrl) {
+      telegramTasks.push(
+        sendTelegramPhoto(coverUrl, "📖 Cover Buku").catch(() => {})
+      )
+    }
+    if (naskahUrl) {
+      telegramTasks.push(
+        sendTelegramDocument(naskahUrl, "📄 File Naskah").catch(() => {})
+      )
+    }
+    if (buktiUrl) {
+      telegramTasks.push(
+        sendTelegramPhoto(buktiUrl, "📸 Bukti Follow Instagram PT Mughis Cipta Media").catch(() => {})
+      )
+    }
+    if (buktiFounderUrl) {
+      telegramTasks.push(
+        sendTelegramPhoto(buktiFounderUrl, "📸 Bukti Follow Instagram Founder @mhdaghisna_").catch(() => {})
+      )
+    }
+    Promise.all(telegramTasks)
 
     const payload = {
       id,

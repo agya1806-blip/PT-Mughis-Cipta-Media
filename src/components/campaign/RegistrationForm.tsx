@@ -207,24 +207,46 @@ export function RegistrationForm() {
                 onChange={(f) => update("fileCover", f)}
                 preview="image"
               />
-              <FileUpload
-                accept=".jpg,.jpeg,.png"
-                maxSizeMB={5}
-                label="Bukti Follow Instagram PT Mughis Cipta Media"
-                hint="Screenshot bukti follow"
-                value={form.fileBuktiFollow}
-                onChange={(f) => update("fileBuktiFollow", f)}
-                preview="image"
-              />
-              <FileUpload
-                accept=".jpg,.jpeg,.png"
-                maxSizeMB={5}
-                label={`Bukti Follow Instagram Founder`}
-                hint={`Screenshot follow @${CAMPAIGN.founderInstagram}`}
-                value={form.fileBuktiFollowFounder}
-                onChange={(f) => update("fileBuktiFollowFounder", f)}
-                preview="image"
-              />
+              <div className="space-y-2">
+                <FileUpload
+                  accept=".jpg,.jpeg,.png"
+                  maxSizeMB={5}
+                  label="Bukti Follow Instagram PT Mughis Cipta Media"
+                  hint="Screenshot bukti follow"
+                  value={form.fileBuktiFollow}
+                  onChange={(f) => update("fileBuktiFollow", f)}
+                  preview="image"
+                />
+                <a
+                  href={CAMPAIGN.instagramUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-xs text-gold-dark hover:text-gold transition-colors font-medium"
+                >
+                  Kunjungi Instagram @ptmughis
+                  <ArrowRight className="w-3 h-3" />
+                </a>
+              </div>
+              <div className="space-y-2">
+                <FileUpload
+                  accept=".jpg,.jpeg,.png"
+                  maxSizeMB={5}
+                  label={`Bukti Follow Instagram Founder`}
+                  hint={`Screenshot follow @${CAMPAIGN.founderInstagram}`}
+                  value={form.fileBuktiFollowFounder}
+                  onChange={(f) => update("fileBuktiFollowFounder", f)}
+                  preview="image"
+                />
+                <a
+                  href={`https://instagram.com/${CAMPAIGN.founderInstagram}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-xs text-gold-dark hover:text-gold transition-colors font-medium"
+                >
+                  Kunjungi Instagram @{CAMPAIGN.founderInstagram}
+                  <ArrowRight className="w-3 h-3" />
+                </a>
+              </div>
             </div>
           </div>
 

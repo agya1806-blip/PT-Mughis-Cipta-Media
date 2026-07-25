@@ -33,7 +33,7 @@ const books = [
     dimensions: '14 x 21 cm',
     language: 'Indonesia',
     publicationYear: 2025,
-    whatsapp: '085217706587',
+    whatsapp: '085121576433',
     coverImage: COVERS[0],
   },
   {
@@ -51,7 +51,7 @@ const books = [
     dimensions: '14 x 21 cm',
     language: 'Indonesia',
     publicationYear: 2025,
-    whatsapp: '085217706587',
+    whatsapp: '085121576433',
     coverImage: COVERS[1],
   },
   {
@@ -69,7 +69,7 @@ const books = [
     dimensions: '15 x 23 cm',
     language: 'Indonesia',
     publicationYear: 2024,
-    whatsapp: '085217706587',
+    whatsapp: '085121576433',
     coverImage: COVERS[2],
   },
   {
@@ -87,7 +87,7 @@ const books = [
     dimensions: '15 x 23 cm',
     language: 'Indonesia',
     publicationYear: 2024,
-    whatsapp: '085217706587',
+    whatsapp: '085121576433',
     coverImage: COVERS[3],
   },
   {
@@ -105,7 +105,7 @@ const books = [
     dimensions: '14 x 21 cm',
     language: 'Indonesia',
     publicationYear: 2025,
-    whatsapp: '085217706587',
+    whatsapp: '085121576433',
     coverImage: COVERS[4],
   },
 ];

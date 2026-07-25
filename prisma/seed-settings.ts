@@ -7,7 +7,7 @@ const prisma = new PrismaClient({ adapter });
 
 const settings: { key: string; value: string }[] = [
   { key: 'site_name', value: 'PT Mughis Cipta Media' },
-  { key: 'contact_phone', value: '085217706587' },
+  { key: 'contact_phone', value: '085121576433' },
   { key: 'contact_email', value: 'mughisciptamedia@gmail.com' },
   { key: 'address', value: 'Samalanga, Bireuen, Aceh' },
   { key: 'instagram_url', value: 'https://www.instagram.com/ptmughis' },

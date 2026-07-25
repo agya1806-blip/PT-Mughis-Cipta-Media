@@ -6,7 +6,7 @@ export const CAMPAIGN = {
     registered: 32,
   },
   registrationPrefix: "MCM",
-  whatsappAdmin: "6285217706587",
+  whatsappAdmin: "6285121576433",
   instagramUrl: "https://www.instagram.com/mhdaghisna_?utm_source=qr",
   founderInstagram: "mhdaghisna_",
 }

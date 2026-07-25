@@ -134,7 +134,7 @@
       "weight": 300,
       "dimensions": "14 x 21 cm",
       "language": "Indonesia",
-      "whatsapp": "085217706587",
+      "whatsapp": "085121576433",
       "publicationYear": 2025,
       "createdAt": "2026-07-22T16:46:08.810Z",
       "updatedAt": "2026-07-22T16:46:08.810Z"
@@ -157,7 +157,7 @@
       "weight": 250,
       "dimensions": "14 x 21 cm",
       "language": "Indonesia",
-      "whatsapp": "085217706587",
+      "whatsapp": "085121576433",
       "publicationYear": 2025,
       "createdAt": "2026-07-22T16:46:08.933Z",
       "updatedAt": "2026-07-22T16:46:08.933Z"
@@ -180,7 +180,7 @@
       "weight": 400,
       "dimensions": "15 x 23 cm",
       "language": "Indonesia",
-      "whatsapp": "085217706587",
+      "whatsapp": "085121576433",
       "publicationYear": 2024,
       "createdAt": "2026-07-22T16:46:09.052Z",
       "updatedAt": "2026-07-22T16:46:09.052Z"
@@ -203,7 +203,7 @@
       "weight": 350,
       "dimensions": "15 x 23 cm",
       "language": "Indonesia",
-      "whatsapp": "085217706587",
+      "whatsapp": "085121576433",
       "publicationYear": 2024,
       "createdAt": "2026-07-22T16:46:09.168Z",
       "updatedAt": "2026-07-22T16:46:09.168Z"
@@ -226,7 +226,7 @@
       "weight": 280,
       "dimensions": "14 x 21 cm",
       "language": "Indonesia",
-      "whatsapp": "085217706587",
+      "whatsapp": "085121576433",
       "publicationYear": 2025,
       "createdAt": "2026-07-22T16:46:09.290Z",
       "updatedAt": "2026-07-22T16:46:09.290Z"
@@ -330,7 +330,7 @@
     {
       "id": 3,
       "key": "contact_phone",
-      "value": "085217706587"
+      "value": "085121576433"
     },
     {
       "id": 2,
@@ -421,7 +421,7 @@
       "name": "Muhammad Aghisna ",
       "email": "agya1806@gmail.com",
       "password": "$2b$12$cVB0dNJTdtI0izEQHI5Pau4MX065V45FWU/92c5ojiKTI.FFqNl3i",
-      "phone": "085217706587",
+      "phone": "085121576433",
       "role": "CUSTOMER",
       "approvalStatus": "approved",
       "referralCode": null,

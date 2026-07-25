@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import { LayoutDashboard, BookOpen, FileText, FolderTree, Home } from "lucide-react"
+import { LayoutDashboard, BookOpen, FileText, FolderTree, Home, Users } from "lucide-react"
 import AdminShell from "@/components/admin/AdminShell"
 
 export const metadata: Metadata = {
@@ -26,6 +26,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           <SidebarLink href="/admin/pages">Halaman</SidebarLink>
           <SidebarLink href="/admin/articles">Artikel</SidebarLink>
           <SidebarLink href="/admin/contact-submissions">Kontak Masuk</SidebarLink>
+          <SidebarLink href="/admin/team">Tim</SidebarLink>
           <SidebarLink href="/admin/settings">Pengaturan</SidebarLink>
           <div className="border-t border-gold/20 pt-4 mt-4">
             <Link
@@ -50,6 +51,7 @@ function MobileSidebar() {
       <MobileNav href="/admin/books" label="Buku" icon={<BookOpen className="w-5 h-5" />} />
       <MobileNav href="/admin/articles" label="Artikel" icon={<FileText className="w-5 h-5" />} />
       <MobileNav href="/admin/categories" label="Kategori" icon={<FolderTree className="w-5 h-5" />} />
+      <MobileNav href="/admin/team" label="Tim" icon={<Users className="w-5 h-5" />} />
       <MobileNav href="/" label="Site" icon={<Home className="w-5 h-5" />} />
     </div>
   )

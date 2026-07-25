@@ -169,6 +169,42 @@ model Page {
   @@map("pages")
 }
 
+enum TeamRole {
+  FOUNDER
+  GENERAL_MANAGER
+  HEAD_OF_DIVISION
+}
+
+enum TeamMemberStatus {
+  ACTIVE
+  INACTIVE
+}
+
+model TeamMember {
+  id           Int               @id @default(autoincrement())
+  name         String
+  position     String
+  division     String
+  role         TeamRole          @default(HEAD_OF_DIVISION)
+  bio          String            @db.Text
+  photo        String?
+  email        String            @unique
+  password     String
+  whatsapp     String?
+  linkedin     String?
+  facebook     String?
+  instagram    String?
+  website      String?
+  skills       String?
+  quote        String?
+  status       TeamMemberStatus  @default(ACTIVE)
+  displayOrder Int              @default(0) @map("display_order")
+  createdAt    DateTime          @default(now()) @map("created_at")
+  updatedAt    DateTime          @updatedAt @map("updated_at")
+
+  @@map("team_members")
+}
+
 model ContactSubmission {
   id        Int      @id @default(autoincrement())
   name      String

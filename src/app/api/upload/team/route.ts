@@ -1,8 +1,18 @@
 import { NextResponse } from "next/server"
 import { uploadFile } from "@/lib/upload"
+import { getCurrentUser } from "@/lib/auth"
+import { getCurrentTeamMember } from "@/lib/team/auth"
 
 export async function POST(request: Request) {
   try {
+    const [user, member] = await Promise.all([
+      getCurrentUser().catch(() => null),
+      getCurrentTeamMember().catch(() => null),
+    ])
+    if (!user && !member) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 403 })
+    }
+
     const formData = await request.formData()
     const file = formData.get("file") as File | null
     if (!file) {

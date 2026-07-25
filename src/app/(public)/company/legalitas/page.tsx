@@ -35,10 +35,10 @@ export default function LegalitasPage() {
             },
             {
               id: "spp",
-              title: "Status PT Perorangan",
+              title: "Status Badan Usaha",
               number: data.legal_nib || "1807260050954",
               date: data.legal_nib_date || "18 Juli 2026",
-              description: "PT Perorangan atas nama Muhammad Aghisna — didirikan berdasarkan NIB melalui sistem OSS-RBA, tanpa akta notaris sesuai UU Cipta Kerja.",
+              description: "Perseroan Terbatas atas nama Muhammad Aghisna — didirikan berdasarkan NIB melalui sistem OSS-RBA sesuai perundang-undangan yang berlaku.",
               icon: Building2,
               status: "active",
             },

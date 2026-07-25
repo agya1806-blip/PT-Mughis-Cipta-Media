@@ -15,7 +15,7 @@ const settings: { key: string; value: string }[] = [
   { key: 'legal_nib', value: '1807260050954' },
   { key: 'legal_nib_date', value: '' },
   { key: 'legal_nib_status', value: 'Aktif' },
-  { key: 'legal_akta', value: 'PT Perorangan (UU Cipta Kerja)' },
+  { key: 'legal_akta', value: 'PT (Perseroan Terbatas)' },
   { key: 'legal_akta_date', value: '' },
   { key: 'legal_npwp', value: '1108043110010001' },
   { key: 'legal_npwp_date', value: '' },

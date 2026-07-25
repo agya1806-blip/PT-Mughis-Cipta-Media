@@ -44,7 +44,7 @@ export default function CompanyPage() {
           <SectionTitle badge="Tentang Perusahaan" title="Mitra Terpercaya untuk" accent="Penerbitan Anda" description="PT Mughis Cipta Media hadir sebagai solusi lengkap bagi para penulis dan penerbit." />
           <motion.div variants={MOTION.stagger} initial="hidden" whileInView="visible" viewport={{ once: true }} className="mt-16 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              { icon: Building2, title: "Berdiri Sejak 2026", description: "PT Mughis Cipta Media resmi berdiri sebagai PT Perorangan yang terdaftar di OSS-RBA." },
+              { icon: Building2, title: "Berdiri Sejak 2026", description: "PT Mughis Cipta Media resmi berdiri dan terdaftar di OSS-RBA sebagai badan usaha resmi." },
               { icon: BookText, title: "Penerbitan Buku", description: "Melayani penerbitan buku Islami dan pendidikan berkualitas untuk penulis Indonesia." },
               { icon: Printer, title: "Percetakan Profesional", description: "Bermitra dengan percetakan profesional untuk hasil cetakan terbaik." },
               { icon: Globe, title: "Distribusi Nasional", description: "Jaringan distribusi yang menjangkau toko buku dan platform online di Indonesia." },

@@ -59,13 +59,14 @@ export async function sendTelegramPhoto(
   const fs = await import("fs/promises")
   const pathModule = await import("path")
 
-  const fullPath = pathModule.join(process.cwd(), "public", filePath)
+  const normalizedPath = filePath.startsWith("/") ? filePath.slice(1) : filePath
+  const fullPath = pathModule.join(process.cwd(), "public", normalizedPath)
   const buffer = await fs.readFile(fullPath)
 
   const formData = new FormData()
   formData.append("chat_id", chatId)
   formData.append("caption", caption)
-  formData.append("photo", new Blob([buffer]), pathModule.basename(filePath))
+  formData.append("photo", new Blob([buffer]), pathModule.basename(normalizedPath))
 
   const { token } = getConfig()
   const res = await fetch(`${TELEGRAM_API}${token}/sendPhoto`, {

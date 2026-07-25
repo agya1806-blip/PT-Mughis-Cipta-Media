@@ -21,7 +21,7 @@ export const timelineEvents: TimelineEvent[] = [
   { year: "2023", title: "Maktabah Al-Mughis Berdiri", description: "Memulai perjalanan sebagai penerbit buku Islami dan pendidikan." },
   { year: "2024", title: "Dipercaya Banyak Penulis", description: "Melayani puluhan penulis dari berbagai latar belakang." },
   { year: "2025", title: "Transformasi Perusahaan", description: "Proses transformasi menjadi badan usaha resmi." },
-  { year: "2026", title: "PT Mughis Cipta Media", description: "Resmi berdiri sebagai PT Perorangan dengan legalitas lengkap." },
+  { year: "2026", title: "PT Mughis Cipta Media", description: "Resmi berdiri sebagai badan usaha resmi dengan legalitas lengkap." },
 ]
 
 export const whyCards: WhyCard[] = [

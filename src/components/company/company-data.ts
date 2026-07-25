@@ -25,11 +25,11 @@ export const legalDocuments: LegalDocument[] = [
   },
   {
     id: "spp",
-    title: "Status PT Perorangan",
+    title: "Status Badan Usaha",
     number: "1807260050954",
     date: "18 Juli 2026",
     description:
-      "PT Perorangan (PT Perseorangan) atas nama Muhammad Aghisna — didirikan berdasarkan NIB yang diterbitkan melalui sistem OSS-RBA, tanpa akta notaris sesuai UU Cipta Kerja.",
+      "Perseroan Terbatas atas nama Muhammad Aghisna — didirikan berdasarkan NIB yang diterbitkan melalui sistem OSS-RBA sesuai ketentuan perundang-undangan yang berlaku.",
     icon: Building2,
     status: "active",
   },
@@ -137,9 +137,9 @@ export const milestones: Milestone[] = [
   },
   {
     year: "2026",
-    title: "Pendirian PT Perorangan & NIB",
+    title: "Pendirian PT & Penerbitan NIB",
     description:
-      "PT Mughis Cipta Media resmi berdiri sebagai PT Perorangan dengan NIB 1807260050954 yang diterbitkan melalui sistem OSS-RBA. NPWP: 1108043110010001.",
+      "PT Mughis Cipta Media resmi berdiri dengan NIB 1807260050954 yang diterbitkan melalui sistem OSS-RBA. NPWP: 1108043110010001.",
     icon: Building2,
   },
   {

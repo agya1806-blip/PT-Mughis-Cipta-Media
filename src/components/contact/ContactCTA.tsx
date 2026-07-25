@@ -29,7 +29,7 @@ export default function ContactCTA({ phone = "6285723456789" }: { phone?: string
               Penerbitan
             </span>
           </h2>
-          <p className="text-lg text-cream/70 max-w-lg mx-auto mb-10">
+          <p className="text-lg text-cream/90 max-w-lg mx-auto mb-10">
             Tim kami siap membantu mewujudkan buku Anda. Diskusikan kebutuhan penerbitan Anda sekarang.
           </p>
           <div className="flex flex-wrap justify-center gap-4">

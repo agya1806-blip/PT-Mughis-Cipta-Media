@@ -143,7 +143,7 @@ export default function ShareButton({ url, title, description = "", image, class
       <button
         onClick={handleShare}
         title="Bagikan"
-        className="group flex items-center justify-center w-8 h-8 rounded-full bg-cream border border-gold/20 text-green/60 hover:text-gold hover:bg-gold/10 hover:border-gold/40 transition-all active:scale-95"
+        className="group flex items-center justify-center w-8 h-8 rounded-full bg-cream border border-gold/20 text-green-dark/80 hover:text-gold hover:bg-gold/10 hover:border-gold/40 transition-all active:scale-95"
         aria-label="Bagikan"
         aria-expanded={open}
       >
@@ -155,7 +155,7 @@ export default function ShareButton({ url, title, description = "", image, class
           <div className="fixed inset-0 z-40" onClick={(e) => { e.stopPropagation(); setOpen(false) }} />
 
           <div className="absolute right-0 mt-2 w-56 bg-cream border border-gold/20 rounded-2xl shadow-2xl z-50 text-sm overflow-hidden">
-            <div className="px-4 py-2 text-[10px] font-medium tracking-[0.5px] text-green/50 border-b border-gold/10 bg-cream/50 flex items-center justify-between">
+            <div className="px-4 py-2 text-[10px] font-medium tracking-[0.5px] text-green-dark/80 border-b border-gold/10 bg-cream/50 flex items-center justify-between">
               <span>BAGIKAN</span>
               {image && (
                 <span className="flex items-center gap-1 text-[9px] text-gold/60">
@@ -182,7 +182,7 @@ export default function ShareButton({ url, title, description = "", image, class
               </div>
               <div className="min-w-0">
                 <span className="text-green-dark font-medium block">WhatsApp</span>
-                <span className="text-[10px] text-green/40">Kirim dengan gambar cover</span>
+                <span className="text-[10px] text-green-dark/70">Kirim dengan gambar cover</span>
               </div>
             </button>
 
@@ -192,7 +192,7 @@ export default function ShareButton({ url, title, description = "", image, class
               </div>
               <div className="min-w-0">
                 <span className="text-green-dark font-medium block">Facebook</span>
-                <span className="text-[10px] text-green/40">Preview otomatis dari link</span>
+                <span className="text-[10px] text-green-dark/70">Preview otomatis dari link</span>
               </div>
             </button>
 
@@ -202,7 +202,7 @@ export default function ShareButton({ url, title, description = "", image, class
               </div>
               <div className="min-w-0">
                 <span className="text-green-dark font-medium block">Instagram Story</span>
-                <span className="text-[10px] text-green/40">{isIOS ? "Buka dengan gambar" : "Caption + Buka IG"}</span>
+                <span className="text-[10px] text-green-dark/70">{isIOS ? "Buka dengan gambar" : "Caption + Buka IG"}</span>
               </div>
             </button>
 

@@ -93,7 +93,7 @@ export default function LegalitasPage() {
           <motion.div variants={MOTION.fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="mt-8 max-w-3xl">
             <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cream/10 border border-cream/20 text-gold text-[11px] font-medium uppercase tracking-[0.1em] mb-6">Legalitas Perusahaan</span>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-cream leading-[1.1] tracking-tight">Legalitas & <span className="bg-gradient-to-r from-gold to-gold-dark bg-clip-text text-transparent">NIB</span></h1>
-            <p className="mt-6 text-lg sm:text-xl text-cream/70 leading-relaxed">PT Mughis Cipta Media memiliki legalitas lengkap dan terdaftar resmi di instansi pemerintah terkait. Seluruh dokumen legal dapat diverifikasi melalui instansi berwenang.</p>
+            <p className="mt-6 text-lg sm:text-xl text-cream/90 leading-relaxed">PT Mughis Cipta Media memiliki legalitas lengkap dan terdaftar resmi di instansi pemerintah terkait. Seluruh dokumen legal dapat diverifikasi melalui instansi berwenang.</p>
           </motion.div>
         </div>
       </section>
@@ -116,8 +116,8 @@ export default function LegalitasPage() {
                             <h3 className="text-base font-bold text-green-dark">{doc.title}</h3>
                             <LegalBadge icon={CheckCircle} title={doc.status === "verified" ? "Terverifikasi" : "Aktif"} status={doc.status} />
                           </div>
-                          <p className="text-sm text-green/60 mb-3">{doc.description}</p>
-                          <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-green/60">
+                          <p className="text-sm text-green-dark/80 mb-3">{doc.description}</p>
+                          <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-green-dark/80">
                             <span className="font-mono">{doc.number}</span>
                             {doc.date && <><span className="w-1 h-1 rounded-full bg-gold/30" /><span>{doc.date}</span></>}
                           </div>
@@ -135,7 +135,7 @@ export default function LegalitasPage() {
                   <div className="flex items-center gap-4">
                     <div className="w-14 h-14 rounded-2xl bg-gold/10 flex items-center justify-center"><FileText className="w-7 h-7 text-gold" /></div>
                     <div>
-                      <p className="text-xs font-medium text-green/60 uppercase tracking-wider">NIB</p>
+                      <p className="text-xs font-medium text-green-dark/80 uppercase tracking-wider">NIB</p>
                       <p className="text-xl font-bold text-green-dark font-mono tracking-wider">{settings.legal_nib || "1807260050954"}</p>
                     </div>
                   </div>
@@ -152,7 +152,7 @@ export default function LegalitasPage() {
                         { label: "Berlaku", value: "Seumur Hidup" },
                       ].map(({ label, value }) => (
                         <div key={label}>
-                          <p className="text-green/60">{label}</p>
+                          <p className="text-green-dark/80">{label}</p>
                           <p className="font-medium text-green-dark">{value}</p>
                         </div>
                       ))}
@@ -175,13 +175,13 @@ export default function LegalitasPage() {
                         <Icon className="w-5 h-5 text-gold mt-0.5 shrink-0" />
                         <div>
                           <p className="text-sm font-semibold text-green-dark">{label}</p>
-                          <p className="text-xs text-green/60">{desc}</p>
+                          <p className="text-xs text-green-dark/80">{desc}</p>
                         </div>
                       </div>
                     ))}
                   </div>
                   <div className="pt-2">
-                    <a href="https://oss-rba.bkpm.go.id/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm font-medium text-gold hover:text-gold-dark transition-colors">Verifikasi di OSS-RBA<ExternalLink className="w-3.5 h-3.5" /></a>
+                    <a href="https://oss-rba.bkpm.go.id/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm font-medium text-gold hover:text-green-dark transition-colors">Verifikasi di OSS-RBA<ExternalLink className="w-3.5 h-3.5" /></a>
                   </div>
                 </GlassPanel>
               </motion.div>

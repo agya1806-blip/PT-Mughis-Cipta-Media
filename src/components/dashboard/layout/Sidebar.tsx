@@ -63,7 +63,7 @@ export default function Sidebar({ collapsed, onToggle, mobileOpen, onMobileClose
               className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 ${
                 isActive
                   ? "bg-gold/10 text-gold"
-                  : "text-green/70 hover:text-green-dark hover:bg-gold/10"
+                  : "text-green-dark/80 hover:text-green-dark hover:bg-gold/10"
               }`}
             >
               <item.icon className="w-4 h-4 shrink-0" />
@@ -84,7 +84,7 @@ export default function Sidebar({ collapsed, onToggle, mobileOpen, onMobileClose
       <div className="border-t border-gold/20 p-3">
         <Link
           href="/"
-          className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-green/70 hover:text-green-dark hover:bg-gold/10 transition-all duration-200"
+          className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-green-dark/80 hover:text-green-dark hover:bg-gold/10 transition-all duration-200"
           onClick={onMobileClose}
         >
           <ChevronLeft className="w-4 h-4 shrink-0" />
@@ -95,7 +95,7 @@ export default function Sidebar({ collapsed, onToggle, mobileOpen, onMobileClose
       <div className="border-t border-gold/20 p-3">
         <button
           onClick={onToggle}
-          className="hidden lg:flex items-center justify-center w-full py-2 rounded-xl text-sm text-green/60 hover:text-green-dark hover:bg-gold/10 transition-all duration-200"
+          className="hidden lg:flex items-center justify-center w-full py-2 rounded-xl text-sm text-green-dark/80 hover:text-green-dark hover:bg-gold/10 transition-all duration-200"
           aria-label={collapsed ? "Expand sidebar" : "Collapse sidebar"}
         >
           <ChevronLeft className={`w-4 h-4 transition-transform duration-200 ${collapsed ? "rotate-180" : ""}`} />

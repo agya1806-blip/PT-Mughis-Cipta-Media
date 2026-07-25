@@ -62,12 +62,12 @@ export default function AdminSettings() {
       <div className="max-w-lg space-y-4">
         {SETTING_FIELDS.map((field) => (
           <div key={field.key}>
-            <label className="block text-sm font-medium text-green/70 mb-1">
+            <label className="block text-sm font-medium text-green-dark/80 mb-1">
               {field.label}
             </label>
             <input
               type="text"
-              className="w-full rounded-lg border border-gold/20 bg-cream px-3 py-2 text-sm text-green-dark placeholder-green/60 focus:outline-none focus:ring-2 focus:ring-gold/50"
+              className="w-full rounded-lg border border-gold/20 bg-cream px-3 py-2 text-sm text-green-dark placeholder-green-dark/80 focus:outline-none focus:ring-2 focus:ring-gold/50"
               value={settings[field.key] || ""}
               onChange={(e) =>
                 setSettings({ ...settings, [field.key]: e.target.value })
@@ -79,7 +79,7 @@ export default function AdminSettings() {
           <button
             onClick={handleSave}
             disabled={saving}
-            className="h-11 px-6 rounded-xl bg-gold text-white font-medium hover:bg-gold-dark disabled:opacity-50"
+            className="h-11 px-6 rounded-xl bg-gold text-green-dark font-medium hover:bg-gold-dark disabled:opacity-50"
           >
             {saving ? "Menyimpan..." : "Simpan"}
           </button>

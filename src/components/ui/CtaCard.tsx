@@ -43,7 +43,7 @@ export default function CtaCard({
             {title}
           </h2>
           {description && (
-            <p className="mt-4 text-lg text-gold">{description}</p>
+            <p className="mt-4 text-lg text-cream/90">{description}</p>
           )}
           {children}
           {(primaryLabel || secondaryLabel) && (

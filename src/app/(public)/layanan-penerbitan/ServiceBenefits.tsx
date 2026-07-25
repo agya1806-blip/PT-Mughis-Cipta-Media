@@ -17,7 +17,7 @@ export default function ServiceBenefits({ benefits }: { benefits: string[] }) {
         {benefits.map((b) => (
           <div key={b} className="flex items-start gap-3 p-4 rounded-xl bg-gold/[0.03] border border-gold/10">
             <CheckCircle className="w-5 h-5 text-gold shrink-0 mt-0.5" />
-            <span className="text-sm text-green-dark/80">{b}</span>
+            <span className="text-sm text-green-dark">{b}</span>
           </div>
         ))}
       </div>

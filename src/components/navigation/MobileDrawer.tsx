@@ -68,7 +68,7 @@ export default function MobileDrawer({ open, onClose }: Props) {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.2 }}
-          className="fixed inset-0 z-50 bg-green/60 backdrop-blur-sm md:hidden"
+          className="fixed inset-0 z-50 bg-green/80 backdrop-blur-sm md:hidden"
           onClick={onClose}
           aria-hidden="true"
         >
@@ -91,7 +91,7 @@ export default function MobileDrawer({ open, onClose }: Props) {
                 ref={closeRef}
                 onClick={onClose}
                 aria-label="Tutup menu"
-                className="min-w-[44px] min-h-[44px] flex items-center justify-center rounded-xl text-green/60 hover:bg-gold/10 hover:text-green-dark transition-colors"
+                className="min-w-[44px] min-h-[44px] flex items-center justify-center rounded-xl text-green-dark/80 hover:bg-gold/10 hover:text-green-dark transition-colors"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -104,7 +104,7 @@ export default function MobileDrawer({ open, onClose }: Props) {
                   onClose()
                   router.push("/search")
                 }}
-                className="flex items-center gap-3 w-full h-11 px-4 rounded-xl bg-gold/5 border border-gold/20 text-sm text-green/60 text-left transition-all hover:bg-gold/10"
+                className="flex items-center gap-3 w-full h-11 px-4 rounded-xl bg-gold/5 border border-gold/20 text-sm text-green-dark/80 text-left transition-all hover:bg-gold/10"
               >
                 <Search className="w-4 h-4 shrink-0" />
                 <span>Cari buku, artikel...</span>
@@ -126,13 +126,13 @@ export default function MobileDrawer({ open, onClose }: Props) {
                           onClick={onClose}
                           className={`flex items-center justify-between min-h-[48px] px-4 rounded-xl text-sm font-medium transition-all duration-200 ${
                             isItemActive
-                              ? "bg-gold text-white font-semibold"
+                              ? "bg-gold text-green-dark font-semibold"
                               : "text-green-dark hover:bg-gold/10"
                           }`}
                         >
                           <span>{group.label}</span>
                           {!isItemActive && (
-                            <ArrowRight className="w-4 h-4 text-green/40" />
+                            <ArrowRight className="w-4 h-4 text-green-dark/70" />
                           )}
                         </Link>
                       </li>
@@ -157,7 +157,7 @@ export default function MobileDrawer({ open, onClose }: Props) {
               <Link
                 href="/penulis"
                 onClick={onClose}
-                className="flex items-center justify-center gap-2 w-full min-h-[48px] px-5 bg-emerald-600 hover:bg-gold text-white hover:text-green-dark text-sm font-semibold rounded-xl transition-all duration-300"
+                className="flex items-center justify-center gap-2 w-full min-h-[48px] px-5 bg-emerald-600 hover:bg-gold text-green-dark hover:text-white text-sm font-semibold rounded-xl transition-all duration-300"
               >
                 Daftar Program
                 <ArrowRight className="w-4 h-4" />
@@ -165,7 +165,7 @@ export default function MobileDrawer({ open, onClose }: Props) {
               <Link
                 href="/kontak"
                 onClick={onClose}
-                className="flex items-center justify-center gap-2 w-full min-h-[48px] px-5 border border-gold/30 text-gold text-sm font-medium rounded-xl hover:bg-gold/10 transition-all duration-300"
+                className="flex items-center justify-center gap-2 w-full min-h-[48px] px-5 border border-gold/30 text-green-dark text-sm font-medium rounded-xl hover:bg-gold/10 transition-all duration-300"
               >
                 Hubungi Kami
                 <ArrowRight className="w-4 h-4" />
@@ -188,11 +188,11 @@ function MobileMegaItem({ label, items, onClose, isActive }: {
     <div>
       <div
         className={`flex items-center justify-between min-h-[48px] px-4 rounded-xl text-sm font-medium ${
-          isActive ? "bg-gold text-white" : "text-green-dark"
+          isActive ? "bg-gold text-green-dark" : "text-green-dark"
         }`}
       >
         <span>{label}</span>
-        <ChevronDown className="w-4 h-4 text-green/40" />
+        <ChevronDown className="w-4 h-4 text-green-dark/70" />
       </div>
       <div className="ml-4 mt-1 mb-3 space-y-1">
         {items.map((item) => (
@@ -207,7 +207,7 @@ function MobileMegaItem({ label, items, onClose, isActive }: {
             </div>
             <div className="flex-1 min-w-0">
               <span className="font-medium">{item.label}</span>
-              <p className="text-[11px] text-green/50 line-clamp-1">{item.description}</p>
+              <p className="text-[11px] text-green-dark/80 line-clamp-1">{item.description}</p>
             </div>
           </Link>
         ))}

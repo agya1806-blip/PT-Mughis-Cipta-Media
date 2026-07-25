@@ -32,7 +32,7 @@ export function CTASection({ onCtaClick }: { onCtaClick: () => void }) {
               Kesempatan Ini
             </span>
           </h2>
-          <p className="mt-4 text-green/80 text-lg max-w-md mx-auto">
+          <p className="mt-4 text-green-dark/80 text-lg max-w-md mx-auto">
             {!loading && mc
               ? mc.microcopy
               : "Kuota terbatas. Segera daftarkan diri Anda dan dapatkan pendampingan administrasi penerbitan."}

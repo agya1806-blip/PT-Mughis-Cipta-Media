@@ -61,7 +61,7 @@ function MobileSidebar() {
 
 function MobileNav({ href, label, icon }: { href: string; label: string; icon: React.ReactNode }) {
   return (
-    <Link href={href} className="flex flex-col items-center gap-0.5 min-w-[60px] py-2 rounded-lg text-green/70 hover:text-gold transition-colors">
+    <Link href={href} className="flex flex-col items-center gap-0.5 min-w-[60px] py-2 rounded-lg text-green-dark/80 hover:text-gold transition-colors">
       {icon}
       <span className="text-[11px] font-medium">{label}</span>
     </Link>

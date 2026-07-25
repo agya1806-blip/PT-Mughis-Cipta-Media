@@ -89,27 +89,27 @@ export default function EditBook() {
         <FormSection title="Informasi Buku" description="Judul, penulis, penerbit, dan kategori">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="sm:col-span-2">
-              <label className="block text-sm font-medium text-zinc-600 mb-1">Judul Buku</label>
+              <label className="block text-sm font-medium text-green-dark/80 mb-1">Judul Buku</label>
               <input type="text" required className={inputClass} value={form.title} onChange={(e) => { setForm({ ...form, title: e.target.value }); autoSlug(e.target.value) }} />
             </div>
             <div>
-              <label className="block text-sm font-medium text-zinc-600 mb-1">Slug</label>
+              <label className="block text-sm font-medium text-green-dark/80 mb-1">Slug</label>
               <input type="text" required className={inputClass} value={form.slug} onChange={(e) => setForm({ ...form, slug: e.target.value })} placeholder="judul-buku" />
             </div>
             <div>
-              <label className="block text-sm font-medium text-zinc-600 mb-1">Penulis</label>
+              <label className="block text-sm font-medium text-green-dark/80 mb-1">Penulis</label>
               <input type="text" required className={inputClass} value={form.author} onChange={(e) => setForm({ ...form, author: e.target.value })} />
             </div>
             <div>
-              <label className="block text-sm font-medium text-zinc-600 mb-1">Penerjemah</label>
+              <label className="block text-sm font-medium text-green-dark/80 mb-1">Penerjemah</label>
               <input type="text" className={inputClass} value={form.translator} onChange={(e) => setForm({ ...form, translator: e.target.value })} />
             </div>
             <div>
-              <label className="block text-sm font-medium text-zinc-600 mb-1">Penerbit</label>
+              <label className="block text-sm font-medium text-green-dark/80 mb-1">Penerbit</label>
               <input type="text" required className={inputClass} value={form.publisher} onChange={(e) => setForm({ ...form, publisher: e.target.value })} />
             </div>
             <div>
-              <label className="block text-sm font-medium text-zinc-600 mb-1">Kategori</label>
+              <label className="block text-sm font-medium text-green-dark/80 mb-1">Kategori</label>
               <select required className={inputClass} value={form.categoryId} onChange={(e) => setForm({ ...form, categoryId: e.target.value })}>
                 <option value="">Pilih Kategori</option>
                 {categories.map((c: { id: number; name: string }) => (
@@ -118,7 +118,7 @@ export default function EditBook() {
               </select>
             </div>
             <div>
-              <label className="block text-sm font-medium text-zinc-600 mb-1">No. WhatsApp</label>
+              <label className="block text-sm font-medium text-green-dark/80 mb-1">No. WhatsApp</label>
               <input type="text" className={inputClass} value={form.whatsapp} onChange={(e) => setForm({ ...form, whatsapp: e.target.value })} placeholder="628521706587" />
             </div>
           </div>
@@ -127,15 +127,15 @@ export default function EditBook() {
         <FormSection title="Harga & Stok" description="Harga jual, reseller, dan stok buku">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div>
-              <label className="block text-sm font-medium text-zinc-600 mb-1">Harga Retail</label>
+              <label className="block text-sm font-medium text-green-dark/80 mb-1">Harga Retail</label>
               <input type="number" required min={0} className={inputClass} value={form.price} onChange={(e) => setForm({ ...form, price: e.target.value })} />
             </div>
             <div>
-              <label className="block text-sm font-medium text-zinc-600 mb-1">Harga Reseller</label>
+              <label className="block text-sm font-medium text-green-dark/80 mb-1">Harga Reseller</label>
               <input type="number" min={0} className={inputClass} value={form.resellerPrice} onChange={(e) => setForm({ ...form, resellerPrice: e.target.value })} />
             </div>
             <div>
-              <label className="block text-sm font-medium text-zinc-600 mb-1">Stok</label>
+              <label className="block text-sm font-medium text-green-dark/80 mb-1">Stok</label>
               <input type="number" required min={0} className={inputClass} value={form.stock} onChange={(e) => setForm({ ...form, stock: e.target.value })} />
             </div>
           </div>
@@ -144,23 +144,23 @@ export default function EditBook() {
         <FormSection title="Detail Fisik" description="Informasi fisik buku">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div>
-              <label className="block text-sm font-medium text-zinc-600 mb-1">Jumlah Halaman</label>
+              <label className="block text-sm font-medium text-green-dark/80 mb-1">Jumlah Halaman</label>
               <input type="number" min={0} className={inputClass} value={form.pageCount} onChange={(e) => setForm({ ...form, pageCount: e.target.value })} />
             </div>
             <div>
-              <label className="block text-sm font-medium text-zinc-600 mb-1">Berat (gram)</label>
+              <label className="block text-sm font-medium text-green-dark/80 mb-1">Berat (gram)</label>
               <input type="number" required min={0} className={inputClass} value={form.weight} onChange={(e) => setForm({ ...form, weight: e.target.value })} />
             </div>
             <div>
-              <label className="block text-sm font-medium text-zinc-600 mb-1">Dimensi</label>
+              <label className="block text-sm font-medium text-green-dark/80 mb-1">Dimensi</label>
               <input type="text" className={inputClass} value={form.dimensions} onChange={(e) => setForm({ ...form, dimensions: e.target.value })} />
             </div>
             <div>
-              <label className="block text-sm font-medium text-zinc-600 mb-1">Bahasa</label>
+              <label className="block text-sm font-medium text-green-dark/80 mb-1">Bahasa</label>
               <input type="text" className={inputClass} value={form.language} onChange={(e) => setForm({ ...form, language: e.target.value })} />
             </div>
             <div>
-              <label className="block text-sm font-medium text-zinc-600 mb-1">Tahun Terbit</label>
+              <label className="block text-sm font-medium text-green-dark/80 mb-1">Tahun Terbit</label>
               <input type="number" className={inputClass} value={form.publicationYear} onChange={(e) => setForm({ ...form, publicationYear: e.target.value })} />
             </div>
           </div>
@@ -169,7 +169,7 @@ export default function EditBook() {
         <FormSection title="Cover & Media" description="Upload cover buku dan file pendukung">
           <ImageUpload label="Cover Buku" value={form.coverImage} onChange={(val) => setForm({ ...form, coverImage: val })} />
           <div className="mt-4">
-            <label className="block text-sm font-medium text-zinc-600 mb-1">URL Preview PDF</label>
+            <label className="block text-sm font-medium text-green-dark/80 mb-1">URL Preview PDF</label>
             <input type="text" className={inputClass} value={form.previewPdfUrl} onChange={(e) => setForm({ ...form, previewPdfUrl: e.target.value })} placeholder="https://..." />
           </div>
         </FormSection>
@@ -180,12 +180,12 @@ export default function EditBook() {
 
         <div className="flex gap-3 pt-2 pb-8">
           <button type="submit" disabled={submitting}
-            className="h-12 px-8 rounded-xl bg-gold text-white font-semibold hover:bg-gold-dark disabled:opacity-50 transition-all"
+            className="h-12 px-8 rounded-xl bg-gold text-green-dark font-semibold hover:bg-gold-dark disabled:opacity-50 transition-all"
           >
             {submitting ? "Menyimpan..." : "Simpan Perubahan"}
           </button>
           <button type="button" onClick={() => router.back()}
-            className="h-12 px-6 rounded-xl border border-zinc-300 text-zinc-600 font-medium hover:bg-zinc-50"
+            className="h-12 px-6 rounded-xl border border-zinc-300 text-green-dark/80 font-medium hover:bg-zinc-50"
           >
             Batal
           </button>

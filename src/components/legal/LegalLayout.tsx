@@ -37,14 +37,14 @@ export default function LegalLayout({
           </div>
           <div>
             <h1 className="text-3xl font-bold text-green-dark">{title}</h1>
-            <p className="text-sm text-green/60">{subtitle}</p>
+            <p className="text-sm text-green-dark/80">{subtitle}</p>
           </div>
         </div>
 
-        <div className="bg-cream rounded-2xl border border-gold/20 p-8 sm:p-10 space-y-6 text-green/80 leading-relaxed">
+        <div className="bg-cream rounded-2xl border border-gold/20 p-8 sm:p-10 space-y-6 text-green-dark/80 leading-relaxed">
           {children}
 
-          <p className="text-sm text-green/60 pt-4 border-t border-gold/20">
+          <p className="text-sm text-green-dark/80 pt-4 border-t border-gold/20">
             Terakhir diperbarui: {lastUpdated}
           </p>
         </div>

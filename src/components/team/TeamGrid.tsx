@@ -81,7 +81,7 @@ export function TeamGrid() {
         >
           <div className="inline-flex items-center justify-center mb-6">
             <div className={SECTION_BADGE}>
-              <Users className="w-3.5 h-3.5 text-gold-dark" />
+              <Users className="w-3.5 h-3.5 text-green-dark" />
               <span className={SECTION_BADGE_TEXT}>Pimpinan & Ketua Divisi</span>
             </div>
           </div>
@@ -128,15 +128,15 @@ export function TeamGrid() {
                   className="flex items-center gap-3 mb-6 w-full text-left group"
                 >
                   <div className="w-10 h-10 rounded-xl bg-gold/10 border border-gold/20 flex items-center justify-center shrink-0">
-                    {divisionIcons[division] || <Building2 className="w-4 h-4 text-gold-dark" />}
+                    {divisionIcons[division] || <Building2 className="w-4 h-4 text-green-dark" />}
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-lg font-bold text-green-dark group-hover:text-gold-dark transition-colors">
+                    <h3 className="text-lg font-bold text-green-dark group-hover:text-green-dark transition-colors">
                       {divisionLabels[division] || division}
                     </h3>
                   </div>
                   <ChevronDown
-                    className={`w-4 h-4 text-green/40 transition-transform duration-300 ${
+                    className={`w-4 h-4 text-green-dark/70 transition-transform duration-300 ${
                       expandedDivisions.has(division) ? "rotate-180" : ""
                     }`}
                   />

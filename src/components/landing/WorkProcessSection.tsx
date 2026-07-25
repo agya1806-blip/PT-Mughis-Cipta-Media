@@ -42,7 +42,7 @@ export default function WorkProcessSection() {
                 className="relative z-10 w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-cream border border-gold/20 flex items-center justify-center shadow-lg shrink-0"
               >
                 <s.icon className="w-6 h-6 text-gold" />
-                <span className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-gold text-white text-[10px] font-bold flex items-center justify-center">{i + 1}</span>
+                <span className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-gold text-green-dark text-[10px] font-bold flex items-center justify-center">{i + 1}</span>
               </motion.div>
               <div className="pt-3">
                 <h3 className="font-semibold text-green-dark text-lg">{s.label}</h3>

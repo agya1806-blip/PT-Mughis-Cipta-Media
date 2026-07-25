@@ -19,7 +19,7 @@ export default function AdminDashboard() {
   }, [])
 
   if (!data) {
-    return <div className="text-green/70">Memuat...</div>
+    return <div className="text-green-dark/80">Memuat...</div>
   }
 
   return (
@@ -46,14 +46,14 @@ function MetricCard({
 }) {
   const colors: Record<string, string> = {
     zinc: "bg-gold/5 border-gold/20 text-green-dark",
-    gold: "bg-gold/5 border-gold/20 text-gold-dark",
+    gold: "bg-gold/5 border-gold/20 text-green-dark",
     green: "bg-green-50 border-green-200 text-green-800",
     blue: "bg-blue-50 border-blue-200 text-blue-800",
   }
 
   return (
     <div className={`rounded-xl border p-4 ${colors[color] || colors.zinc}`}>
-      <p className="text-sm font-medium opacity-70">{title}</p>
+      <p className="text-sm font-medium opacity-85">{title}</p>
       <p className="text-2xl font-bold mt-1">{value}</p>
     </div>
   )

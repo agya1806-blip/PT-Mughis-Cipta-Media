@@ -29,7 +29,7 @@ export default function ServiceHero({
       <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-green-dark leading-tight mt-3">
         {title}
       </h2>
-      <p className="mt-2 text-gold-dark font-medium">{tagline}</p>
+      <p className="mt-2 text-green-dark font-medium">{tagline}</p>
       <p className="mt-6 text-green/80 max-w-3xl mx-auto text-lg leading-relaxed">
         {description}
       </p>

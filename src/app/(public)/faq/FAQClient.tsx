@@ -32,13 +32,13 @@ export default function FAQPage() {
         transition={{ delay: 0.2 }}
         className="relative max-w-xl mx-auto mb-10"
       >
-        <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-green/60" />
+        <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-green-dark/80" />
         <input
           type="text"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           placeholder="Cari pertanyaan..."
-          className="w-full pl-12 pr-4 py-3.5 rounded-xl bg-cream border border-gold/20 text-green-dark placeholder-green/60 focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold shadow-sm"
+          className="w-full pl-12 pr-4 py-3.5 rounded-xl bg-cream border border-gold/20 text-green-dark placeholder-green-dark/80 focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold shadow-sm"
         />
       </motion.div>
 
@@ -64,14 +64,14 @@ export default function FAQPage() {
         </div>
       )}
 
-      <div className="text-center text-sm text-green/60 mb-6">
+      <div className="text-center text-sm text-green-dark/80 mb-6">
         {search
           ? `${filteredItems.length} hasil ditemukan`
           : `${currentCategory?.items.length || 0} pertanyaan`}
       </div>
 
       {filteredItems.length === 0 ? (
-        <div className="text-center py-12 text-green/60">
+        <div className="text-center py-12 text-green-dark/80">
           <HelpCircle className="w-12 h-12 mx-auto mb-3 opacity-50" />
           <p>Tidak ada hasil untuk pencarian Anda</p>
         </div>

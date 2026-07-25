@@ -7,7 +7,7 @@ import TextLogo from "@/components/TextLogo"
 
 export default function StorySection() {
   return (
-    <section className="relative py-24 lg:py-32 bg-cream">
+    <section className="relative py-24 sm:py-32 bg-cream">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <motion.div

@@ -28,7 +28,7 @@ export default function ContactHero() {
               Buku Anda
             </span>
           </h1>
-          <p className="mt-4 text-lg sm:text-xl text-cream/70 max-w-lg leading-relaxed">
+          <p className="mt-4 text-lg sm:text-xl text-cream/90 max-w-lg leading-relaxed">
             Punya naskah siap cetak atau pertanyaan seputar penerbitan? Tim kami siap membantu mewujudkan buku Anda.
           </p>
         </motion.div>

@@ -35,7 +35,7 @@ export default function FinalCTA() {
               whileInView={prefersReducedMotion ? {} : { opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.3, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-              className="mt-4 text-lg text-cream/70 leading-relaxed"
+              className="mt-4 text-lg text-cream/90 leading-relaxed"
             >
               {subtitle}
             </motion.p>

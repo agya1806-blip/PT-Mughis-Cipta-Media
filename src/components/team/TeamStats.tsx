@@ -26,7 +26,7 @@ export function TeamStats() {
                   {stat.value}
                 </div>
                 <div className="w-8 h-0.5 bg-gradient-to-r from-gold/60 to-gold-dark/60 mx-auto mb-2" />
-                <div className="text-xs sm:text-sm text-green/70 font-medium">
+                <div className="text-xs sm:text-sm text-green-dark/80 font-medium">
                   {stat.label}
                 </div>
               </div>

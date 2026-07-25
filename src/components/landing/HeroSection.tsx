@@ -196,7 +196,7 @@ export default function HeroSection() {
 
             <motion.div
               variants={itemVariants}
-              className="mt-12 flex items-center gap-8 text-sm text-cream/70"
+              className="mt-12 flex items-center gap-8 text-sm text-cream/90"
             >
               <div className="flex -space-x-2">
                 {[1, 2, 3, 4].map((i) => (

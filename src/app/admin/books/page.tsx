@@ -47,7 +47,7 @@ export default function AdminBooks() {
         <h1 className="text-2xl font-bold text-green-dark">Manajemen Buku</h1>
         <Link
           href="/admin/books/create"
-          className="h-10 px-4 rounded-lg bg-gold text-white text-sm font-medium hover:bg-gold-dark flex items-center"
+          className="h-10 px-4 rounded-lg bg-gold text-green-dark text-sm font-medium hover:bg-gold-dark flex items-center"
         >
           Tambah Buku
         </Link>
@@ -57,7 +57,7 @@ export default function AdminBooks() {
         <input
           type="text"
           placeholder="Cari buku..."
-          className="w-full max-w-sm rounded-lg border border-gold/20 bg-cream px-3 py-2 text-sm text-green-dark placeholder-green/60 focus:outline-none focus:ring-2 focus:ring-gold/50"
+          className="w-full max-w-sm rounded-lg border border-gold/20 bg-cream px-3 py-2 text-sm text-green-dark placeholder-green-dark/80 focus:outline-none focus:ring-2 focus:ring-gold/50"
           value={search}
           onChange={(e) => { setSearch(e.target.value); setPage(1) }}
         />
@@ -67,18 +67,18 @@ export default function AdminBooks() {
         <table className="w-full text-sm">
           <thead>
             <tr className="bg-gold/5 border-b border-gold/20">
-              <th className="text-left px-4 py-3 font-medium text-green/70">Judul</th>
-              <th className="text-left px-4 py-3 font-medium text-green/70">Penulis</th>
-              <th className="text-right px-4 py-3 font-medium text-green/70">Harga</th>
-              <th className="text-right px-4 py-3 font-medium text-green/70">Stok</th>
-              <th className="text-center px-4 py-3 font-medium text-green/70">Aksi</th>
+              <th className="text-left px-4 py-3 font-medium text-green-dark/80">Judul</th>
+              <th className="text-left px-4 py-3 font-medium text-green-dark/80">Penulis</th>
+              <th className="text-right px-4 py-3 font-medium text-green-dark/80">Harga</th>
+              <th className="text-right px-4 py-3 font-medium text-green-dark/80">Stok</th>
+              <th className="text-center px-4 py-3 font-medium text-green-dark/80">Aksi</th>
             </tr>
           </thead>
           <tbody>
             {books.map((book) => (
               <tr key={book.id} className="border-b border-gold/10 hover:bg-gold/5">
                 <td className="px-4 py-3 text-green-dark">{book.title}</td>
-                <td className="px-4 py-3 text-green/70">{book.author}</td>
+                <td className="px-4 py-3 text-green-dark/80">{book.author}</td>
                 <td className="px-4 py-3 text-right text-green-dark">
                   Rp {Number(book.price).toLocaleString("id-ID")}
                 </td>
@@ -111,7 +111,7 @@ export default function AdminBooks() {
         </table>
       </div>
 
-      <div className="flex items-center justify-between mt-4 text-sm text-green/70">
+      <div className="flex items-center justify-between mt-4 text-sm text-green-dark/80">
         <span>Total: {total} buku</span>
         <div className="flex gap-2">
           <button

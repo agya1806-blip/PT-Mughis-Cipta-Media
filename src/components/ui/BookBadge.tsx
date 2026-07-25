@@ -3,9 +3,9 @@ import type { ReactNode } from "react"
 type BadgeVariant = "best-seller" | "new" | "featured"
 
 const variantStyles: Record<BadgeVariant, string> = {
-  "best-seller": "bg-gold/15 text-gold-dark border-gold/20 backdrop-blur-xl",
-  "new": "bg-gold/15 text-gold-dark border-gold/20 backdrop-blur-xl",
-  "featured": "bg-gold/10 text-gold-dark border-gold/20 backdrop-blur-xl",
+  "best-seller": "bg-gold/15 text-green-dark border-gold/20 backdrop-blur-xl",
+  "new": "bg-gold/15 text-green-dark border-gold/20 backdrop-blur-xl",
+  "featured": "bg-gold/10 text-green-dark border-gold/20 backdrop-blur-xl",
 }
 
 const variantLabels: Record<BadgeVariant, string> = {

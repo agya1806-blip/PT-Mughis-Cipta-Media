@@ -24,7 +24,7 @@ export default function SettingsPage() {
     <div>
       <div className="mb-8">
         <h1 className="text-2xl font-bold text-green-dark">Pengaturan</h1>
-        <p className="text-sm text-green/70 mt-1">Kelola preferensi akun Anda</p>
+        <p className="text-sm text-green-dark/80 mt-1">Kelola preferensi akun Anda</p>
       </div>
 
       <motion.div
@@ -41,8 +41,8 @@ export default function SettingsPage() {
                 onClick={() => setActiveSection(section.id)}
                 className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 ${
                   activeSection === section.id
-                    ? "bg-gold/10 text-gold-dark"
-                    : "text-green/70 hover:text-green-dark hover:bg-gold/5"
+                    ? "bg-gold/10 text-green-dark"
+                    : "text-green-dark/80 hover:text-green-dark hover:bg-gold/5"
                 }`}
               >
                 <section.icon className="w-4 h-4 shrink-0" />
@@ -56,27 +56,27 @@ export default function SettingsPage() {
           <div className="bg-cream rounded-2xl border border-gold/20 p-6 sm:p-8">
             {activeSection === "account" && (
               <div className="space-y-5">
-                <div><h3 className="text-base font-semibold text-green-dark">Account</h3><p className="text-sm text-green/70 mt-0.5">Kelola informasi akun Anda</p></div>
+                <div><h3 className="text-base font-semibold text-green-dark">Account</h3><p className="text-sm text-green-dark/80 mt-0.5">Kelola informasi akun Anda</p></div>
                 <Divider />
-                <div><label className="block text-sm font-medium text-green-dark mb-1.5">Username</label><input type="text" defaultValue="ahmadrizki" className="w-full h-11 px-4 bg-cream border border-gold/30 rounded-xl text-sm text-green-dark placeholder-green/60 focus:outline-none focus:border-gold/50 focus:ring-2 focus:ring-gold/10 transition-all duration-200" /></div>
-                <div><label className="block text-sm font-medium text-green-dark mb-1.5">Email</label><input type="email" defaultValue="ahmad.rizki@email.com" className="w-full h-11 px-4 bg-cream border border-gold/30 rounded-xl text-sm text-green-dark placeholder-green/60 focus:outline-none focus:border-gold/50 focus:ring-2 focus:ring-gold/10 transition-all duration-200" /></div>
+                <div><label className="block text-sm font-medium text-green-dark mb-1.5">Username</label><input type="text" defaultValue="ahmadrizki" className="w-full h-11 px-4 bg-cream border border-gold/30 rounded-xl text-sm text-green-dark placeholder-green-dark/80 focus:outline-none focus:border-gold/50 focus:ring-2 focus:ring-gold/10 transition-all duration-200" /></div>
+                <div><label className="block text-sm font-medium text-green-dark mb-1.5">Email</label><input type="email" defaultValue="ahmad.rizki@email.com" className="w-full h-11 px-4 bg-cream border border-gold/30 rounded-xl text-sm text-green-dark placeholder-green-dark/80 focus:outline-none focus:border-gold/50 focus:ring-2 focus:ring-gold/10 transition-all duration-200" /></div>
                 <Button type="submit">Simpan</Button>
               </div>
             )}
 
             {activeSection === "security" && (
               <div className="space-y-5">
-                <div><h3 className="text-base font-semibold text-green-dark">Security</h3><p className="text-sm text-green/70 mt-0.5">Kelola keamanan akun Anda</p></div>
+                <div><h3 className="text-base font-semibold text-green-dark">Security</h3><p className="text-sm text-green-dark/80 mt-0.5">Kelola keamanan akun Anda</p></div>
                 <Divider />
-                <div><label className="block text-sm font-medium text-green-dark mb-1.5">Kata Sandi Saat Ini</label><input type="password" placeholder="********" className="w-full h-11 px-4 bg-cream border border-gold/30 rounded-xl text-sm text-green-dark placeholder-green/60 focus:outline-none focus:border-gold/50 focus:ring-2 focus:ring-gold/10 transition-all duration-200" /></div>
-                <div><label className="block text-sm font-medium text-green-dark mb-1.5">Kata Sandi Baru</label><input type="password" placeholder="Masukkan kata sandi baru" className="w-full h-11 px-4 bg-cream border border-gold/30 rounded-xl text-sm text-green-dark placeholder-green/60 focus:outline-none focus:border-gold/50 focus:ring-2 focus:ring-gold/10 transition-all duration-200" /></div>
+                <div><label className="block text-sm font-medium text-green-dark mb-1.5">Kata Sandi Saat Ini</label><input type="password" placeholder="********" className="w-full h-11 px-4 bg-cream border border-gold/30 rounded-xl text-sm text-green-dark placeholder-green-dark/80 focus:outline-none focus:border-gold/50 focus:ring-2 focus:ring-gold/10 transition-all duration-200" /></div>
+                <div><label className="block text-sm font-medium text-green-dark mb-1.5">Kata Sandi Baru</label><input type="password" placeholder="Masukkan kata sandi baru" className="w-full h-11 px-4 bg-cream border border-gold/30 rounded-xl text-sm text-green-dark placeholder-green-dark/80 focus:outline-none focus:border-gold/50 focus:ring-2 focus:ring-gold/10 transition-all duration-200" /></div>
                 <Button type="submit">Perbarui Kata Sandi</Button>
               </div>
             )}
 
             {activeSection === "notification" && (
               <div className="space-y-5">
-                <div><h3 className="text-base font-semibold text-green-dark">Notification</h3><p className="text-sm text-green/70 mt-0.5">Atur notifikasi yang ingin Anda terima</p></div>
+                <div><h3 className="text-base font-semibold text-green-dark">Notification</h3><p className="text-sm text-green-dark/80 mt-0.5">Atur notifikasi yang ingin Anda terima</p></div>
                 <Divider />
                 {["Pembaruan naskah", "Pesan dari editor", "Info penerbitan", "Promo dan newsletter"].map((item) => (
                   <div key={item} className="flex items-center justify-between">
@@ -91,7 +91,7 @@ export default function SettingsPage() {
 
             {activeSection === "language" && (
               <div className="space-y-5">
-                <div><h3 className="text-base font-semibold text-green-dark">Language</h3><p className="text-sm text-green/70 mt-0.5">Pilih bahasa dan region</p></div>
+                <div><h3 className="text-base font-semibold text-green-dark">Language</h3><p className="text-sm text-green-dark/80 mt-0.5">Pilih bahasa dan region</p></div>
                 <Divider />
                 <div><label className="block text-sm font-medium text-green-dark mb-1.5">Bahasa</label>
                   <select className="w-full h-11 px-4 bg-cream border border-gold/30 rounded-xl text-sm text-green-dark focus:outline-none focus:border-gold/50 focus:ring-2 focus:ring-gold/10">
@@ -103,14 +103,14 @@ export default function SettingsPage() {
 
             {activeSection === "appearance" && (
               <div className="space-y-5">
-                <div><h3 className="text-base font-semibold text-green-dark">Appearance</h3><p className="text-sm text-green/70 mt-0.5">Sesuaikan tampilan dashboard</p></div>
+                <div><h3 className="text-base font-semibold text-green-dark">Appearance</h3><p className="text-sm text-green-dark/80 mt-0.5">Sesuaikan tampilan dashboard</p></div>
                 <Divider />
                 <div>
                   <label className="block text-sm font-medium text-green-dark mb-3">Mode Tampilan</label>
                   <div className="flex gap-3">
                     {["Light", "Dark", "System"].map((mode) => (
                       <button key={mode} className={`flex-1 px-4 py-3 rounded-xl border text-sm font-medium transition-all duration-200 ${
-                        mode === "Light" ? "bg-gold/10 border-gold/30 text-gold-dark" : "border-gold/20 text-green/70 hover:border-gold/30"
+                        mode === "Light" ? "bg-gold/10 border-gold/30 text-green-dark" : "border-gold/20 text-green-dark/80 hover:border-gold/30"
                       }`}>{mode}</button>
                     ))}
                   </div>

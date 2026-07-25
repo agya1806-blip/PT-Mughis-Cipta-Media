@@ -62,7 +62,7 @@ export default function AboutHero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.6 }}
-              className="text-lg text-cream/70 leading-relaxed mb-8 max-w-xl"
+              className="text-lg text-cream/90 leading-relaxed mb-8 max-w-xl"
             >
               PT Mughis Cipta Media merupakan perusahaan yang bergerak di bidang penerbitan, percetakan, distribusi buku, dan media kreatif yang berkomitmen menghadirkan karya berkualitas bagi dunia pendidikan, literasi, agama, dan pengembangan sumber daya manusia.
             </motion.p>
@@ -90,7 +90,7 @@ export default function AboutHero() {
 
               <Link
                 href="/layanan-penerbitan"
-                className="group inline-flex items-center gap-2 px-8 py-4 border border-cream/30 hover:border-gold/50 text-cream/80 hover:text-cream font-semibold rounded-2xl transition-all duration-300"
+                className="group inline-flex items-center gap-2 px-8 py-4 border border-cream/30 hover:border-gold/50 text-cream hover:text-cream font-semibold rounded-2xl transition-all duration-300"
               >
                 Lihat Layanan
                 <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

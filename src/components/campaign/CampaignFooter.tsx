@@ -22,26 +22,26 @@ export function CampaignFooter() {
             <Link href="/" className="inline-flex items-center gap-3">
               <span className="text-xl font-bold text-gold tracking-tight">PT Mughis Cipta Media</span>
             </Link>
-            <p className="text-sm text-cream/70 leading-relaxed">
+            <p className="text-sm text-cream/85 leading-relaxed">
               Perusahaan penerbitan dan media kreatif yang berkomitmen menghadirkan karya berkualitas.
             </p>
           </div>
           <div>
             <h3 className="font-semibold text-sm text-gold mb-4">Tautan</h3>
             <ul className="space-y-3">
-              <li><Link href="/" className="text-sm text-cream/70 hover:text-gold transition-colors">Beranda</Link></li>
-              <li><Link href="/tentang-kami" className="text-sm text-cream/70 hover:text-gold transition-colors">Tentang Kami</Link></li>
-              <li><Link href="/katalog" className="text-sm text-cream/70 hover:text-gold transition-colors">Katalog</Link></li>
-              <li><Link href="/kontak" className="text-sm text-cream/70 hover:text-gold transition-colors">Kontak</Link></li>
+              <li><Link href="/" className="text-sm text-cream/85 hover:text-gold transition-colors">Beranda</Link></li>
+              <li><Link href="/tentang-kami" className="text-sm text-cream/85 hover:text-gold transition-colors">Tentang Kami</Link></li>
+              <li><Link href="/katalog" className="text-sm text-cream/85 hover:text-gold transition-colors">Katalog</Link></li>
+              <li><Link href="/kontak" className="text-sm text-cream/85 hover:text-gold transition-colors">Kontak</Link></li>
             </ul>
           </div>
           <div>
             <h3 className="font-semibold text-sm text-gold mb-4">Kontak</h3>
             <ul className="space-y-3">
-              <li className="flex items-center gap-2 text-sm text-cream/70"><Mail className="w-3.5 h-3.5 text-gold/70" /> Mughisciptamedia@gmail.com</li>
-              <li className="flex items-start gap-2 text-sm text-cream/70"><MapPin className="w-3.5 h-3.5 text-gold/70 mt-0.5 shrink-0" /> Samalanga, Bireuen, Aceh</li>
+              <li className="flex items-center gap-2 text-sm text-cream/85"><Mail className="w-3.5 h-3.5 text-gold/70" /> Mughisciptamedia@gmail.com</li>
+              <li className="flex items-start gap-2 text-sm text-cream/85"><MapPin className="w-3.5 h-3.5 text-gold/70 mt-0.5 shrink-0" /> Samalanga, Bireuen, Aceh</li>
               <li>
-                <a href={`https://wa.me/${CAMPAIGN.whatsappAdmin}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm text-cream/70 hover:text-gold transition-colors">
+                <a href={`https://wa.me/${CAMPAIGN.whatsappAdmin}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm text-cream/85 hover:text-gold transition-colors">
                   <Phone className="w-3.5 h-3.5 text-gold/70" /> +62 852-1770-6587
                 </a>
               </li>
@@ -53,7 +53,7 @@ export function CampaignFooter() {
               href={CAMPAIGN.instagramUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 h-10 px-4 rounded-xl bg-cream/10 border border-gold/20 text-cream/80 hover:bg-gold hover:text-green transition-all duration-300 text-sm"
+              className="inline-flex items-center gap-2 h-10 px-4 rounded-xl bg-cream/10 border border-gold/20 text-cream hover:bg-gold hover:text-green transition-all duration-300 text-sm"
             >
               <InstagramIcon className="w-4 h-4" />
               Instagram
@@ -61,7 +61,7 @@ export function CampaignFooter() {
           </div>
         </div>
         <div className="mt-12 pt-6 border-t border-gold/20 text-center">
-          <p className="text-xs text-cream/50">&copy; {new Date().getFullYear()} PT Mughis Cipta Media. Seluruh Hak Cipta Dilindungi.</p>
+          <p className="text-xs text-cream/80">&copy; {new Date().getFullYear()} PT Mughis Cipta Media. Seluruh Hak Cipta Dilindungi.</p>
         </div>
       </div>
     </footer>

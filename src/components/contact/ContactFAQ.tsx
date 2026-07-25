@@ -65,7 +65,7 @@ function FAQItem({
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
             className="overflow-hidden"
           >
-            <p className="pb-5 text-sm text-green/80 leading-relaxed">{answer}</p>
+            <p className="pb-5 text-sm text-green-dark/80 leading-relaxed">{answer}</p>
           </motion.div>
         )}
       </AnimatePresence>
@@ -87,7 +87,7 @@ export default function ContactFAQ() {
           className="text-center mb-12"
         >
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/10 border border-gold/20 mb-6">
-            <span className="text-gold-dark text-[11px] font-medium uppercase tracking-[0.1em]">
+            <span className="text-green-dark text-[11px] font-medium uppercase tracking-[0.1em]">
                 FAQ
               </span>
           </div>
@@ -97,7 +97,7 @@ export default function ContactFAQ() {
               Umum
             </span>
           </h2>
-          <p className="mt-3 text-green/80 max-w-lg mx-auto">
+          <p className="mt-3 text-green-dark/80 max-w-lg mx-auto">
             Jawaban cepat untuk pertanyaan umum seputar layanan penerbitan kami.
           </p>
         </motion.div>

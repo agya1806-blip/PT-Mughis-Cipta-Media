@@ -24,7 +24,7 @@ export function QuotaSection() {
             Kuota{" "}
             <span className="bg-gradient-to-r from-gold to-gold-dark bg-clip-text text-transparent">Program</span>
           </h2>
-          <p className="mt-3 text-cream/60">
+          <p className="mt-3 text-cream/85">
             {!loading && mc?.badge === "Telah Ditutup"
               ? "Program ini telah ditutup. Terima kasih atas partisipasi Anda."
               : !loading && mc?.badge === "Belum Dimulai"

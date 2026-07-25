@@ -48,7 +48,7 @@ export function HeroSection({ onCtaClick }: { onCtaClick: () => void }) {
             )}
           </div>
 
-          <p className="text-gold/80 text-lg sm:text-xl font-medium tracking-wide mb-4">
+          <p className="text-gold text-lg sm:text-xl font-medium tracking-wide mb-4">
             Maktabah Al-Mughis Kini Bertransformasi Menjadi
           </p>
 
@@ -59,7 +59,7 @@ export function HeroSection({ onCtaClick }: { onCtaClick: () => void }) {
             </span>
           </h1>
 
-          <p className="mt-6 text-lg sm:text-xl text-cream/70 leading-relaxed max-w-xl">
+          <p className="mt-6 text-lg sm:text-xl text-cream/90 leading-relaxed max-w-xl">
             Era baru penerbitan yang lebih profesional, modern, dan terpercaya telah dimulai.
             Kami hadir dengan standar baru untuk karya Anda.
           </p>
@@ -75,14 +75,14 @@ export function HeroSection({ onCtaClick }: { onCtaClick: () => void }) {
             </button>
             <a
               href="#transformasi"
-              className="group inline-flex items-center gap-2 h-12 sm:h-14 px-7 sm:px-8 text-sm font-semibold rounded-full border border-cream/20 text-cream/80 hover:text-cream hover:bg-cream/10 transition-all duration-300"
+              className="group inline-flex items-center gap-2 h-12 sm:h-14 px-7 sm:px-8 text-sm font-semibold rounded-full border border-cream/20 text-cream hover:text-cream hover:bg-cream/10 transition-all duration-300"
             >
               Pelajari Selengkapnya
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </a>
           </div>
 
-          <div className="mt-16 flex items-center gap-8 text-sm text-cream/50">
+          <div className="mt-16 flex items-center gap-8 text-sm text-cream/80">
             <div className="flex items-center gap-2">
               <div className="w-1.5 h-1.5 rounded-full bg-gold" />
               <span>Legalitas Resmi</span>

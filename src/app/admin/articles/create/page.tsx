@@ -47,19 +47,19 @@ export default function CreateArticle() {
     <div>
       <div className="flex items-center justify-between mb-6">
         <h1 className="text-2xl font-bold text-green-dark">Artikel Baru</h1>
-        <button type="button" onClick={() => router.back()} className="text-sm text-green/70 hover:text-green-dark">Batal</button>
+        <button type="button" onClick={() => router.back()} className="text-sm text-green-dark/80 hover:text-green-dark">Batal</button>
       </div>
       <form onSubmit={handleSubmit} className="max-w-3xl space-y-6">
         <FormSection title="Informasi Artikel" description="Judul dan URL artikel">
           <div>
-            <label className="block text-sm font-medium text-zinc-600 mb-1">Judul</label>
+            <label className="block text-sm font-medium text-green-dark/80 mb-1">Judul</label>
             <input type="text" required
               className="w-full rounded-lg border border-zinc-300 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50"
               value={form.title}
               onChange={(e) => setForm({ ...form, title: e.target.value, slug: generateSlug(e.target.value) })} />
           </div>
           <div>
-            <label className="block text-sm font-medium text-zinc-600 mb-1">Slug (URL)</label>
+            <label className="block text-sm font-medium text-green-dark/80 mb-1">Slug (URL)</label>
             <input type="text" required
               className="w-full rounded-lg border border-zinc-300 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50 font-mono"
               value={form.slug}
@@ -88,11 +88,11 @@ export default function CreateArticle() {
 
         <div className="flex gap-3">
           <button type="submit" disabled={submitting}
-            className="h-12 px-8 rounded-xl bg-gold text-white font-semibold hover:bg-gold-dark disabled:opacity-50 transition-all">
+            className="h-12 px-8 rounded-xl bg-gold text-green-dark font-semibold hover:bg-gold-dark disabled:opacity-50 transition-all">
             {submitting ? "Menyimpan..." : "Simpan Artikel"}
           </button>
           <button type="button" onClick={() => router.back()}
-            className="h-12 px-6 rounded-xl border border-zinc-300 text-zinc-600 font-medium hover:bg-zinc-50">
+            className="h-12 px-6 rounded-xl border border-zinc-300 text-green-dark/80 font-medium hover:bg-zinc-50">
             Batal
           </button>
         </div>

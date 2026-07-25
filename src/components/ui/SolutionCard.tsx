@@ -35,9 +35,9 @@ export default function SolutionCard({
 
         <h3 className="font-semibold text-green-dark text-lg mb-2">{title}</h3>
 
-        <p className="text-sm text-green/80 leading-relaxed mb-4">{description}</p>
+        <p className="text-sm text-green-dark/80 leading-relaxed mb-4">{description}</p>
 
-        <div className="flex items-center gap-1 text-gold text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        <div className="flex items-center gap-1 text-green-dark text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
           <span>Selengkapnya</span>
           <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
         </div>

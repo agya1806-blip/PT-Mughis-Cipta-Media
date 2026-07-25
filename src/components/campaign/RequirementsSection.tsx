@@ -18,7 +18,7 @@ export function RequirementsSection() {
             Syarat{" "}
             <span className="bg-gradient-to-r from-gold to-gold-dark bg-clip-text text-transparent">Pendaftaran</span>
           </h2>
-          <p className="mt-3 text-cream/60">
+          <p className="mt-3 text-cream/85">
             Pastikan Anda memenuhi persyaratan berikut sebelum mendaftar.
           </p>
         </motion.div>
@@ -35,7 +35,7 @@ export function RequirementsSection() {
               </div>
               <div>
                 <p className="text-white font-medium">{req.label}</p>
-                {req.description && <p className="text-cream/50 text-sm mt-0.5">{req.description}</p>}
+                {req.description && <p className="text-cream/80 text-sm mt-0.5">{req.description}</p>}
               </div>
             </motion.div>
           ))}

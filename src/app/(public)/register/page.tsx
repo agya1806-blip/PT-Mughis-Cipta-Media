@@ -75,7 +75,7 @@ export default function RegisterPage() {
             <input
               type="text"
               required
-              className="w-full rounded-lg border border-gold/20 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50 bg-cream text-green-dark placeholder-zinc-400"
+              className="w-full rounded-lg border border-gold/20 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50 bg-cream text-green-dark placeholder-zinc-500"
               value={form.name}
               onChange={(e) => setForm({ ...form, name: e.target.value })}
             />
@@ -85,7 +85,7 @@ export default function RegisterPage() {
             <input
               type="email"
               required
-              className="w-full rounded-lg border border-gold/20 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50 bg-cream text-green-dark placeholder-zinc-400"
+              className="w-full rounded-lg border border-gold/20 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50 bg-cream text-green-dark placeholder-zinc-500"
               value={form.email}
               onChange={(e) => setForm({ ...form, email: e.target.value })}
             />
@@ -94,7 +94,7 @@ export default function RegisterPage() {
             <label className="block text-sm font-medium text-green-dark mb-1">No. WhatsApp</label>
             <input
               type="tel"
-              className="w-full rounded-lg border border-gold/20 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50 bg-cream text-green-dark placeholder-zinc-400"
+              className="w-full rounded-lg border border-gold/20 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50 bg-cream text-green-dark placeholder-zinc-500"
               value={form.phone}
               onChange={(e) => setForm({ ...form, phone: e.target.value })}
             />
@@ -105,7 +105,7 @@ export default function RegisterPage() {
               type="password"
               required
               minLength={6}
-              className="w-full rounded-lg border border-gold/20 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50 bg-cream text-green-dark placeholder-zinc-400"
+              className="w-full rounded-lg border border-gold/20 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50 bg-cream text-green-dark placeholder-zinc-500"
               value={form.password}
               onChange={(e) => setForm({ ...form, password: e.target.value })}
             />
@@ -121,7 +121,7 @@ export default function RegisterPage() {
         </motion.form>
         <motion.p
           variants={{ hidden: { opacity: 0, y: 8 }, visible: { opacity: 1, y: 0 } }}
-          className="text-center text-sm text-zinc-600 mt-6"
+          className="text-center text-sm text-green-dark/80 mt-6"
         >
           Sudah punya akun?{" "}
           <Link href="/login" className="text-gold hover:underline">

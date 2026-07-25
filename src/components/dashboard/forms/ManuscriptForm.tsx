@@ -21,7 +21,7 @@ export default function ManuscriptForm() {
         <div className="space-y-6">
           <div>
             <label htmlFor="title" className="block text-sm font-medium text-green-dark mb-1.5">Judul Naskah</label>
-            <input id="title" type="text" placeholder="Masukkan judul naskah" className="w-full h-11 px-4 bg-cream border border-gold/30 rounded-xl text-sm text-green-dark placeholder-green/60 focus:outline-none focus:border-gold/50 focus:ring-2 focus:ring-gold/10 transition-all duration-200" />
+            <input id="title" type="text" placeholder="Masukkan judul naskah" className="w-full h-11 px-4 bg-cream border border-gold/30 rounded-xl text-sm text-green-dark placeholder-green-dark/80 focus:outline-none focus:border-gold/50 focus:ring-2 focus:ring-gold/10 transition-all duration-200" />
           </div>
           <div>
             <label htmlFor="category" className="block text-sm font-medium text-green-dark mb-1.5">Kategori</label>
@@ -32,11 +32,11 @@ export default function ManuscriptForm() {
           </div>
           <div>
             <label htmlFor="synopsis" className="block text-sm font-medium text-green-dark mb-1.5">Sinopsis</label>
-            <textarea id="synopsis" rows={4} placeholder="Tulis sinopsis singkat naskah Anda" className="w-full px-4 py-3 bg-cream border border-gold/30 rounded-xl text-sm text-green-dark placeholder-green/60 focus:outline-none focus:border-gold/50 focus:ring-2 focus:ring-gold/10 transition-all duration-200 resize-none" />
+            <textarea id="synopsis" rows={4} placeholder="Tulis sinopsis singkat naskah Anda" className="w-full px-4 py-3 bg-cream border border-gold/30 rounded-xl text-sm text-green-dark placeholder-green-dark/80 focus:outline-none focus:border-gold/50 focus:ring-2 focus:ring-gold/10 transition-all duration-200 resize-none" />
           </div>
           <div>
             <label htmlFor="author" className="block text-sm font-medium text-green-dark mb-1.5">Nama Penulis</label>
-            <input id="author" type="text" placeholder="Nama lengkap penulis" defaultValue="Ahmad Rizki" className="w-full h-11 px-4 bg-cream border border-gold/30 rounded-xl text-sm text-green-dark placeholder-green/60 focus:outline-none focus:border-gold/50 focus:ring-2 focus:ring-gold/10 transition-all duration-200" />
+            <input id="author" type="text" placeholder="Nama lengkap penulis" defaultValue="Ahmad Rizki" className="w-full h-11 px-4 bg-cream border border-gold/30 rounded-xl text-sm text-green-dark placeholder-green-dark/80 focus:outline-none focus:border-gold/50 focus:ring-2 focus:ring-gold/10 transition-all duration-200" />
           </div>
           <div>
             <label className="block text-sm font-medium text-green-dark mb-1.5">Upload File Naskah</label>
@@ -45,12 +45,12 @@ export default function ManuscriptForm() {
                 <Upload className="w-5 h-5 text-gold" />
               </div>
               <p className="text-sm font-medium text-green-dark">Klik untuk upload file</p>
-              <p className="text-xs text-green/60 mt-1">PDF, DOC, atau DOCX (max 10MB)</p>
+              <p className="text-xs text-green-dark/80 mt-1">PDF, DOC, atau DOCX (max 10MB)</p>
             </div>
           </div>
           <div>
             <label htmlFor="notes" className="block text-sm font-medium text-green-dark mb-1.5">Catatan Tambahan</label>
-            <textarea id="notes" rows={3} placeholder="Catatan untuk editor (opsional)" className="w-full px-4 py-3 bg-cream border border-gold/30 rounded-xl text-sm text-green-dark placeholder-green/60 focus:outline-none focus:border-gold/50 focus:ring-2 focus:ring-gold/10 transition-all duration-200 resize-none" />
+            <textarea id="notes" rows={3} placeholder="Catatan untuk editor (opsional)" className="w-full px-4 py-3 bg-cream border border-gold/30 rounded-xl text-sm text-green-dark placeholder-green-dark/80 focus:outline-none focus:border-gold/50 focus:ring-2 focus:ring-gold/10 transition-all duration-200 resize-none" />
           </div>
           <div className="flex items-center gap-3 pt-2">
             <Button type="submit">Kirim Naskah</Button>

@@ -45,7 +45,7 @@ export default function MegaMenu({ items, isOpen, onKeepOpen, onStartClose }: Pr
                     <span className="text-sm font-semibold text-green-dark group-hover:text-green transition-colors duration-250">
                       {item.label}
                     </span>
-                    <ArrowRight className="w-3.5 h-3.5 text-green/30 group-hover:text-gold translate-x-0 group-hover:translate-x-1 transition-all duration-250" />
+                    <ArrowRight className="w-3.5 h-3.5 text-green-dark/60 group-hover:text-gold translate-x-0 group-hover:translate-x-1 transition-all duration-250" />
                   </div>
                   <p className="text-xs text-green/70 mt-0.5 leading-relaxed">
                     {item.description}

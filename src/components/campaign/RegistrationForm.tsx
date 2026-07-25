@@ -70,7 +70,7 @@ export function RegistrationForm() {
 
   if (submitted) return <SuccessPage registrationNumber={regNumber} />
 
-  const inputClass = "w-full rounded-xl border border-gold/20 px-4 py-3 text-sm bg-cream text-green-dark placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold transition-all duration-200"
+  const inputClass = "w-full rounded-xl border border-gold/20 px-4 py-3 text-sm bg-cream text-green-dark placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold transition-all duration-200"
   const errorClass = "w-full rounded-xl border border-red-300 px-4 py-3 text-sm bg-red-50/50 text-green-dark focus:outline-none focus:ring-2 focus:ring-red-300/50 focus:border-red-300 transition-all duration-200"
   const labelClass = "block text-sm font-medium text-green-dark mb-1.5"
 
@@ -88,7 +88,7 @@ export function RegistrationForm() {
       <div className="max-w-3xl mx-auto px-6 sm:px-8 lg:px-10 relative">
         <motion.div variants={MOTION.fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-center mb-12">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/10 border border-gold/20 mb-6">
-            <span className="text-gold-dark text-[11px] font-medium uppercase tracking-[0.1em]">Pendaftaran</span>
+            <span className="text-green-dark text-[11px] font-medium uppercase tracking-[0.1em]">Pendaftaran</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold text-green-dark leading-[1.15] tracking-tight">
             Daftar{" "}
@@ -113,7 +113,7 @@ export function RegistrationForm() {
               </span>
             </div>
             {status !== "after" && <Countdown />}
-            <p className="mt-3 text-sm text-green/70 leading-relaxed">
+            <p className="mt-3 text-sm text-green-dark/80 leading-relaxed">
               {getMicrocopy(status, isOpen).microcopy}
             </p>
           </div>
@@ -221,7 +221,7 @@ export function RegistrationForm() {
                   href={CAMPAIGN.instagramUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-xs text-gold-dark hover:text-gold transition-colors font-medium"
+                  className="inline-flex items-center gap-1.5 text-xs text-green-dark hover:text-gold transition-colors font-medium"
                 >
                   Kunjungi Instagram @ptmughis
                   <ArrowRight className="w-3 h-3" />
@@ -241,7 +241,7 @@ export function RegistrationForm() {
                   href={`https://instagram.com/${CAMPAIGN.founderInstagram}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-xs text-gold-dark hover:text-gold transition-colors font-medium"
+                  className="inline-flex items-center gap-1.5 text-xs text-green-dark hover:text-gold transition-colors font-medium"
                 >
                   Kunjungi Instagram @{CAMPAIGN.founderInstagram}
                   <ArrowRight className="w-3 h-3" />
@@ -287,13 +287,13 @@ export function RegistrationForm() {
                 <><span className="tracking-wider">DAFTAR SEKARANG</span> <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" /></>
               )}
             </button>
-            <p className="text-sm text-green/60">
+            <p className="text-sm text-green-dark/80">
               Kesulitan mengisi formulir?{" "}
               <a
                 href="https://wa.me/6285121576433"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gold-dark font-medium hover:text-gold transition-colors"
+                className="text-green-dark font-medium hover:text-gold transition-colors"
               >
                 Hubungi Admin via WhatsApp
               </a>

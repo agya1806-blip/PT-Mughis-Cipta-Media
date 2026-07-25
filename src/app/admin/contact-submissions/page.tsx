@@ -48,12 +48,12 @@ function DetailModal({
         <div className="flex items-start justify-between gap-4">
           <div>
             <h3 className="text-lg font-bold text-green-dark">{submission.name}</h3>
-            <p className="text-sm text-green/70">{submission.email}</p>
-            {submission.phone && <p className="text-sm text-green/60">{submission.phone}</p>}
+            <p className="text-sm text-green-dark/80">{submission.email}</p>
+            {submission.phone && <p className="text-sm text-green-dark/80">{submission.phone}</p>}
           </div>
-          <button onClick={onClose} className="text-green/60 hover:text-green-dark text-xl leading-none">&times;</button>
+          <button onClick={onClose} className="text-green-dark/80 hover:text-green-dark text-xl leading-none">&times;</button>
         </div>
-        <div className="text-xs text-green/60">
+        <div className="text-xs text-green-dark/80">
           {new Date(submission.createdAt).toLocaleString("id-ID")}
         </div>
         <div className="bg-gold/5 rounded-xl p-4 text-sm text-green-dark whitespace-pre-wrap leading-relaxed">
@@ -63,7 +63,7 @@ function DetailModal({
           {!submission.isRead && (
             <button
               onClick={() => { onMarkRead(submission.id); onClose() }}
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-gold/10 text-gold-dark text-sm font-medium hover:bg-gold/20 transition-colors"
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-gold/10 text-green-dark text-sm font-medium hover:bg-gold/20 transition-colors"
             >
               <MailOpen className="w-4 h-4" />
               Tandai Dibaca
@@ -135,7 +135,7 @@ export default function ContactSubmissionsPage() {
       <div className="flex items-center justify-between mb-6">
         <div>
           <h1 className="text-2xl font-bold text-green-dark">Kontak Masuk</h1>
-          <p className="text-sm text-green/70 mt-1">
+          <p className="text-sm text-green-dark/80 mt-1">
             {unreadCount > 0
               ? `${unreadCount} pesan belum dibaca`
               : "Semua pesan sudah dibaca"}
@@ -143,7 +143,7 @@ export default function ContactSubmissionsPage() {
         </div>
         <button
           onClick={fetchData}
-          className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg border border-gold/20 text-sm text-green/70 hover:bg-gold/5 transition-colors"
+          className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg border border-gold/20 text-sm text-green-dark/80 hover:bg-gold/5 transition-colors"
         >
           <RefreshCw className="w-4 h-4" />
           Refresh
@@ -151,12 +151,12 @@ export default function ContactSubmissionsPage() {
       </div>
 
       {loading ? (
-        <div className="text-center py-20 text-green/60">Memuat...</div>
+        <div className="text-center py-20 text-green-dark/80">Memuat...</div>
       ) : submissions.length === 0 ? (
         <div className="text-center py-20">
           <Mail className="w-12 h-12 mx-auto text-gold/30 mb-4" />
-          <h3 className="text-lg font-medium text-green/70">Belum ada pesan</h3>
-          <p className="text-sm text-green/60">Pesan dari form kontak akan muncul di sini.</p>
+          <h3 className="text-lg font-medium text-green-dark/80">Belum ada pesan</h3>
+          <p className="text-sm text-green-dark/80">Pesan dari form kontak akan muncul di sini.</p>
         </div>
       ) : (
         <div className="space-y-2">
@@ -186,7 +186,7 @@ export default function ContactSubmissionsPage() {
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 mb-0.5">
                       <span className={`text-sm font-medium truncate ${
-                        sub.isRead ? "text-green/70" : "text-green-dark"
+                        sub.isRead ? "text-green-dark/80" : "text-green-dark"
                       }`}>
                         {sub.name}
                       </span>
@@ -194,7 +194,7 @@ export default function ContactSubmissionsPage() {
                         <span className="w-1.5 h-1.5 rounded-full bg-gold shrink-0" />
                       )}
                     </div>
-                    <p className="text-xs text-green/60 truncate">
+                    <p className="text-xs text-green-dark/80 truncate">
                       {sub.email}{sub.phone ? ` · ${sub.phone}` : ""}
                     </p>
                     <p className="text-xs text-gold/70 mt-1">
@@ -207,7 +207,7 @@ export default function ContactSubmissionsPage() {
                         e.stopPropagation()
                         setSelected(sub)
                       }}
-                      className="p-1.5 rounded-lg text-zinc-400 hover:text-zinc-600 hover:bg-zinc-100 transition-colors"
+                      className="p-1.5 rounded-lg text-zinc-400 hover:text-green-dark/80 hover:bg-zinc-100 transition-colors"
                       title="Lihat detail"
                     >
                       <ChevronDown className="w-4 h-4" />
@@ -218,7 +218,7 @@ export default function ContactSubmissionsPage() {
                         if (!sub.isRead) markAsRead(sub.id)
                       }}
                       disabled={sub.isRead}
-                      className="p-1.5 rounded-lg text-green/60 hover:text-green-dark hover:bg-gold/5 transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+                      className="p-1.5 rounded-lg text-green-dark/80 hover:text-green-dark hover:bg-gold/5 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                       title="Tandai dibaca"
                     >
                       <MailOpen className="w-4 h-4" />
@@ -229,14 +229,14 @@ export default function ContactSubmissionsPage() {
                         deleteSubmission(sub.id)
                       }}
                       disabled={deleting.has(sub.id)}
-                      className="p-1.5 rounded-lg text-green/60 hover:text-red-500 hover:bg-red-50 transition-colors disabled:opacity-30"
+                      className="p-1.5 rounded-lg text-green-dark/80 hover:text-red-500 hover:bg-red-50 transition-colors disabled:opacity-50"
                       title="Hapus"
                     >
                       <Trash2 className="w-4 h-4" />
                     </button>
                     <button
                       onClick={() => toggleExpand(sub.id)}
-                      className="p-1.5 rounded-lg text-zinc-400 hover:text-zinc-600 hover:bg-zinc-100 transition-colors"
+                      className="p-1.5 rounded-lg text-zinc-400 hover:text-green-dark/80 hover:bg-zinc-100 transition-colors"
                     >
                       {isExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
                     </button>

@@ -16,7 +16,7 @@ export default function AdminError({ reset }: { reset: () => void }) {
         <button
           onClick={reset}
           aria-label="Coba lagi muat ulang halaman"
-          className="inline-flex items-center gap-2 px-6 py-3 bg-gold text-white font-medium rounded-xl hover:bg-gold-dark transition-colors focus:outline-none focus:ring-2 focus:ring-gold/50 focus:ring-offset-2"
+          className="inline-flex items-center gap-2 px-6 py-3 bg-gold text-green-dark font-medium rounded-xl hover:bg-gold-dark transition-colors focus:outline-none focus:ring-2 focus:ring-gold/50 focus:ring-offset-2"
         >
           Coba Lagi
         </button>

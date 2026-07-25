@@ -42,12 +42,12 @@ export default function NotFound() {
         </div>
 
         <div className="relative max-w-sm mx-auto">
-          <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-green/60" />
+          <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-green-dark/80" />
           <input
             type="text"
             placeholder="Cari di website..."
             readOnly
-            className="w-full pl-11 pr-4 py-3 rounded-xl border border-gold/20 bg-cream text-green-dark text-sm placeholder-green/60 cursor-default"
+            className="w-full pl-11 pr-4 py-3 rounded-xl border border-gold/20 bg-cream text-green-dark text-sm placeholder-green-dark/80 cursor-default"
           />
         </div>
       </div>

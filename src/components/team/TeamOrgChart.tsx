@@ -37,7 +37,7 @@ function OrgNode({
         className={`relative bg-cream rounded-xl border-2 ${levelBorderColors[0]} p-4 sm:p-5 text-center min-w-[200px] sm:min-w-[260px] shadow-lg hover:shadow-xl transition-all duration-300 group cursor-default`}
       >
         <div className="absolute inset-0 bg-gradient-to-br from-gold/[0.03] to-transparent rounded-xl" />
-        <p className="text-xs font-semibold text-gold-dark uppercase tracking-[0.08em] mb-1">
+        <p className="text-xs font-semibold text-green-dark uppercase tracking-[0.08em] mb-1">
           {title}
         </p>
         {name && (
@@ -47,7 +47,7 @@ function OrgNode({
       {!isLast && (
         <div className="flex flex-col items-center py-2">
           <div className="w-0.5 h-6 bg-gradient-to-b from-gold/40 to-green/20" />
-          <ChevronDown className="w-4 h-4 text-gold-dark/60" />
+          <ChevronDown className="w-4 h-4 text-green-dark/60" />
         </div>
       )}
     </div>
@@ -86,11 +86,11 @@ function DivisionNode({
           <div className="flex flex-col items-center py-1.5">
             <div className="w-0.5 h-4 bg-green/20" />
           </div>
-          <div className="px-4 py-2 rounded-lg bg-green/5 border border-green/10 border-dashed text-xs text-green/60">
+          <div className="px-4 py-2 rounded-lg bg-green/5 border border-green/10 border-dashed text-xs text-green-dark/80">
             <span className="flex items-center gap-1.5">
               <Users className="w-3 h-3" />
               {teamName}
-              <span className="text-green/40">(Internal)</span>
+              <span className="text-green-dark/70">(Internal)</span>
             </span>
           </div>
         </>
@@ -121,7 +121,7 @@ export function TeamOrgChart() {
         >
           <div className="inline-flex items-center justify-center mb-6">
             <div className={SECTION_BADGE}>
-              <Users className="w-3.5 h-3.5 text-gold-dark" />
+              <Users className="w-3.5 h-3.5 text-green-dark" />
               <span className={SECTION_BADGE_TEXT}>Struktur Organisasi</span>
             </div>
           </div>
@@ -153,7 +153,7 @@ export function TeamOrgChart() {
           {/* Connector */}
           <div className="flex flex-col items-center py-2">
             <div className="w-0.5 h-6 bg-gradient-to-b from-gold/40 to-green/20" />
-            <ChevronDown className="w-4 h-4 text-gold-dark/60" />
+            <ChevronDown className="w-4 h-4 text-green-dark/60" />
           </div>
 
           {/* Level 2: GM */}
@@ -179,7 +179,7 @@ export function TeamOrgChart() {
           </div>
 
           {/* Bottom note */}
-          <div className="mt-10 px-6 py-4 rounded-2xl bg-gold/5 border border-gold/10 text-sm text-green/60 text-center max-w-lg">
+          <div className="mt-10 px-6 py-4 rounded-2xl bg-gold/5 border border-gold/10 text-sm text-green-dark/80 text-center max-w-lg">
             Setiap divisi dipimpin oleh seorang Ketua Divisi yang didukung
             oleh anggota tim internal yang profesional dan berkompeten.
           </div>

@@ -38,7 +38,7 @@ export default function Pagination({
     }
   }
 
-  const btnClass = `px-4 py-2 rounded-lg bg-cream border border-gold/20 text-green/60 hover:text-green-dark hover:bg-cream transition-colors text-sm`
+  const btnClass = `px-4 py-2 rounded-lg bg-cream border border-gold/20 text-green-dark/80 hover:text-green-dark hover:bg-cream transition-colors text-sm`
 
   function renderPageBtn(p: number) {
     return onPageChange ? (
@@ -47,8 +47,8 @@ export default function Pagination({
         onClick={() => goTo(p)}
         className={`w-9 h-9 rounded-lg flex items-center justify-center text-sm font-medium transition-colors ${
           p === currentPage
-            ? "bg-gold text-white"
-            : "bg-cream border border-gold/20 text-green/60 hover:text-green-dark hover:bg-cream"
+            ? "bg-gold text-green-dark"
+            : "bg-cream border border-gold/20 text-green-dark/80 hover:text-green-dark hover:bg-cream"
         }`}
       >
         {p}
@@ -59,8 +59,8 @@ export default function Pagination({
         href={buildHref(p)}
         className={`w-9 h-9 rounded-lg flex items-center justify-center text-sm font-medium transition-colors ${
           p === currentPage
-            ? "bg-gold text-white"
-            : "bg-cream border border-gold/20 text-green/60 hover:text-green-dark hover:bg-cream"
+            ? "bg-gold text-green-dark"
+            : "bg-cream border border-gold/20 text-green-dark/80 hover:text-green-dark hover:bg-cream"
         }`}
       >
         {p}
@@ -81,7 +81,7 @@ export default function Pagination({
       ) : null}
       {pages.map((p, i) =>
         p === "..." ? (
-          <span key={`ellipsis-${i}`} className="px-2 text-green/60 text-sm">
+          <span key={`ellipsis-${i}`} className="px-2 text-green-dark/80 text-sm">
             ...
           </span>
         ) : (

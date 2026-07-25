@@ -79,7 +79,7 @@ export function FileUpload({ accept, maxSizeMB = 5, label, hint, value, onChange
         ) : value ? (
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-lg bg-gold/10 flex items-center justify-center shrink-0">
-              {accept.includes("image") ? <ImageIcon className="w-5 h-5 text-gold-dark" /> : <FileText className="w-5 h-5 text-gold-dark" />}
+              {accept.includes("image") ? <ImageIcon className="w-5 h-5 text-green-dark" /> : <FileText className="w-5 h-5 text-green-dark" />}
             </div>
             <div className="flex-1 min-w-0">
               <p className="text-sm font-medium text-green-dark truncate">{value.name}</p>
@@ -99,12 +99,12 @@ export function FileUpload({ accept, maxSizeMB = 5, label, hint, value, onChange
               animate={dragOver ? { y: -4, scale: 1.1 } : {}}
               className="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center"
             >
-              <Upload className="w-5 h-5 text-gold-dark" />
+              <Upload className="w-5 h-5 text-green-dark" />
             </motion.div>
             <div className="text-center">
               <p className="text-sm text-green-dark font-medium">Klik atau seret file ke sini</p>
               <p className="text-xs text-green/70 mt-0.5">{accept.split(",").join(", ")} — {sizeLabel}</p>
-              {hint && <p className="text-xs text-green/50 mt-0.5">{hint}</p>}
+              {hint && <p className="text-xs text-green-dark/80 mt-0.5">{hint}</p>}
             </div>
           </div>
         )}

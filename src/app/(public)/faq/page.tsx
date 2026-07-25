@@ -45,12 +45,12 @@ export default function FAQPage() {
                 { label: "Beranda", href: "/" },
                 { label: "FAQ" },
               ]}
-              className="[&_a]:text-cream/70 [&_a:hover]:text-cream [&_span]:text-cream [&_svg]:text-cream/50"
+              className="[&_a]:text-cream/90 [&_a:hover]:text-cream [&_span]:text-cream [&_svg]:text-cream/80"
             />
           </div>
           <div className="text-center">
             <h1 className="text-4xl sm:text-5xl font-bold text-cream mb-4">FAQ</h1>
-            <p className="text-cream/70 text-lg">
+            <p className="text-cream/90 text-lg">
               Pertanyaan yang sering diajukan
             </p>
           </div>

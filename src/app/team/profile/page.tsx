@@ -110,7 +110,7 @@ export default function TeamProfilePage() {
   }
 
   const inputClass =
-    "w-full rounded-xl border border-gold/20 px-4 py-3 text-sm bg-cream text-green-dark placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-gold/50 transition-all"
+    "w-full rounded-xl border border-gold/20 px-4 py-3 text-sm bg-cream text-green-dark placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-gold/50 transition-all"
 
   return (
     <div className="min-h-screen bg-cream">
@@ -121,20 +121,20 @@ export default function TeamProfilePage() {
               href="/"
               className="w-9 h-9 rounded-full border border-gold/20 flex items-center justify-center hover:bg-gold/5 transition-colors"
             >
-              <ArrowLeft className="w-4 h-4 text-green/60" />
+              <ArrowLeft className="w-4 h-4 text-green-dark/80" />
             </a>
             <div>
               <h1 className="text-2xl font-bold text-green-dark">
                 Profil Saya
               </h1>
               {profile && (
-                <p className="text-sm text-green/60">{profile.name}</p>
+                <p className="text-sm text-green-dark/80">{profile.name}</p>
               )}
             </div>
           </div>
           <button
             onClick={handleLogout}
-            className="flex items-center gap-1.5 text-sm text-green/60 hover:text-red-500 transition-colors"
+            className="flex items-center gap-1.5 text-sm text-green-dark/80 hover:text-red-500 transition-colors"
           >
             <LogOut className="w-3.5 h-3.5" />
             Keluar
@@ -159,7 +159,7 @@ export default function TeamProfilePage() {
               <h2 className="text-lg font-bold text-green-dark">
                 {profile.name}
               </h2>
-              <p className="text-sm text-green/60">{profile.position}</p>
+              <p className="text-sm text-green-dark/80">{profile.position}</p>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-6">

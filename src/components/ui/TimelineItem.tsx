@@ -35,19 +35,19 @@ export default function TimelineItem({
         transition={{ delay: step * 0.15, type: "spring", stiffness: 200 }}
         className={`relative z-10 w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-cream border flex items-center justify-center shadow-lg shrink-0 ${
           active
-            ? "border-gold text-gold"
-            : "border-gold/20 text-green/60"
+            ? "border-gold text-green-dark"
+            : "border-gold/20 text-green-dark/80"
         }`}
       >
         {icon}
-        <span className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-gold text-white text-[10px] font-bold flex items-center justify-center">
+        <span className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-gold text-green-dark text-[10px] font-bold flex items-center justify-center">
           {step}
         </span>
       </motion.div>
       <div className="pt-3">
         <h3 className="font-semibold text-green-dark text-lg">{label}</h3>
         {description && (
-          <p className="text-sm text-green/60 mt-1 leading-relaxed">{description}</p>
+          <p className="text-sm text-green-dark/80 mt-1 leading-relaxed">{description}</p>
         )}
       </div>
     </motion.div>

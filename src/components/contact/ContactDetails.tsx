@@ -55,7 +55,7 @@ function ContactCard({
           href={href as string}
           target={href ? "_blank" : undefined}
           rel={href ? "noopener noreferrer" : undefined}
-          className="text-sm text-green/80 leading-relaxed hover:text-gold transition-colors"
+          className="text-sm text-green-dark/80 leading-relaxed hover:text-gold transition-colors"
         >
           {children}
         </Tag>
@@ -76,7 +76,7 @@ export default function ContactDetails({ phone, email, address }: ContactInfo) {
           className="text-center mb-12"
         >
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/10 border border-gold/20 mb-6">
-            <span className="text-gold-dark text-[11px] font-medium uppercase tracking-[0.1em]">
+            <span className="text-green-dark text-[11px] font-medium uppercase tracking-[0.1em]">
               Hubungi Kami
             </span>
           </div>
@@ -86,7 +86,7 @@ export default function ContactDetails({ phone, email, address }: ContactInfo) {
               Kami
             </span>
           </h2>
-          <p className="mt-3 text-green/80 max-w-lg mx-auto">
+          <p className="mt-3 text-green-dark/80 max-w-lg mx-auto">
             Hubungi kami melalui saluran berikut, dan tim kami akan merespons dengan cepat.
           </p>
         </motion.div>
@@ -140,9 +140,9 @@ export default function ContactDetails({ phone, email, address }: ContactInfo) {
         >
           <div className="aspect-[21/9] bg-cream rounded-2xl border border-gold/20 flex items-center justify-center">
             <div className="text-center p-6">
-              <MapPin className="w-10 h-10 text-green/60 mx-auto mb-3" />
-              <p className="text-green/60 font-medium">Google Maps</p>
-              <p className="text-sm text-green/60 mt-1">
+              <MapPin className="w-10 h-10 text-green-dark/80 mx-auto mb-3" />
+              <p className="text-green-dark/80 font-medium">Google Maps</p>
+              <p className="text-sm text-green-dark/80 mt-1">
                 Map integration coming soon
               </p>
             </div>

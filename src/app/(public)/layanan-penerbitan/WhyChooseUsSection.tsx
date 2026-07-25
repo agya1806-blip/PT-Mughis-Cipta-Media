@@ -29,7 +29,7 @@ export default function WhyChooseUsSection({ items }: { items: { icon: ReactNode
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ delay: 0.2 }}
-        className="text-zinc-400 max-w-2xl mx-auto mb-12"
+        className="text-cream/80 max-w-2xl mx-auto mb-12"
       >
         Mengapa penulis dan penerbit mempercayakan penerbitan mereka kepada PT Mughis Cipta Media.
       </motion.p>

@@ -21,7 +21,7 @@ const variantStyles: Record<Variant, string> = {
   outline:
     "border border-gold/30 text-green-dark hover:bg-cream hover:border-gold",
   ghost:
-    "text-green/80 hover:text-green-dark hover:bg-cream",
+    "text-green-dark/85 hover:text-green-dark hover:bg-cream",
   accent:
     "bg-cream hover:bg-cream/90 text-green shadow-md hover:shadow-lg hover:shadow-gold/25",
 }
@@ -40,7 +40,7 @@ export default function Button({
   className = "",
   ...props
 }: Props) {
-  const classes = `inline-flex items-center justify-center gap-2 rounded-full transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gold/50 disabled:opacity-50 disabled:pointer-events-none ${variantStyles[variant]} ${sizeStyles[size]} ${className}`
+  const classes = `inline-flex items-center justify-center gap-2 rounded-full transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gold/50 disabled:opacity-60 disabled:pointer-events-none ${variantStyles[variant]} ${sizeStyles[size]} ${className}`
 
   if (href) {
     return (

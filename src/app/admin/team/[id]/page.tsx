@@ -117,13 +117,13 @@ export default function EditTeamMember() {
   if (loading) {
     return (
       <div className="flex items-center justify-center py-20">
-        <p className="text-green/60">Memuat...</p>
+        <p className="text-green-dark/80">Memuat...</p>
       </div>
     )
   }
 
   const inputClass =
-    "w-full rounded-lg border border-gold/20 bg-cream px-3 py-2.5 text-sm text-green-dark placeholder-green/60 focus:outline-none focus:ring-2 focus:ring-gold/50 transition-shadow"
+    "w-full rounded-lg border border-gold/20 bg-cream px-3 py-2.5 text-sm text-green-dark placeholder-green-dark/80 focus:outline-none focus:ring-2 focus:ring-gold/50 transition-shadow"
 
   return (
     <div>
@@ -132,7 +132,7 @@ export default function EditTeamMember() {
         <button
           type="button"
           onClick={() => router.back()}
-          className="text-sm text-green/70 hover:text-green-dark"
+          className="text-sm text-green-dark/80 hover:text-green-dark"
         >
           Batal
         </button>
@@ -353,14 +353,14 @@ export default function EditTeamMember() {
           <button
             type="submit"
             disabled={submitting}
-            className="h-12 px-8 rounded-xl bg-gold text-white font-semibold hover:bg-gold-dark disabled:opacity-50 transition-all"
+            className="h-12 px-8 rounded-xl bg-gold text-green-dark font-semibold hover:bg-gold-dark disabled:opacity-50 transition-all"
           >
             {submitting ? "Menyimpan..." : "Simpan Perubahan"}
           </button>
           <button
             type="button"
             onClick={() => router.back()}
-            className="h-12 px-6 rounded-xl border border-zinc-300 text-zinc-600 font-medium hover:bg-zinc-50"
+            className="h-12 px-6 rounded-xl border border-zinc-300 text-green-dark/80 font-medium hover:bg-zinc-50"
           >
             Batal
           </button>

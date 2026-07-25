@@ -15,9 +15,9 @@ const categoryIcons: Record<string, typeof Send> = {
 
 const categoryColors: Record<string, string> = {
   system: "bg-green/10 text-green-dark border-gold/20",
-  editor: "bg-gold/10 text-gold-dark border-gold/20",
+  editor: "bg-gold/10 text-green-dark border-gold/20",
   publishing: "bg-gold/10 text-green-dark border-gold/20",
-  general: "bg-cream text-green/70 border-gold/20",
+  general: "bg-cream text-green-dark/80 border-gold/20",
 }
 
 const categoryLabels: Record<string, string> = {
@@ -44,7 +44,7 @@ export default function NotificationsPage() {
       <div className="flex items-center justify-between mb-8">
         <div>
           <h1 className="text-2xl font-bold text-green-dark">Notifikasi</h1>
-          <p className="text-sm text-green/70 mt-1">{unreadCount} notifikasi belum dibaca</p>
+          <p className="text-sm text-green-dark/80 mt-1">{unreadCount} notifikasi belum dibaca</p>
         </div>
       </div>
 
@@ -56,7 +56,7 @@ export default function NotificationsPage() {
             className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
               activeTab === tab
                 ? "bg-gold text-green-dark shadow-sm"
-                : "bg-cream text-green/70 border border-gold/20 hover:border-gold/30 hover:text-green-dark"
+                : "bg-cream text-green-dark/80 border border-gold/20 hover:border-gold/30 hover:text-green-dark"
             }`}
           >
             {tab}
@@ -87,15 +87,15 @@ export default function NotificationsPage() {
                 <div className="flex-1 min-w-0">
                   <div className="flex items-start justify-between gap-2 mb-1">
                     <div>
-                      <span className="text-xs font-medium text-green/60 uppercase tracking-wider">{categoryLabels[notification.category]}</span>
+                      <span className="text-xs font-medium text-green-dark/80 uppercase tracking-wider">{categoryLabels[notification.category]}</span>
                       <h4 className="text-sm font-semibold text-green-dark mt-0.5">{notification.title}</h4>
                     </div>
                     <div className="flex items-center gap-2 shrink-0">
                       {!notification.read && <span className="w-2 h-2 rounded-full bg-gold" />}
-                      <span className="text-[11px] text-green/60">{notification.createdAt}</span>
+                      <span className="text-[11px] text-green-dark/80">{notification.createdAt}</span>
                     </div>
                   </div>
-                  <p className="text-sm text-green/70 leading-relaxed">{notification.message}</p>
+                  <p className="text-sm text-green-dark/80 leading-relaxed">{notification.message}</p>
                 </div>
               </div>
             </motion.div>

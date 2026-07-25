@@ -44,7 +44,7 @@ export default function MetricCard({
         </IconWrapper>
         <div className="mt-4 text-3xl sm:text-4xl font-bold text-green-dark">
           <Counter from={0} to={value} inView={inView} />
-          {suffix && <span className="text-gold">{suffix}</span>}
+          {suffix && <span className="text-green-dark">{suffix}</span>}
         </div>
         <h3 className="mt-2 font-semibold text-green-dark">{title}</h3>
         <p className="mt-1 text-sm text-green/80 leading-relaxed">

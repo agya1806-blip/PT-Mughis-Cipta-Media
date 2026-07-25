@@ -174,13 +174,13 @@ export function TeamPhotoUpload({ value, onChange, label = "Foto Profil" }: Team
             onChange={handleInputChange}
           />
           <div className="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center">
-            <Camera className="w-5 h-5 text-gold-dark" />
+            <Camera className="w-5 h-5 text-green-dark" />
           </div>
           <div className="text-center">
             <p className="text-sm text-green-dark font-medium">
-              <span className="text-gold-dark">Klik untuk unggah</span> atau seret foto
+              <span className="text-green-dark">Klik untuk unggah</span> atau seret foto
             </p>
-            <p className="text-xs text-green/60 mt-0.5">JPG, PNG, WebP — Maks 10MB</p>
+            <p className="text-xs text-green-dark/80 mt-0.5">JPG, PNG, WebP — Maks 10MB</p>
           </div>
         </div>
       )}
@@ -197,7 +197,7 @@ export function TeamPhotoUpload({ value, onChange, label = "Foto Profil" }: Team
                 onClick={() => setCropImage(null)}
                 className="w-8 h-8 rounded-full hover:bg-gold/10 flex items-center justify-center transition-colors"
               >
-                <X className="w-4 h-4 text-green/60" />
+                <X className="w-4 h-4 text-green-dark/80" />
               </button>
             </div>
 
@@ -219,7 +219,7 @@ export function TeamPhotoUpload({ value, onChange, label = "Foto Profil" }: Team
             {/* Zoom control */}
             <div className="px-5 py-4 border-t border-gold/10 space-y-4">
               <div className="flex items-center gap-3">
-                <ZoomOut className="w-4 h-4 text-green/60" />
+                <ZoomOut className="w-4 h-4 text-green-dark/80" />
                 <input
                   type="range"
                   min={1}
@@ -229,14 +229,14 @@ export function TeamPhotoUpload({ value, onChange, label = "Foto Profil" }: Team
                   onChange={(e) => setZoom(Number(e.target.value))}
                   className="flex-1 h-1.5 rounded-full appearance-none bg-gold/30 accent-gold cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-gold [&::-webkit-slider-thumb]:shadow-md"
                 />
-                <ZoomIn className="w-4 h-4 text-green/60" />
+                <ZoomIn className="w-4 h-4 text-green-dark/80" />
               </div>
 
               <div className="flex gap-3">
                 <button
                   type="button"
                   onClick={() => setCropImage(null)}
-                  className="flex-1 h-11 rounded-xl border border-gold/30 text-green/70 text-sm font-medium hover:bg-gold/5 transition-colors"
+                  className="flex-1 h-11 rounded-xl border border-gold/30 text-green-dark/80 text-sm font-medium hover:bg-gold/5 transition-colors"
                 >
                   Batal
                 </button>

@@ -195,7 +195,7 @@ export default async function Footer() {
       </div>
       <div className="border-t border-gold/20">
         <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-10 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-cream/70">{copyright}</p>
+          <p className="text-xs text-cream/90">{copyright}</p>
           <div className="flex items-center gap-2">
             {badges.map((badge) => (
               <Badge key={badge} variant="gold">

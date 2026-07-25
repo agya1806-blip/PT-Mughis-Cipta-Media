@@ -36,7 +36,7 @@ export default function QuickActions() {
               </div>
               <div>
                 <p className="text-xs font-semibold text-green-dark">{action.label}</p>
-                <p className="text-[10px] text-green/60 mt-0.5">{action.desc}</p>
+                <p className="text-[10px] text-green-dark/80 mt-0.5">{action.desc}</p>
               </div>
             </Link>
           </motion.div>

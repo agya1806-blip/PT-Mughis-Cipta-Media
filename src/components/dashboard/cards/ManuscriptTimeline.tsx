@@ -39,11 +39,11 @@ export default function ManuscriptTimeline({ currentStatus }: Props) {
                 {completed ? (
                   <CheckCircle2 className={`w-7 h-7 ${isCurrent ? "text-gold" : "text-gold/60"}`} />
                 ) : (
-                  <Circle className="w-7 h-7 text-green/30" />
+                  <Circle className="w-7 h-7 text-green-dark/80" />
                 )}
               </div>
               <div className="flex-1 min-w-0 pt-0.5">
-                <p className={`text-sm font-medium ${completed ? "text-green-dark" : "text-green/60"}`}>
+                <p className={`text-sm font-medium ${completed ? "text-green-dark" : "text-green-dark/80"}`}>
                   {statusLabels[step]}
                 </p>
                 {isCurrent && <p className="text-xs text-gold mt-0.5">Sedang dalam proses ini</p>}

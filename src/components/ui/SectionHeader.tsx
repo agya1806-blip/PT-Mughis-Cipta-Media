@@ -25,7 +25,7 @@ export default function SectionHeader({
   const titleEl = accent ? (
     <>
       {title}{" "}
-      <span className="bg-gradient-to-r from-gold to-gold-dark bg-clip-text text-transparent">
+      <span className="bg-gradient-to-r from-gold to-green bg-clip-text text-transparent">
         {accent}
       </span>
     </>
@@ -49,7 +49,7 @@ export default function SectionHeader({
         {titleEl}
       </h2>
       {description && (
-        <p className="mt-4 text-green/80 max-w-2xl mx-auto text-base sm:text-lg leading-relaxed">
+        <p className="mt-4 text-green-dark/80 max-w-2xl mx-auto text-base sm:text-lg leading-relaxed">
           {description}
         </p>
       )}

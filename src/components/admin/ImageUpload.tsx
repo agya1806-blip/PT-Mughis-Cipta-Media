@@ -58,13 +58,13 @@ export default function ImageUpload({ value, onChange, label = "Gambar", accept 
   return (
     <div className="space-y-3">
       <div className="flex items-center justify-between">
-        <label className="block text-sm font-medium text-green/70">{label}</label>
+        <label className="block text-sm font-medium text-green-dark/80">{label}</label>
         <div className="flex items-center gap-1 bg-gold/10 rounded-lg p-0.5">
           <button
             type="button"
             onClick={() => setMode("upload")}
             className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-all ${
-              mode === "upload" ? "bg-cream text-green-dark shadow-sm" : "text-green/70 hover:text-green-dark"
+              mode === "upload" ? "bg-cream text-green-dark shadow-sm" : "text-green-dark/80 hover:text-green-dark"
             }`}
           >
             <Upload className="w-3.5 h-3.5" />
@@ -74,7 +74,7 @@ export default function ImageUpload({ value, onChange, label = "Gambar", accept 
             type="button"
             onClick={() => setMode("url")}
             className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-all ${
-              mode === "url" ? "bg-cream text-green-dark shadow-sm" : "text-green/70 hover:text-green-dark"
+              mode === "url" ? "bg-cream text-green-dark shadow-sm" : "text-green-dark/80 hover:text-green-dark"
             }`}
           >
             <ExternalLink className="w-3.5 h-3.5" />
@@ -125,14 +125,14 @@ export default function ImageUpload({ value, onChange, label = "Gambar", accept 
           <div className="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center">
             <Upload className="w-5 h-5 text-gold" />
           </div>
-          <p className="text-sm text-green/70">
+          <p className="text-sm text-green-dark/80">
             <span className="text-gold font-medium">Klik untuk unggah</span> atau seret file ke sini
           </p>
-          <p className="text-xs text-green/60">Format: JPG, PNG, WebP (max 5MB)</p>
+          <p className="text-xs text-green-dark/80">Format: JPG, PNG, WebP (max 5MB)</p>
         </div>
       ) : (
         <div className="relative">
-          <ExternalLink className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-green/60 pointer-events-none" />
+          <ExternalLink className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-green-dark/80 pointer-events-none" />
           <input
             type="url"
             placeholder="https://contoh.com/gambar.jpg"

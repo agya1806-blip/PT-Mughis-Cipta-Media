@@ -52,8 +52,8 @@ export default function ActivityTimeline({ activities }: Props) {
               </div>
               <div className="flex-1 min-w-0 pt-1">
                 <p className="text-sm font-medium text-green-dark">{activity.action}</p>
-                <p className="text-xs text-green/70 mt-0.5 line-clamp-2">{activity.description}</p>
-                <p className="text-[11px] text-green/60 mt-1">{activity.timestamp}</p>
+                <p className="text-xs text-green-dark/80 mt-0.5 line-clamp-2">{activity.description}</p>
+                <p className="text-[11px] text-green-dark/80 mt-1">{activity.timestamp}</p>
               </div>
             </motion.div>
           )

@@ -38,16 +38,16 @@ export default function ArticlesPage() {
         <h1 className="text-2xl font-bold text-green-dark">Artikel</h1>
         <Link
           href="/admin/articles/create"
-          className="h-10 px-5 rounded-xl bg-gold text-white text-sm font-medium hover:bg-gold-dark inline-flex items-center"
+          className="h-10 px-5 rounded-xl bg-gold text-green-dark text-sm font-medium hover:bg-gold-dark inline-flex items-center"
         >
           + Artikel Baru
         </Link>
       </div>
 
       {loading ? (
-        <p className="text-green/70">Memuat...</p>
+        <p className="text-green-dark/80">Memuat...</p>
       ) : articles.length === 0 ? (
-        <div className="bg-cream rounded-xl border border-gold/20 p-8 text-center text-green/70">
+        <div className="bg-cream rounded-xl border border-gold/20 p-8 text-center text-green-dark/80">
           <p>Belum ada artikel.</p>
         </div>
       ) : (
@@ -55,18 +55,18 @@ export default function ArticlesPage() {
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b border-gold/20 bg-gold/5">
-                <th className="text-left px-4 py-3 font-medium text-green/70">Judul</th>
-                <th className="text-left px-4 py-3 font-medium text-green/70">Slug</th>
-                <th className="text-left px-4 py-3 font-medium text-green/70">Tanggal</th>
-                <th className="text-right px-4 py-3 font-medium text-green/70">Aksi</th>
+                <th className="text-left px-4 py-3 font-medium text-green-dark/80">Judul</th>
+                <th className="text-left px-4 py-3 font-medium text-green-dark/80">Slug</th>
+                <th className="text-left px-4 py-3 font-medium text-green-dark/80">Tanggal</th>
+                <th className="text-right px-4 py-3 font-medium text-green-dark/80">Aksi</th>
               </tr>
             </thead>
             <tbody>
               {articles.map((a) => (
                 <tr key={a.id} className="border-b border-gold/10 hover:bg-gold/5">
                   <td className="px-4 py-3 text-green-dark">{a.title}</td>
-                  <td className="px-4 py-3 text-green/70 font-mono text-xs">{a.slug}</td>
-                  <td className="px-4 py-3 text-green/70">{new Date(a.createdAt).toLocaleDateString("id-ID")}</td>
+                  <td className="px-4 py-3 text-green-dark/80 font-mono text-xs">{a.slug}</td>
+                  <td className="px-4 py-3 text-green-dark/80">{new Date(a.createdAt).toLocaleDateString("id-ID")}</td>
                   <td className="px-4 py-3 text-right">
                     <button
                       onClick={() => router.push(`/admin/articles/${a.id}`)}

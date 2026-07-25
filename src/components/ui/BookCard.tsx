@@ -40,7 +40,7 @@ export default function BookCard({ book, className = "", href }: Props) {
               className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
             />
           ) : (
-            <div className="absolute inset-0 flex flex-col items-center justify-center text-green/60 p-6 text-center">
+            <div className="absolute inset-0 flex flex-col items-center justify-center text-green-dark/80 p-6 text-center">
               <BookOpen className="w-10 h-10 mb-2" />
               <span className="text-xs font-medium line-clamp-2">{book.title}</span>
             </div>
@@ -54,7 +54,7 @@ export default function BookCard({ book, className = "", href }: Props) {
 
           {book.category_name && (
             <div className="absolute top-3 right-3 z-10">
-              <span className="inline-flex items-center px-2 py-1 rounded-full text-[10px] font-medium bg-cream/70 backdrop-blur-md text-green-dark/70 border border-gold/20">
+              <span className="inline-flex items-center px-2 py-1 rounded-full text-[10px] font-medium bg-cream/90 backdrop-blur-md text-green-dark border border-gold/20">
                 {book.category_name}
               </span>
             </div>
@@ -66,14 +66,14 @@ export default function BookCard({ book, className = "", href }: Props) {
             {book.title}
           </h3>
 
-          <p className="text-xs sm:text-sm text-green/80 line-clamp-1 mb-2">
+          <p className="text-xs sm:text-sm text-green-dark/80 line-clamp-1 mb-2">
             {book.author}
           </p>
 
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
               {book.publication_year && (
-                <span className="text-[11px] text-green/60">
+                <span className="text-[11px] text-green-dark/80">
                   {book.publication_year}
                 </span>
               )}

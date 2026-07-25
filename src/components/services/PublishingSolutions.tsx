@@ -72,7 +72,7 @@ export default function PublishingSolutions() {
               Penerbitan Lengkap
             </span>
           </h2>
-          <p className="mt-4 text-green/80 max-w-2xl mx-auto text-base sm:text-lg leading-relaxed">
+          <p className="mt-4 text-green-dark/80 max-w-2xl mx-auto text-base sm:text-lg leading-relaxed">
             Solusi lengkap untuk mewujudkan naskah Anda menjadi buku yang diterbitkan secara profesional.
           </p>
         </motion.div>

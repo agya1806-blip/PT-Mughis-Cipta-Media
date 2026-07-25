@@ -62,23 +62,23 @@ export default function AdminCampaignPage() {
   return (
     <div>
       <h1 className="text-2xl font-bold text-green-dark mb-1">Pengaturan Campaign</h1>
-      <p className="text-sm text-green/60 mb-6">
+      <p className="text-sm text-green-dark/80 mb-6">
         Status: <span className="font-semibold text-gold">{statusLabel}</span>
       </p>
 
       <div className="max-w-lg space-y-4">
         <div>
-          <label className="block text-sm font-medium text-green/70 mb-1">Nama Program</label>
+          <label className="block text-sm font-medium text-green-dark/80 mb-1">Nama Program</label>
           <input
             type="text"
-            className="w-full rounded-lg border border-gold/20 bg-cream px-3 py-2 text-sm text-green-dark placeholder-green/60 focus:outline-none focus:ring-2 focus:ring-gold/50"
+            className="w-full rounded-lg border border-gold/20 bg-cream px-3 py-2 text-sm text-green-dark placeholder-green-dark/80 focus:outline-none focus:ring-2 focus:ring-gold/50"
             value={data.campaign_name}
             onChange={(e) => setData({ ...data, campaign_name: e.target.value })}
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-green/70 mb-1">
+          <label className="block text-sm font-medium text-green-dark/80 mb-1">
             Tanggal Mulai (ISO 8601 + offset)
           </label>
           <input
@@ -89,11 +89,11 @@ export default function AdminCampaignPage() {
               setData({ ...data, campaign_start_date: e.target.value + ":00+07:00" })
             }
           />
-          <p className="text-[11px] text-green/40 mt-0.5">Waktu: {data.campaign_start_date}</p>
+          <p className="text-[11px] text-green-dark/70 mt-0.5">Waktu: {data.campaign_start_date}</p>
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-green/70 mb-1">
+          <label className="block text-sm font-medium text-green-dark/80 mb-1">
             Tanggal Selesai (ISO 8601 + offset)
           </label>
           <input
@@ -104,12 +104,12 @@ export default function AdminCampaignPage() {
               setData({ ...data, campaign_end_date: e.target.value + ":00+07:00" })
             }
           />
-          <p className="text-[11px] text-green/40 mt-0.5">Waktu: {data.campaign_end_date}</p>
+          <p className="text-[11px] text-green-dark/70 mt-0.5">Waktu: {data.campaign_end_date}</p>
         </div>
 
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <label className="block text-sm font-medium text-green/70 mb-1">Kuota Total</label>
+            <label className="block text-sm font-medium text-green-dark/80 mb-1">Kuota Total</label>
             <input
               type="number"
               min="0"
@@ -119,7 +119,7 @@ export default function AdminCampaignPage() {
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-green/70 mb-1">Telah Mendaftar</label>
+            <label className="block text-sm font-medium text-green-dark/80 mb-1">Telah Mendaftar</label>
             <input
               type="number"
               min="0"
@@ -131,7 +131,7 @@ export default function AdminCampaignPage() {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-green/70 mb-1">Status Aktif</label>
+          <label className="block text-sm font-medium text-green-dark/80 mb-1">Status Aktif</label>
           <select
             className="w-full rounded-lg border border-gold/20 bg-cream px-3 py-2 text-sm text-green-dark focus:outline-none focus:ring-2 focus:ring-gold/50"
             value={data.campaign_active}
@@ -140,7 +140,7 @@ export default function AdminCampaignPage() {
             <option value="true">Aktif</option>
             <option value="false">Nonaktif</option>
           </select>
-          <p className="text-[11px] text-green/40 mt-0.5">
+          <p className="text-[11px] text-green-dark/70 mt-0.5">
             Nonaktifkan untuk menutup pendaftaran secara manual (mengesampingkan jadwal)
           </p>
         </div>
@@ -149,7 +149,7 @@ export default function AdminCampaignPage() {
           <button
             onClick={handleSave}
             disabled={saving}
-            className="h-11 px-6 rounded-xl bg-gold text-white font-medium hover:bg-gold-dark disabled:opacity-50"
+            className="h-11 px-6 rounded-xl bg-gold text-green-dark font-medium hover:bg-gold-dark disabled:opacity-50"
           >
             {saving ? "Menyimpan..." : "Simpan"}
           </button>

@@ -69,7 +69,7 @@ export default function LoginPage() {
             <input
               type="email"
               required
-              className="w-full rounded-lg border border-gold/20 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50 bg-cream text-green-dark placeholder-zinc-400"
+              className="w-full rounded-lg border border-gold/20 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50 bg-cream text-green-dark placeholder-zinc-500"
               value={form.email}
               onChange={(e) => setForm({ ...form, email: e.target.value })}
             />
@@ -79,7 +79,7 @@ export default function LoginPage() {
             <input
               type="password"
               required
-              className="w-full rounded-lg border border-gold/20 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50 bg-cream text-green-dark placeholder-zinc-400"
+              className="w-full rounded-lg border border-gold/20 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50 bg-cream text-green-dark placeholder-zinc-500"
               value={form.password}
               onChange={(e) => setForm({ ...form, password: e.target.value })}
             />
@@ -94,7 +94,7 @@ export default function LoginPage() {
         </motion.form>
         <motion.p
           variants={{ hidden: { opacity: 0, y: 8 }, visible: { opacity: 1, y: 0 } }}
-          className="text-center text-sm text-zinc-600 mt-6"
+          className="text-center text-sm text-green-dark/80 mt-6"
         >
           Belum punya akun?{" "}
           <Link href="/register" className="text-gold hover:underline">

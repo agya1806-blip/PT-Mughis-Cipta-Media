@@ -20,7 +20,7 @@ export function ProgressBar({ total, current }: ProgressBarProps) {
             <p className="text-xs text-green/70 mt-0.5">Total Kuota</p>
           </div>
           <div className="text-center">
-            <p className="text-3xl font-bold text-gold-dark">{current}</p>
+            <p className="text-3xl font-bold text-green-dark">{current}</p>
             <p className="text-xs text-green/70 mt-0.5">Terdaftar</p>
           </div>
           <div className="text-center">

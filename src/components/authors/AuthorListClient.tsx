@@ -48,13 +48,13 @@ export default function AuthorListClient({ authors }: Props) {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
       <div className="relative max-w-md mb-8">
-        <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-green/60 pointer-events-none" />
+        <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-green-dark/80 pointer-events-none" />
         <input
           type="text"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           placeholder="Cari penulis..."
-          className="w-full h-11 pl-10 pr-4 bg-cream border border-gold/20 rounded-xl text-sm text-green-dark placeholder-zinc-400 focus:outline-none focus:border-gold/50 focus:ring-2 focus:ring-gold/10 transition-all"
+          className="w-full h-11 pl-10 pr-4 bg-cream border border-gold/20 rounded-xl text-sm text-green-dark placeholder-zinc-500 focus:outline-none focus:border-gold/50 focus:ring-2 focus:ring-gold/10 transition-all"
         />
       </div>
 
@@ -65,7 +65,7 @@ export default function AuthorListClient({ authors }: Props) {
             onClick={() => setActiveField(activeField === field ? null : field)}
             className={`px-4 py-1.5 rounded-full text-xs font-medium border transition-all ${
               activeField === field
-                ? "bg-gold text-white border-gold"
+                ? "bg-gold text-green-dark border-gold"
                 : "bg-cream text-green/80 border-gold/20 hover:border-gold/30 hover:text-gold"
             }`}
           >
@@ -75,7 +75,7 @@ export default function AuthorListClient({ authors }: Props) {
         {hasActiveFilters && (
           <button
             onClick={resetFilters}
-            className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-medium text-green/60 hover:text-green-dark transition-colors"
+            className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-medium text-green-dark/80 hover:text-green-dark transition-colors"
           >
             <X className="w-3 h-3" />
             Reset
@@ -86,13 +86,13 @@ export default function AuthorListClient({ authors }: Props) {
       {filtered.length === 0 ? (
         <div className="text-center py-20">
           <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-cream flex items-center justify-center">
-            <Search className="w-6 h-6 text-green/40" />
+            <Search className="w-6 h-6 text-green-dark/70" />
           </div>
           <h3 className="text-lg font-medium text-green/80 mb-1">Penulis tidak ditemukan</h3>
-          <p className="text-sm text-green/60 mb-4">Belum ada buku dengan penulis tersebut.</p>
+          <p className="text-sm text-green-dark/80 mb-4">Belum ada buku dengan penulis tersebut.</p>
           <button
             onClick={resetFilters}
-            className="text-sm font-medium text-gold hover:text-gold-dark transition-colors"
+            className="text-sm font-medium text-gold hover:text-green-dark transition-colors"
           >
             Reset Filter
           </button>

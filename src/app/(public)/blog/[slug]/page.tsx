@@ -81,7 +81,7 @@ export default async function ArticleDetailPage({ params }: { params: Promise<{ 
             <h1 className="text-3xl sm:text-4xl font-bold text-green-dark leading-tight mb-4">
               {article.title}
             </h1>
-            <div className="flex flex-wrap items-center gap-4 text-sm text-green/60">
+            <div className="flex flex-wrap items-center gap-4 text-sm text-green-dark/80">
               <span className="flex items-center gap-1.5">
                 <Calendar className="w-4 h-4" />
                 {new Date(article.createdAt).toLocaleDateString("id-ID", {
@@ -123,7 +123,7 @@ export default async function ArticleDetailPage({ params }: { params: Promise<{ 
         <div className="mt-12 pt-8 border-t border-gold/10">
           <Link
             href="/blog"
-            className="inline-flex items-center gap-2 text-sm font-medium text-gold hover:text-gold-dark transition-colors"
+            className="inline-flex items-center gap-2 text-sm font-medium text-gold hover:text-green-dark transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
             Kembali ke Media Center

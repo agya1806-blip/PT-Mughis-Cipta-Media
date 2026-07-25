@@ -28,7 +28,7 @@ export function SuccessPage({ registrationNumber }: SuccessPageProps) {
           <h1 className="text-3xl sm:text-4xl font-bold text-white leading-tight">
             Berhasil Mendaftar!
           </h1>
-          <p className="text-cream/70 mt-3">
+          <p className="text-cream/90 mt-3">
             Terima kasih telah mendaftar Program Apresiasi Penulis.
             Tim kami akan segera menghubungi Anda.
           </p>
@@ -41,7 +41,7 @@ export function SuccessPage({ registrationNumber }: SuccessPageProps) {
           transition={{ delay: 0.3 }}
           className="bg-cream/10 backdrop-blur-sm rounded-2xl border border-cream/20 p-6 mb-8"
         >
-          <p className="text-cream/60 text-sm mb-2">Nomor Registrasi</p>
+          <p className="text-cream/85 text-sm mb-2">Nomor Registrasi</p>
           <p className="text-2xl sm:text-3xl font-bold text-gold tracking-wider">{registrationNumber}</p>
         </motion.div>
 
@@ -64,7 +64,7 @@ export function SuccessPage({ registrationNumber }: SuccessPageProps) {
           <div>
             <a
               href="/transformasi"
-              className="inline-flex items-center gap-1.5 text-sm text-cream/60 hover:text-cream transition-colors"
+              className="inline-flex items-center gap-1.5 text-sm text-cream/85 hover:text-cream transition-colors"
             >
               <ArrowLeft className="w-3.5 h-3.5" />
               Kembali ke halaman utama

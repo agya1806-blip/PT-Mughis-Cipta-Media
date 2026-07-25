@@ -84,7 +84,7 @@ export default async function LegalPage() {
                 { label: "Beranda", href: "/" },
                 { label: "Legalitas" },
               ]}
-              className="[&_a]:text-cream/70 [&_a:hover]:text-cream [&_span]:text-cream [&_svg]:text-cream/50"
+              className="[&_a]:text-cream/90 [&_a:hover]:text-cream [&_span]:text-cream [&_svg]:text-cream/80"
             />
           </div>
           <div className="text-center">
@@ -95,7 +95,7 @@ export default async function LegalPage() {
               Informasi{" "}
               <span className="bg-gradient-to-r from-gold to-gold-dark bg-clip-text text-transparent">Legal</span>
             </h1>
-            <p className="text-cream/70 text-lg max-w-2xl mx-auto">
+            <p className="text-cream/90 text-lg max-w-2xl mx-auto">
               PT Mughis Cipta Media adalah perusahaan penerbitan buku yang berbadan hukum resmi dan terdaftar.
             </p>
           </div>
@@ -115,7 +115,7 @@ export default async function LegalPage() {
                       <Icon className="w-5 h-5 text-gold" />
                     </div>
                     <div>
-                      <p className="text-xs text-green/60 font-medium uppercase tracking-wider">{item.label}</p>
+                      <p className="text-xs text-green-dark/80 font-medium uppercase tracking-wider">{item.label}</p>
                       <p className="text-sm font-semibold text-green-dark mt-0.5">{item.value}</p>
                     </div>
                   </div>
@@ -128,13 +128,13 @@ export default async function LegalPage() {
         <div className="bg-cream rounded-2xl border border-gold/20 overflow-hidden shadow-sm mt-8">
           <div className="p-8 sm:p-10">
             <h2 className="text-2xl font-bold text-green-dark mb-4">Komitmen Kualitas</h2>
-            <p className="text-green/80 leading-relaxed mb-6">
+            <p className="text-green-dark/80 leading-relaxed mb-6">
               PT Mughis Cipta Media berkomitmen untuk menerbitkan buku-buku berkualitas tinggi yang 
               bermanfaat bagi masyarakat. Setiap naskah melalui proses kurasi, editing, dan kontrol 
               kualitas yang ketat sebelum diproduksi. Kami menjunjung tinggi standar profesionalisme 
               dalam setiap aspek penerbitan, dari desain hingga distribusi.
             </p>
-            <p className="text-green/80 leading-relaxed">
+            <p className="text-green-dark/80 leading-relaxed">
               Sebagai perusahaan penerbit yang terdaftar, kami siap bekerja sama dengan penulis, 
               akademisi, dan institusi untuk mewujudkan karya tulis berkualitas yang siap 
               didistribusikan secara nasional.
@@ -154,7 +154,7 @@ export default async function LegalPage() {
                       <Icon className="w-5 h-5 text-gold" />
                     </div>
                     <div>
-                      <p className="text-xs text-green/60 font-medium uppercase tracking-wider">{item.label}</p>
+                      <p className="text-xs text-green-dark/80 font-medium uppercase tracking-wider">{item.label}</p>
                       <p className="text-sm font-semibold text-green-dark mt-0.5">{item.value}</p>
                     </div>
                   </div>

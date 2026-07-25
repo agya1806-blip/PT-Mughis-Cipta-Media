@@ -46,7 +46,7 @@ export function TeamCard({ member, index }: TeamCardProps) {
           )}
           <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-green-dark/80 to-transparent" />
           <div className="absolute bottom-4 left-4 right-4">
-            <div className="inline-block px-3 py-1 rounded-full bg-gold/20 backdrop-blur-sm border border-gold/30 text-xs font-medium text-gold mb-2">
+            <div className="inline-block px-3 py-1 rounded-full bg-gold/20 backdrop-blur-sm border border-gold/30 text-xs font-medium text-green-dark mb-2">
               {member.role === "FOUNDER"
                 ? "Founder & CEO"
                 : member.role === "GENERAL_MANAGER"
@@ -54,7 +54,7 @@ export function TeamCard({ member, index }: TeamCardProps) {
                   : "Ketua Divisi"}
             </div>
             <h3 className="text-lg font-bold text-white">{member.name}</h3>
-            <p className="text-xs text-cream/70">{member.position}</p>
+            <p className="text-xs text-cream/90">{member.position}</p>
           </div>
         </div>
 
@@ -62,14 +62,14 @@ export function TeamCard({ member, index }: TeamCardProps) {
         <div className="p-5 space-y-4">
           {/* Quote */}
           {member.quote && (
-            <div className="flex items-start gap-2 text-green/60 italic text-sm border-l-2 border-gold/30 pl-3">
-              <Quote className="w-3.5 h-3.5 text-gold-dark shrink-0 mt-0.5" />
+            <div className="flex items-start gap-2 text-green-dark/80 italic text-sm border-l-2 border-gold/30 pl-3">
+              <Quote className="w-3.5 h-3.5 text-green-dark shrink-0 mt-0.5" />
               <span>&ldquo;{member.quote}&rdquo;</span>
             </div>
           )}
 
           {/* Bio */}
-          <p className="text-sm text-green/70 leading-relaxed line-clamp-3">
+          <p className="text-sm text-green-dark/80 leading-relaxed line-clamp-3">
             {member.bio}
           </p>
 
@@ -79,7 +79,7 @@ export function TeamCard({ member, index }: TeamCardProps) {
               {skills.map((skill) => (
                 <span
                   key={skill}
-                  className="inline-block px-2.5 py-1 rounded-full bg-gold/10 border border-gold/20 text-[11px] font-medium text-gold-dark"
+                  className="inline-block px-2.5 py-1 rounded-full bg-gold/10 border border-gold/20 text-[11px] font-medium text-green-dark"
                 >
                   {skill}
                 </span>
@@ -94,7 +94,7 @@ export function TeamCard({ member, index }: TeamCardProps) {
                 href={`https://wa.me/${member.whatsapp.replace(/\D/g, "")}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-1.5 text-xs text-green/60 hover:text-green-dark transition-colors"
+                className="flex items-center gap-1.5 text-xs text-green-dark/80 hover:text-green-dark transition-colors"
                 title="WhatsApp"
               >
                 <MessageCircle className="w-3.5 h-3.5" />
@@ -104,7 +104,7 @@ export function TeamCard({ member, index }: TeamCardProps) {
             {!isFounder && member.email && (
               <a
                 href={`mailto:${member.email}`}
-                className="flex items-center gap-1.5 text-xs text-green/60 hover:text-green-dark transition-colors"
+                className="flex items-center gap-1.5 text-xs text-green-dark/80 hover:text-green-dark transition-colors"
                 title="Email"
               >
                 <Mail className="w-3.5 h-3.5" />
@@ -116,7 +116,7 @@ export function TeamCard({ member, index }: TeamCardProps) {
                 href={member.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-1.5 text-xs text-green/60 hover:text-green-dark transition-colors"
+                className="flex items-center gap-1.5 text-xs text-green-dark/80 hover:text-green-dark transition-colors"
                 title="LinkedIn"
               >
                 <ExternalLink className="w-3.5 h-3.5" />
@@ -127,7 +127,7 @@ export function TeamCard({ member, index }: TeamCardProps) {
                 href={member.website}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-1.5 text-xs text-green/60 hover:text-green-dark transition-colors ml-auto"
+                className="flex items-center gap-1.5 text-xs text-green-dark/80 hover:text-green-dark transition-colors ml-auto"
               >
                 <Globe className="w-3.5 h-3.5" />
               </a>
@@ -135,7 +135,7 @@ export function TeamCard({ member, index }: TeamCardProps) {
             {isFounder && (
               <a
                 href="/kontak"
-                className="ml-auto flex items-center gap-1.5 text-xs font-semibold text-gold-dark hover:text-gold transition-colors"
+                className="ml-auto flex items-center gap-1.5 text-xs font-semibold text-green-dark hover:text-gold transition-colors"
               >
                 HUBUNGI PERUSAHAAN
               </a>

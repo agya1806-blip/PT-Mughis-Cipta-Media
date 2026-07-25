@@ -13,7 +13,7 @@ export default function ProfilePage() {
     <div>
       <div className="mb-8">
         <h1 className="text-2xl font-bold text-green-dark">Profil</h1>
-        <p className="text-sm text-green/70 mt-1">Kelola informasi akun Anda</p>
+        <p className="text-sm text-green-dark/80 mt-1">Kelola informasi akun Anda</p>
       </div>
 
       <motion.div
@@ -27,8 +27,8 @@ export default function ProfilePage() {
             <Avatar name={mockProfile.name} size="lg" className="w-16 h-16 text-lg" />
             <div className="text-center sm:text-left">
               <h2 className="text-lg font-semibold text-green-dark">{mockProfile.name}</h2>
-              <p className="text-sm text-green/70">{mockProfile.email}</p>
-              <div className="flex items-center justify-center sm:justify-start gap-1.5 mt-1 text-xs text-green/60">
+              <p className="text-sm text-green-dark/80">{mockProfile.email}</p>
+              <div className="flex items-center justify-center sm:justify-start gap-1.5 mt-1 text-xs text-green-dark/80">
                 <CalendarDays className="w-3.5 h-3.5" />
                 Anggota sejak {mockProfile.memberSince}
               </div>
@@ -38,23 +38,23 @@ export default function ProfilePage() {
           <div className="space-y-5">
             <div>
               <label htmlFor="name" className="block text-sm font-medium text-green-dark mb-1.5">Nama Lengkap</label>
-              <input id="name" type="text" defaultValue={mockProfile.name} className="w-full h-11 px-4 bg-cream border border-gold/30 rounded-xl text-sm text-green-dark placeholder-green/60 focus:outline-none focus:border-gold/50 focus:ring-2 focus:ring-gold/10 transition-all duration-200" />
+              <input id="name" type="text" defaultValue={mockProfile.name} className="w-full h-11 px-4 bg-cream border border-gold/30 rounded-xl text-sm text-green-dark placeholder-green-dark/80 focus:outline-none focus:border-gold/50 focus:ring-2 focus:ring-gold/10 transition-all duration-200" />
             </div>
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-green-dark mb-1.5">Email</label>
-              <input id="email" type="email" defaultValue={mockProfile.email} className="w-full h-11 px-4 bg-cream border border-gold/30 rounded-xl text-sm text-green-dark placeholder-green/60 focus:outline-none focus:border-gold/50 focus:ring-2 focus:ring-gold/10 transition-all duration-200" />
+              <input id="email" type="email" defaultValue={mockProfile.email} className="w-full h-11 px-4 bg-cream border border-gold/30 rounded-xl text-sm text-green-dark placeholder-green-dark/80 focus:outline-none focus:border-gold/50 focus:ring-2 focus:ring-gold/10 transition-all duration-200" />
             </div>
             <div>
               <label htmlFor="phone" className="block text-sm font-medium text-green-dark mb-1.5">Nomor HP</label>
-              <input id="phone" type="tel" defaultValue={mockProfile.phone} className="w-full h-11 px-4 bg-cream border border-gold/30 rounded-xl text-sm text-green-dark placeholder-green/60 focus:outline-none focus:border-gold/50 focus:ring-2 focus:ring-gold/10 transition-all duration-200" />
+              <input id="phone" type="tel" defaultValue={mockProfile.phone} className="w-full h-11 px-4 bg-cream border border-gold/30 rounded-xl text-sm text-green-dark placeholder-green-dark/80 focus:outline-none focus:border-gold/50 focus:ring-2 focus:ring-gold/10 transition-all duration-200" />
             </div>
             <div>
               <label htmlFor="address" className="block text-sm font-medium text-green-dark mb-1.5">Alamat</label>
-              <textarea id="address" rows={2} defaultValue={mockProfile.address} className="w-full px-4 py-3 bg-cream border border-gold/30 rounded-xl text-sm text-green-dark placeholder-green/60 focus:outline-none focus:border-gold/50 focus:ring-2 focus:ring-gold/10 transition-all duration-200 resize-none" />
+              <textarea id="address" rows={2} defaultValue={mockProfile.address} className="w-full px-4 py-3 bg-cream border border-gold/30 rounded-xl text-sm text-green-dark placeholder-green-dark/80 focus:outline-none focus:border-gold/50 focus:ring-2 focus:ring-gold/10 transition-all duration-200 resize-none" />
             </div>
             <div>
               <label htmlFor="bio" className="block text-sm font-medium text-green-dark mb-1.5">Bio</label>
-              <textarea id="bio" rows={3} defaultValue={mockProfile.bio} className="w-full px-4 py-3 bg-cream border border-gold/30 rounded-xl text-sm text-green-dark placeholder-green/60 focus:outline-none focus:border-gold/50 focus:ring-2 focus:ring-gold/10 transition-all duration-200 resize-none" />
+              <textarea id="bio" rows={3} defaultValue={mockProfile.bio} className="w-full px-4 py-3 bg-cream border border-gold/30 rounded-xl text-sm text-green-dark placeholder-green-dark/80 focus:outline-none focus:border-gold/50 focus:ring-2 focus:ring-gold/10 transition-all duration-200 resize-none" />
             </div>
             <div className="pt-2">
               <Button type="submit">Simpan Perubahan</Button>

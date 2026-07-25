@@ -50,7 +50,7 @@ export default function CTASection() {
             Siap Menerbitkan{" "}
             <span className="bg-gradient-to-r from-gold via-gold-light to-gold bg-clip-text text-transparent">Buku Anda?</span>
           </h2>
-          <p className="text-lg text-cream/70 max-w-lg mx-auto mb-10">
+          <p className="text-lg text-cream/90 max-w-lg mx-auto mb-10">
             Konsultasikan kebutuhan penerbitan, percetakan, dan distribusi buku Anda bersama tim profesional kami.
           </p>
           <div className="flex flex-wrap justify-center gap-4">

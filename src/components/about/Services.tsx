@@ -39,7 +39,7 @@ export default function Services() {
               Kami
             </span>
           </h2>
-          <p className="text-green/80 mt-4 max-w-2xl mx-auto">
+          <p className="text-green-dark/80 mt-4 max-w-2xl mx-auto">
             Solusi lengkap untuk kebutuhan penerbitan dan media kreatif Anda, dari hulu ke hilir.
           </p>
         </motion.div>
@@ -55,10 +55,10 @@ export default function Services() {
               className="group relative bg-cream rounded-2xl p-6 border border-gold/20 hover:border-gold/40 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
             >
               <div className="w-10 h-10 rounded-xl bg-gold/10 flex items-center justify-center mb-4 group-hover:bg-gold/20 transition-colors duration-300">
-                <Icon className="w-5 h-5 text-gold-dark" />
+                <Icon className="w-5 h-5 text-green-dark" />
               </div>
               <h3 className="font-semibold text-green-dark mb-2">{title}</h3>
-              <p className="text-green/80 text-sm leading-relaxed">{desc}</p>
+              <p className="text-green-dark/80 text-sm leading-relaxed">{desc}</p>
             </motion.div>
           ))}
         </div>

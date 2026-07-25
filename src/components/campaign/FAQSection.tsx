@@ -15,7 +15,7 @@ export function FAQSection() {
       <div className="max-w-3xl mx-auto px-6 sm:px-8 lg:px-10 relative">
         <motion.div variants={MOTION.fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-center mb-12">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/10 border border-gold/20 mb-6">
-            <span className="text-gold-dark text-[11px] font-medium uppercase tracking-[0.1em]">FAQ</span>
+            <span className="text-green-dark text-[11px] font-medium uppercase tracking-[0.1em]">FAQ</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold text-white leading-[1.15] tracking-tight">
             Pertanyaan{" "}
@@ -52,7 +52,7 @@ export function FAQSection() {
                     transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                     className="overflow-hidden"
                   >
-                    <p className="px-5 pb-5 text-sm text-green-dark/80 leading-relaxed">{item.a}</p>
+                    <p className="px-5 pb-5 text-sm text-cream/80 leading-relaxed">{item.a}</p>
                   </motion.div>
                 )}
               </AnimatePresence>

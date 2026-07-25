@@ -80,12 +80,12 @@ export function PreviewModal() {
         <div className="flex items-center justify-between px-6 py-4 border-b border-gold/20">
           <div className="min-w-0 flex-1">
             <h2 className="font-semibold text-green-dark truncate pr-4">{book.title}</h2>
-            <p className="text-sm text-green/60 truncate">{book.author}</p>
+            <p className="text-sm text-green-dark/80 truncate">{book.author}</p>
           </div>
           <button
             ref={closeRef}
             onClick={closeModal}
-            className="shrink-0 p-2 rounded-lg text-green/60 hover:text-green-dark hover:bg-cream transition-colors"
+            className="shrink-0 p-2 rounded-lg text-green-dark/80 hover:text-green-dark hover:bg-cream transition-colors"
             aria-label="Tutup preview"
           >
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -109,7 +109,7 @@ export function PreviewModal() {
           </div>
         </div>
 
-        <div className="px-6 py-3 border-t border-gold/20 flex items-center justify-between text-xs text-green/60">
+        <div className="px-6 py-3 border-t border-gold/20 flex items-center justify-between text-xs text-green-dark/80">
           <span>{book.page_count} halaman</span>
         </div>
       </div>

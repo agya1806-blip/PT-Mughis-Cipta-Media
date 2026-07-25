@@ -82,9 +82,9 @@ export default function AdminEditor({ value, onChange, label = "Konten", placeho
   return (
     <div className="space-y-2">
       <div className="flex items-center justify-between">
-        <label className="block text-sm font-medium text-green/70">{label}</label>
+        <label className="block text-sm font-medium text-green-dark/80">{label}</label>
         {preview && (
-          <button type="button" onClick={() => setPreview(false)} className="flex items-center gap-1.5 text-xs text-gold hover:text-gold-dark">
+          <button type="button" onClick={() => setPreview(false)} className="flex items-center gap-1.5 text-xs text-gold hover:text-green-dark">
             <Edit3 className="w-3.5 h-3.5" /> Edit
           </button>
         )}
@@ -104,12 +104,12 @@ export default function AdminEditor({ value, onChange, label = "Konten", placeho
               type="button"
               onClick={item.action}
               title={item.label}
-              className="p-1.5 rounded-lg text-green/70 hover:text-green-dark hover:bg-cream transition-colors"
+              className="p-1.5 rounded-lg text-green-dark/80 hover:text-green-dark hover:bg-cream transition-colors"
             >
               {item.icon}
             </button>
           ))}
-          <span className="ml-auto text-[10px] text-green/60 font-mono">HTML</span>
+          <span className="ml-auto text-[10px] text-green-dark/80 font-mono">HTML</span>
         </div>
         {preview ? (
           <div className="p-4 sm:p-6 min-h-[200px] prose prose-sm max-w-none text-green-dark">
@@ -122,7 +122,7 @@ export default function AdminEditor({ value, onChange, label = "Konten", placeho
             onChange={(e) => onChange(e.target.value)}
             placeholder={placeholder}
             rows={minRows}
-            className="w-full px-4 py-3 text-sm font-mono text-green-dark placeholder-green/60 resize-y focus:outline-none"
+            className="w-full px-4 py-3 text-sm font-mono text-green-dark placeholder-green-dark/80 resize-y focus:outline-none"
           />
         )}
       </div>

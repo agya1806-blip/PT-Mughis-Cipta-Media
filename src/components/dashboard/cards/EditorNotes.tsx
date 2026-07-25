@@ -15,7 +15,7 @@ export default function EditorNotes() {
         Catatan Editor
       </h3>
       {mockNotes.length === 0 ? (
-        <p className="text-sm text-green/60">Belum ada catatan dari editor.</p>
+        <p className="text-sm text-green-dark/80">Belum ada catatan dari editor.</p>
       ) : (
         <div className="space-y-4">
           {mockNotes.map((note) => (
@@ -28,9 +28,9 @@ export default function EditorNotes() {
                   <div className="flex items-center justify-between gap-2 mb-1">
                     <div>
                       <p className="text-xs font-semibold text-green-dark">{note.author}</p>
-                      <p className="text-[10px] text-green/60">{note.role}</p>
+                      <p className="text-[10px] text-green-dark/80">{note.role}</p>
                     </div>
-                    <span className="text-[10px] text-green/60 shrink-0">{note.date}</span>
+                    <span className="text-[10px] text-green-dark/80 shrink-0">{note.date}</span>
                   </div>
                   <p className="text-xs text-green/80 leading-relaxed mt-1.5">{note.note}</p>
                 </div>

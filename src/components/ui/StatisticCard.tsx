@@ -29,7 +29,7 @@ export default function StatisticCard({
         {icon && <div className="mb-4">{icon}</div>}
         <div className="text-3xl sm:text-4xl font-bold text-green-dark mb-1">
           {value}
-          {suffix && <span className="text-gold">{suffix}</span>}
+          {suffix && <span className="text-green-dark">{suffix}</span>}
         </div>
         <p className="text-sm text-green/80">{label}</p>
       </div>

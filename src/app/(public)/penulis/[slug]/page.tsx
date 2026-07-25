@@ -89,13 +89,13 @@ export default async function PenulisDetailPage({ params }: Props) {
           <div className="h-32 sm:h-40 bg-gradient-to-r from-gold/10 via-gold/5 to-gold/5" />
           <div className="px-6 sm:px-8 pb-8 -mt-14 sm:-mt-16">
             <div className="flex flex-col sm:flex-row sm:items-end gap-5 mb-6">
-              <div className="w-24 h-24 rounded-2xl border-4 border-white bg-gold/10 flex items-center justify-center text-gold-dark font-bold text-3xl shadow-lg shrink-0">
+              <div className="w-24 h-24 rounded-2xl border-4 border-white bg-gold/10 flex items-center justify-center text-green-dark font-bold text-3xl shadow-lg shrink-0">
                 {initial}
               </div>
               <div className="pt-14 sm:pt-0">
                 <h1 className="text-2xl sm:text-3xl font-bold text-green-dark">{authorName}</h1>
                 <div className="flex flex-wrap items-center gap-3 mt-1.5">
-                  <span className="text-xs text-green/60">
+                  <span className="text-xs text-green-dark/80">
                     {totalBooks} buku terbitan
                   </span>
                 </div>
@@ -109,7 +109,7 @@ export default async function PenulisDetailPage({ params }: Props) {
         <div className="mt-10">
           <Link
             href="/penulis"
-            className="text-sm text-gold hover:text-gold-dark transition-colors"
+            className="text-sm text-gold hover:text-green-dark transition-colors"
           >
             &larr; Semua Penulis
           </Link>

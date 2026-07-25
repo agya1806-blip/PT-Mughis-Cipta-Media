@@ -59,7 +59,7 @@ export default function AdminTeam() {
   if (loading) {
     return (
       <div className="flex items-center justify-center py-20">
-        <p className="text-green/60">Memuat...</p>
+        <p className="text-green-dark/80">Memuat...</p>
       </div>
     )
   }
@@ -72,7 +72,7 @@ export default function AdminTeam() {
         </h1>
         <Link
           href="/admin/team/create"
-          className="h-10 px-4 rounded-lg bg-gold text-white text-sm font-medium hover:bg-gold-dark flex items-center"
+          className="h-10 px-4 rounded-lg bg-gold text-green-dark text-sm font-medium hover:bg-gold-dark flex items-center"
         >
           Tambah Anggota
         </Link>
@@ -80,7 +80,7 @@ export default function AdminTeam() {
 
       <Link
         href="/admin/team/manage"
-        className="inline-flex items-center gap-1.5 text-sm text-green/70 hover:text-green-dark mb-4"
+        className="inline-flex items-center gap-1.5 text-sm text-green-dark/80 hover:text-green-dark mb-4"
       >
         Kelola Hero & Statistik
       </Link>
@@ -89,25 +89,25 @@ export default function AdminTeam() {
         <table className="w-full text-sm">
           <thead>
             <tr className="bg-gold/5 border-b border-gold/20">
-              <th className="text-left px-4 py-3 font-medium text-green/70">
+              <th className="text-left px-4 py-3 font-medium text-green-dark/80">
                 Urutan
               </th>
-              <th className="text-left px-4 py-3 font-medium text-green/70">
+              <th className="text-left px-4 py-3 font-medium text-green-dark/80">
                 Nama
               </th>
-              <th className="text-left px-4 py-3 font-medium text-green/70">
+              <th className="text-left px-4 py-3 font-medium text-green-dark/80">
                 Jabatan
               </th>
-              <th className="text-left px-4 py-3 font-medium text-green/70">
+              <th className="text-left px-4 py-3 font-medium text-green-dark/80">
                 Divisi
               </th>
-              <th className="text-left px-4 py-3 font-medium text-green/70">
+              <th className="text-left px-4 py-3 font-medium text-green-dark/80">
                 Role
               </th>
-              <th className="text-center px-4 py-3 font-medium text-green/70">
+              <th className="text-center px-4 py-3 font-medium text-green-dark/80">
                 Status
               </th>
-              <th className="text-center px-4 py-3 font-medium text-green/70">
+              <th className="text-center px-4 py-3 font-medium text-green-dark/80">
                 Aksi
               </th>
             </tr>
@@ -118,19 +118,19 @@ export default function AdminTeam() {
                 key={member.id}
                 className="border-b border-gold/10 hover:bg-gold/5"
               >
-                <td className="px-4 py-3 text-green/60 text-xs">
+                <td className="px-4 py-3 text-green-dark/80 text-xs">
                   {member.displayOrder}
                 </td>
                 <td className="px-4 py-3 font-medium text-green-dark">
                   {member.name}
                 </td>
-                <td className="px-4 py-3 text-green/70 text-xs max-w-[200px] truncate">
+                <td className="px-4 py-3 text-green-dark/80 text-xs max-w-[200px] truncate">
                   {member.position}
                 </td>
-                <td className="px-4 py-3 text-green/70 text-xs">
+                <td className="px-4 py-3 text-green-dark/80 text-xs">
                   {divisionLabel[member.division] || member.division}
                 </td>
-                <td className="px-4 py-3 text-xs text-green/70">
+                <td className="px-4 py-3 text-xs text-green-dark/80">
                   {roleLabel[member.role] || member.role}
                 </td>
                 <td className="px-4 py-3 text-center">
@@ -153,7 +153,7 @@ export default function AdminTeam() {
                   </Link>
                   <button
                     onClick={() => handleDelete(member.id, member.name)}
-                    className="text-red-500 hover:text-red-700 text-xs disabled:opacity-30"
+                    className="text-red-500 hover:text-red-700 text-xs disabled:opacity-50"
                     disabled={member.role === "FOUNDER"}
                   >
                     Hapus
@@ -164,7 +164,7 @@ export default function AdminTeam() {
           </tbody>
         </table>
       </div>
-      <p className="text-xs text-green/50 mt-3">
+      <p className="text-xs text-green-dark/80 mt-3">
         Founder tidak dapat dihapus. Untuk menonaktifkan akun, gunakan halaman
         edit.
       </p>

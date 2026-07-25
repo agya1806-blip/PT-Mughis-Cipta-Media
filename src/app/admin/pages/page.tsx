@@ -34,7 +34,7 @@ export default function AdminPages() {
         <h1 className="text-2xl font-bold text-green-dark">Halaman</h1>
         <Link
           href="/admin/pages/create"
-          className="h-10 px-4 rounded-lg bg-gold text-white text-sm font-medium hover:bg-gold-dark flex items-center"
+          className="h-10 px-4 rounded-lg bg-gold text-green-dark text-sm font-medium hover:bg-gold-dark flex items-center"
         >
           Tambah Halaman
         </Link>
@@ -43,16 +43,16 @@ export default function AdminPages() {
         <table className="w-full text-sm">
           <thead>
             <tr className="bg-gold/5 border-b border-gold/20">
-              <th className="text-left px-4 py-3 font-medium text-green/70">Judul</th>
-              <th className="text-left px-4 py-3 font-medium text-green/70">Slug</th>
-              <th className="text-center px-4 py-3 font-medium text-green/70">Aksi</th>
+              <th className="text-left px-4 py-3 font-medium text-green-dark/80">Judul</th>
+              <th className="text-left px-4 py-3 font-medium text-green-dark/80">Slug</th>
+              <th className="text-center px-4 py-3 font-medium text-green-dark/80">Aksi</th>
             </tr>
           </thead>
           <tbody>
             {pages.map((page) => (
               <tr key={page.id} className="border-b border-gold/10 hover:bg-gold/5">
                 <td className="px-4 py-3 text-green-dark">{page.title}</td>
-                <td className="px-4 py-3 text-green/70">/{page.slug}</td>
+                <td className="px-4 py-3 text-green-dark/80">/{page.slug}</td>
                 <td className="px-4 py-3 text-center space-x-2">
                   <Link href={`/admin/pages/${page.id}`} className="text-green hover:underline text-xs">
                     Edit

@@ -41,7 +41,7 @@ export function TeamHero() {
               initial="hidden"
               animate="visible"
               transition={{ delay: 0.2 }}
-              className="text-lg sm:text-xl text-cream/70 leading-relaxed max-w-xl"
+              className="text-lg sm:text-xl text-cream/90 leading-relaxed max-w-xl"
             >
               {TEAM_CONFIG.hero.subtitle}
             </motion.p>

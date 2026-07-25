@@ -49,7 +49,7 @@ export default function KpiCard({ label, value, icon, trend, trendDirection = "u
         )}
       </div>
       <p className="text-2xl sm:text-3xl font-bold text-green-dark mb-1">{value}</p>
-      <p className="text-sm text-green/70">{label}</p>
+      <p className="text-sm text-green-dark/80">{label}</p>
     </motion.div>
   )
 }

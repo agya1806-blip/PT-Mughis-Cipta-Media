@@ -13,7 +13,7 @@ export default function ManuscriptsPage() {
       <div className="flex items-center justify-between mb-8">
         <div>
           <h1 className="text-2xl font-bold text-green-dark">Naskah Saya</h1>
-          <p className="text-sm text-green/70 mt-1">Kelola dan pantau progress naskah Anda</p>
+          <p className="text-sm text-green-dark/80 mt-1">Kelola dan pantau progress naskah Anda</p>
         </div>
         <Link href="/dashboard/manuscripts/new">
           <Button size="small">

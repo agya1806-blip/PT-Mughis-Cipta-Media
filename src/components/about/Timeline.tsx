@@ -71,12 +71,12 @@ export default function Timeline() {
               >
                 <div className="absolute left-4 top-1 w-8 h-8 md:left-4 md:top-1 hidden md:flex items-center justify-center">
                   <div className="w-8 h-8 rounded-full bg-cream border-2 border-gold flex items-center justify-center z-10">
-                    <Icon className="w-4 h-4 text-gold-dark" />
+                    <Icon className="w-4 h-4 text-green-dark" />
                   </div>
                 </div>
 
                 <div className="bg-cream rounded-2xl p-6 border border-gold/20 hover:border-gold/40 hover:shadow-md transition-all duration-300">
-                  <span className="inline-block text-xs font-semibold text-gold-dark bg-gold/10 px-3 py-1 rounded-full mb-3">
+                  <span className="inline-block text-xs font-semibold text-green-dark bg-gold/10 px-3 py-1 rounded-full mb-3">
                     {year}
                   </span>
                   <h3 className="text-lg font-bold text-green-dark mb-2">{title}</h3>

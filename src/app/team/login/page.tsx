@@ -37,12 +37,12 @@ export default function TeamLoginPage() {
         <div className="bg-cream rounded-2xl border border-gold/20 p-8 shadow-xl">
           <div className="text-center mb-8">
             <div className="w-16 h-16 rounded-full bg-gold/10 border border-gold/20 flex items-center justify-center mx-auto mb-4">
-              <LogIn className="w-6 h-6 text-gold-dark" />
+              <LogIn className="w-6 h-6 text-green-dark" />
             </div>
             <h1 className="text-2xl font-bold text-green-dark">
               Login Tim
             </h1>
-            <p className="text-sm text-green/60 mt-1">
+            <p className="text-sm text-green-dark/80 mt-1">
               Masuk untuk mengelola profil Anda
             </p>
           </div>
@@ -61,7 +61,7 @@ export default function TeamLoginPage() {
               <input
                 type="email"
                 required
-                className="w-full rounded-xl border border-gold/20 px-4 py-3 text-sm bg-cream text-green-dark placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-gold/50"
+                className="w-full rounded-xl border border-gold/20 px-4 py-3 text-sm bg-cream text-green-dark placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-gold/50"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="email@mughisciptamedia.com"
@@ -74,7 +74,7 @@ export default function TeamLoginPage() {
               <input
                 type="password"
                 required
-                className="w-full rounded-xl border border-gold/20 px-4 py-3 text-sm bg-cream text-green-dark placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-gold/50"
+                className="w-full rounded-xl border border-gold/20 px-4 py-3 text-sm bg-cream text-green-dark placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-gold/50"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="********"

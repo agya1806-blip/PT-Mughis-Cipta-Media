@@ -10,8 +10,8 @@ import MobileDrawer from "./MobileDrawer"
 import { mainNav } from "@/config/navigation"
 
 const btnClass = "min-w-[44px] min-h-[44px] flex items-center justify-center rounded-xl transition-all duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
-const btnScrolled = "text-green/60 hover:bg-gold/10 hover:text-green"
-const btnTransparent = "text-white/70 hover:bg-white/10 hover:text-white"
+const btnScrolled = "text-green-dark/80 hover:bg-gold/10 hover:text-green"
+const btnTransparent = "text-white/80 hover:bg-white/10 hover:text-white"
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
@@ -29,11 +29,11 @@ export default function Navbar() {
 
   const navItemClass = scrolled
     ? "text-green-dark hover:text-green"
-    : "text-white/80 hover:text-white"
+    : "text-white/90 hover:text-white"
 
   const megaItemClass = scrolled
     ? "text-green-dark hover:text-green"
-    : "text-white/80 hover:text-white"
+    : "text-white/90 hover:text-white"
 
   return (
     <>

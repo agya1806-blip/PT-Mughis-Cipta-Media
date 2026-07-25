@@ -89,11 +89,11 @@ export function KatalogClient({ initialBooks, initialCategories, initialTotal, i
                     if (e.key === "Enter") updateFilters({ search: searchInput })
                   }}
                   placeholder="Judul, penulis..."
-                  className="w-full rounded-lg border border-gold/20 bg-cream px-3 py-2.5 pr-10 text-sm text-green-dark placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-gold/50"
+                  className="w-full rounded-lg border border-gold/20 bg-cream px-3 py-2.5 pr-10 text-sm text-green-dark placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-gold/50"
                 />
                 <button
                   onClick={() => updateFilters({ search: searchInput })}
-                  className="absolute right-1.5 top-1/2 -translate-y-1/2 p-1.5 text-green/60 hover:text-green-dark"
+                  className="absolute right-1.5 top-1/2 -translate-y-1/2 p-1.5 text-green-dark/80 hover:text-green-dark"
                 >
                   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -113,8 +113,8 @@ export function KatalogClient({ initialBooks, initialCategories, initialTotal, i
                       onClick={() => updateFilters({ category_id: isActive ? "" : cat.id })}
                       className={`block w-full text-left px-3 py-1.5 rounded-lg text-sm transition-colors ${
                         isActive
-                          ? "bg-gold/10 text-gold-dark font-medium"
-                          : "text-green/80 hover:bg-cream hover:text-green-dark"
+                          ? "bg-gold/10 text-green-dark font-medium"
+                          : "text-green-dark/80 hover:bg-cream hover:text-green-dark"
                       }`}
                     >
                       {cat.name}
@@ -126,7 +126,7 @@ export function KatalogClient({ initialBooks, initialCategories, initialTotal, i
 
             <button
               onClick={resetFilters}
-              className="w-full rounded-lg border border-gold/20 px-4 py-2 text-sm font-medium text-green/80 transition-colors hover:bg-cream hover:text-green-dark"
+              className="w-full rounded-lg border border-gold/20 px-4 py-2 text-sm font-medium text-green-dark/80 transition-colors hover:bg-cream hover:text-green-dark"
             >
               Reset Filter
             </button>
@@ -136,12 +136,12 @@ export function KatalogClient({ initialBooks, initialCategories, initialTotal, i
         <div className="flex-1 min-w-0">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
             <div>
-              <p className="text-sm text-green/60">
+              <p className="text-sm text-green-dark/80">
                 {total} buku ditemukan
               </p>
             </div>
             <div className="flex items-center gap-3">
-              <label htmlFor="sort" className="text-sm text-green/60">Urutkan:</label>
+              <label htmlFor="sort" className="text-sm text-green-dark/80">Urutkan:</label>
               <select
                 id="sort"
                 value={sort}
@@ -158,7 +158,7 @@ export function KatalogClient({ initialBooks, initialCategories, initialTotal, i
           <div className="relative">
             {loading && (
               <div className="absolute inset-0 z-10 flex items-center justify-center bg-cream/60 rounded-xl">
-                <div className="flex items-center gap-2 text-sm text-green/60">
+                <div className="flex items-center gap-2 text-sm text-green-dark/80">
                   <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24" fill="none">
                     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                     <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
@@ -169,11 +169,11 @@ export function KatalogClient({ initialBooks, initialCategories, initialTotal, i
             )}
             {books.length === 0 && !loading ? (
               <div className="text-center py-20">
-                <svg className="w-16 h-16 mx-auto text-green/40 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1}>
+                <svg className="w-16 h-16 mx-auto text-green-dark/70 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
                 </svg>
-                <h3 className="text-lg font-medium text-green/80 mb-1">Tidak ada buku ditemukan</h3>
-                <p className="text-sm text-green/60 mb-4">Coba ubah kata kunci atau filter pencarian</p>
+                <h3 className="text-lg font-medium text-green-dark/80 mb-1">Tidak ada buku ditemukan</h3>
+                <p className="text-sm text-green-dark/80 mb-4">Coba ubah kata kunci atau filter pencarian</p>
                 <button onClick={resetFilters} className="text-sm font-medium text-green hover:text-green-dark">
                   Reset Filter
                 </button>
@@ -216,7 +216,7 @@ export function KatalogClient({ initialBooks, initialCategories, initialTotal, i
           <div className="absolute bottom-0 left-0 right-0 bg-cream rounded-t-2xl max-h-[80vh] overflow-y-auto p-6 pb-24">
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-lg font-semibold text-green-dark">Filter</h2>
-              <button onClick={() => setMobileFilterOpen(false)} className="p-2 text-green/60 hover:text-green-dark">
+              <button onClick={() => setMobileFilterOpen(false)} className="p-2 text-green-dark/80 hover:text-green-dark">
                 <X className="w-5 h-5" />
               </button>
             </div>
@@ -235,7 +235,7 @@ export function KatalogClient({ initialBooks, initialCategories, initialTotal, i
                     }
                   }}
                   placeholder="Judul, penulis..."
-                  className="w-full rounded-lg border border-gold/20 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50 bg-cream text-green-dark placeholder-zinc-400"
+                  className="w-full rounded-lg border border-gold/20 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50 bg-cream text-green-dark placeholder-zinc-500"
                 />
                 <button
                   onClick={() => {
@@ -263,7 +263,7 @@ export function KatalogClient({ initialBooks, initialCategories, initialTotal, i
                         }}
                         className="h-4 w-4 text-gold border-gold/20 focus:ring-gold/50"
                       />
-                      <span className="text-sm text-green/80">{cat.name}</span>
+                      <span className="text-sm text-green-dark/80">{cat.name}</span>
                     </label>
                   ))}
                 </div>
@@ -277,7 +277,7 @@ export function KatalogClient({ initialBooks, initialCategories, initialTotal, i
                     updateFilters({ sort: e.target.value })
                     setMobileFilterOpen(false)
                   }}
-                  className="w-full rounded-lg border border-gold/20 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50 bg-cream text-green-dark placeholder-zinc-400"
+                  className="w-full rounded-lg border border-gold/20 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50 bg-cream text-green-dark placeholder-zinc-500"
                 >
                   <option value="latest">Terbaru</option>
                   <option value="title_asc">Judul A-Z</option>

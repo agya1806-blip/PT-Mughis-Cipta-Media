@@ -4,6 +4,7 @@ import LoadingScreen from "@/components/landing/LoadingScreen"
 import HeroSection from "@/components/landing/HeroSection"
 import StatsSection from "@/components/landing/StatsSection"
 import StorySection from "@/components/landing/StorySection"
+import PublicationScopeSection from "@/components/landing/PublicationScopeSection"
 import FeaturedBooks from "@/components/home/FeaturedBooks"
 import BookJourneySection from "@/components/landing/BookJourneySection"
 import ServicesSection from "@/components/landing/ServicesSection"
@@ -16,18 +17,18 @@ const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://mughisciptamedia.co
 export const metadata: Metadata = {
   title: "Penerbit Buku & Percetakan Profesional – PT Mughis Cipta Media",
   description:
-    "Penerbit buku terpercaya di Indonesia. Layanan penerbitan buku, cetak buku murah, desain cover, editing naskah, dan distribusi nasional. Wujudkan karya Anda bersama PT Mughis Cipta Media.",
+    "Penerbit buku, kitab, modul, buku ajar, monograf, prosiding, antologi, novel, dan berbagai jenis terbitan lainnya. PT Mughis Cipta Media adalah perusahaan penerbit profesional di Indonesia yang melayani penerbitan buku hingga kitab terjemahan dengan standar nasional.",
   openGraph: {
     title: "Penerbit Buku & Percetakan Profesional – PT Mughis Cipta Media",
     description:
-      "Penerbit buku terpercaya di Indonesia. Layanan penerbitan buku, cetak buku murah, dan distribusi nasional.",
+      "Penerbit buku, kitab, modul, buku ajar, monograf, prosiding, antologi, dan novel. Perusahaan penerbit profesional di Indonesia yang melayani berbagai jenis terbitan berkualitas.",
     url: baseUrl,
   },
   twitter: {
     card: "summary_large_image",
     title: "Penerbit Buku & Percetakan Profesional – PT Mughis Cipta Media",
     description:
-      "Penerbit buku terpercaya di Indonesia. Layanan penerbitan, cetak buku, editing naskah, dan distribusi nasional.",
+      "Penerbit buku, kitab, modul, buku ajar, monograf, prosiding, antologi, novel, dan berbagai jenis terbitan lainnya. PT Mughis Cipta Media — penerbit Indonesia terpercaya.",
   },
   alternates: { canonical: "/" },
 }
@@ -41,7 +42,7 @@ export default function Home() {
           "@type": "WebPage",
           name: "Penerbit Buku & Percetakan Profesional – PT Mughis Cipta Media",
           description:
-            "Penerbit buku terpercaya di Indonesia. Layanan penerbitan buku, cetak buku murah, desain cover, editing naskah, dan distribusi nasional.",
+            "Penerbit buku, kitab, modul, buku ajar, monograf, prosiding, antologi, novel, dan berbagai jenis terbitan lainnya. Perusahaan penerbit profesional di Indonesia.",
           publisher: { "@type": "Organization", name: "PT Mughis Cipta Media" },
           url: baseUrl,
         }}
@@ -50,6 +51,7 @@ export default function Home() {
       <HeroSection />
       <StatsSection />
       <StorySection />
+      <PublicationScopeSection />
       <FeaturedBooks />
       <BookJourneySection />
       <ServicesSection />

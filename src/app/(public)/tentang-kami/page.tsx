@@ -4,6 +4,7 @@ import AboutHero from "@/components/about/AboutHero"
 import AboutStory from "@/components/about/AboutStory"
 import VisionMission from "@/components/about/VisionMission"
 import CompanyValues from "@/components/about/CompanyValues"
+import PublicationScope from "@/components/about/PublicationScope"
 import Services from "@/components/about/Services"
 import WhyUs from "@/components/about/WhyUs"
 import Stats from "@/components/about/Stats"
@@ -15,18 +16,18 @@ const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://mughisciptamedia.co
 export const metadata = {
   title: "Tentang Kami",
   description:
-    "PT Mughis Cipta Media adalah perusahaan penerbitan, percetakan, distribusi buku, dan media kreatif yang berkomitmen menghadirkan karya berkualitas bagi dunia pendidikan dan literasi Indonesia.",
+    "PT Mughis Cipta Media adalah perusahaan penerbit profesional di Indonesia yang melayani penerbitan buku, kitab, kitab terjemahan, modul, buku ajar, monograf, prosiding, antologi, novel, dan berbagai jenis karya tulis lainnya.",
   openGraph: {
     title: "Tentang Kami - PT Mughis Cipta Media",
     description:
-      "Perusahaan penerbitan dan media kreatif yang berkomitmen membangun peradaban melalui buku dan pengetahuan.",
+      "Penerbit buku, kitab, modul, buku ajar, monograf, prosiding, antologi, dan novel. Perusahaan penerbit profesional di Indonesia yang melayani berbagai jenis terbitan berkualitas.",
     url: `${baseUrl}/tentang-kami`,
   },
   twitter: {
     card: "summary_large_image",
     title: "Tentang Kami - PT Mughis Cipta Media",
     description:
-      "Perusahaan penerbitan dan media kreatif yang berkomitmen membangun peradaban melalui buku dan pengetahuan.",
+      "Penerbit buku, kitab, modul, buku ajar, monograf, prosiding, antologi, novel, dan berbagai jenis karya tulis lainnya. PT Mughis Cipta Media — penerbit Indonesia terpercaya.",
   },
   alternates: { canonical: "/tentang-kami" },
 }
@@ -57,6 +58,7 @@ export default function TentangKamiPage() {
       <AboutStory />
       <VisionMission />
       <CompanyValues />
+      <PublicationScope />
       <Services />
       <WhyUs />
       <Stats />

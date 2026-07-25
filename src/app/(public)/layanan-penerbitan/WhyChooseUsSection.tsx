@@ -10,7 +10,7 @@ export default function WhyChooseUsSection({ items }: { items: { icon: ReactNode
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/10 border border-gold/20 text-gold text-xs font-medium uppercase tracking-wider mb-6"
+        className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/10 border border-gold/20 text-green-dark text-xs font-medium uppercase tracking-wider mb-6"
       >
         Kenapa Memilih Kami
       </motion.div>
@@ -41,13 +41,13 @@ export default function WhyChooseUsSection({ items }: { items: { icon: ReactNode
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 * i, duration: 0.5 }}
-              className="p-6 rounded-2xl bg-white/5 border border-white/10 text-left hover:bg-white/[0.08] transition-colors"
+              className="p-6 rounded-2xl bg-cream/5 border border-cream/10 text-left hover:bg-cream/[0.08] transition-colors"
             >
               <div className="w-12 h-12 rounded-xl bg-gold/10 flex items-center justify-center mb-4">
                 {item.icon}
               </div>
               <h3 className="text-white font-semibold mb-2">{item.title}</h3>
-              <p className="text-zinc-400 text-sm leading-relaxed">{item.description}</p>
+              <p className="text-cream/80 text-sm leading-relaxed">{item.description}</p>
             </motion.div>
         ))}
       </div>

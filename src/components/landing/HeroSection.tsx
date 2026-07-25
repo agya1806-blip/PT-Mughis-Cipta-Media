@@ -25,8 +25,8 @@ function FloatingBook() {
           <div className="p-6 sm:p-8 flex flex-col h-full">
             <div className="mb-4">
               <div className="flex items-center gap-1">
-                <span className="text-gold text-[10px] font-semibold tracking-wider opacity-70">PT</span>
-                <span className="text-cream text-xs font-bold opacity-70">Mughis Cipta Media</span>
+                <span className="text-gold text-[10px] font-semibold tracking-wider">PT</span>
+                <span className="text-cream text-xs font-bold">Mughis Cipta Media</span>
               </div>
             </div>
             <div className="flex-1 space-y-2">
@@ -202,13 +202,13 @@ export default function HeroSection() {
                 {[1, 2, 3, 4].map((i) => (
                   <div
                     key={i}
-                    className="w-8 h-8 rounded-full border-2 border-gold/30 bg-green-dark/80 flex items-center justify-center text-[10px] text-gold/80 font-medium"
+                    className="w-8 h-8 rounded-full border-2 border-gold/30 bg-green-dark flex items-center justify-center text-[10px] text-gold font-medium"
                   >
                     {String.fromCharCode(64 + i)}
                   </div>
                 ))}
               </div>
-              <span>Dipercaya <strong className="text-gold/90">100+</strong> penulis & institusi</span>
+              <span>Dipercaya <strong className="text-gold">100+</strong> penulis & institusi</span>
             </motion.div>
           </motion.div>
 

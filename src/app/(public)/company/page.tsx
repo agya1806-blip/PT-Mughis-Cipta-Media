@@ -113,11 +113,11 @@ export default function CompanyPage() {
               </div>
             </motion.div>
             <motion.div variants={MOTION.scaleIn} initial="hidden" whileInView="visible" viewport={{ once: true }} className="relative">
-              <div className="relative bg-gradient-to-br from-zinc-900 to-zinc-800 rounded-3xl p-10 text-white overflow-hidden">
+              <div className="relative bg-gradient-to-br from-green to-green-dark rounded-3xl p-10 text-white overflow-hidden">
                 <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(211,194,151,0.15),transparent_50%)]" />
                 <div className="relative">
                   <h3 className="text-xl font-bold mb-2">Siap Memulai?</h3>
-                  <p className="text-green-dark/80 text-sm mb-6">Konsultasikan naskah Anda dengan tim kami.</p>
+                  <p className="text-cream/80 text-sm mb-6">Konsultasikan naskah Anda dengan tim kami.</p>
                   <Link href="/kontak" className="inline-flex items-center gap-2 h-11 px-6 text-sm font-semibold rounded-full bg-green hover:bg-green-dark text-gold shadow-md transition-all duration-200">Hubungi Kami<ArrowRight className="w-4 h-4" /></Link>
                 </div>
               </div>
@@ -126,10 +126,10 @@ export default function CompanyPage() {
         </div>
       </section>
 
-      <section className="relative py-24 overflow-hidden bg-gradient-to-br from-zinc-900 via-zinc-800 to-zinc-900">
+      <section className="relative py-24 overflow-hidden bg-gradient-to-br from-green via-green-dark to-green">
         <div className="container relative text-center max-w-2xl">
           <h2 className="text-3xl sm:text-4xl font-bold text-white leading-[1.15]">Bergabung dengan <span className="bg-gradient-to-r from-gold to-gold-dark bg-clip-text text-transparent">PT Mughis Cipta Media</span></h2>
-          <p className="mt-4 text-lg text-green-dark/80">Wujudkan karya Anda bersama penerbit terpercaya.</p>
+          <p className="mt-4 text-lg text-cream/80">Wujudkan karya Anda bersama penerbit terpercaya.</p>
           <div className="mt-10 flex flex-wrap justify-center gap-4">
             <Button href="/kontak" variant="primary">Konsultasi Gratis<ArrowRight className="w-4 h-4" /></Button>
             <Button href="/layanan-penerbitan" variant="ghost">Lihat Layanan</Button>

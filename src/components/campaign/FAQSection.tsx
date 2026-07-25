@@ -10,8 +10,8 @@ export function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
 
   return (
-    <section className="relative py-24 sm:py-32 bg-gradient-to-br from-zinc-900 via-zinc-800 to-zinc-900 overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(211,194,151,0.06),transparent_50%)]" />
+    <section className="relative py-24 sm:py-32 bg-gradient-to-br from-green via-green-dark to-green overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(211,194,151,0.10),transparent_50%)]" />
       <div className="max-w-3xl mx-auto px-6 sm:px-8 lg:px-10 relative">
         <motion.div variants={MOTION.fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-center mb-12">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/10 border border-gold/20 mb-6">
@@ -25,7 +25,7 @@ export function FAQSection() {
 
         <motion.div variants={MOTION.fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="space-y-3">
           {faqItems.map((item, i) => (
-            <div key={i} className="bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 overflow-hidden">
+            <div key={i} className="bg-cream/5 backdrop-blur-sm rounded-xl border border-cream/10 overflow-hidden">
               <button
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
                 aria-expanded={openIndex === i}

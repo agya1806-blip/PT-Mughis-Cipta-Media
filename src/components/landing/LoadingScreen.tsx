@@ -34,7 +34,7 @@ export default function LoadingScreen() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3 }}
-              className="text-green-dark/80 text-sm tracking-widest uppercase"
+              className="text-cream/80 text-sm tracking-widest uppercase"
             >
               Loading
             </motion.p>

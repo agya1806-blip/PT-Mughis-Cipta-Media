@@ -189,14 +189,14 @@ export default function LegalitasPage() {
           </div>
         </div>
       </section>
-      <section className="relative py-24 overflow-hidden bg-gradient-to-br from-zinc-900 via-zinc-800 to-zinc-900">
+      <section className="relative py-24 overflow-hidden bg-gradient-to-br from-green via-green-dark to-green">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(211,194,151,0.12),transparent_50%)]" />
         <div className="container relative text-center max-w-2xl">
           <h2 className="text-3xl sm:text-4xl font-bold text-white leading-[1.15]">Perusahaan <span className="bg-gradient-to-r from-gold to-gold-dark bg-clip-text text-transparent">Terpercaya</span></h2>
-          <p className="mt-4 text-lg text-zinc-400">Dengan legalitas lengkap dan komitmen terhadap kualitas, PT Mughis Cipta Media siap menjadi mitra penerbitan Anda.</p>
+          <p className="mt-4 text-lg text-cream/80">Dengan legalitas lengkap dan komitmen terhadap kualitas, PT Mughis Cipta Media siap menjadi mitra penerbitan Anda.</p>
             <div className="mt-10 flex flex-wrap justify-center gap-4">
             <a href="/kontak" className="inline-flex items-center gap-2 h-11 px-6 text-sm font-semibold rounded-full bg-green hover:bg-green-dark text-gold shadow-md hover:shadow-lg hover:shadow-green/25 transition-all duration-200">Hubungi Kami<ExternalLink className="w-4 h-4" /></a>
-            <a href="/company" className="inline-flex items-center gap-2 h-11 px-6 text-sm font-semibold rounded-full border border-zinc-600 text-zinc-300 hover:bg-zinc-800 transition-all duration-200">Profil Perusahaan</a>
+            <a href="/company" className="inline-flex items-center gap-2 h-11 px-6 text-sm font-semibold rounded-full border border-cream/30 text-cream hover:bg-cream/10 transition-all duration-200">Profil Perusahaan</a>
           </div>
         </div>
       </section>

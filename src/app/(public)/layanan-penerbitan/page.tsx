@@ -54,7 +54,7 @@ export default function LayananPenerbitanPage() {
         )
       })}
 
-      <section className="bg-gradient-to-br from-zinc-900 via-zinc-800 to-zinc-900 py-20 lg:py-28">
+      <section className="bg-gradient-to-br from-green via-green-dark to-green py-20 lg:py-28">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10">
           <WhyChooseUsSection
             items={whyChooseUs.map((w) => {

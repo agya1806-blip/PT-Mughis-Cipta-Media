@@ -10,6 +10,7 @@ import { FlowSection } from "@/components/campaign/FlowSection"
 import { RequirementsSection } from "@/components/campaign/RequirementsSection"
 import { RegistrationForm } from "@/components/campaign/RegistrationForm"
 import { FAQSection } from "@/components/campaign/FAQSection"
+import { LaptopSection } from "@/components/campaign/LaptopSection"
 import { CTASection } from "@/components/campaign/CTASection"
 import { CampaignFooter } from "@/components/campaign/CampaignFooter"
 import { ToastProvider } from "@/components/campaign/Toast"
@@ -33,6 +34,7 @@ export function TransformasiClient() {
           <RequirementsSection />
           <RegistrationForm />
           <FAQSection />
+          <LaptopSection />
           <CTASection onCtaClick={scrollToForm} />
           <CampaignFooter />
         </main>

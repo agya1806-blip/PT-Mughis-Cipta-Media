@@ -12,6 +12,7 @@ export const CAMPAIGN = {
   },
   registrationPrefix: "MCM",
   whatsappAdmin: "6285121576433",
+  laptopWhatsapp: "6285121576433",
   instagramUrl: "https://www.instagram.com/percetakanmurah.co?igsh=MWFqdmF3anY2dHFrYw%3D%3D&utm_source=qr",
   founderInstagram: "mhdaghisna_",
 }

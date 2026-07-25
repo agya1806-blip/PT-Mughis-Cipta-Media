@@ -46,29 +46,29 @@ export default function Navbar() {
         }`}
       >
         <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-10">
-          <div className="flex items-center justify-between h-16 md:h-20">
-            <div className="flex items-center gap-2">
+            <div className="flex items-center justify-between h-16 md:h-20">
+            <div className="flex items-center gap-6 lg:gap-10">
               <NavLogo scrolled={scrolled} />
-            </div>
 
-            <nav className="hidden md:flex items-center justify-center gap-7" aria-label="Navigasi utama">
-              {mainNav.map((group) =>
-                group.href ? (
-                  <NavItem key={group.href} href={group.href} className={navItemClass}>
-                    {group.label}
-                  </NavItem>
-                ) : (
-                  <NavItem
-                    key={group.label}
-                    className={megaItemClass}
-                    label={group.label}
-                    megaItems={group.children || []}
-                  >
-                    {group.label}
-                  </NavItem>
-                )
-              )}
-            </nav>
+              <nav className="hidden md:flex items-center gap-6 lg:gap-7" aria-label="Navigasi utama">
+                {mainNav.map((group) =>
+                  group.href ? (
+                    <NavItem key={group.href} href={group.href} className={navItemClass}>
+                      {group.label}
+                    </NavItem>
+                  ) : (
+                    <NavItem
+                      key={group.label}
+                      className={megaItemClass}
+                      label={group.label}
+                      megaItems={group.children || []}
+                    >
+                      {group.label}
+                    </NavItem>
+                  )
+                )}
+              </nav>
+            </div>
 
             <div className="hidden md:flex items-center gap-2">
               <button

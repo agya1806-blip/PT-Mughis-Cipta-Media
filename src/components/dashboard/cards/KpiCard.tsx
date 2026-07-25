@@ -21,7 +21,7 @@ const colorMap = {
 }
 
 const iconColorMap = {
-  gold: "text-gold bg-gold/10",
+  gold: "text-green-dark bg-gold/10",
   blue: "text-blue-600 bg-blue-50",
   violet: "text-violet-600 bg-violet-50",
   green: "text-green-600 bg-green-50",

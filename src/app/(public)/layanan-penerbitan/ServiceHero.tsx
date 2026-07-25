@@ -23,7 +23,7 @@ export default function ServiceHero({
       <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gold/10 mb-6">
         {icon}
       </div>
-      <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/10 border border-gold/20 text-gold text-xs font-medium uppercase tracking-wider mb-4">
+      <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/10 border border-gold/20 text-green-dark text-xs font-medium uppercase tracking-wider mb-4">
         Layanan {index + 1} dari 5
       </span>
       <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-green-dark leading-tight mt-3">

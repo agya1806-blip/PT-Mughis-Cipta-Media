@@ -1,5 +1,11 @@
 import type { TimelineEvent, WhyCard, FlowStep, FAQItem, Requirement } from "@/lib/campaign/types"
 
+export const UPLOAD_LIMITS = {
+  coverMaxMB: 10,
+  naskahMaxMB: 10,
+  buktiMaxMB: 5,
+}
+
 export const CAMPAIGN = {
   quota: {
     total: 50,

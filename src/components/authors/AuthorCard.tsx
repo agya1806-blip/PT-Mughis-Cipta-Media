@@ -25,7 +25,7 @@ export default function AuthorCard({ name, slug, photo, field, bookCount }: Prop
         {name}
       </h3>
       <p className="text-xs text-green-dark/80 mb-3">{field}</p>
-      <div className="inline-flex items-center gap-1.5 text-[11px] font-medium text-gold bg-gold/10 px-3 py-1 rounded-full">
+      <div className="inline-flex items-center gap-1.5 text-[11px] font-medium text-green-dark bg-gold/10 px-3 py-1 rounded-full">
         <span>{bookCount}</span>
         <span>buku</span>
       </div>

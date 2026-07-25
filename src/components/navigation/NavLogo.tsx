@@ -8,7 +8,7 @@ interface Props {
 export default function NavLogo({ scrolled }: Props) {
   return (
     <Link href="/" className="flex items-center group shrink-0">
-      <TextLogo variant="navbar" />
+      <TextLogo variant="navbar" dark={scrolled} />
     </Link>
   )
 }

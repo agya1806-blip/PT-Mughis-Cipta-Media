@@ -4,7 +4,7 @@ import { useEffect, useRef, useCallback } from "react"
 import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
 import { motion, AnimatePresence } from "framer-motion"
-import { X, Search, ArrowRight, ChevronDown } from "lucide-react"
+import { X, Search, ArrowRight, ChevronDown, MessageCircle } from "lucide-react"
 import { mainNav } from "@/config/navigation"
 import TextLogo from "@/components/TextLogo"
 import type { MegaMenuItem } from "@/config/navigation"
@@ -153,20 +153,13 @@ export default function MobileDrawer({ open, onClose }: Props) {
             </nav>
 
             {/* Bottom CTA */}
-            <div className="shrink-0 px-4 pb-6 pt-4 border-t border-gold/20 space-y-3">
-              <Link
-                href="/penulis"
-                onClick={onClose}
-                className="flex items-center justify-center gap-2 w-full min-h-[48px] px-5 bg-emerald-600 hover:bg-gold text-green-dark hover:text-white text-sm font-semibold rounded-xl transition-all duration-300"
-              >
-                Daftar Program
-                <ArrowRight className="w-4 h-4" />
-              </Link>
+            <div className="shrink-0 px-4 pb-6 pt-4 border-t border-gold/20">
               <Link
                 href="/kontak"
                 onClick={onClose}
-                className="flex items-center justify-center gap-2 w-full min-h-[48px] px-5 border border-gold/30 text-green-dark text-sm font-medium rounded-xl hover:bg-gold/10 transition-all duration-300"
+                className="flex items-center justify-center gap-2 w-full min-h-[48px] px-5 bg-gold hover:bg-gold-dark text-green-dark text-sm font-semibold rounded-xl transition-all duration-300 shadow-lg shadow-gold/20"
               >
+                <MessageCircle className="w-4 h-4" />
                 Hubungi Kami
                 <ArrowRight className="w-4 h-4" />
               </Link>

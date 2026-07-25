@@ -29,7 +29,7 @@ export default function SectionTitle({
       className={`${align === "center" ? "text-center" : "text-left"} ${className}`}
     >
       {badge && (
-        <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/10 border border-gold/20 text-gold text-[11px] font-medium uppercase tracking-[0.1em] mb-6">
+        <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/10 border border-gold/20 text-green-dark text-[11px] font-medium uppercase tracking-[0.1em] mb-6">
           {badge}
         </span>
       )}

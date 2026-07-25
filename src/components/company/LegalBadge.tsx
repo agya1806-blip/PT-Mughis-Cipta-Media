@@ -10,7 +10,7 @@ const statusStyles = {
   verified:
     "bg-green-50 text-green-700 border-green-200",
   active:
-    "bg-gold/10 text-gold border-gold/20",
+    "bg-gold/10 text-green-dark border-gold/20",
 }
 
 export default function LegalBadge({ icon: Icon, title, status }: Props) {

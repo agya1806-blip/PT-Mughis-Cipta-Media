@@ -152,7 +152,7 @@ export default async function BookDetailPage({ params }: { params: Promise<{ slu
             <div className="md:col-span-2 space-y-6">
                <div className="flex items-start justify-between gap-4">
                  <div>
-                   <span className="inline-block text-xs font-medium text-gold bg-gold/5 px-3 py-1 rounded-full mb-3">
+                   <span className="inline-block text-xs font-medium text-green-dark bg-gold/5 px-3 py-1 rounded-full mb-3">
                      {mapped.category_name}
                    </span>
                    <h1 className="text-2xl md:text-3xl font-bold text-green-dark leading-tight">{mapped.title}</h1>

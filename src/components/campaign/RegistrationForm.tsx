@@ -4,7 +4,7 @@ import { useState, useCallback } from "react"
 import { motion } from "framer-motion"
 import { ArrowRight, Loader2 } from "lucide-react"
 import { MOTION } from "@/config/design"
-import { CAMPAIGN, KATEGORI_BUKU, STATUS_NASKAH_OPTIONS } from "@/config/campaign"
+import { CAMPAIGN, KATEGORI_BUKU, STATUS_NASKAH_OPTIONS, UPLOAD_LIMITS } from "@/config/campaign"
 import { validateForm } from "@/lib/campaign/validation"
 import type { CampaignFormData, FormErrors } from "@/lib/campaign/types"
 import { FileUpload } from "./FileUpload"
@@ -192,7 +192,7 @@ export function RegistrationForm() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               <FileUpload
                 accept=".docx,.pdf"
-                maxSizeMB={10}
+                maxSizeMB={UPLOAD_LIMITS.naskahMaxMB}
                 label="Upload Naskah"
                 hint="Format .docx atau .pdf"
                 value={form.fileNaskah}
@@ -200,9 +200,9 @@ export function RegistrationForm() {
               />
               <FileUpload
                 accept=".jpg,.jpeg,.png"
-                maxSizeMB={5}
+                maxSizeMB={UPLOAD_LIMITS.coverMaxMB}
                 label="Upload Cover"
-                hint="Format .jpg atau .png"
+                hint={`Format .jpg atau .png — maks. ${UPLOAD_LIMITS.coverMaxMB} MB`}
                 value={form.fileCover}
                 onChange={(f) => update("fileCover", f)}
                 preview="image"
@@ -210,9 +210,9 @@ export function RegistrationForm() {
               <div className="space-y-2">
                 <FileUpload
                   accept=".jpg,.jpeg,.png"
-                  maxSizeMB={5}
+                  maxSizeMB={UPLOAD_LIMITS.buktiMaxMB}
                   label="Bukti Follow Instagram PT Mughis Cipta Media"
-                  hint="Screenshot bukti follow"
+                  hint={`Screenshot bukti follow — maks. ${UPLOAD_LIMITS.buktiMaxMB} MB`}
                   value={form.fileBuktiFollow}
                   onChange={(f) => update("fileBuktiFollow", f)}
                   preview="image"
@@ -230,9 +230,9 @@ export function RegistrationForm() {
               <div className="space-y-2">
                 <FileUpload
                   accept=".jpg,.jpeg,.png"
-                  maxSizeMB={5}
+                  maxSizeMB={UPLOAD_LIMITS.buktiMaxMB}
                   label={`Bukti Follow Instagram Founder`}
-                  hint={`Screenshot follow @${CAMPAIGN.founderInstagram}`}
+                  hint={`Screenshot follow @${CAMPAIGN.founderInstagram} — maks. ${UPLOAD_LIMITS.buktiMaxMB} MB`}
                   value={form.fileBuktiFollowFounder}
                   onChange={(f) => update("fileBuktiFollowFounder", f)}
                   preview="image"

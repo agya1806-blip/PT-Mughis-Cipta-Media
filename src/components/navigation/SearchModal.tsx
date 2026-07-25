@@ -71,7 +71,7 @@ export default function SearchModal({ open, onClose }: Props) {
           >
             <div className="bg-cream rounded-2xl border border-gold/20 shadow-2xl overflow-hidden">
               <form onSubmit={handleSubmit} className="relative">
-                <Search className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-green-dark/70" />
+                <Search className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-green-dark/80" />
                 <input
                   ref={inputRef}
                   type="text"
@@ -109,7 +109,7 @@ export default function SearchModal({ open, onClose }: Props) {
                         <span className="text-sm font-medium text-green-dark group-hover:text-green transition-colors">
                           {cat.label}
                         </span>
-                        <ArrowRight className="w-3 h-3 text-green-dark/60 ml-auto group-hover:text-gold group-hover:translate-x-0.5 transition-all" />
+                        <ArrowRight className="w-3 h-3 text-green-dark/70 ml-auto group-hover:text-gold group-hover:translate-x-0.5 transition-all" />
                       </button>
                     )
                   })}

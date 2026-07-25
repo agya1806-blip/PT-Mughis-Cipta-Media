@@ -60,7 +60,7 @@ export default function BookCard({ book }: { book: Book }) {
         <p className="text-xs sm:text-sm text-green-dark/80 line-clamp-1 mb-2">{book.author}</p>
         <div className="mt-auto flex items-center justify-between">
           {book.category_name && (
-            <span className="inline-flex items-center text-xs font-medium text-gold bg-gold/10 px-2.5 py-1 rounded-full">
+            <span className="inline-flex items-center text-xs font-medium text-green-dark bg-gold/10 px-2.5 py-1 rounded-full">
               {book.category_name}
             </span>
           )}

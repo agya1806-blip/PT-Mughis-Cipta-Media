@@ -62,7 +62,7 @@ export default function Sidebar({ collapsed, onToggle, mobileOpen, onMobileClose
               onClick={onMobileClose}
               className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 ${
                 isActive
-                  ? "bg-gold/10 text-gold"
+                  ? "bg-gold/20 text-green-dark font-semibold"
                   : "text-green-dark/80 hover:text-green-dark hover:bg-gold/10"
               }`}
             >

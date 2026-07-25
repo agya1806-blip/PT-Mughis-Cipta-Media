@@ -90,7 +90,7 @@ export default async function BlogPage({ searchParams }: Props) {
                   </div>
                 )}
                 <div className="p-8 sm:p-10 flex flex-col justify-center">
-                  <span className="inline-flex items-center gap-1.5 text-xs font-medium text-gold bg-gold/10 px-3 py-1 rounded-full w-fit mb-4">
+                  <span className="inline-flex items-center gap-1.5 text-xs font-medium text-green-dark bg-gold/10 px-3 py-1 rounded-full w-fit mb-4">
                     Artikel Unggulan
                   </span>
                   <h2 className="text-2xl sm:text-3xl font-bold text-green-dark mb-3 group-hover:text-gold transition-colors leading-snug">

@@ -71,6 +71,11 @@ export async function PUT(
         ...(body.edition !== undefined ? { edition: body.edition || null } : {}),
         ...(body.keywords !== undefined ? { keywords: body.keywords || null } : {}),
         ...(body.publisherName !== undefined ? { publisherName: body.publisherName || null } : {}),
+        ...(body.isbn !== undefined ? { isbn: body.isbn || null } : {}),
+        ...(body.subtitle !== undefined ? { subtitle: body.subtitle || null } : {}),
+        ...(body.penName !== undefined ? { penName: body.penName || null } : {}),
+        ...(body.bindingType !== undefined ? { bindingType: body.bindingType || null } : {}),
+        ...(body.publicationStatus !== undefined ? { publicationStatus: body.publicationStatus || "available" } : {}),
       },
       include: { category: true },
     })

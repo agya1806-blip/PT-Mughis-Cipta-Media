@@ -78,6 +78,11 @@ export async function POST(request: Request) {
         edition: body.edition || null,
         keywords: body.keywords || null,
         publisherName: body.publisherName || null,
+        isbn: body.isbn || null,
+        subtitle: body.subtitle || null,
+        penName: body.penName || null,
+        bindingType: body.bindingType || null,
+        publicationStatus: body.publicationStatus || "available",
       },
       include: { category: true, publicationType: true },
     })

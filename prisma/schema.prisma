@@ -103,6 +103,11 @@ model Book {
   edition              String?
   keywords             String?
   publisherName        String?           @map("publisher_name")
+  isbn                 String?
+  subtitle             String?
+  penName              String?           @map("pen_name")
+  bindingType          String?           @map("binding_type")
+  publicationStatus    String?           @map("publication_status")
   createdAt            DateTime          @default(now()) @map("created_at")
   updatedAt            DateTime          @updatedAt @map("updated_at")
 

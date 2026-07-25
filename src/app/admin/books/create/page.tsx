@@ -16,6 +16,7 @@ export default function CreateBook() {
     publicationTypeId: "1",
     editor: "", layoutBy: "", subject: "", cityOfPublication: "",
     edition: "", keywords: "", publisherName: "PT Mughis Cipta Media",
+    isbn: "", subtitle: "", penName: "", bindingType: "", publicationStatus: "available",
     synopsis: "", price: "", resellerPrice: "", stock: "0",
     coverImage: "", pageCount: "0", previewPdfUrl: "",
     weight: "250", dimensions: "", language: "Indonesia",
@@ -166,6 +167,18 @@ export default function CreateBook() {
               <input type="text" className={inputClass} value={form.publisherName} onChange={(e) => setForm({ ...form, publisherName: e.target.value })} placeholder="PT Mughis Cipta Media" />
             </div>
             <div>
+              <label className="block text-sm font-medium text-green-dark/80 mb-1">ISBN</label>
+              <input type="text" className={inputClass} value={form.isbn} onChange={(e) => setForm({ ...form, isbn: e.target.value })} placeholder="978-xxx-xxx-xxx-x" />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-green-dark/80 mb-1">Subjudul</label>
+              <input type="text" className={inputClass} value={form.subtitle} onChange={(e) => setForm({ ...form, subtitle: e.target.value })} placeholder="Subjudul (jika ada)" />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-green-dark/80 mb-1">Nama Pena</label>
+              <input type="text" className={inputClass} value={form.penName} onChange={(e) => setForm({ ...form, penName: e.target.value })} placeholder="Nama pena penulis" />
+            </div>
+            <div>
               <label className="block text-sm font-medium text-green-dark/80 mb-1">Editor</label>
               <input type="text" className={inputClass} value={form.editor} onChange={(e) => setForm({ ...form, editor: e.target.value })} placeholder="Nama editor" />
             </div>
@@ -184,6 +197,18 @@ export default function CreateBook() {
             <div>
               <label className="block text-sm font-medium text-green-dark/80 mb-1">Edisi</label>
               <input type="text" className={inputClass} value={form.edition} onChange={(e) => setForm({ ...form, edition: e.target.value })} placeholder="Contoh: Edisi Pertama" />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-green-dark/80 mb-1">Jenis Jilid</label>
+              <input type="text" className={inputClass} value={form.bindingType} onChange={(e) => setForm({ ...form, bindingType: e.target.value })} placeholder="Softcover/Hardcover" />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-green-dark/80 mb-1">Status Terbit</label>
+              <select className={inputClass} value={form.publicationStatus} onChange={(e) => setForm({ ...form, publicationStatus: e.target.value })}>
+                <option value="available">Tersedia</option>
+                <option value="coming_soon">Segera Terbit</option>
+                <option value="sold_out">Habis</option>
+              </select>
             </div>
             <div className="sm:col-span-2">
               <label className="block text-sm font-medium text-green-dark/80 mb-1">Kata Kunci</label>

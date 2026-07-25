@@ -147,7 +147,7 @@ export default function AdminTeam() {
                 <td className="px-4 py-3 text-center space-x-2">
                   <Link
                     href={`/admin/team/${member.id}`}
-                    className="text-green dark:text-gold hover:underline text-xs"
+                    className="text-green hover:underline text-xs"
                   >
                     Edit
                   </Link>

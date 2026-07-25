@@ -78,20 +78,20 @@ export default function MobileDrawer({ open, onClose }: Props) {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "spring", damping: 28, stiffness: 260 }}
-            className="fixed right-0 top-0 bottom-0 w-full max-w-sm bg-cream dark:bg-green-dark shadow-2xl flex flex-col"
+            className="fixed right-0 top-0 bottom-0 w-full max-w-sm bg-cream shadow-2xl flex flex-col"
             onClick={(e) => e.stopPropagation()}
             role="dialog"
             aria-modal="true"
             aria-label="Navigasi menu"
           >
             {/* Header */}
-            <div className="flex items-center justify-between px-5 h-16 border-b border-gold/20 dark:border-gold/10 shrink-0">
+            <div className="flex items-center justify-between px-5 h-16 border-b border-gold/20 shrink-0">
               <TextLogo variant="card" />
               <button
                 ref={closeRef}
                 onClick={onClose}
                 aria-label="Tutup menu"
-                className="min-w-[44px] min-h-[44px] flex items-center justify-center rounded-xl text-green/60 dark:text-cream/70 hover:bg-gold/10 dark:hover:bg-cream/10 hover:text-green-dark dark:hover:text-cream transition-colors"
+                className="min-w-[44px] min-h-[44px] flex items-center justify-center rounded-xl text-green/60 hover:bg-gold/10 hover:text-green-dark transition-colors"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -104,7 +104,7 @@ export default function MobileDrawer({ open, onClose }: Props) {
                   onClose()
                   router.push("/search")
                 }}
-                className="flex items-center gap-3 w-full h-11 px-4 rounded-xl bg-gold/5 dark:bg-cream/5 border border-gold/20 dark:border-cream/20 text-sm text-green/60 dark:text-cream/60 text-left transition-all hover:bg-gold/10 dark:hover:bg-cream/10"
+                className="flex items-center gap-3 w-full h-11 px-4 rounded-xl bg-gold/5 border border-gold/20 text-sm text-green/60 text-left transition-all hover:bg-gold/10"
               >
                 <Search className="w-4 h-4 shrink-0" />
                 <span>Cari buku, artikel...</span>
@@ -127,12 +127,12 @@ export default function MobileDrawer({ open, onClose }: Props) {
                           className={`flex items-center justify-between min-h-[48px] px-4 rounded-xl text-sm font-medium transition-all duration-200 ${
                             isItemActive
                               ? "bg-gold text-white font-semibold"
-                              : "text-green-dark dark:text-cream hover:bg-gold/10 dark:hover:bg-cream/10"
+                              : "text-green-dark hover:bg-gold/10"
                           }`}
                         >
                           <span>{group.label}</span>
                           {!isItemActive && (
-                            <ArrowRight className="w-4 h-4 text-green/40 dark:text-cream/40" />
+                            <ArrowRight className="w-4 h-4 text-green/40" />
                           )}
                         </Link>
                       </li>
@@ -153,7 +153,7 @@ export default function MobileDrawer({ open, onClose }: Props) {
             </nav>
 
             {/* Bottom CTA */}
-            <div className="shrink-0 px-4 pb-6 pt-4 border-t border-gold/20 dark:border-gold/10 space-y-3">
+            <div className="shrink-0 px-4 pb-6 pt-4 border-t border-gold/20 space-y-3">
               <Link
                 href="/penulis"
                 onClick={onClose}
@@ -165,7 +165,7 @@ export default function MobileDrawer({ open, onClose }: Props) {
               <Link
                 href="/kontak"
                 onClick={onClose}
-                className="flex items-center justify-center gap-2 w-full min-h-[48px] px-5 border border-gold/30 dark:border-gold/20 text-gold text-sm font-medium rounded-xl hover:bg-gold/10 dark:hover:bg-cream/10 transition-all duration-300"
+                className="flex items-center justify-center gap-2 w-full min-h-[48px] px-5 border border-gold/30 text-gold text-sm font-medium rounded-xl hover:bg-gold/10 transition-all duration-300"
               >
                 Hubungi Kami
                 <ArrowRight className="w-4 h-4" />
@@ -188,11 +188,11 @@ function MobileMegaItem({ label, items, onClose, isActive }: {
     <div>
       <div
         className={`flex items-center justify-between min-h-[48px] px-4 rounded-xl text-sm font-medium ${
-          isActive ? "bg-gold text-white" : "text-green-dark dark:text-cream"
+          isActive ? "bg-gold text-white" : "text-green-dark"
         }`}
       >
         <span>{label}</span>
-        <ChevronDown className="w-4 h-4 text-green/40 dark:text-cream/40" />
+        <ChevronDown className="w-4 h-4 text-green/40" />
       </div>
       <div className="ml-4 mt-1 mb-3 space-y-1">
         {items.map((item) => (
@@ -200,14 +200,14 @@ function MobileMegaItem({ label, items, onClose, isActive }: {
             key={item.href}
             href={item.href}
             onClick={onClose}
-            className="flex items-center gap-3 min-h-[44px] px-4 rounded-xl text-sm text-green/70 dark:text-cream/70 hover:bg-gold/10 dark:hover:bg-cream/10 hover:text-green-dark dark:hover:text-cream transition-all duration-200"
+            className="flex items-center gap-3 min-h-[44px] px-4 rounded-xl text-sm text-green/70 hover:bg-gold/10 hover:text-green-dark transition-all duration-200"
           >
-            <div className="w-6 h-6 rounded-lg bg-gold/10 dark:bg-cream/10 flex items-center justify-center shrink-0">
+            <div className="w-6 h-6 rounded-lg bg-gold/10 flex items-center justify-center shrink-0">
               <div className="w-2.5 h-2.5 rounded-full bg-gold" />
             </div>
             <div className="flex-1 min-w-0">
               <span className="font-medium">{item.label}</span>
-              <p className="text-[11px] text-green/50 dark:text-cream/50 line-clamp-1">{item.description}</p>
+              <p className="text-[11px] text-green/50 line-clamp-1">{item.description}</p>
             </div>
           </Link>
         ))}

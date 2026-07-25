@@ -52,7 +52,7 @@ export default function ContactForm() {
         >
           <div className="text-center mb-12">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/10 border border-gold/20 mb-6">
-              <span className="text-gold-dark dark:text-gold text-[11px] font-medium uppercase tracking-[0.1em]">
+              <span className="text-gold-dark text-[11px] font-medium uppercase tracking-[0.1em]">
                 Kirim Pesan
               </span>
             </div>
@@ -62,7 +62,7 @@ export default function ContactForm() {
                 Memulai?
               </span>
             </h2>
-            <p className="mt-3 text-green/80 dark:text-cream/70">
+            <p className="mt-3 text-green/80">
               Isi form di bawah dan tim kami akan menghubungi Anda dalam 1x24 jam.
             </p>
           </div>
@@ -161,12 +161,12 @@ export default function ContactForm() {
                 <Send className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
               </button>
               {success && (
-                <p className="mt-4 text-sm text-green-600 dark:text-green-400">
+                <p className="mt-4 text-sm text-green-600">
                   Pesan berhasil dikirim! Kami akan menghubungi Anda dalam 1x24 jam.
                 </p>
               )}
               {error && (
-                <p className="mt-4 text-sm text-red-600 dark:text-red-400">{error}</p>
+                <p className="mt-4 text-sm text-red-600">{error}</p>
               )}
             </motion.div>
           </form>

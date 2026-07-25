@@ -67,7 +67,7 @@ export function FileUpload({ accept, maxSizeMB = 5, label, hint, value, onChange
             </div>
             <div className="flex-1 min-w-0">
               <p className="text-sm font-medium text-green-dark truncate">{value?.name}</p>
-              <p className="text-xs text-green/60">{value ? `${(value.size / 1024 / 1024).toFixed(1)} MB` : sizeLabel}</p>
+              <p className="text-xs text-green/70">{value ? `${(value.size / 1024 / 1024).toFixed(1)} MB` : sizeLabel}</p>
             </div>
             <button
               onClick={(e) => { e.stopPropagation(); onChange(null) }}
@@ -83,7 +83,7 @@ export function FileUpload({ accept, maxSizeMB = 5, label, hint, value, onChange
             </div>
             <div className="flex-1 min-w-0">
               <p className="text-sm font-medium text-green-dark truncate">{value.name}</p>
-              <p className="text-xs text-green/60">{(value.size / 1024 / 1024).toFixed(1)} MB</p>
+              <p className="text-xs text-green/70">{(value.size / 1024 / 1024).toFixed(1)} MB</p>
             </div>
             <Check className="w-5 h-5 text-green shrink-0" />
             <button
@@ -103,7 +103,7 @@ export function FileUpload({ accept, maxSizeMB = 5, label, hint, value, onChange
             </motion.div>
             <div className="text-center">
               <p className="text-sm text-green-dark font-medium">Klik atau seret file ke sini</p>
-              <p className="text-xs text-green/60 mt-0.5">{accept.split(",").join(", ")} — {sizeLabel}</p>
+              <p className="text-xs text-green/70 mt-0.5">{accept.split(",").join(", ")} — {sizeLabel}</p>
               {hint && <p className="text-xs text-green/50 mt-0.5">{hint}</p>}
             </div>
           </div>

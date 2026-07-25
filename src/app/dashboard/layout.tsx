@@ -16,7 +16,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   const closeMobile = useCallback(() => setMobileOpen(false), [])
 
   return (
-    <div className="flex h-screen bg-cream dark:bg-green-dark overflow-hidden">
+    <div className="flex h-screen bg-cream overflow-hidden">
       <Sidebar collapsed={collapsed} onToggle={toggleCollapsed} mobileOpen={mobileOpen} onMobileClose={closeMobile} />
       <div className="flex-1 flex flex-col min-w-0">
         <Header onMenuClick={openMobile} notificationCount={unreadCount} />

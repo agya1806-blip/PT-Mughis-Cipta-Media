@@ -19,9 +19,9 @@ const variantStyles: Record<Variant, string> = {
   secondary:
     "bg-green-dark hover:bg-green/90 text-cream shadow-md hover:shadow-lg hover:shadow-green/25",
   outline:
-    "border border-gold/30 dark:border-gold/20 text-green-dark dark:text-cream hover:bg-cream dark:hover:bg-green-dark/50 hover:border-gold",
+    "border border-gold/30 text-green-dark hover:bg-cream hover:border-gold",
   ghost:
-    "text-green/80 hover:text-green-dark hover:bg-cream dark:hover:bg-green-dark/50",
+    "text-green/80 hover:text-green-dark hover:bg-cream",
   accent:
     "bg-cream hover:bg-cream/90 text-green shadow-md hover:shadow-lg hover:shadow-gold/25",
 }

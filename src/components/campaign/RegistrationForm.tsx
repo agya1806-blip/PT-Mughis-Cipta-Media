@@ -113,7 +113,7 @@ export function RegistrationForm() {
               </span>
             </div>
             {status !== "after" && <Countdown />}
-            <p className="mt-3 text-sm text-green/60 leading-relaxed">
+            <p className="mt-3 text-sm text-green/70 leading-relaxed">
               {getMicrocopy(status, isOpen).microcopy}
             </p>
           </div>

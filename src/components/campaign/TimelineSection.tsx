@@ -47,7 +47,7 @@ export function TimelineSection() {
                   </div>
                   <div className="lg:mt-4 lg:text-center flex-1">
                     <h3 className="text-lg font-bold text-green-dark">{event.title}</h3>
-                    <p className="text-sm text-green/70 mt-1.5 leading-relaxed">{event.description}</p>
+                    <p className="text-sm text-green-dark/80 mt-1.5 leading-relaxed">{event.description}</p>
                   </div>
                 </div>
               </motion.div>

@@ -44,7 +44,7 @@ export function FlowSection() {
                 </div>
                 <div className="pt-2 sm:pt-3">
                   <h3 className="text-lg font-bold text-green-dark">{step.title}</h3>
-                  <p className="text-sm text-green/70 mt-1">{step.description}</p>
+                  <p className="text-sm text-green-dark/80 mt-1">{step.description}</p>
                 </div>
               </motion.div>
             ))}

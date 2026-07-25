@@ -20,7 +20,7 @@ export function WhyTransformSection() {
             Standar Baru,{" "}
             <span className="bg-gradient-to-r from-gold to-gold-dark bg-clip-text text-transparent">Kualitas Lebih Baik</span>
           </h2>
-          <p className="mt-4 text-cream/60 max-w-xl mx-auto">
+          <p className="mt-4 text-green/70 max-w-xl mx-auto">
             Transformasi ini bukan sekadar perubahan nama, tetapi peningkatan standar di seluruh aspek pelayanan.
           </p>
         </motion.div>
@@ -38,7 +38,7 @@ export function WhyTransformSection() {
                   {Icon && <Icon className="w-6 h-6 text-gold" />}
                 </div>
                 <h3 className="text-lg font-bold text-white mb-2">{card.title}</h3>
-                <p className="text-sm text-cream/60 leading-relaxed">{card.description}</p>
+                <p className="text-sm text-green/70 leading-relaxed">{card.description}</p>
               </motion.div>
             )
           })}

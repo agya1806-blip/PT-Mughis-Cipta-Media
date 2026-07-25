@@ -38,7 +38,7 @@ export default function Pagination({
     }
   }
 
-  const btnClass = `px-4 py-2 rounded-lg bg-cream dark:bg-green-dark/80 border border-gold/20 dark:border-gold/10 text-green/60 dark:text-cream/70 hover:text-green-dark dark:hover:text-cream hover:bg-cream dark:hover:bg-green-dark transition-colors text-sm`
+  const btnClass = `px-4 py-2 rounded-lg bg-cream border border-gold/20 text-green/60 hover:text-green-dark hover:bg-cream transition-colors text-sm`
 
   function renderPageBtn(p: number) {
     return onPageChange ? (
@@ -48,7 +48,7 @@ export default function Pagination({
         className={`w-9 h-9 rounded-lg flex items-center justify-center text-sm font-medium transition-colors ${
           p === currentPage
             ? "bg-gold text-white"
-            : "bg-cream dark:bg-green-dark/80 border border-gold/20 dark:border-gold/10 text-green/60 dark:text-cream/70 hover:text-green-dark dark:hover:text-cream hover:bg-cream dark:hover:bg-green-dark"
+            : "bg-cream border border-gold/20 text-green/60 hover:text-green-dark hover:bg-cream"
         }`}
       >
         {p}
@@ -60,7 +60,7 @@ export default function Pagination({
         className={`w-9 h-9 rounded-lg flex items-center justify-center text-sm font-medium transition-colors ${
           p === currentPage
             ? "bg-gold text-white"
-            : "bg-cream dark:bg-green-dark/80 border border-gold/20 dark:border-gold/10 text-green/60 dark:text-cream/70 hover:text-green-dark dark:hover:text-cream hover:bg-cream dark:hover:bg-green-dark"
+            : "bg-cream border border-gold/20 text-green/60 hover:text-green-dark hover:bg-cream"
         }`}
       >
         {p}
@@ -81,7 +81,7 @@ export default function Pagination({
       ) : null}
       {pages.map((p, i) =>
         p === "..." ? (
-          <span key={`ellipsis-${i}`} className="px-2 text-green/60 dark:text-cream/70 text-sm">
+          <span key={`ellipsis-${i}`} className="px-2 text-green/60 text-sm">
             ...
           </span>
         ) : (

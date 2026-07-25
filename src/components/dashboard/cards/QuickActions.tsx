@@ -16,8 +16,8 @@ export default function QuickActions() {
   const prefersReducedMotion = useReducedMotion()
 
   return (
-    <div className="bg-cream dark:bg-green-dark/80 rounded-2xl border border-gold/20 dark:border-gold/10 p-6">
-      <h3 className="text-sm font-semibold text-green-dark dark:text-cream mb-4">Aksi Cepat</h3>
+    <div className="bg-cream rounded-2xl border border-gold/20 p-6">
+      <h3 className="text-sm font-semibold text-green-dark mb-4">Aksi Cepat</h3>
       <div className="grid grid-cols-2 gap-3">
         {actions.map((action, i) => (
           <motion.div
@@ -29,14 +29,14 @@ export default function QuickActions() {
           >
             <Link
               href={action.href}
-              className="flex flex-col items-center gap-2 p-4 rounded-xl border border-gold/20 dark:border-gold/10 hover:border-gold/30 hover:bg-gold/5 transition-all duration-200 group text-center"
+              className="flex flex-col items-center gap-2 p-4 rounded-xl border border-gold/20 hover:border-gold/30 hover:bg-gold/5 transition-all duration-200 group text-center"
             >
               <div className="w-9 h-9 rounded-lg bg-gold/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
                 <action.icon className="w-4 h-4 text-gold" />
               </div>
               <div>
-                <p className="text-xs font-semibold text-green-dark dark:text-cream">{action.label}</p>
-                <p className="text-[10px] text-green/60 dark:text-gold/70 mt-0.5">{action.desc}</p>
+                <p className="text-xs font-semibold text-green-dark">{action.label}</p>
+                <p className="text-[10px] text-green/60 mt-0.5">{action.desc}</p>
               </div>
             </Link>
           </motion.div>

@@ -85,7 +85,7 @@ export default function LegalitasPage() {
   }, [])
 
   return (
-    <div className="min-h-screen bg-cream dark:bg-green-dark">
+    <div className="min-h-screen bg-cream">
       <section className="relative overflow-hidden bg-gradient-to-br from-green via-green-dark to-green pt-20 sm:pt-24 lg:pt-32 pb-16 sm:pb-20">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(211,194,151,0.08),transparent_50%)]" />
         <div className="container relative">
@@ -97,7 +97,7 @@ export default function LegalitasPage() {
           </motion.div>
         </div>
       </section>
-      <section className="py-24 lg:py-32 bg-cream dark:bg-zinc-950">
+      <section className="py-24 lg:py-32 bg-cream">
         <div className="container">
           <div className="grid lg:grid-cols-2 gap-10 lg:gap-16">
             <div className="space-y-10">
@@ -106,20 +106,20 @@ export default function LegalitasPage() {
                 {docs.map((doc) => {
                   const Icon = doc.icon
                   return (
-                    <motion.div key={doc.id} variants={MOTION.fadeUp} className="group relative bg-cream dark:bg-green-dark/80 rounded-2xl p-6 border border-gold/20 dark:border-gold/10 hover:border-gold/30 hover:shadow-md transition-all duration-300">
+                    <motion.div key={doc.id} variants={MOTION.fadeUp} className="group relative bg-cream rounded-2xl p-6 border border-gold/20 hover:border-gold/30 hover:shadow-md transition-all duration-300">
                       <div className="flex items-start gap-4">
                         <div className="shrink-0 w-12 h-12 rounded-xl bg-gold/10 flex items-center justify-center group-hover:bg-gold group-hover:scale-110 transition-all duration-300">
                           <Icon className="w-6 h-6 text-gold group-hover:text-white transition-colors duration-300" />
                         </div>
                         <div className="flex-1 min-w-0">
                           <div className="flex flex-wrap items-center gap-2 mb-2">
-                            <h3 className="text-base font-bold text-green-dark dark:text-cream">{doc.title}</h3>
+                            <h3 className="text-base font-bold text-green-dark">{doc.title}</h3>
                             <LegalBadge icon={CheckCircle} title={doc.status === "verified" ? "Terverifikasi" : "Aktif"} status={doc.status} />
                           </div>
-                          <p className="text-sm text-green/60 dark:text-cream/70 mb-3">{doc.description}</p>
-                          <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-green/60 dark:text-cream/70">
+                          <p className="text-sm text-green/60 mb-3">{doc.description}</p>
+                          <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-green/60">
                             <span className="font-mono">{doc.number}</span>
-                            {doc.date && <><span className="w-1 h-1 rounded-full bg-gold/30 dark:bg-gold/20" /><span>{doc.date}</span></>}
+                            {doc.date && <><span className="w-1 h-1 rounded-full bg-gold/30" /><span>{doc.date}</span></>}
                           </div>
                         </div>
                       </div>
@@ -135,13 +135,13 @@ export default function LegalitasPage() {
                   <div className="flex items-center gap-4">
                     <div className="w-14 h-14 rounded-2xl bg-gold/10 flex items-center justify-center"><FileText className="w-7 h-7 text-gold" /></div>
                     <div>
-                      <p className="text-xs font-medium text-green/60 dark:text-cream/70 uppercase tracking-wider">NIB</p>
-                      <p className="text-xl font-bold text-green-dark dark:text-cream font-mono tracking-wider">{settings.legal_nib || "1807260050954"}</p>
+                      <p className="text-xs font-medium text-green/60 uppercase tracking-wider">NIB</p>
+                      <p className="text-xl font-bold text-green-dark font-mono tracking-wider">{settings.legal_nib || "1807260050954"}</p>
                     </div>
                   </div>
-                  <div className="h-px bg-gold/20 dark:bg-gold/10" />
+                  <div className="h-px bg-gold/20" />
                   <div className="space-y-4">
-                    <h3 className="font-bold text-green-dark dark:text-cream">Informasi NIB</h3>
+                    <h3 className="font-bold text-green-dark">Informasi NIB</h3>
                     <div className="grid grid-cols-2 gap-4 text-sm">
                       {[
                         { label: "Pelaku Usaha", value: "Muhammad Aghisna" },
@@ -152,19 +152,19 @@ export default function LegalitasPage() {
                         { label: "Berlaku", value: "Seumur Hidup" },
                       ].map(({ label, value }) => (
                         <div key={label}>
-                          <p className="text-green/60 dark:text-cream/70">{label}</p>
-                          <p className="font-medium text-green-dark dark:text-cream">{value}</p>
+                          <p className="text-green/60">{label}</p>
+                          <p className="font-medium text-green-dark">{value}</p>
                         </div>
                       ))}
                     </div>
                   </div>
-                  <div className="h-px bg-gold/20 dark:bg-gold/10" />
+                  <div className="h-px bg-gold/20" />
                   <div className="flex items-center gap-2 text-sm text-gold"><Shield className="w-4 h-4" /><span className="font-medium">Telah terverifikasi oleh OSS-RBA</span></div>
                 </GlassPanel>
               </motion.div>
               <motion.div variants={MOTION.fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
                 <GlassPanel intensity="light" className="p-8 space-y-5">
-                  <div className="flex items-center gap-3"><Award className="w-6 h-6 text-gold" /><h3 className="font-bold text-green-dark dark:text-cream">Sertifikasi & Keanggotaan</h3></div>
+                  <div className="flex items-center gap-3"><Award className="w-6 h-6 text-gold" /><h3 className="font-bold text-green-dark">Sertifikasi & Keanggotaan</h3></div>
                   <div className="space-y-4">
                     {[
                       { icon: Building2, label: "Anggota IKAPI", desc: "Terdaftar sebagai anggota Ikatan Penerbit Indonesia" },
@@ -174,8 +174,8 @@ export default function LegalitasPage() {
                       <div key={label} className="flex items-start gap-3">
                         <Icon className="w-5 h-5 text-gold mt-0.5 shrink-0" />
                         <div>
-                          <p className="text-sm font-semibold text-green-dark dark:text-cream">{label}</p>
-                          <p className="text-xs text-green/60 dark:text-cream/70">{desc}</p>
+                          <p className="text-sm font-semibold text-green-dark">{label}</p>
+                          <p className="text-xs text-green/60">{desc}</p>
                         </div>
                       </div>
                     ))}

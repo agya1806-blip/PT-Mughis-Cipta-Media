@@ -69,28 +69,28 @@ export default function SearchModal({ open, onClose }: Props) {
             aria-modal="true"
             aria-label="Cari"
           >
-            <div className="bg-cream dark:bg-green-dark rounded-2xl border border-gold/20 dark:border-gold/10 shadow-2xl overflow-hidden">
+            <div className="bg-cream rounded-2xl border border-gold/20 shadow-2xl overflow-hidden">
               <form onSubmit={handleSubmit} className="relative">
-                <Search className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-green/40 dark:text-cream/40" />
+                <Search className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-green/40" />
                 <input
                   ref={inputRef}
                   type="text"
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
                   placeholder="Cari buku, artikel, layanan..."
-                  className="w-full h-16 pl-14 pr-14 bg-transparent text-base text-green-dark dark:text-cream placeholder-green/50 dark:placeholder-cream/50 focus:outline-none"
+                  className="w-full h-16 pl-14 pr-14 bg-transparent text-base text-green-dark placeholder-green/50 focus:outline-none"
                 />
                 <button
                   type="button"
                   onClick={onClose}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 w-8 h-8 rounded-lg flex items-center justify-center text-green/50 dark:text-cream/50 hover:bg-gold/10 dark:hover:bg-cream/10 hover:text-green-dark dark:hover:text-cream transition-colors"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 w-8 h-8 rounded-lg flex items-center justify-center text-green/50 hover:bg-gold/10 hover:text-green-dark transition-colors"
                   aria-label="Tutup pencarian"
                 >
                   <X className="w-4 h-4" />
                 </button>
               </form>
-              <div className="border-t border-gold/20 dark:border-gold/10 px-5 py-4">
-                <p className="text-[11px] font-semibold tracking-[0.1em] uppercase text-green/50 dark:text-cream/50 mb-3">
+              <div className="border-t border-gold/20 px-5 py-4">
+                <p className="text-[11px] font-semibold tracking-[0.1em] uppercase text-green/50 mb-3">
                   Jelajahi
                 </p>
                 <div className="grid grid-cols-2 gap-2">
@@ -103,21 +103,21 @@ export default function SearchModal({ open, onClose }: Props) {
                           router.push(cat.href)
                           onClose()
                         }}
-                        className="flex items-center gap-3 px-3.5 py-3 rounded-xl bg-gold/5 dark:bg-cream/5 hover:bg-gold/10 dark:hover:bg-cream/10 text-left transition-colors duration-200 group"
+                        className="flex items-center gap-3 px-3.5 py-3 rounded-xl bg-gold/5 hover:bg-gold/10 text-left transition-colors duration-200 group"
                       >
                         <Icon className="w-4 h-4 text-gold shrink-0" />
-                        <span className="text-sm font-medium text-green-dark dark:text-cream group-hover:text-green dark:group-hover:text-gold transition-colors">
+                        <span className="text-sm font-medium text-green-dark group-hover:text-green transition-colors">
                           {cat.label}
                         </span>
-                        <ArrowRight className="w-3 h-3 text-green/30 dark:text-cream/30 ml-auto group-hover:text-gold group-hover:translate-x-0.5 transition-all" />
+                        <ArrowRight className="w-3 h-3 text-green/30 ml-auto group-hover:text-gold group-hover:translate-x-0.5 transition-all" />
                       </button>
                     )
                   })}
                 </div>
               </div>
-              <div className="px-5 py-3 bg-gold/5 dark:bg-cream/5 border-t border-gold/20 dark:border-gold/10">
-                <p className="text-[11px] text-green/50 dark:text-cream/50 text-center">
-                  Tekan <kbd className="px-1.5 py-0.5 rounded bg-gold/10 dark:bg-cream/10 text-green-dark dark:text-cream text-[10px] font-mono">ESC</kbd> untuk menutup
+              <div className="px-5 py-3 bg-gold/5 border-t border-gold/20">
+                <p className="text-[11px] text-green/50 text-center">
+                  Tekan <kbd className="px-1.5 py-0.5 rounded bg-gold/10 text-green-dark text-[10px] font-mono">ESC</kbd> untuk menutup
                 </p>
               </div>
             </div>

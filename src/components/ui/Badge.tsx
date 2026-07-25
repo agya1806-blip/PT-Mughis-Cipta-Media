@@ -9,10 +9,10 @@ interface Props {
 }
 
 const variants: Record<Variant, string> = {
-  gold: "bg-gold/10 border-gold/20 text-gold-dark dark:text-gold",
+  gold: "bg-gold/10 border-gold/20 text-gold-dark",
   primary: "bg-green border-green text-cream",
-  secondary: "bg-cream dark:bg-green-dark border-gold/20 dark:border-gold/10 text-green-dark dark:text-cream",
-  outline: "bg-transparent border-gold/30 text-green-dark dark:text-cream",
+  secondary: "bg-cream border-gold/20 text-green-dark",
+  outline: "bg-transparent border-gold/30 text-green-dark",
 }
 
 export default function Badge({ children, className = "", variant = "gold" }: Props) {

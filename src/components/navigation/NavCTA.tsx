@@ -13,7 +13,7 @@ export default function NavCTA() {
       </Link>
       <Link
         href="/kontak"
-        className="group inline-flex items-center gap-2 px-5 py-2.5 border border-gold/30 dark:border-gold/20 text-gold text-sm font-medium rounded-full transition-all duration-300 hover:bg-gold/10 dark:hover:bg-cream/10 hover:border-gold hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
+        className="group inline-flex items-center gap-2 px-5 py-2.5 border border-gold/30 text-gold text-sm font-medium rounded-full transition-all duration-300 hover:bg-gold/10 hover:border-gold hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
       >
         <MessageCircle className="w-3.5 h-3.5" />
         Hubungi Kami

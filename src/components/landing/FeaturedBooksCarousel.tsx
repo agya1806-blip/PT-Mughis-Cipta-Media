@@ -63,7 +63,7 @@ export function FeaturedBooksCarousel({ books }: Props) {
             >
               <div className="relative w-48 h-64 sm:w-56 sm:h-72">
                 <div className="absolute inset-0 bg-gradient-to-br from-gold/20 to-transparent rounded-2xl blur-3xl" />
-                <div className="relative w-full h-full rounded-2xl bg-gradient-to-br from-zinc-200 to-zinc-300 dark:from-zinc-700 dark:to-zinc-800 shadow-2xl flex items-center justify-center border border-white/5">
+                <div className="relative w-full h-full rounded-2xl bg-gradient-to-br from-zinc-200 to-zinc-300 shadow-2xl flex items-center justify-center border border-white/5">
                   <div className="text-center p-4">
                     <div className="w-12 h-12 mx-auto rounded-xl bg-gold/20 flex items-center justify-center mb-3">
                       <BookOpen className="w-6 h-6 text-gold" />
@@ -93,7 +93,7 @@ export function FeaturedBooksCarousel({ books }: Props) {
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.3 }}
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold/10 text-gold-dark dark:text-gold text-xs font-medium mb-4">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold/10 text-gold-dark text-xs font-medium mb-4">
               {book.category_name}
             </div>
             <h3 className="text-2xl sm:text-3xl font-bold text-green-dark mb-3">{book.title}</h3>

@@ -30,7 +30,7 @@ export default function ManuscriptDetailPage({ params }: Props) {
 
   return (
     <div>
-      <Link href="/dashboard/manuscripts" className="inline-flex items-center gap-1.5 text-sm text-green/70 dark:text-gold/80 hover:text-green-dark dark:hover:text-cream transition-colors mb-6">
+      <Link href="/dashboard/manuscripts" className="inline-flex items-center gap-1.5 text-sm text-green/70 hover:text-green-dark transition-colors mb-6">
         <ArrowLeft className="w-4 h-4" />
         Kembali ke naskah
       </Link>
@@ -43,8 +43,8 @@ export default function ManuscriptDetailPage({ params }: Props) {
               {statusLabels[manuscript.status]}
             </span>
           </div>
-          <h1 className="text-2xl font-bold text-green-dark dark:text-cream">{manuscript.title}</h1>
-          <div className="flex items-center gap-4 mt-2 text-sm text-green/70 dark:text-gold/80">
+          <h1 className="text-2xl font-bold text-green-dark">{manuscript.title}</h1>
+          <div className="flex items-center gap-4 mt-2 text-sm text-green/70">
             <span className="flex items-center gap-1.5"><User className="w-4 h-4" />{manuscript.author}</span>
             <span className="flex items-center gap-1.5"><CalendarDays className="w-4 h-4" />{manuscript.createdAt}</span>
           </div>
@@ -53,24 +53,24 @@ export default function ManuscriptDetailPage({ params }: Props) {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-2 space-y-6">
-          <div className="bg-cream dark:bg-green-dark/80 rounded-2xl border border-gold/20 dark:border-gold/10 p-6">
-            <h3 className="text-sm font-semibold text-green-dark dark:text-cream mb-3">Sinopsis</h3>
-            <p className="text-sm text-green/70 dark:text-gold/80 leading-relaxed">{manuscript.synopsis}</p>
+          <div className="bg-cream rounded-2xl border border-gold/20 p-6">
+            <h3 className="text-sm font-semibold text-green-dark mb-3">Sinopsis</h3>
+            <p className="text-sm text-green/70 leading-relaxed">{manuscript.synopsis}</p>
           </div>
           <EditorNotes />
-          <div className="bg-cream dark:bg-green-dark/80 rounded-2xl border border-gold/20 dark:border-gold/10 p-6">
-            <h3 className="text-sm font-semibold text-green-dark dark:text-cream mb-4 flex items-center gap-2">
+          <div className="bg-cream rounded-2xl border border-gold/20 p-6">
+            <h3 className="text-sm font-semibold text-green-dark mb-4 flex items-center gap-2">
               <BookOpen className="w-4 h-4 text-gold" />
               Riwayat Aktivitas
             </h3>
             <div className="space-y-0">
               {mockActivityHistory.map((item, i) => (
                 <div key={i} className="relative flex gap-4 pb-4 last:pb-0">
-                  {i < mockActivityHistory.length - 1 && <div className="absolute left-[7px] top-4 bottom-0 w-px bg-zinc-200 dark:bg-zinc-700" />}
-                  <div className="w-[14px] h-[14px] rounded-full border-2 border-gold/40 bg-white dark:bg-zinc-900 mt-0.5 shrink-0" />
+                  {i < mockActivityHistory.length - 1 && <div className="absolute left-[7px] top-4 bottom-0 w-px bg-zinc-200" />}
+                  <div className="w-[14px] h-[14px] rounded-full border-2 border-gold/40 bg-white mt-0.5 shrink-0" />
                   <div className="flex-1 min-w-0">
-                    <p className="text-sm text-green-dark dark:text-cream">{item.action}</p>
-                    <p className="text-xs text-green/60 dark:text-gold/70 mt-0.5">{item.date}</p>
+                    <p className="text-sm text-green-dark">{item.action}</p>
+                    <p className="text-xs text-green/60 mt-0.5">{item.date}</p>
                   </div>
                 </div>
               ))}
@@ -80,15 +80,15 @@ export default function ManuscriptDetailPage({ params }: Props) {
 
         <div className="space-y-6">
           <ManuscriptTimeline currentStatus={manuscript.status} />
-          <div className="bg-cream dark:bg-green-dark/80 rounded-2xl border border-gold/20 dark:border-gold/10 p-6">
-            <h3 className="text-sm font-semibold text-green-dark dark:text-cream mb-3">Informasi Naskah</h3>
+          <div className="bg-cream rounded-2xl border border-gold/20 p-6">
+            <h3 className="text-sm font-semibold text-green-dark mb-3">Informasi Naskah</h3>
             <Divider className="mb-3" />
             <div className="space-y-2.5 text-sm">
-              <div className="flex justify-between"><span className="text-green/70 dark:text-gold/80">Judul</span><span className="text-green-dark dark:text-cream font-medium text-right max-w-[60%]">{manuscript.title}</span></div>
-              <div className="flex justify-between"><span className="text-green/70 dark:text-gold/80">Kategori</span><span className="text-green-dark dark:text-cream">{manuscript.category}</span></div>
-              <div className="flex justify-between"><span className="text-green/70 dark:text-gold/80">Penulis</span><span className="text-green-dark dark:text-cream">{manuscript.author}</span></div>
-              <div className="flex justify-between"><span className="text-green/70 dark:text-gold/80">Dibuat</span><span className="text-green-dark dark:text-cream">{manuscript.createdAt}</span></div>
-              <div className="flex justify-between"><span className="text-green/70 dark:text-gold/80">Diperbarui</span><span className="text-green-dark dark:text-cream">{manuscript.updatedAt}</span></div>
+              <div className="flex justify-between"><span className="text-green/70">Judul</span><span className="text-green-dark font-medium text-right max-w-[60%]">{manuscript.title}</span></div>
+              <div className="flex justify-between"><span className="text-green/70">Kategori</span><span className="text-green-dark">{manuscript.category}</span></div>
+              <div className="flex justify-between"><span className="text-green/70">Penulis</span><span className="text-green-dark">{manuscript.author}</span></div>
+              <div className="flex justify-between"><span className="text-green/70">Dibuat</span><span className="text-green-dark">{manuscript.createdAt}</span></div>
+              <div className="flex justify-between"><span className="text-green/70">Diperbarui</span><span className="text-green-dark">{manuscript.updatedAt}</span></div>
             </div>
           </div>
         </div>

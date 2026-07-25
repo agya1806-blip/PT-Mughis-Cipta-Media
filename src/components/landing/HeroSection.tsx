@@ -19,7 +19,7 @@ function FloatingBook() {
         className="relative w-full h-full [perspective:1000px]"
       >
         <div className="absolute inset-0 bg-gradient-to-br from-gold/20 via-gold/5 to-transparent rounded-2xl blur-3xl" />
-        <div className="relative w-full h-full rounded-2xl bg-gradient-to-br from-green-dark via-green to-green-light dark:from-green-dark dark:via-green dark:to-green-light shadow-2xl overflow-hidden border border-gold/20">
+        <div className="relative w-full h-full rounded-2xl bg-gradient-to-br from-green-dark via-green to-green-light shadow-2xl overflow-hidden border border-gold/20">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_50%,rgba(211,194,151,0.15),transparent_50%)]" />
           <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-gold via-gold-light to-gold" />
           <div className="p-6 sm:p-8 flex flex-col h-full">

@@ -1,11 +1,11 @@
 /** Design system constants — single source of truth for all sections */
 
 export const COLORS = {
-  background: { light: "#FDF8F0", dark: "#1E5E4A" },
-  surface: { light: "#FFFFFF", dark: "#234E43" },
-  primary: { light: "#1E5E4A", dark: "#D3C297" },
-  secondary: { light: "#5F7068", dark: "#E8DDA8" },
-  border: { light: "#E6DCC8", dark: "#2F6D5B" },
+  background: "#FDF8F0",
+  surface: "#FFFFFF",
+  primary: "#1E5E4A",
+  secondary: "#5F7068",
+  border: "#E6DCC8",
   gold: "#D3C297",
   goldLight: "#E8DDA8",
   goldDark: "#B19B67",
@@ -100,7 +100,7 @@ export const MOTION = {
 
 /** Section badge pattern */
 export const SECTION_BADGE = "inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/10 border border-gold/20 mb-6"
-export const SECTION_BADGE_TEXT = "text-gold-dark dark:text-gold text-[11px] font-medium uppercase tracking-[0.1em]"
+export const SECTION_BADGE_TEXT = "text-gold-dark text-[11px] font-medium uppercase tracking-[0.1em]"
 
 /** Gradient heading pattern */
 export function goldGradient(text: string) {

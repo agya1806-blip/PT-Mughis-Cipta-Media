@@ -8,7 +8,7 @@ interface Props {
 
 const statusStyles = {
   verified:
-    "bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 border-green-200 dark:border-green-700/30",
+    "bg-green-50 text-green-700 border-green-200",
   active:
     "bg-gold/10 text-gold border-gold/20",
 }

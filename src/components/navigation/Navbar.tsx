@@ -1,8 +1,7 @@
 "use client"
 
 import { useState, useEffect, useCallback, useRef } from "react"
-import { Menu, Moon, Sun, Search } from "lucide-react"
-import { useTheme } from "@/components/ThemeProvider"
+import { Menu, Search } from "lucide-react"
 import NavLogo from "./NavLogo"
 import NavItem from "./NavItem"
 import NavCTA from "./NavCTA"
@@ -11,14 +10,13 @@ import MobileDrawer from "./MobileDrawer"
 import { mainNav } from "@/config/navigation"
 
 const btnClass = "min-w-[44px] min-h-[44px] flex items-center justify-center rounded-xl transition-all duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
-const btnScrolled = "text-green/60 dark:text-gold/70 hover:bg-gold/10 dark:hover:bg-cream/10 hover:text-green dark:hover:text-cream"
+const btnScrolled = "text-green/60 hover:bg-gold/10 hover:text-green"
 const btnTransparent = "text-white/70 hover:bg-white/10 hover:text-white"
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)
-  const { theme, toggle } = useTheme()
   const headerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -43,7 +41,7 @@ export default function Navbar() {
         ref={headerRef}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled
-            ? "bg-cream/90 dark:bg-green-dark/90 backdrop-blur-2xl border-b border-gold/20 dark:border-gold/10 shadow-lg shadow-green/5 dark:shadow-black/20"
+            ? "bg-cream/90 backdrop-blur-2xl border-b border-gold/20 shadow-lg shadow-green/5"
             : "bg-transparent"
         }`}
       >
@@ -80,13 +78,6 @@ export default function Navbar() {
               >
                 <Search className="w-4 h-4" />
               </button>
-              <button
-                onClick={toggle}
-                className={`${btnClass} ${scrolled ? btnScrolled : btnTransparent}`}
-                aria-label="Ganti tema"
-              >
-                {theme === "light" ? <Moon className="w-4 h-4" /> : <Sun className="w-4 h-4" />}
-              </button>
               <NavCTA />
             </div>
 
@@ -99,15 +90,8 @@ export default function Navbar() {
                 <Search className="w-5 h-5" />
               </button>
               <button
-                onClick={toggle}
-                className={`${btnClass} ${scrolled ? btnScrolled : btnTransparent}`}
-                aria-label="Ganti tema"
-              >
-                {theme === "light" ? <Moon className="w-5 h-5" /> : <Sun className="w-5 h-5" />}
-              </button>
-              <button
                 onClick={() => setMobileOpen(true)}
-                className={`${btnClass} ${scrolled ? "text-green dark:text-gold hover:bg-gold/10 dark:hover:bg-cream/10" : "text-white/80 hover:bg-white/10"}`}
+                className={`${btnClass} ${scrolled ? "text-green hover:bg-gold/10" : "text-white/80 hover:bg-white/10"}`}
                 aria-label="Buka menu"
               >
                 <Menu className="w-5 h-5" />

@@ -17,15 +17,15 @@ export function ProgressBar({ total, current }: ProgressBarProps) {
         <div className="flex items-center gap-6">
           <div className="text-center">
             <p className="text-3xl font-bold text-green-dark">{total}</p>
-            <p className="text-xs text-green/60 mt-0.5">Total Kuota</p>
+            <p className="text-xs text-green/70 mt-0.5">Total Kuota</p>
           </div>
           <div className="text-center">
             <p className="text-3xl font-bold text-gold-dark">{current}</p>
-            <p className="text-xs text-green/60 mt-0.5">Terdaftar</p>
+            <p className="text-xs text-green/70 mt-0.5">Terdaftar</p>
           </div>
           <div className="text-center">
             <p className="text-3xl font-bold text-green">{remaining}</p>
-            <p className="text-xs text-green/60 mt-0.5">Slot Tersisa</p>
+            <p className="text-xs text-green/70 mt-0.5">Slot Tersisa</p>
           </div>
         </div>
       </div>

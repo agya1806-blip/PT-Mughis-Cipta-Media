@@ -23,6 +23,14 @@ const settings: { key: string; value: string }[] = [
   { key: 'legal_sku_date', value: '' },
   { key: 'legal_ikapi', value: '' },
   { key: 'legal_ikapi_date', value: '' },
+
+  // Campaign
+  { key: 'campaign_name', value: 'Program Apresiasi Penulis' },
+  { key: 'campaign_start_date', value: '2026-07-26T00:00:00+07:00' },
+  { key: 'campaign_end_date', value: '2026-08-04T23:59:00+07:00' },
+  { key: 'campaign_quota_total', value: '50' },
+  { key: 'campaign_quota_registered', value: '0' },
+  { key: 'campaign_active', value: 'true' },
 ];
 
 async function main() {

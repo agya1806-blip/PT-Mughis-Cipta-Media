@@ -1,6 +1,5 @@
 import { NextResponse } from "next/server"
-import { writeFile, mkdir } from "fs/promises"
-import path from "path"
+import { uploadFile } from "@/lib/upload"
 
 export async function POST(request: Request) {
   try {
@@ -18,16 +17,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "File maksimal 10MB" }, { status: 400 })
     }
 
-    const ext = file.type.split("/")[1] || "jpg"
-    const safeName = `${Date.now()}-${Math.random().toString(36).slice(2, 8)}.${ext}`
-    const uploadDir = path.join(process.cwd(), "public", "uploads", "team")
-    const filePath = path.join(uploadDir, safeName)
-
-    await mkdir(uploadDir, { recursive: true })
-    const buffer = Buffer.from(await file.arrayBuffer())
-    await writeFile(filePath, buffer)
-
-    const url = `/uploads/team/${safeName}`
+    const url = await uploadFile(file, "team")
     return NextResponse.json({ url })
   } catch (error) {
     console.error("Team photo upload error:", error)

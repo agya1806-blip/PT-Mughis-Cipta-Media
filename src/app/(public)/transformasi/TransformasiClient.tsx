@@ -13,6 +13,7 @@ import { FAQSection } from "@/components/campaign/FAQSection"
 import { CTASection } from "@/components/campaign/CTASection"
 import { CampaignFooter } from "@/components/campaign/CampaignFooter"
 import { ToastProvider } from "@/components/campaign/Toast"
+import { CampaignStatusProvider } from "@/lib/campaign/useCampaignStatus"
 
 export function TransformasiClient() {
   const scrollToForm = useCallback(() => {
@@ -20,20 +21,22 @@ export function TransformasiClient() {
   }, [])
 
   return (
-    <ToastProvider>
-      <main className="min-h-screen bg-cream">
-        <HeroSection onCtaClick={scrollToForm} />
-        <TimelineSection />
-        <WhyTransformSection />
-        <ProgramSection onCtaClick={scrollToForm} />
-        <QuotaSection />
-        <FlowSection />
-        <RequirementsSection />
-        <RegistrationForm />
-        <FAQSection />
-        <CTASection onCtaClick={scrollToForm} />
-        <CampaignFooter />
-      </main>
-    </ToastProvider>
+    <CampaignStatusProvider>
+      <ToastProvider>
+        <main className="min-h-screen bg-cream">
+          <HeroSection onCtaClick={scrollToForm} />
+          <TimelineSection />
+          <WhyTransformSection />
+          <ProgramSection onCtaClick={scrollToForm} />
+          <QuotaSection />
+          <FlowSection />
+          <RequirementsSection />
+          <RegistrationForm />
+          <FAQSection />
+          <CTASection onCtaClick={scrollToForm} />
+          <CampaignFooter />
+        </main>
+      </ToastProvider>
+    </CampaignStatusProvider>
   )
 }

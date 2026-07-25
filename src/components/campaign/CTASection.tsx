@@ -3,8 +3,21 @@
 import { motion } from "framer-motion"
 import { ArrowRight, Sparkles } from "lucide-react"
 import { MOTION } from "@/config/design"
+import { useCampaignStatus } from "@/lib/campaign/useCampaignStatus"
+import { getMicrocopy } from "@/lib/campaign/microcopy"
 
 export function CTASection({ onCtaClick }: { onCtaClick: () => void }) {
+  const { status, isOpen, loading } = useCampaignStatus()
+  const mc = !loading ? getMicrocopy(status, isOpen) : null
+
+  const buttonText = !loading
+    ? !isOpen && status === "before"
+      ? "Segera Dibuka"
+      : !isOpen
+      ? "Telah Ditutup"
+      : "Daftar Sekarang"
+    : "Daftar Sekarang"
+
   return (
     <section className="relative py-24 sm:py-32 bg-cream overflow-hidden">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gold/5 rounded-full blur-3xl" />
@@ -20,15 +33,18 @@ export function CTASection({ onCtaClick }: { onCtaClick: () => void }) {
             </span>
           </h2>
           <p className="mt-4 text-green/80 text-lg max-w-md mx-auto">
-            Kuota terbatas. Segera daftarkan diri Anda dan dapatkan pendampingan administrasi penerbitan.
+            {!loading && mc
+              ? mc.microcopy
+              : "Kuota terbatas. Segera daftarkan diri Anda dan dapatkan pendampingan administrasi penerbitan."}
           </p>
           <div className="mt-10">
             <button
               onClick={onCtaClick}
-              className="group inline-flex items-center gap-2 h-14 px-10 text-sm font-semibold rounded-full bg-green hover:bg-green-dark text-gold shadow-lg shadow-green/25 hover:shadow-xl hover:shadow-green/30 transition-all duration-300 hover:-translate-y-0.5"
+              disabled={!isOpen && !loading}
+              className="group inline-flex items-center gap-2 h-14 px-10 text-sm font-semibold rounded-full bg-green hover:bg-green-dark text-gold shadow-lg shadow-green/25 hover:shadow-xl hover:shadow-green/30 transition-all duration-300 hover:-translate-y-0.5 disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:translate-y-0"
             >
-              Daftar Sekarang
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              {buttonText}
+              {isOpen && <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />}
             </button>
           </div>
         </motion.div>

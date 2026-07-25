@@ -1,0 +1,79 @@
+📌 PANDUAN AKSES & PENGISIAN DATA WEBSITE
+PT Mughis Cipta Media — mughisciptamedia.com
+
+━━━━━━━━━━━━━━━━━━━
+
+🔴 PRIORITAS SEKARANG:
+1. Admin → set campaign (tanggal, kuota)
+2. Semua anggota → upload foto & isi profil
+3. Cek hasil di halaman publik
+
+━━━━━━━━━━━━━━━━━━━
+
+1⃣ LOGIN ADMIN — Atur Campaign & Website
+Link: https://mughisciptamedia.com/login
+
+Yang perlu dilakukan:
+▪ Klik menu Campaign → atur nama program, tanggal (26 Jul - 4 Agu), kuota
+▪ Klik menu Tim → tambah/edit anggota, reset password
+▪ Klik menu Pengaturan → cek NIB, NPWP, kontak
+
+💡 Status campaign berubah otomatis berdasarkan tanggal. Tak perlu diubah manual.
+
+━━━━━━━━━━━━━━━━━━━
+
+2⃣ LOGIN ANGGOTA TIM — Edit Profil Sendiri
+Link: https://mughisciptamedia.com/team/login
+
+Password awal: password123 (WAJIB ganti setelah login!)
+
+Setelah login bisa:
+▪ Upload foto (bisa crop & zoom langsung)
+▪ Edit bio & skills
+▪ Isi kontak (WA, Email, LinkedIn)
+▪ Update quote
+
+Data akan tampil di: https://mughisciptamedia.com/tim
+
+Akun:
+- Muhammad Aghisna (Founder) — ceo@mughisciptamedia.com
+- Ulfa Hasanah (GM) — gm@mughisciptamedia.com
+- Muhammad Zakki (Kepala Divisi) — zakki@mughisciptamedia.com
+- Almurtaza (Kepala Divisi) — almurtaza@mughisciptamedia.com
+- Rahmad Yunan (Kepala Divisi) — yunan@mughisciptamedia.com
+
+━━━━━━━━━━━━━━━━━━━
+
+3⃣ LANGKAH PENGISIAN
+
+✅ Admin:
+1. Login → Campaign → isi nama program, tanggal, kuota → Simpan
+
+✅ Anggota Tim:
+1. Buka https://mughisciptamedia.com/team/login
+2. Login pakai email & password123
+3. Klik Edit Profil → lengkapi foto, bio, skills, kontak
+4. Simpan → jangan lupa ganti password
+
+✅ Cek hasil:
+▪ https://mughisciptamedia.com/tim
+▪ https://mughisciptamedia.com/transformasi
+
+━━━━━━━━━━━━━━━━━━━
+
+❓ MASALAH UMUM:
+▪ Lupa password → Admin reset di menu Tim
+▪ Campaign tidak berubah → cek tanggal mulai/selesai
+▪ Website lambat → tunggu 5-10 detik, refresh
+
+━━━━━━━━━━━━━━━━━━━
+
+📎 Link Penting:
+Admin Panel → /login
+Login Tim → /team/login
+Halaman Tim → /tim
+Halaman Campaign → /transformasi
+Atur Campaign → /admin/campaign
+Atur Tim → /admin/team
+
+File panduan lengkap (Word) juga sudah tersedia dan bisa di-download.

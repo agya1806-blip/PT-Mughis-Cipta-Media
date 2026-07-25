@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server"
-import { writeFile, mkdir } from "fs/promises"
-import path from "path"
 import { sendTelegramMessage, sendTelegramPhoto } from "@/lib/telegram"
+import { uploadFile } from "@/lib/upload"
 
 interface FormDataEntry {
   nama: string
@@ -20,13 +19,7 @@ interface FormDataEntry {
 
 async function saveFile(file: File, dir: string): Promise<string | null> {
   if (!file) return null
-  const ext = file.name.split(".").pop()
-  const filename = `${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`
-  const uploadDir = path.join(process.cwd(), "public", "uploads", dir)
-  await mkdir(uploadDir, { recursive: true })
-  const buffer = Buffer.from(await file.arrayBuffer())
-  await writeFile(path.join(uploadDir, filename), buffer)
-  return `/uploads/${dir}/${filename}`
+  return uploadFile(file, dir)
 }
 
 function formatWhatsApp(wa: string): string {

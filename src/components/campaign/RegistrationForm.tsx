@@ -10,6 +10,9 @@ import type { CampaignFormData, FormErrors } from "@/lib/campaign/types"
 import { FileUpload } from "./FileUpload"
 import { SuccessPage } from "./SuccessPage"
 import { useToast } from "./Toast"
+import { useCampaignStatus } from "@/lib/campaign/useCampaignStatus"
+import { Countdown } from "./Countdown"
+import { getMicrocopy } from "@/lib/campaign/microcopy"
 
 const initialForm: CampaignFormData = {
   nama: "", whatsapp: "", email: "", provinsi: "", kota: "", alamat: "",
@@ -25,6 +28,7 @@ export function RegistrationForm() {
   const [submitted, setSubmitted] = useState(false)
   const [regNumber, setRegNumber] = useState("")
   const { showToast } = useToast()
+  const { status, isOpen, loading: campLoading } = useCampaignStatus()
 
   const update = useCallback(<K extends keyof CampaignFormData>(key: K, value: CampaignFormData[K]) => {
     setForm((prev) => ({ ...prev, [key]: value }))
@@ -33,6 +37,10 @@ export function RegistrationForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    if (!isOpen || campLoading) {
+      showToast("error", "Pendaftaran ditutup", "Pendaftaran belum dibuka atau telah ditutup")
+      return
+    }
     const errs = validateForm(form)
     setErrors(errs)
     if (Object.keys(errs).length > 0) {
@@ -88,6 +96,28 @@ export function RegistrationForm() {
           </h2>
           <p className="mt-3 text-green/80">Isi formulir di bawah untuk mengikuti Program Apresiasi Penulis.</p>
         </motion.div>
+
+        {!campLoading && (
+          <div className="mb-10 p-5 sm:p-6 rounded-2xl border border-gold/20 bg-gold/[0.03]">
+            <div className="flex flex-wrap items-center gap-3 mb-3">
+              <span
+                className={`inline-block px-2.5 py-0.5 rounded-full text-[11px] font-semibold uppercase tracking-[0.08em] ${
+                  status === "before"
+                    ? "bg-amber-100 text-amber-700"
+                    : status === "after"
+                    ? "bg-red-100 text-red-600"
+                    : "bg-green-100 text-green-700"
+                }`}
+              >
+                {getMicrocopy(status, isOpen).badge}
+              </span>
+            </div>
+            {status !== "after" && <Countdown />}
+            <p className="mt-3 text-sm text-green/60 leading-relaxed">
+              {getMicrocopy(status, isOpen).microcopy}
+            </p>
+          </div>
+        )}
 
         <motion.form
           variants={MOTION.fadeUp}
@@ -218,11 +248,19 @@ export function RegistrationForm() {
           <div className="text-center">
             <button
               type="submit"
-              disabled={submitting}
+              disabled={submitting || campLoading || !isOpen}
               className="group inline-flex items-center gap-2 h-14 px-10 text-sm font-bold rounded-full bg-gradient-to-r from-gold to-gold-dark text-green-dark shadow-lg shadow-gold/20 hover:shadow-xl hover:shadow-gold/30 transition-all duration-300 hover:-translate-y-0.5 disabled:opacity-60 disabled:cursor-not-allowed"
             >
               {submitting ? (
                 <><Loader2 className="w-4 h-4 animate-spin" /> Mendaftarkan...</>
+              ) : campLoading ? (
+                <><Loader2 className="w-4 h-4 animate-spin" /> Memeriksa status...</>
+              ) : !isOpen && status === "before" ? (
+                <><span className="tracking-wider">PENDAFTARAN BELUM DIBUKA</span></>
+              ) : !isOpen && status === "after" ? (
+                <><span className="tracking-wider">PENDAFTARAN TELAH DITUTUP</span></>
+              ) : !isOpen ? (
+                <><span className="tracking-wider">PENDAFTARAN DITUTUP</span></>
               ) : (
                 <><span className="tracking-wider">DAFTAR SEKARANG</span> <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" /></>
               )}

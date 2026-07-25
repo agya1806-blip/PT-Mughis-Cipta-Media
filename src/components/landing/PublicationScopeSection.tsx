@@ -1,25 +1,31 @@
 "use client"
 import { motion } from "framer-motion"
+import {
+  BookOpen, BookText, Globe, Languages, FileText, GraduationCap,
+  BookMarked, Scroll, Files, PenTool, Feather, Book, ClipboardList,
+  Compass, Sparkles,
+} from "lucide-react"
 import SectionWrapper from "./SectionWrapper"
+import type { LucideIcon } from "lucide-react"
 
-const types = [
-  { icon: "📘", label: "Buku" },
-  { icon: "📖", label: "Kitab" },
-  { icon: "🌐", label: "Kitab Terjemahan" },
-  { icon: "📚", label: "Terjemahan Buku" },
-  { icon: "📝", label: "Modul" },
-  { icon: "🎓", label: "Buku Ajar" },
-  { icon: "📙", label: "Buku Referensi" },
-  { icon: "📜", label: "Monograf" },
-  { icon: "📄", label: "Prosiding" },
-  { icon: "🖋️", label: "Antologi" },
-  { icon: "📚", label: "Kumpulan Puisi" },
-  { icon: "📕", label: "Kumpulan Cerpen" },
-  { icon: "📗", label: "Novel" },
-  { icon: "📒", label: "Pedoman" },
-  { icon: "📔", label: "Panduan" },
-  { icon: "📖", label: "Ensiklopedia" },
-  { icon: "📘", label: "Kamus" },
+const types: { icon: LucideIcon; label: string }[] = [
+  { icon: BookOpen, label: "Buku" },
+  { icon: BookText, label: "Kitab" },
+  { icon: Globe, label: "Kitab Terjemahan" },
+  { icon: Languages, label: "Terjemahan Buku" },
+  { icon: FileText, label: "Modul" },
+  { icon: GraduationCap, label: "Buku Ajar" },
+  { icon: BookMarked, label: "Buku Referensi" },
+  { icon: Scroll, label: "Monograf" },
+  { icon: Files, label: "Prosiding" },
+  { icon: PenTool, label: "Antologi" },
+  { icon: Feather, label: "Kumpulan Puisi" },
+  { icon: BookOpen, label: "Kumpulan Cerpen" },
+  { icon: Book, label: "Novel" },
+  { icon: ClipboardList, label: "Pedoman" },
+  { icon: Compass, label: "Panduan" },
+  { icon: BookMarked, label: "Ensiklopedia" },
+  { icon: BookText, label: "Kamus" },
 ]
 
 export default function PublicationScopeSection() {
@@ -46,22 +52,25 @@ export default function PublicationScopeSection() {
         </motion.div>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
-          {types.map((t, i) => (
-            <motion.div
-              key={t.label}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.03, duration: 0.4 }}
-              whileHover={{ y: -3 }}
-              className="group relative bg-cream rounded-xl border border-gold/20 px-4 py-5 transition-all duration-300 hover:shadow-lg hover:border-gold/40"
-            >
-              <div className="text-center">
-                <span className="text-2xl block mb-1.5 group-hover:scale-110 transition-transform duration-300">{t.icon}</span>
-                <h3 className="text-sm font-semibold text-green-dark">{t.label}</h3>
-              </div>
-            </motion.div>
-          ))}
+          {types.map((t, i) => {
+            const Icon = t.icon
+            return (
+              <motion.div
+                key={t.label}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.03, duration: 0.4 }}
+                whileHover={{ y: -3 }}
+                className="group relative bg-cream rounded-xl border border-gold/20 px-4 py-5 transition-all duration-300 hover:shadow-lg hover:border-gold/40"
+              >
+                <div className="text-center">
+                  <Icon className="w-6 h-6 text-gold mx-auto mb-2 group-hover:scale-110 transition-transform duration-300" />
+                  <h3 className="text-sm font-semibold text-green-dark">{t.label}</h3>
+                </div>
+              </motion.div>
+            )
+          })}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -71,7 +80,7 @@ export default function PublicationScopeSection() {
             className="group relative bg-gradient-to-br from-gold/5 to-gold/10 rounded-xl border border-gold/20 px-4 py-5 transition-all duration-300 hover:shadow-lg hover:border-gold/40 col-span-2 sm:col-span-3 lg:col-span-4 xl:col-span-5"
           >
             <div className="text-center">
-              <span className="text-xl block mb-1">✨</span>
+              <Sparkles className="w-5 h-5 text-gold mx-auto mb-1" />
               <h3 className="text-sm font-semibold text-green-dark">Dan berbagai jenis karya tulis lainnya.</h3>
             </div>
           </motion.div>

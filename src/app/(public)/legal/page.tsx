@@ -42,7 +42,7 @@ const infoItems = [
   {
     icon: FileText,
     label: "Status",
-    value: "PT (Perseroan Terbatas)",
+    value: "Aktif",
   },
   {
     icon: BookOpen,

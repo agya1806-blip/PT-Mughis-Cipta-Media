@@ -38,7 +38,7 @@ export default function LegalitasPage() {
               title: "Status Badan Usaha",
               number: data.legal_nib || "1807260050954",
               date: data.legal_nib_date || "18 Juli 2026",
-              description: "Perseroan Terbatas atas nama Muhammad Aghisna — didirikan berdasarkan NIB melalui sistem OSS-RBA sesuai perundang-undangan yang berlaku.",
+              description: "Berdasarkan NIB yang diterbitkan melalui sistem OSS-RBA sesuai perundang-undangan yang berlaku, atas nama Muhammad Aghisna.",
               icon: Building2,
               status: "active",
             },

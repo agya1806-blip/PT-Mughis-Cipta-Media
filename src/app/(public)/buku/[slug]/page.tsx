@@ -151,6 +151,7 @@ export default async function BookDetailPage({ params }: { params: Promise<{ slu
     language: book.language ?? "",
     publication_year: book.publicationYear,
     whatsapp: book.whatsapp ?? "",
+    weight: book.weight ?? 0,
   }
 
   return (
@@ -320,18 +321,28 @@ export default async function BookDetailPage({ params }: { params: Promise<{ slu
                       <p className="font-medium text-green-dark">{mapped.bindingType}</p>
                     </div>
                   )}
+                  {mapped.page_count > 0 && (
+                    <div>
+                      <span className="text-green-dark/60 text-xs">Jumlah Halaman</span>
+                      <p className="font-medium text-green-dark">{mapped.page_count}</p>
+                    </div>
+                  )}
+                  {mapped.weight > 0 && (
+                    <div>
+                      <span className="text-green-dark/60 text-xs">Berat</span>
+                      <p className="font-medium text-green-dark">{mapped.weight} gr</p>
+                    </div>
+                  )}
                   {mapped.editor && (
                     <div>
                       <span className="text-green-dark/60 text-xs">Editor</span>
                       <p className="font-medium text-green-dark">{mapped.editor}</p>
                     </div>
                   )}
-                  {mapped.layoutBy && (
-                    <div>
-                      <span className="text-green-dark/60 text-xs">Layout</span>
-                      <p className="font-medium text-green-dark">{mapped.layoutBy}</p>
-                    </div>
-                  )}
+                  <div>
+                    <span className="text-green-dark/60 text-xs">Layout</span>
+                    <p className="font-medium text-green-dark">{mapped.layoutBy || "Belum Ditentukan"}</p>
+                  </div>
                   {mapped.edition && (
                     <div>
                       <span className="text-green-dark/60 text-xs">Edisi</span>

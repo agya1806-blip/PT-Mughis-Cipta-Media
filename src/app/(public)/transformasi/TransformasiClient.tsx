@@ -33,8 +33,8 @@ export function TransformasiClient() {
           <FlowSection />
           <RequirementsSection />
           <RegistrationForm />
-          <FAQSection />
           <LaptopSection />
+          <FAQSection />
           <CTASection onCtaClick={scrollToForm} />
           <CampaignFooter />
         </main>

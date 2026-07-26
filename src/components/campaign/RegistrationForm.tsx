@@ -216,7 +216,7 @@ export function RegistrationForm() {
                 accept=".docx,.pdf"
                 maxSizeMB={UPLOAD_LIMITS.naskahMaxMB}
                 label="Upload Naskah"
-                hint="Format .docx atau .pdf"
+                hint={`Format .docx atau .pdf — maks. ${UPLOAD_LIMITS.naskahMaxMB} MB`}
                 value={form.fileNaskah}
                 onChange={(f) => update("fileNaskah", f)}
               />
@@ -244,7 +244,7 @@ export function RegistrationForm() {
                 <FileUpload
                   accept=".jpg,.jpeg,.png"
                   maxSizeMB={UPLOAD_LIMITS.buktiMaxMB}
-                  label={`Bukti Follow Instagram Founder`}
+                  label="Bukti Follow Instagram Founder"
                   hint={`Screenshot follow @${CAMPAIGN.founderInstagram} — maks. ${UPLOAD_LIMITS.buktiMaxMB} MB`}
                   value={form.fileBuktiFollowFounder}
                   onChange={(f) => update("fileBuktiFollowFounder", f)}

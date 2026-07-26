@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server"
 import { sendTelegramMessage, sendTelegramPhoto, sendTelegramDocument } from "@/lib/telegram"
 import { uploadFile } from "@/lib/upload"
+import { sendToGoogleSheets } from "@/lib/google"
+import type { GooglePayload } from "@/lib/google"
 
 interface FormDataEntry {
   nama: string
@@ -30,7 +32,7 @@ function formatWhatsApp(wa: string): string {
   return digits
 }
 
-function buildTelegramMessage(data: FormDataEntry, regNumber: string): string {
+function buildTelegramMessage(data: FormDataEntry, regNumber: string, folderUrl?: string): string {
   const now = new Date()
   const dateStr = now.toLocaleDateString("id-ID", {
     day: "numeric",
@@ -48,8 +50,12 @@ function buildTelegramMessage(data: FormDataEntry, regNumber: string): string {
     sudah_selesai: "Sudah selesai",
   }
 
+  const folderSection = folderUrl
+    ? `\n<b>📁 Google Drive</b>\n• Folder      : <a href="${folderUrl}">Lihat File</a>`
+    : ""
+
   return `
-<b>📚 PENDAFTARAN BARU</b>
+<b>📥 PENDAFTAR BARU</b>
 <b>🏢 Program Apresiasi Penulis</b>
 ─────────────────────
 
@@ -67,7 +73,7 @@ function buildTelegramMessage(data: FormDataEntry, regNumber: string): string {
 <b>🆔 Informasi Pendaftaran</b>
 • No. Registrasi : <b>${regNumber}</b>
 • Tanggal        : ${dateStr}
-• Jam            : ${timeStr}
+• Jam            : ${timeStr}${folderSection}
 `.trim()
 }
 
@@ -121,7 +127,37 @@ export async function POST(request: Request) {
       .slice(-4)
       .padStart(4, "0")}`
 
-    const text = buildTelegramMessage(data, registrationNumber)
+    let folderUrl: string | undefined
+    try {
+      const googlePayload: GooglePayload = {
+        registrationNumber,
+        tanggal: new Date().toISOString(),
+        nama: data.nama,
+        whatsapp: data.whatsapp,
+        email: data.email,
+        provinsi: data.provinsi,
+        kota: data.kota,
+        alamat: data.alamat,
+        judulKarya: data.judulBuku,
+        jenisTerbitan: data.jenisTerbitan,
+        kategori: data.kategoriBuku,
+        bahasa: "Indonesia",
+        statusNaskah: data.statusNaskah,
+        targetTerbit: data.targetTerbit,
+        deskripsi: data.deskripsiBuku,
+        fileNaskahUrl: naskahUrl,
+        fileBuktiFollowUrl: buktiUrl,
+        fileBuktiFollowFounderUrl: buktiFounderUrl,
+      }
+      const googleResult = await sendToGoogleSheets(googlePayload)
+      if (googleResult.success && googleResult.folderUrl) {
+        folderUrl = googleResult.folderUrl
+      }
+    } catch (e) {
+      console.error("Google integration error (non-blocking):", e)
+    }
+
+    const text = buildTelegramMessage(data, registrationNumber, folderUrl)
     const telegramTasks: Promise<void>[] = [
       sendTelegramMessage(text).catch((e) => console.error("Telegram msg fail:", e)),
     ]
@@ -149,6 +185,7 @@ export async function POST(request: Request) {
       fileNaskahUrl: naskahUrl,
       fileBuktiFollowUrl: buktiUrl,
       fileBuktiFollowFounderUrl: buktiFounderUrl,
+      folderUrl: folderUrl || null,
       createdAt: new Date().toISOString(),
     }
 

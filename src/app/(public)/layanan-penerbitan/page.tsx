@@ -1,4 +1,5 @@
 import { JsonLd } from "@/components/JsonLd"
+import { SITE } from "@/lib/seo"
 import PageHero from "@/components/PageHero"
 import { services, whyChooseUs } from "@/components/services/service-data"
 import ServiceHero from "./ServiceHero"
@@ -8,22 +9,20 @@ import ServiceFAQ from "./ServiceFAQ"
 import WhyChooseUsSection from "./WhyChooseUsSection"
 import ServiceCTA from "./ServiceCTA"
 
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://mughisciptamedia.com"
-
 export async function generateMetadata() {
   return {
-    title: "Layanan Penerbitan",
+    title: "Layanan Penerbitan & Percetakan Buku | PT Mughis Cipta Media",
     description:
-      "PT Mughis Cipta Media menyediakan layanan penerbitan buku, percetakan, layout, dan desain cover profesional.",
+      "PT Mughis Cipta Media menyediakan layanan penerbitan buku, percetakan buku, layout, desain cover, editing naskah, pendampingan ISBN, dan distribusi nasional. Solusi lengkap penerbitan di Aceh.",
     openGraph: {
-      title: "Layanan Penerbitan - PT Mughis Cipta Media",
-      description: "Solusi lengkap penerbitan dan percetakan buku profesional.",
-      url: `${baseUrl}/layanan-penerbitan`,
+      title: "Layanan Penerbitan & Percetakan Buku Profesional | PT Mughis Cipta Media",
+      description: "Solusi lengkap penerbitan buku, percetakan, layout, desain cover, editing naskah, dan pendampingan ISBN.",
+      url: `${SITE.baseUrl}/layanan-penerbitan`,
     },
     twitter: {
       card: "summary_large_image",
-      title: "Layanan Penerbitan - PT Mughis Cipta Media",
-      description: "Solusi lengkap penerbitan dan percetakan buku profesional.",
+      title: "Layanan Penerbitan & Percetakan Buku | PT Mughis Cipta Media",
+      description: "Solusi lengkap penerbitan buku, percetakan, dan pendampingan ISBN.",
     },
     alternates: { canonical: "/layanan-penerbitan" },
   }
@@ -36,15 +35,15 @@ export default function LayananPenerbitanPage() {
         data={{
           "@context": "https://schema.org",
           "@type": "CollectionPage",
-          name: "Layanan Penerbitan PT Mughis Cipta Media",
-          description: "Solusi lengkap penerbitan dan percetakan buku profesional dari PT Mughis Cipta Media.",
-          publisher: { "@type": "Organization", name: "PT Mughis Cipta Media" },
-          url: `${baseUrl}/layanan-penerbitan`,
+          name: "Layanan Penerbitan & Percetakan Buku PT Mughis Cipta Media",
+          description: "Solusi lengkap penerbitan buku, percetakan, dan pendampingan ISBN dari PT Mughis Cipta Media.",
+          publisher: { "@type": "Organization", name: SITE.name },
+          url: `${SITE.baseUrl}/layanan-penerbitan`,
           mainEntity: services.map((s) => ({
             "@type": "Service",
             name: s.title,
             description: s.description,
-            provider: { "@type": "Organization", name: "PT Mughis Cipta Media" },
+            provider: { "@type": "Organization", name: SITE.name },
           })),
         }}
       />

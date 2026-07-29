@@ -1,16 +1,15 @@
 import { Building2, BookOpen, Shield, Mail, Phone, MapPin, FileText } from "lucide-react"
 import Breadcrumb from "@/components/ui/Breadcrumb"
 import { prisma } from "@/lib/prisma"
-
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://mughisciptamedia.com"
+import { SITE } from "@/lib/seo"
 
 export const metadata = {
-  title: "Legalitas Perusahaan",
-  description: "Informasi legal dan profil resmi PT Mughis Cipta Media, perusahaan penerbitan buku yang berbadan hukum.",
+  title: "Legalitas Perusahaan | PT Mughis Cipta Media",
+  description: "Informasi legal dan profil resmi PT Mughis Cipta Media — penerbit buku dan percetakan di Aceh yang berbadan hukum dengan NIB, NPWP, dan izin usaha resmi.",
   openGraph: {
-    title: "Legalitas Perusahaan - PT Mughis Cipta Media",
-    description: "Informasi legal resmi perusahaan penerbitan buku.",
-    url: `${baseUrl}/legal`,
+    title: "Legalitas Perusahaan - PT Mughis Cipta Media | Penerbit Buku Aceh",
+    description: "Informasi legal resmi perusahaan penerbitan dan percetakan buku.",
+    url: `${SITE.baseUrl}/legal`,
   },
   twitter: {
     card: "summary_large_image",

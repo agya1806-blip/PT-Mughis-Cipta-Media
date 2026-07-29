@@ -63,7 +63,7 @@ export function FileUpload({ accept, maxSizeMB = 5, label, hint, value, onChange
         {previewUrl ? (
           <div className="flex items-center gap-4">
             <div className="w-14 h-14 rounded-lg overflow-hidden bg-cream border border-gold/10 shrink-0">
-              <img src={previewUrl} alt="Preview" className="w-full h-full object-cover" />
+              <img src={previewUrl} alt={label} className="w-full h-full object-cover" />
             </div>
             <div className="flex-1 min-w-0">
               <p className="text-sm font-medium text-green-dark truncate">{value?.name}</p>

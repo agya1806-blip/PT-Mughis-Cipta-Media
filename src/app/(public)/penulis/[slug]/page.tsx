@@ -4,6 +4,7 @@ import { prisma } from "@/lib/prisma"
 import { slugifyAuthor } from "@/lib/authors"
 import { AuthorBooks } from "@/components/authors"
 import Breadcrumb from "@/components/ui/Breadcrumb"
+import { SITE } from "@/lib/seo"
 
 export const dynamic = "force-dynamic"
 
@@ -21,8 +22,8 @@ export async function generateMetadata({ params }: Props) {
   const author = authorNames.find((n) => slugifyAuthor(n) === slug)
   if (!author) return { title: "Penulis Tidak Ditemukan" }
   return {
-    title: `${author} | Penulis | PT Mughis Cipta Media`,
-    description: `Buku-buku karya ${author} yang diterbitkan oleh PT Mughis Cipta Media.`,
+    title: `${author} | Penulis Buku | PT Mughis Cipta Media — Penerbit & Percetakan Aceh`,
+    description: `Buku-buku karya ${author} yang diterbitkan oleh PT Mughis Cipta Media — penerbit buku dan percetakan di Aceh.`,
     openGraph: {
       title: `${author} - Penulis | PT Mughis Cipta Media`,
       description: `Buku-buku karya ${author} yang diterbitkan oleh PT Mughis Cipta Media.`,

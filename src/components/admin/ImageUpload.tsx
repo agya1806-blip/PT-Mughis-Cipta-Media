@@ -87,7 +87,7 @@ export default function ImageUpload({ value, onChange, label = "Gambar", accept 
         <div className="relative w-full max-w-xs rounded-lg overflow-hidden border border-gold/20 bg-cream">
           <img
             src={preview}
-            alt="Preview"
+            alt={label}
             className="w-full h-40 object-contain"
           />
           <button

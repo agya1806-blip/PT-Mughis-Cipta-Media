@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { JsonLd } from "@/components/JsonLd"
+import { SITE } from "@/lib/seo"
 import LoadingScreen from "@/components/landing/LoadingScreen"
 import HeroSection from "@/components/landing/HeroSection"
 import StatsSection from "@/components/landing/StatsSection"
@@ -12,23 +13,21 @@ import WhyUsSection from "@/components/landing/WhyUsSection"
 import Testimonials from "@/components/home/Testimonials"
 import FinalCTA from "@/components/home/FinalCTA"
 
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://mughisciptamedia.com"
-
 export const metadata: Metadata = {
-  title: "Penerbit Buku & Percetakan Profesional – PT Mughis Cipta Media",
+  title: "PT Mughis Cipta Media | Penerbit & Percetakan Buku Aceh",
   description:
-    "Penerbit buku, kitab, modul, buku ajar, monograf, prosiding, antologi, novel, dan berbagai jenis terbitan lainnya. PT Mughis Cipta Media adalah perusahaan penerbit profesional di Indonesia yang melayani penerbitan buku hingga kitab terjemahan dengan standar nasional.",
+    "PT Mughis Cipta Media — penerbit dan percetakan buku di Aceh. Melayani penerbitan kitab, kitab terjemahan, modul, monograf, prosiding, antologi, novel, cetak buku murah, pendampingan ISBN. Percayakan penerbitan buku Anda pada penerbit profesional Indonesia.",
   openGraph: {
-    title: "Penerbit Buku & Percetakan Profesional – PT Mughis Cipta Media",
+    title: "PT Mughis Cipta Media | Penerbit & Percetakan Buku Aceh, Penerbit Kitab",
     description:
-      "Penerbit buku, kitab, modul, buku ajar, monograf, prosiding, antologi, dan novel. Perusahaan penerbit profesional di Indonesia yang melayani berbagai jenis terbitan berkualitas.",
-    url: baseUrl,
+      "Penerbit dan percetakan buku di Aceh — melayani penerbitan kitab, kitab terjemahan, monograf, prosiding, antologi, cetak buku murah, dan pendampingan ISBN. Penerbit profesional Indonesia.",
+    url: SITE.baseUrl,
   },
   twitter: {
     card: "summary_large_image",
-    title: "Penerbit Buku & Percetakan Profesional – PT Mughis Cipta Media",
+    title: "PT Mughis Cipta Media | Penerbit & Percetakan Buku Aceh",
     description:
-      "Penerbit buku, kitab, modul, buku ajar, monograf, prosiding, antologi, novel, dan berbagai jenis terbitan lainnya. PT Mughis Cipta Media — penerbit Indonesia terpercaya.",
+      "Penerbit buku, kitab, modul, monograf, prosiding, antologi, dan cetak buku. PT Mughis Cipta Media — penerbit Indonesia terpercaya di Aceh.",
   },
   alternates: { canonical: "/" },
 }
@@ -40,11 +39,11 @@ export default function Home() {
         data={{
           "@context": "https://schema.org",
           "@type": "WebPage",
-          name: "Penerbit Buku & Percetakan Profesional – PT Mughis Cipta Media",
+          name: "PT Mughis Cipta Media | Penerbit & Percetakan Buku Aceh",
           description:
-            "Penerbit buku, kitab, modul, buku ajar, monograf, prosiding, antologi, novel, dan berbagai jenis terbitan lainnya. Perusahaan penerbit profesional di Indonesia.",
-          publisher: { "@type": "Organization", name: "PT Mughis Cipta Media" },
-          url: baseUrl,
+            "Penerbit dan percetakan buku di Aceh. Melayani penerbitan kitab, kitab terjemahan, modul, monograf, prosiding, antologi, cetak buku murah, dan pendampingan ISBN.",
+          publisher: { "@type": "Organization", name: SITE.name },
+          url: SITE.baseUrl,
         }}
       />
       <LoadingScreen />

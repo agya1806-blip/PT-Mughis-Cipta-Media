@@ -1,15 +1,14 @@
 import { Scale } from "lucide-react"
 import { LegalLayout, LegalSection } from "@/components/legal"
-
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://mughisciptamedia.com"
+import { SITE } from "@/lib/seo"
 
 export const metadata = {
-  title: "Syarat & Ketentuan",
-  description: "Syarat dan ketentuan penggunaan website dan layanan PT Mughis Cipta Media.",
+  title: "Syarat & Ketentuan | PT Mughis Cipta Media",
+  description: "Syarat dan ketentuan penggunaan website dan layanan PT Mughis Cipta Media — penerbit buku dan percetakan di Aceh.",
   openGraph: {
     title: "Syarat & Ketentuan - PT Mughis Cipta Media",
     description: "Syarat dan ketentuan penggunaan layanan PT Mughis Cipta Media.",
-    url: `${baseUrl}/terms`,
+    url: `${SITE.baseUrl}/terms`,
   },
   twitter: {
     card: "summary_large_image",

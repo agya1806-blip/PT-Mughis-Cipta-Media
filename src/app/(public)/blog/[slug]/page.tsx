@@ -4,6 +4,7 @@ import { notFound } from "next/navigation"
 import { prisma } from "@/lib/prisma"
 import Breadcrumb from "@/components/ui/Breadcrumb"
 import { JsonLd } from "@/components/JsonLd"
+import { SITE } from "@/lib/seo"
 import { Calendar, Clock, ArrowLeft } from "lucide-react"
 import ShareButton from "@/components/ShareButton"
 
@@ -21,17 +22,16 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params
   const article = await prisma.article.findUnique({ where: { slug } })
   if (!article) return { title: "Artikel Tidak Ditemukan" }
-  const base = process.env.NEXT_PUBLIC_BASE_URL || "https://mughisciptamedia.com"
   const imageUrl = article.featuredImage?.startsWith("http")
     ? article.featuredImage
     : article.featuredImage && !article.featuredImage.startsWith("data:")
-      ? `${base}${article.featuredImage}`
+      ? `${SITE.baseUrl}${article.featuredImage}`
       : null
   return {
-    title: `${article.title} | PT Mughis Cipta Media`,
-    description: excerpt(article.content),
+    title: `${article.title} | PT Mughis Cipta Media — Penerbit & Percetakan Buku Aceh`,
+    description: `${article.title} — ${excerpt(article.content)}. PT Mughis Cipta Media, penerbit dan percetakan buku di Aceh.`,
     openGraph: {
-      title: article.title,
+      title: `${article.title} | PT Mughis Cipta Media`,
       description: excerpt(article.content),
       ...(imageUrl ? { images: [{ url: imageUrl, alt: article.title }] } : {}),
     },
@@ -41,7 +41,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       description: excerpt(article.content),
       ...(imageUrl ? { images: [imageUrl] } : {}),
     },
-    alternates: { canonical: `${base}/blog/${slug}` },
+    alternates: { canonical: `${SITE.baseUrl}/blog/${slug}` },
   }
 }
 
@@ -63,19 +63,19 @@ export default async function ArticleDetailPage({ params }: { params: Promise<{ 
           dateModified: article.updatedAt,
           author: {
             "@type": "Organization",
-            name: "PT Mughis Cipta Media",
+            name: SITE.name,
           },
           publisher: {
             "@type": "Organization",
-            name: "PT Mughis Cipta Media",
+            name: SITE.name,
             logo: {
               "@type": "ImageObject",
-              url: "https://mughisciptamedia.com/logo-original.png",
+              url: `${SITE.baseUrl}/logo-original.png`,
             },
           },
           mainEntityOfPage: {
             "@type": "WebPage",
-            "@id": `${process.env.NEXT_PUBLIC_BASE_URL || "https://mughisciptamedia.com"}/blog/${article.slug}`,
+            "@id": `${SITE.baseUrl}/blog/${article.slug}`,
           },
         }}
       />

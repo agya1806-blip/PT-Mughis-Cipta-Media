@@ -1,5 +1,6 @@
 import { prisma } from "@/lib/prisma"
 import { JsonLd } from "@/components/JsonLd"
+import { SITE } from "@/lib/seo"
 import Breadcrumb from "@/components/ui/Breadcrumb"
 import ContactHero from "@/components/contact/ContactHero"
 import ContactDetails from "@/components/contact/ContactDetails"
@@ -7,21 +8,19 @@ import ContactForm from "@/components/contact/ContactForm"
 import ContactFAQ from "@/components/contact/ContactFAQ"
 import ContactCTA from "@/components/contact/ContactCTA"
 
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://mughisciptamedia.com"
-
 export async function generateMetadata() {
   return {
-    title: "Kontak",
-    description: "Hubungi PT Mughis Cipta Media untuk informasi penerbitan, percetakan, dan layanan kreatif lainnya.",
+    title: "Hubungi PT Mughis Cipta Media | Penerbit & Percetakan Buku Aceh",
+    description: "Hubungi PT Mughis Cipta Media untuk konsultasi penerbitan buku, percetakan, pendampingan ISBN, dan layanan kreatif. Penerbit dan percetakan buku di Aceh — Samalanga, Bireuen.",
     openGraph: {
-      title: "Kontak - PT Mughis Cipta Media",
-      description: "Hubungi kami untuk informasi penerbitan dan layanan kreatif.",
-      url: `${baseUrl}/kontak`,
+      title: "Hubungi PT Mughis Cipta Media | Penerbit Buku & Percetakan Aceh",
+      description: "Konsultasi penerbitan buku, percetakan, dan pendampingan ISBN. PT Mughis Cipta Media — penerbit di Aceh.",
+      url: `${SITE.baseUrl}/kontak`,
     },
     twitter: {
       card: "summary_large_image",
-      title: "Kontak - PT Mughis Cipta Media",
-      description: "Hubungi kami untuk informasi penerbitan dan layanan kreatif.",
+      title: "Hubungi PT Mughis Cipta Media | Penerbit & Percetakan Aceh",
+      description: "Hubungi kami untuk informasi penerbitan dan percetakan buku.",
     },
     alternates: { canonical: "/kontak" },
   }
@@ -57,19 +56,21 @@ export default async function KontakPage() {
           "@context": "https://schema.org",
           "@type": "ContactPoint",
           contactType: "customer service",
-          telephone: phone || "+62-857-2345-6789",
-          email: email || "admin@pt-mughis-cipta-media.com",
+          telephone: phone || SITE.contact.telephone,
+          email: email || SITE.contact.email,
           availableLanguage: ["Indonesian", "English"],
+          areaServed: "ID",
+          contactOption: "TollFree",
         }}
       />
       <JsonLd
         data={{
           "@context": "https://schema.org",
           "@type": "WebPage",
-          name: "Kontak PT Mughis Cipta Media",
-          description: "Hubungi PT Mughis Cipta Media untuk informasi penerbitan, percetakan, dan layanan kreatif.",
-          publisher: { "@type": "Organization", name: "PT Mughis Cipta Media" },
-          url: `${baseUrl}/kontak`,
+          name: "Hubungi PT Mughis Cipta Media — Penerbit & Percetakan Buku Aceh",
+          description: "Hubungi PT Mughis Cipta Media untuk informasi penerbitan buku, percetakan, dan pendampingan ISBN.",
+          publisher: { "@type": "Organization", name: SITE.name },
+          url: `${SITE.baseUrl}/kontak`,
         }}
       />
       <ContactHero />

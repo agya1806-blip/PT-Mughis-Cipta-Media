@@ -1,22 +1,23 @@
 import { headers } from "next/headers"
+import { SITE } from "@/lib/seo"
 import PageHero from "@/components/PageHero"
 import { KatalogClient } from "@/components/KatalogClient"
 import type { Book, Category } from "@/lib/data"
 
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://mughisciptamedia.com"
+const baseUrl = SITE.baseUrl
 
 export const metadata = {
-  title: "Katalog Terbitan",
-  description: "Jelajahi koleksi terbitan dari PT Mughis Cipta Media. Temukan berbagai jenis terbitan, kategori, dan penulis.",
+  title: "Katalog Terbitan | Penerbit Buku, Kitab & Percetakan Aceh",
+  description: "Jelajahi koleksi terbitan dari PT Mughis Cipta Media. Temukan berbagai jenis terbitan — buku, kitab, kitab terjemahan, modul, monograf, prosiding, antologi, novel — dan berbagai kategori serta penulis.",
   openGraph: {
-    title: "Katalog Terbitan - PT Mughis Cipta Media",
-    description: "Jelajahi koleksi terbitan dari PT Mughis Cipta Media.",
+    title: "Katalog Terbitan | Penerbit Buku, Kitab & Percetakan Aceh - PT Mughis Cipta Media",
+    description: "Jelajahi koleksi terbitan dari PT Mughis Cipta Media — penerbit buku, kitab, dan percetakan di Aceh.",
     url: `${baseUrl}/katalog`,
   },
   twitter: {
     card: "summary_large_image",
-    title: "Katalog Terbitan - PT Mughis Cipta Media",
-    description: "Jelajahi koleksi terbitan dari PT Mughis Cipta Media.",
+    title: "Katalog Terbitan | Penerbit & Percetakan Buku Aceh",
+    description: "Koleksi terbitan buku, kitab, dan berbagai jenis publikasi dari PT Mughis Cipta Media.",
   },
   alternates: {
     canonical: "/katalog",

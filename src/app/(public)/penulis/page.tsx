@@ -1,18 +1,17 @@
 import PageHero from "@/components/PageHero"
 import { AuthorListClient } from "@/components/authors"
 import { getAllAuthors } from "@/lib/authors"
+import { SITE } from "@/lib/seo"
 
 export const dynamic = "force-dynamic"
 
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://mughisciptamedia.com"
-
 export const metadata = {
-  title: "Penulis | PT Mughis Cipta Media",
-  description: "Daftar penulis yang telah menerbitkan buku bersama PT Mughis Cipta Media",
+  title: "Penulis | Penerbit Buku & Percetakan Aceh",
+  description: "Daftar penulis yang telah menerbitkan buku bersama PT Mughis Cipta Media — penerbit buku dan percetakan di Aceh.",
   openGraph: {
-    title: "Penulis - PT Mughis Cipta Media",
+    title: "Penulis - PT Mughis Cipta Media | Penerbit Buku Aceh",
     description: "Daftar penulis yang telah menerbitkan buku bersama PT Mughis Cipta Media.",
-    url: `${baseUrl}/penulis`,
+    url: `${SITE.baseUrl}/penulis`,
   },
   twitter: {
     card: "summary_large_image",

@@ -1,9 +1,8 @@
 import { notFound } from "next/navigation"
 import { prisma } from "@/lib/prisma"
 import { JsonLd } from "@/components/JsonLd"
+import { SITE } from "@/lib/seo"
 import Breadcrumb from "@/components/ui/Breadcrumb"
-
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://mughisciptamedia.com"
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
@@ -11,12 +10,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!page) return { title: "Halaman Tidak Ditemukan" }
   const desc = page.content.replace(/<[^>]*>/g, "").substring(0, 160)
   return {
-    title: `${page.title} | PT Mughis Cipta Media`,
-    description: desc,
+    title: `${page.title} | PT Mughis Cipta Media — Penerbit & Percetakan Buku Aceh`,
+    description: `${page.title} — ${desc}. PT Mughis Cipta Media, penerbit dan percetakan buku di Aceh.`,
     openGraph: {
       title: `${page.title} - PT Mughis Cipta Media`,
       description: desc,
-      url: `${baseUrl}/${slug}`,
+      url: `${SITE.baseUrl}/${slug}`,
     },
     twitter: {
       card: "summary_large_image",
@@ -40,8 +39,8 @@ export default async function PublicPage({ params }: { params: Promise<{ slug: s
           "@type": "WebPage",
           name: `${page.title} - PT Mughis Cipta Media`,
           description: page.content.replace(/<[^>]*>/g, "").substring(0, 160),
-          publisher: { "@type": "Organization", name: "PT Mughis Cipta Media" },
-          url: `${baseUrl}/${slug}`,
+          publisher: { "@type": "Organization", name: SITE.name },
+          url: `${SITE.baseUrl}/${slug}`,
         }}
       />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16">

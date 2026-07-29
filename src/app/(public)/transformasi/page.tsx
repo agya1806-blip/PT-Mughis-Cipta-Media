@@ -2,24 +2,23 @@ import type { Metadata } from "next"
 import { TransformasiClient } from "./TransformasiClient"
 import Breadcrumb from "@/components/ui/Breadcrumb"
 import { JsonLd } from "@/components/JsonLd"
-
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://mughisciptamedia.com"
+import { SITE } from "@/lib/seo"
 
 export const metadata: Metadata = {
-  title: "Transformasi & Program Apresiasi Penulis | PT Mughis Cipta Media",
+  title: "Program Pendampingan Pengajuan ISBN Gratis | PT Mughis Cipta Media",
   description:
-    "PT Mughis Cipta Media mengumumkan transformasi perusahaan dan membuka Program Apresiasi Penulis. Daftar sekarang untuk pendampingan administrasi penerbitan.",
+    "PT Mughis Cipta Media membuka Program Apresiasi Penulis — pendampingan administrasi penerbitan, pengajuan ISBN gratis, dan konsultasi penerbitan. Daftar sekarang, kuota terbatas!",
   openGraph: {
-    title: "Transformasi & Program Apresiasi Penulis | PT Mughis Cipta Media",
+    title: "Program Pendampingan Pengajuan ISBN Gratis | PT Mughis Cipta Media",
     description:
-      "PT Mughis Cipta Media mengumumkan transformasi perusahaan dan membuka Program Apresiasi Penulis.",
-    url: `${baseUrl}/transformasi`,
+      "Program Apresiasi Penulis — pendampingan administrasi penerbitan dan pengajuan ISBN gratis dari PT Mughis Cipta Media. Kuota terbatas.",
+    url: `${SITE.baseUrl}/transformasi`,
   },
   twitter: {
     card: "summary_large_image",
-    title: "Transformasi & Program Apresiasi Penulis | PT Mughis Cipta Media",
+    title: "Program Pendampingan Pengajuan ISBN Gratis | PT Mughis Cipta Media",
     description:
-      "PT Mughis Cipta Media mengumumkan transformasi perusahaan dan membuka Program Apresiasi Penulis.",
+      "PT Mughis Cipta Media membuka Program Apresiasi Penulis — pendampingan administrasi penerbitan dan pengajuan ISBN gratis.",
   },
   alternates: { canonical: "/transformasi" },
 }
@@ -40,10 +39,10 @@ export default function TransformasiPage() {
         data={{
           "@context": "https://schema.org",
           "@type": "WebPage",
-          name: "Transformasi & Program Apresiasi Penulis",
-          description: "PT Mughis Cipta Media mengumumkan transformasi perusahaan dan membuka Program Apresiasi Penulis.",
-          publisher: { "@type": "Organization", name: "PT Mughis Cipta Media" },
-          url: `${baseUrl}/transformasi`,
+          name: "Program Pendampingan Pengajuan ISBN Gratis",
+          description: "Program Apresiasi Penulis — pendampingan administrasi penerbitan dan pengajuan ISBN gratis dari PT Mughis Cipta Media.",
+          publisher: { "@type": "Organization", name: SITE.name },
+          url: `${SITE.baseUrl}/transformasi`,
         }}
       />
     </>

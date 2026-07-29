@@ -1,18 +1,17 @@
 import Link from "next/link"
 import { prisma } from "@/lib/prisma"
 import { JsonLd } from "@/components/JsonLd"
+import { SITE } from "@/lib/seo"
 import Breadcrumb from "@/components/ui/Breadcrumb"
 import { EmptyState, Pagination } from "@/components/ui"
 
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://mughisciptamedia.com"
-
 export const metadata = {
-  title: "Pencarian",
-  description: "Cari buku, artikel, dan konten di PT Mughis Cipta Media.",
+  title: "Pencarian | Cari Buku & Terbitan",
+  description: "Cari buku, artikel, dan konten di PT Mughis Cipta Media — penerbit buku dan percetakan di Aceh.",
   openGraph: {
     title: "Pencarian - PT Mughis Cipta Media",
     description: "Cari buku dan konten di PT Mughis Cipta Media.",
-    url: `${baseUrl}/search`,
+    url: `${SITE.baseUrl}/search`,
   },
   twitter: {
     card: "summary_large_image",
@@ -103,11 +102,11 @@ export default async function SearchPage({ searchParams }: Props) {
           "@type": "WebPage",
           name: "Pencarian - PT Mughis Cipta Media",
           description: "Cari buku, artikel, dan konten di PT Mughis Cipta Media.",
-          publisher: { "@type": "Organization", name: "PT Mughis Cipta Media" },
-          url: `${baseUrl}/search`,
+          publisher: { "@type": "Organization", name: SITE.name },
+          url: `${SITE.baseUrl}/search`,
           potentialAction: {
             "@type": "SearchAction",
-            target: { "@type": "EntryPoint", urlTemplate: `${baseUrl}/search?q={search_term_string}` },
+            target: { "@type": "EntryPoint", urlTemplate: `${SITE.baseUrl}/search?q={search_term_string}` },
             "query-input": "required name=search_term_string",
           },
         }}

@@ -1,19 +1,20 @@
 import Breadcrumb from "@/components/ui/Breadcrumb"
 import { JsonLd } from "@/components/JsonLd"
+import { SITE } from "@/lib/seo"
 import { getAllFAQItems } from "@/components/faq"
 import FAQClient from "./FAQClient"
 
 export const metadata = {
-  title: "FAQ",
+  title: "FAQ | Pertanyaan Penerbitan & Percetakan Buku",
   description:
-    "Pertanyaan yang sering diajukan tentang PT Mughis Cipta Media, layanan penerbitan, percetakan, pembayaran, pengiriman, dan informasi penting lainnya.",
+    "Pertanyaan yang sering diajukan tentang PT Mughis Cipta Media, layanan penerbitan buku, percetakan, pendampingan ISBN, pembayaran, pengiriman, dan informasi penting lainnya untuk penulis di Aceh dan Indonesia.",
   openGraph: {
-    title: "FAQ - PT Mughis Cipta Media",
-    description: "Pertanyaan yang sering diajukan seputar layanan PT Mughis Cipta Media.",
+    title: "FAQ - PT Mughis Cipta Media | Penerbit & Percetakan Buku Aceh",
+    description: "Pertanyaan yang sering diajukan seputar layanan penerbitan buku, percetakan, dan pendampingan ISBN.",
   },
   twitter: {
     title: "FAQ - PT Mughis Cipta Media",
-    description: "Pertanyaan yang sering diajukan seputar layanan PT Mughis Cipta Media.",
+    description: "Pertanyaan yang sering diajukan seputar layanan penerbitan dan percetakan buku.",
   },
   alternates: { canonical: "/faq" },
 }

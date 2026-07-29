@@ -1,7 +1,5 @@
 "use client"
 
-"use client"
-
 import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { FileText, Shield, CheckCircle, Award, Scale, Building2, ExternalLink, Eye } from "lucide-react"

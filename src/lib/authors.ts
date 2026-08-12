@@ -60,6 +60,7 @@ export async function getAuthorBooks(authorName: string) {
     category_id: String(b.categoryId),
     category_name: b.category.name,
     cover_image: b.coverImage,
+    back_cover_image: b.backCoverImage,
     synopsis: b.synopsis,
     preview_pdf_url: b.previewPdfUrl,
     created_at: b.createdAt.toISOString(),

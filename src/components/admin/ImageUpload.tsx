@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useRef, useCallback } from "react"
-import { Upload, X, ExternalLink, Image as ImageIcon } from "lucide-react"
+import { Upload, X, ExternalLink, Image as ImageIcon, Loader2 } from "lucide-react"
 
 interface Props {
   value: string
@@ -14,7 +14,27 @@ export default function ImageUpload({ value, onChange, label = "Gambar", accept 
   const [mode, setMode] = useState<"upload" | "url">(value && !value.startsWith("data:") ? "url" : "upload")
   const [preview, setPreview] = useState(value || "")
   const [dragging, setDragging] = useState(false)
+  const [uploading, setUploading] = useState(false)
+  const [error, setError] = useState("")
   const inputRef = useRef<HTMLInputElement>(null)
+
+  const uploadToServer = useCallback(async (file: File) => {
+    setUploading(true)
+    setError("")
+    try {
+      const fd = new FormData()
+      fd.append("file", file)
+      const res = await fetch("/api/upload/image", { method: "POST", body: fd })
+      const data = await res.json().catch(() => ({}))
+      if (!res.ok) throw new Error(data.error || "Gagal mengunggah")
+      setPreview(data.url)
+      onChange(data.url)
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Gagal mengunggah gambar")
+    } finally {
+      setUploading(false)
+    }
+  }, [onChange])
 
   const handleFile = useCallback((file: File) => {
     if (!file.type.startsWith("image/")) return
@@ -30,12 +50,15 @@ export default function ImageUpload({ value, onChange, label = "Gambar", accept 
       c.width = w; c.height = h
       const ctx = c.getContext("2d")!
       ctx.drawImage(img, 0, 0, w, h)
-      const dataUrl = c.toDataURL("image/jpeg", 0.6)
-      setPreview(dataUrl)
-      onChange(dataUrl)
+      c.toBlob((blob) => {
+        if (!blob) return
+        setPreview(URL.createObjectURL(blob))
+        const uploadFile = new File([blob], "cover.jpg", { type: "image/jpeg" })
+        uploadToServer(uploadFile)
+      }, "image/jpeg", 0.7)
     }
     img.src = URL.createObjectURL(file)
-  }, [onChange])
+  }, [uploadToServer])
 
   const handleDrop = useCallback((e: React.DragEvent) => {
     e.preventDefault()
@@ -52,6 +75,7 @@ export default function ImageUpload({ value, onChange, label = "Gambar", accept 
   const clearImage = () => {
     setPreview("")
     onChange("")
+    setError("")
     if (inputRef.current) inputRef.current.value = ""
   }
 
@@ -97,6 +121,12 @@ export default function ImageUpload({ value, onChange, label = "Gambar", accept 
           >
             <X className="w-4 h-4 text-white" />
           </button>
+          {uploading && (
+            <div className="absolute inset-0 bg-cream/70 flex flex-col items-center justify-center gap-2">
+              <Loader2 className="w-6 h-6 text-gold animate-spin" />
+              <span className="text-xs font-medium text-green-dark">Mengunggah...</span>
+            </div>
+          )}
         </div>
       )}
 
@@ -105,12 +135,12 @@ export default function ImageUpload({ value, onChange, label = "Gambar", accept 
           onDrop={handleDrop}
           onDragOver={handleDragOver}
           onDragLeave={handleDragLeave}
-          onClick={() => inputRef.current?.click()}
+          onClick={() => !uploading && inputRef.current?.click()}
           className={`relative flex flex-col items-center justify-center gap-2 w-full h-32 rounded-xl border-2 border-dashed cursor-pointer transition-all ${
             dragging
               ? "border-gold bg-gold/5"
               : "border-gold/30 hover:border-gold/50 hover:bg-gold/5"
-          }`}
+          } ${uploading ? "opacity-60 pointer-events-none" : ""}`}
         >
           <input
             ref={inputRef}
@@ -123,7 +153,11 @@ export default function ImageUpload({ value, onChange, label = "Gambar", accept 
             }}
           />
           <div className="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center">
-            <Upload className="w-5 h-5 text-gold" />
+            {uploading ? (
+              <Loader2 className="w-5 h-5 text-gold animate-spin" />
+            ) : (
+              <ImageIcon className="w-5 h-5 text-gold" />
+            )}
           </div>
           <p className="text-sm text-green-dark/80">
             <span className="text-gold font-medium">Klik untuk unggah</span> atau seret file ke sini
@@ -144,6 +178,10 @@ export default function ImageUpload({ value, onChange, label = "Gambar", accept 
             }}
           />
         </div>
+      )}
+
+      {error && (
+        <p className="text-xs text-red-500">{error}</p>
       )}
     </div>
   )

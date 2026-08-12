@@ -1,6 +1,9 @@
+"use client"
+
 import Link from "next/link"
 import Image from "next/image"
-import { BookOpen } from "lucide-react"
+import { useState, useRef } from "react"
+import { BookOpen, ChevronLeft, ChevronRight } from "lucide-react"
 import BookBadge from "./BookBadge"
 
 export interface BookData {
@@ -10,6 +13,7 @@ export interface BookData {
   author: string
   price: number
   cover_image?: string | null
+  back_cover_image?: string | null
   synopsis?: string | null
   category_name?: string | null
   publication_year?: number | null
@@ -24,26 +28,84 @@ interface Props {
 
 export default function BookCard({ book, className = "", href }: Props) {
   const linkHref = href || `/buku/${book.slug}`
+  const images = [book.cover_image, book.back_cover_image].filter((src): src is string => Boolean(src))
+  const [active, setActive] = useState(0)
+  const touchX = useRef<number | null>(null)
+  const hasSlide = images.length > 1
+
+  const goTo = (i: number) => {
+    if (images.length < 2) return
+    setActive((i + images.length) % images.length)
+  }
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    touchX.current = e.touches[0].clientX
+  }
+  const onTouchEnd = (e: React.TouchEvent) => {
+    if (touchX.current === null || images.length < 2) return
+    const delta = e.changedTouches[0].clientX - touchX.current
+    if (Math.abs(delta) > 40) goTo(active + (delta < 0 ? 1 : -1))
+    touchX.current = null
+  }
 
   return (
     <div
       className={`group relative bg-cream rounded-xl border border-gold/20 overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-gold/40 ${className}`}
     >
       <Link href={linkHref} className="block">
-        <div className="relative aspect-[3/4] bg-cream overflow-hidden">
-          {book.cover_image ? (
-            <Image
-              src={book.cover_image}
-              alt={book.title}
-              fill
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-              className="object-contain bg-cream p-3 transition-transform duration-300 group-hover:scale-[1.02]"
-            />
+        <div
+          className="relative aspect-[3/4] bg-cream overflow-hidden"
+          onTouchStart={onTouchStart}
+          onTouchEnd={onTouchEnd}
+        >
+          {images.length > 0 ? (
+            images.map((src, i) => (
+              <Image
+                key={src}
+                src={src}
+                alt={book.title}
+                fill
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                className={`object-contain bg-cream p-3 transition-transform duration-300 group-hover:scale-[1.02] ${i === active ? "" : "hidden"}`}
+              />
+            ))
           ) : (
             <div className="absolute inset-0 flex flex-col items-center justify-center text-green-dark/80 p-6 text-center">
               <BookOpen className="w-10 h-10 mb-2" />
               <span className="text-xs font-medium line-clamp-2">{book.title}</span>
             </div>
+          )}
+
+          {hasSlide && (
+            <>
+              <button
+                type="button"
+                onClick={(e) => { e.preventDefault(); e.stopPropagation(); goTo(active - 1) }}
+                className="absolute left-2 top-1/2 -translate-y-1/2 z-10 w-7 h-7 rounded-full bg-cream/90 backdrop-blur-md border border-gold/20 flex items-center justify-center text-green-dark shadow-sm opacity-0 group-hover:opacity-100 transition-opacity"
+                aria-label="Cover sebelumnya"
+              >
+                <ChevronLeft className="w-4 h-4" />
+              </button>
+              <button
+                type="button"
+                onClick={(e) => { e.preventDefault(); e.stopPropagation(); goTo(active + 1) }}
+                className="absolute right-2 top-1/2 -translate-y-1/2 z-10 w-7 h-7 rounded-full bg-cream/90 backdrop-blur-md border border-gold/20 flex items-center justify-center text-green-dark shadow-sm opacity-0 group-hover:opacity-100 transition-opacity"
+                aria-label="Cover berikutnya"
+              >
+                <ChevronRight className="w-4 h-4" />
+              </button>
+              <div className="absolute bottom-2 inset-x-0 z-10 flex justify-center gap-1.5">
+                {images.map((_, i) => (
+                  <button
+                    key={i}
+                    type="button"
+                    onClick={(e) => { e.preventDefault(); e.stopPropagation(); setActive(i) }}
+                    className={`w-1.5 h-1.5 rounded-full transition-all ${i === active ? "w-4 bg-gold" : "bg-gold/40"}`}
+                    aria-label={`Cover ${i + 1}`}
+                  />
+                ))}
+              </div>
+            </>
           )}
 
           {book.badge && (

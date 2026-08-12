@@ -57,6 +57,7 @@ export async function PUT(
         ...(body.resellerPrice !== undefined ? { resellerPrice: body.resellerPrice ? parseFloat(body.resellerPrice) : null } : {}),
         ...(body.stock != null ? { stock: parseInt(body.stock) } : {}),
         ...(body.coverImage != null ? { coverImage: body.coverImage } : {}),
+        ...(body.backCoverImage !== undefined ? { backCoverImage: body.backCoverImage || null } : {}),
         ...(body.pageCount != null ? { pageCount: parseInt(body.pageCount) } : {}),
         ...(body.previewPdfUrl !== undefined ? { previewPdfUrl: body.previewPdfUrl || "" } : {}),
         ...(body.weight != null ? { weight: parseInt(body.weight) } : {}),

@@ -31,6 +31,7 @@ export async function GET(
       publication_type_icon: book.publicationType?.icon || null,
       publication_type_badge_color: book.publicationType?.badgeColor || null,
       cover_image: book.coverImage,
+      back_cover_image: book.backCoverImage,
       synopsis: book.synopsis,
       preview_pdf_url: book.previewPdfUrl,
       created_at: book.createdAt.toISOString(),

@@ -88,6 +88,7 @@ model Book {
   categoryId           Int               @map("category_id")
   publicationTypeId    Int?              @map("publication_type_id")
   coverImage           String?           @map("cover_image")
+  backCoverImage       String?           @map("back_cover_image")
   synopsis             String            @db.Text
   previewPdfUrl        String?           @map("preview_pdf_url")
   stock                Int               @default(0)

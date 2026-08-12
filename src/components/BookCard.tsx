@@ -20,7 +20,7 @@ export default function BookCard({ book }: { book: Book }) {
             src={book.cover_image}
             alt={`Sampul ${book.title}`}
             fill
-            className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+            className="object-contain bg-cream p-3 transition-transform duration-300 group-hover:scale-[1.02]"
             sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
             onError={() => setImgError(true)}
           />

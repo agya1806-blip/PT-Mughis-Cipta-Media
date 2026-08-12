@@ -64,6 +64,7 @@ export async function POST(request: Request) {
         resellerPrice: body.resellerPrice ? parseFloat(body.resellerPrice) : null,
         stock: parseInt(body.stock) || 0,
         coverImage: body.coverImage || "",
+        backCoverImage: body.backCoverImage || null,
         pageCount: parseInt(body.pageCount) || 0,
         previewPdfUrl: body.previewPdfUrl || "",
         weight: parseInt(body.weight) || 250,

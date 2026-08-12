@@ -18,7 +18,7 @@ export default function CreateBook() {
     edition: "", keywords: "", publisherName: "PT Mughis Cipta Media",
     isbn: "", subtitle: "", penName: "", bindingType: "", publicationStatus: "available",
     synopsis: "", price: "", resellerPrice: "", stock: "0",
-    coverImage: "", pageCount: "0", previewPdfUrl: "",
+    coverImage: "", backCoverImage: "", pageCount: "0", previewPdfUrl: "",
     weight: "250", dimensions: "", language: "Indonesia",
     publicationYear: String(new Date().getFullYear()),
     whatsapp: "",
@@ -217,9 +217,12 @@ export default function CreateBook() {
           </div>
         </FormSection>
 
-        <FormSection title="Cover & Media" description="Upload cover buku dan file pendukung">
-          <ImageUpload label="Cover Buku" value={form.coverImage} onChange={(val) => setForm({ ...form, coverImage: val })} />
-          <div>
+        <FormSection title="Cover & Media" description="Upload cover depan, cover belakang, dan file pendukung">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <ImageUpload label="Cover Depan (Front Cover)" value={form.coverImage} onChange={(val) => setForm({ ...form, coverImage: val })} />
+            <ImageUpload label="Cover Belakang (Back Cover)" value={form.backCoverImage} onChange={(val) => setForm({ ...form, backCoverImage: val })} />
+          </div>
+          <div className="mt-4">
             <label className="block text-sm font-medium text-green-dark/80 mb-1">URL Preview PDF (opsional)</label>
             <input type="url" className={inputClass} value={form.previewPdfUrl} onChange={(e) => setForm({ ...form, previewPdfUrl: e.target.value })} placeholder="https://..." />
           </div>

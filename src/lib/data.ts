@@ -16,6 +16,7 @@ export interface Book {
   category_id: string
   category_name: string
   cover_image: string | null
+  back_cover_image?: string | null
   synopsis: string
   preview_pdf_url: string | null
   created_at: string

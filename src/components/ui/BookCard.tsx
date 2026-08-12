@@ -37,7 +37,7 @@ export default function BookCard({ book, className = "", href }: Props) {
               alt={book.title}
               fill
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-              className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+              className="object-contain bg-cream p-3 transition-transform duration-300 group-hover:scale-[1.02]"
             />
           ) : (
             <div className="absolute inset-0 flex flex-col items-center justify-center text-green-dark/80 p-6 text-center">

@@ -54,6 +54,7 @@ const getCachedBooks = unstable_cache(
       publication_type_icon: b.publicationType?.icon || null,
       publication_type_badge_color: b.publicationType?.badgeColor || null,
       cover_image: b.coverImage,
+      back_cover_image: b.backCoverImage,
       synopsis: b.synopsis,
       preview_pdf_url: b.previewPdfUrl,
       created_at: b.createdAt.toISOString(),

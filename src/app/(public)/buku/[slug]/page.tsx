@@ -1,9 +1,9 @@
 import { notFound } from "next/navigation"
 import Link from "next/link"
-import Image from "next/image"
 import { prisma } from "@/lib/prisma"
 import { slugifyAuthor } from "@/lib/authors"
 import { BookDetailClient } from "./BookDetailClient"
+import CoverGallery from "./CoverGallery"
 import BookCard from "@/components/BookCard"
 import Breadcrumb from "@/components/ui/Breadcrumb"
 import { JsonLd } from "@/components/JsonLd"
@@ -49,14 +49,19 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   })
   if (!book) return { title: "Buku Tidak Ditemukan" }
   const coverUrl = resolveCover(book.coverImage)
+  const backCoverUrl = resolveCover(book.backCoverImage)
   const typeLabel = book.publicationType?.name || "Buku"
+  const ogImages = [
+    ...(coverUrl ? [{ url: coverUrl, alt: book.title }] : []),
+    ...(backCoverUrl ? [{ url: backCoverUrl, alt: `${book.title} - Cover Belakang` }] : []),
+  ]
   return {
     title: `${book.title} | ${typeLabel} - PT Mughis Cipta Media`,
     description: `${typeLabel}: ${book.synopsis.substring(0, 155)}`,
     openGraph: {
       title: `${book.title} - ${typeLabel} | PT Mughis Cipta Media`,
       description: `${typeLabel}: ${book.synopsis.substring(0, 155)}`,
-      images: coverUrl ? [{ url: coverUrl, alt: book.title }] : undefined,
+      images: ogImages.length > 0 ? ogImages : undefined,
     },
     twitter: {
       card: "summary_large_image",
@@ -84,6 +89,7 @@ export default async function BookDetailPage({ params }: { params: Promise<{ slu
   })
 
   const coverUrl = resolveCover(book.coverImage)
+  const backCoverUrl = resolveCover(book.backCoverImage)
   const typeName = book.publicationType?.name || null
   const typeColor = book.publicationType?.badgeColor || null
   const statusBadge = getPubStatusBadge(book.publicationStatus)
@@ -143,6 +149,7 @@ export default async function BookDetailPage({ params }: { params: Promise<{ slu
     publication_type_icon: book.publicationType?.icon || null,
     publication_type_badge_color: typeColor,
     cover_image: book.coverImage ?? "",
+    back_cover_image: book.backCoverImage ?? "",
     synopsis: book.synopsis,
     preview_pdf_url: book.previewPdfUrl ?? "",
     created_at: book.createdAt.toISOString(),
@@ -169,7 +176,7 @@ export default async function BookDetailPage({ params }: { params: Promise<{ slu
             bookFormat: "Paperback",
             inLanguage: mapped.language,
             description: mapped.synopsis.substring(0, 200),
-            image: coverUrl || undefined,
+            image: coverUrl ? (backCoverUrl ? [coverUrl, backCoverUrl] : coverUrl) : undefined,
             editor: mapped.editor || undefined,
             keywords: mapped.keywords || undefined,
             edition: mapped.edition || undefined,
@@ -201,17 +208,8 @@ export default async function BookDetailPage({ params }: { params: Promise<{ slu
         <div className="bg-cream rounded-2xl border border-gold/20 overflow-hidden shadow-sm">
           <div className="grid md:grid-cols-3 gap-8 p-6 sm:p-8">
             {/* Cover */}
-            <div className="aspect-[3/4] bg-cream rounded-xl flex items-center justify-center overflow-hidden">
-              {coverUrl ? (
-                <Image src={coverUrl} alt={mapped.title} width={300} height={400} className="w-full h-full object-cover" />
-              ) : (
-                <div className="flex flex-col items-center text-green-dark/80 p-8 text-center">
-                  <svg className="w-20 h-20 mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
-                  </svg>
-                  <span className="text-sm font-medium">Sampul Terbitan</span>
-                </div>
-              )}
+            <div>
+              <CoverGallery title={mapped.title} frontCover={coverUrl} backCover={backCoverUrl} />
             </div>
 
             {/* Info */}

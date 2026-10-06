@@ -3,7 +3,7 @@ import { prisma } from "@/lib/prisma"
 
 const PUBLIC_KEYS = new Set([
   "site_name", "contact_phone", "contact_email", "address",
-  "instagram_url", "facebook_url",
+  "instagram_url", "facebook_url", "company_tagline", "bank_accounts_json", "catalog_products_json",
   "legal_nib", "legal_npwp", "legal_ikapi",
   "legal_nib_date", "legal_npwp_date", "legal_ikapi_date",
 ])

@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import { LayoutDashboard, BookOpen, FileText, FolderTree, Home, Users, Calendar, Layers, FileSearch } from "lucide-react"
+import { LayoutDashboard, BookOpen, FileText, FolderTree, Home, Users, Calendar, Layers, FileSearch, Laptop } from "lucide-react"
 import AdminShell from "@/components/admin/AdminShell"
 
 export const metadata: Metadata = {
@@ -21,6 +21,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         </div>
         <nav className="flex-1 p-4 space-y-1 overflow-y-auto">
           <SidebarLink href="/admin">Dashboard</SidebarLink>
+          <SidebarLink href="/admin/katalog">Katalog Laptop & Digital</SidebarLink>
           <SidebarLink href="/admin/books">Data Terbitan</SidebarLink>
           <SidebarLink href="/admin/publication-types">Master Jenis Terbitan</SidebarLink>
           <SidebarLink href="/admin/categories">Kategori</SidebarLink>
@@ -51,11 +52,11 @@ function MobileSidebar() {
   return (
     <div className="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-cream border-t border-gold/20 flex items-center justify-around safe-area-bottom" style={{ padding: "env(safe-area-inset-bottom, 0px) 0 0" }}>
       <MobileNav href="/admin" label="Dashboard" icon={<LayoutDashboard className="w-5 h-5" />} />
+      <MobileNav href="/admin/katalog" label="Katalog" icon={<Laptop className="w-5 h-5" />} />
       <MobileNav href="/admin/books" label="Terbitan" icon={<BookOpen className="w-5 h-5" />} />
       <MobileNav href="/admin/articles" label="Artikel" icon={<FileText className="w-5 h-5" />} />
       <MobileNav href="/admin/categories" label="Kategori" icon={<FolderTree className="w-5 h-5" />} />
       <MobileNav href="/admin/team" label="Tim" icon={<Users className="w-5 h-5" />} />
-      <MobileNav href="/admin/campaign" label="Campaign" icon={<Calendar className="w-5 h-5" />} />
       <MobileNav href="/" label="Site" icon={<Home className="w-5 h-5" />} />
     </div>
   )
@@ -80,7 +81,7 @@ function SidebarLink({
   return (
     <Link
       href={href}
-      className="block px-3 py-2 rounded-lg text-sm text-gold/80 hover:bg-white/10 hover:text-cream transition-colors"
+      className="block px-3 py-2 rounded-lg text-sm text-cream/90 hover:text-gold hover:bg-gold/10 transition-colors font-medium"
     >
       {children}
     </Link>

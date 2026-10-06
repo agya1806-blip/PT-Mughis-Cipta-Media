@@ -5,15 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Katalog Laptop & Produk Digital — PT Mughis Cipta Media</title>
   <meta name="description" content="Katalog Resmi Laptop Bekas Berkualitas, Lisensi Software & Produk Digital dari PT Mughis Cipta Media. Dapatkan unit garansi terpercaya dengan harga hemat.">
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <!-- Google Fonts: Plus Jakarta Sans for extreme clarity and legibility -->
+
+  <!-- Google Fonts: Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
@@ -22,7 +24,7 @@
             brand: {
               50: '#f0fdfa',
               100: '#ccfbf1',
-              500: '#0d9488', // Primary calm teal
+              500: '#0d9488',
               600: '#0f766e',
               700: '#115e59',
               blue: '#0284c7'
@@ -36,28 +38,12 @@
     }
   </script>
   <style>
-    .card-shadow {
-      box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.06), 0 2px 6px -1px rgba(0, 0, 0, 0.04);
-    }
-    .card-shadow:hover {
-      box-shadow: 0 12px 30px -4px rgba(13, 148, 136, 0.15), 0 4px 10px -2px rgba(0, 0, 0, 0.05);
-    }
-    ::-webkit-scrollbar {
-      width: 10px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #f1f5f9;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #cbd5e1;
-      border-radius: 5px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: #94a3b8;
-    }
+    body { font-family: 'Plus Jakarta Sans', -apple-system, sans-serif; background-color: #f8fafc; color: #0f172a; margin: 0; padding: 0; }
+    .card-shadow { box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.06), 0 2px 6px -1px rgba(0, 0, 0, 0.04); }
+    .card-shadow:hover { box-shadow: 0 12px 30px -4px rgba(13, 148, 136, 0.15), 0 4px 10px -2px rgba(0, 0, 0, 0.05); }
   </style>
 </head>
-<body class="bg-slate-50 text-slate-900 font-sans antialiased selection:bg-teal-500 selection:text-white">
+<body class="bg-slate-50 text-slate-900 font-sans antialiased">
 
   <!-- Top Announcement Bar -->
   <div class="bg-slate-900 text-white text-xs sm:text-sm py-2.5 px-4 text-center font-medium">
@@ -70,7 +56,7 @@
       <div class="flex items-center justify-between h-20">
         <!-- Logo Usaha -->
         <a href="https://www.mughisciptamedia.com" class="flex items-center gap-3 group">
-          <div class="w-12 h-12 rounded-2xl bg-teal-600 flex items-center justify-center text-white shadow-md shadow-teal-600/30 group-hover:scale-105 transition-transform duration-200">
+          <div class="w-12 h-12 rounded-2xl bg-teal-600 flex items-center justify-center text-white shadow-md shadow-teal-600/30">
             <i class="fa-solid fa-laptop-code text-2xl"></i>
           </div>
           <div>
@@ -83,87 +69,62 @@
         <nav class="hidden md:flex items-center space-x-8 text-base font-bold text-slate-700">
           <a href="#katalog" class="hover:text-teal-600 transition-colors">Katalog Pilihan</a>
           <a href="#keunggulan" class="hover:text-teal-600 transition-colors">Keunggulan Toko</a>
-          <a href="#testimoni" class="hover:text-teal-600 transition-colors">Testimoni Pembeli</a>
           <a href="#info-bisnis" class="hover:text-teal-600 transition-colors">Info & Rekening Resmi</a>
         </nav>
 
         <!-- CTA Direct WA Button -->
         <div class="hidden sm:flex items-center gap-3">
-          <a id="btnWaHeader" href="https://wa.me/6281234567890?text=Halo%20Admin,%20saya%20tertarik%20tanya%20produk%20laptop/digital" target="_blank" class="px-5 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm sm:text-base flex items-center gap-2 shadow-md shadow-emerald-600/20 transition-all transform hover:-translate-y-0.5">
+          <a id="btnWaHeader" href="https://wa.me/6281234567890?text=Halo%20Admin,%20saya%20tertarik%20tanya%20produk%20laptop/digital" target="_blank" class="px-5 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm sm:text-base flex items-center gap-2 shadow-md shadow-emerald-600/20 transition-all">
             <i class="fa-brands fa-whatsapp text-xl"></i>
             <span>Chat Admin WhatsApp</span>
           </a>
         </div>
-
-        <!-- Mobile Menu Toggle Button -->
-        <div class="md:hidden flex items-center">
-          <button id="mobileMenuBtn" class="text-slate-800 hover:text-teal-600 p-2 rounded-lg focus:outline-none" aria-label="Buka Menu">
-            <i class="fa-solid fa-bars text-2xl"></i>
-          </button>
-        </div>
       </div>
-    </div>
-
-    <!-- Mobile Menu View -->
-    <div id="mobileMenu" class="hidden md:hidden bg-white border-b border-slate-200 px-4 pt-3 pb-6 space-y-3">
-      <a href="#katalog" class="block py-2.5 text-slate-800 hover:text-teal-600 font-bold text-base border-b border-slate-100 mobile-nav-link">Katalog Pilihan</a>
-      <a href="#keunggulan" class="block py-2.5 text-slate-800 hover:text-teal-600 font-bold text-base border-b border-slate-100 mobile-nav-link">Keunggulan Toko</a>
-      <a href="#testimoni" class="block py-2.5 text-slate-800 hover:text-teal-600 font-bold text-base border-b border-slate-100 mobile-nav-link">Testimoni Pembeli</a>
-      <a href="#info-bisnis" class="block py-2.5 text-slate-800 hover:text-teal-600 font-bold text-base border-b border-slate-100 mobile-nav-link">Info & Rekening Resmi</a>
-      <a id="btnWaMobile" href="https://wa.me/6281234567890?text=Halo%20Admin,%20saya%20tertarik%20konsultasi%20katalog" target="_blank" class="w-full mt-3 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-center flex items-center justify-center gap-2 shadow-md">
-        <i class="fa-brands fa-whatsapp text-xl"></i>
-        <span>Hubungi Kami di WhatsApp</span>
-      </a>
     </div>
   </header>
 
   <!-- Hero Section -->
   <section class="relative pt-12 pb-16 bg-gradient-to-b from-teal-50/70 via-white to-slate-50 border-b border-slate-200">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-3xl mx-auto">
-        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-teal-100 border border-teal-300 text-teal-800 text-xs sm:text-sm font-bold uppercase tracking-wider mb-6">
-          <i class="fa-solid fa-circle-check text-teal-600"></i>
-          Katalog Resmi Terpercaya & Bergaransi
-        </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-teal-100 border border-teal-300 text-teal-800 text-xs sm:text-sm font-bold uppercase tracking-wider mb-6">
+        <i class="fa-solid fa-circle-check text-teal-600"></i>
+        Katalog Resmi Terpercaya & Bergaransi
+      </div>
 
-        <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight leading-tight mb-6">
-          Koleksi Laptop Pilihan & <span class="text-teal-600 underline decoration-teal-300/80 underline-offset-8">Produk Digital</span>
-        </h1>
+      <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight leading-tight mb-6">
+        Koleksi Laptop Pilihan & <span class="text-teal-600 underline decoration-teal-300/80 underline-offset-8">Produk Digital</span>
+      </h1>
 
-        <p class="text-base sm:text-xl text-slate-600 font-medium leading-relaxed mb-8">
-          Dapatkan laptop bisnis berkualitas tinggi, lisensi software resmi seumur hidup, dan paket hemat kerja dengan harga jujur, unit bergaransi, dan layanan pesan siap antar.
-        </p>
+      <p class="text-base sm:text-xl text-slate-600 font-medium leading-relaxed mb-8 max-w-2xl mx-auto">
+        Dapatkan laptop bisnis berkualitas tinggi, lisensi software resmi seumur hidup, dan paket hemat kerja dengan harga jujur, unit bergaransi, dan layanan pesan siap antar.
+      </p>
 
-        <!-- Search Bar -->
-        <div class="relative max-w-2xl mx-auto mb-8 shadow-lg rounded-2xl">
-          <input type="text" id="searchInput" placeholder="Cari nama laptop, spesifikasi RAM/SSD, atau produk digital..."
-                 class="w-full pl-12 pr-28 py-4 text-base sm:text-lg font-bold rounded-2xl border-2 border-slate-300 focus:border-teal-600 focus:outline-none bg-white text-slate-900 placeholder:text-slate-400 placeholder:font-normal">
-          <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xl"></i>
-          <span class="absolute right-3 top-1/2 -translate-y-1/2 px-3 py-1.5 bg-slate-100 rounded-xl text-xs font-bold text-slate-500 hidden sm:block">
-            Cari Cepat
-          </span>
-        </div>
+      <!-- Search Bar -->
+      <div class="relative max-w-2xl mx-auto mb-8 shadow-lg rounded-2xl">
+        <input type="text" id="searchInput" placeholder="Cari nama laptop, spesifikasi RAM/SSD, atau produk digital..."
+               class="w-full pl-12 pr-28 py-4 text-base sm:text-lg font-bold rounded-2xl border-2 border-slate-300 focus:border-teal-600 focus:outline-none bg-white text-slate-900 placeholder:text-slate-400 font-medium">
+        <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xl"></i>
+      </div>
 
-        <!-- Filter Category Tabs -->
-        <div class="flex flex-wrap justify-center gap-2 sm:gap-3 text-sm sm:text-base font-bold">
-          <button onclick="filterCategory('all')" class="category-btn active px-5 py-2.5 rounded-xl border-2 border-teal-600 bg-teal-600 text-white transition-all shadow-sm">
-            🔥 Semua Produk
-          </button>
-          <button onclick="filterCategory('laptop')" class="category-btn px-5 py-2.5 rounded-xl border-2 border-slate-200 bg-white text-slate-700 hover:border-teal-600 transition-all">
-            💻 Laptop Business
-          </button>
-          <button onclick="filterCategory('digital')" class="category-btn px-5 py-2.5 rounded-xl border-2 border-slate-200 bg-white text-slate-700 hover:border-teal-600 transition-all">
-            🔑 Produk Digital & Lisensi
-          </button>
-          <button onclick="filterCategory('budget')" class="category-btn px-5 py-2.5 rounded-xl border-2 border-slate-200 bg-white text-slate-700 hover:border-teal-600 transition-all">
-            🏷️ Pilihan Hemat
-          </button>
-        </div>
+      <!-- Category Filter Tabs -->
+      <div class="flex flex-wrap justify-center gap-2 sm:gap-3 text-sm sm:text-base font-bold">
+        <button onclick="filterCategory('all')" class="category-btn active px-5 py-2.5 rounded-xl border-2 border-teal-600 bg-teal-600 text-white transition-all shadow-sm">
+          🔥 Semua Produk
+        </button>
+        <button onclick="filterCategory('laptop')" class="category-btn px-5 py-2.5 rounded-xl border-2 border-slate-200 bg-white text-slate-700 hover:border-teal-600 transition-all">
+          💻 Laptop Business
+        </button>
+        <button onclick="filterCategory('digital')" class="category-btn px-5 py-2.5 rounded-xl border-2 border-slate-200 bg-white text-slate-700 hover:border-teal-600 transition-all">
+          🔑 Produk Digital & Lisensi
+        </button>
+        <button onclick="filterCategory('budget')" class="category-btn px-5 py-2.5 rounded-xl border-2 border-slate-200 bg-white text-slate-700 hover:border-teal-600 transition-all">
+          🏷️ Pilihan Hemat (&lt; 3 Jt)
+        </button>
       </div>
     </div>
   </section>
 
-  <!-- Product Catalog Grid Section -->
+  <!-- Product Catalog Grid -->
   <section id="katalog" class="py-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-8 pb-4 border-b border-slate-200 gap-4">
@@ -176,65 +137,19 @@
         </div>
       </div>
 
-      <!-- Container Grid -->
       <div id="productGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Dynamic Cards inserted via JavaScript -->
+        <!-- Dynamic Cards -->
       </div>
 
-      <!-- State Kosong jika Pencarian Tidak Ditemukan -->
-      <div id="emptyState" class="hidden text-center py-16 bg-white rounded-3xl border-2 border-dashed border-slate-200">
-        <i class="fa-solid fa-box-open text-5xl text-slate-300 mb-3"></i>
+      <div id="emptyState" class="hidden text-center py-16 bg-white rounded-3xl border-2 border-dashed border-slate-200 space-y-2">
+        <i class="fa-solid fa-box-open text-5xl text-slate-300"></i>
         <h3 class="text-xl font-bold text-slate-800">Produk Tidak Ditemukan</h3>
-        <p class="text-sm text-slate-500 mt-1">Coba kata kunci lain atau pilih kategori produk yang berbeda.</p>
+        <p class="text-sm text-slate-500">Coba kata kunci lain atau pilih kategori produk yang berbeda.</p>
       </div>
     </div>
   </section>
 
-  <!-- Store Strengths Section -->
-  <section id="keunggulan" class="py-16 bg-white border-y border-slate-200">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-2xl mx-auto mb-12">
-        <h2 class="text-2xl sm:text-4xl font-black text-slate-900">Mengapa Belanja di Toko Kami?</h2>
-        <p class="text-base text-slate-600 mt-2 font-medium">Pengalaman belanja jujur, aman, dan tanpa rasa khawatir.</p>
-      </div>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
-          <div class="w-12 h-12 rounded-xl bg-teal-100 text-teal-700 flex items-center justify-center text-2xl font-bold">
-            <i class="fa-solid fa-shield-virus"></i>
-          </div>
-          <h3 class="text-lg font-bold text-slate-900">Garansi Unit Jelas</h3>
-          <p class="text-sm text-slate-600 leading-relaxed font-medium">Semua laptop dilengkapi jaminan garansi toko resmi 30-90 hari dengan penanganan cepat.</p>
-        </div>
-
-        <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
-          <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center text-2xl font-bold">
-            <i class="fa-solid fa-building-circle-check"></i>
-          </div>
-          <h3 class="text-lg font-bold text-slate-900">Rekening Resmi PT</h3>
-          <p class="text-sm text-slate-600 leading-relaxed font-medium">Transaksi dijamin aman 100% dengan transfer hanya ke rekening atas nama resmi perusahaan.</p>
-        </div>
-
-        <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
-          <div class="w-12 h-12 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center text-2xl font-bold">
-            <i class="fa-solid fa-headset"></i>
-          </div>
-          <h3 class="text-lg font-bold text-slate-900">Bimbingan & Konsultasi</h3>
-          <p class="text-sm text-slate-600 leading-relaxed font-medium">Bingung memilih spek? CS WhatsApp kami siap membantu konsultasi gratis sesuai kebutuhan dana Anda.</p>
-        </div>
-
-        <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
-          <div class="w-12 h-12 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center text-2xl font-bold">
-            <i class="fa-solid fa-truck-fast"></i>
-          </div>
-          <h3 class="text-lg font-bold text-slate-900">Pengiriman Aman</h3>
-          <p class="text-sm text-slate-600 leading-relaxed font-medium">Setiap pengiriman laptop dibungkus busa tebal & dus kuat. Aman kirim ke seluruh kota Indonesia.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Legal & Bank Accounts Info Section -->
+  <!-- Legal & Bank Accounts Section -->
   <section id="info-bisnis" class="py-16 bg-slate-900 text-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
       <div class="text-center max-w-2xl mx-auto space-y-3">
@@ -248,7 +163,7 @@
       </div>
 
       <div id="bankGrid" class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <!-- Dynamic Bank Cards inserted via JS -->
+        <!-- Dynamic Banks -->
       </div>
     </div>
   </section>
@@ -257,25 +172,8 @@
   <footer class="bg-slate-950 text-slate-400 border-t border-slate-800 py-12">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
       <div class="space-y-2 text-center md:text-left">
-        <div class="flex items-center justify-center md:justify-start gap-2">
-          <div class="w-8 h-8 rounded-lg bg-teal-600 flex items-center justify-center text-white font-bold">
-            <i class="fa-solid fa-laptop-code text-sm"></i>
-          </div>
-          <span id="footerBrand" class="text-lg font-black text-white">TechVault.ID</span>
-        </div>
+        <span id="footerBrand" class="text-lg font-black text-white">TechVault.ID</span>
         <p class="text-xs text-slate-400 max-w-md">Penyedia unit laptop berkualitas, lisensi software original, dan solusi digital terpercaya dengan komitmen kejujuran.</p>
-      </div>
-
-      <div class="flex items-center gap-6 text-sm font-bold">
-        <a id="footerIg" href="https://instagram.com/mughisciptamedia" target="_blank" class="hover:text-pink-400 transition-colors flex items-center gap-1.5">
-          <i class="fa-brands fa-instagram text-lg text-pink-500"></i>
-          <span>Instagram Resmi</span>
-        </a>
-        <a id="footerWa" href="https://wa.me/6281234567890" target="_blank" class="hover:text-emerald-400 transition-colors flex items-center gap-1.5">
-          <i class="fa-brands fa-whatsapp text-lg text-emerald-500"></i>
-          <span>WhatsApp Hub</span>
-        </a>
-        <a href="#katalog" class="hover:text-teal-400 transition-colors">Daftar Produk</a>
       </div>
 
       <p class="text-xs text-slate-500">
@@ -284,7 +182,7 @@
     </div>
   </footer>
 
-  <!-- Product Detail Modal -->
+  <!-- Product Modal -->
   <div id="productModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300">
     <div class="bg-white border border-slate-300 max-w-xl w-full rounded-2xl overflow-hidden shadow-2xl transform scale-95 transition-transform duration-300" id="modalBox">
       <div class="p-5 border-b border-slate-200 flex items-center justify-between bg-slate-50">
@@ -351,9 +249,6 @@
         <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
         <span class="relative inline-flex rounded-full h-4 w-4 bg-emerald-500"></span>
       </span>
-      <span class="absolute right-20 px-4 py-2 rounded-xl bg-slate-900 text-white text-xs font-bold whitespace-nowrap shadow-xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
-        Tanya Admin di WhatsApp
-      </span>
     </a>
   </div>
 
@@ -373,8 +268,7 @@
           "Prosesor: Intel Core i5-8350U Gen 8 (Cepat & Irit Daya)",
           "RAM: 8GB / 16GB DDR4 (Bisa di-upgrade)",
           "Penyimpanan: 256GB / 512GB SSD Fast Boot",
-          "Layar: 14.0 inch Full HD Anti-Silau (Nyaman di mata)",
-          "Kondisi: 90-95% Sangat Mulus, baterai awet 2-4 jam",
+          "Layar: 14.0 inch Full HD Anti-Silau",
           "Garansi: 60 Hari Toko Resmi"
         ],
         bonus: "Unit Laptop, Charger Original Type-C, Bonus Tas Baru & Mouse Wireless."
@@ -393,7 +287,6 @@
           "Tipe Lisensi: Windows 11 Pro Retail + Office 2021 Pro Plus",
           "Masa Aktif: Lifetime (Permanen Seumur Hidup)",
           "Pengiriman: Key resmi dikirim langsung via WhatsApp / Email",
-          "Bebas Update: Terkoneksi langsung ke server resmi",
           "Garansi: 100% Ganti Baru jika gagal aktivasi"
         ],
         bonus: "Buku panduan bergambar cara pasang, link download resmi, dan dibantu sampai tuntas via WA."
@@ -407,69 +300,14 @@
         priceText: "Harga Mulai Rp3.800.000",
         rawPriceText: "Mulai Rp3.800.000",
         image: "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=800&auto=format&fit=crop&q=80",
+        shortDesc: "Bodi tipis dan ringan dengan serat karbon. Sangat nyaman dibawa bepergian, baterai awet dengan layar jernih.",
         specs: [
           "Prosesor: Intel Core i7-8650U Kecepatan hingga 4.2GHz",
           "RAM: 16GB DDR4 Lancar Multitasking",
           "Penyimpanan: 512GB SSD NVMe Cepat",
-          "Layar: 14.0 inch Full HD Bezel Tipis",
-          "Fitur: Keyboard dengan Lampu Menyala (Backlit)"
+          "Layar: 14.0 inch Full HD Bezel Tipis"
         ],
-        shortDesc: "Bodi tipis dan ringan dengan serat karbon. Sangat nyaman dibawa bepergian, baterai awet dengan layar jernih.",
         bonus: "Tas selempang Dell, Charger Original, Mouse Optik, & Garansi Toko."
-      },
-      {
-        id: "prod-4",
-        title: "Paket Software Desain & Grafis Siap Pakai",
-        category: "digital",
-        badge: "Terlaris Digital",
-        badgeColor: "bg-purple-100 text-purple-800 border-purple-300",
-        priceText: "Harga Mulai Rp450.000",
-        rawPriceText: "Mulai Rp450.000 (Paket Komplit)",
-        image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&auto=format&fit=crop&q=80",
-        shortDesc: "Aplikasi lengkap untuk desain logo, edit foto, video konten hingga 3D. Mudah diinstal dengan panduan bahasa Indonesia.",
-        specs: [
-          "Kompatibel: Windows 10/11 & macOS",
-          "Metode: Single Installer tinggal klik langsung jadi",
-          "Keamanan: Sudah dites bersih bebas malware",
-          "Akses: Cloud Drive High-Speed seumur hidup"
-        ],
-        bonus: "Bonus ribuan font keren, template desain siap edit, & preset warna video."
-      },
-      {
-        id: "prod-5",
-        title: "HP EliteBook 840 G5 Bodi Aluminium",
-        category: "laptop",
-        badge: "Tampilan Mewah",
-        badgeColor: "bg-indigo-100 text-indigo-800 border-indigo-300",
-        priceText: "Harga Mulai Rp4.150.000",
-        rawPriceText: "Mulai Rp4.150.000",
-        image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=800&auto=format&fit=crop&q=80",
-        shortDesc: "Desain metal silver elegan standar eksekutif kantor dengan audio jernih premium Bang & Olufsen.",
-        specs: [
-          "Prosesor: Intel Core i5-8250U / Core i7",
-          "RAM: 8GB / 16GB DDR4",
-          "Penyimpanan: 256GB / 512GB SSD",
-          "Speaker: Audio Jernih Bang & Olufsen"
-        ],
-        bonus: "Charger original HP, tas ransel laptop empuk, mouse wireless & garansi."
-      },
-      {
-        id: "prod-6",
-        title: "Netbook Ringkas Pelajar & Kasir Toko",
-        category: "budget",
-        badge: "Super Hemat",
-        badgeColor: "bg-amber-100 text-amber-900 border-amber-300",
-        priceText: "Harga Mulai Rp1.850.000",
-        rawPriceText: "Mulai Rp1.850.000 (Stok Terbatas)",
-        image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=800&auto=format&fit=crop&q=80",
-        shortDesc: "Laptop hemat biaya untuk kebutuhan ketik Word, Excel, kasir minimarket, dan anak sekolah belajar online.",
-        specs: [
-          "Prosesor: Intel Celeron / Pentium Quad-Core",
-          "RAM: 4GB / 8GB Irit Daya",
-          "Penyimpanan: SSD 128GB / 256GB",
-          "Layar: 11.6 - 13.3 inch Enteng & Ringkas"
-        ],
-        bonus: "Sudah terisi Windows & Office siap langsung digunakan, tinggal pakai!"
       }
     ];
 
@@ -502,12 +340,7 @@
             currentWaPhone = settings.contact_phone;
             const waUrl = `https://wa.me/${currentWaPhone}?text=${encodeURIComponent('Halo Admin, saya ingin bertanya mengenai katalog produk')}`;
             document.getElementById('btnWaHeader').href = waUrl;
-            document.getElementById('btnWaMobile').href = waUrl;
             document.getElementById('floatingWa').href = waUrl;
-            document.getElementById('footerWa').href = `https://wa.me/${currentWaPhone}`;
-          }
-          if (settings.instagram_url) {
-            document.getElementById('footerIg').href = settings.instagram_url;
           }
           if (settings.bank_accounts_json) {
             try { bankAccounts = JSON.parse(settings.bank_accounts_json); } catch {}
@@ -716,18 +549,6 @@
         toast.classList.add('opacity-0', 'pointer-events-none');
       }, 2500);
     }
-
-    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-    mobileMenuBtn.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-    });
-
-    document.querySelectorAll('.mobile-nav-link').forEach(link => {
-      link.addEventListener('click', () => {
-        mobileMenu.classList.add('hidden');
-      });
-    });
 
     window.onload = function() {
       loadDynamicSettings();

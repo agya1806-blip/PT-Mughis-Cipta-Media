@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { Building2, CreditCard, Laptop, Plus, Trash2, Edit3, Save, Check, Copy } from "lucide-react"
+import { Building2, CreditCard, Laptop, Plus, Trash2, Edit3, Save } from "lucide-react"
 
 interface BankAccount {
   id: string
@@ -261,7 +261,7 @@ export default function AdminKatalogPage() {
         <div className="bg-white p-6 rounded-b-2xl border border-slate-200 shadow-sm space-y-4">
           <h2 className="text-lg font-extrabold text-slate-900 border-b border-slate-100 pb-3">Informasi Brand & Kontak</h2>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
             <div>
               <label className="block text-slate-700 font-bold mb-1">Nama Brand / Usaha</label>
               <input
@@ -333,8 +333,8 @@ export default function AdminKatalogPage() {
                     </button>
                   </div>
                 </div>
-                <p class="text-lg font-extrabold font-mono text-slate-900">{b.account_number}</p>
-                <p class="text-xs font-semibold text-slate-600">a/n {b.beneficiary}</p>
+                <p className="text-lg font-extrabold font-mono text-slate-900">{b.account_number}</p>
+                <p className="text-xs font-semibold text-slate-600">a/n {b.beneficiary}</p>
               </div>
             ))}
           </div>

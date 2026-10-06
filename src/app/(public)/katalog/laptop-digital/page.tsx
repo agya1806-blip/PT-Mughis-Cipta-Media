@@ -246,10 +246,10 @@ export default function CatalogLaptopDigitalPage() {
           </div>
 
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight leading-tight">
-            Koleksi Laptop Pilihan & <span class="text-teal-600 underline underline-offset-8">Produk Digital</span>
+            Koleksi Laptop Pilihan & <span className="text-teal-600 underline underline-offset-8">Produk Digital</span>
           </h1>
 
-          <p class="text-base sm:text-xl text-slate-600 font-medium max-w-2xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-xl text-slate-600 font-medium max-w-2xl mx-auto leading-relaxed">
             Dapatkan laptop bisnis berkualitas tinggi, lisensi software resmi seumur hidup, dan paket hemat kerja dengan harga jujur, unit bergaransi, dan layanan pesan siap antar.
           </p>
 
@@ -332,8 +332,8 @@ export default function CatalogLaptopDigitalPage() {
                       <h3 className="text-xl font-black text-slate-900 leading-snug line-clamp-1">{p.title}</h3>
 
                       <div className="p-3 rounded-xl bg-teal-50 border border-teal-200">
-                        <span class="text-xs text-slate-500 font-bold block uppercase tracking-wider">Penawaran Spesial</span>
-                        <span class="text-2xl font-black text-teal-800">{p.priceText}</span>
+                        <span className="text-xs text-slate-500 font-bold block uppercase tracking-wider">Penawaran Spesial</span>
+                        <span className="text-2xl font-black text-teal-800">{p.priceText}</span>
                       </div>
 
                       <p className="text-sm text-slate-600 line-clamp-2 leading-relaxed font-normal">{p.shortDesc}</p>

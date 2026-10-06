@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Katalog Laptop & Produk Digital — PT Mughis Cipta Media</title>
+  <meta name="description" content="Katalog Resmi Laptop Bekas Berkualitas, Lisensi Software & Produk Digital dari PT Mughis Cipta Media. Dapatkan unit garansi terpercaya dengan harga hemat.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#f0fdf4',
+              100: '#dcfce7',
+              600: '#16a34a',
+              700: '#15803d',
+              800: '#166534',
+              900: '#14532d',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { background-color: #f8fafc; color: #0f172a; font-family: system-ui, -apple-system, sans-serif; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col bg-slate-50 text-slate-900 antialiased">
+
+  <!-- Top Announcement Bar -->
+  <div class="bg-emerald-800 text-white text-xs font-semibold py-2 px-4 text-center">
+    <span>✨ Official Store PT Mughis Cipta Media • Laptop Garansi & Produk Digital Terpercaya • CS WhatsApp: +62 812-3456-7890</span>
+  </div>
+
+  <!-- Header Navigation -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-slate-200 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <a href="https://www.mughisciptamedia.com" class="flex items-center space-x-3 group">
+        <div class="w-12 h-12 bg-emerald-700 text-white font-extrabold text-xl rounded-xl flex items-center justify-center shadow-md shadow-emerald-700/20">
+          M
+        </div>
+        <div>
+          <span class="text-lg font-bold text-slate-900 block tracking-tight">PT MUGHIS CIPTA MEDIA</span>
+          <span class="text-xs font-semibold text-emerald-700">Katalog Laptop & Produk Digital</span>
+        </div>
+      </a>
+
+      <div class="flex items-center space-x-3">
+        <a href="https://www.mughisciptamedia.com" class="hidden md:inline-flex items-center space-x-1 text-sm font-semibold text-slate-700 hover:text-emerald-700 px-3 py-2">
+          <i class="fa-solid fa-book-open text-xs"></i>
+          <span>Penerbitan Buku</span>
+        </a>
+        <a href="https://instagram.com/mughisciptamedia" target="_blank" class="hidden sm:inline-flex items-center space-x-1.5 text-xs font-bold text-pink-700 bg-pink-50 hover:bg-pink-100 border border-pink-200 px-3 py-2 rounded-lg transition">
+          <i class="fa-brands fa-instagram text-sm"></i>
+          <span>Testimoni IG</span>
+        </a>
+        <a href="https://wa.me/6281234567890?text=Halo%20CS%20Mughis%20Cipta%20Media,%20saya%20ingin%20bertanya%20mengenai%20katalog%20laptop%20dan%20produk%20digital." target="_blank" class="inline-flex items-center space-x-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold px-4 py-2.5 rounded-xl shadow-md transition">
+          <i class="fa-brands fa-whatsapp text-base"></i>
+          <span>Hubungi CS</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-b from-white via-slate-50 to-emerald-50/30 border-b border-slate-200 py-12 md:py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+      <div class="inline-flex items-center space-x-2 bg-emerald-100 text-emerald-800 text-xs font-extrabold px-3 py-1.5 rounded-full border border-emerald-200">
+        <i class="fa-solid fa-shield-halved"></i>
+        <span>Unit Lolos QC • Garansi Jelas • Pengiriman Aman</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
+        Katalog Laptop & Produk Digital <span class="text-emerald-700">Terpercaya</span>
+      </h1>
+      <p class="text-slate-600 text-sm sm:text-base max-w-2xl mx-auto font-normal leading-relaxed">
+        Pilihan laptop bekas berkualitas siap pakai untuk kerja, kuliah, dan bisnis, serta produk digital & lisensi resmi dari PT Mughis Cipta Media.
+      </p>
+
+      <!-- Search & Filter Controls -->
+      <div class="max-w-xl mx-auto pt-4 space-y-3">
+        <div class="relative">
+          <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
+          <input type="text" id="searchInput" oninput="filterProducts()" placeholder="Cari laptop (ThinkPad, ASUS, HP, Dell), RAM, atau produk digital..." class="w-full bg-white border-2 border-slate-300 focus:border-emerald-600 rounded-2xl pl-11 pr-4 py-3.5 text-sm text-slate-900 shadow-sm font-medium focus:outline-none transition">
+        </div>
+
+        <!-- Filter Category Tabs -->
+        <div class="flex flex-wrap justify-center gap-2 pt-2 text-xs font-bold">
+          <button onclick="setCategory('ALL')" id="cat-ALL" class="cat-btn bg-emerald-700 text-white px-4 py-2 rounded-xl shadow-sm">Semua Produk</button>
+          <button onclick="setCategory('LAPTOP')" id="cat-LAPTOP" class="cat-btn bg-white hover:bg-slate-100 text-slate-700 border border-slate-300 px-4 py-2 rounded-xl">Laptop Business</button>
+          <button onclick="setCategory('DIGITAL')" id="cat-DIGITAL" class="cat-btn bg-white hover:bg-slate-100 text-slate-700 border border-slate-300 px-4 py-2 rounded-xl">Produk Digital & Lisensi</button>
+          <button onclick="setCategory('HEMAT')" id="cat-HEMAT" class="cat-btn bg-white hover:bg-slate-100 text-slate-700 border border-slate-300 px-4 py-2 rounded-xl">Pilihan Hemat (&lt; 3 Jt)</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product Catalog Grid -->
+  <main class="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full">
+    <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Dynamic Products Inserted via JavaScript -->
+    </div>
+  </main>
+
+  <!-- Legal & Bank Accounts Info Block -->
+  <section class="bg-white border-t border-slate-200 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+      <div class="text-center max-w-xl mx-auto space-y-2">
+        <h2 class="text-2xl font-bold text-slate-900">Rekening Resmi & Informasi Legalitas</h2>
+        <p class="text-xs text-slate-600 font-medium">Transfer pembayaran hanya dikirimkan ke rekening atas nama resmi perusahaan **PT MUGHIS CIPTA MEDIA**.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Bank 1: BCA -->
+        <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5 space-y-3 relative shadow-sm">
+          <div class="flex justify-between items-center">
+            <span class="text-sm font-extrabold text-blue-800 tracking-wide">BANK BCA</span>
+            <span class="text-[10px] font-bold uppercase bg-blue-100 text-blue-800 px-2 py-0.5 rounded">Rekening Resmi</span>
+          </div>
+          <div>
+            <p class="text-xs text-slate-500 font-medium">Nomor Rekening:</p>
+            <p class="text-xl font-extrabold text-slate-900 font-mono tracking-wider">882091823341</p>
+            <p class="text-xs font-semibold text-slate-700">a/n MUGHIS CIPTA MEDIA</p>
+          </div>
+          <button onclick="copyToClipboard('882091823341', this)" class="w-full py-2 bg-white hover:bg-slate-100 border border-slate-300 rounded-xl text-xs font-bold text-slate-800 flex items-center justify-center space-x-2 transition">
+            <i class="fa-regular fa-copy"></i>
+            <span>Salin No. Rekening</span>
+          </button>
+        </div>
+
+        <!-- Bank 2: Mandiri -->
+        <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5 space-y-3 relative shadow-sm">
+          <div class="flex justify-between items-center">
+            <span class="text-sm font-extrabold text-amber-800 tracking-wide">BANK MANDIRI</span>
+            <span class="text-[10px] font-bold uppercase bg-amber-100 text-amber-800 px-2 py-0.5 rounded">Rekening Resmi</span>
+          </div>
+          <div>
+            <p class="text-xs text-slate-500 font-medium">Nomor Rekening:</p>
+            <p class="text-xl font-extrabold text-slate-900 font-mono tracking-wider">1370029384721</p>
+            <p class="text-xs font-semibold text-slate-700">a/n MUGHIS CIPTA MEDIA</p>
+          </div>
+          <button onclick="copyToClipboard('1370029384721', this)" class="w-full py-2 bg-white hover:bg-slate-100 border border-slate-300 rounded-xl text-xs font-bold text-slate-800 flex items-center justify-center space-x-2 transition">
+            <i class="fa-regular fa-copy"></i>
+            <span>Salin No. Rekening</span>
+          </button>
+        </div>
+
+        <!-- Bank 3: BRI -->
+        <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5 space-y-3 relative shadow-sm">
+          <div class="flex justify-between items-center">
+            <span class="text-sm font-extrabold text-blue-900 tracking-wide">BANK BRI</span>
+            <span class="text-[10px] font-bold uppercase bg-blue-100 text-blue-900 px-2 py-0.5 rounded">Rekening Resmi</span>
+          </div>
+          <div>
+            <p class="text-xs text-slate-500 font-medium">Nomor Rekening:</p>
+            <p class="text-xl font-extrabold text-slate-900 font-mono tracking-wider">034101002849532</p>
+            <p class="text-xs font-semibold text-slate-700">a/n MUGHIS CIPTA MEDIA</p>
+          </div>
+          <button onclick="copyToClipboard('034101002849532', this)" class="w-full py-2 bg-white hover:bg-slate-100 border border-slate-300 rounded-xl text-xs font-bold text-slate-800 flex items-center justify-center space-x-2 transition">
+            <i class="fa-regular fa-copy"></i>
+            <span>Salin No. Rekening</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-slate-900 text-slate-300 border-t border-slate-800 py-10 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6 text-xs">
+      <div class="space-y-1 text-center md:text-left">
+        <p class="font-bold text-white text-sm">PT MUGHIS CIPTA MEDIA</p>
+        <p class="text-slate-400">Penerbitan, Percetakan & Penyedia Teknologi Digital Terpercaya.</p>
+        <p class="text-slate-500 text-[11px]">© 2026 PT Mughis Cipta Media. All Rights Reserved.</p>
+      </div>
+
+      <div class="flex flex-wrap items-center justify-center gap-4 font-semibold">
+        <a href="https://www.mughisciptamedia.com" class="hover:text-emerald-400">Website Utama</a>
+        <a href="https://instagram.com/mughisciptamedia" target="_blank" class="hover:text-emerald-400">Instagram Testimoni</a>
+        <a href="https://wa.me/6281234567890" target="_blank" class="hover:text-emerald-400">WhatsApp CS (+6281234567890)</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp Action Button -->
+  <a href="https://wa.me/6281234567890?text=Halo%20CS%20Mughis%20Cipta%20Media,%20saya%20ingin%20tanya%20stok%20laptop%20dan%20produk%20digital." target="_blank" class="fixed bottom-6 right-6 z-50 bg-emerald-600 hover:bg-emerald-500 text-white p-4 rounded-full shadow-2xl flex items-center justify-center space-x-2 font-bold text-xs transition transform hover:scale-105">
+    <i class="fa-brands fa-whatsapp text-2xl"></i>
+    <span class="hidden sm:inline">Chat CS WhatsApp</span>
+  </a>
+
+  <!-- Product Detail Modal -->
+  <div id="specModal" class="fixed inset-0 bg-slate-950/70 backdrop-blur-sm hidden items-center justify-center p-4 z-50">
+    <div class="bg-white border border-slate-200 rounded-3xl max-w-lg w-full p-6 space-y-4 text-slate-900 shadow-2xl relative">
+      <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-800 text-lg">✕</button>
+
+      <div id="modalContent" class="space-y-4">
+        <!-- Dynamic Modal Content -->
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const products = [
+      {
+        id: 1,
+        title: "Lenovo ThinkPad L14 Gen 2 (Core i5 Gen 11)",
+        category: "LAPTOP",
+        isHemat: false,
+        priceDisplay: "Rp 4.850.000",
+        rawPrice: 4850000,
+        badge: "Best Seller Business",
+        badgeColor: "bg-emerald-100 text-emerald-800",
+        image: "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=600&auto=format&fit=crop&q=80",
+        specs: [
+          "Processor: Intel Core i5-1135G7 (Gen 11)",
+          "RAM: 16 GB DDR4 (Upgradable)",
+          "Storage: 512 GB SSD NVMe Super Fast",
+          "Layar: 14 Inch FHD IPS Anti-Glare",
+          "Baterai: 4-5 Jam (Health 90%+)",
+          "Kondisi: Mulus 95%, Garansi 3 Bulan Hardware"
+        ],
+        desc: "Laptop tangguh standar korporat cocok untuk pekerjaan berat, pengolahan data, dan perkuliahan."
+      },
+      {
+        id: 2,
+        title: "ASUS VivoBook 14 Slim (Core i3 Gen 12)",
+        category: "LAPTOP",
+        isHemat: false,
+        priceDisplay: "Rp 4.250.000",
+        rawPrice: 4250000,
+        badge: "Desain Slim Modern",
+        badgeColor: "bg-blue-100 text-blue-800",
+        image: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=600&auto=format&fit=crop&q=80",
+        specs: [
+          "Processor: Intel Core i3-1215U Gen 12",
+          "RAM: 8 GB DDR4",
+          "Storage: 256 GB SSD NVMe",
+          "Layar: 14 Inch FHD Slim Bezel",
+          "Garansi: Garansi Toko 1 Bulan Full Service"
+        ],
+        desc: "Desain elegan dan tipis cocok untuk mobilitas tinggi, mengetik, dan presentasi bisnis."
+      },
+      {
+        id: 3,
+        title: "Lenovo ThinkPad X270 Dual Battery",
+        category: "LAPTOP",
+        isHemat: true,
+        priceDisplay: "Rp 2.450.000",
+        rawPrice: 2450000,
+        badge: "Pilihan Hemat < 3 Jt",
+        badgeColor: "bg-amber-100 text-amber-800",
+        image: "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=600&auto=format&fit=crop&q=80",
+        specs: [
+          "Processor: Intel Core i5-7200U Gen 7",
+          "RAM: 8 GB DDR4",
+          "Storage: 256 GB SSD",
+          "Layar: 12.5 Inch HD Compact",
+          "Double Battery: Sangat Awet 5+ Jam",
+          "Garansi: 1 Bulan Toko"
+        ],
+        desc: "Laptop compact ekonomis paling dicari dengan daya tahan baterai ganda tangguh."
+      },
+      {
+        id: 4,
+        title: "Lisensi Microsoft Office 365 Original Lifetime",
+        category: "DIGITAL",
+        isHemat: true,
+        priceDisplay: "Rp 150.000",
+        rawPrice: 150000,
+        badge: "Produk Digital",
+        badgeColor: "bg-purple-100 text-purple-800",
+        image: "https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=600&auto=format&fit=crop&q=80",
+        specs: [
+          "Tipe: Lisensi Akun Official Lifetime",
+          "Aplikasi: Word, Excel, PowerPoint, Outlook, OneNote",
+          "Dukungan: 5 Perangkat (PC/Mac/Android/iOS)",
+          "Garansi: Garansi Aktif & Panduan Aktivasi"
+        ],
+        desc: "Lisensi resmi untuk produktivitas dokumen kantor dan penulisan buku tanpa khawatir error."
+      },
+      {
+        id: 5,
+        title: "Aplikasi Kasir & Pembukuan UMKM Digital (Lifetime)",
+        category: "DIGITAL",
+        isHemat: true,
+        priceDisplay: "Harga Mulai Rp 400.000",
+        rawPrice: 400000,
+        badge: "Software Bisnis",
+        badgeColor: "bg-emerald-100 text-emerald-800",
+        image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=600&auto=format&fit=crop&q=80",
+        specs: [
+          "Tipe: Aplikasi Kasir & Stok Barang",
+          "Fitur: Cetak Struk, Laporan Penjualan, Manajemen Stok",
+          "Lisensi: Sekali Bayar Pakai Selamanya (Tanpa Biaya Bulanan)",
+          "Dukungan: Bimbingan Instalasi & Setup Data"
+        ],
+        desc: "Aplikasi pencatatan keuangan dan penjualan otomatis untuk toko, percetakan, dan UMKM."
+      },
+      {
+        id: 6,
+        title: "HP ProBook 440 G8 Aluminium (Core i5 Gen 11)",
+        category: "LAPTOP",
+        isHemat: false,
+        priceDisplay: "Rp 5.200.000",
+        rawPrice: 5200000,
+        badge: "Premium Business",
+        badgeColor: "bg-slate-200 text-slate-800",
+        image: "https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?w=600&auto=format&fit=crop&q=80",
+        specs: [
+          "Processor: Intel Core i5-1135G7",
+          "RAM: 16 GB DDR4",
+          "Storage: 512 GB SSD NVMe",
+          "Body: Full Aluminium Silver Premium",
+          "Garansi: 3 Bulan Full Hardware"
+        ],
+        desc: "Desain bisnis modern dengan performa tinggi untuk profesional dan desainer."
+      }
+    ];
+
+    let currentCategory = 'ALL';
+
+    function renderProducts(items) {
+      const grid = document.getElementById('productGrid');
+      if (items.length === 0) {
+        grid.innerHTML = `
+          <div class="col-span-full py-12 text-center space-y-2">
+            <i class="fa-solid fa-box-open text-4xl text-slate-300"></i>
+            <p class="text-sm font-bold text-slate-600">Tidak ada produk yang cocok dengan pencarian Anda.</p>
+          </div>
+        `;
+        return;
+      }
+
+      grid.innerHTML = items.map(p => `
+        <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition flex flex-col justify-between">
+          <div>
+            <div class="relative h-48 bg-slate-100 overflow-hidden">
+              <img src="${p.image}" alt="${p.title}" class="w-full h-full object-cover">
+              <span class="absolute top-3 left-3 ${p.badgeColor} text-[11px] font-extrabold px-3 py-1 rounded-full shadow-sm">
+                ${p.badge}
+              </span>
+            </div>
+            <div class="p-5 space-y-2">
+              <h3 class="font-bold text-slate-900 text-base leading-snug">${p.title}</h3>
+              <p class="text-xs text-slate-600 line-clamp-2 leading-relaxed">${p.desc}</p>
+
+              <div class="pt-2">
+                <span class="text-xs font-semibold text-slate-500 block">Harga:</span>
+                <span class="text-xl font-extrabold text-emerald-700">${p.priceDisplay}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-5 pt-0 space-y-2">
+            <button onclick="openSpecModal(${p.id})" class="w-full py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-xs rounded-xl transition">
+              <i class="fa-solid fa-list-check mr-1"></i> Detail Spesifikasi & Garansi
+            </button>
+            <a href="https://wa.me/6281234567890?text=Halo%20CS%20Mughis%20Cipta%20Media,%20saya%20tertarik%20membeli%20*${encodeURIComponent(p.title)}*%20dengan%20${encodeURIComponent(p.priceDisplay)}.%20Mohon%20info%20ketersediaan." target="_blank" class="w-full py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl flex items-center justify-center space-x-2 shadow-sm transition">
+              <i class="fa-brands fa-whatsapp text-sm"></i>
+              <span>Pesan via WhatsApp</span>
+            </a>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function filterProducts() {
+      const q = document.getElementById('searchInput').value.toLowerCase();
+      const filtered = products.filter(p => {
+        const matchesCategory =
+          currentCategory === 'ALL' ||
+          (currentCategory === 'LAPTOP' && p.category === 'LAPTOP') ||
+          (currentCategory === 'DIGITAL' && p.category === 'DIGITAL') ||
+          (currentCategory === 'HEMAT' && p.isHemat);
+
+        const matchesQuery =
+          p.title.toLowerCase().includes(q) ||
+          p.desc.toLowerCase().includes(q) ||
+          p.specs.some(s => s.toLowerCase().includes(q));
+
+        return matchesCategory && matchesQuery;
+      });
+
+      renderProducts(filtered);
+    }
+
+    function setCategory(cat) {
+      currentCategory = cat;
+      document.querySelectorAll('.cat-btn').forEach(btn => {
+        btn.className = 'cat-btn bg-white hover:bg-slate-100 text-slate-700 border border-slate-300 px-4 py-2 rounded-xl';
+      });
+      document.getElementById(`cat-${cat}`).className = 'cat-btn bg-emerald-700 text-white px-4 py-2 rounded-xl shadow-sm';
+      filterProducts();
+    }
+
+    function openSpecModal(id) {
+      const p = products.find(x => x.id === id);
+      if (!p) return;
+
+      const content = document.getElementById('modalContent');
+      content.innerHTML = `
+        <div class="space-y-3">
+          <span class="${p.badgeColor} text-[10px] font-extrabold px-2.5 py-1 rounded-full uppercase">${p.badge}</span>
+          <h3 class="text-lg font-bold text-slate-900">${p.title}</h3>
+          <p class="text-2xl font-extrabold text-emerald-700">${p.priceDisplay}</p>
+
+          <div class="bg-slate-50 border border-slate-200 rounded-2xl p-4 space-y-2">
+            <p class="text-xs font-bold text-slate-800 uppercase tracking-wider">Spesifikasi Lengkap & Kondisi:</p>
+            <ul class="text-xs text-slate-700 space-y-1.5 list-disc list-inside">
+              ${p.specs.map(s => `<li>${s}</li>`).join('')}
+            </ul>
+          </div>
+
+          <p class="text-xs text-slate-600 leading-relaxed">${p.desc}</p>
+
+          <a href="https://wa.me/6281234567890?text=Halo%20CS%20Mughis%20Cipta%20Media,%20saya%20ingin%20memesan%20*${encodeURIComponent(p.title)}*%20(${encodeURIComponent(p.priceDisplay)})." target="_blank" class="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl flex items-center justify-center space-x-2 shadow-md">
+            <i class="fa-brands fa-whatsapp text-base"></i>
+            <span>Lanjutkan Pemesanan via WhatsApp</span>
+          </a>
+        </div>
+      `;
+
+      document.getElementById('specModal').classList.remove('hidden');
+      document.getElementById('specModal').classList.add('flex');
+    }
+
+    function closeModal() {
+      document.getElementById('specModal').classList.add('hidden');
+      document.getElementById('specModal').classList.remove('flex');
+    }
+
+    function copyToClipboard(text, btn) {
+      navigator.clipboard.writeText(text).then(() => {
+        const orig = btn.innerHTML;
+        btn.innerHTML = '<i class="fa-solid fa-check text-emerald-600"></i><span class="text-emerald-700 font-bold">Nomor Tersalin!</span>';
+        setTimeout(() => { btn.innerHTML = orig; }, 2000);
+      });
+    }
+
+    window.onload = () => renderProducts(products);
+  </script>
+</body>
+</html>

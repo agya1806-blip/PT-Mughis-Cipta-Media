@@ -240,7 +240,7 @@ export default function CatalogLaptopStorePage() {
         💡 <strong>TIPS BELANJA AMAN:</strong> Pastikan hanya bertransaksi ke rekening resmi a/n <u>{ownerName}</u> (BSI / SeaBank). Layanan CS WA aktif setiap hari!
       </div>
 
-      {/* Header Navigation - 100% Tech Storefront */}
+      {/* Header Navigation */}
       <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
           <a href="#" className="flex items-center gap-3 group">
@@ -258,10 +258,10 @@ export default function CatalogLaptopStorePage() {
             </div>
           </a>
 
-          <!-- Tech Nav Links -->
+          {/* Tech Nav Links */}
           <nav className="hidden md:flex items-center space-x-6 text-sm font-bold text-slate-700">
             <a href="#katalog" className="hover:text-teal-600 transition">Katalog Unit</a>
-            <a href="#keunggulan" class="hover:text-teal-600 transition">Keunggulan Toko</a>
+            <a href="#keunggulan" className="hover:text-teal-600 transition">Keunggulan Toko</a>
             <a href="#info-bisnis" className="hover:text-teal-600 transition">Rekening Resmi</a>
           </nav>
 
@@ -398,7 +398,7 @@ export default function CatalogLaptopStorePage() {
                 <Phone className="w-5 h-5" />
               </div>
               <h3 className="text-base font-bold text-slate-900">Konsultasi Gratis WA</h3>
-              <p class="text-xs text-slate-600 leading-relaxed font-medium">CS ramah membantu memilih spek laptop sesuai kebutuhan & dana Anda.</p>
+              <p className="text-xs text-slate-600 leading-relaxed font-medium">CS ramah membantu memilih spek laptop sesuai kebutuhan & dana Anda.</p>
             </div>
 
             <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">

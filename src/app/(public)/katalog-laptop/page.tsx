@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Search, Laptop, ShieldCheck, Phone, CheckCircle, Copy, X, Check, MapPin, ShieldAlert, Award, Instagram, ExternalLink, ArrowRight, User } from "lucide-react"
+import { Search, Laptop, ShieldCheck, Phone, CheckCircle, Copy, X, Check, MapPin, ShieldAlert, Award, ExternalLink, ArrowRight, User, CheckSquare, Sparkles } from "lucide-react"
 
 function InstagramIcon({ className = "w-4 h-4" }: { className?: string }) {
   return (
@@ -166,15 +166,15 @@ const DEFAULT_PRODUCTS: ProductItem[] = [
   }
 ]
 
-export default function CatalogLaptopBrightPage() {
+export default function CatalogLaptopStorePage() {
   const [products, setProducts] = useState<ProductItem[]>(DEFAULT_PRODUCTS)
   const [bankAccounts, setBankAccounts] = useState<BankAccount[]>(DEFAULT_BANKS)
   const [waPhone, setWaPhone] = useState("0852-1770-6587")
-  const [siteName, setSiteName] = useState("Mughis Laptop Store")
+  const [storeName, setStoreName] = useState("Mughis Laptop Store")
   const [ownerName, setOwnerName] = useState("Muhammad Aghisna")
   const [address, setAddress] = useState("Sangso, Samalanga, Bireuen, Aceh")
-  const [heroHeadline, setHeroHeadline] = useState("Laptop Business Bekas Berkualitas, Siap Kerja & Siap Kuliah")
-  const [heroSubheadline, setHeroSubheadline] = useState("Unit pilihan yang diperiksa sebelum dijual, dengan kondisi dijelaskan secara transparan, garansi toko sesuai ketentuan, dan konsultasi langsung melalui WhatsApp.")
+  const [heroHeadline, setHeroHeadline] = useState("Pusat Laptop Business & Produk Digital Terpercaya")
+  const [heroSubheadline, setHeroSubheadline] = useState("Unit laptop pilihan yang dites lolos QC 100%, garansi toko jelas, dan konsultasi gratis langsung via WhatsApp.")
   const [igHighlight, setIgHighlight] = useState("https://www.instagram.com/s/aGlnaGxpZ2h0OjE3OTI1ODg4MzI2NzYwNDM2?story_media_id=3106266946206908221&stkn=MWpwam1nMm13eDlwcg==")
 
   const [currentCategory, setCurrentCategory] = useState("all")
@@ -187,7 +187,7 @@ export default function CatalogLaptopBrightPage() {
       .then((res) => res.json())
       .then((data) => {
         if (!data.error) {
-          if (data.site_name) setSiteName(data.site_name)
+          if (data.site_name) setStoreName(data.site_name)
           if (data.owner_name) setOwnerName(data.owner_name)
           if (data.address) setAddress(data.address)
           if (data.contact_phone) setWaPhone(data.contact_phone)
@@ -240,7 +240,7 @@ export default function CatalogLaptopBrightPage() {
         💡 <strong>TIPS BELANJA AMAN:</strong> Pastikan hanya bertransaksi ke rekening resmi a/n <u>{ownerName}</u> (BSI / SeaBank). Layanan CS WA aktif setiap hari!
       </div>
 
-      {/* Header Navigation */}
+      {/* Header Navigation - 100% Tech Storefront */}
       <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
           <a href="#" className="flex items-center gap-3 group">
@@ -249,7 +249,7 @@ export default function CatalogLaptopBrightPage() {
             </div>
             <div>
               <span className="text-xl sm:text-2xl font-black tracking-tight text-slate-900 block leading-tight">
-                {siteName}
+                {storeName}
               </span>
               <span className="text-xs font-bold text-teal-700 flex items-center gap-1">
                 <MapPin className="w-3.5 h-3.5 text-teal-600" />
@@ -257,6 +257,13 @@ export default function CatalogLaptopBrightPage() {
               </span>
             </div>
           </a>
+
+          <!-- Tech Nav Links -->
+          <nav className="hidden md:flex items-center space-x-6 text-sm font-bold text-slate-700">
+            <a href="#katalog" className="hover:text-teal-600 transition">Katalog Unit</a>
+            <a href="#keunggulan" class="hover:text-teal-600 transition">Keunggulan Toko</a>
+            <a href="#info-bisnis" className="hover:text-teal-600 transition">Rekening Resmi</a>
+          </nav>
 
           <div className="flex items-center gap-3">
             <a
@@ -311,7 +318,7 @@ export default function CatalogLaptopBrightPage() {
             />
           </div>
 
-          {/* Filter Category Pills */}
+          {/* Filter Categories */}
           <div className="flex flex-wrap justify-center gap-2 sm:gap-3 text-xs sm:text-sm font-bold pt-2">
             <button
               onClick={() => setCurrentCategory("all")}
@@ -366,8 +373,47 @@ export default function CatalogLaptopBrightPage() {
         </div>
       </section>
 
+      {/* Store Strengths Section */}
+      <section id="keunggulan" className="py-12 bg-white border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
+              <div className="w-10 h-10 rounded-xl bg-teal-100 text-teal-700 flex items-center justify-center font-bold">
+                <ShieldCheck className="w-5 h-5" />
+              </div>
+              <h3 className="text-base font-bold text-slate-900">Garansi Toko Jelas</h3>
+              <p className="text-xs text-slate-600 leading-relaxed font-medium">Semua unit dilengkapi garansi toko resmi 30-90 hari dengan penanganan cepat.</p>
+            </div>
+
+            <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
+              <div className="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold">
+                <CheckSquare className="w-5 h-5" />
+              </div>
+              <h3 className="text-base font-bold text-slate-900">QC Unit 100%</h3>
+              <p className="text-xs text-slate-600 leading-relaxed font-medium">Layar, keyboard, baterai, & hardware dites menyeluruh sebelum dikirim.</p>
+            </div>
+
+            <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
+              <div className="w-10 h-10 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center font-bold">
+                <Phone className="w-5 h-5" />
+              </div>
+              <h3 className="text-base font-bold text-slate-900">Konsultasi Gratis WA</h3>
+              <p class="text-xs text-slate-600 leading-relaxed font-medium">CS ramah membantu memilih spek laptop sesuai kebutuhan & dana Anda.</p>
+            </div>
+
+            <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
+              <div className="w-10 h-10 rounded-xl bg-amber-100 text-amber-800 flex items-center justify-center font-bold">
+                <Award className="w-5 h-5" />
+              </div>
+              <h3 className="text-base font-bold text-slate-900">Rekening Owner Resmi</h3>
+              <p className="text-xs text-slate-600 leading-relaxed font-medium">Transfer aman hanya a/n Muhammad Aghisna (Bank BSI & SeaBank).</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Products Grid Section */}
-      <section className="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section id="katalog" className="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-8 pb-4 border-b border-slate-200 gap-4">
           <div>
             <h2 className="text-2xl sm:text-3xl font-black text-slate-900">Katalog Unit & Produk Ready</h2>
@@ -386,7 +432,7 @@ export default function CatalogLaptopBrightPage() {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredProducts.map((p) => {
-              const waMsg = encodeURIComponent(`Assalamu’alaikum ${siteName},\n\nSaya tertarik dengan unit:\n*${p.title}*\nHarga: ${p.priceText}\n\nApakah unit masih tersedia? Mohon info kondisi dan garansinya.`)
+              const waMsg = encodeURIComponent(`Assalamu’alaikum ${storeName},\n\nSaya tertarik dengan unit:\n*${p.title}*\nHarga: ${p.priceText}\n\nApakah unit masih tersedia? Mohon informasi kondisi dan garansinya.`)
               const waUrl = `https://wa.me/${formattedWa}?text=${waMsg}`
 
               return (
@@ -441,7 +487,7 @@ export default function CatalogLaptopBrightPage() {
       </section>
 
       {/* Official Bank Accounts Section */}
-      <section className="py-16 bg-slate-900 text-white border-t border-slate-800">
+      <section id="info-bisnis" className="py-16 bg-slate-900 text-white border-t border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
           <div className="text-center max-w-2xl mx-auto space-y-3">
             <span className="px-4 py-1.5 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold uppercase tracking-widest border border-emerald-500/30">
@@ -485,13 +531,13 @@ export default function CatalogLaptopBrightPage() {
         </div>
       </section>
 
-      {/* Footer */}
+      {/* Footer - 100% Tech Storefront */}
       <footer className="bg-slate-950 text-slate-400 border-t border-slate-800 py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6 text-xs">
           <div className="space-y-1.5 text-center md:text-left">
-            <p className="text-base font-black text-white">{siteName.toUpperCase()}</p>
+            <p className="text-base font-black text-white">{storeName.toUpperCase()}</p>
             <p className="text-slate-400">Owner: {ownerName} • Alamat: {address}</p>
-            <p className="text-slate-500">© 2026 {siteName}. A unit business of PT Mughis Cipta Media. Hak Cipta Dilindungi.</p>
+            <p className="text-slate-500">© 2026 {storeName}. Hak Cipta Dilindungi.</p>
           </div>
 
           <div className="flex flex-wrap items-center justify-center gap-6 font-bold text-sm">
@@ -548,7 +594,7 @@ export default function CatalogLaptopBrightPage() {
               <p className="text-xs text-slate-600 leading-relaxed font-medium">{selectedProduct.shortDesc}</p>
 
               <a
-                href={`https://wa.me/${formattedWa}?text=${encodeURIComponent(`Assalamu’alaikum ${siteName},\n\nSaya tertarik dengan unit:\n*${selectedProduct.title}*\nHarga: ${selectedProduct.priceText}\n\nApakah unit masih tersedia? Mohon informasi kondisi dan garansinya.`)}`}
+                href={`https://wa.me/${formattedWa}?text=${encodeURIComponent(`Assalamu’alaikum ${storeName},\n\nSaya tertarik dengan unit:\n*${selectedProduct.title}*\nHarga: ${selectedProduct.priceText}\n\nApakah unit masih tersedia? Mohon informasi kondisi dan garansinya.`)}`}
                 target="_blank"
                 rel="noreferrer"
                 className="w-full py-3.5 bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs sm:text-sm rounded-xl flex items-center justify-center gap-2 shadow-md shadow-emerald-600/20"

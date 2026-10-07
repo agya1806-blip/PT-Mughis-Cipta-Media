@@ -6,15 +6,11 @@
   <title>Katalog Laptop & Produk Digital — PT Mughis Cipta Media</title>
   <meta name="description" content="Katalog Resmi Laptop Bekas Berkualitas, Lisensi Software & Produk Digital dari PT Mughis Cipta Media. Dapatkan unit garansi terpercaya dengan harga hemat.">
 
-  <!-- Google Fonts: Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-  <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -45,16 +41,13 @@
 </head>
 <body class="bg-slate-50 text-slate-900 font-sans antialiased">
 
-  <!-- Top Announcement Bar -->
   <div class="bg-slate-900 text-white text-xs sm:text-sm py-2.5 px-4 text-center font-medium">
     <span>💡 <strong>Tips Belanja Aman:</strong> Pastikan hanya bertransaksi ke rekening resmi atas nama <strong id="topBannerBrand">PT MUGHIS CIPTA MEDIA</strong>. Layanan tanya jawab via WhatsApp aktif setiap hari!</span>
   </div>
 
-  <!-- Header & Navbar -->
   <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-20">
-        <!-- Logo Usaha -->
         <a href="https://www.mughisciptamedia.com" class="flex items-center gap-3 group">
           <div class="w-12 h-12 rounded-2xl bg-teal-600 flex items-center justify-center text-white shadow-md shadow-teal-600/30">
             <i class="fa-solid fa-laptop-code text-2xl"></i>
@@ -65,14 +58,6 @@
           </div>
         </a>
 
-        <!-- Desktop Navigation -->
-        <nav class="hidden md:flex items-center space-x-8 text-base font-bold text-slate-700">
-          <a href="#katalog" class="hover:text-teal-600 transition-colors">Katalog Pilihan</a>
-          <a href="#keunggulan" class="hover:text-teal-600 transition-colors">Keunggulan Toko</a>
-          <a href="#info-bisnis" class="hover:text-teal-600 transition-colors">Info & Rekening Resmi</a>
-        </nav>
-
-        <!-- CTA Direct WA Button -->
         <div class="hidden sm:flex items-center gap-3">
           <a id="btnWaHeader" href="https://wa.me/6281234567890?text=Halo%20Admin,%20saya%20tertarik%20tanya%20produk%20laptop/digital" target="_blank" class="px-5 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm sm:text-base flex items-center gap-2 shadow-md shadow-emerald-600/20 transition-all">
             <i class="fa-brands fa-whatsapp text-xl"></i>
@@ -83,7 +68,6 @@
     </div>
   </header>
 
-  <!-- Hero Section -->
   <section class="relative pt-12 pb-16 bg-gradient-to-b from-teal-50/70 via-white to-slate-50 border-b border-slate-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-teal-100 border border-teal-300 text-teal-800 text-xs sm:text-sm font-bold uppercase tracking-wider mb-6">
@@ -99,14 +83,12 @@
         Dapatkan laptop bisnis berkualitas tinggi, lisensi software resmi seumur hidup, dan paket hemat kerja dengan harga jujur, unit bergaransi, dan layanan pesan siap antar.
       </p>
 
-      <!-- Search Bar -->
       <div class="relative max-w-2xl mx-auto mb-8 shadow-lg rounded-2xl">
         <input type="text" id="searchInput" placeholder="Cari nama laptop, spesifikasi RAM/SSD, atau produk digital..."
                class="w-full pl-12 pr-28 py-4 text-base sm:text-lg font-bold rounded-2xl border-2 border-slate-300 focus:border-teal-600 focus:outline-none bg-white text-slate-900 placeholder:text-slate-400 font-medium">
         <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xl"></i>
       </div>
 
-      <!-- Category Filter Tabs -->
       <div class="flex flex-wrap justify-center gap-2 sm:gap-3 text-sm sm:text-base font-bold">
         <button onclick="filterCategory('all')" class="category-btn active px-5 py-2.5 rounded-xl border-2 border-teal-600 bg-teal-600 text-white transition-all shadow-sm">
           🔥 Semua Produk
@@ -124,7 +106,6 @@
     </div>
   </section>
 
-  <!-- Product Catalog Grid -->
   <section id="katalog" class="py-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-8 pb-4 border-b border-slate-200 gap-4">
@@ -137,9 +118,7 @@
         </div>
       </div>
 
-      <div id="productGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Dynamic Cards -->
-      </div>
+      <div id="productGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
 
       <div id="emptyState" class="hidden text-center py-16 bg-white rounded-3xl border-2 border-dashed border-slate-200 space-y-2">
         <i class="fa-solid fa-box-open text-5xl text-slate-300"></i>
@@ -149,7 +128,6 @@
     </div>
   </section>
 
-  <!-- Legal & Bank Accounts Section -->
   <section id="info-bisnis" class="py-16 bg-slate-900 text-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
       <div class="text-center max-w-2xl mx-auto space-y-3">
@@ -162,13 +140,10 @@
         </p>
       </div>
 
-      <div id="bankGrid" class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <!-- Dynamic Banks -->
-      </div>
+      <div id="bankGrid" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
     </div>
   </section>
 
-  <!-- Footer -->
   <footer class="bg-slate-950 text-slate-400 border-t border-slate-800 py-12">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
       <div class="space-y-2 text-center md:text-left">
@@ -182,7 +157,6 @@
     </div>
   </footer>
 
-  <!-- Product Modal -->
   <div id="productModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300">
     <div class="bg-white border border-slate-300 max-w-xl w-full rounded-2xl overflow-hidden shadow-2xl transform scale-95 transition-transform duration-300" id="modalBox">
       <div class="p-5 border-b border-slate-200 flex items-center justify-between bg-slate-50">
@@ -214,13 +188,6 @@
           <h4 class="text-base font-extrabold text-slate-900 mb-1">Bonus & Kelengkapan:</h4>
           <p id="modalBonus" class="text-sm sm:text-base text-slate-600 font-medium"></p>
         </div>
-
-        <div class="p-4 rounded-xl bg-teal-50 border border-teal-200 text-xs sm:text-sm text-teal-900 space-y-1">
-          <p class="font-bold flex items-center gap-1.5">
-            <i class="fa-solid fa-shield-halved text-teal-600 text-base"></i> Jaminan Toko PT Mughis Cipta Media
-          </p>
-          <p class="text-slate-600">Garansi unit 30-90 hari, dicek fungsi sebelum dikirim, bisa COD / transfer resmi.</p>
-        </div>
       </div>
 
       <div class="p-4 bg-slate-50 border-t border-slate-200 flex items-center justify-end gap-3">
@@ -233,22 +200,15 @@
     </div>
   </div>
 
-  <!-- Toast Notification Copy Clipboard -->
   <div id="copyToast" class="fixed bottom-24 left-1/2 -translate-x-1/2 z-50 px-6 py-3.5 rounded-full bg-slate-900 text-white shadow-2xl flex items-center gap-2.5 text-sm font-bold opacity-0 pointer-events-none transition-all duration-300">
     <i class="fa-solid fa-circle-check text-emerald-400 text-lg"></i>
     <span id="toastMessage">Nomor rekening berhasil disalin!</span>
   </div>
 
-  <!-- Floating WhatsApp Action Button -->
   <div class="fixed bottom-6 right-6 z-40">
     <a id="floatingWa" href="https://wa.me/6281234567890?text=Halo%20Admin,%20saya%20ingin%20tanya-tanya%20seputar%20katalog%20produk" target="_blank"
-       class="relative group flex items-center justify-center w-16 h-16 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white shadow-2xl shadow-emerald-600/40 hover:scale-105 transition-all duration-200"
-       title="Hubungi Admin WhatsApp">
+       class="relative group flex items-center justify-center w-16 h-16 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white shadow-2xl shadow-emerald-600/40 hover:scale-105 transition-all duration-200">
       <i class="fa-brands fa-whatsapp text-4xl"></i>
-      <span class="absolute -top-1 -right-1 flex h-4 w-4">
-        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-        <span class="relative inline-flex rounded-full h-4 w-4 bg-emerald-500"></span>
-      </span>
     </a>
   </div>
 
@@ -290,24 +250,6 @@
           "Garansi: 100% Ganti Baru jika gagal aktivasi"
         ],
         bonus: "Buku panduan bergambar cara pasang, link download resmi, dan dibantu sampai tuntas via WA."
-      },
-      {
-        id: "prod-3",
-        title: "Dell Latitude 7490 Ultrabook Slim",
-        category: "laptop",
-        badge: "Ready Stock",
-        badgeColor: "bg-emerald-100 text-emerald-800 border-emerald-300",
-        priceText: "Harga Mulai Rp3.800.000",
-        rawPriceText: "Mulai Rp3.800.000",
-        image: "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=800&auto=format&fit=crop&q=80",
-        shortDesc: "Bodi tipis dan ringan dengan serat karbon. Sangat nyaman dibawa bepergian, baterai awet dengan layar jernih.",
-        specs: [
-          "Prosesor: Intel Core i7-8650U Kecepatan hingga 4.2GHz",
-          "RAM: 16GB DDR4 Lancar Multitasking",
-          "Penyimpanan: 512GB SSD NVMe Cepat",
-          "Layar: 14.0 inch Full HD Bezel Tipis"
-        ],
-        bonus: "Tas selempang Dell, Charger Original, Mouse Optik, & Garansi Toko."
       }
     ];
 

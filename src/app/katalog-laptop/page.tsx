@@ -166,7 +166,7 @@ const DEFAULT_PRODUCTS: ProductItem[] = [
   }
 ]
 
-export default function CatalogLaptopStorePage() {
+export default function CatalogLaptopStoreStandalonePage() {
   const [products, setProducts] = useState<ProductItem[]>(DEFAULT_PRODUCTS)
   const [bankAccounts, setBankAccounts] = useState<BankAccount[]>(DEFAULT_BANKS)
   const [waPhone, setWaPhone] = useState("0852-1770-6587")
@@ -240,7 +240,7 @@ export default function CatalogLaptopStorePage() {
         💡 <strong>TIPS BELANJA AMAN:</strong> Pastikan hanya bertransaksi ke rekening resmi a/n <u>{ownerName}</u> (BSI / SeaBank). Layanan CS WA aktif setiap hari!
       </div>
 
-      {/* Header Navigation */}
+      {/* Header Navigation - 100% Tech Storefront */}
       <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
           <a href="#" className="flex items-center gap-3 group">

@@ -24,104 +24,106 @@
     }
   </script>
   <style>
-    body { font-family: 'Plus Jakarta Sans', -apple-system, sans-serif; background-color: #020617; color: #f8fafc; margin: 0; padding: 0; }
+    body { font-family: 'Plus Jakarta Sans', -apple-system, sans-serif; background-color: #f8fafc; color: #0f172a; margin: 0; padding: 0; }
+    .card-shadow { box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.06), 0 2px 6px -1px rgba(0, 0, 0, 0.04); }
+    .card-shadow:hover { box-shadow: 0 12px 30px -4px rgba(13, 148, 136, 0.15), 0 4px 10px -2px rgba(0, 0, 0, 0.05); }
   </style>
 </head>
-<body class="bg-slate-950 text-slate-100 font-sans antialiased">
+<body class="bg-slate-50 text-slate-900 font-sans antialiased selection:bg-teal-500 selection:text-white">
 
-  <!-- Fraud Alert Banner -->
-  <div class="bg-gradient-to-r from-amber-600 via-rose-600 to-amber-600 text-white text-xs sm:text-sm py-2.5 px-4 text-center font-bold tracking-wide shadow-md">
-    ⚠️ <strong>PERINGATAN RESMI WASPADA PENIPUAN:</strong> Pembayaran HANYA dikirim ke rekening resmi a/n <u>Muhammad Aghisna</u> (BSI: 7368300677 / SeaBank: 901007430064). WA Resmi: <u>0852-1770-6587</u>!
+  <!-- Top Announcement Bar -->
+  <div class="bg-slate-900 text-white text-xs sm:text-sm py-2.5 px-4 text-center font-semibold">
+    <span>💡 <strong>TIPS BELANJA AMAN:</strong> Pastikan hanya bertransaksi ke rekening resmi a/n <u id="topBannerBrand">Muhammad Aghisna</u> (BSI / SeaBank). Layanan CS WA aktif setiap hari!</span>
   </div>
 
   <!-- Header Navigation -->
-  <header class="sticky top-0 z-40 bg-slate-900/90 backdrop-blur-md border-b border-slate-800 shadow-xl">
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
       <a href="#" class="flex items-center gap-3 group">
-        <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-emerald-600 to-teal-400 flex items-center justify-center text-slate-950 font-black text-xl shadow-lg shadow-emerald-500/20">
-          <i class="fa-solid fa-laptop text-xl"></i>
+        <div class="w-12 h-12 rounded-2xl bg-teal-600 flex items-center justify-center text-white shadow-md shadow-teal-600/30">
+          <i class="fa-solid fa-laptop text-2xl"></i>
         </div>
         <div>
-          <span class="text-xl sm:text-2xl font-black tracking-tight text-white block leading-tight">
-            MUGHIS <span class="text-emerald-400">LAPTOP STORE</span>
+          <span id="navBrandName" class="text-xl sm:text-2xl font-black tracking-tight text-slate-900 block leading-tight">
+            Mughis <span class="text-teal-600">Laptop Store</span>
           </span>
-          <span class="text-[11px] font-bold text-slate-400 flex items-center gap-1">
-            <i class="fa-solid fa-location-dot text-emerald-400"></i>
+          <span id="navBrandTagline" class="text-xs font-bold text-teal-700 flex items-center gap-1">
+            <i class="fa-solid fa-location-dot text-teal-600"></i>
             Sangso, Samalanga, Bireuen, Aceh
           </span>
         </div>
       </a>
 
       <div class="flex items-center gap-3">
-        <a href="https://www.instagram.com/s/aGlnaGxpZ2h0OjE3OTI1ODg4MzI2NzYwNDM2?story_media_id=3106266946206908221&stkn=MWpwam1nMm13eDlwcg==" target="_blank" rel="noreferrer" className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-pink-950/60 border border-pink-700/50 text-pink-300 font-bold text-xs">
-          <i class="fa-brands fa-instagram text-pink-400"></i>
+        <a id="igLink" href="https://www.instagram.com/s/aGlnaGxpZ2h0OjE3OTI1ODg4MzI2NzYwNDM2?story_media_id=3106266946206908221&stkn=MWpwam1nMm13eDlwcg==" target="_blank" rel="noreferrer" class="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-pink-50 hover:bg-pink-100 border border-pink-200 text-pink-700 font-bold text-xs transition">
+          <i class="fa-brands fa-instagram text-pink-600"></i>
           <span>Testimoni IG</span>
         </a>
 
-        <a href="https://wa.me/6285217706587?text=Halo%20Mughis%20Laptop%20Store,%20saya%20mau%20konsultasi%20stok%20laptop/produk%20digital." target="_blank" class="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs sm:text-sm flex items-center gap-2 shadow-lg shadow-emerald-600/30">
+        <a id="btnWaHeader" href="https://wa.me/6285217706587?text=Halo%20Mughis%20Laptop%20Store,%20saya%20mau%20konsultasi%20stok%20laptop/produk%20digital." target="_blank" class="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm flex items-center gap-2 shadow-md shadow-emerald-600/20 transition transform hover:-translate-y-0.5">
           <i class="fa-brands fa-whatsapp text-lg"></i>
-          <span>CS WhatsApp (0852-1770-6587)</span>
+          <span>CS WA (0852-1770-6587)</span>
         </a>
       </div>
     </div>
   </header>
 
   <!-- Hero Section -->
-  <section class="relative pt-12 pb-16 bg-gradient-to-b from-slate-900 via-slate-900/90 to-slate-950 border-b border-slate-800">
+  <section class="relative pt-12 pb-16 bg-gradient-to-b from-teal-50/80 via-white to-slate-50 border-b border-slate-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
 
-      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-950/80 border border-emerald-700/60 text-emerald-300 text-xs sm:text-sm font-extrabold uppercase tracking-wider">
-        <i class="fa-solid fa-certificate text-emerald-400"></i>
-        Official Store • Owner: Muhammad Aghisna • Samalanga, Aceh
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-teal-100 border border-teal-300 text-teal-800 text-xs sm:text-sm font-extrabold uppercase tracking-wider">
+        <i class="fa-solid fa-award text-teal-600"></i>
+        Official Store • Owner: Muhammad Aghisna • Sangso, Samalanga
       </div>
 
-      <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-tight">
-        Pusat Laptop Business & <span class="text-emerald-400 underline underline-offset-8 decoration-emerald-500/50">Produk Digital</span>
+      <h1 id="heroHeadline" class="text-3xl sm:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight leading-tight">
+        Laptop Business Bekas Berkualitas, <span class="text-teal-600 underline underline-offset-8 decoration-teal-300">Siap Kerja & Siap Kuliah</span>
       </h1>
 
-      <p class="text-base sm:text-lg text-slate-300 font-medium max-w-2xl mx-auto leading-relaxed">
-        Unit laptop lolos QC siap pakai untuk kerja, kuliah, & usaha. Transaksi 100% amanah, garansi jelas, serta bimbingan konsultasi gratis langsung dari toko fisik kami di Sangso, Samalanga.
+      <p id="heroSubheadline" class="text-base sm:text-xl text-slate-600 font-medium max-w-2xl mx-auto leading-relaxed">
+        Unit pilihan yang diperiksa sebelum dijual, dengan kondisi dijelaskan secara transparan, garansi toko sesuai ketentuan, dan konsultasi langsung melalui WhatsApp.
       </p>
 
       <!-- Search Bar -->
-      <div class="relative max-w-2xl mx-auto shadow-2xl rounded-2xl pt-2">
+      <div class="relative max-w-2xl mx-auto shadow-lg rounded-2xl pt-2">
         <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xl"></i>
-        <input type="text" id="searchInput" placeholder="Cari laptop (ThinkPad, ASUS, HP, Dell), RAM, atau produk digital..."
-               class="w-full pl-12 pr-4 py-4 text-base sm:text-lg font-bold rounded-2xl border-2 border-slate-700 focus:border-emerald-500 focus:outline-none bg-slate-900 text-white placeholder:text-slate-500 font-medium">
+        <input type="text" id="searchInput" placeholder="Cari ThinkPad, ASUS, HP, Dell, RAM 16GB, SSD 512GB..."
+               class="w-full pl-12 pr-4 py-4 text-base sm:text-lg font-bold rounded-2xl border-2 border-slate-300 focus:border-teal-600 focus:outline-none bg-white text-slate-900 placeholder:text-slate-400 font-medium">
       </div>
 
       <!-- Filter Categories -->
       <div class="flex flex-wrap justify-center gap-2 sm:gap-3 text-xs sm:text-sm font-bold pt-2">
-        <button onclick="filterCategory('all')" class="category-btn active px-5 py-2.5 rounded-xl border border-emerald-500 bg-emerald-600 text-white shadow-lg">
+        <button onclick="filterCategory('all')" class="category-btn active px-5 py-2.5 rounded-xl border-2 border-teal-600 bg-teal-600 text-white shadow-sm">
           🔥 Semua Unit & Digital
         </button>
-        <button onclick="filterCategory('laptop')" class="category-btn px-5 py-2.5 rounded-xl border border-slate-800 bg-slate-900 text-slate-300 hover:border-emerald-600">
+        <button onclick="filterCategory('laptop')" class="category-btn px-5 py-2.5 rounded-xl border-2 border-slate-200 bg-white text-slate-700 hover:border-teal-600">
           💻 Laptop Business
         </button>
-        <button onclick="filterCategory('digital')" class="category-btn px-5 py-2.5 rounded-xl border border-slate-800 bg-slate-900 text-slate-300 hover:border-emerald-600">
+        <button onclick="filterCategory('digital')" class="category-btn px-5 py-2.5 rounded-xl border-2 border-slate-200 bg-white text-slate-700 hover:border-teal-600">
           🔑 Produk Digital & Lisensi
         </button>
-        <button onclick="filterCategory('budget')" class="category-btn px-5 py-2.5 rounded-xl border border-slate-800 bg-slate-900 text-slate-300 hover:border-emerald-600">
+        <button onclick="filterCategory('budget')" class="category-btn px-5 py-2.5 rounded-xl border-2 border-slate-200 bg-white text-slate-700 hover:border-teal-600">
           🏷️ Pilihan Hemat (&lt; 3 Jt)
         </button>
       </div>
     </div>
   </section>
 
-  <!-- Fraud Warning Module Banner -->
+  <!-- Fraud Warning Callout Banner -->
   <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6 relative z-10">
-    <div class="bg-gradient-to-r from-slate-900 via-amber-950/60 to-slate-900 border-2 border-amber-500/50 p-5 rounded-2xl shadow-2xl flex flex-col md:flex-row items-center justify-between gap-4 text-xs sm:text-sm">
+    <div class="bg-amber-50 border-2 border-amber-400/80 p-5 rounded-2xl shadow-lg flex flex-col md:flex-row items-center justify-between gap-4 text-xs sm:text-sm text-slate-900">
       <div class="flex items-start gap-3">
-        <i class="fa-solid fa-shield-cat text-amber-400 text-2xl shrink-0 mt-0.5"></i>
+        <i class="fa-solid fa-shield-cat text-amber-600 text-2xl shrink-0 mt-0.5"></i>
         <div>
-          <p class="font-extrabold text-amber-300 uppercase tracking-wider">HIMBAUAN KEAMANAN TRANSAKSI OWNER (MUHAMMAD AGHISNA)</p>
-          <p class="text-slate-300 mt-0.5">
+          <p class="font-extrabold text-amber-900 uppercase tracking-wider">HIMBAUAN KEAMANAN TRANSAKSI OWNER (MUHAMMAD AGHISNA)</p>
+          <p class="text-slate-700 mt-0.5">
             Pastikan transfer pembayaran Anda <strong>HANYA</strong> dikirimkan ke rekening Bank BSI atau SeaBank atas nama <strong>MUHAMMAD AGHISNA</strong>. Kami tidak bertanggung jawab atas transaksi di luar rekening resmi ini.
           </p>
         </div>
       </div>
 
-      <a href="https://www.instagram.com/s/aGlnaGxpZ2h0OjE3OTI1ODg4MzI2NzYwNDM2?story_media_id=3106266946206908221&stkn=MWpwam1nMm13eDlwcg==" target="_blank" rel="noreferrer" class="px-4 py-2.5 rounded-xl bg-pink-600 hover:bg-pink-500 text-white font-bold text-xs flex items-center gap-2 shrink-0 shadow-lg">
+      <a id="igWarningBtn" href="https://www.instagram.com/s/aGlnaGxpZ2h0OjE3OTI1ODg4MzI2NzYwNDM2?story_media_id=3106266946206908221&stkn=MWpwam1nMm13eDlwcg==" target="_blank" rel="noreferrer" class="px-4 py-2.5 rounded-xl bg-pink-600 hover:bg-pink-700 text-white font-bold text-xs flex items-center gap-2 shrink-0 shadow-md">
         <i class="fa-brands fa-instagram text-base"></i>
         <span>Cek Bukti Testimoni IG</span>
       </a>
@@ -130,22 +132,22 @@
 
   <!-- Catalog Grid -->
   <section id="katalog" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-8 pb-4 border-b border-slate-800 gap-4">
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-8 pb-4 border-b border-slate-200 gap-4">
       <div>
-        <h2 class="text-2xl sm:text-3xl font-black text-white">Daftar Unit & Produk Ready Stock</h2>
-        <p class="text-sm text-slate-400 font-medium">Klik pada produk untuk melihat rincian spesifikasi lengkap & garansi toko</p>
+        <h2 class="text-2xl sm:text-3xl font-black text-slate-900">Daftar Unit & Produk Ready Stock</h2>
+        <p class="text-sm text-slate-500 font-medium">Klik pada produk untuk melihat rincian spesifikasi lengkap & garansi toko</p>
       </div>
-      <div class="text-xs font-bold text-emerald-400 bg-emerald-950/60 px-4 py-2 rounded-xl border border-emerald-800/60 self-start sm:self-auto">
+      <div class="text-xs font-bold text-slate-600 bg-white px-4 py-2 rounded-xl border border-slate-200 self-start sm:self-auto">
         100% Lolos QC & Siap Pakai
       </div>
     </div>
 
     <div id="productGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
 
-    <div id="emptyState" class="hidden text-center py-16 bg-slate-900 rounded-3xl border-2 border-dashed border-slate-800 space-y-2">
+    <div id="emptyState" class="hidden text-center py-16 bg-white rounded-3xl border-2 border-dashed border-slate-200 space-y-2">
       <i class="fa-solid fa-box-open text-5xl text-slate-300 mb-3"></i>
-      <h3 class="text-xl font-bold text-slate-200">Produk Tidak Ditemukan</h3>
-      <p class="text-sm text-slate-400">Coba kata kunci pencarian lain.</p>
+      <h3 class="text-xl font-bold text-slate-800">Produk Tidak Ditemukan</h3>
+      <p class="text-sm text-slate-500">Coba kata kunci pencarian lain.</p>
     </div>
   </section>
 
@@ -157,60 +159,12 @@
           Rekening Resmi Owner (Muhammad Aghisna)
         </span>
         <h2 class="text-3xl sm:text-4xl font-black tracking-tight">Informasi Rekening Pembayaran Resmi</h2>
-        <p class="text-slate-400 text-sm sm:text-base font-normal">
+        <p class="text-slate-300 text-sm sm:text-base font-normal">
           Pastikan transfer Anda dikirimkan sesuai dengan nama rekening resmi pemilik toko di bawah ini:
         </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-        <!-- BSI Card -->
-        <div class="p-6 rounded-2xl bg-slate-950 border-2 border-emerald-600/40 space-y-3 relative shadow-2xl">
-          <div class="flex items-center justify-between">
-            <span class="text-lg font-black text-emerald-400 tracking-wider">BANK BSI</span>
-            <span class="text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-md bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
-              Rekening Resmi
-            </span>
-          </div>
-          <div>
-            <p class="text-xs text-slate-400 font-medium">Nomor Rekening:</p>
-            <p class="text-3xl font-black font-mono tracking-widest text-white mt-1">7368300677</p>
-          </div>
-          <div class="pt-3 border-t border-slate-800 flex items-center justify-between">
-            <div>
-              <p class="text-[10px] text-slate-400 uppercase font-bold">Atas Nama / Owner:</p>
-              <p class="text-base font-black text-amber-300">Muhammad Aghisna</p>
-            </div>
-            <button onclick="copyToClipboard('7368300677', 'BANK BSI')" className="px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold flex items-center gap-1.5 transition shadow-lg shadow-emerald-600/30">
-              <i class="fa-regular fa-copy"></i>
-              <span>Salin No. Rekening</span>
-            </button>
-          </div>
-        </div>
-
-        <!-- SeaBank Card -->
-        <div class="p-6 rounded-2xl bg-slate-950 border-2 border-emerald-600/40 space-y-3 relative shadow-2xl">
-          <div class="flex items-center justify-between">
-            <span class="text-lg font-black text-emerald-400 tracking-wider">BANK SEABANK</span>
-            <span class="text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-md bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
-              Rekening Resmi
-            </span>
-          </div>
-          <div>
-            <p class="text-xs text-slate-400 font-medium">Nomor Rekening:</p>
-            <p class="text-3xl font-black font-mono tracking-widest text-white mt-1">901007430064</p>
-          </div>
-          <div class="pt-3 border-t border-slate-800 flex items-center justify-between">
-            <div>
-              <p class="text-[10px] text-slate-400 uppercase font-bold">Atas Nama / Owner:</p>
-              <p class="text-base font-black text-amber-300">Muhammad Aghisna</p>
-            </div>
-            <button onclick="copyToClipboard('901007430064', 'BANK SEABANK')" className="px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold flex items-center gap-1.5 transition shadow-lg shadow-emerald-600/30">
-              <i class="fa-regular fa-copy"></i>
-              <span>Salin No. Rekening</span>
-            </button>
-          </div>
-        </div>
-      </div>
+      <div id="bankGrid" class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto"></div>
     </div>
   </section>
 
@@ -220,15 +174,15 @@
       <div class="space-y-1.5 text-center md:text-left">
         <p class="text-base font-black text-white">MUGHIS LAPTOP STORE</p>
         <p class="text-slate-400">Owner: Muhammad Aghisna • Alamat: Sangso, Samalanga, Bireuen, Aceh</p>
-        <p class="text-slate-500">© 2026 Mughis Laptop Store. Hak Cipta Dilindungi.</p>
+        <p class="text-slate-500">© 2026 Mughis Laptop Store. A unit business of PT Mughis Cipta Media. Hak Cipta Dilindungi.</p>
       </div>
 
       <div class="flex flex-wrap items-center justify-center gap-6 font-bold text-sm">
-        <a href="https://www.instagram.com/s/aGlnaGxpZ2h0OjE3OTI1ODg4MzI2NzYwNDM2?story_media_id=3106266946206908221&stkn=MWpwam1nMm13eDlwcg==" target="_blank" rel="noreferrer" class="text-pink-400 hover:underline flex items-center gap-1.5">
+        <a id="footerIg" href="https://www.instagram.com/s/aGlnaGxpZ2h0OjE3OTI1ODg4MzI2NzYwNDM2?story_media_id=3106266946206908221&stkn=MWpwam1nMm13eDlwcg==" target="_blank" rel="noreferrer" class="text-pink-400 hover:underline flex items-center gap-1.5">
           <i class="fa-brands fa-instagram text-base text-pink-500"></i>
           <span>Highlight Testimoni IG</span>
         </a>
-        <a href="https://wa.me/6285217706587" target="_blank" rel="noreferrer" class="text-emerald-400 hover:underline flex items-center gap-1.5">
+        <a id="footerWa" href="https://wa.me/6285217706587" target="_blank" rel="noreferrer" class="text-emerald-400 hover:underline flex items-center gap-1.5">
           <i class="fa-brands fa-whatsapp text-base text-emerald-500"></i>
           <span>WhatsApp CS (0852-1770-6587)</span>
         </a>
@@ -237,42 +191,42 @@
   </footer>
 
   <!-- Product Modal -->
-  <div id="productModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300">
-    <div class="bg-slate-900 border border-slate-800 max-w-xl w-full rounded-2xl overflow-hidden shadow-2xl p-6 space-y-4 text-white relative" id="modalBox">
-      <div class="p-5 border-b border-slate-800 flex items-center justify-between bg-slate-950">
+  <div id="productModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300">
+    <div class="bg-white border border-slate-300 max-w-xl w-full rounded-2xl overflow-hidden shadow-2xl p-6 space-y-4 text-slate-900 relative" id="modalBox">
+      <div class="p-5 border-b border-slate-200 flex items-center justify-between bg-slate-50">
         <div class="flex items-center gap-2">
-          <span id="modalBadge" class="px-3 py-1 rounded-full text-xs font-bold bg-emerald-950 text-emerald-300 border border-emerald-700">Kategori</span>
-          <h3 id="modalTitle" class="text-lg sm:text-xl font-black text-white">Judul Produk</h3>
+          <span id="modalBadge" class="px-3 py-1 rounded-full text-xs font-bold bg-teal-100 text-teal-800 border border-teal-200 uppercase">Kategori</span>
+          <h3 id="modalTitle" class="text-lg sm:text-xl font-black text-slate-900">Judul Produk</h3>
         </div>
-        <button onclick="closeModal()" class="text-slate-400 hover:text-white p-1.5 rounded-lg text-2xl" aria-label="Tutup Modal">
+        <button onclick="closeModal()" class="text-slate-400 hover:text-slate-700 p-1.5 rounded-lg text-2xl" aria-label="Tutup Modal">
           <i class="fa-solid fa-xmark"></i>
         </button>
       </div>
 
       <div class="p-6 max-h-[70vh] overflow-y-auto space-y-4">
-        <div class="w-full h-52 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center overflow-hidden">
+        <div class="w-full h-52 rounded-xl bg-slate-100 border border-slate-200 flex items-center justify-center overflow-hidden">
           <img id="modalImage" src="" alt="Detail Produk" class="w-full h-full object-cover">
         </div>
 
         <div>
-          <span class="text-xs text-slate-400 block font-bold uppercase">Harga Penawaran:</span>
-          <p id="modalPrice" class="text-2xl sm:text-3xl font-black text-emerald-400 mt-1"></p>
+          <span class="text-xs text-slate-500 block font-bold uppercase">Harga Penawaran:</span>
+          <p id="modalPrice" class="text-2xl sm:text-3xl font-black text-teal-700 mt-1"></p>
         </div>
 
-        <div class="border-t border-slate-800 pt-4">
-          <h4 class="text-base font-extrabold text-white mb-2">Spesifikasi & Rincian Lengkap:</h4>
-          <ul id="modalSpecs" class="space-y-2.5 text-sm sm:text-base text-slate-300"></ul>
+        <div class="border-t border-slate-200 pt-4">
+          <h4 class="text-base font-extrabold text-slate-900 mb-2">Spesifikasi & Rincian Lengkap:</h4>
+          <ul id="modalSpecs" class="space-y-2.5 text-sm sm:text-base text-slate-700"></ul>
         </div>
 
-        <div class="border-t border-slate-800 pt-4">
-          <h4 class="text-base font-extrabold text-white mb-1">Bonus & Kelengkapan:</h4>
-          <p id="modalBonus" class="text-sm sm:text-base text-slate-400 font-medium"></p>
+        <div class="border-t border-slate-200 pt-4">
+          <h4 class="text-base font-extrabold text-slate-900 mb-1">Bonus & Kelengkapan:</h4>
+          <p id="modalBonus" class="text-sm sm:text-base text-slate-600 font-medium"></p>
         </div>
       </div>
 
-      <div class="p-4 bg-slate-950 border-t border-slate-800 flex items-center justify-end gap-3">
-        <button onclick="closeModal()" class="px-5 py-2.5 rounded-xl border border-slate-700 hover:bg-slate-800 text-slate-300 text-sm font-bold">Tutup</button>
-        <a id="modalWaBtn" href="#" target="_blank" class="px-6 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-sm sm:text-base flex items-center gap-2 shadow-md">
+      <div class="p-4 bg-slate-50 border-t border-slate-200 flex items-center justify-end gap-3">
+        <button onclick="closeModal()" class="px-5 py-2.5 rounded-xl border border-slate-300 hover:bg-slate-200 text-slate-700 text-sm font-bold">Tutup</button>
+        <a id="modalWaBtn" href="#" target="_blank" class="px-6 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-sm sm:text-base flex items-center gap-2 shadow-md">
           <i class="fa-brands fa-whatsapp text-xl"></i>
           <span>Pesan via WhatsApp CS</span>
         </a>
@@ -280,28 +234,26 @@
     </div>
   </div>
 
-  <!-- Copy Toast -->
-  <div id="copyToast" class="fixed bottom-24 left-1/2 -translate-x-1/2 z-50 px-6 py-3.5 rounded-full bg-slate-900 border border-emerald-500/50 text-white shadow-2xl flex items-center gap-2.5 text-sm font-bold opacity-0 pointer-events-none transition-all duration-300">
+  <div id="copyToast" class="fixed bottom-24 left-1/2 -translate-x-1/2 z-50 px-6 py-3.5 rounded-full bg-slate-900 text-white shadow-2xl flex items-center gap-2.5 text-sm font-bold opacity-0 pointer-events-none transition-all duration-300">
     <i class="fa-solid fa-circle-check text-emerald-400 text-lg"></i>
     <span id="toastMessage">Nomor rekening berhasil disalin!</span>
   </div>
 
-  <!-- Floating WA Button -->
   <div class="fixed bottom-6 right-6 z-40">
-    <a href="https://wa.me/6285217706587?text=Halo%20Mughis%20Laptop%20Store,%20saya%20ingin%20tanya%20stok%20laptop" target="_blank"
-       class="relative group flex items-center justify-center w-16 h-16 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white shadow-2xl shadow-emerald-600/40 hover:scale-105 transition-all duration-200">
+    <a id="floatingWa" href="https://wa.me/6285217706587?text=Halo%20Mughis%20Laptop%20Store,%20saya%20ingin%20tanya%20stok%20laptop" target="_blank"
+       class="relative group flex items-center justify-center w-16 h-16 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white shadow-2xl shadow-emerald-600/40 hover:scale-105 transition-all duration-200">
       <i class="fa-brands fa-whatsapp text-4xl"></i>
     </a>
   </div>
 
   <script>
-    const products = [
+    let defaultProducts = [
       {
         id: "prod-1",
         title: "Lenovo ThinkPad T480 Core i5 Gen 8",
         category: "laptop",
         badge: "Paling Laris",
-        badgeColor: "bg-emerald-950 text-emerald-300 border-emerald-700",
+        badgeColor: "bg-teal-100 text-teal-800 border-teal-300",
         priceText: "Rp 3.450.000",
         rawPriceText: "Rp 3.450.000 (Varian SSD 256GB / 512GB)",
         image: "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=800&auto=format&fit=crop&q=80",
@@ -311,8 +263,7 @@
           "RAM: 8GB / 16GB DDR4 High Speed",
           "Penyimpanan: 256GB / 512GB SSD NVMe",
           "Layar: 14.0 inch Full HD Anti-Glare Jernih",
-          "Baterai: Awet 2-4 Jam (Dual Battery Support)",
-          "Kondisi: Grade A Mulus 90-95%, Garansi Toko 60 Hari"
+          "Baterai: Awet 2-4 Jam (Dual Battery Support)"
         ],
         bonus: "Unit Laptop, Charger Original Type-C, Bonus Tas Baru & Mouse Wireless."
       },
@@ -321,7 +272,7 @@
         title: "Lisensi Windows 11 Pro & Office 2021",
         category: "digital",
         badge: "Produk Digital",
-        badgeColor: "bg-blue-950 text-blue-300 border-blue-700",
+        badgeColor: "bg-blue-100 text-blue-800 border-blue-300",
         priceText: "Rp 400.000",
         rawPriceText: "Rp 400.000 (Aktivasi Permanen Seumur Hidup)",
         image: "https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800&auto=format&fit=crop&q=80",
@@ -329,42 +280,94 @@
         specs: [
           "Tipe Lisensi: Windows 11 Pro Retail + Office 2021 Pro Plus",
           "Masa Aktif: Lifetime (Permanen Seumur Hidup)",
-          "Pengiriman: Key resmi dikirim langsung via WhatsApp / Email",
-          "Garansi: 100% Ganti Baru jika gagal aktivasi"
+          "Pengiriman: Key resmi dikirim langsung via WhatsApp / Email"
         ],
         bonus: "Buku panduan bergambar cara pasang, link download resmi, dan dibantu sampai tuntas via WA."
-      },
-      {
-        id: "prod-3",
-        title: "Dell Latitude 7490 Ultrabook Slim",
-        category: "laptop",
-        badge: "Ready Stock",
-        badgeColor: "bg-teal-950 text-teal-300 border-teal-700",
-        priceText: "Rp 3.800.000",
-        rawPriceText: "Rp 3.800.000",
-        image: "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=800&auto=format&fit=crop&q=80",
-        shortDesc: "Bodi tipis dan ringan dengan serat karbon. Sangat nyaman dibawa bepergian, baterai awet dengan layar jernih.",
-        specs: [
-          "Prosesor: Intel Core i7-8650U Kecepatan hingga 4.2GHz",
-          "RAM: 16GB DDR4 Lancar Multitasking",
-          "Penyimpanan: 512GB SSD NVMe Cepat",
-          "Layar: 14.0 inch Full HD Bezel Tipis",
-          "Fitur: Keyboard Backlit Nyala"
-        ],
-        bonus: "Tas selempang Dell, Charger Original, Mouse Optik, & Garansi Toko."
       }
     ];
 
+    let defaultBanks = [
+      { id: "b1", bank: "BANK BSI", account_number: "7368300677", beneficiary: "Muhammad Aghisna" },
+      { id: "b2", bank: "BANK SEABANK", account_number: "901007430064", beneficiary: "Muhammad Aghisna" }
+    ];
+
     let currentWaPhone = "6285217706587";
+    let products = defaultProducts;
+    let bankAccounts = defaultBanks;
     let currentCategory = 'all';
     let searchQuery = '';
+
+    async function loadDynamicSettings() {
+      try {
+        const res = await fetch('/api/public/settings');
+        if (res.ok) {
+          const settings = await res.json();
+          if (settings.site_name) {
+            document.getElementById('navBrandName').innerHTML = `${settings.site_name}<span class="text-teal-600">.ID</span>`;
+            document.getElementById('topBannerBrand').innerText = settings.owner_name || settings.site_name;
+          }
+          if (settings.contact_phone) {
+            currentWaPhone = settings.contact_phone.replace(/[^0-9]/g, "").replace(/^0/, "62");
+            const waUrl = `https://wa.me/${currentWaPhone}?text=${encodeURIComponent('Halo Admin, saya ingin bertanya mengenai produk')}`;
+            document.getElementById('btnWaHeader').href = waUrl;
+            document.getElementById('floatingWa').href = waUrl;
+            document.getElementById('footerWa').href = `https://wa.me/${currentWaPhone}`;
+          }
+          if (settings.instagram_url) {
+            document.getElementById('igLink').href = settings.instagram_url;
+            document.getElementById('igWarningBtn').href = settings.instagram_url;
+            document.getElementById('footerIg').href = settings.instagram_url;
+          }
+          if (settings.bank_accounts_json) {
+            try { bankAccounts = JSON.parse(settings.bank_accounts_json); } catch {}
+          }
+          if (settings.catalog_products_json) {
+            try { products = JSON.parse(settings.catalog_products_json); } catch {}
+          }
+        }
+      } catch (err) {}
+
+      renderBanks();
+      renderProducts();
+    }
+
+    function renderBanks() {
+      const grid = document.getElementById('bankGrid');
+      grid.innerHTML = bankAccounts.map(b => `
+        <div class="p-6 rounded-2xl bg-slate-950 border-2 border-emerald-600/40 space-y-3 relative shadow-2xl">
+          <div class="flex items-center justify-between">
+            <span class="text-lg font-black text-emerald-400 tracking-wider">${b.bank}</span>
+            <span class="text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-md bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+              Rekening Resmi
+            </span>
+          </div>
+          <div>
+            <p class="text-xs text-slate-400 font-medium">Nomor Rekening:</p>
+            <p class="text-3xl font-black font-mono tracking-widest text-white mt-1">${b.account_number}</p>
+          </div>
+          <div class="pt-3 border-t border-slate-800 flex items-center justify-between">
+            <div>
+              <p class="text-[10px] text-slate-400 uppercase font-bold">Atas Nama / Owner:</p>
+              <p class="text-base font-black text-amber-300">${b.beneficiary}</p>
+            </div>
+            <button onclick="copyToClipboard('${b.account_number}', '${b.bank}')"
+                    class="px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold flex items-center gap-1.5 transition shadow-lg shadow-emerald-600/30">
+              <i class="fa-regular fa-copy"></i>
+              <span>Salin No. Rekening</span>
+            </button>
+          </div>
+        </div>
+      `).join('');
+    }
 
     function renderProducts() {
       const container = document.getElementById('productGrid');
       const emptyState = document.getElementById('emptyState');
       container.innerHTML = '';
 
-      const filtered = products.filter(prod => {
+      const activeProducts = products.filter(p => p.stockStatus !== "HIDDEN");
+
+      const filtered = activeProducts.filter(prod => {
         const matchCategory = currentCategory === 'all' || prod.category === currentCategory || (currentCategory === 'budget' && (prod.category === 'budget' || prod.badge.includes('Hemat') || prod.priceText.includes('1.8') || prod.priceText.includes('400')));
         const matchSearch = prod.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
                             prod.shortDesc.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -378,43 +381,52 @@
         emptyState.classList.add('hidden');
         filtered.forEach(p => {
           const card = document.createElement('div');
-          card.className = "bg-slate-900 rounded-2xl border border-slate-800 overflow-hidden flex flex-col justify-between shadow-xl hover:border-emerald-500/50 transition-all duration-300 group";
+          card.className = "bg-white rounded-2xl border-2 border-slate-200 overflow-hidden flex flex-col justify-between card-shadow transition-all duration-200 group";
 
-          const waMessage = encodeURIComponent(`Halo Mughis Laptop Store, saya tertarik bertanya mengenai produk: "${p.title}" dengan info (${p.priceText}). Apakah unit ready?`);
+          const waMessage = encodeURIComponent(`Assalamu’alaikum Mughis Laptop Store,\n\nSaya tertarik dengan unit:\n*${p.title}*\nHarga: ${p.priceText}\n\nApakah unit masih tersedia? Mohon informasi kondisi dan garansinya.`);
           const waLink = `https://wa.me/${currentWaPhone}?text=${waMessage}`;
 
           card.innerHTML = `
             <div>
-              <div class="relative h-52 w-full bg-slate-800 overflow-hidden">
+              <div class="relative h-52 w-full bg-slate-100 overflow-hidden border-b border-slate-100">
                 <img src="${p.image}" alt="${p.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.src='https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=800&auto=format&fit=crop&q=80'">
                 <div class="absolute top-3 left-3">
-                  <span class="px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider ${p.badgeColor || 'bg-emerald-950 text-emerald-300 border-emerald-700'} border shadow-md">
+                  <span class="px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider ${p.badgeColor || 'bg-teal-100 text-teal-800 border-teal-300'} border shadow-sm">
                     ${p.badge}
                   </span>
                 </div>
               </div>
 
-              <div class="p-6 space-y-3">
-                <h3 class="text-xl font-black text-white leading-snug line-clamp-1">${p.title}</h3>
+              <div class="p-6">
+                <h3 class="text-xl font-black text-slate-900 leading-snug line-clamp-1">${p.title}</h3>
 
-                <div class="p-3 rounded-xl bg-slate-950 border border-slate-800">
-                  <span class="text-xs text-slate-400 font-bold block uppercase tracking-wider">Harga Penawaran</span>
-                  <span class="text-2xl font-black text-emerald-400">${p.priceText}</span>
+                <div class="mt-3 mb-4 p-2.5 rounded-xl bg-teal-50/80 border border-teal-200">
+                  <span class="text-xs text-slate-500 font-bold block uppercase tracking-wider">Penawaran Spesial</span>
+                  <span class="text-2xl font-black text-teal-800">${p.priceText}</span>
                 </div>
 
-                <p class="text-sm text-slate-400 line-clamp-2 leading-relaxed font-normal">
+                <p class="text-sm text-slate-600 line-clamp-2 leading-relaxed mb-4 font-normal">
                   ${p.shortDesc}
                 </p>
+
+                <div class="pt-3 border-t border-slate-200 flex items-center justify-between text-xs font-bold text-slate-500">
+                  <span class="flex items-center gap-1.5 text-teal-700">
+                    <i class="fa-solid fa-certificate"></i> Garansi Terjamin
+                  </span>
+                  <span class="flex items-center gap-1.5 text-emerald-700">
+                    <i class="fa-solid fa-building-circle-check"></i> Rekening Resmi
+                  </span>
+                </div>
               </div>
             </div>
 
-            <div class="p-6 pt-0 grid grid-cols-2 gap-3">
-              <button onclick="openModal('${p.id}')" class="w-full py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 text-xs font-extrabold flex items-center justify-center gap-1.5 transition">
-                <i class="fa-solid fa-circle-info text-slate-400"></i>
+            <div class="px-6 pb-6 pt-1 grid grid-cols-2 gap-3">
+              <button onclick="openModal('${p.id}')" class="w-full py-3.5 rounded-xl bg-slate-100 hover:bg-slate-200 border-2 border-slate-300 text-slate-800 text-sm font-extrabold flex items-center justify-center gap-1.5 transition-all">
+                <i class="fa-solid fa-circle-info text-slate-600"></i>
                 <span>Lihat Spek</span>
               </button>
 
-              <a href="${waLink}" target="_blank" class="w-full py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-black flex items-center justify-center gap-1.5 transition shadow-lg shadow-emerald-600/30">
+              <a href="${waLink}" target="_blank" class="w-full py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-black flex items-center justify-center gap-1.5 transition-all shadow-md shadow-emerald-600/20">
                 <i class="fa-brands fa-whatsapp text-lg"></i>
                 <span>Tanya di WA</span>
               </a>
@@ -429,11 +441,11 @@
       currentCategory = cat;
       const buttons = document.querySelectorAll('.category-btn');
       buttons.forEach(btn => {
-        btn.classList.remove('active', 'border-emerald-500', 'bg-emerald-600', 'text-white', 'shadow-lg');
-        btn.classList.add('border-slate-800', 'bg-slate-900', 'text-slate-300');
+        btn.classList.remove('active', 'border-teal-600', 'bg-teal-600', 'text-white');
+        btn.classList.add('border-slate-200', 'bg-white', 'text-slate-700');
       });
-      event.currentTarget.classList.add('active', 'border-emerald-500', 'bg-emerald-600', 'text-white', 'shadow-lg');
-      event.currentTarget.classList.remove('border-slate-800', 'bg-slate-900', 'text-slate-300');
+      event.currentTarget.classList.add('active', 'border-teal-600', 'bg-teal-600', 'text-white');
+      event.currentTarget.classList.remove('border-slate-200', 'bg-white', 'text-slate-700');
       renderProducts();
     }
 
@@ -458,12 +470,12 @@
         p.specs.forEach(s => {
           const li = document.createElement('li');
           li.className = "flex items-start gap-2.5";
-          li.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-400 text-base mt-0.5 shrink-0"></i> <span class="font-medium">${s}</span>`;
+          li.innerHTML = `<i class="fa-solid fa-check-circle text-teal-600 text-base mt-0.5 shrink-0"></i> <span class="font-medium">${s}</span>`;
           specsList.appendChild(li);
         });
       }
 
-      const waMsg = encodeURIComponent(`Halo Mughis Laptop Store, saya mau pesan unit: "${p.title}" (${p.priceText}). Mohon info stok.`);
+      const waMsg = encodeURIComponent(`Assalamu’alaikum Mughis Laptop Store,\n\nSaya tertarik dengan unit:\n*${p.title}*\nHarga: ${p.priceText}\n\nApakah unit masih tersedia? Mohon informasi kondisi dan garansinya.`);
       document.getElementById('modalWaBtn').href = `https://wa.me/${currentWaPhone}?text=${waMsg}`;
 
       const modal = document.getElementById('productModal');
@@ -517,7 +529,7 @@
     }
 
     window.onload = function() {
-      renderProducts();
+      loadDynamicSettings();
     };
   </script>
 </body>

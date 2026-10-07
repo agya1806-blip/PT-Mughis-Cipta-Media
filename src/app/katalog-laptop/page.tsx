@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Search, Laptop, ShieldCheck, Phone, CheckCircle, Copy, X, Check, MapPin, ShieldAlert, Award, ExternalLink, ArrowRight, User, CheckSquare, Sparkles, Image as ImageIcon, Truck, Clock, Home } from "lucide-react"
+import { Search, Laptop, ShieldCheck, Phone, CheckCircle, Copy, X, Check, MapPin, ShieldAlert, Award, ExternalLink, ArrowRight, User, CheckSquare, Sparkles, Image as ImageIcon, Video as VideoIcon, Truck, Clock, Home, Play } from "lucide-react"
 
 function InstagramIcon({ className = "w-4 h-4" }: { className?: string }) {
   return (
@@ -24,6 +24,7 @@ interface ProductItem {
   rawPriceText: string
   image: string
   images?: string[] // Multi-photo gallery support (Up to 4 photos)
+  video?: string // Video product support (MP4 base64 / URL)
   shortDesc: string
   specs: string[]
   conditionNote?: string
@@ -60,6 +61,7 @@ const DEFAULT_PRODUCTS: ProductItem[] = [
       "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=800&auto=format&fit=crop&q=80",
       "https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?w=800&auto=format&fit=crop&q=80"
     ],
+    video: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
     shortDesc: "Ultrabook flagship bodi Carbon Fiber super ringan (~1.1 kg). Sangat mewah, slim, dan nyaman dibawa mobilitas tinggi.",
     specs: [
       "Prosesor: Intel Core i5-6200U / i5-6300U Gen 6",
@@ -215,8 +217,9 @@ export default function CatalogLaptopStoreStandalonePage() {
   const [currentCategory, setCurrentCategory] = useState("all")
   const [searchQuery, setSearchQuery] = useState("")
 
-  // Modal & Multi-Photo Active Index State
+  // Modal & Multi-Photo/Video Active State
   const [selectedProduct, setSelectedProduct] = useState<ProductItem | null>(null)
+  const [activeMediaMode, setActiveMediaMode] = useState<"image" | "video">("image")
   const [activePhotoIdx, setActivePhotoIdx] = useState(0)
   const [toastMsg, setToastMsg] = useState("")
 
@@ -253,6 +256,7 @@ export default function CatalogLaptopStoreStandalonePage() {
 
   function openDetailModal(p: ProductItem) {
     setSelectedProduct(p)
+    setActiveMediaMode("image")
     setActivePhotoIdx(0)
   }
 
@@ -513,13 +517,13 @@ export default function CatalogLaptopStoreStandalonePage() {
         </>
       )}
 
-      {/* 2. TAB CONTENT: STOK UNIT READY (PURE PRODUCT CATALOG WITH ASPECT RATIO 4:5) */}
+      {/* 2. TAB CONTENT: STOK UNIT READY (PURE PRODUCT CATALOG WITH ASPECT RATIO 4:5 & VIDEO SUPPORT) */}
       {activeTab === "stok" && (
         <section id="katalog" className="py-8 sm:py-12 max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 pb-3 border-b border-slate-200 gap-3">
             <div>
               <h2 className="text-xl sm:text-3xl font-black text-slate-900">Daftar Unit & Produk Ready Stock</h2>
-              <p className="text-xs sm:text-sm text-slate-500 font-medium">Klik produk untuk melihat spesifikasi & galeri foto multi-sudut (Rasio 4:5)</p>
+              <p className="text-xs sm:text-sm text-slate-500 font-medium">Klik produk untuk melihat spesifikasi, galeri foto multi-sudut (Rasio 4:5), & video unit</p>
             </div>
             <div className="text-[11px] sm:text-xs font-bold text-slate-600 bg-white px-3 py-1.5 rounded-xl border border-slate-200 self-start sm:self-auto">
               100% Lolos QC & Siap Pakai
@@ -588,10 +592,20 @@ export default function CatalogLaptopStoreStandalonePage() {
                         <span className="absolute top-3 left-3 px-3 py-1 rounded-full text-[10px] sm:text-xs font-black uppercase tracking-wider bg-teal-100 text-teal-800 border border-teal-300 shadow-sm">
                           {p.badge}
                         </span>
-                        <span className="absolute bottom-3 left-3 px-2.5 py-0.5 rounded-md text-[10px] font-bold bg-slate-900/80 text-white backdrop-blur-sm shadow-sm flex items-center gap-1">
-                          <ImageIcon className="w-3 h-3 text-teal-400" />
-                          <span>{photoCount} Foto</span>
-                        </span>
+
+                        <div className="absolute bottom-3 left-3 flex items-center gap-1.5">
+                          <span className="px-2.5 py-0.5 rounded-md text-[10px] font-bold bg-slate-900/80 text-white backdrop-blur-sm shadow-sm flex items-center gap-1">
+                            <ImageIcon className="w-3 h-3 text-teal-400" />
+                            <span>{photoCount} Foto</span>
+                          </span>
+                          {p.video && (
+                            <span className="px-2 py-0.5 rounded-md text-[10px] font-bold bg-indigo-600 text-white shadow-sm flex items-center gap-1">
+                              <VideoIcon className="w-3 h-3 text-white" />
+                              <span>Ada Video</span>
+                            </span>
+                          )}
+                        </div>
+
                         {p.stockStatus === "SOLD_OUT" && (
                           <span className="absolute top-3 right-3 px-3 py-1 rounded-md text-[10px] sm:text-xs font-black uppercase bg-rose-600 text-white shadow-md">
                             SOLD OUT
@@ -839,7 +853,7 @@ export default function CatalogLaptopStoreStandalonePage() {
         </div>
       </footer>
 
-      {/* Modal Detail with ASPECT-RATIO 4:5 Portrait Gallery */}
+      {/* Modal Detail with ASPECT-RATIO 4:5 Portrait Gallery & VIDEO PLAYER */}
       {selectedProduct && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-950/70 backdrop-blur-sm transition-all duration-300">
           <div className="bg-white border border-slate-300 max-w-xl w-full rounded-2xl overflow-hidden shadow-2xl p-5 sm:p-6 space-y-4 text-slate-900 relative max-h-[90vh] overflow-y-auto">
@@ -854,29 +868,50 @@ export default function CatalogLaptopStoreStandalonePage() {
               <h3 className="text-lg sm:text-xl font-extrabold text-slate-900 pr-8">{selectedProduct.title}</h3>
               <p className="text-2xl sm:text-3xl font-black text-teal-700">{selectedProduct.rawPriceText || selectedProduct.priceText}</p>
 
-              {/* Main Active Photo with Aspect 4:5 */}
-              <div className="w-full aspect-[4/5] max-h-[380px] rounded-xl overflow-hidden bg-slate-100 border border-slate-200 relative mx-auto">
-                <img
-                  src={selectedProduct.images?.[activePhotoIdx] || selectedProduct.image}
-                  alt={selectedProduct.title}
-                  className="w-full h-full object-cover transition-all duration-300"
-                />
+              {/* Main Media Player Box (Image or Video) */}
+              <div className="w-full aspect-[4/5] max-h-[380px] rounded-xl overflow-hidden bg-slate-950 border border-slate-200 relative mx-auto flex items-center justify-center">
+                {activeMediaMode === "video" && selectedProduct.video ? (
+                  selectedProduct.video.startsWith("data:video") || selectedProduct.video.endsWith(".mp4") ? (
+                    <video src={selectedProduct.video} controls autoPlay loop muted playsInline className="w-full h-full object-cover" />
+                  ) : (
+                    <iframe
+                      src={selectedProduct.video.replace("watch?v=", "embed/").replace("shorts/", "embed/")}
+                      className="w-full h-full border-0"
+                      allow="autoplay; encrypted-media"
+                      allowFullScreen
+                    ></iframe>
+                  )
+                ) : (
+                  <img
+                    src={selectedProduct.images?.[activePhotoIdx] || selectedProduct.image}
+                    alt={selectedProduct.title}
+                    className="w-full h-full object-cover transition-all duration-300"
+                  />
+                )}
               </div>
 
-              {/* 4-Photo Thumbnail Selector */}
-              {selectedProduct.images && selectedProduct.images.length > 1 && (
-                <div className="flex items-center gap-2 overflow-x-auto pb-1 justify-center">
-                  {selectedProduct.images.map((imgUrl, idx) => (
-                    <button
-                      key={idx}
-                      onClick={() => setActivePhotoIdx(idx)}
-                      className={`w-16 aspect-[4/5] rounded-lg overflow-hidden border-2 shrink-0 transition ${activePhotoIdx === idx ? "border-teal-600 ring-2 ring-teal-600/30" : "border-slate-200 opacity-60 hover:opacity-100"}`}
-                    >
-                      <img src={imgUrl} alt={`Foto ${idx + 1}`} className="w-full h-full object-cover" />
-                    </button>
-                  ))}
-                </div>
-              )}
+              {/* Multi-Photo & Video Selector Thumbnails */}
+              <div className="flex items-center gap-2 overflow-x-auto pb-1 justify-center">
+                {selectedProduct.images && selectedProduct.images.map((imgUrl, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => { setActiveMediaMode("image"); setActivePhotoIdx(idx); }}
+                    className={`w-14 aspect-[4/5] rounded-lg overflow-hidden border-2 shrink-0 transition ${activeMediaMode === "image" && activePhotoIdx === idx ? "border-teal-600 ring-2 ring-teal-600/30" : "border-slate-200 opacity-60 hover:opacity-100"}`}
+                  >
+                    <img src={imgUrl} alt={`Foto ${idx + 1}`} className="w-full h-full object-cover" />
+                  </button>
+                ))}
+
+                {selectedProduct.video && (
+                  <button
+                    onClick={() => setActiveMediaMode("video")}
+                    className={`px-3 py-2.5 rounded-lg border-2 shrink-0 transition flex items-center gap-1.5 font-bold text-xs ${activeMediaMode === "video" ? "bg-indigo-600 text-white border-indigo-600 shadow-md" : "bg-indigo-50 text-indigo-700 border-indigo-200 hover:bg-indigo-100"}`}
+                  >
+                    <VideoIcon className="w-4 h-4" />
+                    <span>🎥 Video Unit</span>
+                  </button>
+                )}
+              </div>
 
               <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 space-y-2 text-xs">
                 <p className="font-extrabold text-slate-900 uppercase">Spesifikasi Lengkap & Kondisi:</p>

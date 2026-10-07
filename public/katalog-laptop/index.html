@@ -80,7 +80,7 @@
     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 sm:mb-8 pb-3 border-b border-slate-200 gap-3">
       <div>
         <h2 class="text-xl sm:text-3xl font-black text-slate-900">Daftar Unit & Produk Ready Stock</h2>
-        <p class="text-xs sm:text-sm text-slate-500 font-medium">Foto produk berasio 4:5 portrait yang sangat jernih</p>
+        <p class="text-xs sm:text-sm text-slate-500 font-medium">Foto produk berasio 4:5 portrait & video showroom unit</p>
       </div>
       <div class="text-[11px] sm:text-xs font-bold text-slate-600 bg-white px-3 py-1.5 rounded-xl border border-slate-200 self-start sm:self-auto">
         100% Lolos QC & Siap Pakai
@@ -149,8 +149,8 @@
       </div>
 
       <div class="p-6 max-h-[70vh] overflow-y-auto space-y-4">
-        {/* ASPECT RATIO 4:5 MAIN MODAL PHOTO */}
-        <div class="w-full aspect-[4/5] max-h-[380px] mx-auto rounded-xl bg-slate-100 border border-slate-200 flex items-center justify-center overflow-hidden">
+        <!-- ASPECT RATIO 4:5 MAIN MODAL PHOTO/VIDEO BOX -->
+        <div id="modalMediaContainer" class="w-full aspect-[4/5] max-h-[380px] mx-auto rounded-xl bg-slate-100 border border-slate-200 flex items-center justify-center overflow-hidden">
           <img id="modalImage" src="" alt="Detail Produk" class="w-full h-full object-cover">
         </div>
 
@@ -209,6 +209,7 @@
           "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=800&auto=format&fit=crop&q=80",
           "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=800&auto=format&fit=crop&q=80"
         ],
+        video: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
         shortDesc: "Ultrabook flagship bodi Carbon Fiber super ringan (~1.1 kg). Sangat mewah, slim, dan nyaman dibawa mobilitas tinggi.",
         specs: [
           "Prosesor: Intel Core i5-6200U / i5-6300U Gen 6",

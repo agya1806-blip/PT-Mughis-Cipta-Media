@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { Building2, CreditCard, Laptop, Plus, Trash2, Edit3, Save, Upload, Image as ImageIcon, Check, X, ShieldAlert } from "lucide-react"
+import { Building2, CreditCard, Laptop, Plus, Trash2, Edit3, Save, Upload, Image as ImageIcon, Video, Check, X, ShieldAlert } from "lucide-react"
 
 interface BankAccount {
   id: string
@@ -21,6 +21,7 @@ interface ProductItem {
   rawPriceText: string
   image: string
   images?: string[] // Multi-photo support (Up to 4 images)
+  video?: string // Video product support (MP4 base64 / URL)
   shortDesc: string
   specs: string[]
   conditionNote: string
@@ -50,6 +51,7 @@ const DEFAULT_PRODUCTS: ProductItem[] = [
       "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=800&auto=format&fit=crop&q=80",
       "https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?w=800&auto=format&fit=crop&q=80"
     ],
+    video: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
     shortDesc: "Ultrabook flagship bodi Carbon Fiber super ringan (~1.1 kg). Sangat mewah, slim, dan nyaman dibawa mobilitas tinggi.",
     specs: [
       "Prosesor: Intel Core i5-6200U / i5-6300U Gen 6",
@@ -341,6 +343,24 @@ export default function AdminKatalogLaptopPage() {
     })
   }
 
+  // Handle Video Upload (MP4 / WebM)
+  function handleVideoUpload(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0]
+    if (!file || !editingProduct) return
+
+    if (file.size > 20 * 1024 * 1024) {
+      alert("Ukuran file video terlalu besar. Maksimal 20MB!")
+      return
+    }
+
+    const reader = new FileReader()
+    reader.onloadend = () => {
+      const base64Video = reader.result as string
+      setEditingProduct({ ...editingProduct, video: base64Video })
+    }
+    reader.readAsDataURL(file)
+  }
+
   // Bank Actions
   function addBank() {
     const newBank: BankAccount = {
@@ -480,7 +500,7 @@ export default function AdminKatalogLaptopPage() {
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 pb-3">
             <div>
               <h2 className="text-base sm:text-lg font-extrabold text-slate-900">Unit Laptop & Produk Digital Ready Stock</h2>
-              <p className="text-xs text-slate-500">Setiap produk mendukung 4 galeri foto berasio 4:5 portrait.</p>
+              <p className="text-xs text-slate-500">Mendukung 4 galeri foto rasio 4:5 + Video produk MP4/URL.</p>
             </div>
             <button
               onClick={addProduct}
@@ -500,8 +520,8 @@ export default function AdminKatalogLaptopPage() {
                     <span className="absolute top-2 left-2 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-300">
                       {p.badge}
                     </span>
-                    <span className="absolute bottom-2 left-2 px-2 py-0.5 rounded-md text-[10px] font-bold bg-slate-900/80 text-white backdrop-blur-sm">
-                      📷 {p.images?.length || 1} Foto
+                    <span className="absolute bottom-2 left-2 px-2 py-0.5 rounded-md text-[10px] font-bold bg-slate-900/80 text-white backdrop-blur-sm flex items-center gap-1">
+                      📷 {p.images?.length || 1} Foto {p.video ? "• 🎥 Video" : ""}
                     </span>
                     <span className={`absolute top-2 right-2 px-2 py-0.5 rounded-md text-[10px] font-black uppercase ${p.stockStatus === 'READY' ? 'bg-emerald-600 text-white' : p.stockStatus === 'SOLD_OUT' ? 'bg-rose-600 text-white' : 'bg-slate-700 text-slate-200'}`}>
                       {p.stockStatus || 'READY'}
@@ -534,7 +554,7 @@ export default function AdminKatalogLaptopPage() {
             ))}
           </div>
 
-          {/* Product Editor Form Box with 4-Image Slots (Aspect 4:5) */}
+          {/* Product Editor Form Box with 4-Image Slots & Video Upload */}
           {editingProduct && (
             <div className="p-4 sm:p-6 rounded-2xl border-2 border-emerald-500 bg-slate-50 space-y-4">
               <div className="flex justify-between items-center border-b border-slate-200 pb-2">
@@ -673,6 +693,61 @@ export default function AdminKatalogLaptopPage() {
                         </div>
                       )
                     })}
+                  </div>
+                </div>
+
+                {/* VIDEO PRODUCT SECTION */}
+                <div className="md:col-span-2 p-4 rounded-xl bg-white border border-slate-200 space-y-3">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <label className="block font-extrabold text-slate-900 text-xs uppercase tracking-wider">
+                        Video Showroom Produk (Opsional - MP4 / YouTube / TikTok / Reel)
+                      </label>
+                      <p className="text-[11px] text-slate-500 font-medium">Unggah video durasi 10-30 detik perlihatkan kondisi nyala bodi/keyboard laptop.</p>
+                    </div>
+                    {editingProduct.video && (
+                      <button
+                        onClick={() => setEditingProduct({ ...editingProduct, video: "" })}
+                        className="px-2.5 py-1 rounded bg-rose-100 text-rose-700 hover:bg-rose-200 text-xs font-bold"
+                      >
+                        Hapus Video
+                      </button>
+                    )}
+                  </div>
+
+                  <div className="flex flex-col sm:flex-row items-center gap-4">
+                    {editingProduct.video ? (
+                      <div className="w-36 h-28 rounded-xl bg-slate-900 overflow-hidden shrink-0 border border-slate-300 relative flex items-center justify-center">
+                        {editingProduct.video.startsWith("data:video") || editingProduct.video.endsWith(".mp4") ? (
+                          <video src={editingProduct.video} controls className="w-full h-full object-cover" />
+                        ) : (
+                          <div className="text-white text-[10px] font-bold text-center p-2">
+                            🎥 Link Video Terpasang
+                          </div>
+                        )}
+                      </div>
+                    ) : null}
+
+                    <div className="flex-1 space-y-2 w-full">
+                      <label className="px-4 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs inline-flex items-center gap-2 cursor-pointer shadow-md shadow-indigo-600/20 active:scale-95 transition">
+                        <Video className="w-4 h-4" />
+                        <span>Upload File Video MP4 (Dari HP / Laptop)</span>
+                        <input
+                          type="file"
+                          accept="video/mp4,video/webm,video/*"
+                          onChange={handleVideoUpload}
+                          className="hidden"
+                        />
+                      </label>
+                      <p className="text-[11px] text-slate-500 font-medium">Atau tempelkan Link Video (YouTube Shorts / TikTok / Instagram Reel / MP4 URL):</p>
+                      <input
+                        type="text"
+                        placeholder="https://www.youtube.com/shorts/... atau https://..."
+                        value={editingProduct.video || ""}
+                        onChange={(e) => setEditingProduct({ ...editingProduct, video: e.target.value })}
+                        className="w-full p-2 rounded-lg border border-slate-300 bg-slate-50 font-mono text-[11px] text-slate-900"
+                      />
+                    </div>
                   </div>
                 </div>
 

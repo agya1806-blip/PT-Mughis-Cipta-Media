@@ -44,29 +44,117 @@ const DEFAULT_BANKS: BankAccount[] = [
 
 const DEFAULT_PRODUCTS: ProductItem[] = [
   {
-    id: "prod-1",
-    title: "Lenovo ThinkPad T480 Core i5 Gen 8",
+    id: "prod-x1-carbon",
+    title: "Lenovo ThinkPad X1 Carbon Core i5 Gen 6",
     category: "laptop",
-    badge: "Paling Laris",
-    badgeColor: "bg-teal-100 text-teal-800 border-teal-300",
+    badge: "Ultrabook Tipis & Mewah",
+    badgeColor: "bg-emerald-100 text-emerald-800 border-emerald-300",
     stockStatus: "READY",
-    priceText: "Rp 3.450.000",
-    rawPriceText: "Rp 3.450.000 (Varian SSD 256GB / 512GB)",
+    priceText: "Rp 3.750.000",
+    rawPriceText: "Rp 3.750.000 (RAM 8GB / SSD 256GB)",
     image: "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=800&auto=format&fit=crop&q=80",
-    shortDesc: "Laptop tangguh standar militer dengan keyboard super nyaman. Cocok untuk kerja kantor, skripsi, dan olah data bisnis.",
+    shortDesc: "Ultrabook flagship bodi Carbon Fiber super ringan (~1.1 kg). Sangat mewah, slim, dan nyaman dibawa mobilitas tinggi.",
     specs: [
-      "Prosesor: Intel Core i5-8350U (Gen 8 Quad Core)",
-      "RAM: 8GB / 16GB DDR4 High Speed",
-      "Penyimpanan: 256GB / 512GB SSD NVMe Cepat",
-      "Layar: 14.0 inch Full HD Anti-Glare Jernih",
-      "Baterai: Awet 2-4 Jam (Dual Battery Support)"
+      "Prosesor: Intel Core i5-6200U / i5-6300U Gen 6",
+      "RAM: 8GB LPDDR3 High Speed",
+      "Penyimpanan: 256GB SSD High Speed",
+      "Layar: 14.0 inch Full HD IPS Anti-Glare",
+      "Fitur: Bodi Carbon Fiber, Keyboard Backlit Nyala"
     ],
-    conditionNote: "Grade A Mulus 90-95%, Baterai Awet 2-4 jam",
-    warranty: "Garansi Toko 60 Hari",
-    bonus: "Unit Laptop, Charger Original Type-C, Bonus Tas Baru & Mouse Wireless."
+    conditionNote: "Grade A Mulus 92-95%, Baterai Awet 2-4 Jam",
+    warranty: "Garansi Toko 30 Hari",
+    bonus: "Unit Laptop, Charger Original, Tas Laptop Baru & Mouse Wireless"
   },
   {
-    id: "prod-2",
+    id: "prod-t460",
+    title: "Lenovo ThinkPad T460 Core i5 Gen 6",
+    category: "laptop",
+    badge: "Kerja Tangguh",
+    badgeColor: "bg-teal-100 text-teal-800 border-teal-300",
+    stockStatus: "READY",
+    priceText: "Rp 3.400.000",
+    rawPriceText: "Rp 3.400.000 (RAM 8GB / SSD 256GB)",
+    image: "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=800&auto=format&fit=crop&q=80",
+    shortDesc: "Laptop standar korporat terkenal bandel, keyboard super empuk, dan konstruksi fisik sangat kokoh untuk kerja seharian.",
+    specs: [
+      "Prosesor: Intel Core i5-6200U / i5-6300U Gen 6",
+      "RAM: 8GB DDR4 (Bisa di-upgrade)",
+      "Penyimpanan: 256GB SSD Cepat",
+      "Layar: 14.0 inch HD / Full HD",
+      "Baterai: Dual Battery System Awet 2-4 Jam"
+    ],
+    conditionNote: "Grade A- Mulus 90%, Fungsi 100% Normal",
+    warranty: "Garansi Toko 30 Hari",
+    bonus: "Unit Laptop, Charger Original, Tas Laptop & Mouse"
+  },
+  {
+    id: "prod-t470",
+    title: "Lenovo ThinkPad T470 Core i5 Gen 6",
+    category: "laptop",
+    badge: "Best Seller Business",
+    badgeColor: "bg-emerald-100 text-emerald-800 border-emerald-300",
+    stockStatus: "READY",
+    priceText: "Rp 3.500.000",
+    rawPriceText: "Rp 3.500.000 (RAM 8GB / SSD 256GB)",
+    image: "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=800&auto=format&fit=crop&q=80",
+    shortDesc: "Generasi penerus T460 dengan bodi lebih ringkas, port Type-C USB-C fast charge, dan performa mulus untuk olah data.",
+    specs: [
+      "Prosesor: Intel Core i5-6200U / i5-6300U Gen 6",
+      "RAM: 8GB DDR4 (Upgradable)",
+      "Penyimpanan: 256GB SSD Fast Boot",
+      "Layar: 14.0 inch Anti-Glare Jernih",
+      "Port: USB-C Type-C, HDMI, USB 3.0, LAN"
+    ],
+    conditionNote: "Grade A Mulus 92-95%, Baterai Awet 2-4 Jam",
+    warranty: "Garansi Toko 30 Hari",
+    bonus: "Unit Laptop, Charger Original Type-C, Tas Laptop Baru & Mouse"
+  },
+  {
+    id: "prod-hp-430-g5",
+    title: "HP ProBook 430 G5 Core i5 Gen 8",
+    category: "laptop",
+    badge: "Gen 8 Cepat 4-Core",
+    badgeColor: "bg-blue-100 text-blue-800 border-blue-300",
+    stockStatus: "READY",
+    priceText: "Rp 4.200.000",
+    rawPriceText: "Rp 4.200.000 (Core i5 Gen 8 / RAM 8GB / SSD 256GB)",
+    image: "https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?w=800&auto=format&fit=crop&q=80",
+    shortDesc: "Prosesor Intel Gen 8 Quad Core kencang dengan desain silver aluminium elegan. Cocok untuk multitasking berat, kerja & kuliah.",
+    specs: [
+      "Prosesor: Intel Core i5-8250U Gen 8 (Quad Core 8 Threads)",
+      "RAM: 8GB DDR4 High Speed",
+      "Penyimpanan: 256GB SSD NVMe Cepat",
+      "Layar: 13.3 inch Full HD Compact Bezel",
+      "Bodi: Silver Aluminium Modern Premium"
+    ],
+    conditionNote: "Grade A Mulus 93-95%, Baterai Awet 3-4 Jam",
+    warranty: "Garansi Toko 30 Hari",
+    bonus: "Unit Laptop, Charger Original HP, Tas Ransel & Mouse"
+  },
+  {
+    id: "prod-ideapad-s530",
+    title: "Lenovo IdeaPad S530 Core i5 Gen 8",
+    category: "budget",
+    badge: "Promo Gen 8 (Minus Baterai)",
+    badgeColor: "bg-amber-100 text-amber-900 border-amber-300",
+    stockStatus: "READY",
+    priceText: "Rp 4.000.000",
+    rawPriceText: "Rp 4.000.000 (Harga Khusus Minus Baterai Lemah)",
+    image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=800&auto=format&fit=crop&q=80",
+    shortDesc: "Laptop ultrabook slim metal silver sangat kencang Core i5 Gen 8. Kondisi mesin & bodi mulus 100% lancar (Minus baterai lemah, disarankan colok charger).",
+    specs: [
+      "Prosesor: Intel Core i5-8265U Gen 8 (Quad Core 8 Threads)",
+      "RAM: 8GB DDR4",
+      "Penyimpanan: 256GB SSD NVMe Super Fast",
+      "Layar: 13.3 inch Full HD IPS Bezel Tipis",
+      "Catatan Minus: Baterai Lemah (Disarankan sambil colok charger)"
+    ],
+    conditionNote: "Kondisi Fisik 95% Mulus, Mesin 100% Normal (Minus Baterai Lemah)",
+    warranty: "Garansi Toko 14 Hari Mesin",
+    bonus: "Unit Laptop, Charger Original, Tas Laptop & Mouse"
+  },
+  {
+    id: "prod-office-win11",
     title: "Lisensi Windows 11 Pro & Office 2021",
     category: "digital",
     badge: "Produk Digital",
@@ -85,84 +173,6 @@ const DEFAULT_PRODUCTS: ProductItem[] = [
     conditionNote: "100% Produk Digital Resmi Baru",
     warranty: "Garansi 100% Ganti Baru Jika Gagal Aktivasi",
     bonus: "Buku panduan bergambar cara pasang, link download resmi, dan dibantu sampai tuntas via WA."
-  },
-  {
-    id: "prod-3",
-    title: "Dell Latitude 7490 Ultrabook Slim",
-    category: "laptop",
-    badge: "Ready Stock",
-    badgeColor: "bg-emerald-100 text-emerald-800 border-emerald-300",
-    stockStatus: "READY",
-    priceText: "Rp 3.800.000",
-    rawPriceText: "Rp 3.800.000",
-    image: "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=800&auto=format&fit=crop&q=80",
-    shortDesc: "Bodi tipis dan ringan dengan serat karbon. Sangat nyaman dibawa bepergian, baterai awet dengan layar jernih.",
-    specs: [
-      "Prosesor: Intel Core i7-8650U Kecepatan hingga 4.2GHz",
-      "RAM: 16GB DDR4 Lancar Multitasking",
-      "Penyimpanan: 512GB SSD NVMe Cepat",
-      "Layar: 14.0 inch Full HD Bezel Tipis"
-    ],
-    conditionNote: "Grade A Mulus 93-95%",
-    warranty: "Garansi Toko 30 Hari",
-    bonus: "Tas selempang Dell, Charger Original, Mouse Optik, & Garansi Toko."
-  },
-  {
-    id: "prod-4",
-    title: "Paket Software Desain & Grafis Siap Pakai",
-    category: "digital",
-    badge: "Terlaris Digital",
-    badgeColor: "bg-purple-100 text-purple-800 border-purple-300",
-    stockStatus: "READY",
-    priceText: "Rp 450.000",
-    rawPriceText: "Rp 450.000 (Paket Komplit)",
-    image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&auto=format&fit=crop&q=80",
-    shortDesc: "Aplikasi lengkap untuk desain logo, edit foto, video konten hingga 3D. Mudah diinstal dengan panduan bahasa Indonesia.",
-    specs: [
-      "Kompatibel: Windows 10/11 & macOS",
-      "Metode: Single Installer tinggal klik langsung jadi",
-      "Keamanan: Sudah dites bersih bebas malware",
-      "Akses: Cloud Drive High-Speed seumur hidup"
-    ],
-    bonus: "Bonus ribuan font keren, template desain siap edit, & preset warna video."
-  },
-  {
-    id: "prod-5",
-    title: "HP EliteBook 840 G5 Bodi Aluminium",
-    category: "laptop",
-    badge: "Tampilan Mewah",
-    badgeColor: "bg-indigo-100 text-indigo-800 border-indigo-300",
-    stockStatus: "READY",
-    priceText: "Rp 4.150.000",
-    rawPriceText: "Rp 4.150.000",
-    image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=800&auto=format&fit=crop&q=80",
-    shortDesc: "Desain metal silver elegan standar eksekutif kantor dengan audio jernih premium Bang & Olufsen.",
-    specs: [
-      "Prosesor: Intel Core i5-8250U / Core i7",
-      "RAM: 8GB / 16GB DDR4",
-      "Penyimpanan: 256GB / 512GB SSD",
-      "Speaker: Audio Jernih Bang & Olufsen"
-    ],
-    bonus: "Charger original HP, tas ransel laptop empuk, mouse wireless & garansi."
-  },
-  {
-    id: "prod-6",
-    title: "Netbook Ringkas Pelajar & Kasir Toko",
-    category: "budget",
-    badge: "Super Hemat",
-    badgeColor: "bg-amber-100 text-amber-900 border-amber-300",
-    stockStatus: "READY",
-    priceText: "Rp 1.850.000",
-    rawPriceText: "Rp 1.850.000 (Stok Terbatas)",
-    image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=800&auto=format&fit=crop&q=80",
-    shortDesc: "Laptop hemat biaya untuk kebutuhan ketik Word, Excel, kasir minimarket, dan anak sekolah belajar online.",
-    specs: [
-      "Prosesor: Intel Celeron / Pentium Quad-Core",
-      "RAM: 4GB / 8GB Irit Daya",
-      "Penyimpanan: SSD 128GB / 256GB",
-      "Layar: 11.6 - 13.3 inch Enteng & Ringkas"
-    ],
-    bonus: "Sudah terisi Windows & Office siap langsung digunakan, tinggal pakai!"
   }
 ]
 
@@ -219,7 +229,7 @@ export default function CatalogLaptopStoreStandalonePage() {
     const matchCat =
       currentCategory === "all" ||
       p.category === currentCategory ||
-      (currentCategory === "budget" && (p.category === "budget" || p.badge.includes("Hemat") || p.priceText.includes("1.8") || p.priceText.includes("400")))
+      (currentCategory === "budget" && (p.category === "budget" || p.badge.includes("Hemat") || p.badge.includes("Minus") || p.priceText.includes("1.8") || p.priceText.includes("400")))
 
     const q = searchQuery.toLowerCase()
     const matchSearch =
@@ -281,7 +291,7 @@ export default function CatalogLaptopStoreStandalonePage() {
               href={`https://wa.me/${formattedWa}?text=${encodeURIComponent("Halo Mughis Laptop Store, saya ingin bertanya stok laptop/produk digital.")}`}
               target="_blank"
               rel="noreferrer"
-              className="px-3 py-2 sm:px-4 sm:py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs sm:text-sm flex items-center gap-1.5 shadow-md shadow-emerald-600/20 transition transform active:scale-95"
+              className="px-3 py-2 sm:px-4 sm:py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm flex items-center gap-1.5 shadow-md shadow-emerald-600/20 transition transform active:scale-95"
             >
               <Phone className="w-4 h-4 shrink-0" />
               <span>CS WA</span>
@@ -312,7 +322,7 @@ export default function CatalogLaptopStoreStandalonePage() {
             <Search className="w-5 h-5 sm:w-6 sm:h-6 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
             <input
               type="text"
-              placeholder="Cari ThinkPad, ASUS, HP, Dell, RAM 16GB..."
+              placeholder="Cari ThinkPad X1, T460, T470, HP 430 G5, Ideapad S530..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full pl-10 sm:pl-12 pr-4 py-3.5 text-sm sm:text-lg font-bold rounded-2xl border-2 border-slate-300 focus:border-teal-600 focus:outline-none bg-white text-slate-900 placeholder:text-slate-400 font-medium"
@@ -325,7 +335,7 @@ export default function CatalogLaptopStoreStandalonePage() {
               onClick={() => setCurrentCategory("all")}
               className={`px-3.5 py-2 sm:px-5 sm:py-2.5 rounded-xl border-2 transition ${currentCategory === "all" ? "bg-teal-600 border-teal-600 text-white shadow-sm" : "bg-white border-slate-200 text-slate-700 hover:border-teal-600"}`}
             >
-              🔥 Semua Produk
+              🔥 Semua Produk ({activeProducts.length})
             </button>
             <button
               onClick={() => setCurrentCategory("laptop")}
@@ -343,7 +353,7 @@ export default function CatalogLaptopStoreStandalonePage() {
               onClick={() => setCurrentCategory("budget")}
               className={`px-3.5 py-2 sm:px-5 sm:py-2.5 rounded-xl border-2 transition ${currentCategory === "budget" ? "bg-teal-600 border-teal-600 text-white shadow-sm" : "bg-white border-slate-200 text-slate-700 hover:border-teal-600"}`}
             >
-              🏷️ Pilihan Hemat (&lt; 3 Jt)
+              🏷️ Promo & Pilihan Hemat
             </button>
           </div>
         </div>
@@ -383,7 +393,7 @@ export default function CatalogLaptopStoreStandalonePage() {
                 <ShieldCheck className="w-5 h-5" />
               </div>
               <h3 className="text-xs sm:text-base font-bold text-slate-900">Garansi Toko Jelas</h3>
-              <p className="text-[11px] sm:text-xs text-slate-600 leading-relaxed font-medium">Semua unit dilengkapi garansi toko resmi 30-90 hari.</p>
+              <p className="text-[11px] sm:text-xs text-slate-600 leading-relaxed font-medium">Semua unit dilengkapi garansi toko resmi 30 hari.</p>
             </div>
 
             <div className="p-4 sm:p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-1.5">
@@ -417,7 +427,7 @@ export default function CatalogLaptopStoreStandalonePage() {
       <section id="katalog" className="py-12 sm:py-16 max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 sm:mb-8 pb-3 border-b border-slate-200 gap-3">
           <div>
-            <h2 className="text-xl sm:text-3xl font-black text-slate-900">Daftar Unit & Produk Ready</h2>
+            <h2 className="text-xl sm:text-3xl font-black text-slate-900">Daftar Unit & Produk Ready Stock</h2>
             <p className="text-xs sm:text-sm text-slate-500 font-medium">Klik pada produk untuk melihat rincian spesifikasi lengkap & garansi toko</p>
           </div>
           <div className="text-[11px] sm:text-xs font-bold text-slate-600 bg-white px-3 py-1.5 rounded-xl border border-slate-200 self-start sm:self-auto">

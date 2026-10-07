@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { Building2, CreditCard, Laptop, Plus, Trash2, Edit3, Save, Upload, Image as ImageIcon, Check } from "lucide-react"
+import { Building2, CreditCard, Laptop, Plus, Trash2, Edit3, Save, Upload, Image as ImageIcon, Check, X, ShieldAlert } from "lucide-react"
 
 interface BankAccount {
   id: string
@@ -20,6 +20,7 @@ interface ProductItem {
   priceText: string
   rawPriceText: string
   image: string
+  images?: string[] // Multi-photo support (Up to 4 images)
   shortDesc: string
   specs: string[]
   conditionNote: string
@@ -43,6 +44,12 @@ const DEFAULT_PRODUCTS: ProductItem[] = [
     priceText: "Rp 3.750.000",
     rawPriceText: "Rp 3.750.000 (RAM 8GB / SSD 256GB)",
     image: "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=800&auto=format&fit=crop&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=800&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=800&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=800&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?w=800&auto=format&fit=crop&q=80"
+    ],
     shortDesc: "Ultrabook flagship bodi Carbon Fiber super ringan (~1.1 kg). Sangat mewah, slim, dan nyaman dibawa mobilitas tinggi.",
     specs: [
       "Prosesor: Intel Core i5-6200U / i5-6300U Gen 6",
@@ -65,6 +72,10 @@ const DEFAULT_PRODUCTS: ProductItem[] = [
     priceText: "Rp 3.400.000",
     rawPriceText: "Rp 3.400.000 (RAM 8GB / SSD 256GB)",
     image: "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=800&auto=format&fit=crop&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=800&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=800&auto=format&fit=crop&q=80"
+    ],
     shortDesc: "Laptop standar korporat terkenal bandel, keyboard super empuk, dan konstruksi fisik sangat kokoh untuk kerja seharian.",
     specs: [
       "Prosesor: Intel Core i5-6200U / i5-6300U Gen 6",
@@ -87,6 +98,10 @@ const DEFAULT_PRODUCTS: ProductItem[] = [
     priceText: "Rp 3.500.000",
     rawPriceText: "Rp 3.500.000 (RAM 8GB / SSD 256GB)",
     image: "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=800&auto=format&fit=crop&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=800&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=800&auto=format&fit=crop&q=80"
+    ],
     shortDesc: "Generasi penerus T460 dengan bodi lebih ringkas, port Type-C USB-C fast charge, dan performa mulus untuk olah data.",
     specs: [
       "Prosesor: Intel Core i5-6200U / i5-6300U Gen 6",
@@ -109,6 +124,9 @@ const DEFAULT_PRODUCTS: ProductItem[] = [
     priceText: "Rp 4.200.000",
     rawPriceText: "Rp 4.200.000 (Core i5 Gen 8 / RAM 8GB / SSD 256GB)",
     image: "https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?w=800&auto=format&fit=crop&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?w=800&auto=format&fit=crop&q=80"
+    ],
     shortDesc: "Prosesor Intel Gen 8 Quad Core kencang dengan desain silver aluminium elegan. Cocok untuk multitasking berat, kerja & kuliah.",
     specs: [
       "Prosesor: Intel Core i5-8250U Gen 8 (Quad Core 8 Threads)",
@@ -131,6 +149,9 @@ const DEFAULT_PRODUCTS: ProductItem[] = [
     priceText: "Rp 4.000.000",
     rawPriceText: "Rp 4.000.000 (Harga Khusus Minus Baterai Lemah)",
     image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=800&auto=format&fit=crop&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=800&auto=format&fit=crop&q=80"
+    ],
     shortDesc: "Laptop ultrabook slim metal silver sangat kencang Core i5 Gen 8. Kondisi mesin & bodi mulus 100% lancar (Minus baterai lemah, disarankan colok charger).",
     specs: [
       "Prosesor: Intel Core i5-8265U Gen 8 (Quad Core 8 Threads)",
@@ -153,6 +174,9 @@ const DEFAULT_PRODUCTS: ProductItem[] = [
     priceText: "Rp 400.000",
     rawPriceText: "Rp 400.000 (Aktivasi Permanen Seumur Hidup)",
     image: "https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800&auto=format&fit=crop&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800&auto=format&fit=crop&q=80"
+    ],
     shortDesc: "Paket lisensi resmi original untuk PC / Laptop. Tinggal pasang, tanpa crack, bebas update selamanya, aman dari virus.",
     specs: [
       "Tipe Lisensi: Windows 11 Pro Retail + Office 2021 Pro Plus",
@@ -208,7 +232,15 @@ export default function AdminKatalogLaptopPage() {
             try { setBankAccounts(JSON.parse(data.bank_accounts_json)) } catch {}
           }
           if (data.catalog_products_json) {
-            try { setProducts(JSON.parse(data.catalog_products_json)) } catch {}
+            try {
+              const loadedProducts: ProductItem[] = JSON.parse(data.catalog_products_json)
+              // Ensure images array exists for all items
+              const formatted = loadedProducts.map(p => ({
+                ...p,
+                images: p.images && p.images.length > 0 ? p.images : [p.image]
+              }))
+              setProducts(formatted)
+            } catch {}
           }
         }
       })
@@ -252,10 +284,10 @@ export default function AdminKatalogLaptopPage() {
     }
   }
 
-  // File Upload Handler (Base64)
-  function handleImageUpload(e: React.ChangeEvent<HTMLInputElement>) {
+  // Handle Multi-Image Upload (Up to 4 slots)
+  function handleMultiImageUpload(slotIndex: number, e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0]
-    if (!file) return
+    if (!file || !editingProduct) return
 
     if (file.size > 5 * 1024 * 1024) {
       alert("Ukuran file gambar terlalu besar. Maksimal 5MB!")
@@ -265,11 +297,49 @@ export default function AdminKatalogLaptopPage() {
     const reader = new FileReader()
     reader.onloadend = () => {
       const base64Data = reader.result as string
-      if (editingProduct) {
-        setEditingProduct({ ...editingProduct, image: base64Data })
-      }
+      const currentImages = editingProduct.images && editingProduct.images.length > 0
+        ? [...editingProduct.images]
+        : [editingProduct.image]
+
+      currentImages[slotIndex] = base64Data
+
+      setEditingProduct({
+        ...editingProduct,
+        image: currentImages[0] || base64Data,
+        images: currentImages
+      })
     }
     reader.readAsDataURL(file)
+  }
+
+  function handleImageUrlChange(slotIndex: number, newUrl: string) {
+    if (!editingProduct) return
+    const currentImages = editingProduct.images && editingProduct.images.length > 0
+      ? [...editingProduct.images]
+      : [editingProduct.image]
+
+    currentImages[slotIndex] = newUrl
+
+    setEditingProduct({
+      ...editingProduct,
+      image: currentImages[0] || newUrl,
+      images: currentImages
+    })
+  }
+
+  function deleteImageSlot(slotIndex: number) {
+    if (!editingProduct) return
+    const currentImages = editingProduct.images && editingProduct.images.length > 0
+      ? [...editingProduct.images]
+      : [editingProduct.image]
+
+    currentImages.splice(slotIndex, 1)
+
+    setEditingProduct({
+      ...editingProduct,
+      image: currentImages[0] || "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=800&auto=format&fit=crop&q=80",
+      images: currentImages.length > 0 ? currentImages : ["https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=800&auto=format&fit=crop&q=80"]
+    })
   }
 
   // Bank Actions
@@ -296,6 +366,7 @@ export default function AdminKatalogLaptopPage() {
   // Product Actions
   function addProduct() {
     const title = "Produk Laptop / Digital Baru"
+    const defaultImg = "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=800&auto=format&fit=crop&q=80"
     const newProd: ProductItem = {
       id: `prod-${Date.now()}`,
       title,
@@ -305,7 +376,8 @@ export default function AdminKatalogLaptopPage() {
       stockStatus: "READY",
       priceText: "Rp 3.500.000",
       rawPriceText: "Rp 3.500.000",
-      image: "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=800&auto=format&fit=crop&q=80",
+      image: defaultImg,
+      images: [defaultImg],
       shortDesc: "Deskripsi singkat mengenai keunggulan produk ini.",
       specs: ["Spesifikasi 1", "Spesifikasi 2"],
       conditionNote: "Grade A Mulus Siap Pakai",
@@ -317,7 +389,8 @@ export default function AdminKatalogLaptopPage() {
   }
 
   function openProductEditor(p: ProductItem) {
-    setEditingProduct({ ...p })
+    const formattedImages = p.images && p.images.length > 0 ? [...p.images] : [p.image]
+    setEditingProduct({ ...p, images: formattedImages })
     setSpecsInput(p.specs ? p.specs.join("\n") : "")
   }
 
@@ -328,8 +401,14 @@ export default function AdminKatalogLaptopPage() {
       .map((s) => s.trim())
       .filter((s) => s.length > 0)
 
+    const updatedImages = editingProduct.images && editingProduct.images.length > 0
+      ? editingProduct.images.filter(img => img.trim().length > 0)
+      : [editingProduct.image]
+
     const updated = {
       ...editingProduct,
+      image: updatedImages[0] || editingProduct.image,
+      images: updatedImages,
       specs: updatedSpecs
     }
     setProducts(products.map((p) => (p.id === updated.id ? updated : p)))
@@ -402,7 +481,7 @@ export default function AdminKatalogLaptopPage() {
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 pb-3">
             <div>
               <h2 className="text-base sm:text-lg font-extrabold text-slate-900">Unit Laptop & Produk Digital Ready Stock</h2>
-              <p className="text-xs text-slate-500">Berikut adalah daftar unit yang tampil di halaman katalog toko.</p>
+              <p className="text-xs text-slate-500">Setiap produk sekarang dapat mendukung hingga 4 galeri foto multi-sudut.</p>
             </div>
             <button
               onClick={addProduct}
@@ -418,9 +497,12 @@ export default function AdminKatalogLaptopPage() {
               <div key={p.id} className="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm flex flex-col justify-between hover:border-emerald-500 transition">
                 <div>
                   <div className="relative h-44 bg-slate-100">
-                    <img src={p.image} alt={p.title} className="w-full h-full object-cover" />
+                    <img src={p.images?.[0] || p.image} alt={p.title} className="w-full h-full object-cover" />
                     <span className="absolute top-2 left-2 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-300">
                       {p.badge}
+                    </span>
+                    <span className="absolute bottom-2 left-2 px-2 py-0.5 rounded-md text-[10px] font-bold bg-slate-900/80 text-white backdrop-blur-sm">
+                      📷 {p.images?.length || 1} Foto
                     </span>
                     <span className={`absolute top-2 right-2 px-2 py-0.5 rounded-md text-[10px] font-black uppercase ${p.stockStatus === 'READY' ? 'bg-emerald-600 text-white' : p.stockStatus === 'SOLD_OUT' ? 'bg-rose-600 text-white' : 'bg-slate-700 text-slate-200'}`}>
                       {p.stockStatus || 'READY'}
@@ -453,13 +535,13 @@ export default function AdminKatalogLaptopPage() {
             ))}
           </div>
 
-          {/* Product Editor Form Box */}
+          {/* Product Editor Form Box with 4-Image Slots */}
           {editingProduct && (
             <div className="p-4 sm:p-6 rounded-2xl border-2 border-emerald-500 bg-slate-50 space-y-4">
               <div className="flex justify-between items-center border-b border-slate-200 pb-2">
                 <h3 className="font-bold text-sm sm:text-base text-slate-900">Editor Unit: {editingProduct.title}</h3>
                 <button onClick={() => setEditingProduct(null)} className="text-slate-400 hover:text-slate-700 text-xs font-bold">
-                  ✕ Tutup
+                  ✕ Tutup Editor
                 </button>
               </div>
 
@@ -530,37 +612,68 @@ export default function AdminKatalogLaptopPage() {
                   />
                 </div>
 
-                {/* IMAGE UPLOAD & URL SECTION */}
-                <div className="md:col-span-2 p-4 rounded-xl bg-white border border-slate-200 space-y-3">
-                  <label className="block font-extrabold text-slate-900 text-xs uppercase tracking-wider">
-                    Foto Produk Utama
-                  </label>
-
-                  <div className="flex flex-col sm:flex-row items-center gap-4">
-                    <div className="w-24 h-24 rounded-xl bg-slate-100 border border-slate-300 overflow-hidden shrink-0 relative">
-                      <img src={editingProduct.image} alt="Preview" className="w-full h-full object-cover" />
-                    </div>
-
-                    <div className="flex-1 space-y-2 w-full">
-                      <label className="px-4 py-2.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs inline-flex items-center gap-2 cursor-pointer shadow-md shadow-teal-600/20 active:scale-95 transition">
-                        <Upload className="w-4 h-4" />
-                        <span>Upload File Gambar (Dari HP / Laptop)</span>
-                        <input
-                          type="file"
-                          accept="image/*"
-                          onChange={handleImageUpload}
-                          className="hidden"
-                        />
+                {/* 4-IMAGE GALERI SLOTS SECTION */}
+                <div className="md:col-span-2 p-4 rounded-xl bg-white border border-slate-200 space-y-4">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <label className="block font-extrabold text-slate-900 text-xs uppercase tracking-wider">
+                        Galeri Foto Produk (Hingga 4 Foto Multi-Sudut)
                       </label>
-                      <p className="text-[11px] text-slate-500 font-medium">Atau masukkan URL/Link gambar eksternal di bawah ini:</p>
-                      <input
-                        type="text"
-                        value={editingProduct.image}
-                        onChange={(e) => setEditingProduct({ ...editingProduct, image: e.target.value })}
-                        className="w-full p-2 rounded-lg border border-slate-300 bg-slate-50 font-mono text-[11px] text-slate-900"
-                        placeholder="https://..."
-                      />
+                      <p className="text-[11px] text-slate-500 font-medium">Slot 1 = Foto Utama Kartu. Slot 2-4 = Foto Samping, Keyboard, & Layar.</p>
                     </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                    {[0, 1, 2, 3].map((slotIdx) => {
+                      const currentImages = editingProduct.images && editingProduct.images.length > 0 ? editingProduct.images : [editingProduct.image]
+                      const slotImage = currentImages[slotIdx] || ""
+
+                      return (
+                        <div key={slotIdx} className="p-3 rounded-xl bg-slate-50 border border-slate-300 space-y-2 relative">
+                          <div className="flex items-center justify-between">
+                            <span className="font-bold text-[11px] text-slate-700">Foto Slot #{slotIdx + 1} {slotIdx === 0 ? "(Utama)" : ""}</span>
+                            {slotImage && slotIdx > 0 && (
+                              <button
+                                onClick={() => deleteImageSlot(slotIdx)}
+                                className="p-1 rounded bg-rose-100 text-rose-700 hover:bg-rose-200 text-[10px] font-bold"
+                              >
+                                Hapus
+                              </button>
+                            )}
+                          </div>
+
+                          <div className="w-full h-28 rounded-lg bg-slate-200 overflow-hidden relative border border-slate-300">
+                            {slotImage ? (
+                              <img src={slotImage} alt={`Slot ${slotIdx + 1}`} className="w-full h-full object-cover" />
+                            ) : (
+                              <div className="w-full h-full flex flex-col items-center justify-center text-slate-400 text-[11px] font-bold">
+                                <ImageIcon className="w-6 h-6 mb-1 text-slate-300" />
+                                <span>Kosong</span>
+                              </div>
+                            )}
+                          </div>
+
+                          <label className="w-full py-2 px-2 rounded-lg bg-teal-600 hover:bg-teal-700 text-white font-bold text-[11px] flex items-center justify-center gap-1 cursor-pointer transition">
+                            <Upload className="w-3.5 h-3.5" />
+                            <span>Upload Foto</span>
+                            <input
+                              type="file"
+                              accept="image/*"
+                              onChange={(e) => handleMultiImageUpload(slotIdx, e)}
+                              className="hidden"
+                            />
+                          </label>
+
+                          <input
+                            type="text"
+                            placeholder="Atau Paste URL..."
+                            value={slotImage}
+                            onChange={(e) => handleImageUrlChange(slotIdx, e.target.value)}
+                            className="w-full p-1.5 rounded border border-slate-300 bg-white font-mono text-[10px] text-slate-900"
+                          />
+                        </div>
+                      )
+                    })}
                   </div>
                 </div>
 

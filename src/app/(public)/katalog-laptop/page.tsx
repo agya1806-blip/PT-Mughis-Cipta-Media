@@ -1,7 +1,17 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Search, Laptop, ShieldCheck, Phone, CheckCircle, Copy, X, Check, MapPin, ShieldAlert, Instagram, Award, Sparkles, ExternalLink, ArrowRight, User } from "lucide-react"
+import { Search, Laptop, ShieldCheck, Phone, CheckCircle, Copy, X, Check, MapPin, ShieldAlert, Award, Sparkles, ExternalLink, ArrowRight, User } from "lucide-react"
+
+function InstagramIcon({ className = "w-4 h-4" }: { className?: string }) {
+  return (
+    <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+    </svg>
+  )
+}
 
 interface ProductItem {
   id: string
@@ -212,7 +222,7 @@ export default function CatalogLaptopStorePage() {
               rel="noreferrer"
               className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-pink-950/60 hover:bg-pink-900/60 border border-pink-700/50 text-pink-300 font-bold text-xs transition"
             >
-              <Instagram className="w-4 h-4 text-pink-400" />
+              <InstagramIcon className="w-4 h-4 text-pink-400" />
               <span>Testimoni Buyer IG</span>
             </a>
 
@@ -307,7 +317,7 @@ export default function CatalogLaptopStorePage() {
             rel="noreferrer"
             className="px-4 py-2.5 rounded-xl bg-pink-600 hover:bg-pink-500 text-white font-bold text-xs flex items-center gap-2 shrink-0 shadow-lg"
           >
-            <Instagram className="w-4 h-4" />
+            <InstagramIcon className="w-4 h-4" />
             <span>Cek Bukti Testimoni IG</span>
           </a>
         </div>
@@ -438,7 +448,7 @@ export default function CatalogLaptopStorePage() {
 
           <div className="flex flex-wrap items-center justify-center gap-6 font-bold text-sm">
             <a href={igHighlight} target="_blank" rel="noreferrer" className="text-pink-400 hover:underline flex items-center gap-1.5">
-              <Instagram className="w-4 h-4" />
+              <InstagramIcon className="w-4 h-4" />
               <span>Highlight Testimoni IG</span>
             </a>
             <a href={`https://wa.me/${waPhone}`} target="_blank" rel="noreferrer" className="text-emerald-400 hover:underline flex items-center gap-1.5">

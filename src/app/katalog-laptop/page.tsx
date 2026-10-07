@@ -236,41 +236,42 @@ export default function CatalogLaptopStoreStandalonePage() {
     <div className="min-h-screen bg-slate-50 text-slate-900 font-sans antialiased selection:bg-teal-500 selection:text-white">
 
       {/* Top Banner Warning */}
-      <div className="bg-slate-900 text-white text-xs sm:text-sm py-2.5 px-4 text-center font-bold shadow-sm">
-        💡 <strong>TIPS BELANJA AMAN:</strong> Pastikan hanya bertransaksi ke rekening resmi a/n <u>{ownerName}</u> (BSI / SeaBank). Layanan CS WA aktif setiap hari!
+      <div className="bg-slate-900 text-white text-[11px] sm:text-sm py-2 px-3 sm:px-4 text-center font-bold leading-snug">
+        💡 <strong>TIPS BELANJA AMAN:</strong> Pastikan hanya bertransaksi ke rekening resmi a/n <u>{ownerName}</u> (BSI / SeaBank). WA CS: <u>{waPhone}</u>!
       </div>
 
-      {/* Header Navigation - 100% Tech Storefront */}
+      {/* Header Navigation - Mobile Ergonomic */}
       <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-          <a href="#" className="flex items-center gap-3 group">
-            <div className="w-12 h-12 rounded-2xl bg-teal-600 flex items-center justify-center text-white shadow-md shadow-teal-600/30 group-hover:scale-105 transition-transform">
-              <Laptop className="w-6 h-6" />
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-2">
+
+          <a href="#" className="flex items-center gap-2 min-w-0">
+            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-teal-600 flex items-center justify-center text-white shrink-0 shadow-md shadow-teal-600/20">
+              <Laptop className="w-5 h-5 sm:w-6 sm:h-6" />
             </div>
-            <div>
-              <span className="text-xl sm:text-2xl font-black tracking-tight text-slate-900 block leading-tight">
-                {storeName}
+            <div className="min-w-0">
+              <span className="text-base sm:text-2xl font-black tracking-tight text-slate-900 truncate block leading-tight">
+                Mughis <span className="text-teal-600">Laptop Store</span>
               </span>
-              <span className="text-xs font-bold text-teal-700 flex items-center gap-1">
-                <MapPin className="w-3.5 h-3.5 text-teal-600" />
-                {address}
+              <span className="text-[10px] sm:text-xs font-bold text-teal-700 truncate flex items-center gap-1">
+                <MapPin className="w-3 h-3 text-teal-600 shrink-0" />
+                <span className="truncate">{address}</span>
               </span>
             </div>
           </a>
 
-          {/* Tech Nav Links */}
+          {/* Desktop Nav */}
           <nav className="hidden md:flex items-center space-x-6 text-sm font-bold text-slate-700">
             <a href="#katalog" className="hover:text-teal-600 transition">Katalog Unit</a>
             <a href="#keunggulan" className="hover:text-teal-600 transition">Keunggulan Toko</a>
             <a href="#info-bisnis" className="hover:text-teal-600 transition">Rekening Resmi</a>
           </nav>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 shrink-0">
             <a
               href={igHighlight}
               target="_blank"
               rel="noreferrer"
-              className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-pink-50 hover:bg-pink-100 border border-pink-200 text-pink-700 font-bold text-xs transition"
+              className="hidden lg:inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-pink-50 hover:bg-pink-100 border border-pink-200 text-pink-700 font-bold text-xs transition"
             >
               <InstagramIcon className="w-4 h-4 text-pink-600" />
               <span>Testimoni IG</span>
@@ -280,67 +281,67 @@ export default function CatalogLaptopStoreStandalonePage() {
               href={`https://wa.me/${formattedWa}?text=${encodeURIComponent("Halo Mughis Laptop Store, saya ingin bertanya stok laptop/produk digital.")}`}
               target="_blank"
               rel="noreferrer"
-              className="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm flex items-center gap-2 shadow-md shadow-emerald-600/20 transition transform hover:-translate-y-0.5"
+              className="px-3 py-2 sm:px-4 sm:py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs sm:text-sm flex items-center gap-1.5 shadow-md shadow-emerald-600/20 transition transform active:scale-95"
             >
-              <Phone className="w-4 h-4" />
-              <span>CS WA ({waPhone})</span>
+              <Phone className="w-4 h-4 shrink-0" />
+              <span>CS WA</span>
             </a>
           </div>
         </div>
       </header>
 
       {/* Hero Bright Section */}
-      <section className="pt-12 pb-16 bg-gradient-to-b from-teal-50/80 via-white to-slate-50 border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+      <section className="pt-8 sm:pt-12 pb-12 sm:pb-16 bg-gradient-to-b from-teal-50/80 via-white to-slate-50 border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4 sm:space-y-6">
 
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-teal-100 border border-teal-300 text-teal-800 text-xs sm:text-sm font-extrabold uppercase tracking-wider">
-            <Award className="w-4 h-4 text-teal-600" />
-            Official Store • Owner: {ownerName} • {address}
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-teal-100 border border-teal-300 text-teal-800 text-[11px] sm:text-sm font-extrabold uppercase tracking-wider">
+            <Award className="w-4 h-4 text-teal-600 shrink-0" />
+            <span>Owner: {ownerName} • Samalanga, Aceh</span>
           </div>
 
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight leading-tight">
+          <h1 className="text-2xl sm:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight leading-tight">
             {heroHeadline}
           </h1>
 
-          <p className="text-base sm:text-xl text-slate-600 font-medium max-w-2xl mx-auto leading-relaxed">
+          <p className="text-xs sm:text-lg text-slate-600 font-medium max-w-2xl mx-auto leading-relaxed">
             {heroSubheadline}
           </p>
 
           {/* Search Bar */}
-          <div className="relative max-w-2xl mx-auto shadow-lg rounded-2xl pt-2">
-            <Search className="w-6 h-6 absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" />
+          <div className="relative max-w-2xl mx-auto shadow-md rounded-2xl pt-1">
+            <Search className="w-5 h-5 sm:w-6 sm:h-6 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
             <input
               type="text"
-              placeholder="Cari ThinkPad, ASUS, HP, Dell, RAM 16GB, SSD 512GB..."
+              placeholder="Cari ThinkPad, ASUS, HP, Dell, RAM 16GB..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-12 pr-4 py-4 text-base sm:text-lg font-bold rounded-2xl border-2 border-slate-300 focus:border-teal-600 focus:outline-none bg-white text-slate-900 placeholder:text-slate-400 font-medium"
+              className="w-full pl-10 sm:pl-12 pr-4 py-3.5 text-sm sm:text-lg font-bold rounded-2xl border-2 border-slate-300 focus:border-teal-600 focus:outline-none bg-white text-slate-900 placeholder:text-slate-400 font-medium"
             />
           </div>
 
           {/* Filter Categories */}
-          <div className="flex flex-wrap justify-center gap-2 sm:gap-3 text-xs sm:text-sm font-bold pt-2">
+          <div className="flex flex-wrap justify-center gap-2 text-xs sm:text-sm font-bold pt-2">
             <button
               onClick={() => setCurrentCategory("all")}
-              className={`px-5 py-2.5 rounded-xl border-2 transition ${currentCategory === "all" ? "bg-teal-600 border-teal-600 text-white shadow-sm" : "bg-white border-slate-200 text-slate-700 hover:border-teal-600"}`}
+              className={`px-3.5 py-2 sm:px-5 sm:py-2.5 rounded-xl border-2 transition ${currentCategory === "all" ? "bg-teal-600 border-teal-600 text-white shadow-sm" : "bg-white border-slate-200 text-slate-700 hover:border-teal-600"}`}
             >
               🔥 Semua Produk
             </button>
             <button
               onClick={() => setCurrentCategory("laptop")}
-              className={`px-5 py-2.5 rounded-xl border-2 transition ${currentCategory === "laptop" ? "bg-teal-600 border-teal-600 text-white shadow-sm" : "bg-white border-slate-200 text-slate-700 hover:border-teal-600"}`}
+              className={`px-3.5 py-2 sm:px-5 sm:py-2.5 rounded-xl border-2 transition ${currentCategory === "laptop" ? "bg-teal-600 border-teal-600 text-white shadow-sm" : "bg-white border-slate-200 text-slate-700 hover:border-teal-600"}`}
             >
               💻 Laptop Business
             </button>
             <button
               onClick={() => setCurrentCategory("digital")}
-              className={`px-5 py-2.5 rounded-xl border-2 transition ${currentCategory === "digital" ? "bg-teal-600 border-teal-600 text-white shadow-sm" : "bg-white border-slate-200 text-slate-700 hover:border-teal-600"}`}
+              className={`px-3.5 py-2 sm:px-5 sm:py-2.5 rounded-xl border-2 transition ${currentCategory === "digital" ? "bg-teal-600 border-teal-600 text-white shadow-sm" : "bg-white border-slate-200 text-slate-700 hover:border-teal-600"}`}
             >
               🔑 Produk Digital & Lisensi
             </button>
             <button
               onClick={() => setCurrentCategory("budget")}
-              className={`px-5 py-2.5 rounded-xl border-2 transition ${currentCategory === "budget" ? "bg-teal-600 border-teal-600 text-white shadow-sm" : "bg-white border-slate-200 text-slate-700 hover:border-teal-600"}`}
+              className={`px-3.5 py-2 sm:px-5 sm:py-2.5 rounded-xl border-2 transition ${currentCategory === "budget" ? "bg-teal-600 border-teal-600 text-white shadow-sm" : "bg-white border-slate-200 text-slate-700 hover:border-teal-600"}`}
             >
               🏷️ Pilihan Hemat (&lt; 3 Jt)
             </button>
@@ -349,14 +350,14 @@ export default function CatalogLaptopStoreStandalonePage() {
       </section>
 
       {/* Fraud Protection Callout Banner */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6 relative z-10">
-        <div className="bg-amber-50 border-2 border-amber-400/80 p-5 rounded-2xl shadow-lg flex flex-col md:flex-row items-center justify-between gap-4 text-xs sm:text-sm text-slate-900">
+      <section className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 -mt-5 relative z-10">
+        <div className="bg-amber-50 border-2 border-amber-400/80 p-4 sm:p-5 rounded-2xl shadow-lg flex flex-col md:flex-row items-center justify-between gap-3 text-xs sm:text-sm text-slate-900">
           <div className="flex items-start gap-3">
-            <ShieldAlert className="w-8 h-8 text-amber-600 shrink-0 mt-0.5" />
+            <ShieldAlert className="w-7 h-7 sm:w-8 sm:h-8 text-amber-600 shrink-0 mt-0.5" />
             <div>
               <p className="font-extrabold text-amber-900 uppercase tracking-wider">HIMBAUAN KEAMANAN TRANSAKSI OWNER ({ownerName.toUpperCase()})</p>
-              <p className="text-slate-700 mt-0.5">
-                Pastikan transfer pembayaran Anda <strong>HANYA</strong> dikirimkan ke rekening Bank BSI atau SeaBank atas nama <strong>{ownerName}</strong>. Kami tidak bertanggung jawab atas transaksi di luar rekening resmi ini.
+              <p className="text-slate-700 mt-0.5 leading-relaxed">
+                Pastikan transfer pembayaran Anda <strong>HANYA</strong> dikirimkan ke rekening Bank BSI atau SeaBank atas nama <strong>{ownerName}</strong>. WA Resmi: <strong>{waPhone}</strong>.
               </p>
             </div>
           </div>
@@ -365,107 +366,107 @@ export default function CatalogLaptopStoreStandalonePage() {
             href={igHighlight}
             target="_blank"
             rel="noreferrer"
-            className="px-4 py-2.5 rounded-xl bg-pink-600 hover:bg-pink-700 text-white font-bold text-xs flex items-center gap-2 shrink-0 shadow-md"
+            className="px-4 py-2 rounded-xl bg-pink-600 hover:bg-pink-700 text-white font-bold text-xs flex items-center gap-2 shrink-0 shadow-md w-full sm:w-auto justify-center"
           >
             <InstagramIcon className="w-4 h-4" />
-            <span>Cek Bukti Testimoni IG</span>
+            <span>Cek Testimoni IG</span>
           </a>
         </div>
       </section>
 
       {/* Store Strengths Section */}
-      <section id="keunggulan" className="py-12 bg-white border-b border-slate-200">
+      <section id="keunggulan" className="py-10 sm:py-12 bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
-              <div className="w-10 h-10 rounded-xl bg-teal-100 text-teal-700 flex items-center justify-center font-bold">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
+            <div className="p-4 sm:p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-1.5">
+              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-teal-100 text-teal-700 flex items-center justify-center font-bold">
                 <ShieldCheck className="w-5 h-5" />
               </div>
-              <h3 className="text-base font-bold text-slate-900">Garansi Toko Jelas</h3>
-              <p className="text-xs text-slate-600 leading-relaxed font-medium">Semua unit dilengkapi garansi toko resmi 30-90 hari dengan penanganan cepat.</p>
+              <h3 className="text-xs sm:text-base font-bold text-slate-900">Garansi Toko Jelas</h3>
+              <p className="text-[11px] sm:text-xs text-slate-600 leading-relaxed font-medium">Semua unit dilengkapi garansi toko resmi 30-90 hari.</p>
             </div>
 
-            <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
-              <div className="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold">
+            <div className="p-4 sm:p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-1.5">
+              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold">
                 <CheckSquare className="w-5 h-5" />
               </div>
-              <h3 className="text-base font-bold text-slate-900">QC Unit 100%</h3>
-              <p className="text-xs text-slate-600 leading-relaxed font-medium">Layar, keyboard, baterai, & hardware dites menyeluruh sebelum dikirim.</p>
+              <h3 className="text-xs sm:text-base font-bold text-slate-900">QC Unit 100%</h3>
+              <p className="text-[11px] sm:text-xs text-slate-600 leading-relaxed font-medium">Layar, keyboard, baterai, & hardware dites menyeluruh.</p>
             </div>
 
-            <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
-              <div className="w-10 h-10 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center font-bold">
+            <div className="p-4 sm:p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-1.5">
+              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center font-bold">
                 <Phone className="w-5 h-5" />
               </div>
-              <h3 className="text-base font-bold text-slate-900">Konsultasi Gratis WA</h3>
-              <p className="text-xs text-slate-600 leading-relaxed font-medium">CS ramah membantu memilih spek laptop sesuai kebutuhan & dana Anda.</p>
+              <h3 className="text-xs sm:text-base font-bold text-slate-900">Konsultasi Gratis WA</h3>
+              <p className="text-[11px] sm:text-xs text-slate-600 leading-relaxed font-medium">CS ramah membantu memilih spek laptop sesuai kebutuhan.</p>
             </div>
 
-            <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
-              <div className="w-10 h-10 rounded-xl bg-amber-100 text-amber-800 flex items-center justify-center font-bold">
+            <div className="p-4 sm:p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-1.5">
+              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-amber-100 text-amber-800 flex items-center justify-center font-bold">
                 <Award className="w-5 h-5" />
               </div>
-              <h3 className="text-base font-bold text-slate-900">Rekening Owner Resmi</h3>
-              <p className="text-xs text-slate-600 leading-relaxed font-medium">Transfer aman hanya a/n Muhammad Aghisna (Bank BSI & SeaBank).</p>
+              <h3 className="text-xs sm:text-base font-bold text-slate-900">Rekening Owner Resmi</h3>
+              <p className="text-[11px] sm:text-xs text-slate-600 leading-relaxed font-medium">Transfer aman hanya a/n Muhammad Aghisna.</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Products Grid Section */}
-      <section id="katalog" className="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-8 pb-4 border-b border-slate-200 gap-4">
+      <section id="katalog" className="py-12 sm:py-16 max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 sm:mb-8 pb-3 border-b border-slate-200 gap-3">
           <div>
-            <h2 className="text-2xl sm:text-3xl font-black text-slate-900">Katalog Unit & Produk Ready</h2>
-            <p className="text-sm text-slate-500 font-medium">Klik pada produk untuk melihat rincian spesifikasi lengkap & garansi toko</p>
+            <h2 className="text-xl sm:text-3xl font-black text-slate-900">Daftar Unit & Produk Ready</h2>
+            <p className="text-xs sm:text-sm text-slate-500 font-medium">Klik pada produk untuk melihat rincian spesifikasi lengkap & garansi toko</p>
           </div>
-          <div className="text-xs font-bold text-slate-600 bg-white px-4 py-2 rounded-xl border border-slate-200 self-start sm:self-auto">
+          <div className="text-[11px] sm:text-xs font-bold text-slate-600 bg-white px-3 py-1.5 rounded-xl border border-slate-200 self-start sm:self-auto">
             100% Lolos QC & Siap Pakai
           </div>
         </div>
 
         {filteredProducts.length === 0 ? (
-          <div className="text-center py-16 bg-white rounded-3xl border-2 border-dashed border-slate-200 space-y-2">
-            <p className="text-lg font-bold text-slate-800">Produk tidak ditemukan</p>
+          <div className="text-center py-12 bg-white rounded-3xl border-2 border-dashed border-slate-200 space-y-2">
+            <p className="text-base font-bold text-slate-800">Produk tidak ditemukan</p>
             <p className="text-xs text-slate-500">Coba ubah kata kunci pencarian Anda.</p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8">
             {filteredProducts.map((p) => {
-              const waMsg = encodeURIComponent(`Assalamu’alaikum ${storeName},\n\nSaya tertarik dengan unit:\n*${p.title}*\nHarga: ${p.priceText}\n\nApakah unit masih tersedia? Mohon informasi kondisi dan garansinya.`)
+              const waMsg = encodeURIComponent(`Assalamu’alaikum Mughis Laptop Store,\n\nSaya tertarik dengan unit:\n*${p.title}*\nHarga: ${p.priceText}\n\nApakah unit masih tersedia? Mohon informasi kondisi dan garansinya.`)
               const waUrl = `https://wa.me/${formattedWa}?text=${waMsg}`
 
               return (
                 <div key={p.id} className="bg-white rounded-2xl border-2 border-slate-200 overflow-hidden flex flex-col justify-between shadow-sm hover:shadow-xl transition-all duration-300 group">
                   <div>
-                    <div className="relative h-52 w-full bg-slate-100 overflow-hidden">
+                    <div className="relative h-48 sm:h-52 w-full bg-slate-100 overflow-hidden">
                       <img src={p.image} alt={p.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
-                      <span className="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-teal-100 text-teal-800 border border-teal-300 shadow-sm">
+                      <span className="absolute top-3 left-3 px-3 py-1 rounded-full text-[10px] sm:text-xs font-black uppercase tracking-wider bg-teal-100 text-teal-800 border border-teal-300 shadow-sm">
                         {p.badge}
                       </span>
                       {p.stockStatus === "SOLD_OUT" && (
-                        <span className="absolute top-3 right-3 px-3 py-1 rounded-md text-xs font-black uppercase bg-rose-600 text-white shadow-md">
+                        <span className="absolute top-3 right-3 px-3 py-1 rounded-md text-[10px] sm:text-xs font-black uppercase bg-rose-600 text-white shadow-md">
                           SOLD OUT
                         </span>
                       )}
                     </div>
 
-                    <div className="p-6 space-y-3">
-                      <h3 className="text-xl font-black text-slate-900 leading-snug line-clamp-1">{p.title}</h3>
+                    <div className="p-4 sm:p-6 space-y-2.5">
+                      <h3 className="text-lg sm:text-xl font-black text-slate-900 leading-snug line-clamp-1">{p.title}</h3>
 
-                      <div className="p-3 rounded-xl bg-teal-50 border border-teal-200">
-                        <span className="text-xs text-slate-500 font-bold block uppercase tracking-wider">Penawaran Spesial</span>
-                        <span className="text-2xl font-black text-teal-800">{p.priceText}</span>
+                      <div className="p-2.5 rounded-xl bg-teal-50 border border-teal-200">
+                        <span className="text-[10px] sm:text-xs text-slate-500 font-bold block uppercase tracking-wider">Penawaran Spesial</span>
+                        <span className="text-xl sm:text-2xl font-black text-teal-800">{p.priceText}</span>
                       </div>
 
-                      <p className="text-sm text-slate-600 line-clamp-2 leading-relaxed font-normal">{p.shortDesc}</p>
+                      <p className="text-xs sm:text-sm text-slate-600 line-clamp-2 leading-relaxed font-normal">{p.shortDesc}</p>
                     </div>
                   </div>
 
-                  <div className="p-6 pt-0 grid grid-cols-2 gap-3">
+                  <div className="p-4 sm:p-6 pt-0 grid grid-cols-2 gap-2.5">
                     <button
                       onClick={() => setSelectedProduct(p)}
-                      className="w-full py-3.5 rounded-xl bg-slate-100 hover:bg-slate-200 border-2 border-slate-300 text-slate-800 text-xs font-extrabold flex items-center justify-center gap-1.5 transition"
+                      className="w-full py-3 rounded-xl bg-slate-100 hover:bg-slate-200 border-2 border-slate-300 text-slate-800 text-xs font-extrabold flex items-center justify-center gap-1 transition"
                     >
                       <span>Lihat Spek</span>
                     </button>
@@ -474,7 +475,7 @@ export default function CatalogLaptopStoreStandalonePage() {
                       href={waUrl}
                       target="_blank"
                       rel="noreferrer"
-                      className="w-full py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-black flex items-center justify-center gap-1.5 transition shadow-md shadow-emerald-600/20"
+                      className="w-full py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-black flex items-center justify-center gap-1 transition shadow-md shadow-emerald-600/20"
                     >
                       <span>Tanya di WA</span>
                     </a>
@@ -487,42 +488,42 @@ export default function CatalogLaptopStoreStandalonePage() {
       </section>
 
       {/* Official Bank Accounts Section */}
-      <section id="info-bisnis" className="py-16 bg-slate-900 text-white border-t border-slate-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
-          <div className="text-center max-w-2xl mx-auto space-y-3">
-            <span className="px-4 py-1.5 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold uppercase tracking-widest border border-emerald-500/30">
+      <section id="info-bisnis" className="py-12 sm:py-16 bg-slate-900 text-white border-t border-slate-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+          <div className="text-center max-w-2xl mx-auto space-y-2">
+            <span className="px-3.5 py-1 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold uppercase tracking-widest border border-emerald-500/30">
               Rekening Resmi Owner ({ownerName})
             </span>
-            <h2 className="text-3xl sm:text-4xl font-black tracking-tight">Informasi Rekening Pembayaran Resmi</h2>
-            <p className="text-slate-300 text-sm sm:text-base font-normal">
+            <h2 className="text-2xl sm:text-4xl font-black tracking-tight">Informasi Rekening Pembayaran Resmi</h2>
+            <p className="text-slate-300 text-xs sm:text-base font-normal leading-relaxed">
               Pastikan transfer Anda dikirimkan sesuai dengan nama rekening resmi pemilik toko di bawah ini:
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 max-w-4xl mx-auto">
             {bankAccounts.map((b) => (
-              <div key={b.id} className="p-6 rounded-2xl bg-slate-950 border-2 border-emerald-600/40 space-y-3 relative shadow-2xl">
+              <div key={b.id} className="p-5 sm:p-6 rounded-2xl bg-slate-950 border-2 border-emerald-600/40 space-y-3 relative shadow-2xl">
                 <div className="flex items-center justify-between">
-                  <span className="text-lg font-black text-emerald-400 tracking-wider">{b.bank}</span>
+                  <span className="text-base sm:text-lg font-black text-emerald-400 tracking-wider">{b.bank}</span>
                   <span className="text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-md bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
                     Rekening Resmi
                   </span>
                 </div>
                 <div>
-                  <p className="text-xs text-slate-400 font-medium">Nomor Rekening:</p>
-                  <p className="text-3xl font-black font-mono tracking-widest text-white mt-1">{b.account_number}</p>
+                  <p className="text-[11px] text-slate-400 font-medium">Nomor Rekening:</p>
+                  <p className="text-2xl sm:text-3xl font-black font-mono tracking-widest text-white mt-1">{b.account_number}</p>
                 </div>
                 <div className="pt-3 border-t border-slate-800 flex items-center justify-between">
                   <div>
                     <p className="text-[10px] text-slate-400 uppercase font-bold">Atas Nama / Owner:</p>
-                    <p className="text-base font-black text-amber-300">{b.beneficiary}</p>
+                    <p className="text-sm sm:text-base font-black text-amber-300">{b.beneficiary}</p>
                   </div>
                   <button
                     onClick={() => copyText(b.account_number, b.bank)}
-                    className="px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold flex items-center gap-1.5 transition shadow-lg shadow-emerald-600/30"
+                    className="px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold flex items-center gap-1.5 transition shadow-lg shadow-emerald-600/30"
                   >
-                    <Copy className="w-4 h-4" />
-                    <span>Salin No. Rekening</span>
+                    <Copy className="w-3.5 h-3.5" />
+                    <span>Salin</span>
                   </button>
                 </div>
               </div>
@@ -532,22 +533,22 @@ export default function CatalogLaptopStoreStandalonePage() {
       </section>
 
       {/* Footer - 100% Tech Storefront */}
-      <footer className="bg-slate-950 text-slate-400 border-t border-slate-800 py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6 text-xs">
-          <div className="space-y-1.5 text-center md:text-left">
-            <p className="text-base font-black text-white">{storeName.toUpperCase()}</p>
-            <p className="text-slate-400">Owner: {ownerName} • Alamat: {address}</p>
-            <p className="text-slate-500">© 2026 {storeName}. Hak Cipta Dilindungi.</p>
+      <footer className="bg-slate-950 text-slate-400 border-t border-slate-800 py-8 sm:py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-center md:text-left">
+          <div className="space-y-1.5">
+            <p className="text-base font-black text-white tracking-wide">MUGHIS LAPTOP STORE</p>
+            <p className="text-slate-300 font-medium">Owner: {ownerName} • Alamat: {address}</p>
+            <p className="text-slate-500">© 2026 Mughis Laptop Store. Hak Cipta Dilindungi.</p>
           </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-6 font-bold text-sm">
-            <a href={igHighlight} target="_blank" rel="noreferrer" className="text-pink-400 hover:underline flex items-center gap-1.5">
-              <InstagramIcon className="w-4 h-4" />
-              <span>Highlight Testimoni IG</span>
+          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-6 font-bold text-xs sm:text-sm">
+            <a href={igHighlight} target="_blank" rel="noreferrer" className="px-3 py-2 rounded-xl bg-pink-950/60 border border-pink-700/50 text-pink-300 hover:text-white flex items-center gap-1.5 transition">
+              <InstagramIcon className="w-4 h-4 text-pink-400" />
+              <span>Testimoni IG</span>
             </a>
-            <a href={`https://wa.me/${formattedWa}`} target="_blank" rel="noreferrer" className="text-emerald-400 hover:underline flex items-center gap-1.5">
-              <Phone className="w-4 h-4" />
-              <span>WhatsApp CS ({waPhone})</span>
+            <a href={`https://wa.me/${formattedWa}`} target="_blank" rel="noreferrer" className="px-3 py-2 rounded-xl bg-emerald-950/60 border border-emerald-700/50 text-emerald-300 hover:text-white flex items-center gap-1.5 transition">
+              <Phone className="w-4 h-4 text-emerald-400" />
+              <span>CS WA ({waPhone})</span>
             </a>
           </div>
         </div>
@@ -555,8 +556,8 @@ export default function CatalogLaptopStoreStandalonePage() {
 
       {/* Modal Detail */}
       {selectedProduct && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-sm">
-          <div className="bg-white border border-slate-300 max-w-xl w-full rounded-2xl overflow-hidden shadow-2xl p-6 space-y-4 text-slate-900 relative">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-950/70 backdrop-blur-sm">
+          <div className="bg-white border border-slate-300 max-w-xl w-full rounded-2xl overflow-hidden shadow-2xl p-5 sm:p-6 space-y-4 text-slate-900 relative">
             <button onClick={() => setSelectedProduct(null)} className="absolute top-4 right-4 text-slate-400 hover:text-slate-800">
               <X className="w-6 h-6" />
             </button>
@@ -565,14 +566,14 @@ export default function CatalogLaptopStoreStandalonePage() {
               <span className="px-3 py-1 rounded-full text-xs font-bold bg-teal-100 text-teal-800 border border-teal-200 uppercase">
                 {selectedProduct.badge}
               </span>
-              <h3 className="text-xl font-extrabold text-slate-900">{selectedProduct.title}</h3>
-              <p className="text-3xl font-black text-teal-700">{selectedProduct.rawPriceText || selectedProduct.priceText}</p>
+              <h3 className="text-lg sm:text-xl font-extrabold text-slate-900">{selectedProduct.title}</h3>
+              <p className="text-2xl sm:text-3xl font-black text-teal-700">{selectedProduct.rawPriceText || selectedProduct.priceText}</p>
 
-              <div className="w-full h-48 rounded-xl overflow-hidden bg-slate-100 border border-slate-200">
+              <div className="w-full h-44 sm:h-48 rounded-xl overflow-hidden bg-slate-100 border border-slate-200">
                 <img src={selectedProduct.image} alt={selectedProduct.title} className="w-full h-full object-cover" />
               </div>
 
-              <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2 text-xs">
+              <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 space-y-2 text-xs">
                 <p className="font-extrabold text-slate-900 uppercase">Spesifikasi Lengkap & Kondisi:</p>
                 <ul className="space-y-1.5 font-medium text-slate-700">
                   {selectedProduct.specs.map((s, idx) => (
@@ -594,10 +595,10 @@ export default function CatalogLaptopStoreStandalonePage() {
               <p className="text-xs text-slate-600 leading-relaxed font-medium">{selectedProduct.shortDesc}</p>
 
               <a
-                href={`https://wa.me/${formattedWa}?text=${encodeURIComponent(`Assalamu’alaikum ${storeName},\n\nSaya tertarik dengan unit:\n*${selectedProduct.title}*\nHarga: ${selectedProduct.priceText}\n\nApakah unit masih tersedia? Mohon informasi kondisi dan garansinya.`)}`}
+                href={`https://wa.me/${formattedWa}?text=${encodeURIComponent(`Assalamu’alaikum Mughis Laptop Store,\n\nSaya tertarik dengan unit:\n*${selectedProduct.title}*\nHarga: ${selectedProduct.priceText}\n\nApakah unit masih tersedia? Mohon informasi kondisi dan garansinya.`)}`}
                 target="_blank"
                 rel="noreferrer"
-                className="w-full py-3.5 bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs sm:text-sm rounded-xl flex items-center justify-center gap-2 shadow-md shadow-emerald-600/20"
+                className="w-full py-3.5 bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs sm:text-sm rounded-xl flex items-center justify-center gap-2 shadow-md shadow-emerald-600/20 active:scale-95 transition"
               >
                 <Phone className="w-4 h-4" />
                 <span>Pesan Sekarang via WhatsApp CS</span>

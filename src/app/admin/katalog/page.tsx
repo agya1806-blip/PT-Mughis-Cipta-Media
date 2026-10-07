@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { Building2, CreditCard, Laptop, Plus, Trash2, Edit3, Save } from "lucide-react"
+import { Building2, CreditCard, Laptop, Plus, Trash2, Edit3, Save, Eye, EyeOff, ShieldAlert, Check, Copy } from "lucide-react"
 
 interface BankAccount {
   id: string
@@ -13,73 +13,88 @@ interface BankAccount {
 interface ProductItem {
   id: string
   title: string
+  slug: string
   category: "laptop" | "digital" | "budget" | string
   badge: string
   badgeColor?: string
+  stockStatus: "READY" | "SOLD_OUT" | "HIDDEN"
   priceText: string
   rawPriceText: string
   image: string
   shortDesc: string
   specs: string[]
+  conditionNote: string
+  warranty: string
   bonus: string
 }
 
 const DEFAULT_BANKS: BankAccount[] = [
-  { id: "b1", bank: "Bank Central Asia (BCA)", account_number: "882091823341", beneficiary: "MUGHIS CIPTA MEDIA" },
-  { id: "b2", bank: "Bank Mandiri", account_number: "1370029384721", beneficiary: "MUGHIS CIPTA MEDIA" },
-  { id: "b3", bank: "Bank Rakyat Indonesia (BRI)", account_number: "034101002849532", beneficiary: "MUGHIS CIPTA MEDIA" }
+  { id: "b1", bank: "BANK BSI", account_number: "7368300677", beneficiary: "Muhammad Aghisna" },
+  { id: "b2", bank: "BANK SEABANK", account_number: "901007430064", beneficiary: "Muhammad Aghisna" }
 ]
 
 const DEFAULT_PRODUCTS: ProductItem[] = [
   {
     id: "prod-1",
-    title: "Lenovo ThinkPad T480 Core i5",
+    title: "Lenovo ThinkPad T480 Core i5 Gen 8",
+    slug: "lenovo-thinkpad-t480-core-i5",
     category: "laptop",
     badge: "Paling Laris",
-    badgeColor: "bg-teal-100 text-teal-800 border-teal-300",
-    priceText: "Harga Mulai Rp3.450.000",
-    rawPriceText: "Mulai Rp3.450.000 (Tergantung varian RAM & SSD)",
+    badgeColor: "bg-emerald-100 text-emerald-800 border-emerald-300",
+    stockStatus: "READY",
+    priceText: "Rp 3.450.000",
+    rawPriceText: "Rp 3.450.000 (Varian SSD 256GB / 512GB)",
     image: "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=800&auto=format&fit=crop&q=80",
-    shortDesc: "Laptop tangguh standar militer dengan keyboard sangat nyaman. Cocok sekali untuk kerja kantor, skripsi, maupun olah data bisnis.",
+    shortDesc: "Laptop tangguh standar militer dengan keyboard super nyaman. Cocok untuk kerja kantor, skripsi, dan olah data bisnis.",
     specs: [
-      "Prosesor: Intel Core i5-8350U Gen 8 (Cepat & Irit Daya)",
-      "RAM: 8GB / 16GB DDR4 (Bisa di-upgrade)",
-      "Penyimpanan: 256GB / 512GB SSD Fast Boot",
-      "Layar: 14.0 inch Full HD Anti-Silau",
-      "Garansi: 60 Hari Toko Resmi"
+      "Prosesor: Intel Core i5-8350U (Gen 8 Quad Core)",
+      "RAM: 8GB / 16GB DDR4 High Speed",
+      "Penyimpanan: 256GB / 512GB SSD NVMe",
+      "Layar: 14.0 inch Full HD Anti-Glare Jernih",
+      "Baterai: Awet 2-4 Jam (Dual Battery Support)"
     ],
+    conditionNote: "Grade A Mulus 90-95%, Baterai Awet 2-4 jam",
+    warranty: "Garansi Toko 60 Hari",
     bonus: "Unit Laptop, Charger Original Type-C, Bonus Tas Baru & Mouse Wireless."
   },
   {
     id: "prod-2",
-    title: "Lisensi Windows 11 & Office Pro Plus",
+    title: "Lisensi Windows 11 Pro & Office 2021",
+    slug: "lisensi-windows-11-pro-office-2021",
     category: "digital",
     badge: "Produk Digital",
     badgeColor: "bg-blue-100 text-blue-800 border-blue-300",
-    priceText: "Harga Mulai Rp400.000",
-    rawPriceText: "Mulai Rp400.000 (Aktivasi Permanen Seumur Hidup)",
+    stockStatus: "READY",
+    priceText: "Rp 400.000",
+    rawPriceText: "Rp 400.000 (Aktivasi Permanen Seumur Hidup)",
     image: "https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800&auto=format&fit=crop&q=80",
     shortDesc: "Paket lisensi resmi original untuk PC / Laptop. Tinggal pasang, tanpa crack, bebas update selamanya, aman dari virus.",
     specs: [
       "Tipe Lisensi: Windows 11 Pro Retail + Office 2021 Pro Plus",
       "Masa Aktif: Lifetime (Permanen Seumur Hidup)",
       "Pengiriman: Key resmi dikirim langsung via WhatsApp / Email",
-      "Garansi: 100% Ganti Baru jika gagal aktivasi"
+      "Bebas Update: Terkoneksi langsung ke server resmi"
     ],
+    conditionNote: "100% Produk Digital Resmi Baru",
+    warranty: "Garansi 100% Ganti Baru Jika Gagal Aktivasi",
     bonus: "Buku panduan bergambar cara pasang, link download resmi, dan dibantu sampai tuntas via WA."
   }
 ]
 
-export default function AdminKatalogPage() {
-  const [activeTab, setActiveTab] = useState<"company" | "banks" | "products">("company")
+export default function AdminKatalogLaptopPage() {
+  const [activeTab, setActiveTab] = useState<"store" | "banks" | "products">("store")
   const [saving, setSaving] = useState(false)
   const [message, setMessage] = useState("")
 
-  // Company Settings
-  const [siteName, setSiteName] = useState("TechVault.ID")
-  const [companyTagline, setCompanyTagline] = useState("Pusat Laptop & Produk Digital Terpercaya")
-  const [contactPhone, setContactPhone] = useState("6281234567890")
-  const [instagramUrl, setInstagramUrl] = useState("https://instagram.com/mughisciptamedia")
+  // Store & Hero Settings
+  const [siteName, setSiteName] = useState("Mughis Laptop Store")
+  const [ownerName, setOwnerName] = useState("Muhammad Aghisna")
+  const [companyTagline, setCompanyTagline] = useState("Pusat Laptop Business & Produk Digital Terpercaya")
+  const [address, setAddress] = useState("Sangso, Samalanga, Bireuen, Aceh")
+  const [contactPhone, setContactPhone] = useState("0852-1770-6587")
+  const [heroHeadline, setHeroHeadline] = useState("Laptop Business Bekas Berkualitas, Siap Kerja & Siap Kuliah")
+  const [heroSubheadline, setHeroSubheadline] = useState("Unit pilihan yang diperiksa sebelum dijual, dengan kondisi dijelaskan secara transparan, garansi toko sesuai ketentuan, dan konsultasi langsung melalui WhatsApp.")
+  const [instagramUrl, setInstagramUrl] = useState("https://www.instagram.com/s/aGlnaGxpZ2h0OjE3OTI1ODg4MzI2NzYwNDM2?story_media_id=3106266946206908221&stkn=MWpwam1nMm13eDlwcg==")
 
   // Bank Accounts
   const [bankAccounts, setBankAccounts] = useState<BankAccount[]>(DEFAULT_BANKS)
@@ -96,8 +111,12 @@ export default function AdminKatalogPage() {
       .then((data) => {
         if (!data.error) {
           if (data.site_name) setSiteName(data.site_name)
+          if (data.owner_name) setOwnerName(data.owner_name)
           if (data.company_tagline) setCompanyTagline(data.company_tagline)
+          if (data.address) setAddress(data.address)
           if (data.contact_phone) setContactPhone(data.contact_phone)
+          if (data.hero_headline) setHeroHeadline(data.hero_headline)
+          if (data.hero_subheadline) setHeroSubheadline(data.hero_subheadline)
           if (data.instagram_url) setInstagramUrl(data.instagram_url)
 
           if (data.bank_accounts_json) {
@@ -117,8 +136,12 @@ export default function AdminKatalogPage() {
 
     const payload = {
       site_name: siteName,
+      owner_name: ownerName,
       company_tagline: companyTagline,
+      address: address,
       contact_phone: contactPhone,
+      hero_headline: heroHeadline,
+      hero_subheadline: heroSubheadline,
       instagram_url: instagramUrl,
       bank_accounts_json: JSON.stringify(bankAccounts),
       catalog_products_json: JSON.stringify(products)
@@ -132,10 +155,10 @@ export default function AdminKatalogPage() {
       })
 
       if (res.ok) {
-        setMessage("✅ Perubahan berhasil disimpan ke database!")
+        setMessage("✅ Perubahan katalog berhasil disimpan ke database!")
         setTimeout(() => setMessage(""), 3000)
       } else {
-        setMessage("❌ Gagal menyimpan data")
+        setMessage("❌ Gagal menyimpan data katalog")
       }
     } catch {
       setMessage("❌ Terjadi kesalahan koneksi")
@@ -148,9 +171,9 @@ export default function AdminKatalogPage() {
   function addBank() {
     const newBank: BankAccount = {
       id: `bank-${Date.now()}`,
-      bank: "Bank Baru",
-      account_number: "0000000000",
-      beneficiary: "PT MUGHIS CIPTA MEDIA"
+      bank: "BANK BSI",
+      account_number: "7368300677",
+      beneficiary: ownerName || "Muhammad Aghisna"
     }
     setBankAccounts([...bankAccounts, newBank])
     setEditingBank(newBank)
@@ -167,18 +190,24 @@ export default function AdminKatalogPage() {
 
   // Product Actions
   function addProduct() {
+    const title = "Produk Laptop / Digital Baru"
+    const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, "-")
     const newProd: ProductItem = {
       id: `prod-${Date.now()}`,
-      title: "Produk Laptop / Digital Baru",
+      title,
+      slug,
       category: "laptop",
       badge: "Ready Stock",
       badgeColor: "bg-emerald-100 text-emerald-800 border-emerald-300",
-      priceText: "Harga Mulai Rp3.000.000",
-      rawPriceText: "Mulai Rp3.000.000",
+      stockStatus: "READY",
+      priceText: "Rp 3.000.000",
+      rawPriceText: "Rp 3.000.000",
       image: "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=800&auto=format&fit=crop&q=80",
       shortDesc: "Deskripsi singkat mengenai keunggulan produk ini.",
       specs: ["Spesifikasi 1", "Spesifikasi 2"],
-      bonus: "Unit, Charger Original, Tas Laptop"
+      conditionNote: "Grade A Mulus Siap Pakai",
+      warranty: "Garansi Toko 30 Hari",
+      bonus: "Unit Laptop, Charger Original, Bonus Tas"
     }
     setProducts([...products, newProd])
     openProductEditor(newProd)
@@ -186,7 +215,7 @@ export default function AdminKatalogPage() {
 
   function openProductEditor(p: ProductItem) {
     setEditingProduct({ ...p })
-    setSpecsInput(p.specs.join("\n"))
+    setSpecsInput(p.specs ? p.specs.join("\n") : "")
   }
 
   function saveEditingProduct() {
@@ -196,29 +225,38 @@ export default function AdminKatalogPage() {
       .map((s) => s.trim())
       .filter((s) => s.length > 0)
 
-    const updated = { ...editingProduct, specs: updatedSpecs }
+    const updated = {
+      ...editingProduct,
+      slug: editingProduct.title.toLowerCase().replace(/[^a-z0-9]+/g, "-"),
+      specs: updatedSpecs
+    }
     setProducts(products.map((p) => (p.id === updated.id ? updated : p)))
     setEditingProduct(null)
   }
 
   function deleteProduct(id: string) {
-    setProducts(products.filter((p) => p.id !== id))
-    if (editingProduct?.id === id) setEditingProduct(null)
+    if (confirm("Apakah Anda yakin ingin menghapus produk ini dari katalog?")) {
+      setProducts(products.filter((p) => p.id !== id))
+      if (editingProduct?.id === id) setEditingProduct(null)
+    }
   }
 
   return (
-    <div className="space-y-6 max-w-6xl mx-auto">
-      {/* Page Header */}
+    <div className="space-y-6 max-w-6xl mx-auto pb-12">
+      {/* Top Header Card */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
         <div>
-          <h1 className="text-2xl font-black text-slate-900 tracking-tight">Kelola Katalog Laptop & Digital</h1>
-          <p className="text-sm text-slate-500 font-medium">Ubah informasi perusahaan, rekening resmi, dan daftar produk katalog secara live.</p>
+          <span className="px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800 uppercase tracking-wider">
+            Mughis Laptop Store Admin
+          </span>
+          <h1 className="text-2xl font-black text-slate-900 tracking-tight mt-1">Kelola Katalog Laptop & Digital</h1>
+          <p className="text-sm text-slate-500 font-medium">Single Source of Truth untuk halaman /katalog-laptop</p>
         </div>
 
         <button
           onClick={handleSaveAll}
           disabled={saving}
-          className="px-6 py-3 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-sm flex items-center justify-center gap-2 shadow-md shadow-teal-600/20 transition"
+          className="px-6 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm flex items-center justify-center gap-2 shadow-lg shadow-emerald-600/20 transition"
         >
           <Save className="w-4 h-4" />
           <span>{saving ? "Menyimpan..." : "Simpan Semua Perubahan"}</span>
@@ -234,71 +272,101 @@ export default function AdminKatalogPage() {
       {/* Tabs Switcher */}
       <div className="flex border-b border-slate-200 gap-2 bg-white px-4 pt-2 rounded-t-2xl">
         <button
-          onClick={() => setActiveTab("company")}
-          className={`flex items-center gap-2 px-4 py-3 font-bold text-sm border-b-2 transition ${activeTab === "company" ? "border-teal-600 text-teal-700" : "border-transparent text-slate-500 hover:text-slate-800"}`}
+          onClick={() => setActiveTab("store")}
+          className={`flex items-center gap-2 px-4 py-3 font-bold text-sm border-b-2 transition ${activeTab === "store" ? "border-emerald-600 text-emerald-700" : "border-transparent text-slate-500 hover:text-slate-800"}`}
         >
           <Building2 className="w-4 h-4" />
-          <span>Info Perusahaan & CS</span>
+          <span>Informasi Toko, Hero & CS</span>
         </button>
         <button
           onClick={() => setActiveTab("banks")}
-          className={`flex items-center gap-2 px-4 py-3 font-bold text-sm border-b-2 transition ${activeTab === "banks" ? "border-teal-600 text-teal-700" : "border-transparent text-slate-500 hover:text-slate-800"}`}
+          className={`flex items-center gap-2 px-4 py-3 font-bold text-sm border-b-2 transition ${activeTab === "banks" ? "border-emerald-600 text-emerald-700" : "border-transparent text-slate-500 hover:text-slate-800"}`}
         >
           <CreditCard className="w-4 h-4" />
           <span>Rekening Resmi ({bankAccounts.length})</span>
         </button>
         <button
           onClick={() => setActiveTab("products")}
-          className={`flex items-center gap-2 px-4 py-3 font-bold text-sm border-b-2 transition ${activeTab === "products" ? "border-teal-600 text-teal-700" : "border-transparent text-slate-500 hover:text-slate-800"}`}
+          className={`flex items-center gap-2 px-4 py-3 font-bold text-sm border-b-2 transition ${activeTab === "products" ? "border-emerald-600 text-emerald-700" : "border-transparent text-slate-500 hover:text-slate-800"}`}
         >
           <Laptop className="w-4 h-4" />
-          <span>Katalog Produk ({products.length})</span>
+          <span>Produk Katalog ({products.length})</span>
         </button>
       </div>
 
-      {/* TAB 1: COMPANY INFO */}
-      {activeTab === "company" && (
+      {/* TAB 1: STORE & HERO SETTINGS */}
+      {activeTab === "store" && (
         <div className="bg-white p-6 rounded-b-2xl border border-slate-200 shadow-sm space-y-4">
-          <h2 className="text-lg font-extrabold text-slate-900 border-b border-slate-100 pb-3">Informasi Brand & Kontak</h2>
+          <h2 className="text-lg font-extrabold text-slate-900 border-b border-slate-100 pb-3">Pengaturan Identitas Toko & Banner Hero</h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
             <div>
-              <label className="block text-slate-700 font-bold mb-1">Nama Brand / Usaha</label>
+              <label className="block text-slate-700 font-bold mb-1">Nama Toko / Brand</label>
               <input
                 type="text"
                 value={siteName}
                 onChange={(e) => setSiteName(e.target.value)}
-                className="w-full bg-slate-50 border border-slate-300 rounded-xl p-3 font-medium text-slate-900 focus:outline-none focus:border-teal-600"
+                className="w-full bg-slate-50 border border-slate-300 rounded-xl p-3 font-medium text-slate-900 focus:outline-none focus:border-emerald-600"
               />
             </div>
 
             <div>
-              <label className="block text-slate-700 font-bold mb-1">Subtitle / Tagline Katalog</label>
+              <label className="block text-slate-700 font-bold mb-1">Nama Owner / Pemilik</label>
               <input
                 type="text"
-                value={companyTagline}
-                onChange={(e) => setCompanyTagline(e.target.value)}
-                className="w-full bg-slate-50 border border-slate-300 rounded-xl p-3 font-medium text-slate-900 focus:outline-none focus:border-teal-600"
+                value={ownerName}
+                onChange={(e) => setOwnerName(e.target.value)}
+                className="w-full bg-slate-50 border border-slate-300 rounded-xl p-3 font-medium text-slate-900 focus:outline-none focus:border-emerald-600"
               />
             </div>
 
             <div>
-              <label className="block text-slate-700 font-bold mb-1">No. WhatsApp CS (Format: 628xxx)</label>
+              <label className="block text-slate-700 font-bold mb-1">Alamat Fisik Toko</label>
+              <input
+                type="text"
+                value={address}
+                onChange={(e) => setAddress(e.target.value)}
+                className="w-full bg-slate-50 border border-slate-300 rounded-xl p-3 font-medium text-slate-900 focus:outline-none focus:border-emerald-600"
+              />
+            </div>
+
+            <div>
+              <label className="block text-slate-700 font-bold mb-1">No. WhatsApp CS (Format: 0852xxx atau 628xxx)</label>
               <input
                 type="text"
                 value={contactPhone}
                 onChange={(e) => setContactPhone(e.target.value)}
-                className="w-full bg-slate-50 border border-slate-300 rounded-xl p-3 font-medium text-slate-900 focus:outline-none focus:border-teal-600"
+                className="w-full bg-slate-50 border border-slate-300 rounded-xl p-3 font-medium text-slate-900 focus:outline-none focus:border-emerald-600"
               />
             </div>
 
-            <div>
-              <label className="block text-slate-700 font-bold mb-1">URL Instagram Testimoni</label>
+            <div className="md:col-span-2">
+              <label className="block text-slate-700 font-bold mb-1">Hero Headline Utama</label>
+              <input
+                type="text"
+                value={heroHeadline}
+                onChange={(e) => setHeroHeadline(e.target.value)}
+                className="w-full bg-slate-50 border border-slate-300 rounded-xl p-3 font-bold text-slate-900 focus:outline-none focus:border-emerald-600"
+              />
+            </div>
+
+            <div className="md:col-span-2">
+              <label className="block text-slate-700 font-bold mb-1">Hero Subheadline Deskripsi</label>
+              <textarea
+                rows={2}
+                value={heroSubheadline}
+                onChange={(e) => setHeroSubheadline(e.target.value)}
+                className="w-full bg-slate-50 border border-slate-300 rounded-xl p-3 font-medium text-slate-900 focus:outline-none focus:border-emerald-600"
+              />
+            </div>
+
+            <div className="md:col-span-2">
+              <label className="block text-slate-700 font-bold mb-1">URL Link Highlight Testimoni Instagram</label>
               <input
                 type="text"
                 value={instagramUrl}
                 onChange={(e) => setInstagramUrl(e.target.value)}
-                className="w-full bg-slate-50 border border-slate-300 rounded-xl p-3 font-medium text-slate-900 focus:outline-none focus:border-teal-600"
+                className="w-full bg-slate-50 border border-slate-300 rounded-xl p-3 font-mono text-xs text-slate-900 focus:outline-none focus:border-emerald-600"
               />
             </div>
           </div>
@@ -309,7 +377,7 @@ export default function AdminKatalogPage() {
       {activeTab === "banks" && (
         <div className="bg-white p-6 rounded-b-2xl border border-slate-200 shadow-sm space-y-6">
           <div className="flex justify-between items-center border-b border-slate-100 pb-3">
-            <h2 className="text-lg font-extrabold text-slate-900">Rekening Resmi Perusahaan</h2>
+            <h2 className="text-lg font-extrabold text-slate-900">Rekening Resmi Pembayaran</h2>
             <button
               onClick={addBank}
               className="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs flex items-center gap-1.5"
@@ -319,13 +387,13 @@ export default function AdminKatalogPage() {
             </button>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {bankAccounts.map((b) => (
               <div key={b.id} className="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-2 relative">
                 <div className="flex justify-between items-center">
-                  <span className="font-extrabold text-sm text-teal-800">{b.bank}</span>
+                  <span className="font-extrabold text-sm text-emerald-800">{b.bank}</span>
                   <div className="flex items-center gap-1">
-                    <button onClick={() => setEditingBank({ ...b })} className="p-1.5 text-slate-500 hover:text-teal-600">
+                    <button onClick={() => setEditingBank({ ...b })} className="p-1.5 text-slate-500 hover:text-emerald-600">
                       <Edit3 className="w-4 h-4" />
                     </button>
                     <button onClick={() => deleteBank(b.id)} className="p-1.5 text-slate-500 hover:text-rose-600">
@@ -333,20 +401,20 @@ export default function AdminKatalogPage() {
                     </button>
                   </div>
                 </div>
-                <p className="text-lg font-extrabold font-mono text-slate-900">{b.account_number}</p>
-                <p className="text-xs font-semibold text-slate-600">a/n {b.beneficiary}</p>
+                <p className="text-xl font-black font-mono text-slate-900">{b.account_number}</p>
+                <p className="text-xs font-bold text-slate-600">a/n {b.beneficiary}</p>
               </div>
             ))}
           </div>
 
-          {/* Edit Bank Modal / Box */}
+          {/* Edit Bank Box */}
           {editingBank && (
-            <div className="p-5 rounded-2xl border-2 border-teal-500 bg-teal-50/40 space-y-3">
+            <div className="p-5 rounded-2xl border-2 border-emerald-500 bg-emerald-50/40 space-y-3">
               <h3 className="font-bold text-sm text-slate-900">Edit Rekening Bank</h3>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
                 <input
                   type="text"
-                  placeholder="Nama Bank (e.g. Bank BCA)"
+                  placeholder="Nama Bank (e.g. BANK BSI)"
                   value={editingBank.bank}
                   onChange={(e) => setEditingBank({ ...editingBank, bank: e.target.value })}
                   className="bg-white border border-slate-300 rounded-lg p-2.5 font-semibold text-slate-900"
@@ -356,7 +424,7 @@ export default function AdminKatalogPage() {
                   placeholder="Nomor Rekening"
                   value={editingBank.account_number}
                   onChange={(e) => setEditingBank({ ...editingBank, account_number: e.target.value })}
-                  className="bg-white border border-slate-300 rounded-lg p-2.5 font-bold font-mono text-slate-900"
+                  className="bg-white border border-slate-300 rounded-lg p-2.5 font-black font-mono text-slate-900"
                 />
                 <input
                   type="text"
@@ -375,7 +443,7 @@ export default function AdminKatalogPage() {
                     updateBank(editingBank)
                     setEditingBank(null)
                   }}
-                  className="px-4 py-1.5 rounded-lg bg-teal-600 text-white text-xs font-bold"
+                  className="px-4 py-1.5 rounded-lg bg-emerald-600 text-white text-xs font-bold"
                 >
                   Simpan Rekening
                 </button>
@@ -385,30 +453,34 @@ export default function AdminKatalogPage() {
         </div>
       )}
 
-      {/* TAB 3: PRODUCTS */}
+      {/* TAB 3: PRODUCTS CRUD */}
       {activeTab === "products" && (
         <div className="bg-white p-6 rounded-b-2xl border border-slate-200 shadow-sm space-y-6">
           <div className="flex justify-between items-center border-b border-slate-100 pb-3">
-            <h2 className="text-lg font-extrabold text-slate-900">Katalog Produk Laptop & Digital</h2>
+            <h2 className="text-lg font-extrabold text-slate-900">Kelola Unit Laptop & Produk Digital</h2>
             <button
               onClick={addProduct}
-              className="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs flex items-center gap-1.5"
+              className="px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs flex items-center gap-1.5 shadow-md shadow-emerald-600/20"
             >
               <Plus className="w-4 h-4" />
-              <span>Tambah Produk</span>
+              <span>+ Tambah Produk Baru</span>
             </button>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {products.map((p) => (
-              <div key={p.id} className="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm flex flex-col justify-between">
+              <div key={p.id} className="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm flex flex-col justify-between hover:border-emerald-500 transition">
                 <div>
                   <div className="relative h-44 bg-slate-100">
                     <img src={p.image} alt={p.title} className="w-full h-full object-cover" />
-                    <span className="absolute top-2 left-2 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-teal-100 text-teal-800 border border-teal-300">
+                    <span className="absolute top-2 left-2 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-300">
                       {p.badge}
                     </span>
+                    <span className={`absolute top-2 right-2 px-2 py-0.5 rounded-md text-[10px] font-black uppercase ${p.stockStatus === 'READY' ? 'bg-emerald-600 text-white' : p.stockStatus === 'SOLD_OUT' ? 'bg-rose-600 text-white' : 'bg-slate-700 text-slate-200'}`}>
+                      {p.stockStatus || 'READY'}
+                    </span>
                   </div>
+
                   <div className="p-4 space-y-2 text-xs">
                     <h3 className="font-bold text-sm text-slate-900 leading-snug">{p.title}</h3>
                     <p className="text-emerald-700 font-extrabold text-base">{p.priceText}</p>
@@ -422,7 +494,7 @@ export default function AdminKatalogPage() {
                     className="flex-1 py-2 bg-slate-100 hover:bg-slate-200 border border-slate-300 rounded-xl font-bold text-slate-800 text-xs flex items-center justify-center gap-1"
                   >
                     <Edit3 className="w-3.5 h-3.5" />
-                    <span>Edit</span>
+                    <span>Edit Unit</span>
                   </button>
                   <button
                     onClick={() => deleteProduct(p.id)}
@@ -437,9 +509,9 @@ export default function AdminKatalogPage() {
 
           {/* Product Editor Form Box */}
           {editingProduct && (
-            <div className="p-6 rounded-2xl border-2 border-teal-500 bg-slate-50 space-y-4">
+            <div className="p-6 rounded-2xl border-2 border-emerald-500 bg-slate-50 space-y-4">
               <div className="flex justify-between items-center border-b border-slate-200 pb-2">
-                <h3 className="font-bold text-base text-slate-900">Editor Produk: {editingProduct.title}</h3>
+                <h3 className="font-bold text-base text-slate-900">Editor Unit: {editingProduct.title}</h3>
                 <button onClick={() => setEditingProduct(null)} className="text-slate-400 hover:text-slate-700 text-xs font-bold">
                   ✕ Tutup Editor
                 </button>
@@ -447,7 +519,7 @@ export default function AdminKatalogPage() {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
                 <div>
-                  <label className="block font-bold text-slate-700 mb-1">Judul Produk</label>
+                  <label className="block font-bold text-slate-700 mb-1">Judul / Nama Produk</label>
                   <input
                     type="text"
                     value={editingProduct.title}
@@ -470,6 +542,19 @@ export default function AdminKatalogPage() {
                 </div>
 
                 <div>
+                  <label className="block font-bold text-slate-700 mb-1">Status Stok</label>
+                  <select
+                    value={editingProduct.stockStatus || "READY"}
+                    onChange={(e) => setEditingProduct({ ...editingProduct, stockStatus: e.target.value as any })}
+                    className="w-full p-2.5 rounded-lg border border-slate-300 bg-white font-bold text-slate-900"
+                  >
+                    <option value="READY">Ready Stock (Tampil)</option>
+                    <option value="SOLD_OUT">Sold Out (Terjual)</option>
+                    <option value="HIDDEN">Hidden (Sembunyikan dari Publik)</option>
+                  </select>
+                </div>
+
+                <div>
                   <label className="block font-bold text-slate-700 mb-1">Badge Text (e.g. "Paling Laris")</label>
                   <input
                     type="text"
@@ -480,7 +565,7 @@ export default function AdminKatalogPage() {
                 </div>
 
                 <div>
-                  <label className="block font-bold text-slate-700 mb-1">Teks Harga Kartu (e.g. "Harga Mulai Rp3.450.000")</label>
+                  <label className="block font-bold text-slate-700 mb-1">Teks Harga Kartu (e.g. "Rp 3.450.000")</label>
                   <input
                     type="text"
                     value={editingProduct.priceText}
@@ -490,7 +575,7 @@ export default function AdminKatalogPage() {
                 </div>
 
                 <div>
-                  <label className="block font-bold text-slate-700 mb-1">Teks Harga Modal Detail</label>
+                  <label className="block font-bold text-slate-700 mb-1">Teks Harga Detail Modal</label>
                   <input
                     type="text"
                     value={editingProduct.rawPriceText}
@@ -500,12 +585,22 @@ export default function AdminKatalogPage() {
                 </div>
 
                 <div>
-                  <label className="block font-bold text-slate-700 mb-1">Gambar URL (Unsplash / Cloud Storage)</label>
+                  <label className="block font-bold text-slate-700 mb-1">Foto Utama / Gambar URL</label>
                   <input
                     type="text"
                     value={editingProduct.image}
                     onChange={(e) => setEditingProduct({ ...editingProduct, image: e.target.value })}
-                    className="w-full p-2.5 rounded-lg border border-slate-300 bg-white font-medium text-slate-900 font-mono text-[11px]"
+                    className="w-full p-2.5 rounded-lg border border-slate-300 bg-white font-mono text-[11px] text-slate-900"
+                  />
+                </div>
+
+                <div>
+                  <label className="block font-bold text-slate-700 mb-1">Kondisi & Grade Unit</label>
+                  <input
+                    type="text"
+                    value={editingProduct.conditionNote || "Grade A Mulus 90-95%"}
+                    onChange={(e) => setEditingProduct({ ...editingProduct, conditionNote: e.target.value })}
+                    className="w-full p-2.5 rounded-lg border border-slate-300 bg-white font-medium text-slate-900"
                   />
                 </div>
 
@@ -529,7 +624,17 @@ export default function AdminKatalogPage() {
                   />
                 </div>
 
-                <div className="md:col-span-2">
+                <div>
+                  <label className="block font-bold text-slate-700 mb-1">Ketentuan Garansi</label>
+                  <input
+                    type="text"
+                    value={editingProduct.warranty || "Garansi Toko 60 Hari"}
+                    onChange={(e) => setEditingProduct({ ...editingProduct, warranty: e.target.value })}
+                    className="w-full p-2.5 rounded-lg border border-slate-300 bg-white font-medium text-slate-900"
+                  />
+                </div>
+
+                <div>
                   <label className="block font-bold text-slate-700 mb-1">Bonus & Kelengkapan</label>
                   <input
                     type="text"
@@ -544,8 +649,8 @@ export default function AdminKatalogPage() {
                 <button onClick={() => setEditingProduct(null)} className="px-4 py-2 rounded-xl border border-slate-300 font-bold text-xs text-slate-600">
                   Batal
                 </button>
-                <button onClick={saveEditingProduct} className="px-6 py-2 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs">
-                  Simpan Produk Ini
+                <button onClick={saveEditingProduct} className="px-6 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs">
+                  Simpan Perubahan Unit
                 </button>
               </div>
             </div>

@@ -16,14 +16,18 @@ function InstagramIcon({ className = "w-4 h-4" }: { className?: string }) {
 interface ProductItem {
   id: string
   title: string
+  slug?: string
   category: "laptop" | "digital" | "budget" | string
   badge: string
   badgeColor?: string
+  stockStatus?: "READY" | "SOLD_OUT" | "HIDDEN"
   priceText: string
   rawPriceText: string
   image: string
   shortDesc: string
   specs: string[]
+  conditionNote?: string
+  warranty?: string
   bonus: string
 }
 
@@ -43,9 +47,11 @@ const DEFAULT_PRODUCTS: ProductItem[] = [
   {
     id: "prod-1",
     title: "Lenovo ThinkPad T480 Core i5 Gen 8",
+    slug: "lenovo-thinkpad-t480-core-i5",
     category: "laptop",
     badge: "Paling Laris",
     badgeColor: "bg-emerald-100 text-emerald-800 border-emerald-300",
+    stockStatus: "READY",
     priceText: "Rp 3.450.000",
     rawPriceText: "Rp 3.450.000 (Varian SSD 256GB / 512GB)",
     image: "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=800&auto=format&fit=crop&q=80",
@@ -55,17 +61,20 @@ const DEFAULT_PRODUCTS: ProductItem[] = [
       "RAM: 8GB / 16GB DDR4 High Speed",
       "Penyimpanan: 256GB / 512GB SSD NVMe",
       "Layar: 14.0 inch Full HD Anti-Glare Jernih",
-      "Baterai: Awet 2-4 Jam (Dual Battery Support)",
-      "Kondisi: Grade A Mulus 90-95%, Garansi Toko 60 Hari"
+      "Baterai: Awet 2-4 Jam (Dual Battery Support)"
     ],
+    conditionNote: "Grade A Mulus 90-95%, Baterai Awet 2-4 jam",
+    warranty: "Garansi Toko 60 Hari",
     bonus: "Unit Laptop, Charger Original Type-C, Bonus Tas Baru & Mouse Wireless."
   },
   {
     id: "prod-2",
     title: "Lisensi Windows 11 Pro & Office 2021",
+    slug: "lisensi-windows-11-pro-office-2021",
     category: "digital",
     badge: "Produk Digital",
     badgeColor: "bg-blue-100 text-blue-800 border-blue-300",
+    stockStatus: "READY",
     priceText: "Rp 400.000",
     rawPriceText: "Rp 400.000 (Aktivasi Permanen Seumur Hidup)",
     image: "https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800&auto=format&fit=crop&q=80",
@@ -74,16 +83,20 @@ const DEFAULT_PRODUCTS: ProductItem[] = [
       "Tipe Lisensi: Windows 11 Pro Retail + Office 2021 Pro Plus",
       "Masa Aktif: Lifetime (Permanen Seumur Hidup)",
       "Pengiriman: Key resmi dikirim langsung via WhatsApp / Email",
-      "Garansi: 100% Ganti Baru jika gagal aktivasi"
+      "Bebas Update: Terkoneksi langsung ke server resmi"
     ],
+    conditionNote: "100% Produk Digital Resmi Baru",
+    warranty: "Garansi 100% Ganti Baru Jika Gagal Aktivasi",
     bonus: "Buku panduan bergambar cara pasang, link download resmi, dan dibantu sampai tuntas via WA."
   },
   {
     id: "prod-3",
     title: "Dell Latitude 7490 Ultrabook Slim",
+    slug: "dell-latitude-7490-ultrabook-slim",
     category: "laptop",
     badge: "Ready Stock",
     badgeColor: "bg-teal-100 text-teal-800 border-teal-300",
+    stockStatus: "READY",
     priceText: "Rp 3.800.000",
     rawPriceText: "Rp 3.800.000",
     image: "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=800&auto=format&fit=crop&q=80",
@@ -92,80 +105,53 @@ const DEFAULT_PRODUCTS: ProductItem[] = [
       "Prosesor: Intel Core i7-8650U Kecepatan hingga 4.2GHz",
       "RAM: 16GB DDR4 Lancar Multitasking",
       "Penyimpanan: 512GB SSD NVMe Cepat",
-      "Layar: 14.0 inch Full HD Bezel Tipis",
-      "Fitur: Keyboard Backlit Nyala"
+      "Layar: 14.0 inch Full HD Bezel Tipis"
     ],
+    conditionNote: "Grade A Mulus 93-95%",
+    warranty: "Garansi Toko 30 Hari",
     bonus: "Tas selempang Dell, Charger Original, Mouse Optik, & Garansi Toko."
-  },
-  {
-    id: "prod-4",
-    title: "Paket Software Desain & Grafis Siap Pakai",
-    category: "digital",
-    badge: "Terlaris Digital",
-    badgeColor: "bg-purple-100 text-purple-800 border-purple-300",
-    priceText: "Rp 450.000",
-    rawPriceText: "Rp 450.000 (Paket Komplit)",
-    image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&auto=format&fit=crop&q=80",
-    shortDesc: "Aplikasi lengkap untuk desain logo, edit foto, video konten hingga 3D. Mudah diinstal dengan panduan bahasa Indonesia.",
-    specs: [
-      "Kompatibel: Windows 10/11 & macOS",
-      "Metode: Single Installer tinggal klik langsung jadi",
-      "Keamanan: Sudah dites bersih bebas malware",
-      "Akses: Cloud Drive High-Speed seumur hidup"
-    ],
-    bonus: "Bonus ribuan font keren, template desain siap edit, & preset warna video."
-  },
-  {
-    id: "prod-5",
-    title: "HP EliteBook 840 G5 Bodi Aluminium",
-    category: "laptop",
-    badge: "Tampilan Mewah",
-    badgeColor: "bg-indigo-100 text-indigo-800 border-indigo-300",
-    priceText: "Rp 4.150.000",
-    rawPriceText: "Rp 4.150.000",
-    image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=800&auto=format&fit=crop&q=80",
-    shortDesc: "Desain metal silver elegan standar eksekutif kantor dengan audio jernih premium Bang & Olufsen.",
-    specs: [
-      "Prosesor: Intel Core i5-8250U / Core i7",
-      "RAM: 8GB / 16GB DDR4",
-      "Penyimpanan: 256GB / 512GB SSD",
-      "Speaker: Audio Jernih Bang & Olufsen"
-    ],
-    bonus: "Charger original HP, tas ransel laptop empuk, mouse wireless & garansi."
-  },
-  {
-    id: "prod-6",
-    title: "Netbook Ringkas Pelajar & Kasir Toko",
-    category: "budget",
-    badge: "Super Hemat",
-    badgeColor: "bg-amber-100 text-amber-900 border-amber-300",
-    priceText: "Rp 1.850.000",
-    rawPriceText: "Rp 1.850.000 (Stok Terbatas)",
-    image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=800&auto=format&fit=crop&q=80",
-    shortDesc: "Laptop hemat biaya untuk kebutuhan ketik Word, Excel, kasir minimarket, dan anak sekolah belajar online.",
-    specs: [
-      "Prosesor: Intel Celeron / Pentium Quad-Core",
-      "RAM: 4GB / 8GB Irit Daya",
-      "Penyimpanan: SSD 128GB / 256GB",
-      "Layar: 11.6 - 13.3 inch Enteng & Ringkas"
-    ],
-    bonus: "Sudah terisi Windows & Office siap langsung digunakan, tinggal pakai!"
   }
 ]
 
 export default function CatalogLaptopStorePage() {
   const [products, setProducts] = useState<ProductItem[]>(DEFAULT_PRODUCTS)
   const [bankAccounts, setBankAccounts] = useState<BankAccount[]>(DEFAULT_BANKS)
-  const [waPhone, setWaPhone] = useState("6285217706587")
-  const [storeName] = useState("Mughis Laptop Store")
-  const [ownerName] = useState("Muhammad Aghisna")
-  const [storeAddress] = useState("Sangso, Samalanga, Bireuen, Aceh")
-  const [igHighlight] = useState("https://www.instagram.com/s/aGlnaGxpZ2h0OjE3OTI1ODg4MzI2NzYwNDM2?story_media_id=3106266946206908221&stkn=MWpwam1nMm13eDlwcg==")
+  const [waPhone, setWaPhone] = useState("0852-1770-6587")
+  const [siteName, setSiteName] = useState("Mughis Laptop Store")
+  const [ownerName, setOwnerName] = useState("Muhammad Aghisna")
+  const [address, setAddress] = useState("Sangso, Samalanga, Bireuen, Aceh")
+  const [heroHeadline, setHeroHeadline] = useState("Laptop Business Bekas Berkualitas, Siap Kerja & Siap Kuliah")
+  const [heroSubheadline, setHeroSubheadline] = useState("Unit pilihan yang diperiksa sebelum dijual, dengan kondisi dijelaskan secara transparan, garansi toko sesuai ketentuan, dan konsultasi langsung melalui WhatsApp.")
+  const [igHighlight, setIgHighlight] = useState("https://www.instagram.com/s/aGlnaGxpZ2h0OjE3OTI1ODg4MzI2NzYwNDM2?story_media_id=3106266946206908221&stkn=MWpwam1nMm13eDlwcg==")
 
   const [currentCategory, setCurrentCategory] = useState("all")
   const [searchQuery, setSearchQuery] = useState("")
   const [selectedProduct, setSelectedProduct] = useState<ProductItem | null>(null)
   const [toastMsg, setToastMsg] = useState("")
+
+  useEffect(() => {
+    fetch("/api/public/settings")
+      .then((res) => res.json())
+      .then((data) => {
+        if (!data.error) {
+          if (data.site_name) setSiteName(data.site_name)
+          if (data.owner_name) setOwnerName(data.owner_name)
+          if (data.address) setAddress(data.address)
+          if (data.contact_phone) setWaPhone(data.contact_phone)
+          if (data.hero_headline) setHeroHeadline(data.hero_headline)
+          if (data.hero_subheadline) setHeroSubheadline(data.hero_subheadline)
+          if (data.instagram_url) setIgHighlight(data.instagram_url)
+
+          if (data.bank_accounts_json) {
+            try { setBankAccounts(JSON.parse(data.bank_accounts_json)) } catch {}
+          }
+          if (data.catalog_products_json) {
+            try { setProducts(JSON.parse(data.catalog_products_json)) } catch {}
+          }
+        }
+      })
+      .catch(() => {})
+  }, [])
 
   function copyText(text: string, bankName: string) {
     navigator.clipboard.writeText(text).then(() => {
@@ -174,7 +160,9 @@ export default function CatalogLaptopStorePage() {
     })
   }
 
-  const filteredProducts = products.filter((p) => {
+  const activeProducts = products.filter((p) => p.stockStatus !== "HIDDEN")
+
+  const filteredProducts = activeProducts.filter((p) => {
     const matchCat =
       currentCategory === "all" ||
       p.category === currentCategory ||
@@ -189,12 +177,14 @@ export default function CatalogLaptopStorePage() {
     return matchCat && matchSearch
   })
 
+  const formattedWa = waPhone.replace(/[^0-9]/g, "").replace(/^0/, "62")
+
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 font-sans antialiased">
 
       {/* Top Announcement Fraud Alert */}
       <div className="bg-gradient-to-r from-amber-600 via-rose-600 to-amber-600 text-white text-xs sm:text-sm py-2.5 px-4 text-center font-bold tracking-wide shadow-md">
-        ⚠️ <strong>PERINGATAN RESMI WASPADA PENIPUAN:</strong> Pembayaran HANYA dikirim ke rekening resmi a/n <u>{ownerName}</u> (BSI / SeaBank). WA Resmi: <u>0852-1770-6587</u>!
+        ⚠️ <strong>PERINGATAN RESMI WASPADA PENIPUAN:</strong> Pembayaran HANYA dikirim ke rekening resmi a/n <u>{ownerName}</u> (BSI / SeaBank). WA Resmi: <u>{waPhone}</u>!
       </div>
 
       {/* Header Navigation */}
@@ -206,11 +196,11 @@ export default function CatalogLaptopStorePage() {
             </div>
             <div>
               <span className="text-xl sm:text-2xl font-black tracking-tight text-white block leading-tight">
-                MUGHIS <span className="text-emerald-400">LAPTOP STORE</span>
+                {siteName}
               </span>
               <span className="text-[11px] font-bold text-slate-400 flex items-center gap-1">
                 <MapPin className="w-3 h-3 text-emerald-400" />
-                {storeAddress}
+                {address}
               </span>
             </div>
           </a>
@@ -227,13 +217,13 @@ export default function CatalogLaptopStorePage() {
             </a>
 
             <a
-              href={`https://wa.me/${waPhone}?text=${encodeURIComponent("Halo Mughis Laptop Store, saya mau konsultasi stok laptop/produk digital.")}`}
+              href={`https://wa.me/${formattedWa}?text=${encodeURIComponent("Halo Mughis Laptop Store, saya mau konsultasi stok laptop/produk digital.")}`}
               target="_blank"
               rel="noreferrer"
               className="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs sm:text-sm flex items-center gap-2 shadow-lg shadow-emerald-600/30 transition transform hover:-translate-y-0.5"
             >
               <Phone className="w-4 h-4" />
-              <span>CS WhatsApp (0852-1770-6587)</span>
+              <span>CS WhatsApp ({waPhone})</span>
             </a>
           </div>
         </div>
@@ -245,15 +235,15 @@ export default function CatalogLaptopStorePage() {
 
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-950/80 border border-emerald-700/60 text-emerald-300 text-xs sm:text-sm font-extrabold uppercase tracking-wider">
             <Award className="w-4 h-4 text-emerald-400" />
-            Official Store • Owner: {ownerName} • Samalanga, Aceh
+            Official Store • Owner: {ownerName} • {address}
           </div>
 
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-tight">
-            Pusat Laptop Business & <span className="text-emerald-400 underline underline-offset-8 decoration-emerald-500/50">Produk Digital</span>
+            {heroHeadline}
           </h1>
 
           <p className="text-base sm:text-lg text-slate-300 font-medium max-w-2xl mx-auto leading-relaxed">
-            Unit laptop lolos QC siap pakai untuk kerja, kuliah, & usaha. Transaksi 100% amanah, garansi jelas, serta bimbingan konsultasi gratis langsung dari toko fisik kami di Sangso, Samalanga.
+            {heroSubheadline}
           </p>
 
           {/* Search Bar */}
@@ -261,7 +251,7 @@ export default function CatalogLaptopStorePage() {
             <Search className="w-6 h-6 absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" />
             <input
               type="text"
-              placeholder="Cari laptop (ThinkPad, ASUS, HP, Dell), RAM, atau produk digital..."
+              placeholder="Cari ThinkPad, EliteBook, Latitude, RAM 16GB, SSD 512GB..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full pl-12 pr-4 py-4 text-base sm:text-lg font-bold rounded-2xl border-2 border-slate-700 focus:border-emerald-500 focus:outline-none bg-slate-900 text-white placeholder:text-slate-500 font-medium"
@@ -304,9 +294,9 @@ export default function CatalogLaptopStorePage() {
           <div className="flex items-start gap-3">
             <ShieldAlert className="w-8 h-8 text-amber-400 shrink-0 mt-0.5" />
             <div>
-              <p className="font-extrabold text-amber-300 uppercase tracking-wider">MODUL HIMBAUAN KEAMANAN TRANSAKSI (OWNER: MUHAMMAD AGHISNA)</p>
+              <p className="font-extrabold text-amber-300 uppercase tracking-wider">HIMBAUAN KEAMANAN TRANSAKSI OWNER ({ownerName.toUpperCase()})</p>
               <p className="text-slate-300 mt-0.5">
-                Pastikan transfer pembayaran Anda <strong>HANYA</strong> dikirimkan ke rekening Bank BSI atau SeaBank atas nama <strong>MUHAMMAD AGHISNA</strong>. Kami tidak bertanggung jawab atas transaksi di luar rekening resmi ini.
+                Pastikan transfer pembayaran Anda <strong>HANYA</strong> dikirimkan ke rekening Bank BSI atau SeaBank atas nama <strong>{ownerName}</strong>. Kami tidak bertanggung jawab atas transaksi di luar rekening resmi ini.
               </p>
             </div>
           </div>
@@ -338,13 +328,13 @@ export default function CatalogLaptopStorePage() {
         {filteredProducts.length === 0 ? (
           <div className="text-center py-16 bg-slate-900 rounded-3xl border-2 border-dashed border-slate-800 space-y-2">
             <p className="text-lg font-bold text-slate-200">Produk tidak ditemukan</p>
-            <p className="text-xs text-slate-400">Coba kata kunci pencarian lain.</p>
+            <p className="text-xs text-slate-400">Coba kata kunci pencarian lain atau hubungi CS kami.</p>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredProducts.map((p) => {
-              const waMsg = encodeURIComponent(`Halo Mughis Laptop Store, saya tertarik dengan unit "${p.title}" (${p.priceText}). Mohon info stok dan cara transaksinya.`)
-              const waUrl = `https://wa.me/${waPhone}?text=${waMsg}`
+              const waMsg = encodeURIComponent(`Assalamu’alaikum ${siteName},\n\nSaya tertarik dengan unit:\n*${p.title}*\nHarga: ${p.priceText}\n\nApakah unit masih tersedia? Mohon informasi kondisi dan garansinya.`)
+              const waUrl = `https://wa.me/${formattedWa}?text=${waMsg}`
 
               return (
                 <div key={p.id} className="bg-slate-900 rounded-2xl border border-slate-800 overflow-hidden flex flex-col justify-between shadow-xl hover:border-emerald-500/50 transition-all duration-300 group">
@@ -354,6 +344,11 @@ export default function CatalogLaptopStorePage() {
                       <span className="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-emerald-950/90 text-emerald-300 border border-emerald-700/80 shadow-md">
                         {p.badge}
                       </span>
+                      {p.stockStatus === "SOLD_OUT" && (
+                        <span className="absolute top-3 right-3 px-3 py-1 rounded-md text-xs font-black uppercase bg-rose-600 text-white shadow-md">
+                          SOLD OUT
+                        </span>
+                      )}
                     </div>
 
                     <div className="p-6 space-y-3">
@@ -397,7 +392,7 @@ export default function CatalogLaptopStorePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
           <div className="text-center max-w-2xl mx-auto space-y-3">
             <span className="px-4 py-1.5 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold uppercase tracking-widest border border-emerald-500/30">
-              Rekening Resmi Owner (Muhammad Aghisna)
+              Rekening Resmi Owner ({ownerName})
             </span>
             <h2 className="text-3xl sm:text-4xl font-black tracking-tight">Informasi Rekening Pembayaran Resmi</h2>
             <p className="text-slate-400 text-sm sm:text-base font-normal">
@@ -441,9 +436,9 @@ export default function CatalogLaptopStorePage() {
       <footer className="bg-slate-950 text-slate-400 border-t border-slate-800 py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6 text-xs">
           <div className="space-y-1.5 text-center md:text-left">
-            <p className="text-base font-black text-white">MUGHIS LAPTOP STORE</p>
-            <p className="text-slate-400">Owner: {ownerName} • Alamat: {storeAddress}</p>
-            <p className="text-slate-500">© 2026 Mughis Laptop Store. Hak Cipta Dilindungi.</p>
+            <p className="text-base font-black text-white">{siteName.toUpperCase()}</p>
+            <p className="text-slate-400">Owner: {ownerName} • Alamat: {address}</p>
+            <p className="text-slate-500">© 2026 {siteName}. A unit business of PT Mughis Cipta Media. Hak Cipta Dilindungi.</p>
           </div>
 
           <div className="flex flex-wrap items-center justify-center gap-6 font-bold text-sm">
@@ -451,9 +446,9 @@ export default function CatalogLaptopStorePage() {
               <InstagramIcon className="w-4 h-4" />
               <span>Highlight Testimoni IG</span>
             </a>
-            <a href={`https://wa.me/${waPhone}`} target="_blank" rel="noreferrer" className="text-emerald-400 hover:underline flex items-center gap-1.5">
+            <a href={`https://wa.me/${formattedWa}`} target="_blank" rel="noreferrer" className="text-emerald-400 hover:underline flex items-center gap-1.5">
               <Phone className="w-4 h-4" />
-              <span>WhatsApp CS (0852-1770-6587)</span>
+              <span>WhatsApp CS ({waPhone})</span>
             </a>
           </div>
         </div>
@@ -490,10 +485,24 @@ export default function CatalogLaptopStorePage() {
                 </ul>
               </div>
 
+              {selectedProduct.conditionNote && (
+                <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 text-xs">
+                  <span className="font-bold text-amber-300 block">Kondisi Unit:</span>
+                  <span className="text-slate-300">{selectedProduct.conditionNote}</span>
+                </div>
+              )}
+
+              {selectedProduct.warranty && (
+                <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 text-xs">
+                  <span className="font-bold text-emerald-400 block">Masa Garansi Toko:</span>
+                  <span className="text-slate-300">{selectedProduct.warranty}</span>
+                </div>
+              )}
+
               <p className="text-xs text-slate-400 leading-relaxed font-medium">{selectedProduct.shortDesc}</p>
 
               <a
-                href={`https://wa.me/${waPhone}?text=${encodeURIComponent(`Halo Mughis Laptop Store, saya mau pesan unit "${selectedProduct.title}" (${selectedProduct.priceText}). Mohon info stok.`)}`}
+                href={`https://wa.me/${formattedWa}?text=${encodeURIComponent(`Assalamu’alaikum ${siteName},\n\nSaya tertarik dengan unit:\n*${selectedProduct.title}*\nHarga: ${selectedProduct.priceText}\n\nApakah unit masih tersedia? Mohon informasi kondisi dan garansinya.`)}`}
                 target="_blank"
                 rel="noreferrer"
                 className="w-full py-3.5 bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-xs sm:text-sm rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-emerald-600/30"

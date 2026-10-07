@@ -182,13 +182,13 @@ export default function CatalogLaptopStorePage() {
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 font-sans antialiased">
 
-      <!-- Top Announcement Fraud Alert -->
+      {/* Top Announcement Fraud Alert */}
       <div className="bg-gradient-to-r from-amber-600 via-rose-600 to-amber-600 text-white text-xs sm:text-sm py-2.5 px-4 text-center font-bold tracking-wide shadow-md">
         ⚠️ <strong>PERINGATAN RESMI WASPADA PENIPUAN:</strong> Pembayaran HANYA dikirim ke rekening resmi a/n <u>{ownerName}</u> (BSI / SeaBank). WA Resmi: <u>0852-1770-6587</u>!
       </div>
 
-      <!-- Header Navigation -->
-      <header class="sticky top-0 z-40 bg-slate-900/90 backdrop-blur-md border-b border-slate-800 shadow-xl">
+      {/* Header Navigation */}
+      <header className="sticky top-0 z-40 bg-slate-900/90 backdrop-blur-md border-b border-slate-800 shadow-xl">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
           <a href="#" className="flex items-center gap-3 group">
             <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-emerald-600 to-teal-400 flex items-center justify-center text-slate-950 font-black text-xl shadow-lg shadow-emerald-500/20 group-hover:scale-105 transition-transform">
@@ -229,7 +229,7 @@ export default function CatalogLaptopStorePage() {
         </div>
       </header>
 
-      <!-- Hero Showroom Banner -->
+      {/* Hero Showroom Banner */}
       <section className="relative pt-12 pb-16 bg-gradient-to-b from-slate-900 via-slate-900/90 to-slate-950 border-b border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
 
@@ -246,7 +246,7 @@ export default function CatalogLaptopStorePage() {
             Unit laptop lolos QC siap pakai untuk kerja, kuliah, & usaha. Transaksi 100% amanah, garansi jelas, serta bimbingan konsultasi gratis langsung dari toko fisik kami di Sangso, Samalanga.
           </p>
 
-          <!-- Search Bar -->
+          {/* Search Bar */}
           <div className="relative max-w-2xl mx-auto shadow-2xl rounded-2xl pt-2">
             <Search className="w-6 h-6 absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" />
             <input
@@ -258,7 +258,7 @@ export default function CatalogLaptopStorePage() {
             />
           </div>
 
-          <!-- Category Filter Pills -->
+          {/* Category Filter Pills */}
           <div className="flex flex-wrap justify-center gap-2 sm:gap-3 text-xs sm:text-sm font-bold pt-2">
             <button
               onClick={() => setCurrentCategory("all")}
@@ -288,7 +288,7 @@ export default function CatalogLaptopStorePage() {
         </div>
       </section>
 
-      <!-- Fraud Warning Callout Banner -->
+      {/* Fraud Warning Callout Banner */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6 relative z-10">
         <div className="bg-gradient-to-r from-slate-900 via-amber-950/60 to-slate-900 border-2 border-amber-500/50 p-5 rounded-2xl shadow-2xl flex flex-col md:flex-row items-center justify-between gap-4 text-xs sm:text-sm">
           <div className="flex items-start gap-3">
@@ -313,7 +313,7 @@ export default function CatalogLaptopStorePage() {
         </div>
       </section>
 
-      <!-- Products Grid -->
+      {/* Products Grid */}
       <section className="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-8 pb-4 border-b border-slate-800 gap-4">
           <div>
@@ -382,7 +382,7 @@ export default function CatalogLaptopStorePage() {
         )}
       </section>
 
-      <!-- Bank Accounts Info Section -->
+      {/* Bank Accounts Info Section */}
       <section className="py-16 bg-slate-900 border-t border-slate-800 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
           <div className="text-center max-w-2xl mx-auto space-y-3">
@@ -427,7 +427,7 @@ export default function CatalogLaptopStorePage() {
         </div>
       </section>
 
-      <!-- Footer -->
+      {/* Footer */}
       <footer className="bg-slate-950 text-slate-400 border-t border-slate-800 py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6 text-xs">
           <div className="space-y-1.5 text-center md:text-left">
@@ -449,7 +449,7 @@ export default function CatalogLaptopStorePage() {
         </div>
       </footer>
 
-      <!-- Modal Detail -->
+      {/* Modal Detail */}
       {selectedProduct && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm">
           <div className="bg-slate-900 border border-slate-800 max-w-xl w-full rounded-2xl overflow-hidden shadow-2xl p-6 space-y-4 text-white relative">
@@ -496,7 +496,7 @@ export default function CatalogLaptopStorePage() {
         </div>
       )}
 
-      <!-- Toast Notification -->
+      {/* Toast Notification */}
       {toastMsg && (
         <div className="fixed bottom-10 left-1/2 -translate-x-1/2 z-50 px-6 py-3.5 rounded-full bg-slate-900 border border-emerald-500/50 text-white shadow-2xl flex items-center gap-2 text-xs font-bold">
           <Check className="w-4 h-4 text-emerald-400" />

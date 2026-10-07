@@ -234,7 +234,6 @@ export default function AdminKatalogLaptopPage() {
           if (data.catalog_products_json) {
             try {
               const loadedProducts: ProductItem[] = JSON.parse(data.catalog_products_json)
-              // Ensure images array exists for all items
               const formatted = loadedProducts.map(p => ({
                 ...p,
                 images: p.images && p.images.length > 0 ? p.images : [p.image]
@@ -481,7 +480,7 @@ export default function AdminKatalogLaptopPage() {
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 pb-3">
             <div>
               <h2 className="text-base sm:text-lg font-extrabold text-slate-900">Unit Laptop & Produk Digital Ready Stock</h2>
-              <p className="text-xs text-slate-500">Setiap produk sekarang dapat mendukung hingga 4 galeri foto multi-sudut.</p>
+              <p className="text-xs text-slate-500">Setiap produk mendukung 4 galeri foto berasio 4:5 portrait.</p>
             </div>
             <button
               onClick={addProduct}
@@ -496,7 +495,7 @@ export default function AdminKatalogLaptopPage() {
             {products.map((p) => (
               <div key={p.id} className="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm flex flex-col justify-between hover:border-emerald-500 transition">
                 <div>
-                  <div className="relative h-44 bg-slate-100">
+                  <div className="relative aspect-[4/5] w-full bg-slate-100">
                     <img src={p.images?.[0] || p.image} alt={p.title} className="w-full h-full object-cover" />
                     <span className="absolute top-2 left-2 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-300">
                       {p.badge}
@@ -535,7 +534,7 @@ export default function AdminKatalogLaptopPage() {
             ))}
           </div>
 
-          {/* Product Editor Form Box with 4-Image Slots */}
+          {/* Product Editor Form Box with 4-Image Slots (Aspect 4:5) */}
           {editingProduct && (
             <div className="p-4 sm:p-6 rounded-2xl border-2 border-emerald-500 bg-slate-50 space-y-4">
               <div className="flex justify-between items-center border-b border-slate-200 pb-2">
@@ -612,12 +611,12 @@ export default function AdminKatalogLaptopPage() {
                   />
                 </div>
 
-                {/* 4-IMAGE GALERI SLOTS SECTION */}
+                {/* 4-IMAGE GALERI SLOTS SECTION WITH ASPECT 4:5 */}
                 <div className="md:col-span-2 p-4 rounded-xl bg-white border border-slate-200 space-y-4">
                   <div className="flex items-center justify-between">
                     <div>
                       <label className="block font-extrabold text-slate-900 text-xs uppercase tracking-wider">
-                        Galeri Foto Produk (Hingga 4 Foto Multi-Sudut)
+                        Galeri Foto Produk Rasio 4:5 (Hingga 4 Foto Multi-Sudut)
                       </label>
                       <p className="text-[11px] text-slate-500 font-medium">Slot 1 = Foto Utama Kartu. Slot 2-4 = Foto Samping, Keyboard, & Layar.</p>
                     </div>
@@ -642,7 +641,7 @@ export default function AdminKatalogLaptopPage() {
                             )}
                           </div>
 
-                          <div className="w-full h-28 rounded-lg bg-slate-200 overflow-hidden relative border border-slate-300">
+                          <div className="w-full aspect-[4/5] rounded-lg bg-slate-200 overflow-hidden relative border border-slate-300">
                             {slotImage ? (
                               <img src={slotImage} alt={`Slot ${slotIdx + 1}`} className="w-full h-full object-cover" />
                             ) : (

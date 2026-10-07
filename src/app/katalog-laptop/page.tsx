@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Search, Laptop, ShieldCheck, Phone, CheckCircle, Copy, X, Check, MapPin, ShieldAlert, Award, ExternalLink, ArrowRight, User, CheckSquare, Sparkles, Image as ImageIcon, Truck, Clock } from "lucide-react"
+import { Search, Laptop, ShieldCheck, Phone, CheckCircle, Copy, X, Check, MapPin, ShieldAlert, Award, ExternalLink, ArrowRight, User, CheckSquare, Sparkles, Image as ImageIcon, Truck, Clock, Home } from "lucide-react"
 
 function InstagramIcon({ className = "w-4 h-4" }: { className?: string }) {
   return (
@@ -211,7 +211,7 @@ export default function CatalogLaptopStoreStandalonePage() {
   const [heroSubheadline, setHeroSubheadline] = useState("Unit laptop pilihan yang dites lolos QC 100%, garansi toko jelas, dan konsultasi gratis langsung via WhatsApp.")
   const [igHighlight, setIgHighlight] = useState("https://www.instagram.com/s/aGlnaGxpZ2h0OjE3OTI1ODg4MzI2NzYwNDM2?story_media_id=3106266946206908221&stkn=MWpwam1nMm13eDlwcg==")
 
-  const [activeTab, setActiveTab] = useState<"stok" | "garansi" | "pembayaran" | "lokasi">("stok")
+  const [activeTab, setActiveTab] = useState<"beranda" | "stok" | "garansi" | "pembayaran" | "lokasi">("beranda")
   const [currentCategory, setCurrentCategory] = useState("all")
   const [searchQuery, setSearchQuery] = useState("")
 
@@ -294,7 +294,7 @@ export default function CatalogLaptopStoreStandalonePage() {
       <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm transition-all duration-200">
         <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-2">
 
-          <a href="#" className="flex items-center gap-2 min-w-0">
+          <a href="#" onClick={(e) => { e.preventDefault(); setActiveTab("beranda"); }} className="flex items-center gap-2 min-w-0">
             <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-teal-600 flex items-center justify-center text-white shrink-0 shadow-md shadow-teal-600/20">
               <Laptop className="w-5 h-5 sm:w-6 sm:h-6" />
             </div>
@@ -311,6 +311,12 @@ export default function CatalogLaptopStoreStandalonePage() {
 
           {/* Sub-Page Navigation Tabs */}
           <nav className="hidden md:flex items-center space-x-2 text-xs sm:text-sm font-extrabold text-slate-700">
+            <button
+              onClick={() => setActiveTab("beranda")}
+              className={`px-3 py-2 rounded-xl transition ${activeTab === "beranda" ? "bg-teal-600 text-white shadow-sm" : "hover:bg-slate-100 text-slate-700"}`}
+            >
+              🏠 Beranda
+            </button>
             <button
               onClick={() => setActiveTab("stok")}
               className={`px-3 py-2 rounded-xl transition ${activeTab === "stok" ? "bg-teal-600 text-white shadow-sm" : "hover:bg-slate-100 text-slate-700"}`}
@@ -363,6 +369,12 @@ export default function CatalogLaptopStoreStandalonePage() {
         {/* Mobile Tab Switcher Bar */}
         <div className="md:hidden flex border-t border-slate-200 bg-slate-50 px-2 py-1.5 overflow-x-auto gap-1 text-xs font-bold">
           <button
+            onClick={() => setActiveTab("beranda")}
+            className={`px-3 py-1.5 rounded-lg shrink-0 whitespace-nowrap transition ${activeTab === "beranda" ? "bg-teal-600 text-white" : "text-slate-600 hover:bg-slate-200"}`}
+          >
+            🏠 Beranda
+          </button>
+          <button
             onClick={() => setActiveTab("stok")}
             className={`px-3 py-1.5 rounded-lg shrink-0 whitespace-nowrap transition ${activeTab === "stok" ? "bg-teal-600 text-white" : "text-slate-600 hover:bg-slate-200"}`}
           >
@@ -384,105 +396,174 @@ export default function CatalogLaptopStoreStandalonePage() {
             onClick={() => setActiveTab("lokasi")}
             className={`px-3 py-1.5 rounded-lg shrink-0 whitespace-nowrap transition ${activeTab === "lokasi" ? "bg-teal-600 text-white" : "text-slate-600 hover:bg-slate-200"}`}
           >
-            📍 Lokasi Toko
+            📍 Lokasi
           </button>
         </div>
       </header>
 
-      {/* Hero Bright Section */}
-      <section className="pt-6 sm:pt-12 pb-10 sm:pb-16 bg-gradient-to-b from-teal-50/80 via-white to-slate-50 border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4 sm:space-y-6">
+      {/* 1. TAB CONTENT: BERANDA / HOME (HERO BANNER ONLY RENDERS HERE) */}
+      {activeTab === "beranda" && (
+        <>
+          <section className="pt-8 sm:pt-14 pb-12 sm:pb-16 bg-gradient-to-b from-teal-50/80 via-white to-slate-50 border-b border-slate-200">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4 sm:space-y-6">
 
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-teal-100 border border-teal-300 text-teal-800 text-[11px] sm:text-sm font-extrabold uppercase tracking-wider">
-            <Award className="w-4 h-4 text-teal-600 shrink-0" />
-            <span>Official Store • Owner: {ownerName} • Samalanga, Bireuen</span>
-          </div>
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-teal-100 border border-teal-300 text-teal-800 text-[11px] sm:text-sm font-extrabold uppercase tracking-wider">
+                <Award className="w-4 h-4 text-teal-600 shrink-0" />
+                <span>Official Store • Owner: {ownerName} • Samalanga, Bireuen</span>
+              </div>
 
-          <h1 className="text-2xl sm:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight leading-tight">
-            {heroHeadline}
-          </h1>
+              <h1 className="text-2xl sm:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight leading-tight">
+                {heroHeadline}
+              </h1>
 
-          <p className="text-xs sm:text-lg text-slate-600 font-medium max-w-2xl mx-auto leading-relaxed">
-            {heroSubheadline}
-          </p>
-
-          {/* Search Bar */}
-          <div className="relative max-w-2xl mx-auto shadow-md rounded-2xl pt-1">
-            <Search className="w-5 h-5 sm:w-6 sm:h-6 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
-            <input
-              type="text"
-              placeholder="Cari ThinkPad X1, T460, T470, HP 430 G5, Ideapad S530..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 sm:pl-12 pr-4 py-3.5 text-sm sm:text-lg font-bold rounded-2xl border-2 border-slate-300 focus:border-teal-600 focus:outline-none bg-white text-slate-900 placeholder:text-slate-400 font-medium"
-            />
-          </div>
-
-          {/* Filter Categories */}
-          <div className="flex flex-wrap justify-center gap-2 text-xs sm:text-sm font-bold pt-2">
-            <button
-              onClick={() => { setActiveTab("stok"); setCurrentCategory("all"); }}
-              className={`px-3.5 py-2 sm:px-5 sm:py-2.5 rounded-xl border-2 transition ${currentCategory === "all" && activeTab === "stok" ? "bg-teal-600 border-teal-600 text-white shadow-sm" : "bg-white border-slate-200 text-slate-700 hover:border-teal-600"}`}
-            >
-              🔥 Semua Produk ({activeProducts.length})
-            </button>
-            <button
-              onClick={() => { setActiveTab("stok"); setCurrentCategory("laptop"); }}
-              className={`px-3.5 py-2 sm:px-5 sm:py-2.5 rounded-xl border-2 transition ${currentCategory === "laptop" && activeTab === "stok" ? "bg-teal-600 border-teal-600 text-white shadow-sm" : "bg-white border-slate-200 text-slate-700 hover:border-teal-600"}`}
-            >
-              💻 Laptop Business
-            </button>
-            <button
-              onClick={() => { setActiveTab("stok"); setCurrentCategory("digital"); }}
-              className={`px-3.5 py-2 sm:px-5 sm:py-2.5 rounded-xl border-2 transition ${currentCategory === "digital" && activeTab === "stok" ? "bg-teal-600 border-teal-600 text-white shadow-sm" : "bg-white border-slate-200 text-slate-700 hover:border-teal-600"}`}
-            >
-              🔑 Produk Digital & Lisensi
-            </button>
-            <button
-              onClick={() => { setActiveTab("stok"); setCurrentCategory("budget"); }}
-              className={`px-3.5 py-2 sm:px-5 sm:py-2.5 rounded-xl border-2 transition ${currentCategory === "budget" && activeTab === "stok" ? "bg-teal-600 border-teal-600 text-white shadow-sm" : "bg-white border-slate-200 text-slate-700 hover:border-teal-600"}`}
-            >
-              🏷️ Promo & Pilihan Hemat
-            </button>
-          </div>
-        </div>
-      </section>
-
-      {/* Fraud Protection Callout Banner */}
-      <section className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 -mt-5 relative z-10">
-        <div className="bg-amber-50 border-2 border-amber-400/80 p-4 sm:p-5 rounded-2xl shadow-lg flex flex-col md:flex-row items-center justify-between gap-3 text-xs sm:text-sm text-slate-900">
-          <div className="flex items-start gap-3">
-            <ShieldAlert className="w-7 h-7 sm:w-8 sm:h-8 text-amber-600 shrink-0 mt-0.5" />
-            <div>
-              <p className="font-extrabold text-amber-900 uppercase tracking-wider">HIMBAUAN KEAMANAN TRANSAKSI OWNER ({ownerName.toUpperCase()})</p>
-              <p className="text-slate-700 mt-0.5 leading-relaxed">
-                Pastikan transfer pembayaran Anda <strong>HANYA</strong> dikirimkan ke rekening Bank BSI atau SeaBank atas nama <strong>{ownerName}</strong>. WA Resmi: <strong>{waPhone}</strong>.
+              <p className="text-xs sm:text-lg text-slate-600 font-medium max-w-2xl mx-auto leading-relaxed">
+                {heroSubheadline}
               </p>
+
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
+                <button
+                  onClick={() => setActiveTab("stok")}
+                  className="w-full sm:w-auto px-8 py-3.5 rounded-2xl bg-teal-600 hover:bg-teal-700 text-white font-extrabold text-sm flex items-center justify-center gap-2 shadow-lg shadow-teal-600/30 active:scale-95 transition"
+                >
+                  <Laptop className="w-5 h-5" />
+                  <span>Lihat Semua Stok Unit Ready Stock ({activeProducts.length})</span>
+                </button>
+
+                <a
+                  href={`https://wa.me/${formattedWa}?text=${encodeURIComponent("Halo Mughis Laptop Store, saya ingin bertanya stok laptop/produk digital.")}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="w-full sm:w-auto px-6 py-3.5 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-sm flex items-center justify-center gap-2 shadow-lg shadow-emerald-600/30 active:scale-95 transition"
+                >
+                  <Phone className="w-5 h-5" />
+                  <span>Konsultasi WA CS</span>
+                </a>
+              </div>
             </div>
-          </div>
+          </section>
 
-          <a
-            href={igHighlight}
-            target="_blank"
-            rel="noreferrer"
-            className="px-4 py-2 rounded-xl bg-pink-600 hover:bg-pink-700 text-white font-bold text-xs flex items-center gap-2 shrink-0 shadow-md w-full sm:w-auto justify-center"
-          >
-            <InstagramIcon className="w-4 h-4" />
-            <span>Cek Testimoni IG</span>
-          </a>
-        </div>
-      </section>
+          {/* Fraud Protection Callout Banner */}
+          <section className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 -mt-5 relative z-10">
+            <div className="bg-amber-50 border-2 border-amber-400/80 p-4 sm:p-5 rounded-2xl shadow-lg flex flex-col md:flex-row items-center justify-between gap-3 text-xs sm:text-sm text-slate-900">
+              <div className="flex items-start gap-3">
+                <ShieldAlert className="w-7 h-7 sm:w-8 sm:h-8 text-amber-600 shrink-0 mt-0.5" />
+                <div>
+                  <p className="font-extrabold text-amber-900 uppercase tracking-wider">HIMBAUAN KEAMANAN TRANSAKSI OWNER ({ownerName.toUpperCase()})</p>
+                  <p className="text-slate-700 mt-0.5 leading-relaxed">
+                    Pastikan transfer pembayaran Anda <strong>HANYA</strong> dikirimkan ke rekening Bank BSI atau SeaBank atas nama <strong>{ownerName}</strong>. WA Resmi: <strong>{waPhone}</strong>.
+                  </p>
+                </div>
+              </div>
 
-      {/* TAB CONTENT 1: STOK UNIT KATALOG */}
+              <a
+                href={igHighlight}
+                target="_blank"
+                rel="noreferrer"
+                className="px-4 py-2 rounded-xl bg-pink-600 hover:bg-pink-700 text-white font-bold text-xs flex items-center gap-2 shrink-0 shadow-md w-full sm:w-auto justify-center"
+              >
+                <InstagramIcon className="w-4 h-4" />
+                <span>Cek Testimoni IG</span>
+              </a>
+            </div>
+          </section>
+
+          {/* Store Strengths Section */}
+          <section id="keunggulan" className="py-12 sm:py-16 bg-white">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="text-center max-w-2xl mx-auto mb-8 space-y-2">
+                <span className="px-3.5 py-1 rounded-full bg-teal-100 text-teal-800 text-xs font-extrabold uppercase">Keunggulan Toko</span>
+                <h2 className="text-2xl sm:text-4xl font-black text-slate-900">Mengapa Memilih Mughis Laptop Store?</h2>
+              </div>
+
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
+                <div className="p-4 sm:p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-1.5">
+                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-teal-100 text-teal-700 flex items-center justify-center font-bold">
+                    <ShieldCheck className="w-5 h-5" />
+                  </div>
+                  <h3 className="text-xs sm:text-base font-bold text-slate-900">Garansi Toko Jelas</h3>
+                  <p className="text-[11px] sm:text-xs text-slate-600 leading-relaxed font-medium">Semua unit dilengkapi garansi toko resmi 30 hari.</p>
+                </div>
+
+                <div className="p-4 sm:p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-1.5">
+                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold">
+                    <CheckSquare className="w-5 h-5" />
+                  </div>
+                  <h3 className="text-xs sm:text-base font-bold text-slate-900">QC Unit 100%</h3>
+                  <p className="text-[11px] sm:text-xs text-slate-600 leading-relaxed font-medium">Layar, keyboard, baterai, & hardware dites menyeluruh.</p>
+                </div>
+
+                <div className="p-4 sm:p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-1.5">
+                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center font-bold">
+                    <Phone className="w-5 h-5" />
+                  </div>
+                  <h3 className="text-xs sm:text-base font-bold text-slate-900">Konsultasi Gratis WA</h3>
+                  <p className="text-[11px] sm:text-xs text-slate-600 leading-relaxed font-medium">CS ramah membantu memilih spek laptop sesuai kebutuhan.</p>
+                </div>
+
+                <div className="p-4 sm:p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-1.5">
+                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-amber-100 text-amber-800 flex items-center justify-center font-bold">
+                    <Award className="w-5 h-5" />
+                  </div>
+                  <h3 className="text-xs sm:text-base font-bold text-slate-900">Rekening Owner Resmi</h3>
+                  <p className="text-[11px] sm:text-xs text-slate-600 leading-relaxed font-medium">Transfer aman hanya a/n Muhammad Aghisna.</p>
+                </div>
+              </div>
+            </div>
+          </section>
+        </>
+      )}
+
+      {/* 2. TAB CONTENT: STOK UNIT READY (PURE PRODUCT CATALOG WITH ASPECT RATIO 4:5) */}
       {activeTab === "stok" && (
-        <section id="katalog" className="py-10 sm:py-16 max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 sm:mb-8 pb-3 border-b border-slate-200 gap-3">
+        <section id="katalog" className="py-8 sm:py-12 max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 pb-3 border-b border-slate-200 gap-3">
             <div>
               <h2 className="text-xl sm:text-3xl font-black text-slate-900">Daftar Unit & Produk Ready Stock</h2>
-              <p className="text-xs sm:text-sm text-slate-500 font-medium">Klik pada produk untuk melihat rincian spesifikasi & galeri foto multi-sudut</p>
+              <p className="text-xs sm:text-sm text-slate-500 font-medium">Klik produk untuk melihat spesifikasi & galeri foto multi-sudut (Rasio 4:5)</p>
             </div>
             <div className="text-[11px] sm:text-xs font-bold text-slate-600 bg-white px-3 py-1.5 rounded-xl border border-slate-200 self-start sm:self-auto">
               100% Lolos QC & Siap Pakai
+            </div>
+          </div>
+
+          {/* Search Bar & Filters inside Stok Tab */}
+          <div className="space-y-4 mb-8">
+            <div className="relative max-w-2xl mx-auto shadow-md rounded-2xl">
+              <Search className="w-5 h-5 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
+              <input
+                type="text"
+                placeholder="Cari ThinkPad X1, T460, T470, HP 430 G5, Ideapad S530..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full pl-10 pr-4 py-3 text-sm sm:text-base font-bold rounded-2xl border-2 border-slate-300 focus:border-teal-600 focus:outline-none bg-white text-slate-900 placeholder:text-slate-400"
+              />
+            </div>
+
+            <div className="flex flex-wrap justify-center gap-2 text-xs sm:text-sm font-bold">
+              <button
+                onClick={() => setCurrentCategory("all")}
+                className={`px-3.5 py-2 rounded-xl border-2 transition ${currentCategory === "all" ? "bg-teal-600 border-teal-600 text-white shadow-sm" : "bg-white border-slate-200 text-slate-700 hover:border-teal-600"}`}
+              >
+                🔥 Semua Produk ({activeProducts.length})
+              </button>
+              <button
+                onClick={() => setCurrentCategory("laptop")}
+                className={`px-3.5 py-2 rounded-xl border-2 transition ${currentCategory === "laptop" ? "bg-teal-600 border-teal-600 text-white shadow-sm" : "bg-white border-slate-200 text-slate-700 hover:border-teal-600"}`}
+              >
+                💻 Laptop Business
+              </button>
+              <button
+                onClick={() => setCurrentCategory("digital")}
+                className={`px-3.5 py-2 rounded-xl border-2 transition ${currentCategory === "digital" ? "bg-teal-600 border-teal-600 text-white shadow-sm" : "bg-white border-slate-200 text-slate-700 hover:border-teal-600"}`}
+              >
+                🔑 Produk Digital & Lisensi
+              </button>
+              <button
+                onClick={() => setCurrentCategory("budget")}
+                className={`px-3.5 py-2 rounded-xl border-2 transition ${currentCategory === "budget" ? "bg-teal-600 border-teal-600 text-white shadow-sm" : "bg-white border-slate-200 text-slate-700 hover:border-teal-600"}`}
+              >
+                🏷️ Promo & Pilihan Hemat
+              </button>
             </div>
           </div>
 
@@ -501,7 +582,8 @@ export default function CatalogLaptopStoreStandalonePage() {
                 return (
                   <div key={p.id} className="bg-white rounded-2xl border-2 border-slate-200 overflow-hidden flex flex-col justify-between shadow-sm hover:shadow-xl transition-all duration-300 group hover:-translate-y-1">
                     <div>
-                      <div className="relative h-48 sm:h-52 w-full bg-slate-100 overflow-hidden">
+                      {/* ASPECT RATIO 4:5 PORTRAIT CONTAINER */}
+                      <div className="relative aspect-[4/5] w-full bg-slate-100 overflow-hidden">
                         <img src={p.images?.[0] || p.image} alt={p.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
                         <span className="absolute top-3 left-3 px-3 py-1 rounded-full text-[10px] sm:text-xs font-black uppercase tracking-wider bg-teal-100 text-teal-800 border border-teal-300 shadow-sm">
                           {p.badge}
@@ -554,9 +636,9 @@ export default function CatalogLaptopStoreStandalonePage() {
         </section>
       )}
 
-      {/* TAB CONTENT 2: PUSAT GARANSI & LAYANAN PURNA JUAL */}
+      {/* 3. TAB CONTENT: PUSAT GARANSI & LAYANAN PURNA JUAL */}
       {activeTab === "garansi" && (
-        <section className="py-10 sm:py-16 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+        <section className="py-8 sm:py-12 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
           <div className="bg-white p-6 sm:p-8 rounded-3xl border-2 border-slate-200 shadow-md space-y-6">
             <div className="flex items-center gap-3 border-b border-slate-200 pb-4">
               <div className="w-12 h-12 rounded-2xl bg-teal-100 text-teal-700 flex items-center justify-center font-bold shrink-0">
@@ -621,9 +703,9 @@ export default function CatalogLaptopStoreStandalonePage() {
         </section>
       )}
 
-      {/* TAB CONTENT 3: REKENING RESMI & PEMBAYARAN */}
+      {/* 4. TAB CONTENT: REKENING RESMI & PEMBAYARAN */}
       {activeTab === "pembayaran" && (
-        <section id="info-bisnis" className="py-10 sm:py-16 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+        <section id="info-bisnis" className="py-8 sm:py-12 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
           <div className="bg-slate-900 text-white p-6 sm:p-8 rounded-3xl border-2 border-slate-800 shadow-2xl space-y-8">
             <div className="text-center max-w-2xl mx-auto space-y-2">
               <span className="px-3.5 py-1 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold uppercase tracking-widest border border-emerald-500/30">
@@ -689,9 +771,9 @@ export default function CatalogLaptopStoreStandalonePage() {
         </section>
       )}
 
-      {/* TAB CONTENT 4: LOKASI TOKO FISIK & KONTAK */}
+      {/* 5. TAB CONTENT: LOKASI TOKO FISIK & KONTAK */}
       {activeTab === "lokasi" && (
-        <section className="py-10 sm:py-16 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+        <section className="py-8 sm:py-12 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
           <div className="bg-white p-6 sm:p-8 rounded-3xl border-2 border-slate-200 shadow-md space-y-6">
             <div className="flex items-center gap-3 border-b border-slate-200 pb-4">
               <div className="w-12 h-12 rounded-2xl bg-teal-100 text-teal-700 flex items-center justify-center font-bold shrink-0">
@@ -735,45 +817,6 @@ export default function CatalogLaptopStoreStandalonePage() {
         </section>
       )}
 
-      {/* Store Strengths Bar */}
-      <section id="keunggulan" className="py-10 sm:py-12 bg-white border-y border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
-            <div className="p-4 sm:p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-1.5">
-              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-teal-100 text-teal-700 flex items-center justify-center font-bold">
-                <ShieldCheck className="w-5 h-5" />
-              </div>
-              <h3 className="text-xs sm:text-base font-bold text-slate-900">Garansi Toko Jelas</h3>
-              <p className="text-[11px] sm:text-xs text-slate-600 leading-relaxed font-medium">Semua unit dilengkapi garansi toko resmi 30 hari.</p>
-            </div>
-
-            <div className="p-4 sm:p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-1.5">
-              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold">
-                <CheckSquare className="w-5 h-5" />
-              </div>
-              <h3 className="text-xs sm:text-base font-bold text-slate-900">QC Unit 100%</h3>
-              <p className="text-[11px] sm:text-xs text-slate-600 leading-relaxed font-medium">Layar, keyboard, baterai, & hardware dites menyeluruh.</p>
-            </div>
-
-            <div className="p-4 sm:p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-1.5">
-              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center font-bold">
-                <Phone className="w-5 h-5" />
-              </div>
-              <h3 className="text-xs sm:text-base font-bold text-slate-900">Konsultasi Gratis WA</h3>
-              <p className="text-[11px] sm:text-xs text-slate-600 leading-relaxed font-medium">CS ramah membantu memilih spek laptop sesuai kebutuhan.</p>
-            </div>
-
-            <div className="p-4 sm:p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-1.5">
-              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-amber-100 text-amber-800 flex items-center justify-center font-bold">
-                <Award className="w-5 h-5" />
-              </div>
-              <h3 className="text-xs sm:text-base font-bold text-slate-900">Rekening Owner Resmi</h3>
-              <p className="text-[11px] sm:text-xs text-slate-600 leading-relaxed font-medium">Transfer aman hanya a/n Muhammad Aghisna.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Footer - 100% Tech Storefront */}
       <footer className="bg-slate-950 text-slate-400 border-t border-slate-800 py-8 sm:py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-center md:text-left">
@@ -796,7 +839,7 @@ export default function CatalogLaptopStoreStandalonePage() {
         </div>
       </footer>
 
-      {/* Modal Detail with 4-Photo Gallery Selector */}
+      {/* Modal Detail with ASPECT-RATIO 4:5 Portrait Gallery */}
       {selectedProduct && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-950/70 backdrop-blur-sm transition-all duration-300">
           <div className="bg-white border border-slate-300 max-w-xl w-full rounded-2xl overflow-hidden shadow-2xl p-5 sm:p-6 space-y-4 text-slate-900 relative max-h-[90vh] overflow-y-auto">
@@ -811,8 +854,8 @@ export default function CatalogLaptopStoreStandalonePage() {
               <h3 className="text-lg sm:text-xl font-extrabold text-slate-900 pr-8">{selectedProduct.title}</h3>
               <p className="text-2xl sm:text-3xl font-black text-teal-700">{selectedProduct.rawPriceText || selectedProduct.priceText}</p>
 
-              {/* Main Active Photo */}
-              <div className="w-full h-52 sm:h-60 rounded-xl overflow-hidden bg-slate-100 border border-slate-200 relative">
+              {/* Main Active Photo with Aspect 4:5 */}
+              <div className="w-full aspect-[4/5] max-h-[380px] rounded-xl overflow-hidden bg-slate-100 border border-slate-200 relative mx-auto">
                 <img
                   src={selectedProduct.images?.[activePhotoIdx] || selectedProduct.image}
                   alt={selectedProduct.title}
@@ -822,12 +865,12 @@ export default function CatalogLaptopStoreStandalonePage() {
 
               {/* 4-Photo Thumbnail Selector */}
               {selectedProduct.images && selectedProduct.images.length > 1 && (
-                <div className="flex items-center gap-2 overflow-x-auto pb-1">
+                <div className="flex items-center gap-2 overflow-x-auto pb-1 justify-center">
                   {selectedProduct.images.map((imgUrl, idx) => (
                     <button
                       key={idx}
                       onClick={() => setActivePhotoIdx(idx)}
-                      className={`w-16 h-16 rounded-lg overflow-hidden border-2 shrink-0 transition ${activePhotoIdx === idx ? "border-teal-600 ring-2 ring-teal-600/30" : "border-slate-200 opacity-60 hover:opacity-100"}`}
+                      className={`w-16 aspect-[4/5] rounded-lg overflow-hidden border-2 shrink-0 transition ${activePhotoIdx === idx ? "border-teal-600 ring-2 ring-teal-600/30" : "border-slate-200 opacity-60 hover:opacity-100"}`}
                     >
                       <img src={imgUrl} alt={`Foto ${idx + 1}`} className="w-full h-full object-cover" />
                     </button>

@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { Building2, CreditCard, Laptop, Plus, Trash2, Edit3, Save, Eye, EyeOff, ShieldAlert, Check, Copy } from "lucide-react"
+import { Building2, CreditCard, Laptop, Plus, Trash2, Edit3, Save, Upload, Image as ImageIcon, Check } from "lucide-react"
 
 interface BankAccount {
   id: string
@@ -250,6 +250,26 @@ export default function AdminKatalogLaptopPage() {
     } finally {
       setSaving(false)
     }
+  }
+
+  // File Upload Handler (Base64)
+  function handleImageUpload(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0]
+    if (!file) return
+
+    if (file.size > 5 * 1024 * 1024) {
+      alert("Ukuran file gambar terlalu besar. Maksimal 5MB!")
+      return
+    }
+
+    const reader = new FileReader()
+    reader.onloadend = () => {
+      const base64Data = reader.result as string
+      if (editingProduct) {
+        setEditingProduct({ ...editingProduct, image: base64Data })
+      }
+    }
+    reader.readAsDataURL(file)
   }
 
   // Bank Actions
@@ -510,14 +530,38 @@ export default function AdminKatalogLaptopPage() {
                   />
                 </div>
 
-                <div>
-                  <label className="block font-bold text-slate-700 mb-1">Foto Utama / Gambar URL</label>
-                  <input
-                    type="text"
-                    value={editingProduct.image}
-                    onChange={(e) => setEditingProduct({ ...editingProduct, image: e.target.value })}
-                    className="w-full p-2.5 rounded-lg border border-slate-300 bg-white font-mono text-[11px] text-slate-900"
-                  />
+                {/* IMAGE UPLOAD & URL SECTION */}
+                <div className="md:col-span-2 p-4 rounded-xl bg-white border border-slate-200 space-y-3">
+                  <label className="block font-extrabold text-slate-900 text-xs uppercase tracking-wider">
+                    Foto Produk Utama
+                  </label>
+
+                  <div className="flex flex-col sm:flex-row items-center gap-4">
+                    <div className="w-24 h-24 rounded-xl bg-slate-100 border border-slate-300 overflow-hidden shrink-0 relative">
+                      <img src={editingProduct.image} alt="Preview" className="w-full h-full object-cover" />
+                    </div>
+
+                    <div className="flex-1 space-y-2 w-full">
+                      <label className="px-4 py-2.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs inline-flex items-center gap-2 cursor-pointer shadow-md shadow-teal-600/20 active:scale-95 transition">
+                        <Upload className="w-4 h-4" />
+                        <span>Upload File Gambar (Dari HP / Laptop)</span>
+                        <input
+                          type="file"
+                          accept="image/*"
+                          onChange={handleImageUpload}
+                          className="hidden"
+                        />
+                      </label>
+                      <p className="text-[11px] text-slate-500 font-medium">Atau masukkan URL/Link gambar eksternal di bawah ini:</p>
+                      <input
+                        type="text"
+                        value={editingProduct.image}
+                        onChange={(e) => setEditingProduct({ ...editingProduct, image: e.target.value })}
+                        className="w-full p-2 rounded-lg border border-slate-300 bg-slate-50 font-mono text-[11px] text-slate-900"
+                        placeholder="https://..."
+                      />
+                    </div>
+                  </div>
                 </div>
 
                 <div>
@@ -526,6 +570,16 @@ export default function AdminKatalogLaptopPage() {
                     type="text"
                     value={editingProduct.conditionNote || "Grade A Mulus 90-95%"}
                     onChange={(e) => setEditingProduct({ ...editingProduct, conditionNote: e.target.value })}
+                    className="w-full p-2.5 rounded-lg border border-slate-300 bg-white font-medium text-slate-900"
+                  />
+                </div>
+
+                <div>
+                  <label className="block font-bold text-slate-700 mb-1">Ketentuan Garansi</label>
+                  <input
+                    type="text"
+                    value={editingProduct.warranty || "Garansi Toko 30 Hari"}
+                    onChange={(e) => setEditingProduct({ ...editingProduct, warranty: e.target.value })}
                     className="w-full p-2.5 rounded-lg border border-slate-300 bg-white font-medium text-slate-900"
                   />
                 </div>
@@ -550,17 +604,7 @@ export default function AdminKatalogLaptopPage() {
                   />
                 </div>
 
-                <div>
-                  <label className="block font-bold text-slate-700 mb-1">Ketentuan Garansi</label>
-                  <input
-                    type="text"
-                    value={editingProduct.warranty || "Garansi Toko 30 Hari"}
-                    onChange={(e) => setEditingProduct({ ...editingProduct, warranty: e.target.value })}
-                    className="w-full p-2.5 rounded-lg border border-slate-300 bg-white font-medium text-slate-900"
-                  />
-                </div>
-
-                <div>
+                <div className="md:col-span-2">
                   <label className="block font-bold text-slate-700 mb-1">Bonus & Kelengkapan</label>
                   <input
                     type="text"

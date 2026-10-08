@@ -264,8 +264,8 @@ export default function CatalogLaptopStoreCleanPage() {
     <div className="min-h-screen bg-slate-50 text-slate-900 font-sans antialiased pb-24">
 
       {/* 1. CLEAN TOP ANNOUNCEMENT BAR */}
-      <div className="bg-slate-900 text-slate-200 text-[11px] sm:text-xs py-2 px-4 text-center font-medium">
-        💡 <strong>Toko Resmi & Terpercaya:</strong> Garansi Toko 30 Hari • Transfer Hanya a/n <u className="font-bold text-amber-300">{ownerName}</u> (BSI / SeaBank). CS WA: <u>{waPhone}</u>
+      <div className="bg-teal-700 text-white text-[11px] sm:text-xs py-2 px-4 text-center font-semibold border-b border-teal-800">
+        💡 <strong>Toko Resmi & Terpercaya:</strong> Garansi Toko 30 Hari • Transfer Hanya a/n <u className="font-bold text-amber-200">{ownerName}</u> (BSI / SeaBank). CS WA: <u>{waPhone}</u>
       </div>
 
       {/* 2. MINIMALIST STORE NAVBAR */}
@@ -534,29 +534,31 @@ export default function CatalogLaptopStoreCleanPage() {
           </div>
         </section>
 
-        {/* 8. OFFICIAL PAYMENT BANK ACCOUNTS */}
-        <section className="mt-10 p-5 sm:p-8 rounded-3xl bg-slate-900 text-white shadow-xl space-y-6">
+        {/* 8. OFFICIAL PAYMENT BANK ACCOUNTS - BRIGHT & CLEAN DESIGN */}
+        <section className="mt-10 p-5 sm:p-8 rounded-3xl bg-teal-50/80 border border-teal-200/80 text-slate-900 shadow-xs space-y-6">
           <div className="text-center max-w-xl mx-auto space-y-1">
-            <span className="text-[10px] font-bold uppercase tracking-widest text-emerald-400">Rekening Resmi Owner</span>
-            <h2 className="text-xl sm:text-3xl font-extrabold">Informasi Pembayaran</h2>
-            <p className="text-slate-300 text-xs sm:text-sm">Transfer hanya ke rekening resmi a/n <strong>{ownerName}</strong>:</p>
+            <span className="text-[10px] font-bold uppercase tracking-widest text-teal-800 bg-teal-100 px-3 py-1 rounded-full border border-teal-200">
+              Rekening Resmi Owner
+            </span>
+            <h2 className="text-xl sm:text-3xl font-extrabold text-slate-900">Informasi Pembayaran Resmi</h2>
+            <p className="text-slate-600 text-xs sm:text-sm font-medium">Transfer HANYA ke rekening resmi atas nama <strong>{ownerName}</strong>:</p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
             {bankAccounts.map((b) => (
-              <div key={b.id} className="p-4 rounded-2xl bg-slate-950 border border-slate-800 space-y-2 relative">
+              <div key={b.id} className="p-4 rounded-2xl bg-white border border-teal-300 space-y-2 relative shadow-xs">
                 <div className="flex items-center justify-between">
-                  <span className="font-bold text-emerald-400 text-sm">{b.bank}</span>
-                  <span className="text-[9px] font-bold uppercase px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
-                    Resmi
+                  <span className="font-extrabold text-teal-800 text-sm">{b.bank}</span>
+                  <span className="text-[9px] font-bold uppercase px-2 py-0.5 rounded bg-teal-100 text-teal-800 border border-teal-300">
+                    Rekening Resmi
                   </span>
                 </div>
-                <p className="text-xl font-black font-mono tracking-wider text-white">{b.account_number}</p>
-                <div className="flex items-center justify-between pt-1 border-t border-slate-800/80">
-                  <span className="text-[11px] text-amber-300 font-bold">a/n {b.beneficiary}</span>
+                <p className="text-xl font-black font-mono tracking-wider text-slate-900">{b.account_number}</p>
+                <div className="flex items-center justify-between pt-1 border-t border-slate-100">
+                  <span className="text-[11px] text-teal-900 font-bold">a/n {b.beneficiary}</span>
                   <button
                     onClick={() => copyText(b.account_number, b.bank)}
-                    className="px-2.5 py-1 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-[10px] font-bold flex items-center gap-1 transition"
+                    className="px-2.5 py-1 rounded-lg bg-teal-700 hover:bg-teal-800 text-white text-[10px] font-bold flex items-center gap-1 transition shadow-xs"
                   >
                     <Copy className="w-3 h-3" />
                     <span>Salin</span>

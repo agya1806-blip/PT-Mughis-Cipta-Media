@@ -27,30 +27,21 @@ export default function Navbar() {
 
   const handleCloseMobile = useCallback(() => setMobileOpen(false), [])
 
-  const navItemClass = scrolled
-    ? "text-green-dark hover:text-green"
-    : "text-white/90 hover:text-white"
-
-  const megaItemClass = scrolled
-    ? "text-green-dark hover:text-green"
-    : "text-white/90 hover:text-white"
+  const navItemClass = "text-slate-800 hover:text-teal-700 font-semibold text-sm transition-colors"
+  const megaItemClass = "text-slate-800 hover:text-teal-700 font-semibold text-sm transition-colors"
 
   return (
     <>
       <header
         ref={headerRef}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          scrolled
-            ? "bg-cream/90 backdrop-blur-2xl border-b border-gold/20 shadow-lg shadow-green/5"
-            : "bg-transparent"
-        }`}
+        className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-xs transition-all duration-300"
       >
-        <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-10">
-            <div className="flex items-center justify-between h-16 md:h-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-8 lg:px-10">
+          <div className="flex items-center justify-between h-16 md:h-20">
             <div className="flex items-center gap-6 lg:gap-10">
-              <NavLogo scrolled={scrolled} />
+              <NavLogo scrolled={true} />
 
-              <nav className="hidden md:flex items-center gap-6 lg:gap-7" aria-label="Navigasi utama">
+              <nav className="hidden md:flex items-center gap-5 lg:gap-7" aria-label="Navigasi utama">
                 {mainNav.map((group) =>
                   group.href ? (
                     <NavItem key={group.href} href={group.href} className={navItemClass}>
@@ -73,7 +64,7 @@ export default function Navbar() {
             <div className="hidden md:flex items-center gap-2">
               <button
                 onClick={() => setSearchOpen(true)}
-                className={`${btnClass} ${scrolled ? btnScrolled : btnTransparent}`}
+                className={`${btnClass} text-slate-700 hover:bg-slate-100 hover:text-teal-700`}
                 aria-label="Cari"
               >
                 <Search className="w-4 h-4" />
@@ -84,14 +75,14 @@ export default function Navbar() {
             <div className="flex items-center gap-1 md:hidden">
               <button
                 onClick={() => setSearchOpen(true)}
-                className={`${btnClass} ${scrolled ? btnScrolled : btnTransparent}`}
+                className={`${btnClass} text-slate-700 hover:bg-slate-100`}
                 aria-label="Cari"
               >
                 <Search className="w-5 h-5" />
               </button>
               <button
                 onClick={() => setMobileOpen(true)}
-                className={`${btnClass} ${scrolled ? "text-green hover:bg-gold/10" : "text-white/80 hover:bg-white/10"}`}
+                className={`${btnClass} text-slate-800 hover:bg-slate-100`}
                 aria-label="Buka menu"
               >
                 <Menu className="w-5 h-5" />

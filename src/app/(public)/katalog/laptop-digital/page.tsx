@@ -364,40 +364,40 @@ export default function CatalogLaptopDigitalPage() {
         )}
       </section>
 
-      {/* Official Bank Accounts Section */}
-      <section className="py-16 bg-slate-900 text-white border-t border-slate-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
-          <div className="text-center max-w-2xl mx-auto space-y-3">
-            <span className="px-4 py-1.5 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold uppercase tracking-widest border border-emerald-500/30">
+      {/* Official Bank Accounts Section - BRIGHT & CLEAN DESIGN */}
+      <section className="py-12 bg-teal-50/80 text-slate-900 border-t border-teal-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+          <div className="text-center max-w-2xl mx-auto space-y-2">
+            <span className="px-3.5 py-1 rounded-full bg-teal-100 text-teal-800 text-xs font-bold uppercase tracking-wider border border-teal-200">
               Keamanan Transaksi Pembeli
             </span>
-            <h2 className="text-3xl sm:text-4xl font-black tracking-tight">Informasi Legalitas & Rekening Pembayaran Resmi</h2>
-            <p className="text-slate-300 text-sm sm:text-base font-normal">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Informasi Legalitas & Rekening Pembayaran Resmi</h2>
+            <p className="text-slate-600 text-xs sm:text-sm font-medium">
               Waspada terhadap penipuan! Pastikan transfer pembayaran Anda HANYA ditujukan ke rekening atas nama PT resmi perusahaan kami.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {bankAccounts.map((b) => (
-              <div key={b.id} className="p-6 rounded-2xl bg-slate-800/80 border border-slate-700 space-y-3 relative shadow-xl hover:border-emerald-500/50 transition">
+              <div key={b.id} className="p-5 rounded-2xl bg-white border border-teal-300 space-y-3 relative shadow-xs">
                 <div className="flex items-center justify-between">
-                  <span className="text-base font-extrabold text-emerald-400 tracking-wider">{b.bank}</span>
-                  <span className="text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-md bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                  <span className="text-base font-extrabold text-teal-800 tracking-wider">{b.bank}</span>
+                  <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md bg-teal-100 text-teal-800 border border-teal-200">
                     Rekening Resmi
                   </span>
                 </div>
                 <div>
-                  <p className="text-xs text-slate-400 font-medium">Nomor Rekening:</p>
-                  <p className="text-2xl font-black font-mono tracking-widest text-white mt-0.5">{b.account_number}</p>
+                  <p className="text-xs text-slate-500 font-medium">Nomor Rekening:</p>
+                  <p className="text-2xl font-black font-mono tracking-wider text-slate-900 mt-0.5">{b.account_number}</p>
                 </div>
-                <div className="pt-2 border-t border-slate-700/60 flex items-center justify-between">
+                <div className="pt-2 border-t border-slate-100 flex items-center justify-between">
                   <div>
-                    <p className="text-[10px] text-slate-400 uppercase font-bold">Atas Nama / Beneficiary:</p>
-                    <p className="text-sm font-extrabold text-slate-200">{b.beneficiary}</p>
+                    <p className="text-[10px] text-slate-500 uppercase font-bold">Atas Nama / Beneficiary:</p>
+                    <p className="text-sm font-extrabold text-teal-900">{b.beneficiary}</p>
                   </div>
                   <button
                     onClick={() => copyText(b.account_number, b.bank)}
-                    className="px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold flex items-center gap-1.5 transition shadow-lg shadow-emerald-600/30"
+                    className="px-3 py-1.5 rounded-xl bg-teal-700 hover:bg-teal-800 text-white text-xs font-bold flex items-center gap-1 transition shadow-xs"
                   >
                     <Copy className="w-3.5 h-3.5" />
                     <span>Salin</span>

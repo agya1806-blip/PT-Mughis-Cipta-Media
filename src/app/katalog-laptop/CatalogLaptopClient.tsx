@@ -388,62 +388,66 @@ export default function CatalogLaptopClient({
       </section>
 
       {/* 4. STICKY CATEGORY & SMART USE CASE FILTER BAR */}
-      <div className="sticky top-16 sm:top-20 z-30 bg-white/95 backdrop-blur-md border-b border-slate-200/80 py-2.5 px-4 space-y-2">
+      <div className="sticky top-16 sm:top-20 z-30 bg-white/95 backdrop-blur-md border-b border-slate-200/80 py-2.5 px-2 sm:px-6 space-y-2">
         {/* Category Filters */}
-        <div className="max-w-7xl mx-auto flex items-center justify-center gap-2 overflow-x-auto text-xs font-bold no-scrollbar">
-          <button
-            onClick={() => setCurrentCategory("all")}
-            className={`px-3 py-1.5 rounded-xl shrink-0 transition border ${currentCategory === "all" ? "bg-teal-700 border-teal-700 text-white shadow-xs" : "bg-slate-100 border-slate-200 text-slate-700 hover:bg-slate-200"}`}
-          >
-            🔥 Semua Produk ({activeProducts.length})
-          </button>
-          <button
-            onClick={() => setCurrentCategory("laptop")}
-            className={`px-3 py-1.5 rounded-xl shrink-0 transition border ${currentCategory === "laptop" ? "bg-teal-700 border-teal-700 text-white shadow-xs" : "bg-slate-100 border-slate-200 text-slate-700 hover:bg-slate-200"}`}
-          >
-            💻 Laptop Business
-          </button>
-          <button
-            onClick={() => setCurrentCategory("digital")}
-            className={`px-3 py-1.5 rounded-xl shrink-0 transition border ${currentCategory === "digital" ? "bg-teal-700 border-teal-700 text-white shadow-xs" : "bg-slate-100 border-slate-200 text-slate-700 hover:bg-slate-200"}`}
-          >
-            🔑 Produk Digital
-          </button>
-          <button
-            onClick={() => setCurrentCategory("budget")}
-            className={`px-3 py-1.5 rounded-xl shrink-0 transition border ${currentCategory === "budget" ? "bg-teal-700 border-teal-700 text-white shadow-xs" : "bg-slate-100 border-slate-200 text-slate-700 hover:bg-slate-200"}`}
-          >
-            🏷️ Promo Hemat
-          </button>
+        <div className="max-w-7xl mx-auto overflow-x-auto scrollbar-none">
+          <div className="flex items-center justify-start md:justify-center gap-2 text-xs font-bold min-w-max px-2">
+            <button
+              onClick={() => setCurrentCategory("all")}
+              className={`px-3.5 py-1.5 rounded-xl shrink-0 transition border ${currentCategory === "all" ? "bg-teal-700 border-teal-700 text-white shadow-xs" : "bg-slate-100 border-slate-200 text-slate-700 hover:bg-slate-200"}`}
+            >
+              🔥 Semua Produk ({activeProducts.length})
+            </button>
+            <button
+              onClick={() => setCurrentCategory("laptop")}
+              className={`px-3.5 py-1.5 rounded-xl shrink-0 transition border ${currentCategory === "laptop" ? "bg-teal-700 border-teal-700 text-white shadow-xs" : "bg-slate-100 border-slate-200 text-slate-700 hover:bg-slate-200"}`}
+            >
+              💻 Laptop Business
+            </button>
+            <button
+              onClick={() => setCurrentCategory("digital")}
+              className={`px-3.5 py-1.5 rounded-xl shrink-0 transition border ${currentCategory === "digital" ? "bg-teal-700 border-teal-700 text-white shadow-xs" : "bg-slate-100 border-slate-200 text-slate-700 hover:bg-slate-200"}`}
+            >
+              🔑 Produk Digital
+            </button>
+            <button
+              onClick={() => setCurrentCategory("budget")}
+              className={`px-3.5 py-1.5 rounded-xl shrink-0 transition border ${currentCategory === "budget" ? "bg-teal-700 border-teal-700 text-white shadow-xs" : "bg-slate-100 border-slate-200 text-slate-700 hover:bg-slate-200"}`}
+            >
+              🏷️ Promo Hemat
+            </button>
+          </div>
         </div>
 
         {/* Smart Use-Case Filters */}
-        <div className="max-w-7xl mx-auto flex items-center justify-center gap-1.5 overflow-x-auto text-[11px] font-semibold no-scrollbar pt-1 border-t border-slate-100">
-          <span className="text-slate-400 text-[10px] uppercase tracking-wider font-extrabold shrink-0 mr-1">Kebutuhan:</span>
-          <button
-            onClick={() => setCurrentUseCase("all")}
-            className={`px-2.5 py-1 rounded-lg shrink-0 transition ${currentUseCase === "all" ? "bg-slate-800 text-white font-bold" : "bg-slate-50 text-slate-600 hover:bg-slate-200"}`}
-          >
-            Semua
-          </button>
-          <button
-            onClick={() => setCurrentUseCase("mahasiswa")}
-            className={`px-2.5 py-1 rounded-lg shrink-0 transition ${currentUseCase === "mahasiswa" ? "bg-emerald-700 text-white font-bold" : "bg-emerald-50 text-emerald-800 hover:bg-emerald-100"}`}
-          >
-            🎓 Mahasiswa & Skripsi
-          </button>
-          <button
-            onClick={() => setCurrentUseCase("kantor")}
-            className={`px-2.5 py-1 rounded-lg shrink-0 transition ${currentUseCase === "kantor" ? "bg-teal-700 text-white font-bold" : "bg-teal-50 text-teal-800 hover:bg-teal-100"}`}
-          >
-            💼 Perkantoran & Kasir
-          </button>
-          <button
-            onClick={() => setCurrentUseCase("editing")}
-            className={`px-2.5 py-1 rounded-lg shrink-0 transition ${currentUseCase === "editing" ? "bg-indigo-700 text-white font-bold" : "bg-indigo-50 text-indigo-800 hover:bg-indigo-100"}`}
-          >
-            🎨 Editing & Multitasking
-          </button>
+        <div className="max-w-7xl mx-auto overflow-x-auto scrollbar-none pt-1 border-t border-slate-100">
+          <div className="flex items-center justify-start md:justify-center gap-1.5 text-[11px] font-semibold min-w-max px-2">
+            <span className="text-slate-400 text-[10px] uppercase tracking-wider font-extrabold shrink-0 mr-1">Kebutuhan:</span>
+            <button
+              onClick={() => setCurrentUseCase("all")}
+              className={`px-2.5 py-1 rounded-lg shrink-0 transition ${currentUseCase === "all" ? "bg-slate-800 text-white font-bold" : "bg-slate-50 text-slate-600 hover:bg-slate-200"}`}
+            >
+              Semua
+            </button>
+            <button
+              onClick={() => setCurrentUseCase("mahasiswa")}
+              className={`px-2.5 py-1 rounded-lg shrink-0 transition ${currentUseCase === "mahasiswa" ? "bg-emerald-700 text-white font-bold" : "bg-emerald-50 text-emerald-800 hover:bg-emerald-100"}`}
+            >
+              🎓 Mahasiswa & Skripsi
+            </button>
+            <button
+              onClick={() => setCurrentUseCase("kantor")}
+              className={`px-2.5 py-1 rounded-lg shrink-0 transition ${currentUseCase === "kantor" ? "bg-teal-700 text-white font-bold" : "bg-teal-50 text-teal-800 hover:bg-teal-100"}`}
+            >
+              💼 Perkantoran & Kasir
+            </button>
+            <button
+              onClick={() => setCurrentUseCase("editing")}
+              className={`px-2.5 py-1 rounded-lg shrink-0 transition ${currentUseCase === "editing" ? "bg-indigo-700 text-white font-bold" : "bg-indigo-50 text-indigo-800 hover:bg-indigo-100"}`}
+            >
+              🎨 Editing & Multitasking
+            </button>
+          </div>
         </div>
       </div>
 

@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Search, Laptop, ShieldCheck, Phone, CheckCircle, Copy, X, Check, MapPin, ShieldAlert, Award, Image as ImageIcon, Video as VideoIcon, ZoomIn, ZoomOut, RotateCcw, ChevronLeft, ChevronRight, Scale, Star, Printer, Truck, Clock } from "lucide-react"
+import { Search, Laptop, ShieldCheck, Phone, CheckCircle, Copy, X, Check, MapPin, ShieldAlert, Award, Image as ImageIcon, Video as VideoIcon, ZoomIn, ZoomOut, RotateCcw, ChevronLeft, ChevronRight, Scale, Star, Printer, Truck, Clock, CheckSquare } from "lucide-react"
 
 function InstagramIcon({ className = "w-4 h-4" }: { className?: string }) {
   return (
@@ -137,32 +137,6 @@ const DEFAULT_PRODUCTS: ProductItem[] = [
     bonus: "Unit Laptop, Charger Original, Tas Laptop & Mouse"
   },
   {
-    id: "prod-t470",
-    title: "Lenovo ThinkPad T470 Core i5 Gen 6",
-    category: "laptop",
-    useCase: "kantor",
-    badge: "Best Seller",
-    stockStatus: "READY",
-    priceText: "Rp 3.500.000",
-    rawPriceText: "Rp 3.500.000 (RAM 8GB / SSD 256GB)",
-    image: "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=800&auto=format&fit=crop&q=80",
-    images: [
-      "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=800&auto=format&fit=crop&q=80",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=800&auto=format&fit=crop&q=80"
-    ],
-    shortDesc: "Generasi penerus T460 dengan bodi lebih ringkas, port Type-C USB-C fast charge, dan performa mulus untuk olah data.",
-    specs: [
-      "Prosesor: Intel Core i5-6200U / i5-6300U Gen 6",
-      "RAM: 8GB DDR4 (Upgradable)",
-      "Penyimpanan: 256GB SSD Fast Boot",
-      "Layar: 14.0 inch Anti-Glare Jernih",
-      "Port: USB-C Type-C, HDMI, USB 3.0, LAN"
-    ],
-    conditionNote: "Grade A Mulus 92-95%, Baterai Awet 2-4 Jam",
-    warranty: "Garansi Toko 30 Hari",
-    bonus: "Unit Laptop, Charger Original Type-C, Tas Laptop Baru & Mouse"
-  },
-  {
     id: "prod-hp-430-g5",
     title: "HP ProBook 430 G5 Core i5 Gen 8",
     category: "laptop",
@@ -186,54 +160,6 @@ const DEFAULT_PRODUCTS: ProductItem[] = [
     conditionNote: "Grade A Mulus 93-95%, Baterai Awet 3-4 Jam",
     warranty: "Garansi Toko 30 Hari",
     bonus: "Unit Laptop, Charger Original HP, Tas Ransel & Mouse"
-  },
-  {
-    id: "prod-ideapad-s530",
-    title: "Lenovo IdeaPad S530 Core i5 Gen 8",
-    category: "budget",
-    useCase: "editing",
-    badge: "Promo (Minus Baterai)",
-    stockStatus: "READY",
-    priceText: "Rp 4.000.000",
-    rawPriceText: "Rp 4.000.000 (Harga Khusus Minus Baterai Lemah)",
-    image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=800&auto=format&fit=crop&q=80",
-    images: [
-      "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=800&auto=format&fit=crop&q=80"
-    ],
-    shortDesc: "Laptop ultrabook slim metal silver sangat kencang Core i5 Gen 8. Kondisi mesin & bodi mulus 100% lancar (Minus baterai lemah, disarankan colok charger).",
-    specs: [
-      "Prosesor: Intel Core i5-8265U Gen 8 (Quad Core 8 Threads)",
-      "RAM: 8GB DDR4",
-      "Penyimpanan: 256GB SSD NVMe Super Fast",
-      "Layar: 13.3 inch Full HD IPS Bezel Tipis",
-      "Catatan Minus: Baterai Lemah (Disarankan sambil colok charger)"
-    ],
-    conditionNote: "Kondisi Fisik 95% Mulus, Mesin 100% Normal (Minus Baterai Lemah)",
-    warranty: "Garansi Toko 14 Hari Mesin",
-    bonus: "Unit Laptop, Charger Original, Tas Laptop & Mouse"
-  },
-  {
-    id: "prod-office-win11",
-    title: "Lisensi Windows 11 Pro & Office 2021",
-    category: "digital",
-    badge: "Produk Digital",
-    stockStatus: "READY",
-    priceText: "Rp 400.000",
-    rawPriceText: "Rp 400.000 (Aktivasi Permanen Seumur Hidup)",
-    image: "https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800&auto=format&fit=crop&q=80",
-    images: [
-      "https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800&auto=format&fit=crop&q=80"
-    ],
-    shortDesc: "Paket lisensi resmi original untuk PC / Laptop. Tinggal pasang, tanpa crack, bebas update selamanya, aman dari virus.",
-    specs: [
-      "Tipe Lisensi: Windows 11 Pro Retail + Office 2021 Pro Plus",
-      "Masa Aktif: Lifetime (Permanen Seumur Hidup)",
-      "Pengiriman: Key resmi dikirim langsung via WhatsApp / Email",
-      "Bebas Update: Terkoneksi langsung ke server resmi"
-    ],
-    conditionNote: "100% Produk Digital Resmi Baru",
-    warranty: "Garansi 100% Ganti Baru Jika Gagal Aktivasi",
-    bonus: "Buku panduan bergambar cara pasang, link download resmi, dan dibantu sampai tuntas via WA."
   }
 ]
 

@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Search, Laptop, ShieldCheck, Phone, CheckCircle, Copy, X, Check, MapPin, Award, Image as ImageIcon, Video as VideoIcon, ZoomIn, ZoomOut, RotateCcw, ChevronLeft, ChevronRight, Maximize2 } from "lucide-react"
+import { Search, Laptop, ShieldCheck, Phone, CheckCircle, Copy, X, Check, MapPin, Award, Image as ImageIcon, Video as VideoIcon, ZoomIn, ZoomOut, RotateCcw, ChevronLeft, ChevronRight, Scale, Star, Printer } from "lucide-react"
 
 function InstagramIcon({ className = "w-4 h-4" }: { className?: string }) {
   return (
@@ -17,9 +17,10 @@ export interface ProductItem {
   id: string
   title: string
   category: "laptop" | "digital" | "budget" | string
+  useCase?: "mahasiswa" | "kantor" | "editing" | "all" | string
   badge: string
   badgeColor?: string
-  stockStatus?: "READY" | "SOLD_OUT" | "HIDDEN"
+  stockStatus?: "READY" | "LIMITED" | "SOLD_OUT" | "HIDDEN"
   priceText: string
   rawPriceText: string
   image: string
@@ -39,9 +40,45 @@ export interface BankAccount {
   beneficiary: string
 }
 
+export interface TestimonialItem {
+  id: string
+  name: string
+  location: string
+  rating: number
+  text: string
+  photoUrl?: string
+}
+
 const DEFAULT_BANKS: BankAccount[] = [
   { id: "b1", bank: "BANK BSI", account_number: "7368300677", beneficiary: "Muhammad Aghisna" },
   { id: "b2", bank: "BANK SEABANK", account_number: "901007430064", beneficiary: "Muhammad Aghisna" }
+]
+
+const DEFAULT_TESTIMONIALS: TestimonialItem[] = [
+  {
+    id: "t1",
+    name: "Tgk. Ridwan",
+    location: "Sangso, Samalanga",
+    rating: 5,
+    text: "Laptop ThinkPad X1 Carbon sangat mulus seperti baru. Baterai awet, keyboard backlit nyaman untuk ngetik malam. Recomended!",
+    photoUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&auto=format&fit=crop&q=80"
+  },
+  {
+    id: "t2",
+    name: "Ibu Nurul Hayati",
+    location: "Bireuen, Aceh",
+    rating: 5,
+    text: "Pelayanan Fast Respons dari Owner (Aghisnas). Kirim via L300 barang langsung nyampe sore. Garansi toko bikin tenang.",
+    photoUrl: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&auto=format&fit=crop&q=80"
+  },
+  {
+    id: "t3",
+    name: "Ahmad Fauzi",
+    location: "Lhokseumawe",
+    rating: 5,
+    text: "Lisensi Windows 11 & Office 2021 diaktivasi langsung tanpa ribet. Harga terjangkau dan bebas virus.",
+    photoUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&auto=format&fit=crop&q=80"
+  }
 ]
 
 const DEFAULT_PRODUCTS: ProductItem[] = [
@@ -49,6 +86,7 @@ const DEFAULT_PRODUCTS: ProductItem[] = [
     id: "prod-x1-carbon",
     title: "Lenovo ThinkPad X1 Carbon Core i5 Gen 6",
     category: "laptop",
+    useCase: "mahasiswa",
     badge: "Ultrabook Tipis",
     stockStatus: "READY",
     priceText: "Rp 3.750.000",
@@ -76,6 +114,7 @@ const DEFAULT_PRODUCTS: ProductItem[] = [
     id: "prod-t460",
     title: "Lenovo ThinkPad T460 Core i5 Gen 6",
     category: "laptop",
+    useCase: "kantor",
     badge: "Kerja Tangguh",
     stockStatus: "READY",
     priceText: "Rp 3.400.000",
@@ -98,33 +137,10 @@ const DEFAULT_PRODUCTS: ProductItem[] = [
     bonus: "Unit Laptop, Charger Original, Tas Laptop & Mouse"
   },
   {
-    id: "prod-t470",
-    title: "Lenovo ThinkPad T470 Core i5 Gen 6",
-    category: "laptop",
-    badge: "Best Seller",
-    stockStatus: "READY",
-    priceText: "Rp 3.500.000",
-    rawPriceText: "Rp 3.500.000 (RAM 8GB / SSD 256GB)",
-    image: "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=800&auto=format&fit=crop&q=80",
-    images: [
-      "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=800&auto=format&fit=crop&q=80"
-    ],
-    shortDesc: "Generasi penerus T460 dengan bodi lebih ringkas, port Type-C USB-C fast charge, dan performa mulus untuk olah data.",
-    specs: [
-      "Prosesor: Intel Core i5-6200U / i5-6300U Gen 6",
-      "RAM: 8GB DDR4 (Upgradable)",
-      "Penyimpanan: 256GB SSD Fast Boot",
-      "Layar: 14.0 inch Anti-Glare Jernih",
-      "Port: USB-C Type-C, HDMI, USB 3.0, LAN"
-    ],
-    conditionNote: "Grade A Mulus 92-95%, Baterai Awet 2-4 Jam",
-    warranty: "Garansi Toko 30 Hari",
-    bonus: "Unit Laptop, Charger Original Type-C, Tas Laptop Baru & Mouse"
-  },
-  {
     id: "prod-hp-430-g5",
     title: "HP ProBook 430 G5 Core i5 Gen 8",
     category: "laptop",
+    useCase: "editing",
     badge: "Quad Core",
     stockStatus: "READY",
     priceText: "Rp 4.200.000",
@@ -144,29 +160,6 @@ const DEFAULT_PRODUCTS: ProductItem[] = [
     conditionNote: "Grade A Mulus 93-95%, Baterai Awet 3-4 Jam",
     warranty: "Garansi Toko 30 Hari",
     bonus: "Unit Laptop, Charger Original HP, Tas Ransel & Mouse"
-  },
-  {
-    id: "prod-office-win11",
-    title: "Lisensi Windows 11 Pro & Office 2021",
-    category: "digital",
-    badge: "Lisensi Resmi",
-    stockStatus: "READY",
-    priceText: "Rp 400.000",
-    rawPriceText: "Rp 400.000 (Aktivasi Permanen Seumur Hidup)",
-    image: "https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800&auto=format&fit=crop&q=80",
-    images: [
-      "https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800&auto=format&fit=crop&q=80"
-    ],
-    shortDesc: "Paket lisensi resmi original untuk PC / Laptop. Tinggal pasang, tanpa crack, bebas update selamanya, aman dari virus.",
-    specs: [
-      "Tipe Lisensi: Windows 11 Pro Retail + Office 2021 Pro Plus",
-      "Masa Aktif: Lifetime (Permanen Seumur Hidup)",
-      "Pengiriman: Key resmi dikirim langsung via WhatsApp / Email",
-      "Bebas Update: Terkoneksi langsung ke server resmi"
-    ],
-    conditionNote: "100% Produk Digital Resmi Baru",
-    warranty: "Garansi 100% Ganti Baru Jika Gagal Aktivasi",
-    bonus: "Buku panduan bergambar cara pasang, link download resmi, dan dibantu sampai tuntas via WA."
   }
 ]
 
@@ -186,6 +179,12 @@ export default function CatalogLaptopClient({
     }
     return DEFAULT_BANKS
   })
+  const [testimonials] = useState<TestimonialItem[]>(() => {
+    if (initialSettings.catalog_testimonials_json) {
+      try { return JSON.parse(initialSettings.catalog_testimonials_json) } catch {}
+    }
+    return DEFAULT_TESTIMONIALS
+  })
 
   const waPhone = initialSettings.contact_phone || "0852-1770-6587"
   const ownerName = initialSettings.owner_name || "Muhammad Aghisna"
@@ -193,9 +192,10 @@ export default function CatalogLaptopClient({
   const igHighlight = initialSettings.instagram_url || "https://www.instagram.com/s/aGlnaGxpZ2h0OjE3OTI1ODg4MzI2NzYwNDM2?story_media_id=3106266946206908221&stkn=MWpwam1nMm13eDlwcg=="
 
   const [currentCategory, setCurrentCategory] = useState("all")
+  const [currentUseCase, setCurrentUseCase] = useState("all")
   const [searchQuery, setSearchQuery] = useState("")
 
-  // Modal, Lightbox & FAQ State
+  // Modal & Lightbox State
   const [selectedProduct, setSelectedProduct] = useState<ProductItem | null>(null)
   const [activeMediaMode, setActiveMediaMode] = useState<"image" | "video">("image")
   const [activePhotoIdx, setActivePhotoIdx] = useState(0)
@@ -206,11 +206,17 @@ export default function CatalogLaptopClient({
   const [isZoomOpen, setIsZoomOpen] = useState(false)
   const [zoomScale, setZoomScale] = useState(1)
 
+  // Comparison State
+  const [compareIds, setCompareIds] = useState<string[]>([])
+  const [isCompareModalOpen, setIsCompareModalOpen] = useState(false)
+
   useEffect(() => {
     function handleKeyDown(e: KeyboardEvent) {
       if (e.key === "Escape") {
         if (isZoomOpen) {
           setIsZoomOpen(false)
+        } else if (isCompareModalOpen) {
+          setIsCompareModalOpen(false)
         } else {
           setSelectedProduct(null)
         }
@@ -218,7 +224,7 @@ export default function CatalogLaptopClient({
     }
     window.addEventListener("keydown", handleKeyDown)
     return () => window.removeEventListener("keydown", handleKeyDown)
-  }, [isZoomOpen])
+  }, [isZoomOpen, isCompareModalOpen])
 
   function openDetailModal(p: ProductItem) {
     setSelectedProduct(p)
@@ -262,6 +268,19 @@ export default function CatalogLaptopClient({
     })
   }
 
+  function toggleCompare(id: string) {
+    if (compareIds.includes(id)) {
+      setCompareIds(compareIds.filter((item) => item !== id))
+    } else {
+      if (compareIds.length >= 2) {
+        setToastMsg("Maksimal membandingkan 2 produk sekaligus.")
+        setTimeout(() => setToastMsg(""), 3000)
+        return
+      }
+      setCompareIds([...compareIds, id])
+    }
+  }
+
   const activeProducts = products.filter((p) => p.stockStatus !== "HIDDEN")
 
   const filteredProducts = activeProducts.filter((p) => {
@@ -270,19 +289,27 @@ export default function CatalogLaptopClient({
       p.category === currentCategory ||
       (currentCategory === "budget" && (p.category === "budget" || p.badge.includes("Hemat") || p.priceText.includes("400")))
 
+    const matchUseCase =
+      currentUseCase === "all" ||
+      p.useCase === currentUseCase ||
+      (currentUseCase === "mahasiswa" && (p.shortDesc.toLowerCase().includes("skripsi") || p.shortDesc.toLowerCase().includes("ringan") || p.shortDesc.toLowerCase().includes("kuliah"))) ||
+      (currentUseCase === "kantor" && (p.shortDesc.toLowerCase().includes("kantor") || p.shortDesc.toLowerCase().includes("kerja") || p.shortDesc.toLowerCase().includes("bandel"))) ||
+      (currentUseCase === "editing" && (p.shortDesc.toLowerCase().includes("kencang") || p.shortDesc.toLowerCase().includes("quad") || p.shortDesc.toLowerCase().includes("editing")))
+
     const q = searchQuery.toLowerCase()
     const matchSearch =
       p.title.toLowerCase().includes(q) ||
       p.shortDesc.toLowerCase().includes(q) ||
       p.priceText.toLowerCase().includes(q)
 
-    return matchCat && matchSearch
+    return matchCat && matchUseCase && matchSearch
   })
 
   const formattedWa = waPhone.replace(/[^0-9]/g, "").replace(/^0/, "62")
+  const comparedProducts = products.filter((p) => compareIds.includes(p.id))
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 font-sans antialiased pb-24">
+    <div className="min-h-screen bg-slate-50 text-slate-900 font-sans antialiased pb-28">
 
       {/* 1. CLEAN TOP ANNOUNCEMENT BAR */}
       <div className="bg-teal-700 text-white text-[11px] sm:text-xs py-2 px-4 text-center font-semibold border-b border-teal-800">
@@ -308,15 +335,14 @@ export default function CatalogLaptopClient({
           </a>
 
           <div className="flex items-center gap-2 shrink-0">
-            <a
-              href={igHighlight}
-              target="_blank"
-              rel="noreferrer"
-              className="hidden sm:inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-pink-50 hover:bg-pink-100 text-pink-700 font-semibold text-xs transition border border-pink-200/60"
+            <button
+              onClick={() => window.print()}
+              className="hidden sm:inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs transition border border-slate-300/80"
+              title="Cetak Brosur Katalog"
             >
-              <InstagramIcon className="w-4 h-4 text-pink-600" />
-              <span>Testimoni IG</span>
-            </a>
+              <Printer className="w-3.5 h-3.5 text-teal-700" />
+              <span>Cetak Brosur</span>
+            </button>
 
             <a
               href={`https://wa.me/${formattedWa}?text=${encodeURIComponent("Halo Mughis Laptop Store, saya ingin bertanya stok laptop/produk digital.")}`}
@@ -361,32 +387,62 @@ export default function CatalogLaptopClient({
         </div>
       </section>
 
-      {/* 4. STICKY CATEGORY FILTER BAR */}
-      <div className="sticky top-16 sm:top-20 z-30 bg-white/95 backdrop-blur-md border-b border-slate-200/80 py-2.5 px-4">
+      {/* 4. STICKY CATEGORY & SMART USE CASE FILTER BAR */}
+      <div className="sticky top-16 sm:top-20 z-30 bg-white/95 backdrop-blur-md border-b border-slate-200/80 py-2.5 px-4 space-y-2">
+        {/* Category Filters */}
         <div className="max-w-7xl mx-auto flex items-center justify-center gap-2 overflow-x-auto text-xs font-bold no-scrollbar">
           <button
             onClick={() => setCurrentCategory("all")}
-            className={`px-3.5 py-1.5 rounded-xl shrink-0 transition border ${currentCategory === "all" ? "bg-teal-700 border-teal-700 text-white shadow-xs" : "bg-slate-100 border-slate-200 text-slate-700 hover:bg-slate-200"}`}
+            className={`px-3 py-1.5 rounded-xl shrink-0 transition border ${currentCategory === "all" ? "bg-teal-700 border-teal-700 text-white shadow-xs" : "bg-slate-100 border-slate-200 text-slate-700 hover:bg-slate-200"}`}
           >
             🔥 Semua Produk ({activeProducts.length})
           </button>
           <button
             onClick={() => setCurrentCategory("laptop")}
-            className={`px-3.5 py-1.5 rounded-xl shrink-0 transition border ${currentCategory === "laptop" ? "bg-teal-700 border-teal-700 text-white shadow-xs" : "bg-slate-100 border-slate-200 text-slate-700 hover:bg-slate-200"}`}
+            className={`px-3 py-1.5 rounded-xl shrink-0 transition border ${currentCategory === "laptop" ? "bg-teal-700 border-teal-700 text-white shadow-xs" : "bg-slate-100 border-slate-200 text-slate-700 hover:bg-slate-200"}`}
           >
             💻 Laptop Business
           </button>
           <button
             onClick={() => setCurrentCategory("digital")}
-            className={`px-3.5 py-1.5 rounded-xl shrink-0 transition border ${currentCategory === "digital" ? "bg-teal-700 border-teal-700 text-white shadow-xs" : "bg-slate-100 border-slate-200 text-slate-700 hover:bg-slate-200"}`}
+            className={`px-3 py-1.5 rounded-xl shrink-0 transition border ${currentCategory === "digital" ? "bg-teal-700 border-teal-700 text-white shadow-xs" : "bg-slate-100 border-slate-200 text-slate-700 hover:bg-slate-200"}`}
           >
             🔑 Produk Digital
           </button>
           <button
             onClick={() => setCurrentCategory("budget")}
-            className={`px-3.5 py-1.5 rounded-xl shrink-0 transition border ${currentCategory === "budget" ? "bg-teal-700 border-teal-700 text-white shadow-xs" : "bg-slate-100 border-slate-200 text-slate-700 hover:bg-slate-200"}`}
+            className={`px-3 py-1.5 rounded-xl shrink-0 transition border ${currentCategory === "budget" ? "bg-teal-700 border-teal-700 text-white shadow-xs" : "bg-slate-100 border-slate-200 text-slate-700 hover:bg-slate-200"}`}
           >
             🏷️ Promo Hemat
+          </button>
+        </div>
+
+        {/* Smart Use-Case Filters */}
+        <div className="max-w-7xl mx-auto flex items-center justify-center gap-1.5 overflow-x-auto text-[11px] font-semibold no-scrollbar pt-1 border-t border-slate-100">
+          <span className="text-slate-400 text-[10px] uppercase tracking-wider font-extrabold shrink-0 mr-1">Kebutuhan:</span>
+          <button
+            onClick={() => setCurrentUseCase("all")}
+            className={`px-2.5 py-1 rounded-lg shrink-0 transition ${currentUseCase === "all" ? "bg-slate-800 text-white font-bold" : "bg-slate-50 text-slate-600 hover:bg-slate-200"}`}
+          >
+            Semua
+          </button>
+          <button
+            onClick={() => setCurrentUseCase("mahasiswa")}
+            className={`px-2.5 py-1 rounded-lg shrink-0 transition ${currentUseCase === "mahasiswa" ? "bg-emerald-700 text-white font-bold" : "bg-emerald-50 text-emerald-800 hover:bg-emerald-100"}`}
+          >
+            🎓 Mahasiswa & Skripsi
+          </button>
+          <button
+            onClick={() => setCurrentUseCase("kantor")}
+            className={`px-2.5 py-1 rounded-lg shrink-0 transition ${currentUseCase === "kantor" ? "bg-teal-700 text-white font-bold" : "bg-teal-50 text-teal-800 hover:bg-teal-100"}`}
+          >
+            💼 Perkantoran & Kasir
+          </button>
+          <button
+            onClick={() => setCurrentUseCase("editing")}
+            className={`px-2.5 py-1 rounded-lg shrink-0 transition ${currentUseCase === "editing" ? "bg-indigo-700 text-white font-bold" : "bg-indigo-50 text-indigo-800 hover:bg-indigo-100"}`}
+          >
+            🎨 Editing & Multitasking
           </button>
         </div>
       </div>
@@ -406,7 +462,7 @@ export default function CatalogLaptopClient({
             </p>
             {searchQuery && (
               <button
-                onClick={() => { setSearchQuery(""); setCurrentCategory("all"); }}
+                onClick={() => { setSearchQuery(""); setCurrentCategory("all"); setCurrentUseCase("all"); }}
                 className="px-4 py-2 rounded-xl bg-teal-700 hover:bg-teal-800 text-white font-bold text-xs inline-flex items-center gap-1.5 shadow-xs transition"
               >
                 <span>Reset Pencarian</span>
@@ -419,6 +475,7 @@ export default function CatalogLaptopClient({
               const waMsg = encodeURIComponent(`Assalamu’alaikum Mughis Laptop Store,\n\nSaya tertarik dengan unit:\n*${p.title}*\nHarga: ${p.priceText}\n\nApakah unit masih tersedia? Mohon informasi kondisi dan garansinya.`)
               const waUrl = `https://wa.me/${formattedWa}?text=${waMsg}`
               const photoCount = p.images && p.images.length > 0 ? p.images.length : 1
+              const isCompared = compareIds.includes(p.id)
 
               return (
                 <div key={p.id} className="min-w-0 w-full max-w-full bg-white rounded-2xl border border-slate-200/80 overflow-hidden flex flex-col justify-between shadow-xs hover:shadow-md transition-all duration-200 group">
@@ -429,6 +486,16 @@ export default function CatalogLaptopClient({
                       <span className="absolute top-2 left-2 px-2 py-0.5 rounded-md text-[9px] sm:text-xs font-semibold bg-white/90 text-slate-800 shadow-xs border border-slate-200/60 backdrop-blur-xs">
                         {p.badge}
                       </span>
+
+                      {/* Compare Checkbox Icon */}
+                      <button
+                        onClick={() => toggleCompare(p.id)}
+                        className={`absolute top-2 right-2 p-1.5 rounded-lg backdrop-blur-md transition shadow-xs flex items-center gap-1 text-[9px] font-bold ${isCompared ? "bg-teal-700 text-white ring-2 ring-teal-400" : "bg-slate-900/60 text-white hover:bg-slate-900"}`}
+                        title="Bandingkan Laptop"
+                      >
+                        <Scale className="w-3 h-3" />
+                        <span className="hidden sm:inline">{isCompared ? "Dibandingkan" : "Bandingkan"}</span>
+                      </button>
 
                       <div className="absolute bottom-2 left-2 flex items-center gap-1">
                         <span className="px-1.5 py-0.5 rounded text-[8px] sm:text-[10px] font-bold bg-slate-900/75 text-white backdrop-blur-xs flex items-center gap-0.5">
@@ -443,8 +510,13 @@ export default function CatalogLaptopClient({
                         )}
                       </div>
 
+                      {p.stockStatus === "LIMITED" && (
+                        <span className="absolute bottom-2 right-2 px-2 py-0.5 rounded text-[8px] sm:text-[10px] font-bold uppercase bg-amber-500 text-slate-900 shadow-xs">
+                          ⚡ Sisa 1 Unit
+                        </span>
+                      )}
                       {p.stockStatus === "SOLD_OUT" && (
-                        <span className="absolute top-2 right-2 px-2 py-0.5 rounded text-[9px] font-bold uppercase bg-rose-600 text-white shadow-xs">
+                        <span className="absolute bottom-2 right-2 px-2 py-0.5 rounded text-[8px] sm:text-[10px] font-bold uppercase bg-rose-600 text-white shadow-xs">
                           SOLD OUT
                         </span>
                       )}
@@ -486,8 +558,46 @@ export default function CatalogLaptopClient({
           </div>
         )}
 
-        {/* 6. TRUST & WARRANTY SECTION */}
-        <section className="mt-12 pt-10 border-t border-slate-200/80">
+        {/* 6. TESTIMONIALS & VERIFIED DELIVERY PHOTOS */}
+        {testimonials.length > 0 && (
+          <section className="mt-12 pt-10 border-t border-slate-200/80">
+            <div className="text-center max-w-xl mx-auto mb-6 space-y-1">
+              <span className="text-[10px] sm:text-xs font-bold uppercase text-teal-700 tracking-wider">Testimoni Pembeli Asli</span>
+              <h2 className="text-lg sm:text-2xl font-extrabold text-slate-900">Ulasan & Serah Terima Laptop</h2>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-5 text-xs">
+              {testimonials.map((t) => (
+                <div key={t.id} className="p-4 rounded-2xl bg-white border border-slate-200/80 shadow-xs space-y-2 flex flex-col justify-between">
+                  <div className="space-y-2">
+                    <div className="flex items-center gap-1 text-amber-400">
+                      {[...Array(t.rating || 5)].map((_, i) => (
+                        <Star key={i} className="w-3.5 h-3.5 fill-amber-400" />
+                      ))}
+                    </div>
+                    <p className="text-slate-700 text-xs italic leading-relaxed">"{t.text}"</p>
+                  </div>
+                  <div className="flex items-center gap-2 pt-2 border-t border-slate-100">
+                    {t.photoUrl ? (
+                      <img src={t.photoUrl} alt={t.name} className="w-8 h-8 rounded-full object-cover border border-teal-200" />
+                    ) : (
+                      <div className="w-8 h-8 rounded-full bg-teal-100 text-teal-700 font-bold flex items-center justify-center text-xs">
+                        {t.name.slice(0, 1)}
+                      </div>
+                    )}
+                    <div>
+                      <p className="font-bold text-slate-900 text-xs">{t.name}</p>
+                      <p className="text-[10px] text-slate-500 font-medium">{t.location}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* 7. TRUST & WARRANTY SECTION */}
+        <section className="mt-10 pt-10 border-t border-slate-200/80">
           <div className="text-center max-w-xl mx-auto mb-6 space-y-1">
             <span className="text-[10px] sm:text-xs font-bold uppercase text-teal-700 tracking-wider">Layanan Purna Jual</span>
             <h2 className="text-lg sm:text-2xl font-extrabold text-slate-900">Garansi & Keamanan Pembeli</h2>
@@ -520,7 +630,7 @@ export default function CatalogLaptopClient({
           </div>
         </section>
 
-        {/* 7. INTERACTIVE FAQ ACCORDION */}
+        {/* 8. INTERACTIVE FAQ ACCORDION */}
         <section className="mt-10 pt-10 border-t border-slate-200/80">
           <div className="text-center max-w-xl mx-auto mb-6 space-y-1">
             <span className="text-[10px] sm:text-xs font-bold uppercase text-teal-700 tracking-wider">Tanya Jawab Pembeli</span>
@@ -564,7 +674,7 @@ export default function CatalogLaptopClient({
           </div>
         </section>
 
-        {/* 8. OFFICIAL PAYMENT BANK ACCOUNTS - BRIGHT & CLEAN DESIGN */}
+        {/* 9. OFFICIAL PAYMENT BANK ACCOUNTS */}
         <section className="mt-10 p-5 sm:p-8 rounded-3xl bg-teal-50/80 border border-teal-200/80 text-slate-900 shadow-xs space-y-6">
           <div className="text-center max-w-xl mx-auto space-y-1">
             <span className="text-[10px] font-bold uppercase tracking-widest text-teal-800 bg-teal-100 px-3 py-1 rounded-full border border-teal-200">
@@ -599,7 +709,7 @@ export default function CatalogLaptopClient({
           </div>
         </section>
 
-        {/* 9. STORE LOCATION & FOOTER */}
+        {/* 10. STORE LOCATION & FOOTER */}
         <section className="mt-10 p-5 sm:p-6 rounded-2xl bg-white border border-slate-200/80 space-y-3 text-xs text-slate-700 text-center sm:text-left flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div className="space-y-1">
             <p className="font-extrabold text-slate-900 text-sm">MUGHIS LAPTOP STORE</p>
@@ -620,7 +730,77 @@ export default function CatalogLaptopClient({
         </section>
       </main>
 
-      {/* 10. MODAL DETAIL PRODUK */}
+      {/* FLOATING COMPARE BAR */}
+      {compareIds.length > 0 && (
+        <div className="fixed bottom-20 left-1/2 -translate-x-1/2 z-40 bg-slate-900 text-white px-5 py-3 rounded-full shadow-2xl flex items-center gap-4 text-xs font-bold border border-teal-500/50 backdrop-blur-md">
+          <div className="flex items-center gap-2">
+            <Scale className="w-4 h-4 text-teal-400" />
+            <span>Dibandingkan ({compareIds.length}/2 Unit)</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => setIsCompareModalOpen(true)}
+              className="px-3 py-1.5 rounded-lg bg-teal-600 hover:bg-teal-500 text-white font-extrabold text-xs transition"
+            >
+              Lihat Perbandingan
+            </button>
+            <button
+              onClick={() => setCompareIds([])}
+              className="p-1 rounded bg-slate-800 text-slate-400 hover:text-white"
+              title="Bersihkan"
+            >
+              <X className="w-4 h-4" />
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* SIDE-BY-SIDE LAPTOP COMPARISON MODAL */}
+      {isCompareModalOpen && comparedProducts.length > 0 && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-950/75 backdrop-blur-xs transition-all duration-200">
+          <div className="bg-white border border-slate-200 max-w-2xl w-full rounded-2xl overflow-hidden shadow-2xl p-4 sm:p-6 space-y-4 text-slate-900 relative max-h-[90vh] overflow-y-auto">
+            <div className="flex justify-between items-center border-b border-slate-200 pb-3">
+              <div className="flex items-center gap-2">
+                <Scale className="w-5 h-5 text-teal-700" />
+                <h3 className="font-extrabold text-base sm:text-lg text-slate-900">Perbandingan Spesifikasi Laptop</h3>
+              </div>
+              <button onClick={() => setIsCompareModalOpen(false)} className="p-1 rounded-lg text-slate-400 hover:text-slate-800">
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            <div className="grid grid-cols-2 gap-3 sm:gap-6 text-xs">
+              {comparedProducts.map((p) => (
+                <div key={p.id} className="space-y-3 bg-slate-50 p-3 sm:p-4 rounded-xl border border-slate-200">
+                  <div className="aspect-[4/3] rounded-lg overflow-hidden bg-slate-200">
+                    <img src={p.image} alt={p.title} className="w-full h-full object-cover" />
+                  </div>
+                  <h4 className="font-extrabold text-slate-900 text-xs sm:text-sm line-clamp-2">{p.title}</h4>
+                  <p className="text-teal-700 font-black text-sm sm:text-base">{p.priceText}</p>
+
+                  <div className="space-y-1.5 text-[11px] pt-2 border-t border-slate-200 text-slate-700">
+                    <p className="font-bold text-slate-900 uppercase text-[10px]">Spesifikasi:</p>
+                    {p.specs.map((s, idx) => (
+                      <p key={idx} className="line-clamp-2">• {s}</p>
+                    ))}
+                  </div>
+
+                  <a
+                    href={`https://wa.me/${formattedWa}?text=${encodeURIComponent(`Assalamu’alaikum Mughis Laptop Store,\n\nSaya tertarik dengan unit:\n*${p.title}*\nHarga: ${p.priceText}\n\nApakah unit ini ready? Saya baru saja membandingkannya di website.`)}`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="w-full py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl flex items-center justify-center gap-1 shadow-xs transition block text-center"
+                  >
+                    <span>Pesan Model Ini</span>
+                  </a>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* 11. MODAL DETAIL PRODUK */}
       {selectedProduct && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-950/70 backdrop-blur-xs transition-all duration-200">
           <div className="bg-white border border-slate-200 max-w-lg w-full rounded-2xl overflow-hidden shadow-2xl p-4 sm:p-6 space-y-4 text-slate-900 relative max-h-[90vh] overflow-y-auto">
@@ -750,10 +930,9 @@ export default function CatalogLaptopClient({
         </a>
       </div>
 
-      {/* 11. LIGHTBOX FULLSCREEN ZOOM MODAL (INSTAGRAM FEED 4:5 RATIO & ZOOM CONTROLS) */}
+      {/* 12. LIGHTBOX FULLSCREEN ZOOM MODAL (INSTAGRAM FEED 4:5 RATIO & ZOOM CONTROLS) */}
       {isZoomOpen && selectedProduct && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-950/95 backdrop-blur-md transition-all duration-300 p-2 sm:p-4">
-          {/* Top Control Bar */}
           <div className="absolute top-4 left-4 right-4 z-10 flex items-center justify-between text-white">
             <div className="flex items-center gap-2 bg-slate-900/80 px-3.5 py-1.5 rounded-full border border-white/20 text-xs font-bold backdrop-blur-md">
               <InstagramIcon className="w-4 h-4 text-pink-400" />
@@ -792,7 +971,6 @@ export default function CatalogLaptopClient({
             </div>
           </div>
 
-          {/* Previous / Next Arrow Controls */}
           {selectedProduct.images && selectedProduct.images.length > 1 && (
             <>
               <button
@@ -810,7 +988,6 @@ export default function CatalogLaptopClient({
             </>
           )}
 
-          {/* Main Zoomable Image Canvas with 4:5 Aspect Ratio */}
           <div className="w-full h-full max-w-2xl max-h-[85vh] flex items-center justify-center overflow-auto p-4">
             <div
               className="relative aspect-[4/5] w-full max-h-full rounded-2xl overflow-hidden shadow-2xl transition-transform duration-200 flex items-center justify-center bg-black border border-white/10"

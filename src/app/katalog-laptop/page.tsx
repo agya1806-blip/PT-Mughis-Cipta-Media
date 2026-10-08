@@ -6,7 +6,7 @@ export const revalidate = 60
 const PUBLIC_KEYS = [
   "site_name", "contact_phone", "contact_email", "address", "owner_name",
   "company_tagline", "hero_headline", "hero_subheadline",
-  "instagram_url", "bank_accounts_json", "catalog_products_json",
+  "instagram_url", "bank_accounts_json", "catalog_products_json", "catalog_testimonials_json",
 ]
 
 export default async function LaptopCatalogPage() {

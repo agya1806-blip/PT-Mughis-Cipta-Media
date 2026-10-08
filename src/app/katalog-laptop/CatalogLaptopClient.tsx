@@ -170,15 +170,22 @@ export default function CatalogLaptopClient({
   initialProducts?: ProductItem[]
   initialSettings?: Record<string, string>
 }) {
-  const [products] = useState<ProductItem[]>(
+  const [products, setProducts] = useState<ProductItem[]>(
     initialProducts.length > 0 ? initialProducts : DEFAULT_PRODUCTS
   )
-  const [bankAccounts] = useState<BankAccount[]>(() => {
+  const [bankAccounts, setBankAccounts] = useState<BankAccount[]>(() => {
     if (initialSettings.bank_accounts_json) {
       try { return JSON.parse(initialSettings.bank_accounts_json) } catch {}
     }
     return DEFAULT_BANKS
   })
+
+  const [waPhone, setWaPhone] = useState(initialSettings.contact_phone || "0852-1770-6587")
+  const [ownerName, setOwnerName] = useState(initialSettings.owner_name || "Muhammad Aghisna")
+  const [address, setAddress] = useState(initialSettings.address || "Sangso, Samalanga, Bireuen, Aceh")
+  const [heroHeadline, setHeroHeadline] = useState(initialSettings.hero_headline || "Pusat Laptop Business & Produk Digital Terpercaya")
+  const [heroSubheadline, setHeroSubheadline] = useState(initialSettings.hero_subheadline || "Unit laptop pilihan yang dites lolos QC 100%, garansi toko jelas, dan konsultasi gratis langsung via WhatsApp.")
+  const [igHighlight, setIgHighlight] = useState(initialSettings.instagram_url || "https://www.instagram.com/s/aGlnaGxpZ2h0OjE3OTI1ODg4MzI2NzYwNDM2?story_media_id=3106266946206908221&stkn=MWpwam1nMm13eDlwcg==")
 
   // Sub-Pages / Tab Isolation
   const [activeTab, setActiveTab] = useState<"beranda" | "stok" | "garansi" | "pembayaran" | "lokasi">("beranda")
@@ -201,13 +208,54 @@ export default function CatalogLaptopClient({
 
   const [toastMsg, setToastMsg] = useState("")
 
-  const waPhone = initialSettings.contact_phone || "0852-1770-6587"
+  // CLIENT-SIDE HYDRATION & PUBLIC SETTINGS FETCHING (PREVENTS REVERTING TO UNPOSTED DEFAULT PRODUCTS)
+  useEffect(() => {
+    // Check LocalStorage backup first
+    try {
+      const localProducts = localStorage.getItem("mughis_admin_products")
+      if (localProducts) {
+        const parsedLocal = JSON.parse(localProducts)
+        if (Array.isArray(parsedLocal) && parsedLocal.length > 0) {
+          setProducts(parsedLocal)
+        }
+      }
+    } catch {}
+
+    // Fetch latest public settings from server database
+    fetch("/api/public/settings")
+      .then((res) => res.json())
+      .then((data) => {
+        if (!data.error) {
+          if (data.contact_phone) setWaPhone(data.contact_phone)
+          if (data.owner_name) setOwnerName(data.owner_name)
+          if (data.address) setAddress(data.address)
+          if (data.hero_headline) setHeroHeadline(data.hero_headline)
+          if (data.hero_subheadline) setHeroSubheadline(data.hero_subheadline)
+          if (data.instagram_url) setIgHighlight(data.instagram_url)
+
+          if (data.bank_accounts_json) {
+            try { setBankAccounts(JSON.parse(data.bank_accounts_json)) } catch {}
+          }
+
+          if (data.catalog_products_json) {
+            try {
+              const loadedProducts: ProductItem[] = JSON.parse(data.catalog_products_json)
+              if (Array.isArray(loadedProducts) && loadedProducts.length > 0) {
+                const formatted = loadedProducts.map(p => ({
+                  ...p,
+                  images: p.images && p.images.length > 0 ? p.images : [p.image]
+                }))
+                setProducts(formatted)
+                localStorage.setItem("mughis_admin_products", JSON.stringify(formatted))
+              }
+            } catch {}
+          }
+        }
+      })
+      .catch(() => {})
+  }, [])
+
   const formattedWa = waPhone.replace(/[^0-9]/g, "").replace(/^0/, "62")
-  const ownerName = initialSettings.owner_name || "Muhammad Aghisna"
-  const address = initialSettings.address || "Sangso, Samalanga, Bireuen, Aceh"
-  const igHighlight = initialSettings.instagram_url || "https://www.instagram.com/s/aGlnaGxpZ2h0OjE3OTI1ODg4MzI2NzYwNDM2?story_media_id=3106266946206908221&stkn=MWpwam1nMm13eDlwcg=="
-  const heroHeadline = initialSettings.hero_headline || "Pusat Laptop Business & Produk Digital Terpercaya"
-  const heroSubheadline = initialSettings.hero_subheadline || "Unit laptop pilihan yang dites lolos QC 100%, garansi toko jelas, dan konsultasi gratis langsung via WhatsApp."
 
   function copyText(text: string, bankName: string) {
     navigator.clipboard.writeText(text).then(() => {

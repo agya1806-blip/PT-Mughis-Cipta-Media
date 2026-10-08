@@ -195,6 +195,7 @@ const DEFAULT_PRODUCTS: ProductItem[] = [
 export default function AdminKatalogLaptopPage() {
   const [activeTab, setActiveTab] = useState<"store" | "banks" | "products">("products")
   const [saving, setSaving] = useState(false)
+  const [isLoaded, setIsLoaded] = useState(false)
   const [message, setMessage] = useState("")
 
   // Store & Hero Settings
@@ -222,7 +223,19 @@ export default function AdminKatalogLaptopPage() {
   const [aiLoading, setAiLoading] = useState(false)
   const [aiPreviewProduct, setAiPreviewProduct] = useState<ProductItem | null>(null)
 
+  // Load from DB or localStorage on mount
   useEffect(() => {
+    // LocalStorage fallback for instant local recall
+    try {
+      const localProducts = localStorage.getItem("mughis_admin_products")
+      if (localProducts) {
+        const parsedLocal = JSON.parse(localProducts)
+        if (Array.isArray(parsedLocal) && parsedLocal.length > 0) {
+          setProducts(parsedLocal)
+        }
+      }
+    } catch {}
+
     fetch("/api/admin/settings")
       .then((res) => res.json())
       .then((data) => {
@@ -242,21 +255,35 @@ export default function AdminKatalogLaptopPage() {
           if (data.catalog_products_json) {
             try {
               const loadedProducts: ProductItem[] = JSON.parse(data.catalog_products_json)
-              const formatted = loadedProducts.map(p => ({
-                ...p,
-                images: p.images && p.images.length > 0 ? p.images : [p.image]
-              }))
-              setProducts(formatted)
+              if (Array.isArray(loadedProducts) && loadedProducts.length > 0) {
+                const formatted = loadedProducts.map(p => ({
+                  ...p,
+                  images: p.images && p.images.length > 0 ? p.images : [p.image]
+                }))
+                setProducts(formatted)
+                localStorage.setItem("mughis_admin_products", JSON.stringify(formatted))
+              }
             } catch {}
           }
         }
       })
       .catch(() => {})
+      .finally(() => setIsLoaded(true))
   }, [])
 
   async function handleSaveAll() {
+    if (!isLoaded) {
+      alert("Sedang memuat data dari database. Mohon tunggu beberapa detik...")
+      return
+    }
+
     setSaving(true)
     setMessage("")
+
+    // Save to LocalStorage for safety
+    try {
+      localStorage.setItem("mughis_admin_products", JSON.stringify(products))
+    } catch {}
 
     const payload = {
       site_name: siteName,
@@ -279,10 +306,10 @@ export default function AdminKatalogLaptopPage() {
       })
 
       if (res.ok) {
-        setMessage("✅ Perubahan katalog berhasil disimpan ke database!")
+        setMessage("✅ Perubahan katalog berhasil disimpan ke database & lokal!")
         setTimeout(() => setMessage(""), 3000)
       } else {
-        setMessage("❌ Gagal menyimpan data katalog")
+        setMessage("❌ Gagal menyimpan data katalog ke server")
       }
     } catch {
       setMessage("❌ Terjadi kesalahan koneksi")
@@ -315,7 +342,7 @@ export default function AdminKatalogLaptopPage() {
         const defaultImg = "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=800&auto=format&fit=crop&q=80"
         const generated: ProductItem = {
           id: `prod-${Date.now()}`,
-          title: json.data.title || "Produk Laptop Hasil AI Copilot",
+          title: json.data.title || "Produk Hasil AI Copilot",
           category: json.data.category || "laptop",
           badge: json.data.badge || "Paling Laris",
           badgeColor: "bg-emerald-100 text-emerald-800 border-emerald-300",
@@ -344,12 +371,14 @@ export default function AdminKatalogLaptopPage() {
   // Publish AI Generated Draft
   function applyAiDraftToCatalog() {
     if (!aiPreviewProduct) return
-    setProducts([aiPreviewProduct, ...products])
+    const updated = [aiPreviewProduct, ...products]
+    setProducts(updated)
+    try { localStorage.setItem("mughis_admin_products", JSON.stringify(updated)) } catch {}
     openProductEditor(aiPreviewProduct)
     setAiPreviewProduct(null)
     setAiRawText("")
     setAiBase64Image("")
-    setMessage("✅ Draf AI Copilot berhasil diterapkan! Silakan lengkapi foto dan simpan.")
+    setMessage("✅ Draf AI Copilot berhasil diterapkan! Silakan simpan ke database.")
     setTimeout(() => setMessage(""), 4000)
   }
 
@@ -498,13 +527,17 @@ export default function AdminKatalogLaptopPage() {
       images: updatedImages,
       specs: updatedSpecs
     }
-    setProducts(products.map((p) => (p.id === updated.id ? updated : p)))
+    const newProducts = products.map((p) => (p.id === updated.id ? updated : p))
+    setProducts(newProducts)
+    try { localStorage.setItem("mughis_admin_products", JSON.stringify(newProducts)) } catch {}
     setEditingProduct(null)
   }
 
   function deleteProduct(id: string) {
     if (confirm("Apakah Anda yakin ingin menghapus produk ini dari katalog?")) {
-      setProducts(products.filter((p) => p.id !== id))
+      const newProducts = products.filter((p) => p.id !== id)
+      setProducts(newProducts)
+      try { localStorage.setItem("mughis_admin_products", JSON.stringify(newProducts)) } catch {}
       if (editingProduct?.id === id) setEditingProduct(null)
     }
   }
@@ -523,11 +556,11 @@ export default function AdminKatalogLaptopPage() {
 
         <button
           onClick={handleSaveAll}
-          disabled={saving}
-          className="px-6 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-lg shadow-emerald-600/20 transition active:scale-95"
+          disabled={saving || !isLoaded}
+          className="px-6 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 disabled:opacity-50 text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-lg shadow-emerald-600/20 transition active:scale-95"
         >
           <Save className="w-4 h-4" />
-          <span>{saving ? "Menyimpan..." : "Simpan Semua Perubahan"}</span>
+          <span>{!isLoaded ? "Memuat Data..." : (saving ? "Menyimpan..." : "Simpan Semua Perubahan")}</span>
         </button>
       </div>
 

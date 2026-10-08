@@ -260,7 +260,7 @@ export default function CatalogLaptopStoreCleanPage() {
       {/* 2. MINIMALIST STORE NAVBAR */}
       <header className="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200/80 shadow-xs">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-3">
-          <a href="#" className="flex items-center gap-2.5 min-w-0">
+          <a href="/" className="flex items-center gap-2.5 min-w-0">
             <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-teal-700 flex items-center justify-center text-white shrink-0 shadow-xs">
               <Laptop className="w-5 h-5" />
             </div>

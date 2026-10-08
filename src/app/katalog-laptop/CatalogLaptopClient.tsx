@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Search, Laptop, ShieldCheck, Phone, CheckCircle, Copy, X, Check, MapPin, Award, Image as ImageIcon, Video as VideoIcon, ZoomIn, ZoomOut, RotateCcw, ChevronLeft, ChevronRight, Scale, Star, Printer } from "lucide-react"
+import { Search, Laptop, ShieldCheck, Phone, CheckCircle, Copy, X, Check, MapPin, ShieldAlert, Award, Image as ImageIcon, Video as VideoIcon, ZoomIn, ZoomOut, RotateCcw, ChevronLeft, ChevronRight, Scale, Star, Printer, Truck, Clock } from "lucide-react"
 
 function InstagramIcon({ className = "w-4 h-4" }: { className?: string }) {
   return (
@@ -137,11 +137,37 @@ const DEFAULT_PRODUCTS: ProductItem[] = [
     bonus: "Unit Laptop, Charger Original, Tas Laptop & Mouse"
   },
   {
+    id: "prod-t470",
+    title: "Lenovo ThinkPad T470 Core i5 Gen 6",
+    category: "laptop",
+    useCase: "kantor",
+    badge: "Best Seller",
+    stockStatus: "READY",
+    priceText: "Rp 3.500.000",
+    rawPriceText: "Rp 3.500.000 (RAM 8GB / SSD 256GB)",
+    image: "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=800&auto=format&fit=crop&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=800&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=800&auto=format&fit=crop&q=80"
+    ],
+    shortDesc: "Generasi penerus T460 dengan bodi lebih ringkas, port Type-C USB-C fast charge, dan performa mulus untuk olah data.",
+    specs: [
+      "Prosesor: Intel Core i5-6200U / i5-6300U Gen 6",
+      "RAM: 8GB DDR4 (Upgradable)",
+      "Penyimpanan: 256GB SSD Fast Boot",
+      "Layar: 14.0 inch Anti-Glare Jernih",
+      "Port: USB-C Type-C, HDMI, USB 3.0, LAN"
+    ],
+    conditionNote: "Grade A Mulus 92-95%, Baterai Awet 2-4 Jam",
+    warranty: "Garansi Toko 30 Hari",
+    bonus: "Unit Laptop, Charger Original Type-C, Tas Laptop Baru & Mouse"
+  },
+  {
     id: "prod-hp-430-g5",
     title: "HP ProBook 430 G5 Core i5 Gen 8",
     category: "laptop",
     useCase: "editing",
-    badge: "Quad Core",
+    badge: "Quad Core Cepat",
     stockStatus: "READY",
     priceText: "Rp 4.200.000",
     rawPriceText: "Rp 4.200.000 (Core i5 Gen 8 / RAM 8GB / SSD 256GB)",
@@ -160,6 +186,54 @@ const DEFAULT_PRODUCTS: ProductItem[] = [
     conditionNote: "Grade A Mulus 93-95%, Baterai Awet 3-4 Jam",
     warranty: "Garansi Toko 30 Hari",
     bonus: "Unit Laptop, Charger Original HP, Tas Ransel & Mouse"
+  },
+  {
+    id: "prod-ideapad-s530",
+    title: "Lenovo IdeaPad S530 Core i5 Gen 8",
+    category: "budget",
+    useCase: "editing",
+    badge: "Promo (Minus Baterai)",
+    stockStatus: "READY",
+    priceText: "Rp 4.000.000",
+    rawPriceText: "Rp 4.000.000 (Harga Khusus Minus Baterai Lemah)",
+    image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=800&auto=format&fit=crop&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=800&auto=format&fit=crop&q=80"
+    ],
+    shortDesc: "Laptop ultrabook slim metal silver sangat kencang Core i5 Gen 8. Kondisi mesin & bodi mulus 100% lancar (Minus baterai lemah, disarankan colok charger).",
+    specs: [
+      "Prosesor: Intel Core i5-8265U Gen 8 (Quad Core 8 Threads)",
+      "RAM: 8GB DDR4",
+      "Penyimpanan: 256GB SSD NVMe Super Fast",
+      "Layar: 13.3 inch Full HD IPS Bezel Tipis",
+      "Catatan Minus: Baterai Lemah (Disarankan sambil colok charger)"
+    ],
+    conditionNote: "Kondisi Fisik 95% Mulus, Mesin 100% Normal (Minus Baterai Lemah)",
+    warranty: "Garansi Toko 14 Hari Mesin",
+    bonus: "Unit Laptop, Charger Original, Tas Laptop & Mouse"
+  },
+  {
+    id: "prod-office-win11",
+    title: "Lisensi Windows 11 Pro & Office 2021",
+    category: "digital",
+    badge: "Produk Digital",
+    stockStatus: "READY",
+    priceText: "Rp 400.000",
+    rawPriceText: "Rp 400.000 (Aktivasi Permanen Seumur Hidup)",
+    image: "https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800&auto=format&fit=crop&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800&auto=format&fit=crop&q=80"
+    ],
+    shortDesc: "Paket lisensi resmi original untuk PC / Laptop. Tinggal pasang, tanpa crack, bebas update selamanya, aman dari virus.",
+    specs: [
+      "Tipe Lisensi: Windows 11 Pro Retail + Office 2021 Pro Plus",
+      "Masa Aktif: Lifetime (Permanen Seumur Hidup)",
+      "Pengiriman: Key resmi dikirim langsung via WhatsApp / Email",
+      "Bebas Update: Terkoneksi langsung ke server resmi"
+    ],
+    conditionNote: "100% Produk Digital Resmi Baru",
+    warranty: "Garansi 100% Ganti Baru Jika Gagal Aktivasi",
+    bonus: "Buku panduan bergambar cara pasang, link download resmi, dan dibantu sampai tuntas via WA."
   }
 ]
 
@@ -179,87 +253,37 @@ export default function CatalogLaptopClient({
     }
     return DEFAULT_BANKS
   })
-  const [testimonials] = useState<TestimonialItem[]>(() => {
-    if (initialSettings.catalog_testimonials_json) {
-      try { return JSON.parse(initialSettings.catalog_testimonials_json) } catch {}
-    }
-    return DEFAULT_TESTIMONIALS
-  })
 
-  const waPhone = initialSettings.contact_phone || "0852-1770-6587"
-  const ownerName = initialSettings.owner_name || "Muhammad Aghisna"
-  const address = initialSettings.address || "Sangso, Samalanga, Bireuen, Aceh"
-  const igHighlight = initialSettings.instagram_url || "https://www.instagram.com/s/aGlnaGxpZ2h0OjE3OTI1ODg4MzI2NzYwNDM2?story_media_id=3106266946206908221&stkn=MWpwam1nMm13eDlwcg=="
-
+  // Sub-Pages / Tab Isolation
+  const [activeTab, setActiveTab] = useState<"beranda" | "stok" | "garansi" | "pembayaran" | "lokasi">("beranda")
   const [currentCategory, setCurrentCategory] = useState("all")
-  const [currentUseCase, setCurrentUseCase] = useState("all")
+  const [useCaseFilter, setUseCaseFilter] = useState("all")
   const [searchQuery, setSearchQuery] = useState("")
 
-  // Modal & Lightbox State
-  const [selectedProduct, setSelectedProduct] = useState<ProductItem | null>(null)
-  const [activeMediaMode, setActiveMediaMode] = useState<"image" | "video">("image")
-  const [activePhotoIdx, setActivePhotoIdx] = useState(0)
-  const [toastMsg, setToastMsg] = useState("")
-  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null)
-
-  // Zoom Lightbox State
-  const [isZoomOpen, setIsZoomOpen] = useState(false)
-  const [zoomScale, setZoomScale] = useState(1)
-
-  // Comparison State
+  // Side-by-Side Laptop Comparator State
   const [compareIds, setCompareIds] = useState<string[]>([])
   const [isCompareModalOpen, setIsCompareModalOpen] = useState(false)
 
-  useEffect(() => {
-    function handleKeyDown(e: KeyboardEvent) {
-      if (e.key === "Escape") {
-        if (isZoomOpen) {
-          setIsZoomOpen(false)
-        } else if (isCompareModalOpen) {
-          setIsCompareModalOpen(false)
-        } else {
-          setSelectedProduct(null)
-        }
-      }
-    }
-    window.addEventListener("keydown", handleKeyDown)
-    return () => window.removeEventListener("keydown", handleKeyDown)
-  }, [isZoomOpen, isCompareModalOpen])
+  // Product Detail Modal & 4-Photo Carousel State
+  const [selectedProduct, setSelectedProduct] = useState<ProductItem | null>(null)
+  const [activeMediaMode, setActiveMediaMode] = useState<"image" | "video">("image")
+  const [activePhotoIdx, setActivePhotoIdx] = useState(0)
 
-  function openDetailModal(p: ProductItem) {
-    setSelectedProduct(p)
-    setActiveMediaMode("image")
-    setActivePhotoIdx(0)
-    setIsZoomOpen(false)
-    setZoomScale(1)
-  }
+  // Fullscreen Zoom Lightbox State (Aspect 4:5)
+  const [isZoomOpen, setIsZoomOpen] = useState(false)
+  const [zoomScale, setZoomScale] = useState(1)
 
-  function openZoomModal() {
-    setIsZoomOpen(true)
-    setZoomScale(1)
-  }
+  // FAQ State
+  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null)
+  const [toastMsg, setToastMsg] = useState("")
 
-  function handleZoomIn() {
-    setZoomScale((prev) => Math.min(prev + 0.5, 3))
-  }
-
-  function handleZoomOut() {
-    setZoomScale((prev) => Math.max(prev - 0.5, 1))
-  }
-
-  function handleZoomReset() {
-    setZoomScale(1)
-  }
-
-  function handlePrevPhoto() {
-    if (!selectedProduct?.images?.length) return
-    setActivePhotoIdx((prev) => (prev === 0 ? selectedProduct.images!.length - 1 : prev - 1))
-  }
-
-  function handleNextPhoto() {
-    if (!selectedProduct?.images?.length) return
-    setActivePhotoIdx((prev) => (prev === selectedProduct.images!.length - 1 ? 0 : prev + 1))
-  }
+  const waPhone = initialSettings.contact_phone || "0852-1770-6587"
+  const formattedWa = waPhone.replace(/[^0-9]/g, "").replace(/^0/, "62")
+  const ownerName = initialSettings.owner_name || "Muhammad Aghisna"
+  const address = initialSettings.address || "Sangso, Samalanga, Bireuen, Aceh"
+  const igHighlight = initialSettings.instagram_url || "https://www.instagram.com/s/aGlnaGxpZ2h0OjE3OTI1ODg4MzI2NzYwNDM2?story_media_id=3106266946206908221&stkn=MWpwam1nMm13eDlwcg=="
+  const heroHeadline = initialSettings.hero_headline || "Pusat Laptop Business & Produk Digital Terpercaya"
+  const heroSubheadline = initialSettings.hero_subheadline || "Unit laptop pilihan yang dites lolos QC 100%, garansi toko jelas, dan konsultasi gratis langsung via WhatsApp."
 
   function copyText(text: string, bankName: string) {
     navigator.clipboard.writeText(text).then(() => {
@@ -273,12 +297,45 @@ export default function CatalogLaptopClient({
       setCompareIds(compareIds.filter((item) => item !== id))
     } else {
       if (compareIds.length >= 2) {
-        setToastMsg("Maksimal membandingkan 2 produk sekaligus.")
-        setTimeout(() => setToastMsg(""), 3000)
-        return
+        setCompareIds([compareIds[1], id])
+      } else {
+        setCompareIds([...compareIds, id])
       }
-      setCompareIds([...compareIds, id])
     }
+  }
+
+  function openDetailModal(p: ProductItem) {
+    setSelectedProduct(p)
+    setActiveMediaMode("image")
+    setActivePhotoIdx(0)
+    setZoomScale(1)
+  }
+
+  function openZoomModal() {
+    setZoomScale(1)
+    setIsZoomOpen(true)
+  }
+
+  function handleZoomIn() {
+    setZoomScale((prev) => Math.min(prev + 0.3, 2.5))
+  }
+
+  function handleZoomOut() {
+    setZoomScale((prev) => Math.max(prev - 0.3, 0.8))
+  }
+
+  function handleZoomReset() {
+    setZoomScale(1)
+  }
+
+  function handleNextPhoto() {
+    if (!selectedProduct || !selectedProduct.images) return
+    setActivePhotoIdx((prev) => (prev + 1) % selectedProduct.images!.length)
+  }
+
+  function handlePrevPhoto() {
+    if (!selectedProduct || !selectedProduct.images) return
+    setActivePhotoIdx((prev) => (prev - 1 + selectedProduct.images!.length) % selectedProduct.images!.length)
   }
 
   const activeProducts = products.filter((p) => p.stockStatus !== "HIDDEN")
@@ -287,14 +344,9 @@ export default function CatalogLaptopClient({
     const matchCat =
       currentCategory === "all" ||
       p.category === currentCategory ||
-      (currentCategory === "budget" && (p.category === "budget" || p.badge.includes("Hemat") || p.priceText.includes("400")))
+      (currentCategory === "budget" && (p.category === "budget" || p.badge.includes("Hemat") || p.badge.includes("Minus") || p.priceText.includes("1.8") || p.priceText.includes("400")))
 
-    const matchUseCase =
-      currentUseCase === "all" ||
-      p.useCase === currentUseCase ||
-      (currentUseCase === "mahasiswa" && (p.shortDesc.toLowerCase().includes("skripsi") || p.shortDesc.toLowerCase().includes("ringan") || p.shortDesc.toLowerCase().includes("kuliah"))) ||
-      (currentUseCase === "kantor" && (p.shortDesc.toLowerCase().includes("kantor") || p.shortDesc.toLowerCase().includes("kerja") || p.shortDesc.toLowerCase().includes("bandel"))) ||
-      (currentUseCase === "editing" && (p.shortDesc.toLowerCase().includes("kencang") || p.shortDesc.toLowerCase().includes("quad") || p.shortDesc.toLowerCase().includes("editing")))
+    const matchUseCase = useCaseFilter === "all" || p.useCase === useCaseFilter || p.category === "digital"
 
     const q = searchQuery.toLowerCase()
     const matchSearch =
@@ -305,434 +357,660 @@ export default function CatalogLaptopClient({
     return matchCat && matchUseCase && matchSearch
   })
 
-  const formattedWa = waPhone.replace(/[^0-9]/g, "").replace(/^0/, "62")
   const comparedProducts = products.filter((p) => compareIds.includes(p.id))
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 font-sans antialiased pb-28">
+    <div className="min-h-screen bg-slate-50 text-slate-900 font-sans antialiased selection:bg-teal-500 selection:text-white pb-20">
 
-      {/* 1. CLEAN TOP ANNOUNCEMENT BAR */}
-      <div className="bg-teal-700 text-white text-[11px] sm:text-xs py-2 px-4 text-center font-semibold border-b border-teal-800">
-        💡 <strong>Toko Resmi & Terpercaya:</strong> Garansi Toko 30 Hari • Transfer Hanya a/n <u className="font-bold text-amber-200">{ownerName}</u> (BSI / SeaBank). CS WA: <u>{waPhone}</u>
+      {/* Top Banner Warning */}
+      <div className="bg-slate-900 text-white text-[11px] sm:text-sm py-2 px-3 sm:px-4 text-center font-bold leading-snug">
+        💡 <strong>TIPS BELANJA AMAN:</strong> Pastikan hanya bertransaksi ke rekening resmi a/n <u>{ownerName}</u> (BSI / SeaBank). WA CS: <u>{waPhone}</u>!
       </div>
 
-      {/* 2. MINIMALIST STORE NAVBAR */}
-      <header className="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200/80 shadow-xs">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-3">
-          <a href="/" className="flex items-center gap-2.5 min-w-0">
-            <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-teal-700 flex items-center justify-center text-white shrink-0 shadow-xs">
-              <Laptop className="w-5 h-5" />
+      {/* Header Navigation - Glassmorphism Mobile Ergonomic */}
+      <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm transition-all duration-200">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-2">
+
+          <a href="#" onClick={(e) => { e.preventDefault(); setActiveTab("beranda"); }} className="flex items-center gap-2 min-w-0">
+            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-teal-600 flex items-center justify-center text-white shrink-0 shadow-md shadow-teal-600/20">
+              <Laptop className="w-5 h-5 sm:w-6 sm:h-6" />
             </div>
             <div className="min-w-0">
-              <span className="text-base sm:text-xl font-extrabold tracking-tight text-slate-900 block truncate">
-                Mughis <span className="text-teal-700">Laptop Store</span>
+              <span className="text-base sm:text-2xl font-black tracking-tight text-slate-900 truncate block leading-tight">
+                Mughis <span className="text-teal-600">Laptop Store</span>
               </span>
-              <span className="text-[10px] sm:text-xs text-slate-500 font-medium flex items-center gap-1 truncate">
+              <span className="text-[10px] sm:text-xs font-bold text-teal-700 truncate flex items-center gap-1">
                 <MapPin className="w-3 h-3 text-teal-600 shrink-0" />
                 <span className="truncate">{address}</span>
               </span>
             </div>
           </a>
 
+          {/* Sub-Page Navigation Tabs */}
+          <nav className="hidden md:flex items-center space-x-2 text-xs sm:text-sm font-extrabold text-slate-700">
+            <button
+              onClick={() => setActiveTab("beranda")}
+              className={`px-3 py-2 rounded-xl transition ${activeTab === "beranda" ? "bg-teal-600 text-white shadow-sm" : "hover:bg-slate-100 text-slate-700"}`}
+            >
+              🏠 Beranda
+            </button>
+            <button
+              onClick={() => setActiveTab("stok")}
+              className={`px-3 py-2 rounded-xl transition ${activeTab === "stok" ? "bg-teal-600 text-white shadow-sm" : "hover:bg-slate-100 text-slate-700"}`}
+            >
+              💻 Stok Unit Ready
+            </button>
+            <button
+              onClick={() => setActiveTab("garansi")}
+              className={`px-3 py-2 rounded-xl transition ${activeTab === "garansi" ? "bg-teal-600 text-white shadow-sm" : "hover:bg-slate-100 text-slate-700"}`}
+            >
+              🛡️ Layanan Garansi
+            </button>
+            <button
+              onClick={() => setActiveTab("pembayaran")}
+              className={`px-3 py-2 rounded-xl transition ${activeTab === "pembayaran" ? "bg-teal-600 text-white shadow-sm" : "hover:bg-slate-100 text-slate-700"}`}
+            >
+              💳 Rekening Resmi
+            </button>
+            <button
+              onClick={() => setActiveTab("lokasi")}
+              className={`px-3 py-2 rounded-xl transition ${activeTab === "lokasi" ? "bg-teal-600 text-white shadow-sm" : "hover:bg-slate-100 text-slate-700"}`}
+            >
+              📍 Lokasi & Kontak
+            </button>
+          </nav>
+
           <div className="flex items-center gap-2 shrink-0">
+            <a
+              href={igHighlight}
+              target="_blank"
+              rel="noreferrer"
+              className="hidden lg:inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-pink-50 hover:bg-pink-100 border border-pink-200 text-pink-700 font-bold text-xs transition"
+            >
+              <InstagramIcon className="w-4 h-4 text-pink-600" />
+              <span>Testimoni IG</span>
+            </a>
+
             <button
               onClick={() => window.print()}
-              className="hidden sm:inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs transition border border-slate-300/80"
-              title="Cetak Brosur Katalog"
+              className="hidden xl:inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-300 text-slate-700 font-bold text-xs transition"
+              title="Cetak Katalog PDF"
             >
-              <Printer className="w-3.5 h-3.5 text-teal-700" />
-              <span>Cetak Brosur</span>
+              <Printer className="w-4 h-4 text-slate-600" />
+              <span>Cetak PDF</span>
             </button>
 
             <a
               href={`https://wa.me/${formattedWa}?text=${encodeURIComponent("Halo Mughis Laptop Store, saya ingin bertanya stok laptop/produk digital.")}`}
               target="_blank"
               rel="noreferrer"
-              className="px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm flex items-center gap-1.5 shadow-xs transition active:scale-95"
+              className="px-3 py-2 sm:px-4 sm:py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm flex items-center gap-1.5 shadow-md shadow-emerald-600/20 transition transform active:scale-95"
             >
-              <Phone className="w-4 h-4" />
-              <span>Chat WA CS</span>
+              <Phone className="w-4 h-4 shrink-0" />
+              <span>CS WA</span>
             </a>
           </div>
         </div>
+
+        {/* Mobile Tab Switcher Bar */}
+        <div className="md:hidden flex border-t border-slate-200 bg-slate-50 px-2 py-1.5 overflow-x-auto gap-1 text-xs font-bold">
+          <button
+            onClick={() => setActiveTab("beranda")}
+            className={`px-3 py-1.5 rounded-lg shrink-0 whitespace-nowrap transition ${activeTab === "beranda" ? "bg-teal-600 text-white" : "text-slate-600 hover:bg-slate-200"}`}
+          >
+            🏠 Beranda
+          </button>
+          <button
+            onClick={() => setActiveTab("stok")}
+            className={`px-3 py-1.5 rounded-lg shrink-0 whitespace-nowrap transition ${activeTab === "stok" ? "bg-teal-600 text-white" : "text-slate-600 hover:bg-slate-200"}`}
+          >
+            💻 Stok Unit
+          </button>
+          <button
+            onClick={() => setActiveTab("garansi")}
+            className={`px-3 py-1.5 rounded-lg shrink-0 whitespace-nowrap transition ${activeTab === "garansi" ? "bg-teal-600 text-white" : "text-slate-600 hover:bg-slate-200"}`}
+          >
+            🛡️ Garansi
+          </button>
+          <button
+            onClick={() => setActiveTab("pembayaran")}
+            className={`px-3 py-1.5 rounded-lg shrink-0 whitespace-nowrap transition ${activeTab === "pembayaran" ? "bg-teal-600 text-white" : "text-slate-600 hover:bg-slate-200"}`}
+          >
+            💳 Rekening
+          </button>
+          <button
+            onClick={() => setActiveTab("lokasi")}
+            className={`px-3 py-1.5 rounded-lg shrink-0 whitespace-nowrap transition ${activeTab === "lokasi" ? "bg-teal-600 text-white" : "text-slate-600 hover:bg-slate-200"}`}
+          >
+            📍 Lokasi
+          </button>
+        </div>
       </header>
 
-      {/* 3. HERO & SEARCH SECTION */}
-      <section className="bg-gradient-to-b from-teal-50/60 via-white to-slate-50 border-b border-slate-200/60 py-8 sm:py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-teal-100/80 border border-teal-200 text-teal-800 text-[11px] sm:text-xs font-bold uppercase tracking-wide">
-            <Award className="w-3.5 h-3.5 text-teal-600" />
-            <span>Pusat Laptop Business & Lisensi Digital Samalanga</span>
-          </div>
+      {/* 1. TAB CONTENT: BERANDA / HOME (HERO BANNER ONLY RENDERS HERE) */}
+      {activeTab === "beranda" && (
+        <>
+          <section className="pt-8 sm:pt-14 pb-12 sm:pb-16 bg-gradient-to-b from-teal-50/80 via-white to-slate-50 border-b border-slate-200">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4 sm:space-y-6">
 
-          <h1 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight max-w-3xl mx-auto">
-            Laptop Business Bekas Berkualitas & Produk Digital Resmi
-          </h1>
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-teal-100 border border-teal-300 text-teal-800 text-[11px] sm:text-sm font-extrabold uppercase tracking-wider">
+                <Award className="w-4 h-4 text-teal-600 shrink-0" />
+                <span>Official Store • Owner: {ownerName} • Samalanga, Bireuen</span>
+              </div>
 
-          <p className="text-xs sm:text-base text-slate-600 font-medium max-w-2xl mx-auto leading-relaxed">
-            Unit pilihan teruji 100% QC, garansi toko 30 hari jelas, dan konsultasi gratis langsung dengan Owner ({ownerName}).
-          </p>
+              <h1 className="text-2xl sm:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight leading-tight">
+                {heroHeadline}
+              </h1>
 
-          {/* Search Box */}
-          <div className="relative max-w-xl mx-auto pt-2">
-            <Search className="w-5 h-5 absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 mt-1" />
-            <input
-              type="text"
-              placeholder="Cari ThinkPad X1, T460, T470, HP ProBook, Windows 11..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-11 pr-4 py-3 text-xs sm:text-sm font-semibold rounded-2xl border border-slate-300 focus:border-teal-600 focus:ring-2 focus:ring-teal-600/20 focus:outline-none bg-white shadow-xs text-slate-900 placeholder:text-slate-400"
-            />
-          </div>
-        </div>
-      </section>
+              <p className="text-xs sm:text-lg text-slate-600 font-medium max-w-2xl mx-auto leading-relaxed">
+                {heroSubheadline}
+              </p>
 
-      {/* 4. STICKY CATEGORY & SMART USE CASE FILTER BAR */}
-      <div className="sticky top-16 sm:top-20 z-30 bg-white/95 backdrop-blur-md border-b border-slate-200/80 py-2.5 px-2 sm:px-6 space-y-2">
-        {/* Category Filters */}
-        <div className="max-w-7xl mx-auto overflow-x-auto scrollbar-none">
-          <div className="flex items-center justify-start md:justify-center gap-2 text-xs font-bold min-w-max px-2">
-            <button
-              onClick={() => setCurrentCategory("all")}
-              className={`px-3.5 py-1.5 rounded-xl shrink-0 transition border ${currentCategory === "all" ? "bg-teal-700 border-teal-700 text-white shadow-xs" : "bg-slate-100 border-slate-200 text-slate-700 hover:bg-slate-200"}`}
-            >
-              🔥 Semua Produk ({activeProducts.length})
-            </button>
-            <button
-              onClick={() => setCurrentCategory("laptop")}
-              className={`px-3.5 py-1.5 rounded-xl shrink-0 transition border ${currentCategory === "laptop" ? "bg-teal-700 border-teal-700 text-white shadow-xs" : "bg-slate-100 border-slate-200 text-slate-700 hover:bg-slate-200"}`}
-            >
-              💻 Laptop Business
-            </button>
-            <button
-              onClick={() => setCurrentCategory("digital")}
-              className={`px-3.5 py-1.5 rounded-xl shrink-0 transition border ${currentCategory === "digital" ? "bg-teal-700 border-teal-700 text-white shadow-xs" : "bg-slate-100 border-slate-200 text-slate-700 hover:bg-slate-200"}`}
-            >
-              🔑 Produk Digital
-            </button>
-            <button
-              onClick={() => setCurrentCategory("budget")}
-              className={`px-3.5 py-1.5 rounded-xl shrink-0 transition border ${currentCategory === "budget" ? "bg-teal-700 border-teal-700 text-white shadow-xs" : "bg-slate-100 border-slate-200 text-slate-700 hover:bg-slate-200"}`}
-            >
-              🏷️ Promo Hemat
-            </button>
-          </div>
-        </div>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
+                <button
+                  onClick={() => setActiveTab("stok")}
+                  className="w-full sm:w-auto px-8 py-3.5 rounded-2xl bg-teal-600 hover:bg-teal-700 text-white font-extrabold text-sm flex items-center justify-center gap-2 shadow-lg shadow-teal-600/30 active:scale-95 transition"
+                >
+                  <Laptop className="w-5 h-5" />
+                  <span>Lihat Semua Stok Unit Ready Stock ({activeProducts.length})</span>
+                </button>
 
-        {/* Smart Use-Case Filters */}
-        <div className="max-w-7xl mx-auto overflow-x-auto scrollbar-none pt-1 border-t border-slate-100">
-          <div className="flex items-center justify-start md:justify-center gap-1.5 text-[11px] font-semibold min-w-max px-2">
-            <span className="text-slate-400 text-[10px] uppercase tracking-wider font-extrabold shrink-0 mr-1">Kebutuhan:</span>
-            <button
-              onClick={() => setCurrentUseCase("all")}
-              className={`px-2.5 py-1 rounded-lg shrink-0 transition ${currentUseCase === "all" ? "bg-slate-800 text-white font-bold" : "bg-slate-50 text-slate-600 hover:bg-slate-200"}`}
-            >
-              Semua
-            </button>
-            <button
-              onClick={() => setCurrentUseCase("mahasiswa")}
-              className={`px-2.5 py-1 rounded-lg shrink-0 transition ${currentUseCase === "mahasiswa" ? "bg-emerald-700 text-white font-bold" : "bg-emerald-50 text-emerald-800 hover:bg-emerald-100"}`}
-            >
-              🎓 Mahasiswa & Skripsi
-            </button>
-            <button
-              onClick={() => setCurrentUseCase("kantor")}
-              className={`px-2.5 py-1 rounded-lg shrink-0 transition ${currentUseCase === "kantor" ? "bg-teal-700 text-white font-bold" : "bg-teal-50 text-teal-800 hover:bg-teal-100"}`}
-            >
-              💼 Perkantoran & Kasir
-            </button>
-            <button
-              onClick={() => setCurrentUseCase("editing")}
-              className={`px-2.5 py-1 rounded-lg shrink-0 transition ${currentUseCase === "editing" ? "bg-indigo-700 text-white font-bold" : "bg-indigo-50 text-indigo-800 hover:bg-indigo-100"}`}
-            >
-              🎨 Editing & Multitasking
-            </button>
-          </div>
-        </div>
-      </div>
+                <a
+                  href={`https://wa.me/${formattedWa}?text=${encodeURIComponent("Halo Mughis Laptop Store, saya ingin bertanya stok laptop/produk digital.")}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="w-full sm:w-auto px-6 py-3.5 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-sm flex items-center justify-center gap-2 shadow-lg shadow-emerald-600/30 active:scale-95 transition"
+                >
+                  <Phone className="w-5 h-5" />
+                  <span>Konsultasi WA CS</span>
+                </a>
+              </div>
+            </div>
+          </section>
 
-      {/* 5. MODERN MINIMALIST PRODUCT CATALOG GRID */}
-      <main className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-6 sm:py-10">
-        {filteredProducts.length === 0 ? (
-          <div className="text-center py-12 bg-white rounded-2xl border border-slate-200/80 space-y-3 p-6">
-            <Laptop className="w-10 h-10 text-teal-600 mx-auto opacity-40" />
-            <p className="text-sm sm:text-base font-bold text-slate-800">
-              {searchQuery ? `Tidak ada produk yang cocok dengan "${searchQuery}"` : "Belum Ada Unit Produk dalam Katalog"}
-            </p>
-            <p className="text-xs text-slate-500 max-w-md mx-auto">
-              {searchQuery
-                ? "Coba gunakan kata kunci lain atau reset filter pencarian Anda."
-                : "Produk yang Anda unggah dari Dashboard Admin akan langsung otomatis muncul di sini."}
-            </p>
-            {searchQuery && (
-              <button
-                onClick={() => { setSearchQuery(""); setCurrentCategory("all"); setCurrentUseCase("all"); }}
-                className="px-4 py-2 rounded-xl bg-teal-700 hover:bg-teal-800 text-white font-bold text-xs inline-flex items-center gap-1.5 shadow-xs transition"
+          {/* Fraud Protection Callout Banner */}
+          <section className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 -mt-5 relative z-10">
+            <div className="bg-amber-50 border-2 border-amber-400/80 p-4 sm:p-5 rounded-2xl shadow-lg flex flex-col md:flex-row items-center justify-between gap-3 text-xs sm:text-sm text-slate-900">
+              <div className="flex items-start gap-3">
+                <ShieldAlert className="w-7 h-7 sm:w-8 sm:h-8 text-amber-600 shrink-0 mt-0.5" />
+                <div>
+                  <p className="font-extrabold text-amber-900 uppercase tracking-wider">HIMBAUAN KEAMANAN TRANSAKSI OWNER ({ownerName.toUpperCase()})</p>
+                  <p className="text-slate-700 mt-0.5 leading-relaxed">
+                    Pastikan transfer pembayaran Anda <strong>HANYA</strong> dikirimkan ke rekening Bank BSI atau SeaBank atas nama <strong>{ownerName}</strong>. WA Resmi: <strong>{waPhone}</strong>.
+                  </p>
+                </div>
+              </div>
+
+              <a
+                href={igHighlight}
+                target="_blank"
+                rel="noreferrer"
+                className="px-4 py-2 rounded-xl bg-pink-600 hover:bg-pink-700 text-white font-bold text-xs flex items-center gap-2 shrink-0 shadow-md w-full sm:w-auto justify-center"
               >
-                <span>Reset Pencarian</span>
-              </button>
-            )}
+                <InstagramIcon className="w-4 h-4" />
+                <span>Cek Testimoni IG</span>
+              </a>
+            </div>
+          </section>
+
+          {/* Store Strengths Section */}
+          <section id="keunggulan" className="py-12 sm:py-16 bg-white">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="text-center max-w-2xl mx-auto mb-8 space-y-2">
+                <span className="px-3.5 py-1 rounded-full bg-teal-100 text-teal-800 text-xs font-extrabold uppercase">Keunggulan Toko</span>
+                <h2 className="text-2xl sm:text-4xl font-black text-slate-900">Mengapa Memilih Mughis Laptop Store?</h2>
+              </div>
+
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
+                <div className="p-4 sm:p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-1.5">
+                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-teal-100 text-teal-700 flex items-center justify-center font-bold">
+                    <ShieldCheck className="w-5 h-5" />
+                  </div>
+                  <h3 className="text-xs sm:text-base font-bold text-slate-900">Garansi Toko Jelas</h3>
+                  <p className="text-[11px] sm:text-xs text-slate-600 leading-relaxed font-medium">Semua unit dilengkapi garansi toko resmi 30 hari.</p>
+                </div>
+
+                <div className="p-4 sm:p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-1.5">
+                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold">
+                    <CheckSquare className="w-5 h-5" />
+                  </div>
+                  <h3 className="text-xs sm:text-base font-bold text-slate-900">QC Unit 100%</h3>
+                  <p className="text-[11px] sm:text-xs text-slate-600 leading-relaxed font-medium">Layar, keyboard, baterai, & hardware dites menyeluruh.</p>
+                </div>
+
+                <div className="p-4 sm:p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-1.5">
+                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center font-bold">
+                    <Phone className="w-5 h-5" />
+                  </div>
+                  <h3 className="text-xs sm:text-base font-bold text-slate-900">Konsultasi Gratis WA</h3>
+                  <p className="text-[11px] sm:text-xs text-slate-600 leading-relaxed font-medium">CS ramah membantu memilih spek laptop sesuai kebutuhan.</p>
+                </div>
+
+                <div className="p-4 sm:p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-1.5">
+                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-amber-100 text-amber-800 flex items-center justify-center font-bold">
+                    <Award className="w-5 h-5" />
+                  </div>
+                  <h3 className="text-xs sm:text-base font-bold text-slate-900">Rekening Owner Resmi</h3>
+                  <p className="text-[11px] sm:text-xs text-slate-600 leading-relaxed font-medium">Transfer aman hanya a/n Muhammad Aghisna.</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Testimonials Section */}
+          <section className="py-12 bg-slate-50 border-t border-slate-200">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+              <div className="text-center max-w-2xl mx-auto space-y-2">
+                <span className="px-3 py-1 rounded-full bg-pink-100 text-pink-700 text-xs font-bold uppercase">Testimoni Pembeli</span>
+                <h2 className="text-2xl sm:text-3xl font-black text-slate-900">Apa Kata Pelanggan Kami?</h2>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {DEFAULT_TESTIMONIALS.map((t) => (
+                  <div key={t.id} className="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-3">
+                    <div className="flex items-center gap-3">
+                      <img src={t.photoUrl} alt={t.name} className="w-10 h-10 rounded-full object-cover border border-slate-300" />
+                      <div>
+                        <p className="font-extrabold text-slate-900 text-sm">{t.name}</p>
+                        <p className="text-xs text-slate-500 font-medium">{t.location}</p>
+                      </div>
+                    </div>
+                    <div className="flex items-center text-amber-400 gap-1 text-xs">
+                      {[...Array(t.rating)].map((_, i) => (
+                        <Star key={i} className="w-4 h-4 fill-amber-400" />
+                      ))}
+                    </div>
+                    <p className="text-xs text-slate-600 leading-relaxed italic">"{t.text}"</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        </>
+      )}
+
+      {/* 2. TAB CONTENT: STOK UNIT READY (PURE PRODUCT CATALOG WITH ASPECT RATIO 4:5, VIDEO SUPPORT, OPTION A PRICE ASSURANCE NOTE, & SMART USE-CASE FILTERS) */}
+      {activeTab === "stok" && (
+        <section id="katalog" className="py-8 sm:py-12 max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 pb-3 border-b border-slate-200 gap-3">
+            <div>
+              <h2 className="text-xl sm:text-3xl font-black text-slate-900">Daftar Unit & Produk Ready Stock</h2>
+              <p className="text-xs sm:text-sm text-slate-500 font-medium">Klik produk untuk melihat spesifikasi, galeri foto multi-sudut (Rasio 4:5), & video unit</p>
+            </div>
+            <div className="text-[11px] sm:text-xs font-bold text-slate-600 bg-white px-3 py-1.5 rounded-xl border border-slate-200 self-start sm:self-auto">
+              100% Lolos QC & Siap Pakai
+            </div>
           </div>
-        ) : (
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2.5 sm:gap-5 w-full">
-            {filteredProducts.map((p) => {
-              const waMsg = encodeURIComponent(`Assalamu’alaikum Mughis Laptop Store,\n\nSaya tertarik dengan unit:\n*${p.title}*\nHarga: ${p.priceText}\n\nApakah unit masih tersedia? Mohon informasi kondisi dan garansinya.`)
-              const waUrl = `https://wa.me/${formattedWa}?text=${waMsg}`
-              const photoCount = p.images && p.images.length > 0 ? p.images.length : 1
-              const isCompared = compareIds.includes(p.id)
 
-              return (
-                <div key={p.id} className="min-w-0 w-full max-w-full bg-white rounded-2xl border border-slate-200/80 overflow-hidden flex flex-col justify-between shadow-xs hover:shadow-md transition-all duration-200 group">
-                  <div>
-                    {/* CLEAN COMPACT IMAGE (ASPECT 16/10 ON MOBILE, 4:5 ON TABLET/DESKTOP) */}
-                    <div className="relative aspect-[16/10] sm:aspect-[4/5] w-full bg-slate-100 overflow-hidden">
-                      <img src={p.images?.[0] || p.image} alt={p.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
-                      <span className="absolute top-2 left-2 px-2 py-0.5 rounded-md text-[9px] sm:text-xs font-semibold bg-white/90 text-slate-800 shadow-xs border border-slate-200/60 backdrop-blur-xs">
-                        {p.badge}
-                      </span>
+          {/* Search Bar & Smart Use-Case Filters */}
+          <div className="space-y-4 mb-8">
+            <div className="relative max-w-2xl mx-auto shadow-md rounded-2xl">
+              <Search className="w-5 h-5 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
+              <input
+                type="text"
+                placeholder="Cari ThinkPad X1, T460, T470, HP 430 G5, Ideapad S530..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full pl-10 pr-4 py-3 text-sm sm:text-base font-bold rounded-2xl border-2 border-slate-300 focus:border-teal-600 focus:outline-none bg-white text-slate-900 placeholder:text-slate-400"
+              />
+            </div>
 
-                      {/* Compare Checkbox Icon */}
-                      <button
-                        onClick={() => toggleCompare(p.id)}
-                        className={`absolute top-2 right-2 p-1.5 rounded-lg backdrop-blur-md transition shadow-xs flex items-center gap-1 text-[9px] font-bold ${isCompared ? "bg-teal-700 text-white ring-2 ring-teal-400" : "bg-slate-900/60 text-white hover:bg-slate-900"}`}
-                        title="Bandingkan Laptop"
-                      >
-                        <Scale className="w-3 h-3" />
-                        <span className="hidden sm:inline">{isCompared ? "Dibandingkan" : "Bandingkan"}</span>
-                      </button>
+            {/* Smart Use-Case Quick Filter Pills */}
+            <div className="p-3 rounded-2xl bg-white border border-slate-200 shadow-xs max-w-3xl mx-auto space-y-2">
+              <span className="text-[10px] font-black uppercase text-slate-400 tracking-wider block text-center">Rekomendasi Kebutuhan / Use Case:</span>
+              <div className="flex flex-wrap justify-center gap-1.5 text-xs font-bold">
+                <button
+                  onClick={() => setUseCaseFilter("all")}
+                  className={`px-3 py-1.5 rounded-xl transition ${useCaseFilter === "all" ? "bg-slate-900 text-white" : "bg-slate-100 text-slate-700 hover:bg-slate-200"}`}
+                >
+                  Semua
+                </button>
+                <button
+                  onClick={() => setUseCaseFilter("mahasiswa")}
+                  className={`px-3 py-1.5 rounded-xl transition ${useCaseFilter === "mahasiswa" ? "bg-slate-900 text-white" : "bg-slate-100 text-slate-700 hover:bg-slate-200"}`}
+                >
+                  🎓 Ketik / Skripsi
+                </button>
+                <button
+                  onClick={() => setUseCaseFilter("kantor")}
+                  className={`px-3 py-1.5 rounded-lg transition ${useCaseFilter === "kantor" ? "bg-slate-900 text-white" : "bg-slate-100 text-slate-700 hover:bg-slate-200"}`}
+                >
+                  📊 Olah Data / Kantor
+                </button>
+                <button
+                  onClick={() => setUseCaseFilter("editing")}
+                  className={`px-3 py-1.5 rounded-lg transition ${useCaseFilter === "editing" ? "bg-slate-900 text-white" : "bg-slate-100 text-slate-700 hover:bg-slate-200"}`}
+                >
+                  🎨 Desain / Editing
+                </button>
+              </div>
+            </div>
 
-                      <div className="absolute bottom-2 left-2 flex items-center gap-1">
-                        <span className="px-1.5 py-0.5 rounded text-[8px] sm:text-[10px] font-bold bg-slate-900/75 text-white backdrop-blur-xs flex items-center gap-0.5">
-                          <ImageIcon className="w-2.5 h-2.5 text-teal-400" />
-                          <span>{photoCount} Foto</span>
+            <div className="flex flex-wrap justify-center gap-2 text-xs sm:text-sm font-bold">
+              <button
+                onClick={() => setCurrentCategory("all")}
+                className={`px-3.5 py-2 rounded-xl border-2 transition ${currentCategory === "all" ? "bg-teal-600 border-teal-600 text-white shadow-sm" : "bg-white border-slate-200 text-slate-700 hover:border-teal-600"}`}
+              >
+                🔥 Semua Kategori ({activeProducts.length})
+              </button>
+              <button
+                onClick={() => setCurrentCategory("laptop")}
+                className={`px-3.5 py-2 rounded-xl border-2 transition ${currentCategory === "laptop" ? "bg-teal-600 border-teal-600 text-white shadow-sm" : "bg-white border-slate-200 text-slate-700 hover:border-teal-600"}`}
+              >
+                💻 Laptop Business
+              </button>
+              <button
+                onClick={() => setCurrentCategory("digital")}
+                className={`px-3.5 py-2 rounded-xl border-2 transition ${currentCategory === "digital" ? "bg-teal-600 border-teal-600 text-white shadow-sm" : "bg-white border-slate-200 text-slate-700 hover:border-teal-600"}`}
+              >
+                🔑 Produk Digital & Lisensi
+              </button>
+              <button
+                onClick={() => setCurrentCategory("budget")}
+                className={`px-3.5 py-2 rounded-xl border-2 transition ${currentCategory === "budget" ? "bg-teal-600 border-teal-600 text-white shadow-sm" : "bg-white border-slate-200 text-slate-700 hover:border-teal-600"}`}
+              >
+                🏷️ Promo & Pilihan Hemat
+              </button>
+            </div>
+          </div>
+
+          {filteredProducts.length === 0 ? (
+            <div className="text-center py-12 bg-white rounded-3xl border-2 border-dashed border-slate-200 space-y-2">
+              <p className="text-base font-bold text-slate-800">Produk tidak ditemukan</p>
+              <p className="text-xs text-slate-500">Coba ubah kata kunci pencarian Anda.</p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-8">
+              {filteredProducts.map((p) => {
+                const waMsg = encodeURIComponent(`Assalamu’alaikum Mughis Laptop Store,\n\nSaya tertarik dengan unit:\n*${p.title}*\nHarga: ${p.priceText}\n\nApakah unit masih tersedia? Mohon informasi kondisi dan garansinya.`)
+                const waUrl = `https://wa.me/${formattedWa}?text=${waMsg}`
+                const photoCount = p.images && p.images.length > 0 ? p.images.length : 1
+                const isCompared = compareIds.includes(p.id)
+
+                return (
+                  <div key={p.id} className="bg-white rounded-2xl border-2 border-slate-200 overflow-hidden flex flex-col justify-between shadow-sm hover:shadow-xl transition-all duration-300 group hover:-translate-y-1">
+                    <div>
+                      {/* STRICT ASPECT RATIO 4:5 PORTRAIT CONTAINER */}
+                      <div className="relative aspect-[4/5] w-full bg-slate-100 overflow-hidden">
+                        <img src={p.images?.[0] || p.image} alt={p.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+
+                        <span className="absolute top-2 left-2 px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-[9px] sm:text-xs font-black uppercase tracking-wider bg-teal-100 text-teal-800 border border-teal-300 shadow-sm">
+                          {p.badge}
                         </span>
-                        {p.video && (
-                          <span className="px-1.5 py-0.5 rounded text-[8px] sm:text-[10px] font-bold bg-indigo-600 text-white flex items-center gap-0.5">
-                            <VideoIcon className="w-2.5 h-2.5 text-white" />
-                            <span>Video</span>
+
+                        <button
+                          onClick={() => toggleCompare(p.id)}
+                          className={`absolute top-2 right-2 p-1.5 rounded-lg border text-[10px] font-bold transition flex items-center gap-1 shadow-sm ${isCompared ? "bg-teal-600 text-white border-teal-600" : "bg-white/90 hover:bg-white text-slate-700 border-slate-300"}`}
+                          title="Bandingkan Laptop"
+                        >
+                          <Scale className="w-3.5 h-3.5" />
+                          <span className="hidden sm:inline">{isCompared ? "Dibandingkan" : "Bandingkan"}</span>
+                        </button>
+
+                        <div className="absolute bottom-2 left-2 flex items-center gap-1">
+                          <span className="px-2 py-0.5 rounded-md text-[9px] sm:text-[10px] font-bold bg-slate-900/80 text-white backdrop-blur-sm shadow-sm flex items-center gap-1">
+                            <ImageIcon className="w-3 h-3 text-teal-400" />
+                            <span>{photoCount} Foto</span>
+                          </span>
+                          {p.video && (
+                            <span className="px-1.5 py-0.5 rounded-md text-[9px] font-bold bg-indigo-600 text-white shadow-sm flex items-center gap-1">
+                              <VideoIcon className="w-3 h-3 text-white" />
+                              <span className="hidden sm:inline">Ada Video</span>
+                            </span>
+                          )}
+                        </div>
+
+                        {p.stockStatus === "SOLD_OUT" && (
+                          <span className="absolute top-2 right-2 px-2.5 py-1 rounded-md text-[10px] font-black uppercase bg-rose-600 text-white shadow-md">
+                            SOLD OUT
                           </span>
                         )}
                       </div>
 
-                      {p.stockStatus === "LIMITED" && (
-                        <span className="absolute bottom-2 right-2 px-2 py-0.5 rounded text-[8px] sm:text-[10px] font-bold uppercase bg-amber-500 text-slate-900 shadow-xs">
-                          ⚡ Sisa 1 Unit
-                        </span>
-                      )}
-                      {p.stockStatus === "SOLD_OUT" && (
-                        <span className="absolute bottom-2 right-2 px-2 py-0.5 rounded text-[8px] sm:text-[10px] font-bold uppercase bg-rose-600 text-white shadow-xs">
-                          SOLD OUT
-                        </span>
-                      )}
-                    </div>
+                      <div className="p-3 sm:p-6 space-y-2">
+                        <h3 className="text-sm sm:text-xl font-black text-slate-900 leading-snug line-clamp-2">{p.title}</h3>
 
-                    <div className="p-2 sm:p-4 space-y-1 sm:space-y-2">
-                      <h3 className="text-xs sm:text-base font-bold text-slate-900 leading-tight line-clamp-2">{p.title}</h3>
+                        <div className="p-2 sm:p-3 rounded-xl bg-teal-50 border border-teal-200 space-y-1">
+                          <span className="text-[9px] sm:text-xs text-slate-500 font-bold block uppercase tracking-wider">Penawaran Spesial</span>
+                          <span className="text-base sm:text-2xl font-black text-teal-800 block">{p.priceText}</span>
 
-                      <div className="text-xs sm:text-xl font-black text-teal-700">
-                        {p.priceText}
+                          {/* HUMBLE PRICE ASSURANCE NOTE OPTION A */}
+                          <p className="text-[9px] sm:text-[11px] text-teal-900/90 font-medium leading-tight pt-1.5 border-t border-teal-200/80 italic hidden sm:block">
+                            ✨ Silakan cek & bandingkan penawaran terbaik kami di area Aceh hingga Medan. Harga Mughis Laptop Store hadir bukan untuk merusak pasar, melainkan karena modal yang kami dapatkan terjangkau, maka kami jual kembali dengan harga yang bersahabat demi keberkahan bersama.
+                          </p>
+                        </div>
+
+                        <p className="text-[11px] sm:text-sm text-slate-600 line-clamp-2 leading-relaxed font-normal">{p.shortDesc}</p>
                       </div>
+                    </div>
 
-                      <p className="text-[10px] sm:text-xs text-slate-500 font-medium line-clamp-1 hidden sm:block">
-                        {p.specs?.[0] || p.shortDesc}
-                      </p>
+                    <div className="p-3 sm:p-6 pt-0 grid grid-cols-2 gap-2">
+                      <button
+                        onClick={() => openDetailModal(p)}
+                        className="w-full py-2.5 sm:py-3 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-300 text-slate-800 text-[11px] sm:text-xs font-extrabold flex items-center justify-center gap-1 transition"
+                      >
+                        <span>Lihat Spek</span>
+                      </button>
+
+                      <a
+                        href={waUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="w-full py-2.5 sm:py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-[11px] sm:text-xs font-black flex items-center justify-center gap-1 transition shadow-md shadow-emerald-600/20 active:scale-95"
+                      >
+                        <span>Tanya WA</span>
+                      </a>
                     </div>
                   </div>
+                )
+              })}
+            </div>
+          )}
+        </section>
+      )}
 
-                  <div className="p-2 sm:p-4 pt-0 grid grid-cols-2 gap-1.5">
-                    <button
-                      onClick={() => openDetailModal(p)}
-                      className="w-full py-1.5 sm:py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-[10px] sm:text-xs font-bold flex items-center justify-center transition"
-                    >
-                      <span>Detail</span>
-                    </button>
-
-                    <a
-                      href={waUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="w-full py-1.5 sm:py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-[10px] sm:text-xs font-bold flex items-center justify-center gap-1 transition shadow-xs active:scale-95"
-                    >
-                      <span>Beli WA</span>
-                    </a>
-                  </div>
-                </div>
-              )
-            })}
-          </div>
-        )}
-
-        {/* 6. TESTIMONIALS & VERIFIED DELIVERY PHOTOS */}
-        {testimonials.length > 0 && (
-          <section className="mt-12 pt-10 border-t border-slate-200/80">
-            <div className="text-center max-w-xl mx-auto mb-6 space-y-1">
-              <span className="text-[10px] sm:text-xs font-bold uppercase text-teal-700 tracking-wider">Testimoni Pembeli Asli</span>
-              <h2 className="text-lg sm:text-2xl font-extrabold text-slate-900">Ulasan & Serah Terima Laptop</h2>
+      {/* 3. TAB CONTENT: PUSAT GARANSI & LAYANAN PURNA JUAL */}
+      {activeTab === "garansi" && (
+        <section className="py-8 sm:py-12 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+          <div className="bg-white p-6 sm:p-8 rounded-3xl border-2 border-slate-200 shadow-md space-y-6">
+            <div className="flex items-center gap-3 border-b border-slate-200 pb-4">
+              <div className="w-12 h-12 rounded-2xl bg-teal-100 text-teal-700 flex items-center justify-center font-bold shrink-0">
+                <ShieldCheck className="w-6 h-6" />
+              </div>
+              <div>
+                <h2 className="text-xl sm:text-3xl font-black text-slate-900">Ketentuan Garansi Toko Mughis Laptop Store</h2>
+                <p className="text-xs sm:text-sm text-slate-500 font-medium">Layanan purna jual resmi & penanganan cepat langsung dari Owner ({ownerName})</p>
+              </div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-5 text-xs">
-              {testimonials.map((t) => (
-                <div key={t.id} className="p-4 rounded-2xl bg-white border border-slate-200/80 shadow-xs space-y-2 flex flex-col justify-between">
-                  <div className="space-y-2">
-                    <div className="flex items-center gap-1 text-amber-400">
-                      {[...Array(t.rating || 5)].map((_, i) => (
-                        <Star key={i} className="w-3.5 h-3.5 fill-amber-400" />
-                      ))}
-                    </div>
-                    <p className="text-slate-700 text-xs italic leading-relaxed">"{t.text}"</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs sm:text-sm text-slate-700">
+              <div className="p-4 rounded-2xl bg-teal-50/60 border border-teal-200 space-y-2">
+                <h3 className="font-extrabold text-teal-900 text-base flex items-center gap-2">
+                  <CheckCircle className="w-5 h-5 text-teal-600" />
+                  <span>Garansi Hardware & Mesin (30 Hari)</span>
+                </h3>
+                <p className="leading-relaxed text-slate-600 font-medium">
+                  Semua unit laptop bekas yang dibeli mendapatkan garansi toko 30 hari meliputi kerusakan motherboard, prosesor, RAM, SSD, layar, dan keyboard.
+                </p>
+              </div>
+
+              <div className="p-4 rounded-2xl bg-blue-50/60 border border-blue-200 space-y-2">
+                <h3 className="font-extrabold text-blue-900 text-base flex items-center gap-2">
+                  <CheckCircle className="w-5 h-5 text-blue-600" />
+                  <span>Garansi 100% Lisensi Digital</span>
+                </h3>
+                <p className="leading-relaxed text-slate-600 font-medium">
+                  Untuk lisensi Windows 11 Pro & Office 2021, apabila terjadi kegagalan aktivasi, kami garansi 100% ganti key lisensi baru atau dibantu aktivasi remote.
+                </p>
+              </div>
+            </div>
+
+            <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-3 text-xs sm:text-sm">
+              <h4 className="font-extrabold text-slate-900 uppercase">Syarat Klaim Garansi Sangat Mudah:</h4>
+              <ul className="space-y-2 text-slate-600 font-medium">
+                <li className="flex items-start gap-2">
+                  <Check className="w-4 h-4 text-teal-600 shrink-0 mt-0.5" />
+                  <span>Segel garansi toko pada bodi laptop masih utuh (tidak rusak/sobek).</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Check className="w-4 h-4 text-teal-600 shrink-0 mt-0.5" />
+                  <span>Bukan disebabkan oleh kelalaian pemakaian (seperti jatuh, terkena air, atau konsleting listrik rumah).</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Check className="w-4 h-4 text-teal-600 shrink-0 mt-0.5" />
+                  <span>Cukup hubungi WhatsApp CS resmi ({waPhone}) dengan menyebutkan nama pembeli & foto unit.</span>
+                </li>
+              </ul>
+            </div>
+
+            <a
+              href={`https://wa.me/${formattedWa}?text=${encodeURIComponent("Halo Mughis Laptop Store, saya mau konsultasi klaim garansi toko.")}`}
+              target="_blank"
+              rel="noreferrer"
+              className="w-full py-4 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-lg shadow-emerald-600/20"
+            >
+              <Phone className="w-5 h-5" />
+              <span>Konsultasi / Klaim Garansi via WhatsApp CS</span>
+            </a>
+          </div>
+        </section>
+      )}
+
+      {/* 4. TAB CONTENT: REKENING RESMI & PEMBAYARAN */}
+      {activeTab === "pembayaran" && (
+        <section id="info-bisnis" className="py-8 sm:py-12 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+          <div className="bg-slate-900 text-white p-6 sm:p-8 rounded-3xl border-2 border-slate-800 shadow-2xl space-y-8">
+            <div className="text-center max-w-2xl mx-auto space-y-2">
+              <span className="px-3.5 py-1 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold uppercase tracking-widest border border-emerald-500/30">
+                Rekening Resmi Owner ({ownerName})
+              </span>
+              <h2 className="text-2xl sm:text-4xl font-black tracking-tight">Informasi Rekening Pembayaran Resmi</h2>
+              <p className="text-slate-300 text-xs sm:text-base font-normal leading-relaxed">
+                Pastikan transfer Anda dikirimkan sesuai dengan nama rekening resmi pemilik toko di bawah ini:
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+              {bankAccounts.map((b) => (
+                <div key={b.id} className="p-5 sm:p-6 rounded-2xl bg-slate-950 border-2 border-emerald-600/40 space-y-3 relative shadow-2xl">
+                  <div className="flex items-center justify-between">
+                    <span className="text-base sm:text-lg font-black text-emerald-400 tracking-wider">{b.bank}</span>
+                    <span className="text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-md bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                      Rekening Resmi
+                    </span>
                   </div>
-                  <div className="flex items-center gap-2 pt-2 border-t border-slate-100">
-                    {t.photoUrl ? (
-                      <img src={t.photoUrl} alt={t.name} className="w-8 h-8 rounded-full object-cover border border-teal-200" />
-                    ) : (
-                      <div className="w-8 h-8 rounded-full bg-teal-100 text-teal-700 font-bold flex items-center justify-center text-xs">
-                        {t.name.slice(0, 1)}
-                      </div>
-                    )}
+                  <div>
+                    <p className="text-[11px] text-slate-400 font-medium">Nomor Rekening:</p>
+                    <p className="text-2xl sm:text-3xl font-black font-mono tracking-widest text-white mt-1">{b.account_number}</p>
+                  </div>
+                  <div className="pt-3 border-t border-slate-800 flex items-center justify-between">
                     <div>
-                      <p className="font-bold text-slate-900 text-xs">{t.name}</p>
-                      <p className="text-[10px] text-slate-500 font-medium">{t.location}</p>
+                      <p className="text-[10px] text-slate-400 uppercase font-bold">Atas Nama / Owner:</p>
+                      <p className="text-sm sm:text-base font-black text-amber-300">{b.beneficiary}</p>
                     </div>
+                    <button
+                      onClick={() => copyText(b.account_number, b.bank)}
+                      className="px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold flex items-center gap-1.5 transition shadow-lg shadow-emerald-600/30"
+                    >
+                      <Copy className="w-3.5 h-3.5" />
+                      <span>Salin</span>
+                    </button>
                   </div>
                 </div>
               ))}
             </div>
-          </section>
-        )}
 
-        {/* 7. TRUST & WARRANTY SECTION */}
-        <section className="mt-10 pt-10 border-t border-slate-200/80">
-          <div className="text-center max-w-xl mx-auto mb-6 space-y-1">
-            <span className="text-[10px] sm:text-xs font-bold uppercase text-teal-700 tracking-wider">Layanan Purna Jual</span>
-            <h2 className="text-lg sm:text-2xl font-extrabold text-slate-900">Garansi & Keamanan Pembeli</h2>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-5 text-xs">
-            <div className="p-4 rounded-2xl bg-white border border-slate-200/80 shadow-xs space-y-1.5">
-              <div className="w-8 h-8 rounded-xl bg-teal-100 text-teal-700 flex items-center justify-center font-bold">
-                <ShieldCheck className="w-4 h-4" />
-              </div>
-              <h3 className="font-bold text-slate-900 text-sm">Garansi Toko 30 Hari</h3>
-              <p className="text-slate-600 text-[11px] leading-relaxed">Meliputi kerusakan motherboard, RAM, SSD, layar, & keyboard.</p>
-            </div>
-
-            <div className="p-4 rounded-2xl bg-white border border-slate-200/80 shadow-xs space-y-1.5">
-              <div className="w-8 h-8 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold">
-                <CheckCircle className="w-4 h-4" />
-              </div>
-              <h3 className="font-bold text-slate-900 text-sm">100% Lolos Pengujian QC</h3>
-              <p className="text-slate-600 text-[11px] leading-relaxed">Hardware, baterai, & fungsionalitas dites menyeluruh sebelum dikirim.</p>
-            </div>
-
-            <div className="p-4 rounded-2xl bg-white border border-slate-200/80 shadow-xs space-y-1.5">
-              <div className="w-8 h-8 rounded-xl bg-amber-100 text-amber-800 flex items-center justify-center font-bold">
-                <Award className="w-4 h-4" />
-              </div>
-              <h3 className="font-bold text-slate-900 text-sm">Rekening Owner Resmi</h3>
-              <p className="text-slate-600 text-[11px] leading-relaxed">Transfer aman hanya a/n <strong>Muhammad Aghisna</strong>.</p>
+            <div className="p-5 rounded-2xl bg-slate-950 border border-slate-800 space-y-3 text-xs sm:text-sm">
+              <h3 className="font-extrabold text-amber-300 uppercase tracking-wider flex items-center gap-2">
+                <Truck className="w-5 h-5 text-amber-400" />
+                <span>Metode Pengiriman & Pembayaran yang Tersedia:</span>
+              </h3>
+              <ul className="space-y-2 text-slate-300 font-medium">
+                <li className="flex items-start gap-2">
+                  <Check className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                  <span><strong>COD / Ambil Langsung:</strong> Silakan datang ke toko fisik kami di Sangso, Samalanga, Bireuen, Aceh.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Check className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                  <span><strong>Pengiriman Travel / L300 (Aceh & Medan):</strong> Pengiriman instan sampai di hari yang sama untuk area Aceh & Sumut.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Check className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                  <span><strong>Pengiriman Ekspedisi (JNE / J&T / Cargo):</strong> Dilengkapi packing kayu aman & bubble wrap tebal ke seluruh Indonesia.</span>
+                </li>
+              </ul>
             </div>
           </div>
         </section>
+      )}
 
-        {/* 8. INTERACTIVE FAQ ACCORDION */}
-        <section className="mt-10 pt-10 border-t border-slate-200/80">
-          <div className="text-center max-w-xl mx-auto mb-6 space-y-1">
-            <span className="text-[10px] sm:text-xs font-bold uppercase text-teal-700 tracking-wider">Tanya Jawab Pembeli</span>
-            <h2 className="text-lg sm:text-2xl font-extrabold text-slate-900">Pertanyaan Sering Diajukan (FAQ)</h2>
-          </div>
+      {/* 5. TAB CONTENT: LOKASI TOKO FISIK & KONTAK */}
+      {activeTab === "lokasi" && (
+        <section className="py-8 sm:py-12 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+          <div className="bg-white p-6 sm:p-8 rounded-3xl border-2 border-slate-200 shadow-md space-y-6">
+            <div className="flex items-center gap-3 border-b border-slate-200 pb-4">
+              <div className="w-12 h-12 rounded-2xl bg-teal-100 text-teal-700 flex items-center justify-center font-bold shrink-0">
+                <MapPin className="w-6 h-6" />
+              </div>
+              <div>
+                <h2 className="text-xl sm:text-3xl font-black text-slate-900">Lokasi Toko Fisik & Kontak Resmi</h2>
+                <p className="text-xs sm:text-sm text-slate-500 font-medium">Mughis Laptop Store — Sangso, Samalanga, Bireuen, Aceh</p>
+              </div>
+            </div>
 
-          <div className="max-w-3xl mx-auto space-y-2.5 text-xs sm:text-sm">
-            {[
-              {
-                q: "Apakah seluruh unit laptop bekas ini bergaransi resmi toko?",
-                a: "Ya! Seluruh unit laptop yang dibeli di Mughis Laptop Store mendapatkan garansi toko resmi selama 30 hari meliputi jaminan motherboard, RAM, SSD, layar, dan keyboard."
-              },
-              {
-                q: "Apakah bisa datang & cek fisik unit langsung di toko (COD)?",
-                a: "Sangat bisa! Silakan datang langsung ke toko fisik kami di Sangso, Samalanga, Bireuen, Aceh. Anda bisa tes keyboard, tes layar, cek ketahanan baterai, dan konsultasi gratis bersama Owner (Muhammad Aghisna)."
-              },
-              {
-                q: "Bagaimana sistem pengiriman untuk pembeli di luar Samalanga / luar Aceh?",
-                a: "Untuk area Aceh & Medan, pengiriman dapat dilakukan instan via Travel/L300 (sampai di hari yang sama). Untuk area luar provinsi seluruh Indonesia, kami kirim via JNE / J&T / Cargo dengan packing kayu tebal & bubble wrap aman."
-              },
-              {
-                q: "Apakah laptop sudah langsung terpasang Windows & Office original?",
-                a: "Ya, setiap unit di-install Windows 11 Pro / Windows 10 Pro original dan Microsoft Office 2021 original yang telah diaktivasi permanen. Laptop siap langsung Anda gunakan untuk kerja, skripsi, atau aktivitas kantor."
-              }
-            ].map((faq, idx) => (
-              <div key={idx} className="bg-white border border-slate-200/80 rounded-2xl overflow-hidden transition shadow-xs">
-                <button
-                  onClick={() => setOpenFaqIndex(openFaqIndex === idx ? null : idx)}
-                  className="w-full p-4 text-left font-bold text-slate-900 flex justify-between items-center gap-3 hover:bg-slate-50 transition"
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs sm:text-sm">
+              <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+                <span className="font-extrabold text-slate-900 uppercase text-xs tracking-wider block">Alamat Fisik Toko:</span>
+                <p className="text-slate-800 font-bold text-base leading-snug">{address}</p>
+                <p className="text-slate-600 font-medium">Owner: {ownerName}</p>
+
+                <div className="pt-2 border-t border-slate-200 flex items-center gap-2 text-slate-600 font-medium">
+                  <Clock className="w-4 h-4 text-teal-600" />
+                  <span>Buka Setiap Hari: 08:30 - 22:00 WIB</span>
+                </div>
+              </div>
+
+              <div className="p-5 rounded-2xl bg-emerald-50 border border-emerald-200 space-y-3">
+                <span className="font-extrabold text-emerald-900 uppercase text-xs tracking-wider block">Kontak WhatsApp CS Resmi:</span>
+                <p className="text-2xl sm:text-3xl font-black text-emerald-800 font-mono">{waPhone}</p>
+                <p className="text-slate-600 font-medium">Layanan konsultasi unit, garansi, & pengecekan stok fast response.</p>
+
+                <a
+                  href={`https://wa.me/${formattedWa}?text=${encodeURIComponent("Halo Mughis Laptop Store, saya mau konsultasi lokasi toko / stok laptop.")}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="w-full py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs flex items-center justify-center gap-2 shadow-md"
                 >
-                  <span className="text-xs sm:text-sm">{faq.q}</span>
-                  <span className="text-teal-700 text-base shrink-0 font-black">{openFaqIndex === idx ? "−" : "+"}</span>
-                </button>
-                {openFaqIndex === idx && (
-                  <div className="p-4 pt-0 text-slate-600 font-medium text-xs leading-relaxed border-t border-slate-100">
-                    {faq.a}
-                  </div>
-                )}
+                  <Phone className="w-4 h-4" />
+                  <span>Hubungi CS WhatsApp</span>
+                </a>
               </div>
-            ))}
+            </div>
           </div>
         </section>
+      )}
 
-        {/* 9. OFFICIAL PAYMENT BANK ACCOUNTS */}
-        <section className="mt-10 p-5 sm:p-8 rounded-3xl bg-teal-50/80 border border-teal-200/80 text-slate-900 shadow-xs space-y-6">
-          <div className="text-center max-w-xl mx-auto space-y-1">
-            <span className="text-[10px] font-bold uppercase tracking-widest text-teal-800 bg-teal-100 px-3 py-1 rounded-full border border-teal-200">
-              Rekening Resmi Owner
-            </span>
-            <h2 className="text-xl sm:text-3xl font-extrabold text-slate-900">Informasi Pembayaran Resmi</h2>
-            <p className="text-slate-600 text-xs sm:text-sm font-medium">Transfer HANYA ke rekening resmi atas nama <strong>{ownerName}</strong>:</p>
+      {/* Footer - 100% Tech Storefront */}
+      <footer className="bg-slate-950 text-slate-400 border-t border-slate-800 py-8 sm:py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-center md:text-left">
+          <div className="space-y-1.5">
+            <p className="text-base font-black text-white tracking-wide">MUGHIS LAPTOP STORE</p>
+            <p className="text-slate-300 font-medium">Owner: {ownerName} • Alamat: {address}</p>
+            <p className="text-slate-500">© 2026 Mughis Laptop Store. Hak Cipta Dilindungi.</p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
-            {bankAccounts.map((b) => (
-              <div key={b.id} className="p-4 rounded-2xl bg-white border border-teal-300 space-y-2 relative shadow-xs">
-                <div className="flex items-center justify-between">
-                  <span className="font-extrabold text-teal-800 text-sm">{b.bank}</span>
-                  <span className="text-[9px] font-bold uppercase px-2 py-0.5 rounded bg-teal-100 text-teal-800 border border-teal-300">
-                    Rekening Resmi
-                  </span>
-                </div>
-                <p className="text-xl font-black font-mono tracking-wider text-slate-900">{b.account_number}</p>
-                <div className="flex items-center justify-between pt-1 border-t border-slate-100">
-                  <span className="text-[11px] text-teal-900 font-bold">a/n {b.beneficiary}</span>
-                  <button
-                    onClick={() => copyText(b.account_number, b.bank)}
-                    className="px-2.5 py-1 rounded-lg bg-teal-700 hover:bg-teal-800 text-white text-[10px] font-bold flex items-center gap-1 transition shadow-xs"
-                  >
-                    <Copy className="w-3 h-3" />
-                    <span>Salin</span>
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* 10. STORE LOCATION & FOOTER */}
-        <section className="mt-10 p-5 sm:p-6 rounded-2xl bg-white border border-slate-200/80 space-y-3 text-xs text-slate-700 text-center sm:text-left flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-          <div className="space-y-1">
-            <p className="font-extrabold text-slate-900 text-sm">MUGHIS LAPTOP STORE</p>
-            <p className="text-slate-600 font-medium">Owner: {ownerName} • Alamat: {address}</p>
-            <p className="text-slate-400 text-[11px]">© 2026 Mughis Laptop Store. Hak Cipta Dilindungi.</p>
-          </div>
-
-          <div className="flex items-center justify-center gap-3 shrink-0">
-            <a href={igHighlight} target="_blank" rel="noreferrer" className="px-3 py-2 rounded-xl bg-pink-50 border border-pink-200 text-pink-700 font-bold text-xs flex items-center gap-1.5">
-              <InstagramIcon className="w-3.5 h-3.5" />
+          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-6 font-bold text-xs sm:text-sm">
+            <a href={igHighlight} target="_blank" rel="noreferrer" className="px-3 py-2 rounded-xl bg-pink-950/60 border border-pink-700/50 text-pink-300 hover:text-white flex items-center gap-1.5 transition">
+              <InstagramIcon className="w-4 h-4 text-pink-400" />
               <span>Testimoni IG</span>
             </a>
-            <a href={`https://wa.me/${formattedWa}`} target="_blank" rel="noreferrer" className="px-3 py-2 rounded-xl bg-emerald-600 text-white font-bold text-xs flex items-center gap-1.5">
-              <Phone className="w-3.5 h-3.5" />
-              <span>CS WA</span>
+            <a href={`https://wa.me/${formattedWa}`} target="_blank" rel="noreferrer" className="px-3 py-2 rounded-xl bg-emerald-950/60 border border-emerald-700/50 text-emerald-300 hover:text-white flex items-center gap-1.5 transition">
+              <Phone className="w-4 h-4 text-emerald-400" />
+              <span>CS WA ({waPhone})</span>
             </a>
           </div>
-        </section>
-      </main>
+        </div>
+      </footer>
 
       {/* FLOATING COMPARE BAR */}
       {compareIds.length > 0 && (
@@ -776,7 +1054,7 @@ export default function CatalogLaptopClient({
             <div className="grid grid-cols-2 gap-3 sm:gap-6 text-xs">
               {comparedProducts.map((p) => (
                 <div key={p.id} className="space-y-3 bg-slate-50 p-3 sm:p-4 rounded-xl border border-slate-200">
-                  <div className="aspect-[4/3] rounded-lg overflow-hidden bg-slate-200">
+                  <div className="aspect-[4/5] rounded-lg overflow-hidden bg-slate-200">
                     <img src={p.image} alt={p.title} className="w-full h-full object-cover" />
                   </div>
                   <h4 className="font-extrabold text-slate-900 text-xs sm:text-sm line-clamp-2">{p.title}</h4>
@@ -804,23 +1082,29 @@ export default function CatalogLaptopClient({
         </div>
       )}
 
-      {/* 11. MODAL DETAIL PRODUK */}
+      {/* Modal Detail with ASPECT-RATIO 4:5 Portrait Gallery & VIDEO PLAYER */}
       {selectedProduct && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-950/70 backdrop-blur-xs transition-all duration-200">
-          <div className="bg-white border border-slate-200 max-w-lg w-full rounded-2xl overflow-hidden shadow-2xl p-4 sm:p-6 space-y-4 text-slate-900 relative max-h-[90vh] overflow-y-auto">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-950/70 backdrop-blur-sm transition-all duration-300">
+          <div className="bg-white border border-slate-300 max-w-xl w-full rounded-2xl overflow-hidden shadow-2xl p-5 sm:p-6 space-y-4 text-slate-900 relative max-h-[90vh] overflow-y-auto">
             <button onClick={() => setSelectedProduct(null)} className="absolute top-4 right-4 text-slate-400 hover:text-slate-800 p-1 rounded-lg">
-              <X className="w-5 h-5" />
+              <X className="w-6 h-6" />
             </button>
 
             <div className="space-y-3">
-              <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-teal-100 text-teal-800 uppercase border border-teal-200">
+              <span className="px-3 py-1 rounded-full text-xs font-bold bg-teal-100 text-teal-800 border border-teal-200 uppercase">
                 {selectedProduct.badge}
               </span>
-              <h3 className="text-base sm:text-lg font-extrabold text-slate-900 pr-6 leading-snug">{selectedProduct.title}</h3>
-              <p className="text-xl sm:text-2xl font-black text-teal-700">{selectedProduct.rawPriceText || selectedProduct.priceText}</p>
+              <h3 className="text-lg sm:text-xl font-extrabold text-slate-900 pr-8">{selectedProduct.title}</h3>
 
-              {/* Main Media Box with Strict 4:5 Instagram Feed Ratio */}
-              <div className="relative w-full aspect-[4/5] max-h-[380px] rounded-2xl overflow-hidden bg-slate-900 border border-slate-200 mx-auto flex items-center justify-center group shadow-md">
+              <div className="p-2.5 sm:p-3 rounded-xl bg-teal-50 border border-teal-200 space-y-1">
+                <p className="text-2xl sm:text-3xl font-black text-teal-700">{selectedProduct.rawPriceText || selectedProduct.priceText}</p>
+                <p className="text-[10px] sm:text-[11px] text-teal-900/90 font-medium leading-tight pt-1.5 border-t border-teal-200/80 italic">
+                  ✨ Silakan cek & bandingkan penawaran terbaik kami di area Aceh hingga Medan. Harga Mughis Laptop Store hadir bukan untuk merusak pasar, melainkan karena modal yang kami dapatkan terjangkau, maka kami jual kembali dengan harga yang bersahabat demi keberkahan bersama.
+                </p>
+              </div>
+
+              {/* Main Media Player Box (Image or Video) with Strict 4:5 Aspect Ratio */}
+              <div className="w-full aspect-[4/5] max-h-[380px] rounded-xl overflow-hidden bg-slate-950 border border-slate-200 relative mx-auto flex items-center justify-center group shadow-md">
                 {activeMediaMode === "video" && selectedProduct.video ? (
                   selectedProduct.video.startsWith("data:video") || selectedProduct.video.endsWith(".mp4") ? (
                     <video src={selectedProduct.video} controls autoPlay loop muted playsInline className="w-full h-full object-cover" />
@@ -851,13 +1135,13 @@ export default function CatalogLaptopClient({
                 )}
               </div>
 
-              {/* Multi-Photo & Video Selector Thumbnails with Strict 4:5 Ratio */}
+              {/* Multi-Photo & Video Selector Thumbnails */}
               <div className="flex items-center gap-2 overflow-x-auto pb-1 justify-center">
                 {selectedProduct.images && selectedProduct.images.map((imgUrl, idx) => (
                   <button
                     key={idx}
                     onClick={() => { setActiveMediaMode("image"); setActivePhotoIdx(idx); }}
-                    className={`w-12 aspect-[4/5] rounded-xl overflow-hidden border-2 shrink-0 transition ${activeMediaMode === "image" && activePhotoIdx === idx ? "border-teal-600 ring-2 ring-teal-600/30 shadow-xs" : "border-slate-200 opacity-60 hover:opacity-100"}`}
+                    className={`w-14 aspect-[4/5] rounded-lg overflow-hidden border-2 shrink-0 transition ${activeMediaMode === "image" && activePhotoIdx === idx ? "border-teal-600 ring-2 ring-teal-600/30" : "border-slate-200 opacity-60 hover:opacity-100"}`}
                   >
                     <img src={imgUrl} alt={`Foto ${idx + 1}`} className="w-full h-full object-cover" />
                   </button>
@@ -866,20 +1150,20 @@ export default function CatalogLaptopClient({
                 {selectedProduct.video && (
                   <button
                     onClick={() => setActiveMediaMode("video")}
-                    className={`px-3 py-2 rounded-xl border-2 shrink-0 transition flex items-center gap-1 font-bold text-xs ${activeMediaMode === "video" ? "bg-indigo-600 text-white border-indigo-600 shadow-xs" : "bg-indigo-50 text-indigo-700 border-indigo-200"}`}
+                    className={`px-3 py-2.5 rounded-lg border-2 shrink-0 transition flex items-center gap-1.5 font-bold text-xs ${activeMediaMode === "video" ? "bg-indigo-600 text-white border-indigo-600 shadow-md" : "bg-indigo-50 text-indigo-700 border-indigo-200 hover:bg-indigo-100"}`}
                   >
-                    <VideoIcon className="w-3.5 h-3.5" />
-                    <span>Video</span>
+                    <VideoIcon className="w-4 h-4" />
+                    <span>🎥 Video Unit</span>
                   </button>
                 )}
               </div>
 
-              <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 space-y-1.5 text-xs">
-                <p className="font-extrabold text-slate-900 uppercase text-[10px]">Spesifikasi Unit:</p>
-                <ul className="space-y-1 font-medium text-slate-700">
+              <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 space-y-2 text-xs">
+                <p className="font-extrabold text-slate-900 uppercase">Spesifikasi Lengkap & Kondisi:</p>
+                <ul className="space-y-1.5 font-medium text-slate-700">
                   {selectedProduct.specs.map((s, idx) => (
-                    <li key={idx} className="flex items-start gap-1.5">
-                      <CheckCircle className="w-3.5 h-3.5 text-teal-600 shrink-0 mt-0.5" />
+                    <li key={idx} className="flex items-start gap-2">
+                      <CheckCircle className="w-4 h-4 text-teal-600 shrink-0 mt-0.5" />
                       <span>{s}</span>
                     </li>
                   ))}
@@ -887,54 +1171,36 @@ export default function CatalogLaptopClient({
               </div>
 
               {selectedProduct.conditionNote && (
-                <div className="p-2.5 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-900 font-medium">
-                  <span className="font-bold block text-[10px] uppercase">Kondisi:</span>
+                <div className="p-3 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-900 font-medium">
+                  <span className="font-bold block">Kondisi Unit:</span>
                   <span>{selectedProduct.conditionNote}</span>
                 </div>
               )}
 
               {selectedProduct.bonus && (
-                <div className="p-2.5 rounded-xl bg-emerald-50 border border-emerald-200 text-xs text-emerald-900 font-medium">
-                  <span className="font-bold block text-[10px] uppercase">Bonus:</span>
+                <div className="p-3 rounded-xl bg-emerald-50 border border-emerald-200 text-xs text-emerald-900 font-medium">
+                  <span className="font-bold block">Bonus Kelengkapan:</span>
                   <span>{selectedProduct.bonus}</span>
                 </div>
               )}
+
+              <p className="text-xs text-slate-600 leading-relaxed font-medium">{selectedProduct.shortDesc}</p>
 
               <a
                 href={`https://wa.me/${formattedWa}?text=${encodeURIComponent(`Assalamu’alaikum Mughis Laptop Store,\n\nSaya tertarik dengan unit:\n*${selectedProduct.title}*\nHarga: ${selectedProduct.priceText}\n\nApakah unit masih tersedia? Mohon informasi kondisi dan garansinya.`)}`}
                 target="_blank"
                 rel="noreferrer"
-                className="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm rounded-xl flex items-center justify-center gap-2 shadow-xs active:scale-95 transition"
+                className="w-full py-3.5 bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs sm:text-sm rounded-xl flex items-center justify-center gap-2 shadow-md shadow-emerald-600/20 active:scale-95 transition"
               >
                 <Phone className="w-4 h-4" />
-                <span>Pesan via WhatsApp CS</span>
+                <span>Pesan Sekarang via WhatsApp CS</span>
               </a>
             </div>
           </div>
         </div>
       )}
 
-      {/* Toast Notification */}
-      {toastMsg && (
-        <div className="fixed bottom-10 left-1/2 -translate-x-1/2 z-50 px-5 py-2.5 rounded-full bg-slate-900 text-white shadow-xl flex items-center gap-2 text-xs font-bold animate-bounce">
-          <Check className="w-4 h-4 text-emerald-400" />
-          <span>{toastMsg}</span>
-        </div>
-      )}
-
-      {/* Floating WhatsApp Action Button */}
-      <div className="fixed bottom-6 right-6 z-40">
-        <a
-          href={`https://wa.me/${formattedWa}?text=${encodeURIComponent("Halo Mughis Laptop Store, saya ingin bertanya stok laptop/produk digital.")}`}
-          target="_blank"
-          rel="noreferrer"
-          className="flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white shadow-xl hover:scale-105 transition-all duration-200"
-        >
-          <Phone className="w-5 h-5 sm:w-6 sm:h-6" />
-        </a>
-      </div>
-
-      {/* 12. LIGHTBOX FULLSCREEN ZOOM MODAL (INSTAGRAM FEED 4:5 RATIO & ZOOM CONTROLS) */}
+      {/* LIGHTBOX FULLSCREEN ZOOM MODAL (INSTAGRAM FEED 4:5 RATIO & ZOOM CONTROLS) */}
       {isZoomOpen && selectedProduct && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-950/95 backdrop-blur-md transition-all duration-300 p-2 sm:p-4">
           <div className="absolute top-4 left-4 right-4 z-10 flex items-center justify-between text-white">
@@ -1006,6 +1272,27 @@ export default function CatalogLaptopClient({
           </div>
         </div>
       )}
+
+      {/* Toast Notification */}
+      {toastMsg && (
+        <div className="fixed bottom-10 left-1/2 -translate-x-1/2 z-50 px-6 py-3 rounded-full bg-slate-900 text-white shadow-2xl flex items-center gap-2 text-xs font-bold animate-bounce">
+          <Check className="w-4 h-4 text-emerald-400" />
+          <span>{toastMsg}</span>
+        </div>
+      )}
+
+      {/* Floating WhatsApp Action Button with Pulsing Ring */}
+      <div className="fixed bottom-6 right-6 z-40">
+        <a
+          href={`https://wa.me/${formattedWa}?text=${encodeURIComponent("Halo Mughis Laptop Store, saya ingin bertanya stok laptop/produk digital.")}`}
+          target="_blank"
+          rel="noreferrer"
+          className="relative group flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white shadow-2xl shadow-emerald-600/40 hover:scale-105 transition-all duration-200"
+        >
+          <span className="absolute -inset-1 rounded-full bg-emerald-500 opacity-75 animate-ping"></span>
+          <Phone className="w-6 h-6 sm:w-7 sm:h-7 relative z-10" />
+        </a>
+      </div>
     </div>
   )
 }

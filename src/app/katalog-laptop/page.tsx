@@ -517,7 +517,7 @@ export default function CatalogLaptopStoreStandalonePage() {
         </>
       )}
 
-      {/* 2. TAB CONTENT: STOK UNIT READY (PURE PRODUCT CATALOG WITH ASPECT RATIO 4:5, VIDEO SUPPORT, & HUMBLE PRICE ASSURANCE NOTE) */}
+      {/* 2. TAB CONTENT: STOK UNIT READY (PURE PRODUCT CATALOG WITH ASPECT RATIO 4:5, VIDEO SUPPORT, & OPTION A PRICE ASSURANCE NOTE) */}
       {activeTab === "stok" && (
         <section id="katalog" className="py-8 sm:py-12 max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 pb-3 border-b border-slate-200 gap-3">
@@ -620,9 +620,9 @@ export default function CatalogLaptopStoreStandalonePage() {
                           <span className="text-[10px] sm:text-xs text-slate-500 font-bold block uppercase tracking-wider">Penawaran Spesial</span>
                           <span className="text-xl sm:text-2xl font-black text-teal-800 block">{p.priceText}</span>
 
-                          {/* HUMBLE PRICE ASSURANCE NOTE OPTION 1 */}
+                          {/* HUMBLE PRICE ASSURANCE NOTE OPTION A */}
                           <p className="text-[10px] sm:text-[11px] text-teal-900/90 font-medium leading-tight pt-1.5 border-t border-teal-200/80 italic">
-                            ✨ Silakan cek & bandingkan penawaran terbaik kami di area Aceh hingga Medan. InsyaAllah Mughis Laptop Store selalu menghadirkan harga paling bersahabat & jujur, disesuaikan langsung dengan efisiensi modal kami demi keberkahan bersama.
+                            ✨ Silakan cek & bandingkan penawaran terbaik kami di area Aceh hingga Medan. Harga Mughis Laptop Store hadir bukan untuk merusak pasar, melainkan karena modal yang kami dapatkan terjangkau, maka kami jual kembali dengan harga yang bersahabat demi keberkahan bersama.
                           </p>
                         </div>
 
@@ -875,7 +875,7 @@ export default function CatalogLaptopStoreStandalonePage() {
               <div className="p-2.5 sm:p-3 rounded-xl bg-teal-50 border border-teal-200 space-y-1">
                 <p className="text-2xl sm:text-3xl font-black text-teal-700">{selectedProduct.rawPriceText || selectedProduct.priceText}</p>
                 <p className="text-[10px] sm:text-[11px] text-teal-900/90 font-medium leading-tight pt-1.5 border-t border-teal-200/80 italic">
-                  ✨ Silakan cek & bandingkan penawaran terbaik kami di area Aceh hingga Medan. InsyaAllah Mughis Laptop Store selalu menghadirkan harga paling bersahabat & jujur, disesuaikan langsung dengan efisiensi modal kami demi keberkahan bersama.
+                  ✨ Silakan cek & bandingkan penawaran terbaik kami di area Aceh hingga Medan. Harga Mughis Laptop Store hadir bukan untuk merusak pasar, melainkan karena modal yang kami dapatkan terjangkau, maka kami jual kembali dengan harga yang bersahabat demi keberkahan bersama.
                 </p>
               </div>
 

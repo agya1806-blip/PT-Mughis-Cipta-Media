@@ -171,7 +171,8 @@ const DEFAULT_PRODUCTS: ProductItem[] = [
 ]
 
 export default function CatalogLaptopStoreCleanPage() {
-  const [products, setProducts] = useState<ProductItem[]>(DEFAULT_PRODUCTS)
+  const [loading, setLoading] = useState(true)
+  const [products, setProducts] = useState<ProductItem[]>([])
   const [bankAccounts, setBankAccounts] = useState<BankAccount[]>(DEFAULT_BANKS)
   const [waPhone, setWaPhone] = useState("0852-1770-6587")
   const [storeName, setStoreName] = useState("Mughis Laptop Store")
@@ -226,6 +227,7 @@ export default function CatalogLaptopStoreCleanPage() {
         }
       })
       .catch(() => {})
+      .finally(() => setLoading(false))
   }, [])
 
   function openDetailModal(p: ProductItem) {
@@ -372,16 +374,36 @@ export default function CatalogLaptopStoreCleanPage() {
 
       {/* 5. MODERN MINIMALIST PRODUCT CATALOG GRID */}
       <main className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-6 sm:py-10">
-        {filteredProducts.length === 0 ? (
-          <div className="text-center py-12 bg-white rounded-2xl border border-slate-200/80 space-y-3">
-            <p className="text-sm font-bold text-slate-800">Tidak ada produk yang cocok dengan "{searchQuery}"</p>
-            <p className="text-xs text-slate-500">Coba gunakan kata kunci lain atau reset filter pencarian Anda.</p>
-            <button
-              onClick={() => { setSearchQuery(""); setCurrentCategory("all"); }}
-              className="px-4 py-2 rounded-xl bg-teal-700 hover:bg-teal-800 text-white font-bold text-xs inline-flex items-center gap-1.5 shadow-xs transition"
-            >
-              <span>Reset Pencarian</span>
-            </button>
+        {loading ? (
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2.5 sm:gap-5 w-full">
+            {[1, 2, 3, 4].map((i) => (
+              <div key={i} className="animate-pulse bg-white rounded-2xl border border-slate-200/80 p-3 space-y-2">
+                <div className="w-full aspect-[16/10] sm:aspect-[4/5] bg-slate-200 rounded-xl" />
+                <div className="h-4 bg-slate-200 rounded w-3/4" />
+                <div className="h-4 bg-slate-200 rounded w-1/2" />
+                <div className="h-8 bg-slate-200 rounded-xl w-full" />
+              </div>
+            ))}
+          </div>
+        ) : filteredProducts.length === 0 ? (
+          <div className="text-center py-12 bg-white rounded-2xl border border-slate-200/80 space-y-3 p-6">
+            <Laptop className="w-10 h-10 text-teal-600 mx-auto opacity-40" />
+            <p className="text-sm sm:text-base font-bold text-slate-800">
+              {searchQuery ? `Tidak ada produk yang cocok dengan "${searchQuery}"` : "Belum Ada Unit Produk dalam Katalog"}
+            </p>
+            <p className="text-xs text-slate-500 max-w-md mx-auto">
+              {searchQuery
+                ? "Coba gunakan kata kunci lain atau reset filter pencarian Anda."
+                : "Produk yang Anda unggah dari Dashboard Admin akan langsung otomatis muncul di sini."}
+            </p>
+            {searchQuery && (
+              <button
+                onClick={() => { setSearchQuery(""); setCurrentCategory("all"); }}
+                className="px-4 py-2 rounded-xl bg-teal-700 hover:bg-teal-800 text-white font-bold text-xs inline-flex items-center gap-1.5 shadow-xs transition"
+              >
+                <span>Reset Pencarian</span>
+              </button>
+            )}
           </div>
         ) : (
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2.5 sm:gap-5 w-full">

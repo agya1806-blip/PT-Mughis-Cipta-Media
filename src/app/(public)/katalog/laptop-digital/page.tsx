@@ -146,7 +146,8 @@ const DEFAULT_PRODUCTS: ProductItem[] = [
 ]
 
 export default function CatalogLaptopDigitalPage() {
-  const [products, setProducts] = useState<ProductItem[]>(DEFAULT_PRODUCTS)
+  const [loading, setLoading] = useState(true)
+  const [products, setProducts] = useState<ProductItem[]>([])
   const [bankAccounts, setBankAccounts] = useState<BankAccount[]>(DEFAULT_BANKS)
   const [waPhone, setWaPhone] = useState("6281234567890")
   const [brandName, setBrandName] = useState("PT Mughis Cipta Media")
@@ -175,6 +176,7 @@ export default function CatalogLaptopDigitalPage() {
         }
       })
       .catch(() => {})
+      .finally(() => setLoading(false))
   }, [])
 
   function copyText(text: string, bankName: string) {

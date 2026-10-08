@@ -212,7 +212,7 @@ export default function AdminKatalogLaptopPage() {
   const [editingBank, setEditingBank] = useState<BankAccount | null>(null)
 
   // Products
-  const [products, setProducts] = useState<ProductItem[]>(DEFAULT_PRODUCTS)
+  const [products, setProducts] = useState<ProductItem[]>([])
   const [editingProduct, setEditingProduct] = useState<ProductItem | null>(null)
   const [specsInput, setSpecsInput] = useState("")
   const [uploadingSlot, setUploadingSlot] = useState<number | null>(null)

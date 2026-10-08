@@ -182,11 +182,22 @@ export default function CatalogLaptopStoreCleanPage() {
   const [currentCategory, setCurrentCategory] = useState("all")
   const [searchQuery, setSearchQuery] = useState("")
 
-  // Modal Detail State
+  // Modal & FAQ State
   const [selectedProduct, setSelectedProduct] = useState<ProductItem | null>(null)
   const [activeMediaMode, setActiveMediaMode] = useState<"image" | "video">("image")
   const [activePhotoIdx, setActivePhotoIdx] = useState(0)
   const [toastMsg, setToastMsg] = useState("")
+  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null)
+
+  useEffect(() => {
+    function handleKeyDown(e: KeyboardEvent) {
+      if (e.key === "Escape") {
+        setSelectedProduct(null)
+      }
+    }
+    window.addEventListener("keydown", handleKeyDown)
+    return () => window.removeEventListener("keydown", handleKeyDown)
+  }, [])
 
   useEffect(() => {
     fetch("/api/public/settings")
@@ -362,9 +373,15 @@ export default function CatalogLaptopStoreCleanPage() {
       {/* 5. MODERN MINIMALIST PRODUCT CATALOG GRID */}
       <main className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-6 sm:py-10">
         {filteredProducts.length === 0 ? (
-          <div className="text-center py-12 bg-white rounded-2xl border border-slate-200 space-y-2">
-            <p className="text-sm font-bold text-slate-800">Produk tidak ditemukan</p>
-            <p className="text-xs text-slate-500">Coba ubah kata kunci pencarian Anda.</p>
+          <div className="text-center py-12 bg-white rounded-2xl border border-slate-200/80 space-y-3">
+            <p className="text-sm font-bold text-slate-800">Tidak ada produk yang cocok dengan "{searchQuery}"</p>
+            <p className="text-xs text-slate-500">Coba gunakan kata kunci lain atau reset filter pencarian Anda.</p>
+            <button
+              onClick={() => { setSearchQuery(""); setCurrentCategory("all"); }}
+              className="px-4 py-2 rounded-xl bg-teal-700 hover:bg-teal-800 text-white font-bold text-xs inline-flex items-center gap-1.5 shadow-xs transition"
+            >
+              <span>Reset Pencarian</span>
+            </button>
           </div>
         ) : (
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2.5 sm:gap-5 w-full">
@@ -473,7 +490,51 @@ export default function CatalogLaptopStoreCleanPage() {
           </div>
         </section>
 
-        {/* 7. OFFICIAL PAYMENT BANK ACCOUNTS */}
+        {/* 7. INTERACTIVE FAQ ACCORDION */}
+        <section className="mt-10 pt-10 border-t border-slate-200/80">
+          <div className="text-center max-w-xl mx-auto mb-6 space-y-1">
+            <span className="text-[10px] sm:text-xs font-bold uppercase text-teal-700 tracking-wider">Tanya Jawab Pembeli</span>
+            <h2 className="text-lg sm:text-2xl font-extrabold text-slate-900">Pertanyaan Sering Diajukan (FAQ)</h2>
+          </div>
+
+          <div className="max-w-3xl mx-auto space-y-2.5 text-xs sm:text-sm">
+            {[
+              {
+                q: "Apakah seluruh unit laptop bekas ini bergaransi resmi toko?",
+                a: "Ya! Seluruh unit laptop yang dibeli di Mughis Laptop Store mendapatkan garansi toko resmi selama 30 hari meliputi jaminan motherboard, RAM, SSD, layar, dan keyboard."
+              },
+              {
+                q: "Apakah bisa datang & cek fisik unit langsung di toko (COD)?",
+                a: "Sangat bisa! Silakan datang langsung ke toko fisik kami di Sangso, Samalanga, Bireuen, Aceh. Anda bisa tes keyboard, tes layar, cek ketahanan baterai, dan konsultasi gratis bersama Owner (Muhammad Aghisna)."
+              },
+              {
+                q: "Bagaimana sistem pengiriman untuk pembeli di luar Samalanga / luar Aceh?",
+                a: "Untuk area Aceh & Medan, pengiriman dapat dilakukan instan via Travel/L300 (sampai di hari yang sama). Untuk area luar provinsi seluruh Indonesia, kami kirim via JNE / J&T / Cargo dengan packing kayu tebal & bubble wrap aman."
+              },
+              {
+                q: "Apakah laptop sudah langsung terpasang Windows & Office original?",
+                a: "Ya, setiap unit di-install Windows 11 Pro / Windows 10 Pro original dan Microsoft Office 2021 original yang telah diaktivasi permanen. Laptop siap langsung Anda gunakan untuk kerja, skripsi, atau aktivitas kantor."
+              }
+            ].map((faq, idx) => (
+              <div key={idx} className="bg-white border border-slate-200/80 rounded-2xl overflow-hidden transition shadow-xs">
+                <button
+                  onClick={() => setOpenFaqIndex(openFaqIndex === idx ? null : idx)}
+                  className="w-full p-4 text-left font-bold text-slate-900 flex justify-between items-center gap-3 hover:bg-slate-50 transition"
+                >
+                  <span className="text-xs sm:text-sm">{faq.q}</span>
+                  <span className="text-teal-700 text-base shrink-0 font-black">{openFaqIndex === idx ? "−" : "+"}</span>
+                </button>
+                {openFaqIndex === idx && (
+                  <div className="p-4 pt-0 text-slate-600 font-medium text-xs leading-relaxed border-t border-slate-100">
+                    {faq.a}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* 8. OFFICIAL PAYMENT BANK ACCOUNTS */}
         <section className="mt-10 p-5 sm:p-8 rounded-3xl bg-slate-900 text-white shadow-xl space-y-6">
           <div className="text-center max-w-xl mx-auto space-y-1">
             <span className="text-[10px] font-bold uppercase tracking-widest text-emerald-400">Rekening Resmi Owner</span>

@@ -199,8 +199,6 @@ export default function CatalogLaptopClient({
   const [isZoomOpen, setIsZoomOpen] = useState(false)
   const [zoomScale, setZoomScale] = useState(1)
 
-  // FAQ State
-  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null)
   const [toastMsg, setToastMsg] = useState("")
 
   const waPhone = initialSettings.contact_phone || "0852-1770-6587"
@@ -288,13 +286,13 @@ export default function CatalogLaptopClient({
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 font-sans antialiased selection:bg-teal-500 selection:text-white pb-20">
 
-      {/* Top Banner Warning */}
-      <div className="bg-slate-900 text-white text-[11px] sm:text-sm py-2 px-3 sm:px-4 text-center font-bold leading-snug">
+      {/* Top Banner Warning — BRIGHT TEAL THEME */}
+      <div className="bg-teal-700 text-white text-[11px] sm:text-sm py-2.5 px-3 sm:px-4 text-center font-bold leading-snug shadow-xs">
         💡 <strong>TIPS BELANJA AMAN:</strong> Pastikan hanya bertransaksi ke rekening resmi a/n <u>{ownerName}</u> (BSI / SeaBank). WA CS: <u>{waPhone}</u>!
       </div>
 
-      {/* Header Navigation - Glassmorphism Mobile Ergonomic */}
-      <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm transition-all duration-200">
+      {/* Header Navigation - Glassmorphism Mobile Ergonomic BRIGHT WHITE */}
+      <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-xs transition-all duration-200">
         <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-2">
 
           <a href="#" onClick={(e) => { e.preventDefault(); setActiveTab("beranda"); }} className="flex items-center gap-2 min-w-0">
@@ -312,35 +310,35 @@ export default function CatalogLaptopClient({
             </div>
           </a>
 
-          {/* Sub-Page Navigation Tabs */}
+          {/* Sub-Page Navigation Tabs BRIGHT */}
           <nav className="hidden md:flex items-center space-x-2 text-xs sm:text-sm font-extrabold text-slate-700">
             <button
               onClick={() => setActiveTab("beranda")}
-              className={`px-3 py-2 rounded-xl transition ${activeTab === "beranda" ? "bg-teal-600 text-white shadow-sm" : "hover:bg-slate-100 text-slate-700"}`}
+              className={`px-3.5 py-2 rounded-xl transition ${activeTab === "beranda" ? "bg-teal-600 text-white shadow-xs" : "hover:bg-teal-50 text-slate-700"}`}
             >
               🏠 Beranda
             </button>
             <button
               onClick={() => setActiveTab("stok")}
-              className={`px-3 py-2 rounded-xl transition ${activeTab === "stok" ? "bg-teal-600 text-white shadow-sm" : "hover:bg-slate-100 text-slate-700"}`}
+              className={`px-3.5 py-2 rounded-xl transition ${activeTab === "stok" ? "bg-teal-600 text-white shadow-xs" : "hover:bg-teal-50 text-slate-700"}`}
             >
               💻 Stok Unit Ready
             </button>
             <button
               onClick={() => setActiveTab("garansi")}
-              className={`px-3 py-2 rounded-xl transition ${activeTab === "garansi" ? "bg-teal-600 text-white shadow-sm" : "hover:bg-slate-100 text-slate-700"}`}
+              className={`px-3.5 py-2 rounded-xl transition ${activeTab === "garansi" ? "bg-teal-600 text-white shadow-xs" : "hover:bg-teal-50 text-slate-700"}`}
             >
               🛡️ Layanan Garansi
             </button>
             <button
               onClick={() => setActiveTab("pembayaran")}
-              className={`px-3 py-2 rounded-xl transition ${activeTab === "pembayaran" ? "bg-teal-600 text-white shadow-sm" : "hover:bg-slate-100 text-slate-700"}`}
+              className={`px-3.5 py-2 rounded-xl transition ${activeTab === "pembayaran" ? "bg-teal-600 text-white shadow-xs" : "hover:bg-teal-50 text-slate-700"}`}
             >
               💳 Rekening Resmi
             </button>
             <button
               onClick={() => setActiveTab("lokasi")}
-              className={`px-3 py-2 rounded-xl transition ${activeTab === "lokasi" ? "bg-teal-600 text-white shadow-sm" : "hover:bg-slate-100 text-slate-700"}`}
+              className={`px-3.5 py-2 rounded-xl transition ${activeTab === "lokasi" ? "bg-teal-600 text-white shadow-sm" : "hover:bg-teal-50 text-slate-700"}`}
             >
               📍 Lokasi & Kontak
             </button>
@@ -351,7 +349,7 @@ export default function CatalogLaptopClient({
               href={igHighlight}
               target="_blank"
               rel="noreferrer"
-              className="hidden lg:inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-pink-50 hover:bg-pink-100 border border-pink-200 text-pink-700 font-bold text-xs transition"
+              className="hidden lg:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-pink-50 hover:bg-pink-100 border border-pink-200 text-pink-700 font-bold text-xs transition"
             >
               <InstagramIcon className="w-4 h-4 text-pink-600" />
               <span>Testimoni IG</span>
@@ -359,7 +357,7 @@ export default function CatalogLaptopClient({
 
             <button
               onClick={() => window.print()}
-              className="hidden xl:inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-300 text-slate-700 font-bold text-xs transition"
+              className="hidden xl:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-300 text-slate-700 font-bold text-xs transition"
               title="Cetak Katalog PDF"
             >
               <Printer className="w-4 h-4 text-slate-600" />
@@ -370,7 +368,7 @@ export default function CatalogLaptopClient({
               href={`https://wa.me/${formattedWa}?text=${encodeURIComponent("Halo Mughis Laptop Store, saya ingin bertanya stok laptop/produk digital.")}`}
               target="_blank"
               rel="noreferrer"
-              className="px-3 py-2 sm:px-4 sm:py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm flex items-center gap-1.5 shadow-md shadow-emerald-600/20 transition transform active:scale-95"
+              className="px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm flex items-center gap-1.5 shadow-md shadow-emerald-600/20 transition transform active:scale-95"
             >
               <Phone className="w-4 h-4 shrink-0" />
               <span>CS WA</span>
@@ -378,35 +376,35 @@ export default function CatalogLaptopClient({
           </div>
         </div>
 
-        {/* Mobile Tab Switcher Bar */}
-        <div className="md:hidden flex border-t border-slate-200 bg-slate-50 px-2 py-1.5 overflow-x-auto gap-1 text-xs font-bold">
+        {/* Mobile Tab Switcher Bar BRIGHT */}
+        <div className="md:hidden flex border-t border-slate-200 bg-white px-2 py-1.5 overflow-x-auto gap-1 text-xs font-bold">
           <button
             onClick={() => setActiveTab("beranda")}
-            className={`px-3 py-1.5 rounded-lg shrink-0 whitespace-nowrap transition ${activeTab === "beranda" ? "bg-teal-600 text-white" : "text-slate-600 hover:bg-slate-200"}`}
+            className={`px-3 py-1.5 rounded-lg shrink-0 whitespace-nowrap transition ${activeTab === "beranda" ? "bg-teal-600 text-white" : "text-slate-600 hover:bg-teal-50"}`}
           >
             🏠 Beranda
           </button>
           <button
             onClick={() => setActiveTab("stok")}
-            className={`px-3 py-1.5 rounded-lg shrink-0 whitespace-nowrap transition ${activeTab === "stok" ? "bg-teal-600 text-white" : "text-slate-600 hover:bg-slate-200"}`}
+            className={`px-3 py-1.5 rounded-lg shrink-0 whitespace-nowrap transition ${activeTab === "stok" ? "bg-teal-600 text-white" : "text-slate-600 hover:bg-teal-50"}`}
           >
             💻 Stok Unit
           </button>
           <button
             onClick={() => setActiveTab("garansi")}
-            className={`px-3 py-1.5 rounded-lg shrink-0 whitespace-nowrap transition ${activeTab === "garansi" ? "bg-teal-600 text-white" : "text-slate-600 hover:bg-slate-200"}`}
+            className={`px-3 py-1.5 rounded-lg shrink-0 whitespace-nowrap transition ${activeTab === "garansi" ? "bg-teal-600 text-white" : "text-slate-600 hover:bg-teal-50"}`}
           >
             🛡️ Garansi
           </button>
           <button
             onClick={() => setActiveTab("pembayaran")}
-            className={`px-3 py-1.5 rounded-lg shrink-0 whitespace-nowrap transition ${activeTab === "pembayaran" ? "bg-teal-600 text-white" : "text-slate-600 hover:bg-slate-200"}`}
+            className={`px-3 py-1.5 rounded-lg shrink-0 whitespace-nowrap transition ${activeTab === "pembayaran" ? "bg-teal-600 text-white" : "text-slate-600 hover:bg-teal-50"}`}
           >
             💳 Rekening
           </button>
           <button
             onClick={() => setActiveTab("lokasi")}
-            className={`px-3 py-1.5 rounded-lg shrink-0 whitespace-nowrap transition ${activeTab === "lokasi" ? "bg-teal-600 text-white" : "text-slate-600 hover:bg-slate-200"}`}
+            className={`px-3 py-1.5 rounded-lg shrink-0 whitespace-nowrap transition ${activeTab === "lokasi" ? "bg-teal-600 text-white" : "text-slate-600 hover:bg-teal-50"}`}
           >
             📍 Lokasi
           </button>
@@ -523,17 +521,17 @@ export default function CatalogLaptopClient({
             </div>
           </section>
 
-          {/* Testimonials Section */}
+          {/* Testimonials Section BRIGHT */}
           <section className="py-12 bg-slate-50 border-t border-slate-200">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
               <div className="text-center max-w-2xl mx-auto space-y-2">
-                <span className="px-3 py-1 rounded-full bg-pink-100 text-pink-700 text-xs font-bold uppercase">Testimoni Pembeli</span>
+                <span className="px-3.5 py-1 rounded-full bg-pink-100 text-pink-700 text-xs font-bold uppercase">Testimoni Pembeli</span>
                 <h2 className="text-2xl sm:text-3xl font-black text-slate-900">Apa Kata Pelanggan Kami?</h2>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {DEFAULT_TESTIMONIALS.map((t) => (
-                  <div key={t.id} className="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-3">
+                  <div key={t.id} className="p-5 rounded-2xl bg-white border border-slate-200 shadow-xs space-y-3">
                     <div className="flex items-center gap-3">
                       <img src={t.photoUrl} alt={t.name} className="w-10 h-10 rounded-full object-cover border border-slate-300" />
                       <div>
@@ -581,31 +579,31 @@ export default function CatalogLaptopClient({
               />
             </div>
 
-            {/* Smart Use-Case Quick Filter Pills */}
+            {/* Smart Use-Case Quick Filter Pills BRIGHT */}
             <div className="p-3 rounded-2xl bg-white border border-slate-200 shadow-xs max-w-3xl mx-auto space-y-2">
               <span className="text-[10px] font-black uppercase text-slate-400 tracking-wider block text-center">Rekomendasi Kebutuhan / Use Case:</span>
               <div className="flex flex-wrap justify-center gap-1.5 text-xs font-bold">
                 <button
                   onClick={() => setUseCaseFilter("all")}
-                  className={`px-3 py-1.5 rounded-xl transition ${useCaseFilter === "all" ? "bg-slate-900 text-white" : "bg-slate-100 text-slate-700 hover:bg-slate-200"}`}
+                  className={`px-3 py-1.5 rounded-xl transition ${useCaseFilter === "all" ? "bg-teal-600 text-white" : "bg-slate-100 text-slate-700 hover:bg-teal-50"}`}
                 >
                   Semua
                 </button>
                 <button
                   onClick={() => setUseCaseFilter("mahasiswa")}
-                  className={`px-3 py-1.5 rounded-xl transition ${useCaseFilter === "mahasiswa" ? "bg-slate-900 text-white" : "bg-slate-100 text-slate-700 hover:bg-slate-200"}`}
+                  className={`px-3 py-1.5 rounded-xl transition ${useCaseFilter === "mahasiswa" ? "bg-teal-600 text-white" : "bg-slate-100 text-slate-700 hover:bg-teal-50"}`}
                 >
                   🎓 Ketik / Skripsi
                 </button>
                 <button
                   onClick={() => setUseCaseFilter("kantor")}
-                  className={`px-3 py-1.5 rounded-lg transition ${useCaseFilter === "kantor" ? "bg-slate-900 text-white" : "bg-slate-100 text-slate-700 hover:bg-slate-200"}`}
+                  className={`px-3 py-1.5 rounded-lg transition ${useCaseFilter === "kantor" ? "bg-teal-600 text-white" : "bg-slate-100 text-slate-700 hover:bg-teal-50"}`}
                 >
                   📊 Olah Data / Kantor
                 </button>
                 <button
                   onClick={() => setUseCaseFilter("editing")}
-                  className={`px-3 py-1.5 rounded-lg transition ${useCaseFilter === "editing" ? "bg-slate-900 text-white" : "bg-slate-100 text-slate-700 hover:bg-slate-200"}`}
+                  className={`px-3 py-1.5 rounded-lg transition ${useCaseFilter === "editing" ? "bg-teal-600 text-white" : "bg-slate-100 text-slate-700 hover:bg-teal-50"}`}
                 >
                   🎨 Desain / Editing
                 </button>
@@ -615,25 +613,25 @@ export default function CatalogLaptopClient({
             <div className="flex flex-wrap justify-center gap-2 text-xs sm:text-sm font-bold">
               <button
                 onClick={() => setCurrentCategory("all")}
-                className={`px-3.5 py-2 rounded-xl border-2 transition ${currentCategory === "all" ? "bg-teal-600 border-teal-600 text-white shadow-sm" : "bg-white border-slate-200 text-slate-700 hover:border-teal-600"}`}
+                className={`px-3.5 py-2 rounded-xl border-2 transition ${currentCategory === "all" ? "bg-teal-600 border-teal-600 text-white shadow-xs" : "bg-white border-slate-200 text-slate-700 hover:border-teal-600"}`}
               >
                 🔥 Semua Kategori ({activeProducts.length})
               </button>
               <button
                 onClick={() => setCurrentCategory("laptop")}
-                className={`px-3.5 py-2 rounded-xl border-2 transition ${currentCategory === "laptop" ? "bg-teal-600 border-teal-600 text-white shadow-sm" : "bg-white border-slate-200 text-slate-700 hover:border-teal-600"}`}
+                className={`px-3.5 py-2 rounded-xl border-2 transition ${currentCategory === "laptop" ? "bg-teal-600 border-teal-600 text-white shadow-xs" : "bg-white border-slate-200 text-slate-700 hover:border-teal-600"}`}
               >
                 💻 Laptop Business
               </button>
               <button
                 onClick={() => setCurrentCategory("digital")}
-                className={`px-3.5 py-2 rounded-xl border-2 transition ${currentCategory === "digital" ? "bg-teal-600 border-teal-600 text-white shadow-sm" : "bg-white border-slate-200 text-slate-700 hover:border-teal-600"}`}
+                className={`px-3.5 py-2 rounded-xl border-2 transition ${currentCategory === "digital" ? "bg-teal-600 border-teal-600 text-white shadow-xs" : "bg-white border-slate-200 text-slate-700 hover:border-teal-600"}`}
               >
                 🔑 Produk Digital & Lisensi
               </button>
               <button
                 onClick={() => setCurrentCategory("budget")}
-                className={`px-3.5 py-2 rounded-xl border-2 transition ${currentCategory === "budget" ? "bg-teal-600 border-teal-600 text-white shadow-sm" : "bg-white border-slate-200 text-slate-700 hover:border-teal-600"}`}
+                className={`px-3.5 py-2 rounded-xl border-2 transition ${currentCategory === "budget" ? "bg-teal-600 border-teal-600 text-white shadow-xs" : "bg-white border-slate-200 text-slate-700 hover:border-teal-600"}`}
               >
                 🏷️ Promo & Pilihan Hemat
               </button>
@@ -654,19 +652,19 @@ export default function CatalogLaptopClient({
                 const isCompared = compareIds.includes(p.id)
 
                 return (
-                  <div key={p.id} className="bg-white rounded-2xl border-2 border-slate-200 overflow-hidden flex flex-col justify-between shadow-sm hover:shadow-xl transition-all duration-300 group hover:-translate-y-1">
+                  <div key={p.id} className="bg-white rounded-2xl border-2 border-slate-200 overflow-hidden flex flex-col justify-between shadow-xs hover:shadow-xl transition-all duration-300 group hover:-translate-y-1">
                     <div>
                       {/* STRICT ASPECT RATIO 4:5 PORTRAIT CONTAINER */}
                       <div className="relative aspect-[4/5] w-full bg-slate-100 overflow-hidden">
                         <img src={p.images?.[0] || p.image} alt={p.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
 
-                        <span className="absolute top-2 left-2 px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-[9px] sm:text-xs font-black uppercase tracking-wider bg-teal-100 text-teal-800 border border-teal-300 shadow-sm">
+                        <span className="absolute top-2 left-2 px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-[9px] sm:text-xs font-black uppercase tracking-wider bg-teal-100 text-teal-800 border border-teal-300 shadow-xs">
                           {p.badge}
                         </span>
 
                         <button
                           onClick={() => toggleCompare(p.id)}
-                          className={`absolute top-2 right-2 p-1.5 rounded-lg border text-[10px] font-bold transition flex items-center gap-1 shadow-sm ${isCompared ? "bg-teal-600 text-white border-teal-600" : "bg-white/90 hover:bg-white text-slate-700 border-slate-300"}`}
+                          className={`absolute top-2 right-2 p-1.5 rounded-lg border text-[10px] font-bold transition flex items-center gap-1 shadow-xs ${isCompared ? "bg-teal-600 text-white border-teal-600" : "bg-white/95 hover:bg-white text-slate-700 border-slate-300"}`}
                           title="Bandingkan Laptop"
                         >
                           <Scale className="w-3.5 h-3.5" />
@@ -674,12 +672,12 @@ export default function CatalogLaptopClient({
                         </button>
 
                         <div className="absolute bottom-2 left-2 flex items-center gap-1">
-                          <span className="px-2 py-0.5 rounded-md text-[9px] sm:text-[10px] font-bold bg-slate-900/80 text-white backdrop-blur-sm shadow-sm flex items-center gap-1">
-                            <ImageIcon className="w-3 h-3 text-teal-400" />
+                          <span className="px-2 py-0.5 rounded-md text-[9px] sm:text-[10px] font-bold bg-white/90 text-slate-900 border border-slate-200 shadow-xs flex items-center gap-1">
+                            <ImageIcon className="w-3 h-3 text-teal-600" />
                             <span>{photoCount} Foto</span>
                           </span>
                           {p.video && (
-                            <span className="px-1.5 py-0.5 rounded-md text-[9px] font-bold bg-indigo-600 text-white shadow-sm flex items-center gap-1">
+                            <span className="px-1.5 py-0.5 rounded-md text-[9px] font-bold bg-indigo-600 text-white shadow-xs flex items-center gap-1">
                               <VideoIcon className="w-3 h-3 text-white" />
                               <span className="hidden sm:inline">Ada Video</span>
                             </span>
@@ -802,41 +800,41 @@ export default function CatalogLaptopClient({
         </section>
       )}
 
-      {/* 4. TAB CONTENT: REKENING RESMI & PEMBAYARAN */}
+      {/* 4. TAB CONTENT: REKENING RESMI & PEMBAYARAN (BRIGHT WHITE & TEAL DESIGN) */}
       {activeTab === "pembayaran" && (
         <section id="info-bisnis" className="py-8 sm:py-12 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-          <div className="bg-slate-900 text-white p-6 sm:p-8 rounded-3xl border-2 border-slate-800 shadow-2xl space-y-8">
+          <div className="bg-white p-6 sm:p-8 rounded-3xl border-2 border-slate-200 shadow-md space-y-8">
             <div className="text-center max-w-2xl mx-auto space-y-2">
-              <span className="px-3.5 py-1 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold uppercase tracking-widest border border-emerald-500/30">
+              <span className="px-3.5 py-1 rounded-full bg-teal-100 text-teal-800 text-xs font-bold uppercase tracking-widest border border-teal-200">
                 Rekening Resmi Owner ({ownerName})
               </span>
-              <h2 className="text-2xl sm:text-4xl font-black tracking-tight">Informasi Rekening Pembayaran Resmi</h2>
-              <p className="text-slate-300 text-xs sm:text-base font-normal leading-relaxed">
+              <h2 className="text-2xl sm:text-4xl font-black tracking-tight text-slate-900">Informasi Rekening Pembayaran Resmi</h2>
+              <p className="text-slate-600 text-xs sm:text-base font-medium leading-relaxed">
                 Pastikan transfer Anda dikirimkan sesuai dengan nama rekening resmi pemilik toko di bawah ini:
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
               {bankAccounts.map((b) => (
-                <div key={b.id} className="p-5 sm:p-6 rounded-2xl bg-slate-950 border-2 border-emerald-600/40 space-y-3 relative shadow-2xl">
+                <div key={b.id} className="p-5 sm:p-6 rounded-2xl bg-teal-50/80 border-2 border-teal-300 space-y-3 relative shadow-xs">
                   <div className="flex items-center justify-between">
-                    <span className="text-base sm:text-lg font-black text-emerald-400 tracking-wider">{b.bank}</span>
-                    <span className="text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-md bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                    <span className="text-base sm:text-lg font-black text-teal-800 tracking-wider">{b.bank}</span>
+                    <span className="text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-md bg-teal-100 text-teal-800 border border-teal-300">
                       Rekening Resmi
                     </span>
                   </div>
                   <div>
-                    <p className="text-[11px] text-slate-400 font-medium">Nomor Rekening:</p>
-                    <p className="text-2xl sm:text-3xl font-black font-mono tracking-widest text-white mt-1">{b.account_number}</p>
+                    <p className="text-[11px] text-slate-500 font-medium">Nomor Rekening:</p>
+                    <p className="text-2xl sm:text-3xl font-black font-mono tracking-widest text-slate-900 mt-1">{b.account_number}</p>
                   </div>
-                  <div className="pt-3 border-t border-slate-800 flex items-center justify-between">
+                  <div className="pt-3 border-t border-teal-200 flex items-center justify-between">
                     <div>
-                      <p className="text-[10px] text-slate-400 uppercase font-bold">Atas Nama / Owner:</p>
-                      <p className="text-sm sm:text-base font-black text-amber-300">{b.beneficiary}</p>
+                      <p className="text-[10px] text-slate-500 uppercase font-bold">Atas Nama / Owner:</p>
+                      <p className="text-sm sm:text-base font-extrabold text-teal-900">{b.beneficiary}</p>
                     </div>
                     <button
                       onClick={() => copyText(b.account_number, b.bank)}
-                      className="px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold flex items-center gap-1.5 transition shadow-lg shadow-emerald-600/30"
+                      className="px-3.5 py-2 rounded-xl bg-teal-700 hover:bg-teal-800 text-white text-xs font-bold flex items-center gap-1.5 transition shadow-xs"
                     >
                       <Copy className="w-3.5 h-3.5" />
                       <span>Salin</span>
@@ -846,22 +844,22 @@ export default function CatalogLaptopClient({
               ))}
             </div>
 
-            <div className="p-5 rounded-2xl bg-slate-950 border border-slate-800 space-y-3 text-xs sm:text-sm">
-              <h3 className="font-extrabold text-amber-300 uppercase tracking-wider flex items-center gap-2">
-                <Truck className="w-5 h-5 text-amber-400" />
+            <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-3 text-xs sm:text-sm">
+              <h3 className="font-extrabold text-teal-900 uppercase tracking-wider flex items-center gap-2">
+                <Truck className="w-5 h-5 text-teal-600" />
                 <span>Metode Pengiriman & Pembayaran yang Tersedia:</span>
               </h3>
-              <ul className="space-y-2 text-slate-300 font-medium">
+              <ul className="space-y-2 text-slate-700 font-medium">
                 <li className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                  <Check className="w-4 h-4 text-teal-600 shrink-0 mt-0.5" />
                   <span><strong>COD / Ambil Langsung:</strong> Silakan datang ke toko fisik kami di Sangso, Samalanga, Bireuen, Aceh.</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                  <Check className="w-4 h-4 text-teal-600 shrink-0 mt-0.5" />
                   <span><strong>Pengiriman Travel / L300 (Aceh & Medan):</strong> Pengiriman instan sampai di hari yang sama untuk area Aceh & Sumut.</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                  <Check className="w-4 h-4 text-teal-600 shrink-0 mt-0.5" />
                   <span><strong>Pengiriman Ekspedisi (JNE / J&T / Cargo):</strong> Dilengkapi packing kayu aman & bubble wrap tebal ke seluruh Indonesia.</span>
                 </li>
               </ul>
@@ -916,45 +914,45 @@ export default function CatalogLaptopClient({
         </section>
       )}
 
-      {/* Footer - 100% Tech Storefront */}
-      <footer className="bg-slate-950 text-slate-400 border-t border-slate-800 py-8 sm:py-12">
+      {/* Footer - 100% Tech Storefront BRIGHT WHITE */}
+      <footer className="bg-white text-slate-700 border-t border-slate-200 py-8 sm:py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-center md:text-left">
           <div className="space-y-1.5">
-            <p className="text-base font-black text-white tracking-wide">MUGHIS LAPTOP STORE</p>
-            <p className="text-slate-300 font-medium">Owner: {ownerName} • Alamat: {address}</p>
-            <p className="text-slate-500">© 2026 Mughis Laptop Store. Hak Cipta Dilindungi.</p>
+            <p className="text-base font-black text-slate-900 tracking-wide">MUGHIS LAPTOP STORE</p>
+            <p className="text-slate-600 font-medium">Owner: {ownerName} • Alamat: {address}</p>
+            <p className="text-slate-400">© 2026 Mughis Laptop Store. Hak Cipta Dilindungi.</p>
           </div>
 
           <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-6 font-bold text-xs sm:text-sm">
-            <a href={igHighlight} target="_blank" rel="noreferrer" className="px-3 py-2 rounded-xl bg-pink-950/60 border border-pink-700/50 text-pink-300 hover:text-white flex items-center gap-1.5 transition">
-              <InstagramIcon className="w-4 h-4 text-pink-400" />
+            <a href={igHighlight} target="_blank" rel="noreferrer" className="px-3.5 py-2 rounded-xl bg-pink-50 border border-pink-200 text-pink-700 hover:bg-pink-100 flex items-center gap-1.5 transition">
+              <InstagramIcon className="w-4 h-4 text-pink-600" />
               <span>Testimoni IG</span>
             </a>
-            <a href={`https://wa.me/${formattedWa}`} target="_blank" rel="noreferrer" className="px-3 py-2 rounded-xl bg-emerald-950/60 border border-emerald-700/50 text-emerald-300 hover:text-white flex items-center gap-1.5 transition">
-              <Phone className="w-4 h-4 text-emerald-400" />
+            <a href={`https://wa.me/${formattedWa}`} target="_blank" rel="noreferrer" className="px-3.5 py-2 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-700 hover:bg-emerald-100 flex items-center gap-1.5 transition">
+              <Phone className="w-4 h-4 text-emerald-600" />
               <span>CS WA ({waPhone})</span>
             </a>
           </div>
         </div>
       </footer>
 
-      {/* FLOATING COMPARE BAR */}
+      {/* FLOATING COMPARE BAR BRIGHT */}
       {compareIds.length > 0 && (
-        <div className="fixed bottom-20 left-1/2 -translate-x-1/2 z-40 bg-slate-900 text-white px-5 py-3 rounded-full shadow-2xl flex items-center gap-4 text-xs font-bold border border-teal-500/50 backdrop-blur-md">
+        <div className="fixed bottom-20 left-1/2 -translate-x-1/2 z-40 bg-white text-slate-900 px-5 py-3 rounded-full shadow-2xl flex items-center gap-4 text-xs font-bold border-2 border-teal-600 backdrop-blur-md">
           <div className="flex items-center gap-2">
-            <Scale className="w-4 h-4 text-teal-400" />
+            <Scale className="w-4 h-4 text-teal-600" />
             <span>Dibandingkan ({compareIds.length}/2 Unit)</span>
           </div>
           <div className="flex items-center gap-2">
             <button
               onClick={() => setIsCompareModalOpen(true)}
-              className="px-3 py-1.5 rounded-lg bg-teal-600 hover:bg-teal-500 text-white font-extrabold text-xs transition"
+              className="px-3 py-1.5 rounded-lg bg-teal-600 hover:bg-teal-700 text-white font-extrabold text-xs transition"
             >
               Lihat Perbandingan
             </button>
             <button
               onClick={() => setCompareIds([])}
-              className="p-1 rounded bg-slate-800 text-slate-400 hover:text-white"
+              className="p-1 rounded bg-slate-100 text-slate-500 hover:text-slate-900"
               title="Bersihkan"
             >
               <X className="w-4 h-4" />
@@ -965,7 +963,7 @@ export default function CatalogLaptopClient({
 
       {/* SIDE-BY-SIDE LAPTOP COMPARISON MODAL */}
       {isCompareModalOpen && comparedProducts.length > 0 && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-950/75 backdrop-blur-xs transition-all duration-200">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-900/60 backdrop-blur-xs transition-all duration-200">
           <div className="bg-white border border-slate-200 max-w-2xl w-full rounded-2xl overflow-hidden shadow-2xl p-4 sm:p-6 space-y-4 text-slate-900 relative max-h-[90vh] overflow-y-auto">
             <div className="flex justify-between items-center border-b border-slate-200 pb-3">
               <div className="flex items-center gap-2">
@@ -1010,7 +1008,7 @@ export default function CatalogLaptopClient({
 
       {/* Modal Detail with ASPECT-RATIO 4:5 Portrait Gallery & VIDEO PLAYER */}
       {selectedProduct && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-950/70 backdrop-blur-sm transition-all duration-300">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-900/60 backdrop-blur-sm transition-all duration-300">
           <div className="bg-white border border-slate-300 max-w-xl w-full rounded-2xl overflow-hidden shadow-2xl p-5 sm:p-6 space-y-4 text-slate-900 relative max-h-[90vh] overflow-y-auto">
             <button onClick={() => setSelectedProduct(null)} className="absolute top-4 right-4 text-slate-400 hover:text-slate-800 p-1 rounded-lg">
               <X className="w-6 h-6" />
@@ -1029,8 +1027,8 @@ export default function CatalogLaptopClient({
                 </p>
               </div>
 
-              {/* Main Media Player Box (Image or Video) with Strict 4:5 Aspect Ratio */}
-              <div className="w-full aspect-[4/5] max-h-[380px] rounded-xl overflow-hidden bg-slate-950 border border-slate-200 relative mx-auto flex items-center justify-center group shadow-md">
+              {/* Main Media Player Box (Image or Video) with Strict 4:5 Aspect Ratio BRIGHT */}
+              <div className="w-full aspect-[4/5] max-h-[380px] rounded-xl overflow-hidden bg-slate-100 border border-slate-200 relative mx-auto flex items-center justify-center group shadow-sm">
                 {activeMediaMode === "video" && selectedProduct.video ? (
                   selectedProduct.video.startsWith("data:video") || selectedProduct.video.endsWith(".mp4") ? (
                     <video src={selectedProduct.video} controls autoPlay loop muted playsInline className="w-full h-full object-cover" />
@@ -1052,9 +1050,9 @@ export default function CatalogLaptopClient({
                     />
                     <button
                       onClick={openZoomModal}
-                      className="absolute bottom-3 right-3 px-2.5 py-1.5 rounded-xl bg-slate-900/80 hover:bg-slate-900 text-white backdrop-blur-xs text-[11px] font-bold flex items-center gap-1.5 shadow-md border border-white/20 transition active:scale-95"
+                      className="absolute bottom-3 right-3 px-2.5 py-1.5 rounded-xl bg-white/90 hover:bg-white text-slate-900 backdrop-blur-xs text-[11px] font-bold flex items-center gap-1.5 shadow-md border border-slate-300 transition active:scale-95"
                     >
-                      <ZoomIn className="w-3.5 h-3.5 text-teal-400" />
+                      <ZoomIn className="w-3.5 h-3.5 text-teal-600" />
                       <span>Zoom Foto (4:5)</span>
                     </button>
                   </>
@@ -1126,36 +1124,36 @@ export default function CatalogLaptopClient({
         </div>
       )}
 
-      {/* LIGHTBOX FULLSCREEN ZOOM MODAL (INSTAGRAM FEED 4:5 RATIO & ZOOM CONTROLS) */}
+      {/* LIGHTBOX FULLSCREEN ZOOM MODAL (INSTAGRAM FEED 4:5 RATIO & ZOOM CONTROLS) BRIGHT */}
       {isZoomOpen && selectedProduct && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-950/95 backdrop-blur-md transition-all duration-300 p-2 sm:p-4">
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-900/80 backdrop-blur-md transition-all duration-300 p-2 sm:p-4">
           <div className="absolute top-4 left-4 right-4 z-10 flex items-center justify-between text-white">
-            <div className="flex items-center gap-2 bg-slate-900/80 px-3.5 py-1.5 rounded-full border border-white/20 text-xs font-bold backdrop-blur-md">
-              <InstagramIcon className="w-4 h-4 text-pink-400" />
+            <div className="flex items-center gap-2 bg-white/90 text-slate-900 px-3.5 py-1.5 rounded-full border border-slate-300 text-xs font-bold backdrop-blur-md shadow-md">
+              <InstagramIcon className="w-4 h-4 text-pink-600" />
               <span>Rasio Instagram Feed 4:5 • ({activePhotoIdx + 1} / {selectedProduct.images?.length || 1})</span>
             </div>
 
             <div className="flex items-center gap-2">
               <button
                 onClick={handleZoomIn}
-                className="p-2.5 rounded-full bg-slate-900/80 hover:bg-slate-800 text-white border border-white/20 transition shadow-md"
+                className="p-2.5 rounded-full bg-white/90 hover:bg-white text-slate-900 border border-slate-300 transition shadow-md"
                 title="Zoom In"
               >
-                <ZoomIn className="w-5 h-5" />
+                <ZoomIn className="w-5 h-5 text-teal-600" />
               </button>
               <button
                 onClick={handleZoomOut}
-                className="p-2.5 rounded-full bg-slate-900/80 hover:bg-slate-800 text-white border border-white/20 transition shadow-md"
+                className="p-2.5 rounded-full bg-white/90 hover:bg-white text-slate-900 border border-slate-300 transition shadow-md"
                 title="Zoom Out"
               >
-                <ZoomOut className="w-5 h-5" />
+                <ZoomOut className="w-5 h-5 text-teal-600" />
               </button>
               <button
                 onClick={handleZoomReset}
-                className="p-2.5 rounded-full bg-slate-900/80 hover:bg-slate-800 text-white border border-white/20 transition shadow-md"
+                className="p-2.5 rounded-full bg-white/90 hover:bg-white text-slate-900 border border-slate-300 transition shadow-md"
                 title="Reset Zoom"
               >
-                <RotateCcw className="w-5 h-5" />
+                <RotateCcw className="w-5 h-5 text-teal-600" />
               </button>
               <button
                 onClick={() => setIsZoomOpen(false)}
@@ -1171,13 +1169,13 @@ export default function CatalogLaptopClient({
             <>
               <button
                 onClick={handlePrevPhoto}
-                className="absolute left-4 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-slate-900/80 hover:bg-slate-800 text-white border border-white/20 backdrop-blur-md transition shadow-lg active:scale-95"
+                className="absolute left-4 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-white/90 hover:bg-white text-slate-900 border border-slate-300 backdrop-blur-md transition shadow-lg active:scale-95"
               >
                 <ChevronLeft className="w-6 h-6" />
               </button>
               <button
                 onClick={handleNextPhoto}
-                className="absolute right-4 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-slate-900/80 hover:bg-slate-800 text-white border border-white/20 backdrop-blur-md transition shadow-lg active:scale-95"
+                className="absolute right-4 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-white/90 hover:bg-white text-slate-900 border border-slate-300 backdrop-blur-md transition shadow-lg active:scale-95"
               >
                 <ChevronRight className="w-6 h-6" />
               </button>
@@ -1186,7 +1184,7 @@ export default function CatalogLaptopClient({
 
           <div className="w-full h-full max-w-2xl max-h-[85vh] flex items-center justify-center overflow-auto p-4">
             <div
-              className="relative aspect-[4/5] w-full max-h-full rounded-2xl overflow-hidden shadow-2xl transition-transform duration-200 flex items-center justify-center bg-black border border-white/10"
+              className="relative aspect-[4/5] w-full max-h-full rounded-2xl overflow-hidden shadow-2xl transition-transform duration-200 flex items-center justify-center bg-white border border-slate-300"
               style={{ transform: `scale(${zoomScale})` }}
             >
               <img

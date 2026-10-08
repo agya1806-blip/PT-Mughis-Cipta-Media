@@ -21,11 +21,19 @@ export default function MobileDrawer({ open, onClose }: Props) {
   const closeRef = useRef<HTMLButtonElement>(null)
 
   useEffect(() => {
-    if (!open) return
+    if (!open) {
+      document.body.style.overflow = ""
+      return
+    }
     document.body.style.overflow = "hidden"
     closeRef.current?.focus()
     return () => { document.body.style.overflow = "" }
   }, [open])
+
+  useEffect(() => {
+    onClose()
+    document.body.style.overflow = ""
+  }, [pathname, onClose])
 
   useEffect(() => {
     if (!open) return

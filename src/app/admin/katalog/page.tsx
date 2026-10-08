@@ -215,6 +215,8 @@ export default function AdminKatalogLaptopPage() {
   const [products, setProducts] = useState<ProductItem[]>(DEFAULT_PRODUCTS)
   const [editingProduct, setEditingProduct] = useState<ProductItem | null>(null)
   const [specsInput, setSpecsInput] = useState("")
+  const [uploadingSlot, setUploadingSlot] = useState<number | null>(null)
+  const [uploadingVideo, setUploadingVideo] = useState(false)
 
   useEffect(() => {
     fetch("/api/admin/settings")
@@ -285,32 +287,47 @@ export default function AdminKatalogLaptopPage() {
     }
   }
 
-  // Handle Multi-Image Upload (Up to 4 slots)
-  function handleMultiImageUpload(slotIndex: number, e: React.ChangeEvent<HTMLInputElement>) {
+  // Handle Multi-Image Upload (Up to 4 slots) via Server Endpoint
+  async function handleMultiImageUpload(slotIndex: number, e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0]
     if (!file || !editingProduct) return
 
-    if (file.size > 5 * 1024 * 1024) {
-      alert("Ukuran file gambar terlalu besar. Maksimal 5MB!")
+    if (file.size > 15 * 1024 * 1024) {
+      alert("Ukuran file gambar terlalu besar. Maksimal 15MB!")
       return
     }
 
-    const reader = new FileReader()
-    reader.onloadend = () => {
-      const base64Data = reader.result as string
-      const currentImages = editingProduct.images && editingProduct.images.length > 0
-        ? [...editingProduct.images]
-        : [editingProduct.image]
+    try {
+      setUploadingSlot(slotIndex)
+      const formData = new FormData()
+      formData.append("file", file)
 
-      currentImages[slotIndex] = base64Data
-
-      setEditingProduct({
-        ...editingProduct,
-        image: currentImages[0] || base64Data,
-        images: currentImages
+      const res = await fetch("/api/upload/image", {
+        method: "POST",
+        body: formData
       })
+      const data = await res.json()
+
+      if (res.ok && data.url) {
+        const currentImages = editingProduct.images && editingProduct.images.length > 0
+          ? [...editingProduct.images]
+          : [editingProduct.image]
+
+        currentImages[slotIndex] = data.url
+
+        setEditingProduct({
+          ...editingProduct,
+          image: currentImages[0] || data.url,
+          images: currentImages
+        })
+      } else {
+        alert(data.error || "Gagal mengunggah gambar. Silakan coba lagi.")
+      }
+    } catch {
+      alert("Terjadi kesalahan koneksi saat mengunggah gambar.")
+    } finally {
+      setUploadingSlot(null)
     }
-    reader.readAsDataURL(file)
   }
 
   function handleImageUrlChange(slotIndex: number, newUrl: string) {
@@ -343,22 +360,37 @@ export default function AdminKatalogLaptopPage() {
     })
   }
 
-  // Handle Video Upload (MP4 / WebM)
-  function handleVideoUpload(e: React.ChangeEvent<HTMLInputElement>) {
+  // Handle Video Upload (MP4 / WebM) via Server Endpoint
+  async function handleVideoUpload(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0]
     if (!file || !editingProduct) return
 
-    if (file.size > 20 * 1024 * 1024) {
-      alert("Ukuran file video terlalu besar. Maksimal 20MB!")
+    if (file.size > 25 * 1024 * 1024) {
+      alert("Ukuran file video terlalu besar. Maksimal 25MB!")
       return
     }
 
-    const reader = new FileReader()
-    reader.onloadend = () => {
-      const base64Video = reader.result as string
-      setEditingProduct({ ...editingProduct, video: base64Video })
+    try {
+      setUploadingVideo(true)
+      const formData = new FormData()
+      formData.append("file", file)
+
+      const res = await fetch("/api/upload/image", {
+        method: "POST",
+        body: formData
+      })
+      const data = await res.json()
+
+      if (res.ok && data.url) {
+        setEditingProduct({ ...editingProduct, video: data.url })
+      } else {
+        alert(data.error || "Gagal mengunggah video.")
+      }
+    } catch {
+      alert("Terjadi kesalahan koneksi saat mengunggah video.")
+    } finally {
+      setUploadingVideo(false)
     }
-    reader.readAsDataURL(file)
   }
 
   // Bank Actions
@@ -511,31 +543,31 @@ export default function AdminKatalogLaptopPage() {
             </button>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-6 w-full">
             {products.map((p) => (
-              <div key={p.id} className="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm flex flex-col justify-between hover:border-emerald-500 transition">
+              <div key={p.id} className="min-w-0 w-full max-w-full bg-white border border-slate-200 rounded-xl sm:rounded-2xl overflow-hidden shadow-xs flex flex-col justify-between hover:border-emerald-500 transition">
                 <div>
-                  <div className="relative aspect-[4/5] w-full bg-slate-100">
+                  <div className="relative aspect-[16/10] sm:aspect-[4/5] w-full bg-slate-100">
                     <img src={p.images?.[0] || p.image} alt={p.title} className="w-full h-full object-cover" />
-                    <span className="absolute top-2 left-2 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-300">
+                    <span className="absolute top-1 left-1 sm:top-2 sm:left-2 px-1.5 sm:px-2.5 py-0.5 rounded-full text-[8px] sm:text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-300">
                       {p.badge}
                     </span>
-                    <span className="absolute bottom-2 left-2 px-2 py-0.5 rounded-md text-[10px] font-bold bg-slate-900/80 text-white backdrop-blur-sm flex items-center gap-1">
-                      📷 {p.images?.length || 1} Foto {p.video ? "• 🎥 Video" : ""}
+                    <span className="absolute bottom-1 left-1 sm:bottom-2 sm:left-2 px-1.5 py-0.5 rounded-md text-[8px] sm:text-[10px] font-bold bg-slate-900/80 text-white backdrop-blur-xs flex items-center gap-0.5">
+                      📷 {p.images?.length || 1} Foto
                     </span>
-                    <span className={`absolute top-2 right-2 px-2 py-0.5 rounded-md text-[10px] font-black uppercase ${p.stockStatus === 'READY' ? 'bg-emerald-600 text-white' : p.stockStatus === 'SOLD_OUT' ? 'bg-rose-600 text-white' : 'bg-slate-700 text-slate-200'}`}>
+                    <span className={`absolute top-1 right-1 sm:top-2 sm:right-2 px-1.5 py-0.5 rounded-md text-[8px] sm:text-[10px] font-black uppercase ${p.stockStatus === 'READY' ? 'bg-emerald-600 text-white' : p.stockStatus === 'SOLD_OUT' ? 'bg-rose-600 text-white' : 'bg-slate-700 text-slate-200'}`}>
                       {p.stockStatus || 'READY'}
                     </span>
                   </div>
 
-                  <div className="p-4 space-y-2 text-xs">
-                    <h3 className="font-bold text-sm text-slate-900 leading-snug">{p.title}</h3>
-                    <p className="text-emerald-700 font-extrabold text-base">{p.priceText}</p>
-                    <p className="text-slate-600 line-clamp-2">{p.shortDesc}</p>
+                  <div className="p-2 sm:p-4 space-y-1 sm:space-y-2 text-xs">
+                    <h3 className="font-bold text-xs sm:text-sm text-slate-900 leading-tight sm:leading-snug line-clamp-2">{p.title}</h3>
+                    <p className="text-emerald-700 font-extrabold text-xs sm:text-base">{p.priceText}</p>
+                    <p className="text-slate-600 line-clamp-2 text-[10px] sm:text-xs hidden sm:block">{p.shortDesc}</p>
                   </div>
                 </div>
 
-                <div className="p-4 pt-0 flex gap-2">
+                <div className="p-2 sm:p-4 pt-0 flex gap-1 sm:gap-2">
                   <button
                     onClick={() => openProductEditor(p)}
                     className="flex-1 py-2 bg-slate-100 hover:bg-slate-200 border border-slate-300 rounded-xl font-bold text-slate-800 text-xs flex items-center justify-center gap-1"
@@ -672,12 +704,13 @@ export default function AdminKatalogLaptopPage() {
                             )}
                           </div>
 
-                          <label className="w-full py-2 px-2 rounded-lg bg-teal-600 hover:bg-teal-700 text-white font-bold text-[11px] flex items-center justify-center gap-1 cursor-pointer transition">
+                          <label className={`w-full py-2 px-2 rounded-lg text-white font-bold text-[11px] flex items-center justify-center gap-1 cursor-pointer transition ${uploadingSlot === slotIdx ? "bg-slate-400 cursor-not-allowed" : "bg-teal-600 hover:bg-teal-700"}`}>
                             <Upload className="w-3.5 h-3.5" />
-                            <span>Upload Foto</span>
+                            <span>{uploadingSlot === slotIdx ? "Mengunggah..." : "Upload Foto"}</span>
                             <input
                               type="file"
                               accept="image/*"
+                              disabled={uploadingSlot !== null}
                               onChange={(e) => handleMultiImageUpload(slotIdx, e)}
                               className="hidden"
                             />
@@ -729,12 +762,13 @@ export default function AdminKatalogLaptopPage() {
                     ) : null}
 
                     <div className="flex-1 space-y-2 w-full">
-                      <label className="px-4 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs inline-flex items-center gap-2 cursor-pointer shadow-md shadow-indigo-600/20 active:scale-95 transition">
+                      <label className={`px-4 py-2.5 rounded-xl text-white font-bold text-xs inline-flex items-center gap-2 cursor-pointer shadow-md active:scale-95 transition ${uploadingVideo ? "bg-slate-400 cursor-not-allowed" : "bg-indigo-600 hover:bg-indigo-700 shadow-indigo-600/20"}`}>
                         <Video className="w-4 h-4" />
-                        <span>Upload File Video MP4 (Dari HP / Laptop)</span>
+                        <span>{uploadingVideo ? "Mengunggah Video..." : "Upload File Video MP4 (Dari HP / Laptop)"}</span>
                         <input
                           type="file"
                           accept="video/mp4,video/webm,video/*"
+                          disabled={uploadingVideo}
                           onChange={handleVideoUpload}
                           className="hidden"
                         />

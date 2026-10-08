@@ -15,15 +15,19 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Tidak ada file" }, { status: 400 })
     }
 
-    if (!file.type.startsWith("image/")) {
-      return NextResponse.json({ error: "Hanya file gambar (JPG, PNG, WebP)" }, { status: 400 })
+    const isImage = file.type.startsWith("image/")
+    const isVideo = file.type.startsWith("video/")
+
+    if (!isImage && !isVideo) {
+      return NextResponse.json({ error: "Hanya file gambar (JPG, PNG, WebP) atau video (MP4, WebM)" }, { status: 400 })
     }
 
-    if (file.size > 5 * 1024 * 1024) {
-      return NextResponse.json({ error: "File maksimal 5MB" }, { status: 400 })
+    if (file.size > 25 * 1024 * 1024) {
+      return NextResponse.json({ error: "File maksimal 25MB" }, { status: 400 })
     }
 
-    const url = await uploadFile(file, "covers")
+    const subDir = isVideo ? "videos" : "covers"
+    const url = await uploadFile(file, subDir)
     return NextResponse.json({ url })
   } catch (e) {
     console.error("Upload image error:", e)

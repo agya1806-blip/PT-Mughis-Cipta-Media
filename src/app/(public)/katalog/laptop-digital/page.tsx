@@ -313,48 +313,48 @@ export default function CatalogLaptopDigitalPage() {
             <p className="text-xs text-slate-500">Coba ubah kata kunci pencarian Anda.</p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-6 w-full">
             {filteredProducts.map((p) => {
               const waMsg = encodeURIComponent(`Halo Admin, saya tertarik dengan produk "${p.title}" (${p.priceText}). Mohon info stok.`)
               const waUrl = `https://wa.me/${waPhone}?text=${waMsg}`
 
               return (
-                <div key={p.id} className="bg-white rounded-2xl border-2 border-slate-200 overflow-hidden flex flex-col justify-between shadow-sm hover:shadow-xl transition-all duration-200">
+                <div key={p.id} className="min-w-0 w-full max-w-full bg-white rounded-xl sm:rounded-2xl border sm:border-2 border-slate-200 overflow-hidden flex flex-col justify-between shadow-xs hover:shadow-xl transition-all duration-200 group">
                   <div>
-                    <div className="relative h-52 w-full bg-slate-100 overflow-hidden">
-                      <img src={p.image} alt={p.title} className="w-full h-full object-cover hover:scale-105 transition-transform duration-300" />
-                      <span className="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-teal-100 text-teal-800 border border-teal-300 shadow-sm">
+                    <div className="relative aspect-[16/10] sm:aspect-[4/5] w-full bg-slate-100 overflow-hidden">
+                      <img src={p.image} alt={p.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                      <span className="absolute top-1 left-1 sm:top-3 sm:left-3 px-1.5 sm:px-3 py-0.5 sm:py-1 rounded-full text-[8px] sm:text-xs font-black uppercase tracking-wider bg-teal-100/90 text-teal-800 border border-teal-300 shadow-xs backdrop-blur-xs">
                         {p.badge}
                       </span>
                     </div>
 
-                    <div className="p-6 space-y-3">
-                      <h3 className="text-xl font-black text-slate-900 leading-snug line-clamp-1">{p.title}</h3>
+                    <div className="p-1.5 sm:p-5 space-y-1 sm:space-y-3">
+                      <h3 className="text-[11px] sm:text-lg font-bold sm:font-black text-slate-900 leading-tight sm:leading-snug line-clamp-2">{p.title}</h3>
 
-                      <div className="p-3 rounded-xl bg-teal-50 border border-teal-200">
-                        <span className="text-xs text-slate-500 font-bold block uppercase tracking-wider">Penawaran Spesial</span>
-                        <span className="text-2xl font-black text-teal-800">{p.priceText}</span>
+                      <div className="p-1 sm:p-3 rounded-md sm:rounded-xl bg-teal-50 border border-teal-200">
+                        <span className="text-[8px] sm:text-xs text-slate-500 font-bold block uppercase tracking-wider hidden sm:block">Penawaran Spesial</span>
+                        <span className="text-[11px] sm:text-2xl font-black text-teal-800">{p.priceText}</span>
                       </div>
 
-                      <p className="text-sm text-slate-600 line-clamp-2 leading-relaxed font-normal">{p.shortDesc}</p>
+                      <p className="text-[10px] sm:text-sm text-slate-600 line-clamp-2 leading-relaxed font-normal hidden sm:block">{p.shortDesc}</p>
                     </div>
                   </div>
 
-                  <div className="p-6 pt-0 grid grid-cols-2 gap-3">
+                  <div className="p-1.5 sm:p-5 pt-0 grid grid-cols-2 gap-1 sm:gap-3">
                     <button
                       onClick={() => setSelectedProduct(p)}
-                      className="w-full py-3.5 rounded-xl bg-slate-100 hover:bg-slate-200 border-2 border-slate-300 text-slate-800 text-xs font-extrabold flex items-center justify-center gap-1.5 transition"
+                      className="w-full py-1 sm:py-3.5 rounded-md sm:rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-300 text-slate-800 text-[9px] sm:text-xs font-extrabold flex items-center justify-center gap-0.5 transition"
                     >
-                      <span>Lihat Spek</span>
+                      <span>Spek</span>
                     </button>
 
                     <a
                       href={waUrl}
                       target="_blank"
                       rel="noreferrer"
-                      className="w-full py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-black flex items-center justify-center gap-1.5 transition shadow-md shadow-emerald-600/20"
+                      className="w-full py-1 sm:py-3.5 rounded-md sm:rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-[9px] sm:text-xs font-black flex items-center justify-center gap-0.5 transition shadow-md shadow-emerald-600/20 active:scale-95"
                     >
-                      <span>Tanya di WA</span>
+                      <span>Tanya WA</span>
                     </a>
                   </div>
                 </div>

@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { Building2, CreditCard, Laptop, Plus, Trash2, Edit3, Save, Upload, Image as ImageIcon, Video, Star, MessageSquare } from "lucide-react"
+import { Building2, CreditCard, Laptop, Plus, Trash2, Edit3, Save, Upload, Image as ImageIcon, Video, Check, X, ShieldAlert, Sparkles, Bot, Eye, RefreshCw } from "lucide-react"
 
 interface BankAccount {
   id: string
@@ -10,28 +10,18 @@ interface BankAccount {
   beneficiary: string
 }
 
-interface TestimonialItem {
-  id: string
-  name: string
-  location: string
-  rating: number
-  text: string
-  photoUrl?: string
-}
-
 interface ProductItem {
   id: string
   title: string
   category: "laptop" | "digital" | "budget" | string
-  useCase?: "mahasiswa" | "kantor" | "editing" | "all" | string
   badge: string
   badgeColor?: string
-  stockStatus: "READY" | "LIMITED" | "SOLD_OUT" | "HIDDEN"
+  stockStatus: "READY" | "SOLD_OUT" | "HIDDEN"
   priceText: string
   rawPriceText: string
   image: string
-  images?: string[]
-  video?: string
+  images?: string[] // Multi-photo support (Up to 4 images)
+  video?: string // Video product support (MP4 base64 / URL)
   shortDesc: string
   specs: string[]
   conditionNote: string
@@ -44,27 +34,166 @@ const DEFAULT_BANKS: BankAccount[] = [
   { id: "b2", bank: "BANK SEABANK", account_number: "901007430064", beneficiary: "Muhammad Aghisna" }
 ]
 
-const DEFAULT_TESTIMONIALS: TestimonialItem[] = [
+const DEFAULT_PRODUCTS: ProductItem[] = [
   {
-    id: "t1",
-    name: "Tgk. Ridwan",
-    location: "Sangso, Samalanga",
-    rating: 5,
-    text: "Laptop ThinkPad X1 Carbon sangat mulus seperti baru. Baterai awet, keyboard backlit nyaman untuk ngetik malam. Recomended!",
-    photoUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&auto=format&fit=crop&q=80"
+    id: "prod-x1-carbon",
+    title: "Lenovo ThinkPad X1 Carbon Core i5 Gen 6",
+    category: "laptop",
+    badge: "Ultrabook Tipis & Mewah",
+    badgeColor: "bg-emerald-100 text-emerald-800 border-emerald-300",
+    stockStatus: "READY",
+    priceText: "Rp 3.750.000",
+    rawPriceText: "Rp 3.750.000 (RAM 8GB / SSD 256GB)",
+    image: "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=800&auto=format&fit=crop&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=800&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=800&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=800&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?w=800&auto=format&fit=crop&q=80"
+    ],
+    video: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+    shortDesc: "Ultrabook flagship bodi Carbon Fiber super ringan (~1.1 kg). Sangat mewah, slim, dan nyaman dibawa mobilitas tinggi.",
+    specs: [
+      "Prosesor: Intel Core i5-6200U / i5-6300U Gen 6",
+      "RAM: 8GB LPDDR3 High Speed",
+      "Penyimpanan: 256GB SSD High Speed",
+      "Layar: 14.0 inch Full HD IPS Anti-Glare",
+      "Fitur: Bodi Carbon Fiber, Keyboard Backlit Nyala"
+    ],
+    conditionNote: "Grade A Mulus 92-95%, Baterai Awet 2-4 Jam",
+    warranty: "Garansi Toko 30 Hari",
+    bonus: "Unit Laptop, Charger Original, Tas Laptop Baru & Mouse Wireless"
   },
   {
-    id: "t2",
-    name: "Ibu Nurul Hayati",
-    location: "Bireuen, Aceh",
-    rating: 5,
-    text: "Pelayanan Fast Respons dari Owner (Aghisnas). Kirim via L300 barang langsung nyampe sore. Garansi toko bikin tenang.",
-    photoUrl: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&auto=format&fit=crop&q=80"
+    id: "prod-t460",
+    title: "Lenovo ThinkPad T460 Core i5 Gen 6",
+    category: "laptop",
+    badge: "Kerja Tangguh",
+    badgeColor: "bg-teal-100 text-teal-800 border-teal-300",
+    stockStatus: "READY",
+    priceText: "Rp 3.400.000",
+    rawPriceText: "Rp 3.400.000 (RAM 8GB / SSD 256GB)",
+    image: "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=800&auto=format&fit=crop&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=800&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=800&auto=format&fit=crop&q=80"
+    ],
+    shortDesc: "Laptop standar korporat terkenal bandel, keyboard super empuk, dan konstruksi fisik sangat kokoh untuk kerja seharian.",
+    specs: [
+      "Prosesor: Intel Core i5-6200U / i5-6300U Gen 6",
+      "RAM: 8GB DDR4 (Bisa di-upgrade)",
+      "Penyimpanan: 256GB SSD Cepat",
+      "Layar: 14.0 inch HD / Full HD",
+      "Baterai: Dual Battery System Awet 2-4 Jam"
+    ],
+    conditionNote: "Grade A- Mulus 90%, Fungsi 100% Normal",
+    warranty: "Garansi Toko 30 Hari",
+    bonus: "Unit Laptop, Charger Original, Tas Laptop & Mouse"
+  },
+  {
+    id: "prod-t470",
+    title: "Lenovo ThinkPad T470 Core i5 Gen 6",
+    category: "laptop",
+    badge: "Best Seller Business",
+    badgeColor: "bg-emerald-100 text-emerald-800 border-emerald-300",
+    stockStatus: "READY",
+    priceText: "Rp 3.500.000",
+    rawPriceText: "Rp 3.500.000 (RAM 8GB / SSD 256GB)",
+    image: "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=800&auto=format&fit=crop&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=800&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=800&auto=format&fit=crop&q=80"
+    ],
+    shortDesc: "Generasi penerus T460 dengan bodi lebih ringkas, port Type-C USB-C fast charge, dan performa mulus untuk olah data.",
+    specs: [
+      "Prosesor: Intel Core i5-6200U / i5-6300U Gen 6",
+      "RAM: 8GB DDR4 (Upgradable)",
+      "Penyimpanan: 256GB SSD Fast Boot",
+      "Layar: 14.0 inch Anti-Glare Jernih",
+      "Port: USB-C Type-C, HDMI, USB 3.0, LAN"
+    ],
+    conditionNote: "Grade A Mulus 92-95%, Baterai Awet 2-4 Jam",
+    warranty: "Garansi Toko 30 Hari",
+    bonus: "Unit Laptop, Charger Original Type-C, Tas Laptop Baru & Mouse"
+  },
+  {
+    id: "prod-hp-430-g5",
+    title: "HP ProBook 430 G5 Core i5 Gen 8",
+    category: "laptop",
+    badge: "Gen 8 Cepat 4-Core",
+    badgeColor: "bg-blue-100 text-blue-800 border-blue-300",
+    stockStatus: "READY",
+    priceText: "Rp 4.200.000",
+    rawPriceText: "Rp 4.200.000 (Core i5 Gen 8 / RAM 8GB / SSD 256GB)",
+    image: "https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?w=800&auto=format&fit=crop&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?w=800&auto=format&fit=crop&q=80"
+    ],
+    shortDesc: "Prosesor Intel Gen 8 Quad Core kencang dengan desain silver aluminium elegan. Cocok untuk multitasking berat, kerja & kuliah.",
+    specs: [
+      "Prosesor: Intel Core i5-8250U Gen 8 (Quad Core 8 Threads)",
+      "RAM: 8GB DDR4 High Speed",
+      "Penyimpanan: 256GB SSD NVMe Cepat",
+      "Layar: 13.3 inch Full HD Compact Bezel",
+      "Bodi: Silver Aluminium Modern Premium"
+    ],
+    conditionNote: "Grade A Mulus 93-95%, Baterai Awet 3-4 Jam",
+    warranty: "Garansi Toko 30 Hari",
+    bonus: "Unit Laptop, Charger Original HP, Tas Ransel & Mouse"
+  },
+  {
+    id: "prod-ideapad-s530",
+    title: "Lenovo IdeaPad S530 Core i5 Gen 8",
+    category: "budget",
+    badge: "Promo Gen 8 (Minus Baterai)",
+    badgeColor: "bg-amber-100 text-amber-900 border-amber-300",
+    stockStatus: "READY",
+    priceText: "Rp 4.000.000",
+    rawPriceText: "Rp 4.000.000 (Harga Khusus Minus Baterai Lemah)",
+    image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=800&auto=format&fit=crop&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=800&auto=format&fit=crop&q=80"
+    ],
+    shortDesc: "Laptop ultrabook slim metal silver sangat kencang Core i5 Gen 8. Kondisi mesin & bodi mulus 100% lancar (Minus baterai lemah, disarankan colok charger).",
+    specs: [
+      "Prosesor: Intel Core i5-8265U Gen 8 (Quad Core 8 Threads)",
+      "RAM: 8GB DDR4",
+      "Penyimpanan: 256GB SSD NVMe Super Fast",
+      "Layar: 13.3 inch Full HD IPS Bezel Tipis",
+      "Catatan Minus: Baterai Lemah (Disarankan sambil colok charger)"
+    ],
+    conditionNote: "Kondisi Fisik 95% Mulus, Mesin 100% Normal (Minus Baterai Lemah)",
+    warranty: "Garansi Toko 14 Hari Mesin",
+    bonus: "Unit Laptop, Charger Original, Tas Laptop & Mouse"
+  },
+  {
+    id: "prod-office-win11",
+    title: "Lisensi Windows 11 Pro & Office 2021",
+    category: "digital",
+    badge: "Produk Digital",
+    badgeColor: "bg-blue-100 text-blue-800 border-blue-300",
+    stockStatus: "READY",
+    priceText: "Rp 400.000",
+    rawPriceText: "Rp 400.000 (Aktivasi Permanen Seumur Hidup)",
+    image: "https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800&auto=format&fit=crop&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800&auto=format&fit=crop&q=80"
+    ],
+    shortDesc: "Paket lisensi resmi original untuk PC / Laptop. Tinggal pasang, tanpa crack, bebas update selamanya, aman dari virus.",
+    specs: [
+      "Tipe Lisensi: Windows 11 Pro Retail + Office 2021 Pro Plus",
+      "Masa Aktif: Lifetime (Permanen Seumur Hidup)",
+      "Pengiriman: Key resmi dikirim langsung via WhatsApp / Email",
+      "Bebas Update: Terkoneksi langsung ke server resmi"
+    ],
+    conditionNote: "100% Produk Digital Resmi Baru",
+    warranty: "Garansi 100% Ganti Baru Jika Gagal Aktivasi",
+    bonus: "Buku panduan bergambar cara pasang, link download resmi, dan dibantu sampai tuntas via WA."
   }
 ]
 
 export default function AdminKatalogLaptopPage() {
-  const [activeTab, setActiveTab] = useState<"products" | "banks" | "testimonials" | "store">("products")
+  const [activeTab, setActiveTab] = useState<"store" | "banks" | "products">("products")
   const [saving, setSaving] = useState(false)
   const [message, setMessage] = useState("")
 
@@ -82,16 +211,16 @@ export default function AdminKatalogLaptopPage() {
   const [bankAccounts, setBankAccounts] = useState<BankAccount[]>(DEFAULT_BANKS)
   const [editingBank, setEditingBank] = useState<BankAccount | null>(null)
 
-  // Testimonials
-  const [testimonials, setTestimonials] = useState<TestimonialItem[]>(DEFAULT_TESTIMONIALS)
-  const [editingTestimonial, setEditingTestimonial] = useState<TestimonialItem | null>(null)
-
   // Products
-  const [products, setProducts] = useState<ProductItem[]>([])
+  const [products, setProducts] = useState<ProductItem[]>(DEFAULT_PRODUCTS)
   const [editingProduct, setEditingProduct] = useState<ProductItem | null>(null)
   const [specsInput, setSpecsInput] = useState("")
-  const [uploadingSlot, setUploadingSlot] = useState<number | null>(null)
-  const [uploadingVideo, setUploadingVideo] = useState(false)
+
+  // AI Copilot Auto-Fill State
+  const [aiRawText, setAiRawText] = useState("")
+  const [aiBase64Image, setAiBase64Image] = useState("")
+  const [aiLoading, setAiLoading] = useState(false)
+  const [aiPreviewProduct, setAiPreviewProduct] = useState<ProductItem | null>(null)
 
   useEffect(() => {
     fetch("/api/admin/settings")
@@ -109,9 +238,6 @@ export default function AdminKatalogLaptopPage() {
 
           if (data.bank_accounts_json) {
             try { setBankAccounts(JSON.parse(data.bank_accounts_json)) } catch {}
-          }
-          if (data.catalog_testimonials_json) {
-            try { setTestimonials(JSON.parse(data.catalog_testimonials_json)) } catch {}
           }
           if (data.catalog_products_json) {
             try {
@@ -142,7 +268,6 @@ export default function AdminKatalogLaptopPage() {
       hero_subheadline: heroSubheadline,
       instagram_url: instagramUrl,
       bank_accounts_json: JSON.stringify(bankAccounts),
-      catalog_testimonials_json: JSON.stringify(testimonials),
       catalog_products_json: JSON.stringify(products)
     }
 
@@ -166,47 +291,94 @@ export default function AdminKatalogLaptopPage() {
     }
   }
 
-  // Handle Multi-Image Upload (Up to 4 slots) via Server Endpoint
-  async function handleMultiImageUpload(slotIndex: number, e: React.ChangeEvent<HTMLInputElement>) {
-    const file = e.target.files?.[0]
-    if (!file || !editingProduct) return
-
-    if (file.size > 15 * 1024 * 1024) {
-      alert("Ukuran file gambar terlalu besar. Maksimal 15MB!")
+  // Process AI Admin Copilot
+  async function handleProcessAiCopilot() {
+    if (!aiRawText && !aiBase64Image) {
+      alert("Silakan tempelkan teks WA mentah atau unggah foto spesifikasi terlebih dahulu!")
       return
     }
 
+    setAiLoading(true)
     try {
-      setUploadingSlot(slotIndex)
-      const formData = new FormData()
-      formData.append("file", file)
-
-      const res = await fetch("/api/upload/image", {
+      const res = await fetch("/api/admin/ai-assistant", {
         method: "POST",
-        body: formData
-      })
-      const data = await res.json()
-
-      if (res.ok && data.url) {
-        const currentImages = editingProduct.images && editingProduct.images.length > 0
-          ? [...editingProduct.images]
-          : [editingProduct.image]
-
-        currentImages[slotIndex] = data.url
-
-        setEditingProduct({
-          ...editingProduct,
-          image: currentImages[0] || data.url,
-          images: currentImages
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          text: aiRawText,
+          imageBase64: aiBase64Image,
+          type: "laptop"
         })
+      })
+
+      const json = await res.json()
+      if (json.success && json.data) {
+        const defaultImg = "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=800&auto=format&fit=crop&q=80"
+        const generated: ProductItem = {
+          id: `prod-${Date.now()}`,
+          title: json.data.title || "Produk Laptop Hasil AI Copilot",
+          category: json.data.category || "laptop",
+          badge: json.data.badge || "Paling Laris",
+          badgeColor: "bg-emerald-100 text-emerald-800 border-emerald-300",
+          stockStatus: "READY",
+          priceText: json.data.priceText || "Rp 3.500.000",
+          rawPriceText: json.data.rawPriceText || json.data.priceText || "Rp 3.500.000",
+          image: defaultImg,
+          images: [defaultImg],
+          shortDesc: json.data.shortDesc || "Unit laptop business pilihan dengan kondisi mulus dan 100% lolos QC.",
+          specs: Array.isArray(json.data.specs) ? json.data.specs : ["Prosesor: High Speed", "RAM: 8GB / 16GB", "SSD: 256GB / 512GB"],
+          conditionNote: json.data.conditionNote || "Grade A Mulus 90-95%",
+          warranty: json.data.warranty || "Garansi Toko 30 Hari",
+          bonus: json.data.bonus || "Unit Laptop, Charger Original, Tas Laptop Baru & Mouse"
+        }
+        setAiPreviewProduct(generated)
       } else {
-        alert(data.error || "Gagal mengunggah gambar. Silakan coba lagi.")
+        alert("Gagal memproses AI. Menggunakan Draf Standar.")
       }
     } catch {
-      alert("Terjadi kesalahan koneksi saat mengunggah gambar.")
+      alert("Terjadi kesalahan jaringan saat memanggil AI Copilot.")
     } finally {
-      setUploadingSlot(null)
+      setAiLoading(false)
     }
+  }
+
+  // Publish AI Generated Draft
+  function applyAiDraftToCatalog() {
+    if (!aiPreviewProduct) return
+    setProducts([aiPreviewProduct, ...products])
+    openProductEditor(aiPreviewProduct)
+    setAiPreviewProduct(null)
+    setAiRawText("")
+    setAiBase64Image("")
+    setMessage("✅ Draf AI Copilot berhasil diterapkan! Silakan lengkapi foto dan simpan.")
+    setTimeout(() => setMessage(""), 4000)
+  }
+
+  // Handle Multi-Image Upload (Up to 4 slots)
+  function handleMultiImageUpload(slotIndex: number, e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0]
+    if (!file || !editingProduct) return
+
+    if (file.size > 5 * 1024 * 1024) {
+      alert("Ukuran file gambar terlalu besar. Maksimal 5MB!")
+      return
+    }
+
+    const reader = new FileReader()
+    reader.onloadend = () => {
+      const base64Data = reader.result as string
+      const currentImages = editingProduct.images && editingProduct.images.length > 0
+        ? [...editingProduct.images]
+        : [editingProduct.image]
+
+      currentImages[slotIndex] = base64Data
+
+      setEditingProduct({
+        ...editingProduct,
+        image: currentImages[0] || base64Data,
+        images: currentImages
+      })
+    }
+    reader.readAsDataURL(file)
   }
 
   function handleImageUrlChange(slotIndex: number, newUrl: string) {
@@ -239,42 +411,22 @@ export default function AdminKatalogLaptopPage() {
     })
   }
 
-  // Handle Video Upload (MP4 / WebM) via Server Endpoint
-  async function handleVideoUpload(e: React.ChangeEvent<HTMLInputElement>) {
+  // Handle Video Upload (MP4 / WebM)
+  function handleVideoUpload(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0]
     if (!file || !editingProduct) return
 
-    if (file.size > 25 * 1024 * 1024) {
-      alert("Ukuran file video terlalu besar. Maksimal 25MB!")
+    if (file.size > 20 * 1024 * 1024) {
+      alert("Ukuran file video terlalu besar. Maksimal 20MB!")
       return
     }
 
-    try {
-      setUploadingVideo(true)
-      const formData = new FormData()
-      formData.append("file", file)
-
-      const res = await fetch("/api/upload/image", {
-        method: "POST",
-        body: formData
-      })
-      const data = await res.json()
-
-      if (res.ok && data.url) {
-        setEditingProduct({ ...editingProduct, video: data.url })
-      } else {
-        alert(data.error || "Gagal mengunggah video.")
-      }
-    } catch {
-      alert("Terjadi kesalahan koneksi saat mengunggah video.")
-    } finally {
-      setUploadingVideo(false)
+    const reader = new FileReader()
+    reader.onloadend = () => {
+      const base64Video = reader.result as string
+      setEditingProduct({ ...editingProduct, video: base64Video })
     }
-  }
-
-  // Quick Stock Status Toggle Directly on Product Cards
-  function toggleStockStatus(id: string, newStatus: "READY" | "LIMITED" | "SOLD_OUT" | "HIDDEN") {
-    setProducts(products.map((p) => (p.id === id ? { ...p, stockStatus: newStatus } : p)))
+    reader.readAsDataURL(file)
   }
 
   // Bank Actions
@@ -294,35 +446,8 @@ export default function AdminKatalogLaptopPage() {
   }
 
   function deleteBank(id: string) {
-    if (confirm("Apakah Anda yakin ingin menghapus rekening ini?")) {
-      setBankAccounts(bankAccounts.filter((b) => b.id !== id))
-      if (editingBank?.id === id) setEditingBank(null)
-    }
-  }
-
-  // Testimonial Actions
-  function addTestimonial() {
-    const newTestimonial: TestimonialItem = {
-      id: `testi-${Date.now()}`,
-      name: "Nama Pembeli Baru",
-      location: "Samalanga, Bireuen",
-      rating: 5,
-      text: "Laptop sangat mulus dan pelayanan ramah. Recommended!",
-      photoUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&auto=format&fit=crop&q=80"
-    }
-    setTestimonials([...testimonials, newTestimonial])
-    setEditingTestimonial(newTestimonial)
-  }
-
-  function updateTestimonial(updated: TestimonialItem) {
-    setTestimonials(testimonials.map((t) => (t.id === updated.id ? updated : t)))
-  }
-
-  function deleteTestimonial(id: string) {
-    if (confirm("Apakah Anda yakin ingin menghapus testimoni ini?")) {
-      setTestimonials(testimonials.filter((t) => t.id !== id))
-      if (editingTestimonial?.id === id) setEditingTestimonial(null)
-    }
+    setBankAccounts(bankAccounts.filter((b) => b.id !== id))
+    if (editingBank?.id === id) setEditingBank(null)
   }
 
   // Product Actions
@@ -333,7 +458,6 @@ export default function AdminKatalogLaptopPage() {
       id: `prod-${Date.now()}`,
       title,
       category: "laptop",
-      useCase: "mahasiswa",
       badge: "Ready Stock",
       badgeColor: "bg-emerald-100 text-emerald-800 border-emerald-300",
       stockStatus: "READY",
@@ -342,7 +466,7 @@ export default function AdminKatalogLaptopPage() {
       image: defaultImg,
       images: [defaultImg],
       shortDesc: "Deskripsi singkat mengenai keunggulan produk ini.",
-      specs: ["Prosesor: Intel Core i5 Gen 8", "RAM: 8GB DDR4", "Penyimpanan: 256GB SSD"],
+      specs: ["Spesifikasi 1", "Spesifikasi 2"],
       conditionNote: "Grade A Mulus Siap Pakai",
       warranty: "Garansi Toko 30 Hari",
       bonus: "Unit Laptop, Charger Original, Bonus Tas"
@@ -394,7 +518,7 @@ export default function AdminKatalogLaptopPage() {
             Mughis Laptop Store Admin
           </span>
           <h1 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight mt-1">Kelola Katalog Unit Ready Stock</h1>
-          <p className="text-xs sm:text-sm text-slate-500 font-medium">Pengelolaan Lengkap: Tambah, Edit, Hapus Produk, Rekening & Testimoni</p>
+          <p className="text-xs sm:text-sm text-slate-500 font-medium">Single Source of Truth untuk halaman /katalog-laptop</p>
         </div>
 
         <button
@@ -430,83 +554,128 @@ export default function AdminKatalogLaptopPage() {
           <span>Rekening Resmi ({bankAccounts.length})</span>
         </button>
         <button
-          onClick={() => setActiveTab("testimonials")}
-          className={`flex items-center gap-1.5 px-3 sm:px-4 py-3 font-bold text-xs sm:text-sm border-b-2 transition whitespace-nowrap ${activeTab === "testimonials" ? "border-emerald-600 text-emerald-700" : "border-transparent text-slate-500 hover:text-slate-800"}`}
-        >
-          <MessageSquare className="w-4 h-4" />
-          <span>Testimoni ({testimonials.length})</span>
-        </button>
-        <button
           onClick={() => setActiveTab("store")}
           className={`flex items-center gap-1.5 px-3 sm:px-4 py-3 font-bold text-xs sm:text-sm border-b-2 transition whitespace-nowrap ${activeTab === "store" ? "border-emerald-600 text-emerald-700" : "border-transparent text-slate-500 hover:text-slate-800"}`}
         >
           <Building2 className="w-4 h-4" />
-          <span>Informasi Toko</span>
+          <span>Informasi Toko & Hero</span>
         </button>
       </div>
 
-      {/* TAB 1: PRODUCTS CRUD */}
+      {/* TAB 1: PRODUCTS CRUD & AI ADMIN COPILOT */}
       {activeTab === "products" && (
         <div className="bg-white p-4 sm:p-6 rounded-b-2xl border border-slate-200 shadow-sm space-y-6">
+
+          {/* 🤖 AI ADMIN COPILOT AUTO-FILL WIDGET */}
+          <div className="p-5 rounded-2xl bg-gradient-to-r from-teal-900 via-slate-900 to-teal-950 text-white space-y-4 shadow-xl border-2 border-teal-500/40">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <div className="w-9 h-9 rounded-xl bg-teal-500 text-slate-950 flex items-center justify-center font-bold">
+                  <Bot className="w-5 h-5" />
+                </div>
+                <div>
+                  <h3 className="font-black text-base text-white">AI Admin Copilot (Auto-Fill & Pratinjau)</h3>
+                  <p className="text-xs text-teal-200">Tempelkan chat WA mentah dari supplier atau foto spesifikasi unit</p>
+                </div>
+              </div>
+              <span className="px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-teal-500/20 text-teal-300 border border-teal-500/40">
+                Gemini AI Active
+              </span>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+              <div>
+                <label className="block text-teal-200 font-bold mb-1">Tempel Chat WA Mentah Supplier:</label>
+                <textarea
+                  rows={3}
+                  placeholder="Contoh: ready lagi T480 i5 gen 8 ram 16 ssd 512 mulus 95% garansi 1 bln harga 3.5jt bonus tas mouse..."
+                  value={aiRawText}
+                  onChange={(e) => setAiRawText(e.target.value)}
+                  className="w-full p-2.5 rounded-xl bg-slate-950 border border-slate-700 text-white placeholder:text-slate-500 font-medium focus:outline-none focus:border-teal-400"
+                />
+              </div>
+
+              <div>
+                <label className="block text-teal-200 font-bold mb-1">Atau Unggah Foto Spesifikasi / Brosur Unit:</label>
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={(e) => {
+                    const file = e.target.files?.[0]
+                    if (!file) return
+                    const reader = new FileReader()
+                    reader.onloadend = () => setAiBase64Image(reader.result as string)
+                    reader.readAsDataURL(file)
+                  }}
+                  className="w-full p-2 rounded-xl bg-slate-950 border border-slate-700 text-white text-xs file:mr-2 file:py-1 file:px-3 file:rounded-lg file:border-0 file:bg-teal-600 file:text-white font-bold"
+                />
+                {aiBase64Image && (
+                  <p className="text-[10px] text-emerald-400 mt-1 font-bold">✓ File foto spesifikasi siap diproses AI</p>
+                )}
+              </div>
+            </div>
+
+            <div className="flex justify-end pt-1">
+              <button
+                onClick={handleProcessAiCopilot}
+                disabled={aiLoading}
+                className="px-6 py-2.5 rounded-xl bg-teal-500 hover:bg-teal-400 text-slate-950 font-black text-xs flex items-center gap-2 shadow-lg transition active:scale-95"
+              >
+                {aiLoading ? <RefreshCw className="w-4 h-4 animate-spin" /> : <Sparkles className="w-4 h-4" />}
+                <span>{aiLoading ? "Menganalisis Data..." : "Proses dengan AI Copilot"}</span>
+              </button>
+            </div>
+          </div>
+
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 pb-3">
             <div>
               <h2 className="text-base sm:text-lg font-extrabold text-slate-900">Unit Laptop & Produk Digital Ready Stock</h2>
-              <p className="text-xs text-slate-500">Mendukung 4 galeri foto rasio 4:5 + Video produk MP4 + Status stok instan.</p>
+              <p className="text-xs text-slate-500">Mendukung 4 galeri foto rasio 4:5 + Video produk MP4/URL.</p>
             </div>
             <button
               onClick={addProduct}
               className="px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs flex items-center gap-1.5 shadow-md shadow-emerald-600/20 active:scale-95"
             >
               <Plus className="w-4 h-4" />
-              <span>+ Tambah Produk Baru</span>
+              <span>+ Tambah Produk Baru Manual</span>
             </button>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-6 w-full">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {products.map((p) => (
-              <div key={p.id} className="min-w-0 w-full max-w-full bg-white border border-slate-200 rounded-xl sm:rounded-2xl overflow-hidden shadow-xs flex flex-col justify-between hover:border-emerald-500 transition">
+              <div key={p.id} className="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm flex flex-col justify-between hover:border-emerald-500 transition">
                 <div>
-                  <div className="relative aspect-[16/10] sm:aspect-[4/5] w-full bg-slate-100">
+                  <div className="relative aspect-[4/5] w-full bg-slate-100">
                     <img src={p.images?.[0] || p.image} alt={p.title} className="w-full h-full object-cover" />
-                    <span className="absolute top-1 left-1 sm:top-2 sm:left-2 px-1.5 sm:px-2.5 py-0.5 rounded-full text-[8px] sm:text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-300">
+                    <span className="absolute top-2 left-2 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-300">
                       {p.badge}
                     </span>
-                    <span className="absolute bottom-1 left-1 sm:bottom-2 sm:left-2 px-1.5 py-0.5 rounded-md text-[8px] sm:text-[10px] font-bold bg-slate-900/80 text-white backdrop-blur-xs flex items-center gap-0.5">
-                      📷 {p.images?.length || 1} Foto
+                    <span className="absolute bottom-2 left-2 px-2 py-0.5 rounded-md text-[10px] font-bold bg-slate-900/80 text-white backdrop-blur-sm">
+                      📷 {p.images?.length || 1} Foto {p.video ? "• 🎥 Video" : ""}
+                    </span>
+                    <span className={`absolute top-2 right-2 px-2 py-0.5 rounded-md text-[10px] font-black uppercase ${p.stockStatus === 'READY' ? 'bg-emerald-600 text-white' : p.stockStatus === 'SOLD_OUT' ? 'bg-rose-600 text-white' : 'bg-slate-700 text-slate-200'}`}>
+                      {p.stockStatus || 'READY'}
                     </span>
                   </div>
 
-                  <div className="p-2 sm:p-4 space-y-1 sm:space-y-2 text-xs">
-                    <h3 className="font-bold text-xs sm:text-sm text-slate-900 leading-tight sm:leading-snug line-clamp-2">{p.title}</h3>
-                    <p className="text-emerald-700 font-extrabold text-xs sm:text-base">{p.priceText}</p>
-
-                    {/* Quick Stock Toggle Selector */}
-                    <div className="pt-1">
-                      <select
-                        value={p.stockStatus || "READY"}
-                        onChange={(e) => toggleStockStatus(p.id, e.target.value as any)}
-                        className="w-full p-1 text-[10px] font-extrabold rounded border border-slate-300 bg-slate-50 text-slate-800"
-                      >
-                        <option value="READY">🟢 Ready Stock</option>
-                        <option value="LIMITED">⚡ Sisa 1 Unit</option>
-                        <option value="SOLD_OUT">🔴 Terjual (Sold Out)</option>
-                        <option value="HIDDEN">🙈 Sembunyikan</option>
-                      </select>
-                    </div>
+                  <div className="p-4 space-y-2 text-xs">
+                    <h3 className="font-bold text-sm text-slate-900 leading-snug">{p.title}</h3>
+                    <p className="text-emerald-700 font-extrabold text-base">{p.priceText}</p>
+                    <p className="text-slate-600 line-clamp-2">{p.shortDesc}</p>
                   </div>
                 </div>
 
-                <div className="p-2 sm:p-4 pt-0 flex gap-1 sm:gap-2">
+                <div className="p-4 pt-0 flex gap-2">
                   <button
                     onClick={() => openProductEditor(p)}
-                    className="flex-1 py-1.5 bg-slate-100 hover:bg-slate-200 border border-slate-300 rounded-lg font-bold text-slate-800 text-[10px] sm:text-xs flex items-center justify-center gap-1"
+                    className="flex-1 py-2 bg-slate-100 hover:bg-slate-200 border border-slate-300 rounded-xl font-bold text-slate-800 text-xs flex items-center justify-center gap-1"
                   >
                     <Edit3 className="w-3.5 h-3.5" />
-                    <span>Edit</span>
+                    <span>Edit Unit</span>
                   </button>
                   <button
                     onClick={() => deleteProduct(p.id)}
-                    className="px-2.5 py-1.5 bg-rose-50 hover:bg-rose-100 border border-rose-200 rounded-lg text-rose-700 font-bold text-[10px] sm:text-xs"
+                    className="px-3 py-2 bg-rose-50 hover:bg-rose-100 border border-rose-200 rounded-xl text-rose-700 font-bold text-xs"
                   >
                     <Trash2 className="w-3.5 h-3.5" />
                   </button>
@@ -514,6 +683,57 @@ export default function AdminKatalogLaptopPage() {
               </div>
             ))}
           </div>
+
+          {/* AI DRAFT PREVIEW MODAL */}
+          {aiPreviewProduct && (
+            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm">
+              <div className="bg-white border border-slate-300 max-w-lg w-full rounded-2xl overflow-hidden shadow-2xl p-6 space-y-4 text-slate-900 relative">
+                <div className="flex items-center justify-between border-b border-slate-200 pb-3">
+                  <div className="flex items-center gap-2">
+                    <Bot className="w-5 h-5 text-teal-600" />
+                    <h3 className="font-extrabold text-base text-slate-900">Pratinjau Draf Hasil AI Copilot</h3>
+                  </div>
+                  <button onClick={() => setAiPreviewProduct(null)} className="text-slate-400 hover:text-slate-800">
+                    <X className="w-5 h-5" />
+                  </button>
+                </div>
+
+                <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-3 text-xs">
+                  <span className="px-3 py-1 rounded-full font-bold bg-teal-100 text-teal-800 uppercase text-[10px]">
+                    {aiPreviewProduct.badge}
+                  </span>
+                  <h4 className="font-black text-lg text-slate-900">{aiPreviewProduct.title}</h4>
+                  <p className="text-xl font-black text-teal-800">{aiPreviewProduct.priceText}</p>
+                  <p className="text-slate-600 leading-relaxed font-medium">{aiPreviewProduct.shortDesc}</p>
+
+                  <div className="pt-2 border-t border-slate-200">
+                    <p className="font-bold text-slate-900 mb-1">Spesifikasi Hasil Ekstraksi:</p>
+                    <ul className="space-y-1 text-slate-700 font-medium">
+                      {aiPreviewProduct.specs.map((s, idx) => (
+                        <li key={idx}>✓ {s}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                <div className="flex justify-end gap-2 pt-2">
+                  <button
+                    onClick={() => setAiPreviewProduct(null)}
+                    className="px-4 py-2 rounded-xl border border-slate-300 font-bold text-xs text-slate-600"
+                  >
+                    Batal
+                  </button>
+                  <button
+                    onClick={applyAiDraftToCatalog}
+                    className="px-5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs flex items-center gap-1.5 shadow-md"
+                  >
+                    <Check className="w-4 h-4" />
+                    <span>Terapkan & Publish ke Website</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
 
           {/* Product Editor Form Box with 4-Image Slots & Video Upload */}
           {editingProduct && (
@@ -550,30 +770,15 @@ export default function AdminKatalogLaptopPage() {
                 </div>
 
                 <div>
-                  <label className="block font-bold text-slate-700 mb-1">Kebutuhan Utama (Use Case)</label>
-                  <select
-                    value={editingProduct.useCase || "mahasiswa"}
-                    onChange={(e) => setEditingProduct({ ...editingProduct, useCase: e.target.value as any })}
-                    className="w-full p-2.5 rounded-lg border border-slate-300 bg-white font-bold text-slate-900"
-                  >
-                    <option value="mahasiswa">🎓 Mahasiswa & Skripsi</option>
-                    <option value="kantor">💼 Perkantoran & Kasir</option>
-                    <option value="editing">🎨 Editing & Multitasking</option>
-                    <option value="all">🔥 Semua Kebutuhan</option>
-                  </select>
-                </div>
-
-                <div>
                   <label className="block font-bold text-slate-700 mb-1">Status Stok</label>
                   <select
                     value={editingProduct.stockStatus || "READY"}
                     onChange={(e) => setEditingProduct({ ...editingProduct, stockStatus: e.target.value as any })}
                     className="w-full p-2.5 rounded-lg border border-slate-300 bg-white font-bold text-slate-900"
                   >
-                    <option value="READY">🟢 Ready Stock (Tampil)</option>
-                    <option value="LIMITED">⚡ Sisa 1 Unit (Stok Terbatas)</option>
-                    <option value="SOLD_OUT">🔴 Sold Out (Terjual)</option>
-                    <option value="HIDDEN">🙈 Hidden (Sembunyikan)</option>
+                    <option value="READY">Ready Stock (Tampil)</option>
+                    <option value="SOLD_OUT">Sold Out (Terjual)</option>
+                    <option value="HIDDEN">Hidden (Sembunyikan dari Publik)</option>
                   </select>
                 </div>
 
@@ -593,6 +798,16 @@ export default function AdminKatalogLaptopPage() {
                     type="text"
                     value={editingProduct.priceText}
                     onChange={(e) => setEditingProduct({ ...editingProduct, priceText: e.target.value })}
+                    className="w-full p-2.5 rounded-lg border border-slate-300 bg-white font-bold text-slate-900"
+                  />
+                </div>
+
+                <div>
+                  <label className="block font-bold text-slate-700 mb-1">Teks Harga Detail Modal</label>
+                  <input
+                    type="text"
+                    value={editingProduct.rawPriceText}
+                    onChange={(e) => setEditingProduct({ ...editingProduct, rawPriceText: e.target.value })}
                     className="w-full p-2.5 rounded-lg border border-slate-300 bg-white font-bold text-slate-900"
                   />
                 </div>
@@ -638,13 +853,12 @@ export default function AdminKatalogLaptopPage() {
                             )}
                           </div>
 
-                          <label className={`w-full py-2 px-2 rounded-lg text-white font-bold text-[11px] flex items-center justify-center gap-1 cursor-pointer transition ${uploadingSlot === slotIdx ? "bg-slate-400 cursor-not-allowed" : "bg-teal-600 hover:bg-teal-700"}`}>
+                          <label className="w-full py-2 px-2 rounded-lg bg-teal-600 hover:bg-teal-700 text-white font-bold text-[11px] flex items-center justify-center gap-1 cursor-pointer transition">
                             <Upload className="w-3.5 h-3.5" />
-                            <span>{uploadingSlot === slotIdx ? "Mengunggah..." : "Upload Foto"}</span>
+                            <span>Upload Foto</span>
                             <input
                               type="file"
                               accept="image/*"
-                              disabled={uploadingSlot !== null}
                               onChange={(e) => handleMultiImageUpload(slotIdx, e)}
                               className="hidden"
                             />
@@ -696,13 +910,12 @@ export default function AdminKatalogLaptopPage() {
                     ) : null}
 
                     <div className="flex-1 space-y-2 w-full">
-                      <label className={`px-4 py-2.5 rounded-xl text-white font-bold text-xs inline-flex items-center gap-2 cursor-pointer shadow-md active:scale-95 transition ${uploadingVideo ? "bg-slate-400 cursor-not-allowed" : "bg-indigo-600 hover:bg-indigo-700 shadow-indigo-600/20"}`}>
+                      <label className="px-4 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs inline-flex items-center gap-2 cursor-pointer shadow-md shadow-indigo-600/20 active:scale-95 transition">
                         <Video className="w-4 h-4" />
-                        <span>{uploadingVideo ? "Mengunggah Video..." : "Upload File Video MP4 (Dari HP / Laptop)"}</span>
+                        <span>Upload File Video MP4 (Dari HP / Laptop)</span>
                         <input
                           type="file"
                           accept="video/mp4,video/webm,video/*"
-                          disabled={uploadingVideo}
                           onChange={handleVideoUpload}
                           className="hidden"
                         />
@@ -862,120 +1075,80 @@ export default function AdminKatalogLaptopPage() {
         </div>
       )}
 
-      {/* TAB 3: TESTIMONIALS CRUD */}
-      {activeTab === "testimonials" && (
-        <div className="bg-white p-4 sm:p-6 rounded-b-2xl border border-slate-200 shadow-sm space-y-6">
-          <div className="flex justify-between items-center border-b border-slate-100 pb-3">
-            <div>
-              <h2 className="text-base sm:text-lg font-extrabold text-slate-900">Ulasan & Testimoni Pembeli</h2>
-              <p className="text-xs text-slate-500">Tampilkan ulasan pembeli asli & foto serah terima unit di halaman depan.</p>
-            </div>
-            <button
-              onClick={addTestimonial}
-              className="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs flex items-center gap-1.5"
-            >
-              <Plus className="w-4 h-4" />
-              <span>Tambah Testimoni</span>
-            </button>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {testimonials.map((t) => (
-              <div key={t.id} className="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-3 relative flex flex-col justify-between">
-                <div className="space-y-2">
-                  <div className="flex justify-between items-center">
-                    <span className="font-extrabold text-sm text-slate-900">{t.name}</span>
-                    <div className="flex items-center gap-1">
-                      <button onClick={() => setEditingTestimonial({ ...t })} className="p-1 text-slate-500 hover:text-emerald-600">
-                        <Edit3 className="w-4 h-4" />
-                      </button>
-                      <button onClick={() => deleteTestimonial(t.id)} className="p-1 text-slate-500 hover:text-rose-600">
-                        <Trash2 className="w-4 h-4" />
-                      </button>
-                    </div>
-                  </div>
-                  <p className="text-xs text-slate-500 font-bold">{t.location}</p>
-                  <p className="text-xs text-slate-700 italic leading-relaxed">"{t.text}"</p>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {editingTestimonial && (
-            <div className="p-5 rounded-2xl border-2 border-emerald-500 bg-emerald-50/40 space-y-3 text-xs">
-              <h3 className="font-bold text-sm text-slate-900">Editor Testimoni Pembeli</h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                <div>
-                  <label className="block font-bold text-slate-700 mb-1">Nama Pembeli</label>
-                  <input
-                    type="text"
-                    value={editingTestimonial.name}
-                    onChange={(e) => setEditingTestimonial({ ...editingTestimonial, name: e.target.value })}
-                    className="bg-white border border-slate-300 rounded-lg p-2.5 font-bold text-slate-900 w-full"
-                  />
-                </div>
-                <div>
-                  <label className="block font-bold text-slate-700 mb-1">Lokasi Pembeli (e.g. Samalanga, Bireuen)</label>
-                  <input
-                    type="text"
-                    value={editingTestimonial.location}
-                    onChange={(e) => setEditingTestimonial({ ...editingTestimonial, location: e.target.value })}
-                    className="bg-white border border-slate-300 rounded-lg p-2.5 font-bold text-slate-900 w-full"
-                  />
-                </div>
-                <div className="sm:col-span-2">
-                  <label className="block font-bold text-slate-700 mb-1">Ulasan / Kesan Pembeli</label>
-                  <textarea
-                    rows={3}
-                    value={editingTestimonial.text}
-                    onChange={(e) => setEditingTestimonial({ ...editingTestimonial, text: e.target.value })}
-                    className="bg-white border border-slate-300 rounded-lg p-2.5 font-medium text-slate-900 w-full"
-                  />
-                </div>
-              </div>
-              <div className="flex justify-end gap-2 pt-2">
-                <button onClick={() => setEditingTestimonial(null)} className="px-3 py-1.5 rounded-lg border border-slate-300 text-xs font-bold text-slate-600">
-                  Batal
-                </button>
-                <button
-                  onClick={() => {
-                    updateTestimonial(editingTestimonial)
-                    setEditingTestimonial(null)
-                  }}
-                  className="px-4 py-1.5 rounded-lg bg-emerald-600 text-white text-xs font-bold"
-                >
-                  Simpan Testimoni
-                </button>
-              </div>
-            </div>
-          )}
-        </div>
-      )}
-
-      {/* TAB 4: STORE SETTINGS */}
+      {/* TAB 3: STORE & HERO SETTINGS */}
       {activeTab === "store" && (
         <div className="bg-white p-4 sm:p-6 rounded-b-2xl border border-slate-200 shadow-sm space-y-4">
           <h2 className="text-base sm:text-lg font-extrabold text-slate-900 border-b border-slate-100 pb-3">Pengaturan Identitas Toko & Banner Hero</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs sm:text-sm">
             <div>
-              <label className="block font-bold text-slate-700 mb-1">Nama Toko</label>
-              <input type="text" value={siteName} onChange={(e) => setSiteName(e.target.value)} className="w-full p-2.5 rounded-lg border border-slate-300 font-bold" />
+              <label className="block text-slate-700 font-bold mb-1">Nama Toko / Brand</label>
+              <input
+                type="text"
+                value={siteName}
+                onChange={(e) => setSiteName(e.target.value)}
+                className="w-full bg-slate-50 border border-slate-300 rounded-xl p-3 font-medium text-slate-900 focus:outline-none focus:border-emerald-600"
+              />
             </div>
+
             <div>
-              <label className="block font-bold text-slate-700 mb-1">Nama Owner Toko</label>
-              <input type="text" value={ownerName} onChange={(e) => setOwnerName(e.target.value)} className="w-full p-2.5 rounded-lg border border-slate-300 font-bold" />
+              <label className="block text-slate-700 font-bold mb-1">Nama Owner / Pemilik</label>
+              <input
+                type="text"
+                value={ownerName}
+                onChange={(e) => setOwnerName(e.target.value)}
+                className="w-full bg-slate-50 border border-slate-300 rounded-xl p-3 font-medium text-slate-900 focus:outline-none focus:border-emerald-600"
+              />
             </div>
+
             <div>
-              <label className="block font-bold text-slate-700 mb-1">Nomor WhatsApp CS</label>
-              <input type="text" value={contactPhone} onChange={(e) => setContactPhone(e.target.value)} className="w-full p-2.5 rounded-lg border border-slate-300 font-bold font-mono" />
+              <label className="block text-slate-700 font-bold mb-1">Alamat Fisik Toko</label>
+              <input
+                type="text"
+                value={address}
+                onChange={(e) => setAddress(e.target.value)}
+                className="w-full bg-slate-50 border border-slate-300 rounded-xl p-3 font-medium text-slate-900 focus:outline-none focus:border-emerald-600"
+              />
             </div>
+
             <div>
-              <label className="block font-bold text-slate-700 mb-1">Alamat Fisik Toko</label>
-              <input type="text" value={address} onChange={(e) => setAddress(e.target.value)} className="w-full p-2.5 rounded-lg border border-slate-300 font-bold" />
+              <label className="block text-slate-700 font-bold mb-1">No. WhatsApp CS (Format: 0852xxx atau 628xxx)</label>
+              <input
+                type="text"
+                value={contactPhone}
+                onChange={(e) => setContactPhone(e.target.value)}
+                className="w-full bg-slate-50 border border-slate-300 rounded-xl p-3 font-medium text-slate-900 focus:outline-none focus:border-emerald-600"
+              />
             </div>
-            <div>
-              <label className="block font-bold text-slate-700 mb-1">Link Highlight Testimoni Instagram</label>
-              <input type="text" value={instagramUrl} onChange={(e) => setInstagramUrl(e.target.value)} className="w-full p-2.5 rounded-lg border border-slate-300 font-mono text-[11px]" />
+
+            <div className="md:col-span-2">
+              <label className="block text-slate-700 font-bold mb-1">Hero Headline Utama</label>
+              <input
+                type="text"
+                value={heroHeadline}
+                onChange={(e) => setHeroHeadline(e.target.value)}
+                className="w-full bg-slate-50 border border-slate-300 rounded-xl p-3 font-bold text-slate-900 focus:outline-none focus:border-emerald-600"
+              />
+            </div>
+
+            <div className="md:col-span-2">
+              <label className="block text-slate-700 font-bold mb-1">Hero Subheadline Deskripsi</label>
+              <textarea
+                rows={2}
+                value={heroSubheadline}
+                onChange={(e) => setHeroSubheadline(e.target.value)}
+                className="w-full bg-slate-50 border border-slate-300 rounded-xl p-3 font-medium text-slate-900 focus:outline-none focus:border-emerald-600"
+              />
+            </div>
+
+            <div className="md:col-span-2">
+              <label className="block text-slate-700 font-bold mb-1">URL Link Highlight Testimoni Instagram</label>
+              <input
+                type="text"
+                value={instagramUrl}
+                onChange={(e) => setInstagramUrl(e.target.value)}
+                className="w-full bg-slate-50 border border-slate-300 rounded-xl p-3 font-mono text-xs text-slate-900 focus:outline-none focus:border-emerald-600"
+              />
             </div>
           </div>
         </div>

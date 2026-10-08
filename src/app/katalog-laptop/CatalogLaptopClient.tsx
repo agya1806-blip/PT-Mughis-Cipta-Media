@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Search, Laptop, ShieldCheck, Phone, CheckCircle, Copy, X, Check, MapPin, Award, Image as ImageIcon, Video as VideoIcon } from "lucide-react"
+import { Search, Laptop, ShieldCheck, Phone, CheckCircle, Copy, X, Check, MapPin, Award, Image as ImageIcon, Video as VideoIcon, ZoomIn, ZoomOut, RotateCcw, ChevronLeft, ChevronRight, Maximize2 } from "lucide-react"
 
 function InstagramIcon({ className = "w-4 h-4" }: { className?: string }) {
   return (
@@ -195,27 +195,64 @@ export default function CatalogLaptopClient({
   const [currentCategory, setCurrentCategory] = useState("all")
   const [searchQuery, setSearchQuery] = useState("")
 
-  // Modal & FAQ State
+  // Modal, Lightbox & FAQ State
   const [selectedProduct, setSelectedProduct] = useState<ProductItem | null>(null)
   const [activeMediaMode, setActiveMediaMode] = useState<"image" | "video">("image")
   const [activePhotoIdx, setActivePhotoIdx] = useState(0)
   const [toastMsg, setToastMsg] = useState("")
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null)
 
+  // Zoom Lightbox State
+  const [isZoomOpen, setIsZoomOpen] = useState(false)
+  const [zoomScale, setZoomScale] = useState(1)
+
   useEffect(() => {
     function handleKeyDown(e: KeyboardEvent) {
       if (e.key === "Escape") {
-        setSelectedProduct(null)
+        if (isZoomOpen) {
+          setIsZoomOpen(false)
+        } else {
+          setSelectedProduct(null)
+        }
       }
     }
     window.addEventListener("keydown", handleKeyDown)
     return () => window.removeEventListener("keydown", handleKeyDown)
-  }, [])
+  }, [isZoomOpen])
 
   function openDetailModal(p: ProductItem) {
     setSelectedProduct(p)
     setActiveMediaMode("image")
     setActivePhotoIdx(0)
+    setIsZoomOpen(false)
+    setZoomScale(1)
+  }
+
+  function openZoomModal() {
+    setIsZoomOpen(true)
+    setZoomScale(1)
+  }
+
+  function handleZoomIn() {
+    setZoomScale((prev) => Math.min(prev + 0.5, 3))
+  }
+
+  function handleZoomOut() {
+    setZoomScale((prev) => Math.max(prev - 0.5, 1))
+  }
+
+  function handleZoomReset() {
+    setZoomScale(1)
+  }
+
+  function handlePrevPhoto() {
+    if (!selectedProduct?.images?.length) return
+    setActivePhotoIdx((prev) => (prev === 0 ? selectedProduct.images!.length - 1 : prev - 1))
+  }
+
+  function handleNextPhoto() {
+    if (!selectedProduct?.images?.length) return
+    setActivePhotoIdx((prev) => (prev === selectedProduct.images!.length - 1 ? 0 : prev + 1))
   }
 
   function copyText(text: string, bankName: string) {
@@ -598,8 +635,8 @@ export default function CatalogLaptopClient({
               <h3 className="text-base sm:text-lg font-extrabold text-slate-900 pr-6 leading-snug">{selectedProduct.title}</h3>
               <p className="text-xl sm:text-2xl font-black text-teal-700">{selectedProduct.rawPriceText || selectedProduct.priceText}</p>
 
-              {/* Main Media Box */}
-              <div className="w-full aspect-[4/3] max-h-[280px] rounded-xl overflow-hidden bg-slate-950 border border-slate-200 relative mx-auto flex items-center justify-center">
+              {/* Main Media Box with Strict 4:5 Instagram Feed Ratio */}
+              <div className="relative w-full aspect-[4/5] max-h-[380px] rounded-2xl overflow-hidden bg-slate-900 border border-slate-200 mx-auto flex items-center justify-center group shadow-md">
                 {activeMediaMode === "video" && selectedProduct.video ? (
                   selectedProduct.video.startsWith("data:video") || selectedProduct.video.endsWith(".mp4") ? (
                     <video src={selectedProduct.video} controls autoPlay loop muted playsInline className="w-full h-full object-cover" />
@@ -612,21 +649,31 @@ export default function CatalogLaptopClient({
                     ></iframe>
                   )
                 ) : (
-                  <img
-                    src={selectedProduct.images?.[activePhotoIdx] || selectedProduct.image}
-                    alt={selectedProduct.title}
-                    className="w-full h-full object-cover"
-                  />
+                  <>
+                    <img
+                      src={selectedProduct.images?.[activePhotoIdx] || selectedProduct.image}
+                      alt={selectedProduct.title}
+                      onClick={openZoomModal}
+                      className="w-full h-full object-cover cursor-zoom-in transition-transform duration-300 group-hover:scale-105"
+                    />
+                    <button
+                      onClick={openZoomModal}
+                      className="absolute bottom-3 right-3 px-2.5 py-1.5 rounded-xl bg-slate-900/80 hover:bg-slate-900 text-white backdrop-blur-xs text-[11px] font-bold flex items-center gap-1.5 shadow-md border border-white/20 transition active:scale-95"
+                    >
+                      <ZoomIn className="w-3.5 h-3.5 text-teal-400" />
+                      <span>Zoom Foto (4:5)</span>
+                    </button>
+                  </>
                 )}
               </div>
 
-              {/* Thumbnails */}
-              <div className="flex items-center gap-1.5 overflow-x-auto pb-1 justify-center">
+              {/* Multi-Photo & Video Selector Thumbnails with Strict 4:5 Ratio */}
+              <div className="flex items-center gap-2 overflow-x-auto pb-1 justify-center">
                 {selectedProduct.images && selectedProduct.images.map((imgUrl, idx) => (
                   <button
                     key={idx}
                     onClick={() => { setActiveMediaMode("image"); setActivePhotoIdx(idx); }}
-                    className={`w-12 aspect-[4/3] rounded-md overflow-hidden border-2 shrink-0 transition ${activeMediaMode === "image" && activePhotoIdx === idx ? "border-teal-600 ring-1 ring-teal-600/30" : "border-slate-200 opacity-60 hover:opacity-100"}`}
+                    className={`w-12 aspect-[4/5] rounded-xl overflow-hidden border-2 shrink-0 transition ${activeMediaMode === "image" && activePhotoIdx === idx ? "border-teal-600 ring-2 ring-teal-600/30 shadow-xs" : "border-slate-200 opacity-60 hover:opacity-100"}`}
                   >
                     <img src={imgUrl} alt={`Foto ${idx + 1}`} className="w-full h-full object-cover" />
                   </button>
@@ -635,9 +682,9 @@ export default function CatalogLaptopClient({
                 {selectedProduct.video && (
                   <button
                     onClick={() => setActiveMediaMode("video")}
-                    className={`px-2.5 py-1.5 rounded-md border-2 shrink-0 transition flex items-center gap-1 font-bold text-[10px] ${activeMediaMode === "video" ? "bg-indigo-600 text-white border-indigo-600" : "bg-indigo-50 text-indigo-700 border-indigo-200"}`}
+                    className={`px-3 py-2 rounded-xl border-2 shrink-0 transition flex items-center gap-1 font-bold text-xs ${activeMediaMode === "video" ? "bg-indigo-600 text-white border-indigo-600 shadow-xs" : "bg-indigo-50 text-indigo-700 border-indigo-200"}`}
                   >
-                    <VideoIcon className="w-3 h-3" />
+                    <VideoIcon className="w-3.5 h-3.5" />
                     <span>Video</span>
                   </button>
                 )}
@@ -702,6 +749,82 @@ export default function CatalogLaptopClient({
           <Phone className="w-5 h-5 sm:w-6 sm:h-6" />
         </a>
       </div>
+
+      {/* 11. LIGHTBOX FULLSCREEN ZOOM MODAL (INSTAGRAM FEED 4:5 RATIO & ZOOM CONTROLS) */}
+      {isZoomOpen && selectedProduct && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-950/95 backdrop-blur-md transition-all duration-300 p-2 sm:p-4">
+          {/* Top Control Bar */}
+          <div className="absolute top-4 left-4 right-4 z-10 flex items-center justify-between text-white">
+            <div className="flex items-center gap-2 bg-slate-900/80 px-3.5 py-1.5 rounded-full border border-white/20 text-xs font-bold backdrop-blur-md">
+              <InstagramIcon className="w-4 h-4 text-pink-400" />
+              <span>Rasio Instagram Feed 4:5 • ({activePhotoIdx + 1} / {selectedProduct.images?.length || 1})</span>
+            </div>
+
+            <div className="flex items-center gap-2">
+              <button
+                onClick={handleZoomIn}
+                className="p-2.5 rounded-full bg-slate-900/80 hover:bg-slate-800 text-white border border-white/20 transition shadow-md"
+                title="Zoom In"
+              >
+                <ZoomIn className="w-5 h-5" />
+              </button>
+              <button
+                onClick={handleZoomOut}
+                className="p-2.5 rounded-full bg-slate-900/80 hover:bg-slate-800 text-white border border-white/20 transition shadow-md"
+                title="Zoom Out"
+              >
+                <ZoomOut className="w-5 h-5" />
+              </button>
+              <button
+                onClick={handleZoomReset}
+                className="p-2.5 rounded-full bg-slate-900/80 hover:bg-slate-800 text-white border border-white/20 transition shadow-md"
+                title="Reset Zoom"
+              >
+                <RotateCcw className="w-5 h-5" />
+              </button>
+              <button
+                onClick={() => setIsZoomOpen(false)}
+                className="p-2.5 rounded-full bg-rose-600 hover:bg-rose-700 text-white shadow-md transition ml-2"
+                title="Tutup Zoom"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+          </div>
+
+          {/* Previous / Next Arrow Controls */}
+          {selectedProduct.images && selectedProduct.images.length > 1 && (
+            <>
+              <button
+                onClick={handlePrevPhoto}
+                className="absolute left-4 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-slate-900/80 hover:bg-slate-800 text-white border border-white/20 backdrop-blur-md transition shadow-lg active:scale-95"
+              >
+                <ChevronLeft className="w-6 h-6" />
+              </button>
+              <button
+                onClick={handleNextPhoto}
+                className="absolute right-4 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-slate-900/80 hover:bg-slate-800 text-white border border-white/20 backdrop-blur-md transition shadow-lg active:scale-95"
+              >
+                <ChevronRight className="w-6 h-6" />
+              </button>
+            </>
+          )}
+
+          {/* Main Zoomable Image Canvas with 4:5 Aspect Ratio */}
+          <div className="w-full h-full max-w-2xl max-h-[85vh] flex items-center justify-center overflow-auto p-4">
+            <div
+              className="relative aspect-[4/5] w-full max-h-full rounded-2xl overflow-hidden shadow-2xl transition-transform duration-200 flex items-center justify-center bg-black border border-white/10"
+              style={{ transform: `scale(${zoomScale})` }}
+            >
+              <img
+                src={selectedProduct.images?.[activePhotoIdx] || selectedProduct.image}
+                alt={selectedProduct.title}
+                className="w-full h-full object-contain"
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

@@ -21,21 +21,14 @@ export async function POST(req: Request) {
     }
 
     // Construct Ultra-Precise System Prompt
-    const systemPrompt = `Anda adalah Asisten AI Admin Profesional & Pakar E-Commerce untuk ${type === 'book' ? 'Penerbitan PT Mughis Cipta Media' : 'Mughis Laptop Store'}.
-Tugas Anda adalah membaca teks mentah, chat WhatsApp supplier, atau FOTO SPESIFIKASI BROSUR/DUS/SCREENSHOT, lalu mengekstrak data produk secara 100% AKURAT ke dalam FORMAT JSON TERSTRUKTUR.
+    const systemPrompt = `Anda adalah Asisten AI Admin E-Commerce untuk ${type === 'book' ? 'Penerbitan PT Mughis Cipta Media' : 'Mughis Laptop Store'}.
+Tugas Anda adalah membaca teks mentah, chat WhatsApp supplier/penjual, atau FOTO SPESIFIKASI BROSUR/DUS/SCREENSHOT, lalu mengekstrak dan menentukan data produk ke dalam FORMAT JSON TERSTRUKTUR.
 
-LAKUKAN ANALISIS INPUT SECARA DETAIL:
-1. DETEKSI KATEGORI ("category"):
-   - Jika teks/foto memuat produk digital/software/lisensi/akun (seperti Gemini Pro, ChatGPT Plus, Canva, Windows 11, Office 2021, Key, Netflix, Spotify, Software Kasir, E-Book), SET "category": "digital", "badge": "Produk Digital", "conditionNote": "100% Produk Digital Resmi Baru", "warranty": "Garansi 100% Ganti Baru Jika Gagal Aktivasi", "bonus": "Buku panduan cara aktivasi & dibantu via WA CS".
-   - Jika teks/foto memuat laptop promo/hemat/ada minus (seperti harga < 3 Jt, minus baterai, minus jam), SET "category": "budget", "badge": "Promo & Pilihan Hemat".
-   - Jika teks/foto memuat laptop business/kerja (seperti ThinkPad, EliteBook, ProBook, Latitude, ASUS, Dell, Lenovo), SET "category": "laptop", "badge": "Paling Laris" atau "Laptop Business".
-   - Jika type === "book" atau produk buku, SET "category": "buku", "badge": "Buku Resmi".
-
-2. EKSTRAKSI HARGA ("priceText" & "rawPriceText"):
-   - Jika terdeteksi angka harga (misal 3.5jt, 3,5jt, 150rb, 400rb, 3500000), format menjadi "Rp 3.500.000" atau "Rp 150.000".
-
-3. EKSTRAKSI SPESIFIKASI ("specs"):
-   - Pisahkan spesifikasi baris demi baris menjadi array string yang rapi. Contoh: ["Prosesor: Intel Core i5 Gen 8", "RAM: 16GB DDR4", "Penyimpanan: 512GB SSD NVMe", "Layar: 14.0 inch Full HD IPS"].
+ATURAN PENENTUAN KATEGORI ("category"):
+1. Jika produk adalah software, lisensi, akun AI/aplikasi (seperti Gemini Pro, ChatGPT Plus, Canva Pro, Windows 11, Office 2021, Key, Netflix, Spotify, Software Kasir, E-Book), SET "category": "digital", "badge": "Produk Digital", "conditionNote": "100% Produk Digital Resmi Baru", "warranty": "Garansi 100% Ganti Baru Jika Gagal Aktivasi", "bonus": "Buku panduan cara aktivasi & dibantu via WA CS".
+2. Jika produk adalah laptop promo/hemat/ada minus (seperti harga < 3 Jt, minus baterai, minus jam), SET "category": "budget", "badge": "Promo & Pilihan Hemat".
+3. Jika produk adalah laptop kerja/business/gaming (seperti ThinkPad, EliteBook, ProBook, Latitude, ASUS, Dell, Lenovo), SET "category": "laptop", "badge": "Paling Laris" atau "Laptop Business".
+4. Jika type === "book" atau produk buku, SET "category": "buku", "badge": "Buku Resmi".
 
 FORMAT JSON WAJIB (HANYA KEMBALIKAN OBJECT JSON):
 {
@@ -60,8 +53,8 @@ Teks input mentah dari user:
 ${text || 'Ekstrak spesifikasi dari gambar yang dilampirkan.'}`
 
     if (apiKey) {
-      // Try Gemini API model endpoints (v1beta)
-      const modelsToTry = ["gemini-1.5-flash", "gemini-2.0-flash", "gemini-1.5-pro"]
+      // Verified Gemini AI Models list for this API Key
+      const modelsToTry = ["gemini-3.5-flash", "gemini-3.1-flash-lite", "gemini-2.5-flash"]
 
       for (const modelName of modelsToTry) {
         try {
@@ -95,17 +88,17 @@ ${text || 'Ekstrak spesifikasi dari gambar yang dilampirkan.'}`
                 const parsedJson = JSON.parse(jsonMatch[0])
                 return NextResponse.json({ success: true, data: parsedJson })
               } catch {
-                // Continue to next model or fallback
+                // Try next model
               }
             }
           }
         } catch {
-          // Continue
+          // Try next model
         }
       }
     }
 
-    // Smart Regex & Rule-Based Fallback Engine
+    // Smart Regex Fallback Engine
     const isDigital = /gemini|chatgpt|canva|lisensi|windows|office|akun|key|digital|software|app|pro|premium|e-book|netflix|spotify|pos/.test(rawLower)
     const isBudget = /minus|baterai lemah|promo|< 3|1\.|2\./.test(rawLower)
 

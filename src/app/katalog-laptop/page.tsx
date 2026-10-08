@@ -242,11 +242,13 @@ export default function CatalogLaptopStoreStandalonePage() {
           if (data.catalog_products_json) {
             try {
               const loadedProducts: ProductItem[] = JSON.parse(data.catalog_products_json)
-              const formatted = loadedProducts.map(p => ({
-                ...p,
-                images: p.images && p.images.length > 0 ? p.images : [p.image]
-              }))
-              setProducts(formatted)
+              if (Array.isArray(loadedProducts) && loadedProducts.length > 0) {
+                const formatted = loadedProducts.map(p => ({
+                  ...p,
+                  images: p.images && p.images.length > 0 ? p.images : [p.image]
+                }))
+                setProducts(formatted)
+              }
             } catch {}
           }
         }

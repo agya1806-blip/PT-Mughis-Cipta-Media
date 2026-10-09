@@ -171,7 +171,7 @@ export default function CatalogLaptopClient({
   const [products, setProducts] = useState<ProductItem[]>(
     initialProducts.length > 0 ? initialProducts : DEFAULT_PRODUCTS
   )
-  const [bankAccounts] = useState<BankAccount[]>(() => {
+  const [bankAccounts, setBankAccounts] = useState<BankAccount[]>(() => {
     if (initialSettings.bank_accounts_json) {
       try { return JSON.parse(initialSettings.bank_accounts_json) } catch {}
     }
@@ -309,7 +309,7 @@ Owner: ${ownerName}
 ${bankAccounts.map((b, i) => `${i + 1}. ${b.bank}\n   No. Rek: ${b.account_number}\n   a/n: ${b.beneficiary}`).join("\n\n")}
 
 💡 Tips Belanja Aman:
-Pastikan transfer HANYA ke rekening resmi atas nama ${ownerName}.
+Pastikan transfer HANYA ke rekening resmi di atas atas nama ${ownerName}.
 WA CS Resmi: ${waPhone}
 Link Resmi: ${origin}/katalog-laptop#pembayaran`
 
@@ -441,7 +441,7 @@ Link Resmi: ${origin}/katalog-laptop#pembayaran`
 
   const comparedProducts = products.filter((p) => compareIds.includes(p.id))
 
-  const transferConfirmMsg = encodeURIComponent(`Assalamu’alaikum Mughis Laptop Store,\n\nSaya telah melakukan pembayaran transfer untuk order:\n- Nama Pembeli: [NAMA SAYA]\n- Bank Tujuan: Bank BSI / SeaBank\n- Nominal Transfer: [NOMINAL]\n\nBerikut saya lampirkan foto/screenshot bukti transfernya. Mohon segera diproses, terima kasih!`)
+  const transferConfirmMsg = encodeURIComponent(`Assalamu’alaikum Mughis Laptop Store,\n\nSaya telah melakukan pembayaran transfer untuk order:\n- Nama Pembeli: [NAMA SAYA]\n- Bank Tujuan: Bank BSI / SeaBank\n- Nominal Transfer: [NOMINAL]\n\nBerikut saya lampirkan foto/screenshot bukti transfernya. Mohon segera dipproses, terima kasih!`)
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 font-sans antialiased selection:bg-teal-500 selection:text-white pb-20">

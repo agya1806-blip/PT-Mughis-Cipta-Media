@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { Building2, CreditCard, Laptop, Plus, Trash2, Edit3, Save, Upload, Image as ImageIcon, Video, Check, X, ShieldAlert, Sparkles, Bot, Eye, RefreshCw } from "lucide-react"
+import { Building2, CreditCard, Laptop, Plus, Trash2, Edit3, Save, Upload, Image as ImageIcon, Video, Check, X, ShieldAlert, Sparkles, Bot, Eye, RefreshCw, AlertCircle } from "lucide-react"
 
 interface BankAccount {
   id: string
@@ -16,7 +16,7 @@ interface ProductItem {
   category: "laptop" | "digital" | "budget" | string
   badge: string
   badgeColor?: string
-  stockStatus: "READY" | "SOLD_OUT" | "HIDDEN"
+  stockStatus: "READY" | "LIMITED" | "SOLD_OUT" | "HIDDEN"
   priceText: string
   rawPriceText: string
   image: string
@@ -41,7 +41,7 @@ const DEFAULT_PRODUCTS: ProductItem[] = [
     category: "laptop",
     badge: "Ultrabook Tipis & Mewah",
     badgeColor: "bg-emerald-100 text-emerald-800 border-emerald-300",
-    stockStatus: "READY",
+    stockStatus: "LIMITED",
     priceText: "Rp 3.750.000",
     rawPriceText: "Rp 3.750.000 (RAM 8GB / SSD 256GB)",
     image: "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=800&auto=format&fit=crop&q=80",
@@ -682,7 +682,7 @@ export default function AdminKatalogLaptopPage() {
                     <span className="absolute bottom-2 left-2 px-2 py-0.5 rounded-md text-[10px] font-bold bg-slate-900/80 text-white backdrop-blur-sm">
                       📷 {p.images?.length || 1} Foto {p.video ? "• 🎥 Video" : ""}
                     </span>
-                    <span className={`absolute top-2 right-2 px-2 py-0.5 rounded-md text-[10px] font-black uppercase ${p.stockStatus === 'READY' ? 'bg-emerald-600 text-white' : p.stockStatus === 'SOLD_OUT' ? 'bg-rose-600 text-white' : 'bg-slate-700 text-slate-200'}`}>
+                    <span className={`absolute top-2 right-2 px-2 py-0.5 rounded-md text-[10px] font-black uppercase ${p.stockStatus === 'READY' ? 'bg-emerald-600 text-white' : p.stockStatus === 'LIMITED' ? 'bg-amber-500 text-white' : p.stockStatus === 'SOLD_OUT' ? 'bg-rose-600 text-white' : 'bg-slate-700 text-slate-200'}`}>
                       {p.stockStatus || 'READY'}
                     </span>
                   </div>
@@ -806,6 +806,7 @@ export default function AdminKatalogLaptopPage() {
                     className="w-full p-2.5 rounded-lg border border-slate-300 bg-white font-bold text-slate-900"
                   >
                     <option value="READY">Ready Stock (Tampil)</option>
+                    <option value="LIMITED">⚠️ Stok Terbatas (Sisa 1 Unit)</option>
                     <option value="SOLD_OUT">Sold Out (Terjual)</option>
                     <option value="HIDDEN">Hidden (Sembunyikan dari Publik)</option>
                   </select>

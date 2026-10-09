@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Search, Laptop, ShieldCheck, Phone, CheckCircle, Copy, X, Check, MapPin, ShieldAlert, Award, Image as ImageIcon, Video as VideoIcon, ZoomIn, ZoomOut, RotateCcw, ChevronLeft, ChevronRight, Scale, Star, Printer, Truck, Clock, CheckSquare } from "lucide-react"
+import { Search, Laptop, ShieldCheck, Phone, CheckCircle, Copy, X, Check, MapPin, ShieldAlert, Award, Image as ImageIcon, Video as VideoIcon, ZoomIn, ZoomOut, RotateCcw, ChevronLeft, ChevronRight, Scale, Star, Printer, Truck, Clock, CheckSquare, Share2, Heart, AlertCircle, FileText } from "lucide-react"
 
 function InstagramIcon({ className = "w-4 h-4" }: { className?: string }) {
   return (
@@ -88,7 +88,7 @@ const DEFAULT_PRODUCTS: ProductItem[] = [
     category: "laptop",
     useCase: "mahasiswa",
     badge: "Ultrabook Tipis",
-    stockStatus: "READY",
+    stockStatus: "LIMITED",
     priceText: "Rp 3.750.000",
     rawPriceText: "Rp 3.750.000 (RAM 8GB / SSD 256GB)",
     image: "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=800&auto=format&fit=crop&q=80",
@@ -173,7 +173,7 @@ export default function CatalogLaptopClient({
   const [products, setProducts] = useState<ProductItem[]>(
     initialProducts.length > 0 ? initialProducts : DEFAULT_PRODUCTS
   )
-  const [bankAccounts, setBankAccounts] = useState<BankAccount[]>(() => {
+  const [bankAccounts] = useState<BankAccount[]>(() => {
     if (initialSettings.bank_accounts_json) {
       try { return JSON.parse(initialSettings.bank_accounts_json) } catch {}
     }
@@ -193,6 +193,9 @@ export default function CatalogLaptopClient({
   const [useCaseFilter, setUseCaseFilter] = useState("all")
   const [searchQuery, setSearchQuery] = useState("")
 
+  // Wishlist State (Saved in LocalStorage)
+  const [wishlistIds, setWishlistIds] = useState<string[]>([])
+
   // Side-by-Side Laptop Comparator State
   const [compareIds, setCompareIds] = useState<string[]>([])
   const [isCompareModalOpen, setIsCompareModalOpen] = useState(false)
@@ -208,9 +211,17 @@ export default function CatalogLaptopClient({
 
   const [toastMsg, setToastMsg] = useState("")
 
-  // CLIENT-SIDE HYDRATION & PUBLIC SETTINGS FETCHING (PREVENTS REVERTING TO UNPOSTED DEFAULT PRODUCTS)
+  // CLIENT-SIDE HYDRATION & LOCALSTORAGE PERSISTENCE
   useEffect(() => {
-    // Check LocalStorage backup first
+    // Load Wishlist from LocalStorage
+    try {
+      const savedWishlist = localStorage.getItem("mughis_wishlist_ids")
+      if (savedWishlist) {
+        setWishlistIds(JSON.parse(savedWishlist))
+      }
+    } catch {}
+
+    // Check LocalStorage product backup
     try {
       const localProducts = localStorage.getItem("mughis_admin_products")
       if (localProducts) {
@@ -264,6 +275,67 @@ export default function CatalogLaptopClient({
     })
   }
 
+  function toggleWishlist(id: string, e?: React.MouseEvent) {
+    if (e) e.stopPropagation()
+    let updated = []
+    if (wishlistIds.includes(id)) {
+      updated = wishlistIds.filter((item) => item !== id)
+      setToastMsg("Produk dihapus dari Favorit Saya")
+    } else {
+      updated = [...wishlistIds, id]
+      setToastMsg("❤️ Produk ditambahkan ke Favorit Saya")
+    }
+    setWishlistIds(updated)
+    try { localStorage.setItem("mughis_wishlist_ids", JSON.stringify(updated)) } catch {}
+    setTimeout(() => setToastMsg(""), 2500)
+  }
+
+  function shareProduct(p: ProductItem, e?: React.MouseEvent) {
+    if (e) e.stopPropagation()
+    const shareUrl = typeof window !== "undefined" ? `${window.location.origin}/katalog-laptop#prod-${p.id}` : ""
+    const shareData = {
+      title: p.title,
+      text: `Cek ${p.title} (${p.priceText}) di Mughis Laptop Store!`,
+      url: shareUrl
+    }
+
+    if (typeof navigator !== "undefined" && navigator.share) {
+      navigator.share(shareData).catch(() => {})
+    } else {
+      navigator.clipboard.writeText(shareUrl).then(() => {
+        setToastMsg(`Link produk ${p.title} berhasil disalin!`)
+        setTimeout(() => setToastMsg(""), 3000)
+      })
+    }
+  }
+
+  function getWaLink(p: ProductItem) {
+    let waMsg = ""
+    if (p.category === "digital" || p.badge.toLowerCase().includes("digital")) {
+      waMsg = `Assalamu’alaikum Mughis Laptop Store,
+
+Saya bermaksud memesan Produk Digital berikut:
+* ${p.title} *
+Harga: ${p.priceText}
+
+💳 Pilihan Metode Pembayaran Resmi:
+1. Bank BSI: 7368300677 a/n Muhammad Aghisna
+2. Bank SeaBank: 901007430064 a/n Muhammad Aghisna
+3. QRIS / E-Wallet All Payment
+
+Mohon konfirmasi ketersediaan stok & petunjuk pengiriman lisensi/akunya. Terima kasih!`
+    } else {
+      waMsg = `Assalamu’alaikum Mughis Laptop Store,
+
+Saya tertarik dengan unit:
+* ${p.title} *
+Harga: ${p.priceText}
+
+Apakah unit masih tersedia? Mohon informasi kondisi dan garansinya.`
+    }
+    return `https://wa.me/${formattedWa}?text=${encodeURIComponent(waMsg)}`
+  }
+
   function toggleCompare(id: string) {
     if (compareIds.includes(id)) {
       setCompareIds(compareIds.filter((item) => item !== id))
@@ -313,6 +385,10 @@ export default function CatalogLaptopClient({
   const activeProducts = products.filter((p) => p.stockStatus !== "HIDDEN")
 
   const filteredProducts = activeProducts.filter((p) => {
+    if (currentCategory === "wishlist") {
+      return wishlistIds.includes(p.id)
+    }
+
     const matchCat =
       currentCategory === "all" ||
       p.category === currentCategory ||
@@ -330,6 +406,8 @@ export default function CatalogLaptopClient({
   })
 
   const comparedProducts = products.filter((p) => compareIds.includes(p.id))
+
+  const transferConfirmMsg = encodeURIComponent(`Assalamu’alaikum Mughis Laptop Store,\n\nSaya telah melakukan pembayaran transfer untuk order:\n- Nama Pembeli: [NAMA SAYA]\n- Bank Tujuan: Bank BSI / SeaBank\n- Nominal Transfer: [NOMINAL]\n\nBerikut saya lampirkan foto/screenshot bukti transfernya. Mohon segera diproses, terima kasih!`)
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 font-sans antialiased selection:bg-teal-500 selection:text-white pb-20">
@@ -601,7 +679,7 @@ export default function CatalogLaptopClient({
         </>
       )}
 
-      {/* 2. TAB CONTENT: STOK UNIT READY (PURE PRODUCT CATALOG WITH ASPECT RATIO 4:5, VIDEO SUPPORT, OPTION A PRICE ASSURANCE NOTE, & SMART USE-CASE FILTERS) */}
+      {/* 2. TAB CONTENT: STOK UNIT READY (PURE PRODUCT CATALOG WITH ASPECT RATIO 4:5, VIDEO SUPPORT, OPTION A PRICE ASSURANCE NOTE, & WISHLIST) */}
       {activeTab === "stok" && (
         <section id="katalog" className="py-8 sm:py-12 max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 pb-3 border-b border-slate-200 gap-3">
@@ -683,24 +761,30 @@ export default function CatalogLaptopClient({
               >
                 🏷️ Promo & Pilihan Hemat
               </button>
+              <button
+                onClick={() => setCurrentCategory("wishlist")}
+                className={`px-3.5 py-2 rounded-xl border-2 transition ${currentCategory === "wishlist" ? "bg-rose-600 border-rose-600 text-white shadow-xs" : "bg-white border-slate-200 text-rose-700 hover:border-rose-600"}`}
+              >
+                ❤️ Favorit Saya ({wishlistIds.length})
+              </button>
             </div>
           </div>
 
           {filteredProducts.length === 0 ? (
             <div className="text-center py-12 bg-white rounded-3xl border-2 border-dashed border-slate-200 space-y-2">
               <p className="text-base font-bold text-slate-800">Produk tidak ditemukan</p>
-              <p className="text-xs text-slate-500">Coba ubah kata kunci pencarian Anda.</p>
+              <p className="text-xs text-slate-500">Coba ubah kata kunci atau kategori pencarian Anda.</p>
             </div>
           ) : (
             <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-8">
               {filteredProducts.map((p) => {
-                const waMsg = encodeURIComponent(`Assalamu’alaikum Mughis Laptop Store,\n\nSaya tertarik dengan unit:\n*${p.title}*\nHarga: ${p.priceText}\n\nApakah unit masih tersedia? Mohon informasi kondisi dan garansinya.`)
-                const waUrl = `https://wa.me/${formattedWa}?text=${waMsg}`
+                const waUrl = getWaLink(p)
                 const photoCount = p.images && p.images.length > 0 ? p.images.length : 1
                 const isCompared = compareIds.includes(p.id)
+                const isLiked = wishlistIds.includes(p.id)
 
                 return (
-                  <div key={p.id} className="bg-white rounded-2xl border-2 border-slate-200 overflow-hidden flex flex-col justify-between shadow-xs hover:shadow-xl transition-all duration-300 group hover:-translate-y-1">
+                  <div id={`prod-${p.id}`} key={p.id} className="bg-white rounded-2xl border-2 border-slate-200 overflow-hidden flex flex-col justify-between shadow-xs hover:shadow-xl transition-all duration-300 group hover:-translate-y-1">
                     <div>
                       {/* STRICT ASPECT RATIO 4:5 PORTRAIT CONTAINER */}
                       <div className="relative aspect-[4/5] w-full bg-slate-100 overflow-hidden">
@@ -710,14 +794,33 @@ export default function CatalogLaptopClient({
                           {p.badge}
                         </span>
 
-                        <button
-                          onClick={() => toggleCompare(p.id)}
-                          className={`absolute top-2 right-2 p-1.5 rounded-lg border text-[10px] font-bold transition flex items-center gap-1 shadow-xs ${isCompared ? "bg-teal-600 text-white border-teal-600" : "bg-white/95 hover:bg-white text-slate-700 border-slate-300"}`}
-                          title="Bandingkan Laptop"
-                        >
-                          <Scale className="w-3.5 h-3.5" />
-                          <span className="hidden sm:inline">{isCompared ? "Dibandingkan" : "Bandingkan"}</span>
-                        </button>
+                        {/* Top Right Action Buttons: Compare & Wishlist */}
+                        <div className="absolute top-2 right-2 flex items-center gap-1">
+                          <button
+                            onClick={(e) => toggleWishlist(p.id, e)}
+                            className={`p-1.5 rounded-lg border text-[10px] font-bold transition flex items-center justify-center shadow-xs ${isLiked ? "bg-rose-600 text-white border-rose-600" : "bg-white/95 hover:bg-white text-slate-700 border-slate-300"}`}
+                            title="Simpan Favorit"
+                          >
+                            <Heart className={`w-3.5 h-3.5 ${isLiked ? "fill-white" : "text-slate-700"}`} />
+                          </button>
+
+                          <button
+                            onClick={() => toggleCompare(p.id)}
+                            className={`p-1.5 rounded-lg border text-[10px] font-bold transition flex items-center gap-1 shadow-xs ${isCompared ? "bg-teal-600 text-white border-teal-600" : "bg-white/95 hover:bg-white text-slate-700 border-slate-300"}`}
+                            title="Bandingkan Laptop"
+                          >
+                            <Scale className="w-3.5 h-3.5" />
+                            <span className="hidden sm:inline">{isCompared ? "Dibandingkan" : "Bandingkan"}</span>
+                          </button>
+
+                          <button
+                            onClick={(e) => shareProduct(p, e)}
+                            className="p-1.5 rounded-lg border text-[10px] font-bold transition bg-white/95 hover:bg-white text-slate-700 border-slate-300 shadow-xs"
+                            title="Bagikan Produk"
+                          >
+                            <Share2 className="w-3.5 h-3.5" />
+                          </button>
+                        </div>
 
                         <div className="absolute bottom-2 left-2 flex items-center gap-1">
                           <span className="px-2 py-0.5 rounded-md text-[9px] sm:text-[10px] font-bold bg-white/90 text-slate-900 border border-slate-200 shadow-xs flex items-center gap-1">
@@ -731,6 +834,12 @@ export default function CatalogLaptopClient({
                             </span>
                           )}
                         </div>
+
+                        {p.stockStatus === "LIMITED" && (
+                          <span className="absolute bottom-2 right-2 px-2 py-0.5 rounded-md text-[9px] font-black uppercase bg-amber-500 text-white shadow-md animate-pulse">
+                            ⚠️ STOK TERBATAS
+                          </span>
+                        )}
 
                         {p.stockStatus === "SOLD_OUT" && (
                           <span className="absolute top-2 right-2 px-2.5 py-1 rounded-md text-[10px] font-black uppercase bg-rose-600 text-white shadow-md">
@@ -848,7 +957,7 @@ export default function CatalogLaptopClient({
         </section>
       )}
 
-      {/* 4. TAB CONTENT: REKENING RESMI & PEMBAYARAN (BRIGHT WHITE & TEAL DESIGN) */}
+      {/* 4. TAB CONTENT: REKENING RESMI & PEMBAYARAN (BRIGHT WHITE & TEAL DESIGN + 1-CLICK WA TRANSFER CONFIRMATION) */}
       {activeTab === "pembayaran" && (
         <section id="info-bisnis" className="py-8 sm:py-12 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
           <div className="bg-white p-6 sm:p-8 rounded-3xl border-2 border-slate-200 shadow-md space-y-8">
@@ -890,6 +999,26 @@ export default function CatalogLaptopClient({
                   </div>
                 </div>
               ))}
+            </div>
+
+            {/* 1-CLICK WA TRANSFER CONFIRMATION ACTION BOX */}
+            <div className="p-5 rounded-2xl bg-emerald-50 border-2 border-emerald-300 space-y-3 text-xs sm:text-sm text-center">
+              <h3 className="font-extrabold text-emerald-900 text-base flex items-center justify-center gap-2">
+                <CheckCircle className="w-5 h-5 text-emerald-600" />
+                <span>Sudah Melakukan Pembayaran / Transfer?</span>
+              </h3>
+              <p className="text-slate-600 font-medium max-w-lg mx-auto">
+                Silakan klik tombol di bawah ini untuk mengirimkan bukti transfer secara langsung ke WhatsApp CS resmi kami untuk konfirmasi instan!
+              </p>
+              <a
+                href={`https://wa.me/${formattedWa}?text=${transferConfirmMsg}`}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs sm:text-sm shadow-md transition active:scale-95"
+              >
+                <Phone className="w-4 h-4" />
+                <span>Konfirmasi Bukti Transfer via WhatsApp CS</span>
+              </a>
             </div>
 
             <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-3 text-xs sm:text-sm">
@@ -1040,7 +1169,7 @@ export default function CatalogLaptopClient({
                   </div>
 
                   <a
-                    href={`https://wa.me/${formattedWa}?text=${encodeURIComponent(`Assalamu’alaikum Mughis Laptop Store,\n\nSaya tertarik dengan unit:\n*${p.title}*\nHarga: ${p.priceText}\n\nApakah unit ini ready? Saya baru saja membandingkannya di website.`)}`}
+                    href={getWaLink(p)}
                     target="_blank"
                     rel="noreferrer"
                     className="w-full py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl flex items-center justify-center gap-1 shadow-xs transition block text-center"
@@ -1063,9 +1192,19 @@ export default function CatalogLaptopClient({
             </button>
 
             <div className="space-y-3">
-              <span className="px-3 py-1 rounded-full text-xs font-bold bg-teal-100 text-teal-800 border border-teal-200 uppercase">
-                {selectedProduct.badge}
-              </span>
+              <div className="flex items-center justify-between">
+                <span className="px-3 py-1 rounded-full text-xs font-bold bg-teal-100 text-teal-800 border border-teal-200 uppercase">
+                  {selectedProduct.badge}
+                </span>
+                <button
+                  onClick={(e) => shareProduct(selectedProduct, e)}
+                  className="px-3 py-1 rounded-full text-xs font-bold bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-300 flex items-center gap-1 transition"
+                >
+                  <Share2 className="w-3.5 h-3.5" />
+                  <span>Bagikan Produk</span>
+                </button>
+              </div>
+
               <h3 className="text-lg sm:text-xl font-extrabold text-slate-900 pr-8">{selectedProduct.title}</h3>
 
               <div className="p-2.5 sm:p-3 rounded-xl bg-teal-50 border border-teal-200 space-y-1">
@@ -1159,7 +1298,7 @@ export default function CatalogLaptopClient({
               <p className="text-xs text-slate-600 leading-relaxed font-medium">{selectedProduct.shortDesc}</p>
 
               <a
-                href={`https://wa.me/${formattedWa}?text=${encodeURIComponent(`Assalamu’alaikum Mughis Laptop Store,\n\nSaya tertarik dengan unit:\n*${selectedProduct.title}*\nHarga: ${selectedProduct.priceText}\n\nApakah unit masih tersedia? Mohon informasi kondisi dan garansinya.`)}`}
+                href={getWaLink(selectedProduct)}
                 target="_blank"
                 rel="noreferrer"
                 className="w-full py-3.5 bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs sm:text-sm rounded-xl flex items-center justify-center gap-2 shadow-md shadow-emerald-600/20 active:scale-95 transition"

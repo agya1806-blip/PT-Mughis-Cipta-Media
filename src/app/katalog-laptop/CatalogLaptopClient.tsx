@@ -137,29 +137,27 @@ const DEFAULT_PRODUCTS: ProductItem[] = [
     bonus: "Unit Laptop, Charger Original, Tas Laptop & Mouse"
   },
   {
-    id: "prod-hp-430-g5",
-    title: "HP ProBook 430 G5 Core i5 Gen 8",
-    category: "laptop",
-    useCase: "editing",
-    badge: "Quad Core Cepat",
+    id: "prod-office-win11",
+    title: "Lisensi Windows 11 Pro & Office 2021",
+    category: "digital",
+    badge: "Produk Digital",
     stockStatus: "READY",
-    priceText: "Rp 4.200.000",
-    rawPriceText: "Rp 4.200.000 (Core i5 Gen 8 / RAM 8GB / SSD 256GB)",
-    image: "https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?w=800&auto=format&fit=crop&q=80",
+    priceText: "Rp 400.000",
+    rawPriceText: "Rp 400.000 (Aktivasi Permanen Seumur Hidup)",
+    image: "https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800&auto=format&fit=crop&q=80",
     images: [
-      "https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?w=800&auto=format&fit=crop&q=80"
+      "https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800&auto=format&fit=crop&q=80"
     ],
-    shortDesc: "Prosesor Intel Gen 8 Quad Core kencang dengan desain silver aluminium elegan. Cocok untuk multitasking berat, kerja & kuliah.",
+    shortDesc: "Paket lisensi resmi original untuk PC / Laptop. Tinggal pasang, tanpa crack, bebas update selamanya, aman dari virus.",
     specs: [
-      "Prosesor: Intel Core i5-8250U Gen 8 (Quad Core 8 Threads)",
-      "RAM: 8GB DDR4 High Speed",
-      "Penyimpanan: 256GB SSD NVMe Cepat",
-      "Layar: 13.3 inch Full HD Compact Bezel",
-      "Bodi: Silver Aluminium Modern Premium"
+      "Tipe Lisensi: Windows 11 Pro Retail + Office 2021 Pro Plus",
+      "Masa Aktif: Lifetime (Permanen Seumur Hidup)",
+      "Pengiriman: Key resmi dikirim langsung via WhatsApp / Email",
+      "Bebas Update: Terkoneksi langsung ke server resmi"
     ],
-    conditionNote: "Grade A Mulus 93-95%, Baterai Awet 3-4 Jam",
-    warranty: "Garansi Toko 30 Hari",
-    bonus: "Unit Laptop, Charger Original HP, Tas Ransel & Mouse"
+    conditionNote: "100% Produk Digital Resmi Baru",
+    warranty: "Garansi 100% Ganti Baru Jika Gagal Aktivasi",
+    bonus: "Buku panduan bergambar cara pasang, link download resmi, dan dibantu sampai tuntas via WA."
   }
 ]
 
@@ -173,7 +171,7 @@ export default function CatalogLaptopClient({
   const [products, setProducts] = useState<ProductItem[]>(
     initialProducts.length > 0 ? initialProducts : DEFAULT_PRODUCTS
   )
-  const [bankAccounts] = useState<BankAccount[]>(() => {
+  const [bankAccounts, setBankAccounts] = useState<BankAccount[]>(() => {
     if (initialSettings.bank_accounts_json) {
       try { return JSON.parse(initialSettings.bank_accounts_json) } catch {}
     }
@@ -211,7 +209,7 @@ export default function CatalogLaptopClient({
 
   const [toastMsg, setToastMsg] = useState("")
 
-  // CLIENT-SIDE HYDRATION & LOCALSTORAGE PERSISTENCE
+  // CLIENT-SIDE HYDRATION & LOCALSTORAGE PERSISTENCE (FETCH WITH NO-CACHE)
   useEffect(() => {
     // Load Wishlist from LocalStorage
     try {
@@ -221,7 +219,7 @@ export default function CatalogLaptopClient({
       }
     } catch {}
 
-    // Check LocalStorage product backup
+    // Check LocalStorage product backup first
     try {
       const localProducts = localStorage.getItem("mughis_admin_products")
       if (localProducts) {
@@ -232,8 +230,8 @@ export default function CatalogLaptopClient({
       }
     } catch {}
 
-    // Fetch latest public settings from server database
-    fetch("/api/public/settings")
+    // Fetch latest public settings with cache busting
+    fetch(`/api/public/settings?t=${Date.now()}`)
       .then((res) => res.json())
       .then((data) => {
         if (!data.error) {
@@ -312,26 +310,9 @@ export default function CatalogLaptopClient({
   function getWaLink(p: ProductItem) {
     let waMsg = ""
     if (p.category === "digital" || p.badge.toLowerCase().includes("digital")) {
-      waMsg = `Assalamu’alaikum Mughis Laptop Store,
-
-Saya bermaksud memesan Produk Digital berikut:
-* ${p.title} *
-Harga: ${p.priceText}
-
-💳 Pilihan Metode Pembayaran Resmi:
-1. Bank BSI: 7368300677 a/n Muhammad Aghisna
-2. Bank SeaBank: 901007430064 a/n Muhammad Aghisna
-3. QRIS / E-Wallet All Payment
-
-Mohon konfirmasi ketersediaan stok & petunjuk pengiriman lisensi/akunya. Terima kasih!`
+      waMsg = `Assalamu’alaikum Mughis Laptop Store,\n\nSaya bermaksud memesan Produk Digital berikut:\n* ${p.title} *\nHarga: ${p.priceText}\n\n💳 Pilihan Metode Pembayaran Resmi:\n1. Bank BSI: 7368300677 a/n Muhammad Aghisna\n2. Bank SeaBank: 901007430064 a/n Muhammad Aghisna\n3. QRIS / E-Wallet All Payment\n\nMohon konfirmasi ketersediaan stok & petunjuk pengiriman lisensi/akunya. Terima kasih!`
     } else {
-      waMsg = `Assalamu’alaikum Mughis Laptop Store,
-
-Saya tertarik dengan unit:
-* ${p.title} *
-Harga: ${p.priceText}
-
-Apakah unit masih tersedia? Mohon informasi kondisi dan garansinya.`
+      waMsg = `Assalamu’alaikum Mughis Laptop Store,\n\nSaya tertarik dengan unit:\n* ${p.title} *\nHarga: ${p.priceText}\n\nApakah unit masih tersedia? Mohon informasi kondisi dan garansinya.`
     }
     return `https://wa.me/${formattedWa}?text=${encodeURIComponent(waMsg)}`
   }

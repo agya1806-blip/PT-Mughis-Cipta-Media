@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { Building2, CreditCard, Laptop, Plus, Trash2, Edit3, Save, Upload, Image as ImageIcon, Video, Check, X, ShieldAlert, Sparkles, Bot, Eye, RefreshCw, AlertCircle } from "lucide-react"
+import { Building2, CreditCard, Laptop, Plus, Trash2, Edit3, Save, Upload, Image as ImageIcon, Video, Check, X, ShieldAlert, Sparkles, Bot, Eye, RefreshCw, AlertCircle, Share2, Copy } from "lucide-react"
 
 interface BankAccount {
   id: string
@@ -88,82 +88,6 @@ const DEFAULT_PRODUCTS: ProductItem[] = [
     ],
     conditionNote: "Grade A- Mulus 90%, Fungsi 100% Normal",
     warranty: "Garansi Toko 30 Hari",
-    bonus: "Unit Laptop, Charger Original, Tas Laptop & Mouse"
-  },
-  {
-    id: "prod-t470",
-    title: "Lenovo ThinkPad T470 Core i5 Gen 6",
-    category: "laptop",
-    badge: "Best Seller Business",
-    badgeColor: "bg-emerald-100 text-emerald-800 border-emerald-300",
-    stockStatus: "READY",
-    priceText: "Rp 3.500.000",
-    rawPriceText: "Rp 3.500.000 (RAM 8GB / SSD 256GB)",
-    image: "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=800&auto=format&fit=crop&q=80",
-    images: [
-      "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=800&auto=format&fit=crop&q=80",
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=800&auto=format&fit=crop&q=80"
-    ],
-    shortDesc: "Generasi penerus T460 dengan bodi lebih ringkas, port Type-C USB-C fast charge, dan performa mulus untuk olah data.",
-    specs: [
-      "Prosesor: Intel Core i5-6200U / i5-6300U Gen 6",
-      "RAM: 8GB DDR4 (Upgradable)",
-      "Penyimpanan: 256GB SSD Fast Boot",
-      "Layar: 14.0 inch Anti-Glare Jernih",
-      "Port: USB-C Type-C, HDMI, USB 3.0, LAN"
-    ],
-    conditionNote: "Grade A Mulus 92-95%, Baterai Awet 2-4 Jam",
-    warranty: "Garansi Toko 30 Hari",
-    bonus: "Unit Laptop, Charger Original Type-C, Tas Laptop Baru & Mouse"
-  },
-  {
-    id: "prod-hp-430-g5",
-    title: "HP ProBook 430 G5 Core i5 Gen 8",
-    category: "laptop",
-    badge: "Gen 8 Cepat 4-Core",
-    badgeColor: "bg-blue-100 text-blue-800 border-blue-300",
-    stockStatus: "READY",
-    priceText: "Rp 4.200.000",
-    rawPriceText: "Rp 4.200.000 (Core i5 Gen 8 / RAM 8GB / SSD 256GB)",
-    image: "https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?w=800&auto=format&fit=crop&q=80",
-    images: [
-      "https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?w=800&auto=format&fit=crop&q=80"
-    ],
-    shortDesc: "Prosesor Intel Gen 8 Quad Core kencang dengan desain silver aluminium elegan. Cocok untuk multitasking berat, kerja & kuliah.",
-    specs: [
-      "Prosesor: Intel Core i5-8250U Gen 8 (Quad Core 8 Threads)",
-      "RAM: 8GB DDR4 High Speed",
-      "Penyimpanan: 256GB SSD NVMe Cepat",
-      "Layar: 13.3 inch Full HD Compact Bezel",
-      "Bodi: Silver Aluminium Modern Premium"
-    ],
-    conditionNote: "Grade A Mulus 93-95%, Baterai Awet 3-4 Jam",
-    warranty: "Garansi Toko 30 Hari",
-    bonus: "Unit Laptop, Charger Original HP, Tas Ransel & Mouse"
-  },
-  {
-    id: "prod-ideapad-s530",
-    title: "Lenovo IdeaPad S530 Core i5 Gen 8",
-    category: "budget",
-    badge: "Promo Gen 8 (Minus Baterai)",
-    badgeColor: "bg-amber-100 text-amber-900 border-amber-300",
-    stockStatus: "READY",
-    priceText: "Rp 4.000.000",
-    rawPriceText: "Rp 4.000.000 (Harga Khusus Minus Baterai Lemah)",
-    image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=800&auto=format&fit=crop&q=80",
-    images: [
-      "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=800&auto=format&fit=crop&q=80"
-    ],
-    shortDesc: "Laptop ultrabook slim metal silver sangat kencang Core i5 Gen 8. Kondisi mesin & bodi mulus 100% lancar (Minus baterai lemah, disarankan colok charger).",
-    specs: [
-      "Prosesor: Intel Core i5-8265U Gen 8 (Quad Core 8 Threads)",
-      "RAM: 8GB DDR4",
-      "Penyimpanan: 256GB SSD NVMe Super Fast",
-      "Layar: 13.3 inch Full HD IPS Bezel Tipis",
-      "Catatan Minus: Baterai Lemah (Disarankan sambil colok charger)"
-    ],
-    conditionNote: "Kondisi Fisik 95% Mulus, Mesin 100% Normal (Minus Baterai Lemah)",
-    warranty: "Garansi Toko 14 Hari Mesin",
     bonus: "Unit Laptop, Charger Original, Tas Laptop & Mouse"
   },
   {
@@ -269,6 +193,27 @@ export default function AdminKatalogLaptopPage() {
       .catch(() => {})
       .finally(() => setIsLoaded(true))
   }, [])
+
+  function sharePaymentMethodsWA() {
+    const origin = typeof window !== "undefined" ? window.location.origin : ""
+    const bankText = `💳 INFORMASI REKENING PEMBAYARAN RESMI
+${siteName}
+Owner: ${ownerName}
+
+${bankAccounts.map((b, i) => `${i + 1}. ${b.bank}\n   No. Rek: ${b.account_number}\n   a/n: ${b.beneficiary}`).join("\n\n")}
+
+💡 Tips Belanja Aman:
+Pastikan transfer HANYA ke rekening resmi atas nama ${ownerName}.
+WA CS Resmi: ${contactPhone}
+Link Resmi: ${origin}/katalog-laptop#pembayaran`
+
+    if (typeof navigator !== "undefined" && navigator.clipboard) {
+      navigator.clipboard.writeText(bankText).then(() => {
+        setMessage("✅ Format Rekening WA berhasil disalin ke Clipboard!")
+        setTimeout(() => setMessage(""), 3500)
+      })
+    }
+  }
 
   async function handleSaveAll() {
     setSaving(true)
@@ -1029,15 +974,27 @@ export default function AdminKatalogLaptopPage() {
       {/* TAB 2: BANK ACCOUNTS */}
       {activeTab === "banks" && (
         <div className="bg-white p-4 sm:p-6 rounded-b-2xl border border-slate-200 shadow-sm space-y-6">
-          <div className="flex justify-between items-center border-b border-slate-100 pb-3">
-            <h2 className="text-base sm:text-lg font-extrabold text-slate-900">Rekening Resmi Pembayaran</h2>
-            <button
-              onClick={addBank}
-              className="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs flex items-center gap-1.5"
-            >
-              <Plus className="w-4 h-4" />
-              <span>Tambah Rekening</span>
-            </button>
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-100 pb-3 gap-3">
+            <div>
+              <h2 className="text-base sm:text-lg font-extrabold text-slate-900">Rekening Resmi Pembayaran</h2>
+              <p className="text-xs text-slate-500">Kelola nomor rekening bank atas nama Muhammad Aghisna</p>
+            </div>
+            <div className="flex items-center gap-2">
+              <button
+                onClick={sharePaymentMethodsWA}
+                className="px-3.5 py-2 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs flex items-center gap-1.5 shadow-sm"
+              >
+                <Share2 className="w-3.5 h-3.5" />
+                <span>Salin Format WA 📤</span>
+              </button>
+              <button
+                onClick={addBank}
+                className="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs flex items-center gap-1.5 shadow-sm"
+              >
+                <Plus className="w-4 h-4" />
+                <span>Tambah Rekening</span>
+              </button>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

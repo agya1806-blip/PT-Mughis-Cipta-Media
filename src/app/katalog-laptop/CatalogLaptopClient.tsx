@@ -266,10 +266,12 @@ export default function CatalogLaptopClient({
       })
       .catch(() => {})
       .finally(() => {
-        // DETECT SHARED PRODUCT LINK (HASH LINK DEEP-LINKING)
+        // DETECT SHARED PRODUCT LINK OR PAYMENT HASH LINK
         if (typeof window !== "undefined") {
           const hash = window.location.hash
-          if (hash && hash.includes("prod-")) {
+          if (hash === "#pembayaran") {
+            setActiveTab("pembayaran")
+          } else if (hash && hash.includes("prod-")) {
             const rawId = hash.replace("#prod-", "").replace("#", "")
             setActiveTab("stok")
             const matched = currentProdsList.find(p => p.id === rawId || `prod-${p.id}` === rawId || p.id.includes(rawId))
@@ -296,6 +298,32 @@ export default function CatalogLaptopClient({
       setToastMsg(`Nomor Rekening ${bankName} (${text}) berhasil disalin!`)
       setTimeout(() => setToastMsg(""), 3000)
     })
+  }
+
+  function shareBankAccounts() {
+    const origin = typeof window !== "undefined" ? window.location.origin : ""
+    const bankText = `💳 INFORMASI REKENING PEMBAYARAN RESMI
+Mughis Laptop Store / PT Mughis Cipta Media
+Owner: ${ownerName}
+
+${bankAccounts.map((b, i) => `${i + 1}. ${b.bank}\n   No. Rek: ${b.account_number}\n   a/n: ${b.beneficiary}`).join("\n\n")}
+
+💡 Tips Belanja Aman:
+Pastikan transfer HANYA ke rekening resmi atas nama ${ownerName}.
+WA CS Resmi: ${waPhone}
+Link Resmi: ${origin}/katalog-laptop#pembayaran`
+
+    if (typeof navigator !== "undefined" && navigator.share) {
+      navigator.share({
+        title: "Rekening Resmi Pembayaran — Mughis Laptop Store",
+        text: bankText
+      }).catch(() => {})
+    } else {
+      navigator.clipboard.writeText(bankText).then(() => {
+        setToastMsg("Format Rekening Pembayaran Resmi berhasil disalin!")
+        setTimeout(() => setToastMsg(""), 3000)
+      })
+    }
   }
 
   function toggleWishlist(id: string, e?: React.MouseEvent) {
@@ -963,11 +991,11 @@ export default function CatalogLaptopClient({
         </section>
       )}
 
-      {/* 4. TAB CONTENT: REKENING RESMI & PEMBAYARAN (BRIGHT WHITE & TEAL DESIGN + 1-CLICK WA TRANSFER CONFIRMATION) */}
+      {/* 4. TAB CONTENT: REKENING RESMI & PEMBAYARAN (BRIGHT WHITE & TEAL DESIGN + SHARE PAYMENT METHODS) */}
       {activeTab === "pembayaran" && (
         <section id="info-bisnis" className="py-8 sm:py-12 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
           <div className="bg-white p-6 sm:p-8 rounded-3xl border-2 border-slate-200 shadow-md space-y-8">
-            <div className="text-center max-w-2xl mx-auto space-y-2">
+            <div className="text-center max-w-2xl mx-auto space-y-3">
               <span className="px-3.5 py-1 rounded-full bg-teal-100 text-teal-800 text-xs font-bold uppercase tracking-widest border border-teal-200">
                 Rekening Resmi Owner ({ownerName})
               </span>
@@ -975,6 +1003,14 @@ export default function CatalogLaptopClient({
               <p className="text-slate-600 text-xs sm:text-base font-medium leading-relaxed">
                 Pastikan transfer Anda dikirimkan sesuai dengan nama rekening resmi pemilik toko di bawah ini:
               </p>
+
+              <button
+                onClick={shareBankAccounts}
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-extrabold text-xs sm:text-sm shadow-md transition active:scale-95"
+              >
+                <Share2 className="w-4 h-4" />
+                <span>Bagikan Format Rekening Resmi WA 📤</span>
+              </button>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">

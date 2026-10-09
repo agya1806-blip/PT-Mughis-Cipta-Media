@@ -171,7 +171,7 @@ export default function CatalogLaptopClient({
   const [products, setProducts] = useState<ProductItem[]>(
     initialProducts.length > 0 ? initialProducts : DEFAULT_PRODUCTS
   )
-  const [bankAccounts, setBankAccounts] = useState<BankAccount[]>(() => {
+  const [bankAccounts] = useState<BankAccount[]>(() => {
     if (initialSettings.bank_accounts_json) {
       try { return JSON.parse(initialSettings.bank_accounts_json) } catch {}
     }
@@ -209,7 +209,7 @@ export default function CatalogLaptopClient({
 
   const [toastMsg, setToastMsg] = useState("")
 
-  // CLIENT-SIDE HYDRATION & LOCALSTORAGE PERSISTENCE (FETCH WITH NO-CACHE)
+  // CLIENT-SIDE HYDRATION & HASH LINK DEEP-LINK AUTO-OPENER
   useEffect(() => {
     // Load Wishlist from LocalStorage
     try {
@@ -220,12 +220,14 @@ export default function CatalogLaptopClient({
     } catch {}
 
     // Check LocalStorage product backup first
+    let currentProdsList = products
     try {
       const localProducts = localStorage.getItem("mughis_admin_products")
       if (localProducts) {
         const parsedLocal = JSON.parse(localProducts)
         if (Array.isArray(parsedLocal) && parsedLocal.length > 0) {
           setProducts(parsedLocal)
+          currentProdsList = parsedLocal
         }
       }
     } catch {}
@@ -255,6 +257,7 @@ export default function CatalogLaptopClient({
                   images: p.images && p.images.length > 0 ? p.images : [p.image]
                 }))
                 setProducts(formatted)
+                currentProdsList = formatted
                 localStorage.setItem("mughis_admin_products", JSON.stringify(formatted))
               }
             } catch {}
@@ -262,6 +265,28 @@ export default function CatalogLaptopClient({
         }
       })
       .catch(() => {})
+      .finally(() => {
+        // DETECT SHARED PRODUCT LINK (HASH LINK DEEP-LINKING)
+        if (typeof window !== "undefined") {
+          const hash = window.location.hash
+          if (hash && hash.includes("prod-")) {
+            const rawId = hash.replace("#prod-", "").replace("#", "")
+            setActiveTab("stok")
+            const matched = currentProdsList.find(p => p.id === rawId || `prod-${p.id}` === rawId || p.id.includes(rawId))
+            if (matched) {
+              setSelectedProduct(matched)
+              setActiveMediaMode("image")
+              setActivePhotoIdx(0)
+            }
+            setTimeout(() => {
+              const targetEl = document.getElementById(`prod-${rawId}`) || document.getElementById(rawId)
+              if (targetEl) {
+                targetEl.scrollIntoView({ behavior: "smooth", block: "center" })
+              }
+            }, 400)
+          }
+        }
+      })
   }, [])
 
   const formattedWa = waPhone.replace(/[^0-9]/g, "").replace(/^0/, "62")

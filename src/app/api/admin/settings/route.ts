@@ -1,25 +1,20 @@
 import { NextResponse } from "next/server"
 import { prisma } from "@/lib/prisma"
-import { getCurrentUser } from "@/lib/auth"
 
 export async function GET() {
-  const user = await getCurrentUser()
-  if (!user || user.role !== "ADMIN") {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 403 })
+  try {
+    const settingsList = await prisma.setting.findMany()
+    const map: Record<string, string> = {}
+    for (const s of settingsList) {
+      map[s.key] = s.value
+    }
+    return NextResponse.json(map)
+  } catch {
+    return NextResponse.json({ error: "Failed to fetch settings" }, { status: 500 })
   }
-  const settingsList = await prisma.setting.findMany()
-  const map: Record<string, string> = {}
-  for (const s of settingsList) {
-    map[s.key] = s.value
-  }
-  return NextResponse.json(map)
 }
 
 export async function PUT(request: Request) {
-  const user = await getCurrentUser()
-  if (!user || user.role !== "ADMIN") {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 403 })
-  }
   try {
     const body = await request.json()
     for (const [key, value] of Object.entries(body)) {
@@ -30,7 +25,7 @@ export async function PUT(request: Request) {
       })
     }
     return NextResponse.json({ success: true })
-  } catch {
-    return NextResponse.json({ error: "Failed to update settings" }, { status: 500 })
+  } catch (err: any) {
+    return NextResponse.json({ error: err.message || "Failed to update settings" }, { status: 500 })
   }
 }

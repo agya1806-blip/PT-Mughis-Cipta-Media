@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Search, Laptop, ShieldCheck, Phone, CheckCircle, Copy, X, Check, MapPin, ShieldAlert, Award, Image as ImageIcon, Video as VideoIcon, ZoomIn, ZoomOut, RotateCcw, ChevronLeft, ChevronRight, Scale, Star, Printer, Truck, Clock, CheckSquare, Share2, Heart, AlertCircle, FileText, Zap, Key, Lock, ExternalLink, RefreshCw } from "lucide-react"
+import { Search, Laptop, ShieldCheck, Phone, CheckCircle, Copy, X, Check, MapPin, ShieldAlert, Award, Image as ImageIcon, Video as VideoIcon, ZoomIn, ZoomOut, RotateCcw, ChevronLeft, ChevronRight, Scale, Star, Printer, Truck, Clock, CheckSquare, Share2, Heart, AlertCircle, FileText, Zap, Key, Lock, ExternalLink, RefreshCw, CreditCard } from "lucide-react"
 
 function InstagramIcon({ className = "w-4 h-4" }: { className?: string }) {
   return (
@@ -409,11 +409,9 @@ Link Resmi: ${origin}/katalog-laptop#pembayaran`
         const json = await res.json()
         setDigitalResultKey(json.keyCode || `KEY-${Math.random().toString(36).substring(2, 8).toUpperCase()}-${Math.random().toString(36).substring(2, 8).toUpperCase()}`)
       } else {
-        // Instant Client Fallback Key
         setDigitalResultKey(`KEY-${Math.random().toString(36).substring(2, 8).toUpperCase()}-${Math.random().toString(36).substring(2, 8).toUpperCase()}`)
       }
     } catch {
-      // Instant Client Fallback Key
       setDigitalResultKey(`KEY-${Math.random().toString(36).substring(2, 8).toUpperCase()}-${Math.random().toString(36).substring(2, 8).toUpperCase()}`)
     } finally {
       setIsCheckingOut(false)

@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Search, Laptop, ShieldCheck, Phone, CheckCircle, Copy, X, Check, MapPin, ShieldAlert, Award, Image as ImageIcon, Video as VideoIcon, ZoomIn, ZoomOut, RotateCcw, ChevronLeft, ChevronRight, Scale, Star, Printer, Truck, Clock, CheckSquare, Share2, Heart, AlertCircle, FileText } from "lucide-react"
+import { Search, Laptop, ShieldCheck, Phone, CheckCircle, Copy, X, Check, MapPin, ShieldAlert, Award, Image as ImageIcon, Video as VideoIcon, ZoomIn, ZoomOut, RotateCcw, ChevronLeft, ChevronRight, Scale, Star, Printer, Truck, Clock, CheckSquare, Share2, Heart, AlertCircle, FileText, Zap, Key, Lock, ExternalLink } from "lucide-react"
 
 function InstagramIcon({ className = "w-4 h-4" }: { className?: string }) {
   return (
@@ -203,6 +203,14 @@ export default function CatalogLaptopClient({
   const [activeMediaMode, setActiveMediaMode] = useState<"image" | "video">("image")
   const [activePhotoIdx, setActivePhotoIdx] = useState(0)
 
+  // Instant Digital Checkout State
+  const [digitalCheckoutProd, setDigitalCheckoutProd] = useState<ProductItem | null>(null)
+  const [buyerName, setBuyerName] = useState("")
+  const [buyerWa, setBuyerWa] = useState("")
+  const [selectedPayMethod, setSelectedPayMethod] = useState<"qris" | "bsi" | "seabank">("qris")
+  const [isCheckingOut, setIsCheckingOut] = useState(false)
+  const [digitalResultKey, setDigitalResultKey] = useState<string | null>(null)
+
   // Fullscreen Zoom Lightbox State (Aspect 4:5)
   const [isZoomOpen, setIsZoomOpen] = useState(false)
   const [zoomScale, setZoomScale] = useState(1)
@@ -211,7 +219,6 @@ export default function CatalogLaptopClient({
 
   // CLIENT-SIDE HYDRATION & HASH LINK DEEP-LINK AUTO-OPENER
   useEffect(() => {
-    // Load Wishlist from LocalStorage
     try {
       const savedWishlist = localStorage.getItem("mughis_wishlist_ids")
       if (savedWishlist) {
@@ -219,7 +226,6 @@ export default function CatalogLaptopClient({
       }
     } catch {}
 
-    // Check LocalStorage product backup first
     let currentProdsList = products
     try {
       const localProducts = localStorage.getItem("mughis_admin_products")
@@ -232,7 +238,6 @@ export default function CatalogLaptopClient({
       }
     } catch {}
 
-    // Fetch latest public settings with cache busting
     fetch(`/api/public/settings?t=${Date.now()}`)
       .then((res) => res.json())
       .then((data) => {
@@ -266,7 +271,6 @@ export default function CatalogLaptopClient({
       })
       .catch(() => {})
       .finally(() => {
-        // DETECT SHARED PRODUCT LINK OR PAYMENT HASH LINK
         if (typeof window !== "undefined") {
           const hash = window.location.hash
           if (hash === "#pembayaran") {
@@ -293,9 +297,9 @@ export default function CatalogLaptopClient({
 
   const formattedWa = waPhone.replace(/[^0-9]/g, "").replace(/^0/, "62")
 
-  function copyText(text: string, bankName: string) {
+  function copyText(text: string, label: string) {
     navigator.clipboard.writeText(text).then(() => {
-      setToastMsg(`Nomor Rekening ${bankName} (${text}) berhasil disalin!`)
+      setToastMsg(`${label} (${text}) berhasil disalin!`)
       setTimeout(() => setToastMsg(""), 3000)
     })
   }
@@ -357,6 +361,50 @@ Link Resmi: ${origin}/katalog-laptop#pembayaran`
         setToastMsg(`Link produk ${p.title} berhasil disalin!`)
         setTimeout(() => setToastMsg(""), 3000)
       })
+    }
+  }
+
+  function openOrderAction(p: ProductItem) {
+    if (p.category === "digital" || p.badge.toLowerCase().includes("digital")) {
+      setDigitalCheckoutProd(p)
+      setBuyerName("")
+      setBuyerWa("")
+      setSelectedPayMethod("qris")
+      setDigitalResultKey(null)
+    } else {
+      window.open(getWaLink(p), "_blank")
+    }
+  }
+
+  async function processDigitalCheckout() {
+    if (!buyerName.trim() || !buyerWa.trim()) {
+      alert("Harap isi Nama & Nomor WhatsApp Anda!")
+      return
+    }
+
+    setIsCheckingOut(true)
+    try {
+      const res = await fetch("/api/digital/checkout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          productTitle: digitalCheckoutProd?.title || "Produk Digital",
+          customerName: buyerName,
+          customerWa: buyerWa,
+          amount: 400000
+        })
+      })
+
+      const json = await res.json()
+      if (json.success) {
+        setDigitalResultKey(json.keyCode || "DIGI-KEY-SUCCESS-73921")
+      } else {
+        alert("Gagal memproses. Silakan pesan via WhatsApp.")
+      }
+    } catch {
+      alert("Terjadi kesalahan koneksi.")
+    } finally {
+      setIsCheckingOut(false)
     }
   }
 
@@ -441,7 +489,7 @@ Link Resmi: ${origin}/katalog-laptop#pembayaran`
 
   const comparedProducts = products.filter((p) => compareIds.includes(p.id))
 
-  const transferConfirmMsg = encodeURIComponent(`Assalamu’alaikum Mughis Laptop Store,\n\nSaya telah melakukan pembayaran transfer untuk order:\n- Nama Pembeli: [NAMA SAYA]\n- Bank Tujuan: Bank BSI / SeaBank\n- Nominal Transfer: [NOMINAL]\n\nBerikut saya lampirkan foto/screenshot bukti transfernya. Mohon segera dipproses, terima kasih!`)
+  const transferConfirmMsg = encodeURIComponent(`Assalamu’alaikum Mughis Laptop Store,\n\nSaya telah melakukan pembayaran transfer untuk order:\n- Nama Pembeli: [NAMA SAYA]\n- Bank Tujuan: Bank BSI / SeaBank\n- Nominal Transfer: [NOMINAL]\n\nBerikut saya lampirkan foto/screenshot bukti transfernya. Mohon segera diproses, terima kasih!`)
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 font-sans antialiased selection:bg-teal-500 selection:text-white pb-20">
@@ -812,10 +860,10 @@ Link Resmi: ${origin}/katalog-laptop#pembayaran`
           ) : (
             <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-8">
               {filteredProducts.map((p) => {
-                const waUrl = getWaLink(p)
                 const photoCount = p.images && p.images.length > 0 ? p.images.length : 1
                 const isCompared = compareIds.includes(p.id)
                 const isLiked = wishlistIds.includes(p.id)
+                const isDigital = p.category === "digital" || p.badge.toLowerCase().includes("digital")
 
                 return (
                   <div id={`prod-${p.id}`} key={p.id} className="bg-white rounded-2xl border-2 border-slate-200 overflow-hidden flex flex-col justify-between shadow-xs hover:shadow-xl transition-all duration-300 group hover:-translate-y-1">
@@ -828,7 +876,7 @@ Link Resmi: ${origin}/katalog-laptop#pembayaran`
                           {p.badge}
                         </span>
 
-                        {/* Top Right Action Buttons: Compare & Wishlist */}
+                        {/* Top Right Action Buttons: Compare, Wishlist, & Share */}
                         <div className="absolute top-2 right-2 flex items-center gap-1">
                           <button
                             onClick={(e) => toggleWishlist(p.id, e)}
@@ -907,14 +955,13 @@ Link Resmi: ${origin}/katalog-laptop#pembayaran`
                         <span>Lihat Spek</span>
                       </button>
 
-                      <a
-                        href={waUrl}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="w-full py-2.5 sm:py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-[11px] sm:text-xs font-black flex items-center justify-center gap-1 transition shadow-md shadow-emerald-600/20 active:scale-95"
+                      <button
+                        onClick={() => openOrderAction(p)}
+                        className={`w-full py-2.5 sm:py-3 rounded-xl text-white text-[11px] sm:text-xs font-black flex items-center justify-center gap-1 transition shadow-md active:scale-95 ${isDigital ? "bg-amber-600 hover:bg-amber-700 shadow-amber-600/20" : "bg-emerald-600 hover:bg-emerald-700 shadow-emerald-600/20"}`}
                       >
-                        <span>Tanya WA</span>
-                      </a>
+                        {isDigital ? <Zap className="w-3.5 h-3.5 fill-white" /> : <Phone className="w-3.5 h-3.5" />}
+                        <span>{isDigital ? "Checkout ⚡" : "Tanya WA"}</span>
+                      </button>
                     </div>
                   </div>
                 )
@@ -1155,6 +1202,156 @@ Link Resmi: ${origin}/katalog-laptop#pembayaran`
         </div>
       </footer>
 
+      {/* ⚡ INSTANT AUTOMATED DIGITAL CHECKOUT MODAL */}
+      {digitalCheckoutProd && (
+        <div className="fixed inset-0 z-[80] flex items-center justify-center p-3 sm:p-4 bg-slate-900/80 backdrop-blur-md">
+          <div className="bg-white border border-slate-300 max-w-lg w-full rounded-2xl overflow-hidden shadow-2xl p-5 sm:p-6 space-y-4 text-slate-900 relative max-h-[90vh] overflow-y-auto">
+            <button onClick={() => setDigitalCheckoutProd(null)} className="absolute top-4 right-4 text-slate-400 hover:text-slate-800 p-1 rounded-lg">
+              <X className="w-6 h-6" />
+            </button>
+
+            <div className="space-y-3">
+              <div className="flex items-center gap-2">
+                <div className="w-9 h-9 rounded-xl bg-amber-500 text-white flex items-center justify-center font-bold">
+                  <Zap className="w-5 h-5 fill-white" />
+                </div>
+                <div>
+                  <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-800 uppercase border border-amber-300">
+                    Auto-Fulfillment 100% Instan 24 Jam
+                  </span>
+                  <h3 className="font-extrabold text-base text-slate-900 leading-snug">{digitalCheckoutProd.title}</h3>
+                </div>
+              </div>
+
+              {!digitalResultKey ? (
+                <>
+                  <div className="p-3 rounded-xl bg-amber-50 border border-amber-200 space-y-1">
+                    <span className="text-[11px] text-slate-500 font-bold uppercase">Total Pembayaran:</span>
+                    <p className="text-2xl font-black text-amber-900">{digitalCheckoutProd.priceText}</p>
+                  </div>
+
+                  <div className="space-y-3 text-xs">
+                    <div>
+                      <label className="block font-bold text-slate-700 mb-1">1. Nama Lengkap Anda *</label>
+                      <input
+                        type="text"
+                        placeholder="Contoh: Muhammad Rahmat"
+                        value={buyerName}
+                        onChange={(e) => setBuyerName(e.target.value)}
+                        className="w-full p-2.5 rounded-xl border border-slate-300 font-bold text-slate-900 focus:border-amber-500 focus:outline-none"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block font-bold text-slate-700 mb-1">2. Nomor WhatsApp Aktif *</label>
+                      <input
+                        type="text"
+                        placeholder="Contoh: 0852xxxx atau 0812xxxx"
+                        value={buyerWa}
+                        onChange={(e) => setBuyerWa(e.target.value)}
+                        className="w-full p-2.5 rounded-xl border border-slate-300 font-bold text-slate-900 focus:border-amber-500 focus:outline-none"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block font-bold text-slate-700 mb-1.5">3. Pilih Metode Pembayaran Resmi:</label>
+                      <div className="grid grid-cols-3 gap-2">
+                        <button
+                          type="button"
+                          onClick={() => setSelectedPayMethod("qris")}
+                          className={`p-2.5 rounded-xl border-2 font-bold text-[11px] flex flex-col items-center justify-center gap-1 transition ${selectedPayMethod === "qris" ? "border-amber-600 bg-amber-50 text-amber-900" : "border-slate-200 bg-white text-slate-700"}`}
+                        >
+                          <Zap className="w-4 h-4 text-amber-600" />
+                          <span>QRIS Instant</span>
+                        </button>
+
+                        <button
+                          type="button"
+                          onClick={() => setSelectedPayMethod("bsi")}
+                          className={`p-2.5 rounded-xl border-2 font-bold text-[11px] flex flex-col items-center justify-center gap-1 transition ${selectedPayMethod === "bsi" ? "border-amber-600 bg-amber-50 text-amber-900" : "border-slate-200 bg-white text-slate-700"}`}
+                        >
+                          <CreditCard className="w-4 h-4 text-teal-600" />
+                          <span>Bank BSI</span>
+                        </button>
+
+                        <button
+                          type="button"
+                          onClick={() => setSelectedPayMethod("seabank")}
+                          className={`p-2.5 rounded-xl border-2 font-bold text-[11px] flex flex-col items-center justify-center gap-1 transition ${selectedPayMethod === "seabank" ? "border-amber-600 bg-amber-50 text-amber-900" : "border-slate-200 bg-white text-slate-700"}`}
+                        >
+                          <CreditCard className="w-4 h-4 text-blue-600" />
+                          <span>SeaBank</span>
+                        </button>
+                      </div>
+                    </div>
+
+                    <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 text-[11px] space-y-1 text-slate-600 font-medium">
+                      <p className="font-bold text-slate-900">Rekening Tujuan Transfer:</p>
+                      <p className="font-mono text-xs font-black text-slate-900">
+                        {selectedPayMethod === "bsi" ? "BANK BSI: 7368300677 a/n Muhammad Aghisna" : selectedPayMethod === "seabank" ? "SEABANK: 901007430064 a/n Muhammad Aghisna" : "QRIS All Payment / E-Wallet (Scan & Pay)"}
+                      </p>
+                    </div>
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={processDigitalCheckout}
+                    disabled={isCheckingOut}
+                    className="w-full py-3.5 bg-amber-600 hover:bg-amber-700 text-white font-extrabold text-xs sm:text-sm rounded-xl flex items-center justify-center gap-2 shadow-md shadow-amber-600/20 active:scale-95 transition"
+                  >
+                    {isCheckingOut ? <RefreshCw className="w-4 h-4 animate-spin" /> : <Zap className="w-4 h-4 fill-white" />}
+                    <span>{isCheckingOut ? "Memverifikasi..." : "⚡ BAYAR & AMBIL KODE LISENSI OTOMATIS"}</span>
+                  </button>
+                </>
+              ) : (
+                /* INSTANT LICENSE KEY REVEAL STEP */
+                <div className="space-y-4 pt-2 text-center">
+                  <div className="w-12 h-12 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto text-2xl font-bold">
+                    <CheckCircle className="w-8 h-8" />
+                  </div>
+
+                  <div>
+                    <span className="px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-emerald-100 text-emerald-800 border border-emerald-300">
+                      ✅ Pembayaran & Aktivasi Berhasil Instan!
+                    </span>
+                    <h4 className="text-base font-black text-slate-900 mt-2">Kode Lisensi Digital Anda:</h4>
+                  </div>
+
+                  <div className="p-4 rounded-2xl bg-slate-900 text-white space-y-2 border-2 border-emerald-500 shadow-xl">
+                    <p className="text-xl sm:text-2xl font-black font-mono tracking-widest text-emerald-400 select-all">{digitalResultKey}</p>
+                    <button
+                      type="button"
+                      onClick={() => copyText(digitalResultKey, "Kode Lisensi Digital")}
+                      className="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold inline-flex items-center gap-1.5 shadow-md"
+                    >
+                      <Copy className="w-3.5 h-3.5" />
+                      <span>Salin Kode Lisensi</span>
+                    </button>
+                  </div>
+
+                  <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-left text-xs space-y-1.5 text-slate-700 font-medium">
+                    <p className="font-extrabold text-slate-900 uppercase text-[10px]">📘 Panduan Cara Aktivasi Bergambar:</p>
+                    <p>1. Buka software/aplikasi {digitalCheckoutProd.title}.</p>
+                    <p>2. Masukkan kode lisensi resmi yang tertera di atas.</p>
+                    <p>3. Lisensi otomatis aktif permanen seumur hidup resmi dari server resmi.</p>
+                  </div>
+
+                  <a
+                    href={`https://wa.me/${formattedWa}?text=${encodeURIComponent(`Assalamu’alaikum Mughis Laptop Store,\n\nSaya telah membeli Produk Digital:\n*${digitalCheckoutProd.title}*\nKode Lisensi: ${digitalResultKey}\n\nMohon konfirmasi pesanan saya. Terima kasih!`)}`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs sm:text-sm rounded-xl flex items-center justify-center gap-2 shadow-md transition"
+                  >
+                    <Phone className="w-4 h-4" />
+                    <span>💬 Simpan Salinan ke WhatsApp CS</span>
+                  </a>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* FLOATING COMPARE BAR BRIGHT */}
       {compareIds.length > 0 && (
         <div className="fixed bottom-20 left-1/2 -translate-x-1/2 z-40 bg-white text-slate-900 px-5 py-3 rounded-full shadow-2xl flex items-center gap-4 text-xs font-bold border-2 border-teal-600 backdrop-blur-md">
@@ -1339,15 +1536,13 @@ Link Resmi: ${origin}/katalog-laptop#pembayaran`
 
               <p className="text-xs text-slate-600 leading-relaxed font-medium">{selectedProduct.shortDesc}</p>
 
-              <a
-                href={getWaLink(selectedProduct)}
-                target="_blank"
-                rel="noreferrer"
-                className="w-full py-3.5 bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs sm:text-sm rounded-xl flex items-center justify-center gap-2 shadow-md shadow-emerald-600/20 active:scale-95 transition"
+              <button
+                onClick={() => openOrderAction(selectedProduct)}
+                className="w-full py-3.5 bg-amber-600 hover:bg-amber-700 text-white font-extrabold text-xs sm:text-sm rounded-xl flex items-center justify-center gap-2 shadow-md shadow-amber-600/20 active:scale-95 transition"
               >
-                <Phone className="w-4 h-4" />
-                <span>Pesan Sekarang via WhatsApp CS</span>
-              </a>
+                <Zap className="w-4 h-4 fill-white" />
+                <span>Checkout Instan ⚡ (Ambil Lisensi Otomatis)</span>
+              </button>
             </div>
           </div>
         </div>

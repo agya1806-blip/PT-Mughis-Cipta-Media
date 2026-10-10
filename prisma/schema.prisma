@@ -248,3 +248,28 @@ model ContactSubmission {
 
   @@map("contact_submissions")
 }
+
+model DigitalLicense {
+  id           Int      @id @default(autoincrement())
+  productTitle String   @map("product_title")
+  keyCode      String   @map("key_code")
+  isUsed       Boolean  @default(false) @map("is_used")
+  usedByPhone  String?  @map("used_by_phone")
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  @@map("digital_licenses")
+}
+
+model DigitalOrder {
+  id           Int      @id @default(autoincrement())
+  orderId      String   @unique @map("order_id")
+  productTitle String   @map("product_title")
+  customerName String   @map("customer_name")
+  customerWa   String   @map("customer_wa")
+  amount       Decimal  @db.Decimal(10, 2)
+  status       String   @default("PENDING")
+  keyCode      String?  @map("key_code")
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  @@map("digital_orders")
+}

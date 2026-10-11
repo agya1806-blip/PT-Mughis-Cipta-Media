@@ -380,3 +380,22 @@ input, textarea, select {
     padding-bottom: 8rem;
   }
 }
+
+/* Mobile Touch & Performance Utilities */
+.scrollbar-none {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
+}
+
+.gpu-accelerated {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.safe-pb {
+  padding-bottom: max(1.25rem, env(safe-area-inset-bottom));
+}
+

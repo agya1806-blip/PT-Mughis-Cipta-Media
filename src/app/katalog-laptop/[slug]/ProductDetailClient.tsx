@@ -220,6 +220,8 @@ export default function ProductDetailClient({
                     <img
                       src={images[activePhotoIdx] || product.image}
                       alt={product.title}
+                      loading="eager"
+                      decoding="async"
                       onClick={() => { setIsZoomOpen(true); setZoomScale(1); }}
                       className="w-full h-full object-cover cursor-zoom-in transition-transform duration-300 group-hover:scale-105"
                     />
@@ -590,11 +592,11 @@ export default function ProductDetailClient({
       </main>
 
       {/* 9. MOBILE STICKY BOTTOM ACTION BAR (SHOPEE STYLE) */}
-      <div className="fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-t border-slate-200/90 p-3 lg:hidden shadow-2xl">
+      <div className="fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-t border-slate-200/90 p-3 safe-pb lg:hidden shadow-2xl">
         <div className="max-w-md mx-auto flex items-center gap-2">
           <button
             onClick={handleShare}
-            className="p-3 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 font-bold shrink-0"
+            className="p-3 rounded-xl bg-slate-100 text-slate-700 active:scale-95 font-bold shrink-0 transition"
             title="Bagikan"
           >
             <Share2 className="w-5 h-5" />

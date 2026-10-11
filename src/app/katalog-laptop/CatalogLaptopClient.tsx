@@ -495,7 +495,7 @@ export default function CatalogLaptopClient({
                   <div>
                     {/* CLEAN COMPACT IMAGE (ASPECT 16/10 ON MOBILE, 4:5 ON TABLET/DESKTOP) */}
                     <a href={detailUrl} className="block relative aspect-[16/10] sm:aspect-[4/5] w-full bg-slate-100 overflow-hidden">
-                      <img src={p.images?.[0] || p.image} alt={p.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                      <img src={p.images?.[0] || p.image} alt={p.title} loading="lazy" decoding="async" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
                       <span className="absolute top-2 left-2 px-2 py-0.5 rounded-md text-[9px] sm:text-xs font-semibold bg-white/90 text-slate-800 shadow-xs border border-slate-200/60 backdrop-blur-xs">
                         {p.badge}
                       </span>

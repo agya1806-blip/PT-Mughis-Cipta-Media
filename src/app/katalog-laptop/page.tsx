@@ -3,7 +3,7 @@ import { ProductItem } from "@/types/catalog"
 import { slugify } from "@/lib/slug"
 import CatalogLaptopClient from "./CatalogLaptopClient"
 
-export const revalidate = 10
+export const revalidate = 3600
 
 const PUBLIC_KEYS = [
   "site_name", "contact_phone", "contact_email", "address", "owner_name",

@@ -5,7 +5,7 @@ import { ProductItem } from "@/types/catalog"
 import { slugify } from "@/lib/slug"
 import ProductDetailClient from "./ProductDetailClient"
 
-export const revalidate = 60
+export const revalidate = 3600
 
 const PUBLIC_KEYS = [
   "site_name", "contact_phone", "contact_email", "address", "owner_name",

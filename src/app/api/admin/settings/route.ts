@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server"
+import { revalidatePath } from "next/cache"
 import { prisma } from "@/lib/prisma"
 
 export async function GET() {
@@ -24,6 +25,14 @@ export async function PUT(request: Request) {
         create: { key, value: String(value ?? "") },
       })
     }
+
+    // Trigger instant On-Demand Revalidation on Vercel Edge CDN for catalog pages
+    try {
+      revalidatePath("/katalog-laptop")
+      revalidatePath("/katalog-laptop/[slug]", "page")
+      revalidatePath("/", "layout")
+    } catch {}
+
     return NextResponse.json({ success: true })
   } catch (err: any) {
     return NextResponse.json({ error: err.message || "Failed to update settings" }, { status: 500 })

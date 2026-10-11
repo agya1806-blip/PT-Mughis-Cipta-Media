@@ -14,47 +14,7 @@ function InstagramIcon({ className = "w-4 h-4" }: { className?: string }) {
 }
 
 import { slugify } from "@/lib/slug"
-
-export interface ProductItem {
-  id: string
-  slug?: string
-  title: string
-  category: "laptop" | "digital" | "budget" | string
-  useCase?: "mahasiswa" | "kantor" | "editing" | "all" | string
-  badge: string
-  badgeColor?: string
-  stockStatus?: "READY" | "LIMITED" | "SOLD_OUT" | "HIDDEN"
-  priceText: string
-  rawPriceText: string
-  originalPriceText?: string
-  discountPercent?: number
-  rating?: number
-  soldCount?: number
-  image: string
-  images?: string[]
-  video?: string
-  shortDesc: string
-  specs: string[]
-  conditionNote?: string
-  warranty?: string
-  bonus: string
-}
-
-export interface BankAccount {
-  id: string
-  bank: string
-  account_number: string
-  beneficiary: string
-}
-
-export interface TestimonialItem {
-  id: string
-  name: string
-  location: string
-  rating: number
-  text: string
-  photoUrl?: string
-}
+import { ProductItem, ProductVariant, BankAccount, TestimonialItem } from "@/types/catalog"
 
 const DEFAULT_BANKS: BankAccount[] = [
   { id: "b1", bank: "BANK BSI", account_number: "7368300677", beneficiary: "Muhammad Aghisna" },

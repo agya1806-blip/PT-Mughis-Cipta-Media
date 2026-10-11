@@ -1,5 +1,6 @@
 import { Metadata } from "next"
 import { notFound } from "next/navigation"
+import { cache } from "react"
 import { prisma } from "@/lib/prisma"
 import { ProductItem } from "@/types/catalog"
 import { slugify } from "@/lib/slug"
@@ -13,7 +14,8 @@ const PUBLIC_KEYS = [
   "instagram_url", "bank_accounts_json", "catalog_products_json", "catalog_testimonials_json",
 ]
 
-async function getProductsAndSettings() {
+// React cache() deduplicates requests in the same render lifecycle
+const getProductsAndSettings = cache(async () => {
   let products: ProductItem[] = []
   let settings: Record<string, string> = {}
 
@@ -42,10 +44,18 @@ async function getProductsAndSettings() {
       } catch {}
     }
   } catch (e) {
-    console.error("Server fetch error:", e)
+    console.error("Server fetch error in /katalog-laptop/[slug]:", e)
   }
 
   return { products, settings }
+})
+
+// Generate static HTML pages at build time & ISR revalidation for sub-50ms instant clicks
+export async function generateStaticParams() {
+  const { products } = await getProductsAndSettings()
+  return products.map((p) => ({
+    slug: p.slug,
+  }))
 }
 
 export async function generateMetadata({

@@ -13,6 +13,7 @@ function InstagramIcon({ className = "w-4 h-4" }: { className?: string }) {
   )
 }
 
+import Link from "next/link"
 import { slugify } from "@/lib/slug"
 import { ProductItem, ProductVariant, BankAccount, TestimonialItem } from "@/types/catalog"
 
@@ -485,7 +486,7 @@ export default function CatalogLaptopClient({
                 <div key={p.id} className="min-w-0 w-full max-w-full bg-white rounded-2xl border border-slate-200/80 overflow-hidden flex flex-col justify-between shadow-xs hover:shadow-md transition-all duration-200 group">
                   <div>
                     {/* CLEAN COMPACT IMAGE (ASPECT 16/10 ON MOBILE, 4:5 ON TABLET/DESKTOP) */}
-                    <a href={detailUrl} className="block relative aspect-[16/10] sm:aspect-[4/5] w-full bg-slate-100 overflow-hidden">
+                    <Link href={detailUrl} prefetch={true} className="block relative aspect-[16/10] sm:aspect-[4/5] w-full bg-slate-100 overflow-hidden">
                       <img src={p.images?.[0] || p.image} alt={p.title} loading="lazy" decoding="async" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
                       <span className="absolute top-2 left-2 px-2 py-0.5 rounded-md text-[9px] sm:text-xs font-semibold bg-white/90 text-slate-800 shadow-xs border border-slate-200/60 backdrop-blur-xs">
                         {p.badge}
@@ -529,12 +530,12 @@ export default function CatalogLaptopClient({
                           SOLD OUT
                         </span>
                       )}
-                    </a>
+                    </Link>
 
                     <div className="p-2.5 sm:p-4 space-y-1.5">
-                      <a href={detailUrl} className="block group-hover:text-teal-700 transition">
+                      <Link href={detailUrl} prefetch={true} className="block group-hover:text-teal-700 transition">
                         <h3 className="text-xs sm:text-base font-bold text-slate-900 leading-tight line-clamp-2">{p.title}</h3>
-                      </a>
+                      </Link>
 
                       {/* SHOPEE PRICE & RATING ROW */}
                       <div className="space-y-0.5">
@@ -567,12 +568,13 @@ export default function CatalogLaptopClient({
                   </div>
 
                   <div className="p-2 sm:p-4 pt-0 grid grid-cols-2 gap-1.5">
-                    <a
+                    <Link
                       href={detailUrl}
+                      prefetch={true}
                       className="w-full py-1.5 sm:py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-[10px] sm:text-xs font-bold flex items-center justify-center transition"
                     >
                       <span>Detail</span>
-                    </a>
+                    </Link>
 
                     <a
                       href={waUrl}

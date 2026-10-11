@@ -177,21 +177,49 @@ export default function CatalogLaptopClient({
   initialProducts?: ProductItem[]
   initialSettings?: Record<string, string>
 }) {
-  const [products] = useState<ProductItem[]>(
+  const [products, setProducts] = useState<ProductItem[]>(
     initialProducts.length > 0 ? initialProducts : DEFAULT_PRODUCTS
   )
-  const [bankAccounts] = useState<BankAccount[]>(() => {
+  const [bankAccounts, setBankAccounts] = useState<BankAccount[]>(() => {
     if (initialSettings.bank_accounts_json) {
       try { return JSON.parse(initialSettings.bank_accounts_json) } catch {}
     }
     return DEFAULT_BANKS
   })
-  const [testimonials] = useState<TestimonialItem[]>(() => {
+  const [testimonials, setTestimonials] = useState<TestimonialItem[]>(() => {
     if (initialSettings.catalog_testimonials_json) {
       try { return JSON.parse(initialSettings.catalog_testimonials_json) } catch {}
     }
     return DEFAULT_TESTIMONIALS
   })
+
+  useEffect(() => {
+    fetch("/api/public/settings")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data && !data.error) {
+          if (data.catalog_products_json) {
+            try {
+              const parsed = JSON.parse(data.catalog_products_json)
+              if (Array.isArray(parsed) && parsed.length > 0) {
+                setProducts(parsed.map((p: any) => ({
+                  ...p,
+                  slug: p.slug || slugify(p.title) || p.id,
+                  images: p.images && p.images.length > 0 ? p.images : [p.image]
+                })))
+              }
+            } catch {}
+          }
+          if (data.bank_accounts_json) {
+            try { setBankAccounts(JSON.parse(data.bank_accounts_json)) } catch {}
+          }
+          if (data.catalog_testimonials_json) {
+            try { setTestimonials(JSON.parse(data.catalog_testimonials_json)) } catch {}
+          }
+        }
+      })
+      .catch(() => {})
+  }, [])
 
   const waPhone = initialSettings.contact_phone || "0852-1770-6587"
   const ownerName = initialSettings.owner_name || "Muhammad Aghisna"

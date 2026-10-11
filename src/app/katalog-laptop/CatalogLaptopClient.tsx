@@ -334,14 +334,15 @@ export default function CatalogLaptopClient({
           </a>
 
           <div className="flex items-center gap-2 shrink-0">
-            <button
-              onClick={() => window.print()}
+            <Link
+              href="/katalog-laptop/brosur"
+              prefetch={true}
               className="hidden sm:inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs transition border border-slate-300/80"
-              title="Cetak Brosur Katalog"
+              title="Cetak Brosur Katalog Printable A4"
             >
               <Printer className="w-3.5 h-3.5 text-teal-700" />
-              <span>Cetak Brosur</span>
-            </button>
+              <span>Cetak Brosur A4</span>
+            </Link>
 
             <a
               href={`https://wa.me/${formattedWa}?text=${encodeURIComponent("Halo Mughis Laptop Store, saya ingin bertanya stok laptop/produk digital.")}`}

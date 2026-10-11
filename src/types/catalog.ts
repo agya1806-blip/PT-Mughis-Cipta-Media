@@ -8,7 +8,7 @@ export interface ProductVariant {
 
 export interface ProductItem {
   id: string
-  slug: string
+  slug?: string
   title: string
   category: "laptop" | "digital" | "budget" | string
   useCase?: "mahasiswa" | "kantor" | "editing" | "all" | string

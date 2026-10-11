@@ -51,6 +51,7 @@ const DEFAULT_TESTIMONIALS: TestimonialItem[] = [
 const DEFAULT_PRODUCTS: ProductItem[] = [
   {
     id: "prod-x1-carbon",
+    slug: "lenovo-thinkpad-x1-carbon-i5-gen-6",
     title: "Lenovo ThinkPad X1 Carbon Core i5 Gen 6",
     category: "laptop",
     useCase: "mahasiswa",
@@ -79,6 +80,7 @@ const DEFAULT_PRODUCTS: ProductItem[] = [
   },
   {
     id: "prod-t460",
+    slug: "lenovo-thinkpad-t460-i5-gen-6",
     title: "Lenovo ThinkPad T460 Core i5 Gen 6",
     category: "laptop",
     useCase: "kantor",
@@ -105,6 +107,7 @@ const DEFAULT_PRODUCTS: ProductItem[] = [
   },
   {
     id: "prod-hp-430-g5",
+    slug: "hp-probook-430-g5-i5-gen-8",
     title: "HP ProBook 430 G5 Core i5 Gen 8",
     category: "laptop",
     useCase: "editing",

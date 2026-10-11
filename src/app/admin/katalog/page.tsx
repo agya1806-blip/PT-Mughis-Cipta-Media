@@ -1,3 +1,7 @@
+"use client"
+
+import { useEffect, useState } from "react"
+import { Building2, CreditCard, Laptop, Plus, Trash2, Edit3, Save, Upload, Image as ImageIcon, Video, Star, MessageSquare } from "lucide-react"
 import { slugify } from "@/lib/slug"
 import { ProductItem, ProductVariant, BankAccount, TestimonialItem } from "@/types/catalog"
 

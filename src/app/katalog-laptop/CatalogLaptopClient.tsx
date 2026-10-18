@@ -510,10 +510,10 @@ Link Resmi: ${origin}/katalog-laptop#pembayaran`
   const transferConfirmMsg = encodeURIComponent(`Assalamu’alaikum Mughis Laptop Store,\n\nSaya telah melakukan pembayaran transfer untuk order:\n- Nama Pembeli: [NAMA SAYA]\n- Bank Tujuan: Bank BSI / SeaBank\n- Nominal Transfer: [NOMINAL]\n\nBerikut saya lampirkan foto/screenshot bukti transfernya. Mohon segera diproses, terima kasih!`)
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 font-sans antialiased selection:bg-blue-600 selection:text-white pb-32 sm:pb-36">
+    <div className="min-h-screen bg-slate-50 text-slate-900 font-sans antialiased selection:bg-blue-600 selection:text-white pb-36 sm:pb-40">
 
-      {/* Top Banner Warning — BRAND TECH BLUE & TEAL THEME */}
-      <div className="bg-gradient-to-r from-blue-900 via-slate-900 to-teal-900 text-white text-[11px] sm:text-sm py-2.5 px-3 sm:px-4 text-center font-bold leading-snug shadow-xs border-b border-blue-800/50">
+      {/* Top Banner Warning — BRAND TECH BLUE & SLATE THEME (ZERO GREEN) */}
+      <div className="bg-gradient-to-r from-blue-900 via-slate-900 to-blue-950 text-white text-[11px] sm:text-sm py-2.5 px-3 sm:px-4 text-center font-bold leading-snug shadow-xs border-b border-blue-800/50">
         💡 <strong>TIPS BELANJA AMAN:</strong> Pastikan hanya bertransaksi ke rekening resmi a/n <u>{ownerName}</u> (BSI / SeaBank). WA CS: <u>{waPhone}</u>!
       </div>
 
@@ -525,13 +525,13 @@ Link Resmi: ${origin}/katalog-laptop#pembayaran`
             <img
               src="/logo-mughis-laptop.png"
               alt="Logo Mughis Laptop Store"
-              className="w-10 h-10 sm:w-12 sm:h-12 object-contain rounded-xl shrink-0 shadow-sm border border-slate-200"
+              className="w-10 h-10 sm:w-12 sm:h-12 object-contain rounded-xl shrink-0 shadow-md border border-slate-200"
             />
             <div className="min-w-0">
               <span className="text-base sm:text-2xl font-black tracking-tight text-slate-900 truncate block leading-tight">
                 Mughis <span className="text-blue-700">Laptop Store</span>
               </span>
-              <span className="text-[10px] sm:text-xs font-bold text-teal-700 truncate flex items-center gap-1">
+              <span className="text-[10px] sm:text-xs font-bold text-blue-800 truncate flex items-center gap-1">
                 <MapPin className="w-3 h-3 text-blue-600 shrink-0" />
                 <span className="truncate">{address}</span>
               </span>
@@ -542,31 +542,31 @@ Link Resmi: ${origin}/katalog-laptop#pembayaran`
           <nav className="hidden md:flex items-center space-x-2 text-xs sm:text-sm font-extrabold text-slate-700">
             <button
               onClick={() => setActiveTab("beranda")}
-              className={`px-3.5 py-2 rounded-xl transition ${activeTab === "beranda" ? "bg-gradient-to-r from-blue-700 to-teal-600 text-white shadow-xs" : "hover:bg-blue-50 text-slate-700"}`}
+              className={`px-3.5 py-2 rounded-xl transition ${activeTab === "beranda" ? "bg-gradient-to-r from-blue-700 to-blue-900 text-white shadow-xs" : "hover:bg-blue-50 text-slate-700"}`}
             >
               🏠 Beranda
             </button>
             <button
               onClick={() => setActiveTab("stok")}
-              className={`px-3.5 py-2 rounded-xl transition ${activeTab === "stok" ? "bg-gradient-to-r from-blue-700 to-teal-600 text-white shadow-xs" : "hover:bg-blue-50 text-slate-700"}`}
+              className={`px-3.5 py-2 rounded-xl transition ${activeTab === "stok" ? "bg-gradient-to-r from-blue-700 to-blue-900 text-white shadow-xs" : "hover:bg-blue-50 text-slate-700"}`}
             >
               💻 Stok Unit Ready
             </button>
             <button
               onClick={() => setActiveTab("garansi")}
-              className={`px-3.5 py-2 rounded-xl transition ${activeTab === "garansi" ? "bg-gradient-to-r from-blue-700 to-teal-600 text-white shadow-xs" : "hover:bg-blue-50 text-slate-700"}`}
+              className={`px-3.5 py-2 rounded-xl transition ${activeTab === "garansi" ? "bg-gradient-to-r from-blue-700 to-blue-900 text-white shadow-xs" : "hover:bg-blue-50 text-slate-700"}`}
             >
               🛡️ Layanan Garansi
             </button>
             <button
               onClick={() => setActiveTab("pembayaran")}
-              className={`px-3.5 py-2 rounded-xl transition ${activeTab === "pembayaran" ? "bg-gradient-to-r from-blue-700 to-teal-600 text-white shadow-xs" : "hover:bg-blue-50 text-slate-700"}`}
+              className={`px-3.5 py-2 rounded-xl transition ${activeTab === "pembayaran" ? "bg-gradient-to-r from-blue-700 to-blue-900 text-white shadow-xs" : "hover:bg-blue-50 text-slate-700"}`}
             >
               💳 Rekening Resmi
             </button>
             <button
               onClick={() => setActiveTab("lokasi")}
-              className={`px-3.5 py-2 rounded-xl transition ${activeTab === "lokasi" ? "bg-gradient-to-r from-blue-700 to-teal-600 text-white shadow-sm" : "hover:bg-blue-50 text-slate-700"}`}
+              className={`px-3.5 py-2 rounded-xl transition ${activeTab === "lokasi" ? "bg-gradient-to-r from-blue-700 to-blue-900 text-white shadow-sm" : "hover:bg-blue-50 text-slate-700"}`}
             >
               📍 Lokasi & Kontak
             </button>
@@ -596,7 +596,7 @@ Link Resmi: ${origin}/katalog-laptop#pembayaran`
               href={`https://wa.me/${formattedWa}?text=${encodeURIComponent("Halo Mughis Laptop Store, saya ingin bertanya stok laptop/produk digital.")}`}
               target="_blank"
               rel="noreferrer"
-              className="px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-xl bg-gradient-to-r from-blue-700 to-emerald-600 hover:from-blue-800 hover:to-emerald-700 text-white font-bold text-xs sm:text-sm flex items-center gap-1.5 shadow-md shadow-blue-700/20 transition transform active:scale-95"
+              className="px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-xl bg-gradient-to-r from-blue-700 to-blue-800 hover:from-blue-800 hover:to-blue-900 text-white font-bold text-xs sm:text-sm flex items-center gap-1.5 shadow-md shadow-blue-700/20 transition transform active:scale-95"
             >
               <Phone className="w-4 h-4 shrink-0" />
               <span>CS WA</span>
@@ -604,46 +604,46 @@ Link Resmi: ${origin}/katalog-laptop#pembayaran`
           </div>
         </div>
 
-        {/* Clean Mobile Tab Switcher Bar - NO STRAY BEIGE BACKGROUND ARTIFACTS */}
+        {/* CLEAN MOBILE TAB SWITCHER BAR - 100% BEIGE/CREM FREE */}
         <div className="md:hidden flex border-t border-b border-slate-200 bg-white px-2 py-2 overflow-x-auto gap-1.5 text-xs font-bold shadow-xs">
           <button
             onClick={() => setActiveTab("beranda")}
-            className={`px-3 py-1.5 rounded-xl shrink-0 whitespace-nowrap transition ${activeTab === "beranda" ? "bg-gradient-to-r from-blue-700 to-teal-600 text-white shadow-xs" : "text-slate-700 bg-slate-100 hover:bg-slate-200"}`}
+            className={`px-3.5 py-1.5 rounded-xl shrink-0 whitespace-nowrap transition ${activeTab === "beranda" ? "bg-gradient-to-r from-blue-700 to-blue-900 text-white shadow-xs" : "text-slate-700 bg-slate-100 hover:bg-slate-200"}`}
           >
             🏠 Beranda
           </button>
           <button
             onClick={() => setActiveTab("stok")}
-            className={`px-3 py-1.5 rounded-xl shrink-0 whitespace-nowrap transition ${activeTab === "stok" ? "bg-gradient-to-r from-blue-700 to-teal-600 text-white shadow-xs" : "text-slate-700 bg-slate-100 hover:bg-slate-200"}`}
+            className={`px-3.5 py-1.5 rounded-xl shrink-0 whitespace-nowrap transition ${activeTab === "stok" ? "bg-gradient-to-r from-blue-700 to-blue-900 text-white shadow-xs" : "text-slate-700 bg-slate-100 hover:bg-slate-200"}`}
           >
             💻 Stok Unit
           </button>
           <button
             onClick={() => setActiveTab("garansi")}
-            className={`px-3 py-1.5 rounded-xl shrink-0 whitespace-nowrap transition ${activeTab === "garansi" ? "bg-gradient-to-r from-blue-700 to-teal-600 text-white shadow-xs" : "text-slate-700 bg-slate-100 hover:bg-slate-200"}`}
+            className={`px-3.5 py-1.5 rounded-xl shrink-0 whitespace-nowrap transition ${activeTab === "garansi" ? "bg-gradient-to-r from-blue-700 to-blue-900 text-white shadow-xs" : "text-slate-700 bg-slate-100 hover:bg-slate-200"}`}
           >
             🛡️ Garansi
           </button>
           <button
             onClick={() => setActiveTab("pembayaran")}
-            className={`px-3 py-1.5 rounded-xl shrink-0 whitespace-nowrap transition ${activeTab === "pembayaran" ? "bg-gradient-to-r from-blue-700 to-teal-600 text-white shadow-xs" : "text-slate-700 bg-slate-100 hover:bg-slate-200"}`}
+            className={`px-3.5 py-1.5 rounded-xl shrink-0 whitespace-nowrap transition ${activeTab === "pembayaran" ? "bg-gradient-to-r from-blue-700 to-blue-900 text-white shadow-xs" : "text-slate-700 bg-slate-100 hover:bg-slate-200"}`}
           >
             💳 Rekening
           </button>
           <button
             onClick={() => setActiveTab("lokasi")}
-            className={`px-3 py-1.5 rounded-xl shrink-0 whitespace-nowrap transition ${activeTab === "lokasi" ? "bg-gradient-to-r from-blue-700 to-teal-600 text-white shadow-xs" : "text-slate-700 bg-slate-100 hover:bg-slate-200"}`}
+            className={`px-3.5 py-1.5 rounded-xl shrink-0 whitespace-nowrap transition ${activeTab === "lokasi" ? "bg-gradient-to-r from-blue-700 to-blue-900 text-white shadow-xs" : "text-slate-700 bg-slate-100 hover:bg-slate-200"}`}
           >
             📍 Lokasi
           </button>
         </div>
       </header>
 
-      {/* 1. TAB CONTENT: ULTRA-PREMIUM STORE HOMEPAGE WITH "MAS MUGHIS" ANIMATED CHARACTER MASCOT */}
+      {/* 1. TAB CONTENT: ULTRA-PREMIUM STORE HOMEPAGE WITH 3D CARTOON MALE MASCOT WEARING BLACK KOPIAH / PECI BERLOGO */}
       {activeTab === "beranda" && (
         <div className="space-y-12 sm:space-y-16 pb-12">
 
-          {/* SECTION 1: HERO SHOWCASE WITH "MAS MUGHIS" ANIMATED CHARACTER AVATAR SHOWCASE */}
+          {/* SECTION 1: HERO SHOWCASE WITH 3D CARTOON MASCOT "MAS MUGHIS" (KOPIAH / PECI BERLOGO) */}
           <section className="pt-8 sm:pt-14 pb-12 sm:pb-16 bg-gradient-to-b from-blue-50/90 via-white to-slate-50 border-b border-slate-200">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
 
@@ -665,7 +665,7 @@ Link Resmi: ${origin}/katalog-laptop#pembayaran`
                 <div className="flex flex-col sm:flex-row items-center lg:justify-start justify-center gap-3 pt-2">
                   <button
                     onClick={() => setActiveTab("stok")}
-                    className="w-full sm:w-auto px-7 py-3.5 rounded-2xl bg-gradient-to-r from-blue-700 to-teal-600 hover:from-blue-800 hover:to-teal-700 text-white font-extrabold text-sm sm:text-base flex items-center justify-center gap-2 shadow-xl shadow-blue-700/30 active:scale-95 transition"
+                    className="w-full sm:w-auto px-7 py-3.5 rounded-2xl bg-gradient-to-r from-blue-700 to-blue-900 hover:from-blue-800 hover:to-slate-900 text-white font-extrabold text-sm sm:text-base flex items-center justify-center gap-2 shadow-xl shadow-blue-700/30 active:scale-95 transition"
                   >
                     <Laptop className="w-5 h-5" />
                     <span>Lihat Stok Ready ({activeProducts.length} Unit)</span>
@@ -682,34 +682,53 @@ Link Resmi: ${origin}/katalog-laptop#pembayaran`
                 </div>
               </div>
 
-              {/* 🧑‍💻 "MAS MUGHIS" ANIMATED MALE CHARACTER SHOWCASE CARD */}
+              {/* 🧑‍💻 3D CARTOON MALE CHARACTER AVATAR WEARING BLACK KOPIAH / PECI WITH LOGO */}
               <div className="lg:col-span-5 flex flex-col items-center justify-center relative">
 
                 {/* ROTATING SPEECH BUBBLE */}
                 <div className="bg-white p-4 sm:p-5 rounded-2xl border-2 border-blue-600 shadow-2xl relative mb-4 max-w-sm w-full text-center sm:text-left transition-all duration-300 animate-pulse">
                   <div className="flex items-center gap-2 mb-1.5 justify-center sm:justify-start">
-                    <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping"></span>
+                    <span className="w-2.5 h-2.5 rounded-full bg-blue-600 animate-ping"></span>
                     <span className="font-extrabold text-xs text-blue-900 uppercase tracking-wider">
-                      Mas Mughis (CS AI Assistant)
+                      Mas Mughis (3D Mascot Store)
                     </span>
                   </div>
                   <p className="text-xs sm:text-sm font-bold text-slate-800 leading-snug">
                     "{MASCOT_MESSAGES[mascotBubbleIdx]}"
                   </p>
-                  {/* Arrow Pointing Down */}
                   <div className="w-4 h-4 bg-white border-r-2 border-b-2 border-blue-600 rotate-45 absolute -bottom-2.5 left-1/2 -translate-x-1/2"></div>
                 </div>
 
-                {/* ANIMATED FLOATING AVATAR IMAGE & MASKOT CARD */}
-                <div className="bg-gradient-to-b from-blue-700 via-slate-900 to-teal-900 p-6 rounded-3xl border-4 border-white shadow-2xl text-center space-y-3 relative group w-full max-w-sm transition-transform duration-300 hover:scale-105">
+                {/* 3D CARTOON MASCOT CONTAINER WITH KOPIAH BERLOGO */}
+                <div className="bg-gradient-to-b from-blue-800 via-slate-900 to-blue-950 p-6 rounded-3xl border-4 border-white shadow-2xl text-center space-y-3 relative group w-full max-w-sm transition-transform duration-300 hover:scale-105">
                   <div className="w-36 h-36 sm:w-44 sm:h-44 rounded-full overflow-hidden border-4 border-white mx-auto shadow-2xl bg-blue-100 flex items-center justify-center relative">
-                    <img
-                      src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=80"
-                      alt="Mas Mughis Character"
-                      className="w-full h-full object-cover animate-[bounce_4s_infinite]"
-                    />
-                    <span className="absolute bottom-2 right-2 px-2 py-0.5 rounded-full text-[9px] font-black uppercase bg-emerald-500 text-white shadow-md border border-white">
-                      ONLINE
+
+                    {/* SVG 3D CARTOON AVATAR ILLUSTATION WEARING KOPIAH / PECI BERLOGO */}
+                    <div className="w-full h-full bg-gradient-to-b from-blue-200 to-slate-200 flex flex-col items-center justify-end relative pt-2 animate-[bounce_4s_infinite]">
+                      {/* Black Kopiah / Peci with Official Logo Badge */}
+                      <div className="w-24 h-11 bg-slate-950 rounded-t-2xl relative flex items-center justify-center border-b-2 border-blue-500 shadow-md">
+                        <img src="/logo-mughis-laptop.png" alt="Logo Peci" className="w-6 h-6 object-contain" />
+                      </div>
+
+                      {/* 3D Cartoon Guy Face */}
+                      <div className="w-20 h-16 bg-amber-100 rounded-b-3xl relative flex flex-col items-center justify-center border-2 border-amber-200/80 -mt-1 shadow-xs">
+                        {/* Eyes */}
+                        <div className="flex gap-4 mb-1">
+                          <div className="w-2.5 h-2.5 bg-slate-900 rounded-full"></div>
+                          <div className="w-2.5 h-2.5 bg-slate-900 rounded-full"></div>
+                        </div>
+                        {/* Friendly Smile */}
+                        <div className="w-6 h-2 border-b-2 border-slate-900 rounded-full"></div>
+                      </div>
+
+                      {/* Tech Navy Suit Body */}
+                      <div className="w-32 h-14 bg-blue-900 rounded-t-3xl border-t-2 border-white flex items-start justify-center pt-1">
+                        <div className="w-6 h-8 bg-white/90 clip-path-polygon"></div>
+                      </div>
+                    </div>
+
+                    <span className="absolute bottom-2 right-2 px-2 py-0.5 rounded-full text-[9px] font-black uppercase bg-blue-600 text-white shadow-md border border-white">
+                      3D MASCOT
                     </span>
                   </div>
 
@@ -722,7 +741,7 @@ Link Resmi: ${origin}/katalog-laptop#pembayaran`
                     href={`https://wa.me/${formattedWa}?text=${encodeURIComponent("Halo Mas Mughis, saya mau konsultasi rekomendasi laptop terbaik sesuai kebutuhan saya.")}`}
                     target="_blank"
                     rel="noreferrer"
-                    className="w-full py-3 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-black text-xs sm:text-sm flex items-center justify-center gap-2 shadow-lg transition active:scale-95 block"
+                    className="w-full py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-black text-xs sm:text-sm flex items-center justify-center gap-2 shadow-lg transition active:scale-95 block"
                   >
                     <MessageCircle className="w-4 h-4" />
                     <span>Chat Konsultasi WA Mas Mughis</span>
@@ -735,7 +754,7 @@ Link Resmi: ${origin}/katalog-laptop#pembayaran`
 
           {/* SECTION 2: FLASH OFFER / SPECIAL PROMO BANNER */}
           <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="bg-gradient-to-r from-blue-900 via-slate-900 to-teal-900 text-white p-6 sm:p-10 rounded-3xl shadow-2xl relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-8 border-2 border-blue-500/40">
+            <div className="bg-gradient-to-r from-blue-900 via-slate-900 to-blue-950 text-white p-6 sm:p-10 rounded-3xl shadow-2xl relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-8 border-2 border-blue-500/40">
               <div className="space-y-4 max-w-xl text-center lg:text-left">
                 <span className="px-3.5 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-amber-400 text-slate-950 shadow-md">
                   🔥 FLASH PROMO SPESIAL HARI INI
@@ -790,14 +809,14 @@ Link Resmi: ${origin}/katalog-laptop#pembayaran`
                   <div>
                     <div className="relative aspect-[4/5] w-full bg-slate-100 overflow-hidden">
                       <img src={p.image} alt={p.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
-                      <span className="absolute top-2 left-2 z-10 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-blue-100 text-blue-900 border border-blue-300 max-w-[52%] truncate">
+                      <span className="absolute top-2 left-2 z-10 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-blue-100 text-blue-900 border border-blue-300 max-w-[48%] truncate">
                         {p.badge}
                       </span>
                     </div>
 
                     <div className="p-4 sm:p-5 space-y-2">
                       <h3 className="font-extrabold text-base text-slate-900 leading-snug line-clamp-2">{p.title}</h3>
-                      <div className="p-2.5 rounded-xl bg-gradient-to-r from-blue-50 to-teal-50 border border-blue-200">
+                      <div className="p-2.5 rounded-xl bg-gradient-to-r from-blue-50 to-slate-100 border border-blue-200">
                         <span className="text-[10px] text-slate-500 font-bold block uppercase">Penawaran Spesial</span>
                         <p className="text-xl font-black text-blue-950">{p.priceText}</p>
                       </div>
@@ -814,7 +833,7 @@ Link Resmi: ${origin}/katalog-laptop#pembayaran`
                     </button>
                     <button
                       onClick={() => openOrderAction(p)}
-                      className="flex-1 py-2.5 rounded-xl bg-gradient-to-r from-blue-700 to-teal-600 hover:from-blue-800 hover:to-teal-700 text-white font-bold text-xs"
+                      className="flex-1 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs"
                     >
                       Pesan WA
                     </button>
@@ -886,8 +905,8 @@ Link Resmi: ${origin}/katalog-laptop#pembayaran`
               {/* Animated Card 3: Rekening Pembayaran Resmi */}
               <div className="bg-white p-5 rounded-3xl border-2 border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 group relative overflow-hidden flex flex-col justify-between">
                 <div className="space-y-3">
-                  <div className="w-12 h-12 rounded-2xl bg-teal-100 text-teal-700 flex items-center justify-center font-bold shadow-md group-hover:scale-110 transition-transform">
-                    <CreditCard className="w-6 h-6 text-teal-600 animate-pulse" />
+                  <div className="w-12 h-12 rounded-2xl bg-blue-100 text-blue-700 flex items-center justify-center font-bold shadow-md group-hover:scale-110 transition-transform">
+                    <CreditCard className="w-6 h-6 text-blue-600 animate-pulse" />
                   </div>
                   <h3 className="font-extrabold text-sm sm:text-base text-slate-900 leading-snug">
                     "Ke mana nomor rekening pembayaran resmi owner?"
@@ -898,7 +917,7 @@ Link Resmi: ${origin}/katalog-laptop#pembayaran`
                 </div>
                 <button
                   onClick={() => setActiveTab("pembayaran")}
-                  className="mt-4 pt-3 border-t border-slate-100 text-xs font-black text-teal-700 hover:text-teal-900 flex items-center justify-between group-hover:translate-x-1 transition-transform"
+                  className="mt-4 pt-3 border-t border-slate-100 text-xs font-black text-blue-700 hover:text-blue-900 flex items-center justify-between group-hover:translate-x-1 transition-transform"
                 >
                   <span>Cek Rekening BSI & SeaBank</span>
                   <ArrowRight className="w-4 h-4" />
@@ -1101,7 +1120,7 @@ Link Resmi: ${origin}/katalog-laptop#pembayaran`
                         <img src={p.images?.[0] || p.image} alt={p.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
 
                         {/* Top-Left Badge with max-width truncate so it NEVER collides with buttons */}
-                        <span className="absolute top-2 left-2 z-10 px-2 sm:px-2.5 py-1 rounded-lg text-[9px] sm:text-xs font-black uppercase tracking-wider bg-blue-100 text-blue-900 border border-blue-300 shadow-xs max-w-[52%] truncate">
+                        <span className="absolute top-2 left-2 z-10 px-2 sm:px-2.5 py-1 rounded-lg text-[9px] sm:text-xs font-black uppercase tracking-wider bg-blue-100 text-blue-900 border border-blue-300 shadow-xs max-w-[48%] sm:max-w-[50%] truncate">
                           {p.badge}
                         </span>
 
@@ -1162,7 +1181,7 @@ Link Resmi: ${origin}/katalog-laptop#pembayaran`
                       <div className="p-3 sm:p-6 space-y-2">
                         <h3 className="text-sm sm:text-xl font-black text-slate-900 leading-snug line-clamp-2">{p.title}</h3>
 
-                        <div className="p-2.5 sm:p-3 rounded-xl bg-gradient-to-r from-blue-50 to-teal-50 border border-blue-200 space-y-1">
+                        <div className="p-2.5 sm:p-3 rounded-xl bg-gradient-to-r from-blue-50 to-slate-100 border border-blue-200 space-y-1">
                           <span className="text-[9px] sm:text-xs text-slate-500 font-bold block uppercase tracking-wider">Penawaran Spesial</span>
                           <span className="text-base sm:text-2xl font-black text-blue-950 block">{p.priceText}</span>
 
@@ -1186,7 +1205,7 @@ Link Resmi: ${origin}/katalog-laptop#pembayaran`
 
                       <button
                         onClick={() => openOrderAction(p)}
-                        className={`w-full py-2.5 sm:py-3 rounded-xl text-white text-[11px] sm:text-xs font-black flex items-center justify-center gap-1 transition shadow-md active:scale-95 ${isDigital ? "bg-amber-600 hover:bg-amber-700 shadow-amber-600/20" : "bg-gradient-to-r from-blue-700 to-teal-600 hover:from-blue-800 hover:to-teal-700 shadow-blue-700/20"}`}
+                        className={`w-full py-2.5 sm:py-3 rounded-xl text-white text-[11px] sm:text-xs font-black flex items-center justify-center gap-1 transition shadow-md active:scale-95 ${isDigital ? "bg-amber-600 hover:bg-amber-700 shadow-amber-600/20" : "bg-blue-600 hover:bg-blue-700 shadow-blue-600/20"}`}
                       >
                         {isDigital ? <Zap className="w-3.5 h-3.5 fill-white" /> : <Phone className="w-3.5 h-3.5" />}
                         <span>{isDigital ? "Checkout ⚡" : "Tanya WA"}</span>
@@ -1225,9 +1244,9 @@ Link Resmi: ${origin}/katalog-laptop#pembayaran`
                 </p>
               </div>
 
-              <div className="p-4 rounded-2xl bg-teal-50/60 border border-teal-200 space-y-2">
-                <h3 className="font-extrabold text-teal-900 text-base flex items-center gap-2">
-                  <CheckCircle className="w-5 h-5 text-teal-600" />
+              <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
+                <h3 className="font-extrabold text-slate-900 text-base flex items-center gap-2">
+                  <CheckCircle className="w-5 h-5 text-blue-600" />
                   <span>Garansi 100% Lisensi Digital</span>
                 </h3>
                 <p className="leading-relaxed text-slate-600 font-medium">
@@ -1258,7 +1277,7 @@ Link Resmi: ${origin}/katalog-laptop#pembayaran`
               href={`https://wa.me/${formattedWa}?text=${encodeURIComponent("Halo Mughis Laptop Store, saya mau konsultasi klaim garansi toko.")}`}
               target="_blank"
               rel="noreferrer"
-              className="w-full py-4 rounded-2xl bg-gradient-to-r from-blue-700 to-emerald-600 hover:from-blue-800 hover:to-emerald-700 text-white font-extrabold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-lg shadow-blue-700/20"
+              className="w-full py-4 rounded-2xl bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-lg shadow-blue-600/20"
             >
               <Phone className="w-5 h-5" />
               <span>Konsultasi / Klaim Garansi via WhatsApp CS</span>
@@ -1267,7 +1286,7 @@ Link Resmi: ${origin}/katalog-laptop#pembayaran`
         </section>
       )}
 
-      {/* 4. TAB CONTENT: REKENING RESMI & PEMBAYARAN (BRIGHT WHITE & TEAL DESIGN + SHARE PAYMENT METHODS) */}
+      {/* 4. TAB CONTENT: REKENING RESMI & PEMBAYARAN (100% BRAND TECH BLUE THEME) */}
       {activeTab === "pembayaran" && (
         <section id="info-bisnis" className="py-8 sm:py-12 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
           <div className="bg-white p-6 sm:p-8 rounded-3xl border-2 border-slate-200 shadow-md space-y-8">
@@ -1282,7 +1301,7 @@ Link Resmi: ${origin}/katalog-laptop#pembayaran`
 
               <button
                 onClick={shareBankAccounts}
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-blue-700 to-teal-600 hover:from-blue-800 hover:to-teal-700 text-white font-extrabold text-xs sm:text-sm shadow-md transition active:scale-95"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-xs sm:text-sm shadow-md transition active:scale-95"
               >
                 <Share2 className="w-4 h-4" />
                 <span>Bagikan Format Rekening Resmi WA 📤</span>
@@ -1291,7 +1310,7 @@ Link Resmi: ${origin}/katalog-laptop#pembayaran`
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
               {bankAccounts.map((b) => (
-                <div key={b.id} className="p-5 sm:p-6 rounded-2xl bg-gradient-to-br from-blue-50/90 to-teal-50/90 border-2 border-blue-300 space-y-3 relative shadow-xs">
+                <div key={b.id} className="p-5 sm:p-6 rounded-2xl bg-slate-50 border-2 border-blue-300 space-y-3 relative shadow-xs">
                   <div className="flex items-center justify-between">
                     <span className="text-base sm:text-lg font-black text-blue-900 tracking-wider">{b.bank}</span>
                     <span className="text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-md bg-blue-100 text-blue-900 border border-blue-300">
@@ -1320,9 +1339,9 @@ Link Resmi: ${origin}/katalog-laptop#pembayaran`
             </div>
 
             {/* 1-CLICK WA TRANSFER CONFIRMATION ACTION BOX */}
-            <div className="p-5 rounded-2xl bg-emerald-50 border-2 border-emerald-300 space-y-3 text-xs sm:text-sm text-center">
-              <h3 className="font-extrabold text-emerald-900 text-base flex items-center justify-center gap-2">
-                <CheckCircle className="w-5 h-5 text-emerald-600" />
+            <div className="p-5 rounded-2xl bg-blue-50 border-2 border-blue-300 space-y-3 text-xs sm:text-sm text-center">
+              <h3 className="font-extrabold text-blue-950 text-base flex items-center justify-center gap-2">
+                <CheckCircle className="w-5 h-5 text-blue-600" />
                 <span>Sudah Melakukan Pembayaran / Transfer?</span>
               </h3>
               <p className="text-slate-600 font-medium max-w-lg mx-auto">
@@ -1332,7 +1351,7 @@ Link Resmi: ${origin}/katalog-laptop#pembayaran`
                 href={`https://wa.me/${formattedWa}?text=${transferConfirmMsg}`}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs sm:text-sm shadow-md transition active:scale-95"
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-xs sm:text-sm shadow-md transition active:scale-95"
               >
                 <Phone className="w-4 h-4" />
                 <span>Konfirmasi Bukti Transfer via WhatsApp CS</span>
@@ -1389,16 +1408,16 @@ Link Resmi: ${origin}/katalog-laptop#pembayaran`
                 </div>
               </div>
 
-              <div className="p-5 rounded-2xl bg-emerald-50 border border-emerald-200 space-y-3">
-                <span className="font-extrabold text-emerald-900 uppercase text-xs tracking-wider block">Kontak WhatsApp CS Resmi:</span>
-                <p className="text-2xl sm:text-3xl font-black text-emerald-800 font-mono">{waPhone}</p>
+              <div className="p-5 rounded-2xl bg-blue-50 border border-blue-200 space-y-3">
+                <span className="font-extrabold text-blue-900 uppercase text-xs tracking-wider block">Kontak WhatsApp CS Resmi:</span>
+                <p className="text-2xl sm:text-3xl font-black text-blue-950 font-mono">{waPhone}</p>
                 <p className="text-slate-600 font-medium">Layanan konsultasi unit, garansi, & pengecekan stok fast response.</p>
 
                 <a
                   href={`https://wa.me/${formattedWa}?text=${encodeURIComponent("Halo Mughis Laptop Store, saya mau konsultasi lokasi toko / stok laptop.")}`}
                   target="_blank"
                   rel="noreferrer"
-                  className="w-full py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs flex items-center justify-center gap-2 shadow-md"
+                  className="w-full py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-xs flex items-center justify-center gap-2 shadow-md"
                 >
                   <Phone className="w-4 h-4" />
                   <span>Hubungi CS WhatsApp</span>
@@ -1430,8 +1449,8 @@ Link Resmi: ${origin}/katalog-laptop#pembayaran`
               <InstagramIcon className="w-4 h-4 text-pink-600" />
               <span>Testimoni IG</span>
             </a>
-            <a href={`https://wa.me/${formattedWa}`} target="_blank" rel="noreferrer" className="px-3.5 py-2 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-700 hover:bg-emerald-100 flex items-center gap-1.5 transition">
-              <Phone className="w-4 h-4 text-emerald-600" />
+            <a href={`https://wa.me/${formattedWa}`} target="_blank" rel="noreferrer" className="px-3.5 py-2 rounded-xl bg-blue-50 border border-blue-200 text-blue-900 hover:bg-blue-100 flex items-center gap-1.5 transition">
+              <Phone className="w-4 h-4 text-blue-600" />
               <span>CS WA ({waPhone})</span>
             </a>
           </div>
@@ -1506,7 +1525,7 @@ Link Resmi: ${origin}/katalog-laptop#pembayaran`
                           onClick={() => setSelectedPayMethod("bsi")}
                           className={`p-2.5 rounded-xl border-2 font-bold text-[11px] flex flex-col items-center justify-center gap-1 transition ${selectedPayMethod === "bsi" ? "border-amber-600 bg-amber-50 text-amber-900" : "border-slate-200 bg-white text-slate-700"}`}
                         >
-                          <CreditCard className="w-4 h-4 text-teal-600" />
+                          <CreditCard className="w-4 h-4 text-blue-600" />
                           <span>Bank BSI</span>
                         </button>
 
@@ -1542,23 +1561,23 @@ Link Resmi: ${origin}/katalog-laptop#pembayaran`
               ) : (
                 /* INSTANT LICENSE KEY REVEAL STEP */
                 <div className="space-y-4 pt-2 text-center">
-                  <div className="w-12 h-12 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto text-2xl font-bold">
+                  <div className="w-12 h-12 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center mx-auto text-2xl font-bold">
                     <CheckCircle className="w-8 h-8" />
                   </div>
 
                   <div>
-                    <span className="px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-emerald-100 text-emerald-800 border border-emerald-300">
+                    <span className="px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-blue-100 text-blue-900 border border-blue-300">
                       ✅ Pembayaran & Aktivasi Berhasil Instan!
                     </span>
                     <h4 className="text-base font-black text-slate-900 mt-2">Kode Lisensi Digital Anda:</h4>
                   </div>
 
-                  <div className="p-4 rounded-2xl bg-slate-900 text-white space-y-2 border-2 border-emerald-500 shadow-xl">
-                    <p className="text-xl sm:text-2xl font-black font-mono tracking-widest text-emerald-400 select-all">{digitalResultKey}</p>
+                  <div className="p-4 rounded-2xl bg-slate-900 text-white space-y-2 border-2 border-blue-500 shadow-xl">
+                    <p className="text-xl sm:text-2xl font-black font-mono tracking-widest text-blue-400 select-all">{digitalResultKey}</p>
                     <button
                       type="button"
                       onClick={() => digitalResultKey && copyText(digitalResultKey, "Kode Lisensi Digital")}
-                      className="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold inline-flex items-center gap-1.5 shadow-md"
+                      className="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold inline-flex items-center gap-1.5 shadow-md"
                     >
                       <Copy className="w-3.5 h-3.5" />
                       <span>Salin Kode Lisensi</span>
@@ -1576,7 +1595,7 @@ Link Resmi: ${origin}/katalog-laptop#pembayaran`
                     href={`https://wa.me/${formattedWa}?text=${encodeURIComponent(`Assalamu’alaikum Mughis Laptop Store,\n\nSaya telah membeli Produk Digital:\n*${digitalCheckoutProd.title}*\nKode Lisensi: ${digitalResultKey}\n\nMohon konfirmasi pesanan saya. Terima kasih!`)}`}
                     target="_blank"
                     rel="noreferrer"
-                    className="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs sm:text-sm rounded-xl flex items-center justify-center gap-2 shadow-md transition"
+                    className="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-xs sm:text-sm rounded-xl flex items-center justify-center gap-2 shadow-md transition"
                   >
                     <Phone className="w-4 h-4" />
                     <span>💬 Simpan Salinan ke WhatsApp CS</span>
@@ -1645,7 +1664,7 @@ Link Resmi: ${origin}/katalog-laptop#pembayaran`
 
                   <button
                     onClick={() => openOrderAction(p)}
-                    className="w-full py-2 bg-gradient-to-r from-blue-700 to-teal-600 hover:from-blue-800 hover:to-teal-700 text-white font-bold text-xs rounded-xl flex items-center justify-center gap-1 shadow-xs transition block text-center"
+                    className="w-full py-2 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs rounded-xl flex items-center justify-center gap-1 shadow-xs transition block text-center"
                   >
                     <span>Pesan Model Ini</span>
                   </button>
@@ -1680,7 +1699,7 @@ Link Resmi: ${origin}/katalog-laptop#pembayaran`
 
               <h3 className="text-lg sm:text-xl font-extrabold text-slate-900 pr-8">{selectedProduct.title}</h3>
 
-              <div className="p-2.5 sm:p-3 rounded-xl bg-gradient-to-r from-blue-50 to-teal-50 border border-blue-200 space-y-1">
+              <div className="p-2.5 sm:p-3 rounded-xl bg-gradient-to-r from-blue-50 to-slate-100 border border-blue-200 space-y-1">
                 <p className="text-2xl sm:text-3xl font-black text-blue-950">{selectedProduct.rawPriceText || selectedProduct.priceText}</p>
                 <p className="text-[10px] sm:text-[11px] text-blue-900/90 font-medium leading-tight pt-1.5 border-t border-blue-200/80 italic">
                   ✨ Silakan cek & bandingkan penawaran terbaik kami di area Aceh hingga Medan. Harga Mughis Laptop Store hadir bukan untuk merusak pasar, melainkan karena modal yang kami dapatkan terjangkau, maka kami jual kembali dengan harga yang bersahabat demi keberkahan bersama.
@@ -1762,7 +1781,7 @@ Link Resmi: ${origin}/katalog-laptop#pembayaran`
               )}
 
               {selectedProduct.bonus && (
-                <div className="p-3 rounded-xl bg-emerald-50 border border-emerald-200 text-xs text-emerald-900 font-medium">
+                <div className="p-3 rounded-xl bg-blue-50 border border-blue-200 text-xs text-blue-950 font-medium">
                   <span className="font-bold block">Bonus Kelengkapan:</span>
                   <span>{selectedProduct.bonus}</span>
                 </div>
@@ -1772,7 +1791,7 @@ Link Resmi: ${origin}/katalog-laptop#pembayaran`
 
               <button
                 onClick={() => selectedProduct && openOrderAction(selectedProduct)}
-                className={`w-full py-3.5 text-white font-extrabold text-xs sm:text-sm rounded-xl flex items-center justify-center gap-2 shadow-md active:scale-95 transition ${selectedProduct.category === 'digital' ? 'bg-amber-600 hover:bg-amber-700 shadow-amber-600/20' : 'bg-gradient-to-r from-blue-700 to-teal-600 hover:from-blue-800 hover:to-teal-700 shadow-blue-700/20'}`}
+                className={`w-full py-3.5 text-white font-extrabold text-xs sm:text-sm rounded-xl flex items-center justify-center gap-2 shadow-md active:scale-95 transition ${selectedProduct.category === 'digital' ? 'bg-amber-600 hover:bg-amber-700 shadow-amber-600/20' : 'bg-blue-600 hover:bg-blue-700 shadow-blue-600/20'}`}
               >
                 {selectedProduct.category === 'digital' ? <Zap className="w-4 h-4 fill-white" /> : <Phone className="w-4 h-4" />}
                 <span>{selectedProduct.category === 'digital' ? "Checkout Instan ⚡ (Ambil Lisensi Otomatis)" : "Pesan Sekarang via WhatsApp CS"}</span>
@@ -1858,21 +1877,21 @@ Link Resmi: ${origin}/katalog-laptop#pembayaran`
       {/* Toast Notification */}
       {toastMsg && (
         <div className="fixed bottom-10 left-1/2 -translate-x-1/2 z-50 px-6 py-3 rounded-full bg-slate-900 text-white shadow-2xl flex items-center gap-2 text-xs font-bold animate-bounce">
-          <Check className="w-4 h-4 text-emerald-400" />
+          <Check className="w-4 h-4 text-blue-400" />
           <span>{toastMsg}</span>
         </div>
       )}
 
-      {/* Floating WhatsApp Action Button with Pulsing Ring - POSITIONED WITH NO OVERLAPS */}
+      {/* Floating WhatsApp Action Button with Pulsing Ring - POSITIONED SAFELY WITH NO OVERLAPS */}
       <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-30">
         <a
           href={`https://wa.me/${formattedWa}?text=${encodeURIComponent("Halo Mughis Laptop Store, saya ingin bertanya stok laptop/produk digital.")}`}
           target="_blank"
           rel="noreferrer"
-          className="relative group flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white shadow-2xl shadow-emerald-600/40 hover:scale-105 transition-all duration-200"
+          className="relative group flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-blue-600 hover:bg-blue-700 text-white shadow-2xl shadow-blue-600/40 hover:scale-105 transition-all duration-200"
           title="Chat WhatsApp CS"
         >
-          <span className="absolute -inset-1 rounded-full bg-emerald-500 opacity-75 animate-ping"></span>
+          <span className="absolute -inset-1 rounded-full bg-blue-500 opacity-75 animate-ping"></span>
           <Phone className="w-6 h-6 sm:w-7 sm:h-7 relative z-10" />
         </a>
       </div>

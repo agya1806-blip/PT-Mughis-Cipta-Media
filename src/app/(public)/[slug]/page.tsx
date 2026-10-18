@@ -57,17 +57,35 @@ export default async function PublicPage({ params }: { params: Promise<{ slug: s
           url: `${SITE.baseUrl}/${slug}`,
         }}
       />
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16">
-        <Breadcrumb items={breadcrumbItems} />
-        {/* Conditionally render h1 for the special homepage */}
-        {!isHomepage && (
+
+      {isHomepage ? (
+        <>
+          {/* Welcome Banner for Homepage */}
+          <div className="bg-green-dark text-cream py-20 text-center">
+            <h1 className="text-5xl font-extrabold mb-4">Selamat Datang di PT Mughis Cipta Media</h1>
+            <p className="text-xl max-w-2xl mx-auto">
+              Penerbit dan Percetakan Buku Terkemuka di Aceh. Kami berkomitmen untuk menyebarkan ilmu dan inspirasi melalui karya-karya berkualitas.
+            </p>
+          </div>
+          {/* Homepage Content */}
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-16">
+            <Breadcrumb items={breadcrumbItems} />
+            <div
+              className="prose prose-green max-w-none mt-8"
+              dangerouslySetInnerHTML={{ __html: page.content }}
+            />
+          </div>
+        </>
+      ) : (
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16">
+          <Breadcrumb items={breadcrumbItems} />
           <h1 className="text-3xl font-bold text-green-dark mt-6 mb-8">{page.title}</h1>
-        )}
-        <div
-          className="prose prose-green max-w-none"
-          dangerouslySetInnerHTML={{ __html: page.content }}
-        />
-      </div>
+          <div
+            className="prose prose-green max-w-none"
+            dangerouslySetInnerHTML={{ __html: page.content }}
+          />
+        </div>
+      )}
     </div>
   )
 }

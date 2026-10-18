@@ -807,37 +807,39 @@ Link Resmi: ${origin}/katalog-laptop#pembayaran`
               {featuredProducts.map((p) => (
                 <div key={p.id} className="flex flex-col justify-between h-full bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow duration-200 overflow-hidden">
                   <div>
-                    <div className="relative aspect-square w-full bg-slate-50 rounded-xl overflow-hidden p-2.5 sm:p-3 flex items-center justify-center">
-                      <img src={p.image} alt={p.title} className="w-full h-full object-contain transition-transform duration-200 group-hover:scale-105" />
-                      <span className="absolute top-2 left-2 z-10 text-[10px] bg-slate-900/80 backdrop-blur text-white px-2 py-0.5 rounded-full font-bold max-w-[48%] truncate">
+                    <div className="relative aspect-square w-full bg-slate-50 rounded-xl overflow-hidden p-2 flex items-center justify-center">
+                      <img src={p.image} alt={p.title} className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105" />
+                      <span className="absolute top-2 left-2 z-10 text-[10px] bg-slate-900/80 backdrop-blur text-white px-2 py-0.5 rounded-full font-bold max-w-[50%] truncate shadow-xs">
                         {p.badge || "QC 100% Siap Pakai"}
                       </span>
                     </div>
 
-                    <div className="p-3 sm:p-5 space-y-2">
-                      <h3 className="line-clamp-2 min-h-[2.5rem] leading-snug font-bold text-xs sm:text-sm text-slate-800">{p.title}</h3>
-                      <p className="line-clamp-2 text-[11px] sm:text-xs text-slate-500 font-normal">{p.shortDesc}</p>
+                    <div className="p-2.5 sm:p-3.5 space-y-1.5">
+                      <h3 className="font-bold text-xs sm:text-sm text-slate-900 line-clamp-2 min-h-[2.5rem] leading-snug flex items-center">{p.title}</h3>
+                      <p className="text-[11px] text-slate-500 line-clamp-2 min-h-[2rem] mt-1 leading-relaxed">{p.shortDesc}</p>
                     </div>
                   </div>
 
-                  <div className="mt-auto pt-2 border-t border-slate-100 p-3 sm:p-5 pt-2 flex flex-col gap-2">
-                    <div>
-                      <span className="text-[9px] sm:text-[10px] text-slate-400 font-semibold uppercase tracking-wider block">Harga Spesial</span>
-                      <p className="text-sm sm:text-base font-black text-blue-700 font-mono tracking-tight">{p.priceText}</p>
+                  <div className="mt-auto pt-2.5 border-t border-slate-100 p-2.5 sm:p-3.5 pt-2 flex flex-col gap-2">
+                    <div className="flex items-baseline justify-between mb-1">
+                      <span className="text-[10px] text-slate-400 font-semibold uppercase">Harga</span>
+                      <span className="text-sm sm:text-base font-black text-blue-600 font-mono tracking-tight">
+                        {p.priceText.startsWith("Rp") ? p.priceText : `Rp ${p.priceText}`}
+                      </span>
                     </div>
 
-                    <div className="flex items-center gap-1.5 w-full mt-1">
+                    <div className="grid grid-cols-2 gap-1.5 w-full">
                       <button
                         onClick={() => openDetailModal(p)}
-                        className="flex-1 py-1.5 text-center text-xs font-semibold border border-slate-200 text-slate-700 rounded-lg hover:bg-slate-50 transition"
+                        className="py-1.5 text-center text-xs font-semibold border border-slate-200 text-slate-700 rounded-lg hover:bg-slate-50 transition"
                       >
                         Lihat Spek
                       </button>
                       <button
                         onClick={() => openOrderAction(p)}
-                        className="flex-1 py-1.5 text-center text-xs font-semibold bg-blue-600 hover:bg-blue-700 text-white rounded-lg flex items-center justify-center gap-1 transition shadow-xs active:scale-95"
+                        className="py-1.5 text-center text-xs font-semibold bg-blue-600 hover:bg-blue-700 text-white rounded-lg flex items-center justify-center gap-1 transition shadow-xs active:scale-95"
                       >
-                        <Phone className="w-3 h-3" />
+                        <Phone className="w-3.5 h-3.5" />
                         <span>Pesan WA</span>
                       </button>
                     </div>
@@ -1012,7 +1014,7 @@ Link Resmi: ${origin}/katalog-laptop#pembayaran`
         </div>
       )}
 
-      {/* 2. TAB CONTENT: STOK UNIT READY — MASTER PROMPT POLISHED PRODUCT GRID */}
+      {/* 2. TAB CONTENT: STOK UNIT READY — STANDARDIZED MASTER ProductCard COMPONENT (ALL DYNAMIC & DEFAULT PRODUCTS) */}
       {activeTab === "stok" && (
         <section id="katalog" className="py-8 sm:py-12 max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 pb-3 border-b border-slate-200 gap-3">
@@ -1109,82 +1111,59 @@ Link Resmi: ${origin}/katalog-laptop#pembayaran`
               <p className="text-xs text-slate-500">Coba ubah kata kunci atau kategori pencarian Anda.</p>
             </div>
           ) : (
-            <div className="grid grid-cols-2 gap-2.5 sm:gap-4 lg:grid-cols-3">
+            /* MASTER SPECIFICATION 5: FIX OVERLAP HEADER / MARGIN TOP WITH pt-4 sm:pt-6 GRID CONTAINER */
+            <div className="pt-4 sm:pt-6 grid grid-cols-2 gap-2.5 sm:gap-4 lg:grid-cols-3">
               {filteredProducts.map((p) => {
                 const photoCount = p.images && p.images.length > 0 ? p.images.length : 1
-                const isCompared = compareIds.includes(p.id)
                 const isLiked = wishlistIds.includes(p.id)
                 const isDigital = p.category === "digital" || p.badge.toLowerCase().includes("digital")
                 const displayBadge = p.badge && p.badge.trim() ? p.badge : "QC 100%"
 
                 return (
+                  /* MASTER SPECIFICATION 3: EQUAL-HEIGHT BODY CONTAINER */
                   <div
                     id={`prod-${p.id}`}
                     key={p.id}
-                    className="flex flex-col justify-between h-full bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow duration-200 overflow-hidden"
+                    className="flex flex-col justify-between h-full bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden"
                   >
                     <div>
-                      {/* MASTER PROMPT INSTRUCTION 1: 1:1 SQUARE PHOTO CONTAINER & CENTERED IMAGE (OBJECT-CONTAIN) */}
-                      <div className="relative aspect-square w-full bg-slate-50 rounded-xl overflow-hidden p-2.5 sm:p-3 flex items-center justify-center">
+                      {/* MASTER SPECIFICATION 1: STANDARISASI FRAME FOTO (SQUARE 1:1 UNTUK SEMUA PRODUK) */}
+                      <div className="relative aspect-square w-full bg-slate-50 rounded-xl overflow-hidden p-2 flex items-center justify-center">
                         <img
                           src={p.images?.[0] || p.image}
                           alt={p.title}
-                          className="w-full h-full object-contain transition-transform duration-200 group-hover:scale-105"
+                          className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105"
                         />
 
-                        {/* Micro Status Badge at Top Left */}
+                        {/* MASTER SPECIFICATION 2: BERSIHKAN AREA HEADER FOTO - TOP LEFT BADGE */}
                         {p.stockStatus === "SOLD_OUT" ? (
-                          <span className="absolute top-2 left-2 z-10 text-[10px] bg-rose-600 backdrop-blur text-white px-2 py-0.5 rounded-full font-bold shadow-xs">
+                          <span className="absolute top-2 left-2 z-10 text-[10px] font-bold bg-rose-600 backdrop-blur text-white px-2 py-0.5 rounded-full shadow-xs">
                             SOLD OUT
                           </span>
                         ) : (
-                          <span className="absolute top-2 left-2 z-10 text-[10px] bg-slate-900/80 backdrop-blur text-white px-2 py-0.5 rounded-full font-bold max-w-[48%] truncate shadow-xs">
+                          <span className="absolute top-2 left-2 z-10 text-[10px] font-bold bg-slate-900/80 backdrop-blur text-white px-2 py-0.5 rounded-full z-10 max-w-[50%] truncate shadow-xs">
                             {displayBadge}
                           </span>
                         )}
 
-                        {/* Glassmorphism Action Buttons at Top Right */}
-                        <div className="absolute top-2 right-2 z-10 flex items-center gap-1">
-                          <button
-                            onClick={(e) => toggleWishlist(p.id, e)}
-                            className={`p-1.5 rounded-full backdrop-blur transition shadow-xs ${isLiked ? "bg-rose-600 text-white" : "bg-black/60 text-white hover:bg-black/80"}`}
-                            title="Simpan Favorit"
-                          >
-                            <Heart className={`w-3.5 h-3.5 ${isLiked ? "fill-white" : "text-white"}`} />
-                          </button>
+                        {/* MASTER SPECIFICATION 2: BERSIHKAN AREA HEADER FOTO - ONLY 1 WISHLIST (HEART) ICON TOP-RIGHT */}
+                        <button
+                          onClick={(e) => toggleWishlist(p.id, e)}
+                          className="absolute top-2 right-2 w-7 h-7 bg-white/80 backdrop-blur rounded-full flex items-center justify-center text-slate-500 shadow-sm z-10 hover:bg-white transition"
+                          title="Simpan Favorit"
+                        >
+                          <Heart className={`w-3.5 h-3.5 ${isLiked ? "fill-rose-600 text-rose-600" : "text-slate-500"}`} />
+                        </button>
 
-                          <button
-                            onClick={() => toggleCompare(p.id)}
-                            className={`p-1.5 rounded-full backdrop-blur transition shadow-xs ${isCompared ? "bg-blue-600 text-white" : "bg-black/60 text-white hover:bg-black/80"}`}
-                            title="Bandingkan Laptop"
-                          >
-                            <Scale className="w-3.5 h-3.5" />
-                          </button>
-
-                          <button
-                            onClick={(e) => shareProduct(p, e)}
-                            className="p-1.5 rounded-full bg-black/60 hover:bg-black/80 text-white backdrop-blur transition shadow-xs"
-                            title="Bagikan Produk"
-                          >
-                            <Share2 className="w-3.5 h-3.5" />
-                          </button>
-                        </div>
-
-                        {/* Photo Counter Badge at Bottom Left */}
+                        {/* BOTTOM LEFT PHOTO INDICATOR */}
                         <div className="absolute bottom-2 left-2 z-10 flex items-center gap-1">
-                          <span className="text-[10px] bg-black/60 backdrop-blur text-white px-1.5 py-0.5 rounded font-medium flex items-center gap-1">
+                          <span className="text-[10px] bg-slate-900/80 backdrop-blur text-white px-1.5 py-0.5 rounded flex items-center gap-1 font-medium z-10">
                             <ImageIcon className="w-3 h-3 text-blue-300" />
                             <span>{photoCount} Foto</span>
                           </span>
-                          {p.video && (
-                            <span className="text-[10px] bg-indigo-600 text-white px-1.5 py-0.5 rounded font-medium flex items-center gap-1">
-                              <VideoIcon className="w-3 h-3" />
-                              <span className="hidden sm:inline">Ada Video</span>
-                            </span>
-                          )}
                         </div>
 
-                        {/* Limited Badge at Bottom Right */}
+                        {/* BOTTOM RIGHT LIMITED BADGE */}
                         {p.stockStatus === "LIMITED" && (
                           <span className="absolute bottom-2 right-2 z-10 text-[10px] bg-amber-500 text-white px-1.5 py-0.5 rounded font-black uppercase shadow-xs animate-pulse">
                             ⚠️ LIMITED
@@ -1192,40 +1171,42 @@ Link Resmi: ${origin}/katalog-laptop#pembayaran`
                         )}
                       </div>
 
-                      {/* MASTER PROMPT INSTRUCTION 2: EQUAL-HEIGHT CARD BALANCE */}
-                      <div className="p-2.5 sm:p-4 flex flex-col justify-between">
-                        <div className="space-y-1.5">
-                          <h3 className="line-clamp-2 min-h-[2.5rem] leading-snug font-bold text-xs sm:text-sm text-slate-800">
+                      {/* MASTER SPECIFICATION 3: EQUAL-HEIGHT BODY (TITLES & SPECS LOCKED) */}
+                      <div className="p-2.5 sm:p-3.5 flex flex-col justify-between flex-1">
+                        <div>
+                          <h3 className="font-bold text-xs sm:text-sm text-slate-900 line-clamp-2 min-h-[2.5rem] leading-snug flex items-center">
                             {p.title}
                           </h3>
 
-                          <p className="line-clamp-2 text-[11px] sm:text-xs text-slate-500 leading-relaxed font-normal">
+                          <p className="text-[11px] text-slate-500 line-clamp-2 min-h-[2rem] mt-1 leading-relaxed">
                             {p.shortDesc}
                           </p>
                         </div>
                       </div>
                     </div>
 
-                    {/* MASTER PROMPT INSTRUCTION 3: SYMMETRICAL COMPACT MOBILE ACTION BUTTONS & PRICE ALIGNMENT */}
-                    <div className="mt-auto p-2.5 sm:p-4 pt-2 border-t border-slate-100 flex flex-col gap-1.5">
-                      <div>
-                        <span className="text-[9px] sm:text-[10px] text-slate-400 font-semibold uppercase tracking-wider block">Harga Spesial</span>
-                        <p className="text-sm sm:text-base font-black text-blue-700 font-mono tracking-tight">{p.priceText}</p>
+                    {/* MASTER SPECIFICATION 4: BOTTOM ACTIONS (SEJAJAR RATA DI BAWAH) */}
+                    <div className="mt-auto p-2.5 sm:p-3.5 pt-2 border-t border-slate-100 flex flex-col gap-1.5">
+                      <div className="flex items-baseline justify-between mb-1">
+                        <span className="text-[10px] text-slate-400 font-semibold uppercase">Harga</span>
+                        <span className="text-sm sm:text-base font-black text-blue-600 font-mono tracking-tight">
+                          {p.priceText.startsWith("Rp") ? p.priceText : `Rp ${p.priceText}`}
+                        </span>
                       </div>
 
-                      <div className="flex items-center gap-1.5 w-full mt-1">
+                      <div className="grid grid-cols-2 gap-1.5 w-full">
                         <button
                           onClick={() => openDetailModal(p)}
-                          className="flex-1 py-1.5 text-center text-xs font-semibold border border-slate-200 text-slate-700 rounded-lg hover:bg-slate-50 transition"
+                          className="py-1.5 text-center text-xs font-semibold border border-slate-200 text-slate-700 rounded-lg hover:bg-slate-50 transition"
                         >
                           Lihat Spek
                         </button>
 
                         <button
                           onClick={() => openOrderAction(p)}
-                          className={`flex-1 py-1.5 text-center text-xs font-semibold rounded-lg flex items-center justify-center gap-1 transition shadow-xs active:scale-95 ${isDigital ? "bg-amber-600 hover:bg-amber-700 text-white" : "bg-blue-600 hover:bg-blue-700 text-white"}`}
+                          className={`py-1.5 text-center text-xs font-semibold rounded-lg flex items-center justify-center gap-1 transition shadow-xs active:scale-95 ${isDigital ? "bg-amber-600 hover:bg-amber-700 text-white" : "bg-blue-600 hover:bg-blue-700 text-white"}`}
                         >
-                          {isDigital ? <Zap className="w-3 h-3 fill-white" /> : <Phone className="w-3 h-3" />}
+                          {isDigital ? <Zap className="w-3.5 h-3.5 fill-white" /> : <Phone className="w-3.5 h-3.5" />}
                           <span>{isDigital ? "Checkout ⚡" : "Pesan WA"}</span>
                         </button>
                       </div>

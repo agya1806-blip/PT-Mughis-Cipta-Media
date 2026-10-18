@@ -1518,7 +1518,7 @@ Link Resmi: ${origin}/katalog-laptop#pembayaran`
                     <p className="text-xl sm:text-2xl font-black font-mono tracking-widest text-emerald-400 select-all">{digitalResultKey}</p>
                     <button
                       type="button"
-                      onClick={() => copyText(digitalResultKey, "Kode Lisensi Digital")}
+                      onClick={() => digitalResultKey && copyText(digitalResultKey, "Kode Lisensi Digital")}
                       className="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold inline-flex items-center gap-1.5 shadow-md"
                     >
                       <Copy className="w-3.5 h-3.5" />
@@ -1631,7 +1631,7 @@ Link Resmi: ${origin}/katalog-laptop#pembayaran`
                   {selectedProduct.badge}
                 </span>
                 <button
-                  onClick={(e) => shareProduct(selectedProduct, e)}
+                  onClick={(e) => selectedProduct && shareProduct(selectedProduct, e)}
                   className="px-3 py-1 rounded-full text-xs font-bold bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-300 flex items-center gap-1 transition"
                 >
                   <Share2 className="w-3.5 h-3.5" />
@@ -1732,7 +1732,7 @@ Link Resmi: ${origin}/katalog-laptop#pembayaran`
               <p className="text-xs text-slate-600 leading-relaxed font-medium">{selectedProduct.shortDesc}</p>
 
               <button
-                onClick={() => openOrderAction(selectedProduct)}
+                onClick={() => selectedProduct && openOrderAction(selectedProduct)}
                 className={`w-full py-3.5 text-white font-extrabold text-xs sm:text-sm rounded-xl flex items-center justify-center gap-2 shadow-md active:scale-95 transition ${selectedProduct.category === 'digital' ? 'bg-amber-600 hover:bg-amber-700 shadow-amber-600/20' : 'bg-emerald-600 hover:bg-emerald-700 shadow-emerald-600/20'}`}
               >
                 {selectedProduct.category === 'digital' ? <Zap className="w-4 h-4 fill-white" /> : <Phone className="w-4 h-4" />}

@@ -810,7 +810,7 @@ Link Resmi: ${origin}/katalog-laptop#pembayaran`
                     <div className="relative aspect-[4/5] w-full bg-slate-100 overflow-hidden">
                       <img src={p.image} alt={p.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
                       <span className="absolute top-2 left-2 z-10 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-blue-100 text-blue-900 border border-blue-300 max-w-[48%] truncate">
-                        {p.badge}
+                        {p.badge || "QC 100% Siap Pakai"}
                       </span>
                     </div>
 
@@ -1008,7 +1008,7 @@ Link Resmi: ${origin}/katalog-laptop#pembayaran`
         </div>
       )}
 
-      {/* 2. TAB CONTENT: STOK UNIT READY — REDESIGNED E-COMMERCE MOBILE PRODUCT GRID (TOKOPEDIA / ERASPACE STYLE) */}
+      {/* 2. TAB CONTENT: STOK UNIT READY — 100% EQUAL-HEIGHT MOBILE PRODUCT GRID (TOKOPEDIA / ERASPACE STYLE) */}
       {activeTab === "stok" && (
         <section id="katalog" className="py-8 sm:py-12 max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 pb-3 border-b border-slate-200 gap-3">
@@ -1105,15 +1105,16 @@ Link Resmi: ${origin}/katalog-laptop#pembayaran`
               <p className="text-xs text-slate-500">Coba ubah kata kunci atau kategori pencarian Anda.</p>
             </div>
           ) : (
-            <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-8">
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-8 items-stretch">
               {filteredProducts.map((p) => {
                 const photoCount = p.images && p.images.length > 0 ? p.images.length : 1
                 const isCompared = compareIds.includes(p.id)
                 const isLiked = wishlistIds.includes(p.id)
                 const isDigital = p.category === "digital" || p.badge.toLowerCase().includes("digital")
+                const displayBadge = p.badge && p.badge.trim() ? p.badge : "QC 100% Siap Pakai"
 
                 return (
-                  <div id={`prod-${p.id}`} key={p.id} className="bg-white rounded-2xl border border-slate-200/80 overflow-hidden flex flex-col justify-between shadow-xs hover:shadow-xl transition-all duration-300 group hover:-translate-y-1">
+                  <div id={`prod-${p.id}`} key={p.id} className="bg-white rounded-2xl border border-slate-200/80 overflow-hidden flex flex-col justify-between shadow-xs hover:shadow-xl transition-all duration-300 group hover:-translate-y-1 h-full">
                     <div>
                       {/* STRICT ASPECT RATIO 4:5 PORTRAIT CONTAINER WITH ZERO OVERLAP */}
                       <div className="relative aspect-[4/5] w-full bg-slate-100 overflow-hidden">
@@ -1125,13 +1126,13 @@ Link Resmi: ${origin}/katalog-laptop#pembayaran`
                             SOLD OUT
                           </span>
                         ) : (
-                          <span className="absolute top-2 left-2 z-10 px-2.5 py-1 rounded-lg text-[9px] sm:text-xs font-black uppercase tracking-wider bg-blue-100 text-blue-900 border border-blue-300 shadow-xs max-w-[50%] truncate">
-                            {p.badge}
+                          <span className="absolute top-2 left-2 z-10 px-2.5 py-1 rounded-lg text-[9px] sm:text-xs font-black uppercase tracking-wider bg-blue-100 text-blue-900 border border-blue-300 shadow-xs max-w-[48%] sm:max-w-[50%] truncate">
+                            {displayBadge}
                           </span>
                         )}
 
                         {/* TOP RIGHT GLASSMORPHISM ACTION BUTTONS */}
-                        <div className="absolute top-2 right-2 z-10 flex items-center gap-1.5">
+                        <div className="absolute top-2 right-2 z-10 flex items-center gap-1 sm:gap-1.5">
                           <button
                             onClick={(e) => toggleWishlist(p.id, e)}
                             className={`p-1.5 sm:p-2 rounded-full backdrop-blur-md transition shadow-md ${isLiked ? "bg-rose-600 text-white" : "bg-slate-900/60 text-white hover:bg-slate-900/80"}`}
@@ -1179,22 +1180,28 @@ Link Resmi: ${origin}/katalog-laptop#pembayaran`
                         )}
                       </div>
 
-                      {/* E-COMMERCE COMPACT PRODUCT INFO (TOKOPEDIA / ERASPACE STYLE) */}
+                      {/* E-COMMERCE COMPACT PRODUCT INFO WITH FIXED HIGH UNIFORMITY */}
                       <div className="p-3 sm:p-5 space-y-2">
-                        <h3 className="text-sm sm:text-base font-extrabold text-slate-900 leading-snug line-clamp-2 min-h-[2.5rem]">{p.title}</h3>
+                        {/* FIXED 2-LINE TITLE HEIGHT */}
+                        <h3 className="text-xs sm:text-base font-extrabold text-slate-900 leading-tight line-clamp-2 h-[2.25rem] sm:h-[2.5rem] flex items-center">
+                          {p.title}
+                        </h3>
 
-                        {/* PRICE HIGHLIGHT SECTION */}
-                        <div className="pt-0.5 pb-0.5">
-                          <span className="text-[10px] text-slate-400 font-bold block uppercase tracking-wider">Harga Spesial</span>
-                          <p className="text-base sm:text-xl font-black text-blue-700 font-mono tracking-tight">{p.priceText}</p>
+                        {/* UNIFORM PRICE HIGHLIGHT SECTION */}
+                        <div className="py-1">
+                          <span className="text-[9px] sm:text-[10px] text-slate-400 font-bold block uppercase tracking-wider">Harga Spesial</span>
+                          <p className="text-sm sm:text-xl font-black text-blue-700 font-mono tracking-tight">{p.priceText}</p>
                         </div>
 
-                        <p className="text-[11px] sm:text-xs text-slate-500 line-clamp-2 leading-relaxed">{p.shortDesc}</p>
+                        {/* FIXED 2-LINE DESCRIPTON HEIGHT */}
+                        <p className="text-[10px] sm:text-xs text-slate-500 line-clamp-2 leading-relaxed h-[2rem] sm:h-[2.25rem]">
+                          {p.shortDesc}
+                        </p>
                       </div>
                     </div>
 
                     {/* SYMMETRICAL ACTION BUTTONS (50:50 RATIO) */}
-                    <div className="p-3 sm:p-5 pt-0 grid grid-cols-2 gap-2">
+                    <div className="p-3 sm:p-5 pt-0 grid grid-cols-2 gap-1.5 sm:gap-2">
                       <button
                         onClick={() => openDetailModal(p)}
                         className="w-full py-2 sm:py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-300 text-slate-800 text-xs font-bold transition flex items-center justify-center gap-1"

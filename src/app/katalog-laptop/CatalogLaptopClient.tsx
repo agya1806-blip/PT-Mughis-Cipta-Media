@@ -793,46 +793,107 @@ Link Resmi: ${origin}/katalog-laptop#pembayaran`
             </div>
           </section>
 
-          {/* SECTION 4: STORE STRENGTHS GRID */}
-          <section className="bg-white py-12 border-y border-slate-200">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-              <div className="text-center max-w-2xl mx-auto space-y-2">
-                <span className="px-3.5 py-1 rounded-full bg-teal-100 text-teal-800 text-xs font-extrabold uppercase">Keunggulan Toko</span>
-                <h2 className="text-2xl sm:text-4xl font-black text-slate-900">Mengapa Memilih Mughis Laptop Store?</h2>
+          {/* SECTION 4: ANIMATED INTERACTIVE Q&A CARDS WITH DIRECT LINKS */}
+          <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+            <div className="text-center max-w-2xl mx-auto space-y-2">
+              <span className="px-3.5 py-1 rounded-full bg-teal-100 text-teal-800 text-xs font-extrabold uppercase tracking-wider animate-pulse">
+                ✨ PANDUAN INTERAKTIF & TANYA JAWAB ANIMASI
+              </span>
+              <h2 className="text-2xl sm:text-4xl font-black text-slate-900">
+                Informasi Cepat & Akses Fitur Utama
+              </h2>
+              <p className="text-xs sm:text-sm text-slate-600 font-medium">
+                Klik kartu pertanyaan di bawah ini untuk membuka halaman & layanan secara instan
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+              {/* Animated Card 1: Garansi */}
+              <div className="bg-white p-5 rounded-3xl border-2 border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 group relative overflow-hidden flex flex-col justify-between">
+                <div className="space-y-3">
+                  <div className="w-12 h-12 rounded-2xl bg-teal-100 text-teal-700 flex items-center justify-center font-bold shadow-md group-hover:scale-110 transition-transform">
+                    <ShieldCheck className="w-6 h-6 text-teal-600 animate-bounce" />
+                  </div>
+                  <h3 className="font-extrabold text-sm sm:text-base text-slate-900 leading-snug">
+                    "Bagaimana cara klaim garansi toko 30 hari?"
+                  </h3>
+                  <p className="text-xs text-slate-600 leading-relaxed font-medium">
+                    Cukup tununjukkan segel garansi utuh dan hubungi CS WA. Garansi mencakup motherboard, layar, RAM & SSD.
+                  </p>
+                </div>
+                <button
+                  onClick={() => setActiveTab("garansi")}
+                  className="mt-4 pt-3 border-t border-slate-100 text-xs font-black text-teal-700 hover:text-teal-900 flex items-center justify-between group-hover:translate-x-1 transition-transform"
+                >
+                  <span>Buka Ketentuan Garansi</span>
+                  <ArrowRight className="w-4 h-4" />
+                </button>
               </div>
 
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-                <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
-                  <div className="w-10 h-10 rounded-xl bg-teal-100 text-teal-700 flex items-center justify-center font-bold">
-                    <ShieldCheck className="w-6 h-6" />
+              {/* Animated Card 2: Produk Digital Auto Delivery */}
+              <div className="bg-white p-5 rounded-3xl border-2 border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 group relative overflow-hidden flex flex-col justify-between">
+                <div className="space-y-3">
+                  <div className="w-12 h-12 rounded-2xl bg-amber-100 text-amber-700 flex items-center justify-center font-bold shadow-md group-hover:scale-110 transition-transform">
+                    <Zap className="w-6 h-6 text-amber-600 fill-amber-600 animate-pulse" />
                   </div>
-                  <h3 className="text-sm sm:text-base font-bold text-slate-900">Garansi Toko Jelas</h3>
-                  <p className="text-xs text-slate-600 leading-relaxed">Garansi hardware toko resmi 30 hari penuh.</p>
+                  <h3 className="font-extrabold text-sm sm:text-base text-slate-900 leading-snug">
+                    "Apakah produk digital langsung dikirim 24 jam?"
+                  </h3>
+                  <p className="text-xs text-slate-600 leading-relaxed font-medium">
+                    Ya! Sistem Checkout ⚡ otomatis menyerahkan lisensi key & panduan langsung di layar Anda.
+                  </p>
                 </div>
+                <button
+                  onClick={() => { setActiveTab("stok"); setCurrentCategory("digital"); }}
+                  className="mt-4 pt-3 border-t border-slate-100 text-xs font-black text-amber-700 hover:text-amber-900 flex items-center justify-between group-hover:translate-x-1 transition-transform"
+                >
+                  <span>Coba Checkout Digital ⚡</span>
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+              </div>
 
-                <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
-                  <div className="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold">
-                    <CheckSquare className="w-6 h-6" />
+              {/* Animated Card 3: Rekening Pembayaran Resmi */}
+              <div className="bg-white p-5 rounded-3xl border-2 border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 group relative overflow-hidden flex flex-col justify-between">
+                <div className="space-y-3">
+                  <div className="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold shadow-md group-hover:scale-110 transition-transform">
+                    <CreditCard className="w-6 h-6 text-emerald-600 animate-pulse" />
                   </div>
-                  <h3 className="text-sm sm:text-base font-bold text-slate-900">QC Unit 100%</h3>
-                  <p className="text-xs text-slate-600 leading-relaxed">Layar, keyboard, baterai, & mesin dites menyeluruh.</p>
+                  <h3 className="font-extrabold text-sm sm:text-base text-slate-900 leading-snug">
+                    "Ke mana nomor rekening pembayaran resmi owner?"
+                  </h3>
+                  <p className="text-xs text-slate-600 leading-relaxed font-medium">
+                    Hanya ke Bank BSI (7368300677) & SeaBank (901007430064) atas nama Muhammad Aghisna.
+                  </p>
                 </div>
+                <button
+                  onClick={() => setActiveTab("pembayaran")}
+                  className="mt-4 pt-3 border-t border-slate-100 text-xs font-black text-emerald-700 hover:text-emerald-900 flex items-center justify-between group-hover:translate-x-1 transition-transform"
+                >
+                  <span>Cek Rekening BSI & SeaBank</span>
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+              </div>
 
-                <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
-                  <div className="w-10 h-10 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center font-bold">
-                    <Truck className="w-6 h-6" />
+              {/* Animated Card 4: Pengiriman L300 & Lokasi */}
+              <div className="bg-white p-5 rounded-3xl border-2 border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 group relative overflow-hidden flex flex-col justify-between">
+                <div className="space-y-3">
+                  <div className="w-12 h-12 rounded-2xl bg-blue-100 text-blue-700 flex items-center justify-center font-bold shadow-md group-hover:scale-110 transition-transform">
+                    <Truck className="w-6 h-6 text-blue-600 animate-bounce" />
                   </div>
-                  <h3 className="text-sm sm:text-base font-bold text-slate-900">Kirim L300 / Travel Instan</h3>
-                  <p className="text-xs text-slate-600 leading-relaxed">Sampai dalam 4-8 jam area Aceh & Medan hari ini.</p>
+                  <h3 className="font-extrabold text-sm sm:text-base text-slate-900 leading-snug">
+                    "Berapa lama pengiriman L300 / Travel di Aceh & Medan?"
+                  </h3>
+                  <p className="text-xs text-slate-600 leading-relaxed font-medium">
+                    Pengiriman instan L300 sampai dalam 4–8 jam hari ini untuk area Aceh & Sumut.
+                  </p>
                 </div>
-
-                <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
-                  <div className="w-10 h-10 rounded-xl bg-amber-100 text-amber-800 flex items-center justify-center font-bold">
-                    <Award className="w-6 h-6" />
-                  </div>
-                  <h3 className="text-sm sm:text-base font-bold text-slate-900">Rekening Owner Resmi</h3>
-                  <p className="text-xs text-slate-600 leading-relaxed">Transfer aman hanya a/n Muhammad Aghisna.</p>
-                </div>
+                <button
+                  onClick={() => setActiveTab("lokasi")}
+                  className="mt-4 pt-3 border-t border-slate-100 text-xs font-black text-blue-700 hover:text-blue-900 flex items-center justify-between group-hover:translate-x-1 transition-transform"
+                >
+                  <span>Lihat Lokasi Toko & Kontak</span>
+                  <ArrowRight className="w-4 h-4" />
+                </button>
               </div>
             </div>
           </section>

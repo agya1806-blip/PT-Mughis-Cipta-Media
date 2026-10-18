@@ -4,6 +4,9 @@ import { JsonLd } from "@/components/JsonLd"
 import { SITE } from "@/lib/seo"
 import Breadcrumb from "@/components/ui/Breadcrumb"
 
+// Define a constant for the special homepage slug
+const HOMEPAGE_SLUG = "beranda-utama" // You can change this slug as needed
+
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
   const page = await prisma.page.findUnique({ where: { slug } })
@@ -31,6 +34,17 @@ export default async function PublicPage({ params }: { params: Promise<{ slug: s
   const page = await prisma.page.findUnique({ where: { slug } })
   if (!page) notFound()
 
+  // Determine if this is the special homepage
+  const isHomepage = slug === HOMEPAGE_SLUG
+
+  // Prepare breadcrumb items
+  const breadcrumbItems = isHomepage
+    ? [{ label: "Beranda", href: "/" }]
+    : [
+        { label: "Beranda", href: "/" },
+        { label: page.title },
+      ]
+
   return (
     <div className="flex-1 bg-cream">
       <JsonLd
@@ -44,13 +58,11 @@ export default async function PublicPage({ params }: { params: Promise<{ slug: s
         }}
       />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16">
-        <Breadcrumb
-          items={[
-            { label: "Beranda", href: "/" },
-            { label: page.title },
-          ]}
-        />
-        <h1 className="text-3xl font-bold text-green-dark mt-6 mb-8">{page.title}</h1>
+        <Breadcrumb items={breadcrumbItems} />
+        {/* Conditionally render h1 for the special homepage */}
+        {!isHomepage && (
+          <h1 className="text-3xl font-bold text-green-dark mt-6 mb-8">{page.title}</h1>
+        )}
         <div
           className="prose prose-green max-w-none"
           dangerouslySetInnerHTML={{ __html: page.content }}

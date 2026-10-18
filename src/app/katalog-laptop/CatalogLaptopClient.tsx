@@ -2,6 +2,9 @@
 
 import { useState, useEffect } from "react"
 import { Search, Laptop, ShieldCheck, Phone, CheckCircle, Copy, X, Check, MapPin, ShieldAlert, Award, Image as ImageIcon, Video as VideoIcon, ZoomIn, ZoomOut, RotateCcw, ChevronLeft, ChevronRight, Scale, Star, Printer, Truck, Clock, CheckSquare, Share2, Heart, AlertCircle, FileText, Zap, Key, Lock, ExternalLink, RefreshCw, CreditCard, ChevronDown, Sparkles, ArrowRight } from "lucide-react"
+import { ProductItem, BankAccount, TestimonialItem } from "@/types/catalog"
+
+export type { ProductItem, BankAccount, TestimonialItem }
 
 function InstagramIcon({ className = "w-4 h-4" }: { className?: string }) {
   return (
@@ -11,42 +14,6 @@ function InstagramIcon({ className = "w-4 h-4" }: { className?: string }) {
       <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
     </svg>
   )
-}
-
-export interface ProductItem {
-  id: string
-  title: string
-  category: "laptop" | "digital" | "budget" | string
-  useCase?: "mahasiswa" | "kantor" | "editing" | "all" | string
-  badge: string
-  badgeColor?: string
-  stockStatus?: "READY" | "LIMITED" | "SOLD_OUT" | "HIDDEN"
-  priceText: string
-  rawPriceText: string
-  image: string
-  images?: string[]
-  video?: string
-  shortDesc: string
-  specs: string[]
-  conditionNote?: string
-  warranty?: string
-  bonus: string
-}
-
-export interface BankAccount {
-  id: string
-  bank: string
-  account_number: string
-  beneficiary: string
-}
-
-export interface TestimonialItem {
-  id: string
-  name: string
-  location: string
-  rating: number
-  text: string
-  photoUrl?: string
 }
 
 const DEFAULT_BANKS: BankAccount[] = [

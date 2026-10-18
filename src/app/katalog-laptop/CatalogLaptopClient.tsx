@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Search, Laptop, ShieldCheck, Phone, CheckCircle, Copy, X, Check, MapPin, ShieldAlert, Award, Image as ImageIcon, Video as VideoIcon, ZoomIn, ZoomOut, RotateCcw, ChevronLeft, ChevronRight, Scale, Star, Printer, Truck, Clock, CheckSquare, Share2, Heart, AlertCircle, FileText, Zap, Key, Lock, ExternalLink, RefreshCw, CreditCard, ChevronDown, Sparkles, ArrowRight } from "lucide-react"
+import { Search, Laptop, ShieldCheck, Phone, CheckCircle, Copy, X, Check, MapPin, ShieldAlert, Award, Image as ImageIcon, Video as VideoIcon, ZoomIn, ZoomOut, RotateCcw, ChevronLeft, ChevronRight, Scale, Star, Printer, Truck, Clock, CheckSquare, Share2, Heart, AlertCircle, FileText, Zap, Key, Lock, ExternalLink, RefreshCw, CreditCard, ChevronDown, Sparkles, ArrowRight, MessageCircle, Bot } from "lucide-react"
 import { ProductItem, BankAccount, TestimonialItem } from "@/types/catalog"
 
 export type { ProductItem, BankAccount, TestimonialItem }
@@ -147,6 +147,13 @@ const FAQ_ITEMS = [
   }
 ]
 
+const MASCOT_MESSAGES = [
+  "Assalamu’alaikum! Saya Mas Mughis. Ada yang bisa saya bantu hari ini?",
+  "Cari laptop ThinkPad tangguh untuk kerja, kuliah, atau produk digital?",
+  "Semua laptop dites lolos QC 100% & bergaransi toko resmi 30 hari lho!",
+  "Transfer resmi HANYA ke Bank BSI & SeaBank atas nama Muhammad Aghisna!"
+]
+
 export default function CatalogLaptopClient({
   initialProducts = [],
   initialSettings = {}
@@ -170,6 +177,9 @@ export default function CatalogLaptopClient({
   const [heroHeadline, setHeroHeadline] = useState(initialSettings.hero_headline || "Pusat Laptop Business & Produk Digital Terpercaya")
   const [heroSubheadline, setHeroSubheadline] = useState(initialSettings.hero_subheadline || "Unit laptop pilihan yang dites lolos QC 100%, garansi toko jelas, dan konsultasi gratis langsung via WhatsApp.")
   const [igHighlight, setIgHighlight] = useState(initialSettings.instagram_url || "https://www.instagram.com/s/aGlnaGxpZ2h0OjE3OTI1ODg4MzI2NzYwNDM2?story_media_id=3106266946206908221&stkn=MWpwam1nMm13eDlwcg==")
+
+  // Mascot Speech Bubble State
+  const [mascotBubbleIdx, setMascotBubbleIdx] = useState(0)
 
   // Sub-Pages / Tab Isolation
   const [activeTab, setActiveTab] = useState<"beranda" | "stok" | "garansi" | "pembayaran" | "lokasi">("beranda")
@@ -205,6 +215,14 @@ export default function CatalogLaptopClient({
   const [zoomScale, setZoomScale] = useState(1)
 
   const [toastMsg, setToastMsg] = useState("")
+
+  // Rotate Mascot Speech Bubble Message Every 4 Seconds
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setMascotBubbleIdx((prev) => (prev + 1) % MASCOT_MESSAGES.length)
+    }, 4500)
+    return () => clearInterval(timer)
+  }, [])
 
   // CLIENT-SIDE HYDRATION & HASH LINK DEEP-LINK AUTO-OPENER
   useEffect(() => {
@@ -499,14 +517,16 @@ Link Resmi: ${origin}/katalog-laptop#pembayaran`
         💡 <strong>TIPS BELANJA AMAN:</strong> Pastikan hanya bertransaksi ke rekening resmi a/n <u>{ownerName}</u> (BSI / SeaBank). WA CS: <u>{waPhone}</u>!
       </div>
 
-      {/* Header Navigation - Glassmorphism Mobile Ergonomic BRIGHT WHITE */}
+      {/* Header Navigation - Glassmorphism Mobile Ergonomic BRIGHT WHITE WITH OFFICIAL LOGO */}
       <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-xs transition-all duration-200">
         <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-2">
 
-          <a href="#" onClick={(e) => { e.preventDefault(); setActiveTab("beranda"); }} className="flex items-center gap-2 min-w-0">
-            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-teal-600 flex items-center justify-center text-white shrink-0 shadow-md shadow-teal-600/20">
-              <Laptop className="w-5 h-5 sm:w-6 sm:h-6" />
-            </div>
+          <a href="#" onClick={(e) => { e.preventDefault(); setActiveTab("beranda"); }} className="flex items-center gap-2.5 min-w-0">
+            <img
+              src="/logo-mughis-laptop.png"
+              alt="Logo Mughis Laptop Store"
+              className="w-10 h-10 sm:w-12 sm:h-12 object-contain rounded-xl shrink-0 shadow-md border border-slate-200"
+            />
             <div className="min-w-0">
               <span className="text-base sm:text-2xl font-black tracking-tight text-slate-900 truncate block leading-tight">
                 Mughis <span className="text-teal-600">Laptop Store</span>
@@ -619,56 +639,97 @@ Link Resmi: ${origin}/katalog-laptop#pembayaran`
         </div>
       </header>
 
-      {/* 1. TAB CONTENT: ULTRA-PREMIUM STORE HOMEPAGE SHOWCASE */}
+      {/* 1. TAB CONTENT: ULTRA-PREMIUM STORE HOMEPAGE WITH "MAS MUGHIS" ANIMATED CHARACTER MASCOT */}
       {activeTab === "beranda" && (
         <div className="space-y-12 sm:space-y-16 pb-12">
 
-          {/* SECTION 1: HERO WELCOME SHOWCASE (APPLE / ASUS ROG STYLE) */}
-          <section className="pt-10 sm:pt-16 pb-14 sm:pb-20 bg-gradient-to-b from-teal-50/90 via-white to-slate-50 border-b border-slate-200">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-5 sm:space-y-7">
+          {/* SECTION 1: HERO SHOWCASE WITH "MAS MUGHIS" ANIMATED CHARACTER AVATAR SHOWCASE */}
+          <section className="pt-8 sm:pt-14 pb-12 sm:pb-16 bg-gradient-to-b from-teal-50/90 via-white to-slate-50 border-b border-slate-200">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
 
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-teal-100 border border-teal-300 text-teal-800 text-xs sm:text-sm font-extrabold uppercase tracking-wider shadow-xs">
-                <Award className="w-4 h-4 text-teal-600 shrink-0" />
-                <span>Official Store • Owner: {ownerName} • Samalanga, Bireuen, Aceh</span>
+              <div className="lg:col-span-7 text-center lg:text-left space-y-4 sm:space-y-6">
+                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-teal-100 border border-teal-300 text-teal-800 text-xs sm:text-sm font-extrabold uppercase tracking-wider shadow-xs">
+                  <Award className="w-4 h-4 text-teal-600 shrink-0" />
+                  <span>Official Store • Owner: {ownerName} • Samalanga, Bireuen</span>
+                </div>
+
+                <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight leading-tight">
+                  {heroHeadline}
+                </h1>
+
+                <p className="text-sm sm:text-lg text-slate-600 font-medium leading-relaxed">
+                  {heroSubheadline}
+                </p>
+
+                {/* Action Buttons Bar */}
+                <div className="flex flex-col sm:flex-row items-center lg:justify-start justify-center gap-3 pt-2">
+                  <button
+                    onClick={() => setActiveTab("stok")}
+                    className="w-full sm:w-auto px-7 py-3.5 rounded-2xl bg-teal-600 hover:bg-teal-700 text-white font-extrabold text-sm sm:text-base flex items-center justify-center gap-2 shadow-xl shadow-teal-600/30 active:scale-95 transition"
+                  >
+                    <Laptop className="w-5 h-5" />
+                    <span>Lihat Stok Ready ({activeProducts.length} Unit)</span>
+                    <ArrowRight className="w-4 h-4 ml-1" />
+                  </button>
+
+                  <button
+                    onClick={() => { setActiveTab("stok"); setCurrentCategory("digital"); }}
+                    className="w-full sm:w-auto px-6 py-3.5 rounded-2xl bg-amber-600 hover:bg-amber-700 text-white font-extrabold text-sm sm:text-base flex items-center justify-center gap-2 shadow-xl shadow-amber-600/20 active:scale-95 transition"
+                  >
+                    <Zap className="w-5 h-5 fill-white" />
+                    <span>Produk Digital ⚡</span>
+                  </button>
+                </div>
               </div>
 
-              <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight leading-tight max-w-4xl mx-auto">
-                {heroHeadline}
-              </h1>
+              {/* 🧑‍💻 "MAS MUGHIS" ANIMATED MALE CHARACTER SHOWCASE CARD */}
+              <div className="lg:col-span-5 flex flex-col items-center justify-center relative">
 
-              <p className="text-sm sm:text-xl text-slate-600 font-medium max-w-2xl mx-auto leading-relaxed">
-                {heroSubheadline}
-              </p>
+                {/* ROTATING SPEECH BUBBLE */}
+                <div className="bg-white p-4 sm:p-5 rounded-2xl border-2 border-teal-500 shadow-2xl relative mb-4 max-w-sm w-full text-center sm:text-left transition-all duration-300 animate-pulse">
+                  <div className="flex items-center gap-2 mb-1.5 justify-center sm:justify-start">
+                    <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping"></span>
+                    <span className="font-extrabold text-xs text-teal-800 uppercase tracking-wider">
+                      Mas Mughis (CS AI Assistant)
+                    </span>
+                  </div>
+                  <p className="text-xs sm:text-sm font-bold text-slate-800 leading-snug">
+                    "{MASCOT_MESSAGES[mascotBubbleIdx]}"
+                  </p>
+                  {/* Arrow Pointing Down */}
+                  <div className="w-4 h-4 bg-white border-r-2 border-b-2 border-teal-500 rotate-45 absolute -bottom-2.5 left-1/2 -translate-x-1/2"></div>
+                </div>
 
-              {/* Action Buttons Bar */}
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
-                <button
-                  onClick={() => setActiveTab("stok")}
-                  className="w-full sm:w-auto px-8 py-4 rounded-2xl bg-teal-600 hover:bg-teal-700 text-white font-extrabold text-sm sm:text-base flex items-center justify-center gap-2 shadow-xl shadow-teal-600/30 active:scale-95 transition"
-                >
-                  <Laptop className="w-5 h-5" />
-                  <span>Lihat Katalog Stok Ready ({activeProducts.length} Unit)</span>
-                  <ArrowRight className="w-4 h-4 ml-1" />
-                </button>
+                {/* ANIMATED FLOATING AVATAR IMAGE & MASKOT CARD */}
+                <div className="bg-gradient-to-b from-teal-500 to-slate-900 p-6 rounded-3xl border-4 border-white shadow-2xl text-center space-y-3 relative group w-full max-w-sm transition-transform duration-300 hover:scale-105">
+                  <div className="w-36 h-36 sm:w-44 sm:h-44 rounded-full overflow-hidden border-4 border-white mx-auto shadow-2xl bg-teal-100 flex items-center justify-center relative">
+                    <img
+                      src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=80"
+                      alt="Mas Mughis Character"
+                      className="w-full h-full object-cover animate-[bounce_4s_infinite]"
+                    />
+                    <span className="absolute bottom-2 right-2 px-2 py-0.5 rounded-full text-[9px] font-black uppercase bg-emerald-500 text-white shadow-md border border-white">
+                      ONLINE
+                    </span>
+                  </div>
 
-                <button
-                  onClick={() => { setActiveTab("stok"); setCurrentCategory("digital"); }}
-                  className="w-full sm:w-auto px-7 py-4 rounded-2xl bg-amber-600 hover:bg-amber-700 text-white font-extrabold text-sm sm:text-base flex items-center justify-center gap-2 shadow-xl shadow-amber-600/20 active:scale-95 transition"
-                >
-                  <Zap className="w-5 h-5 fill-white" />
-                  <span>Produk Digital Auto-Delivery ⚡</span>
-                </button>
+                  <div>
+                    <h3 className="text-xl sm:text-2xl font-black text-white">Mas Mughis</h3>
+                    <p className="text-xs text-teal-200 font-medium">Asisten Konsultasi Laptop & Produk Digital</p>
+                  </div>
 
-                <a
-                  href={`https://wa.me/${formattedWa}?text=${encodeURIComponent("Halo Mughis Laptop Store, saya ingin bertanya stok laptop/produk digital.")}`}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="w-full sm:w-auto px-6 py-4 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-sm sm:text-base flex items-center justify-center gap-2 shadow-xl shadow-emerald-600/20 active:scale-95 transition"
-                >
-                  <Phone className="w-5 h-5" />
-                  <span>Konsultasi WA CS</span>
-                </a>
+                  <a
+                    href={`https://wa.me/${formattedWa}?text=${encodeURIComponent("Halo Mas Mughis, saya mau konsultasi rekomendasi laptop terbaik sesuai kebutuhan saya.")}`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="w-full py-3 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-black text-xs sm:text-sm flex items-center justify-center gap-2 shadow-lg transition active:scale-95 block"
+                  >
+                    <MessageCircle className="w-4 h-4" />
+                    <span>Chat Konsultasi WA Mas Mughis</span>
+                  </a>
+                </div>
               </div>
+
             </div>
           </section>
 
@@ -1344,13 +1405,20 @@ Link Resmi: ${origin}/katalog-laptop#pembayaran`
         </section>
       )}
 
-      {/* Footer - 100% Tech Storefront BRIGHT WHITE */}
+      {/* Footer - 100% Tech Storefront BRIGHT WHITE WITH OFFICIAL BRAND LOGO */}
       <footer className="bg-white text-slate-700 border-t border-slate-200 py-8 sm:py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-center md:text-left">
-          <div className="space-y-1.5">
-            <p className="text-base font-black text-slate-900 tracking-wide">MUGHIS LAPTOP STORE</p>
-            <p className="text-slate-600 font-medium">Owner: {ownerName} • Alamat: {address}</p>
-            <p className="text-slate-400">© 2026 Mughis Laptop Store. Hak Cipta Dilindungi.</p>
+          <div className="flex items-center gap-3">
+            <img
+              src="/logo-mughis-laptop.png"
+              alt="Mughis Laptop Store Logo"
+              className="w-12 h-12 object-contain rounded-xl shrink-0 border border-slate-200"
+            />
+            <div className="space-y-1">
+              <p className="text-base font-black text-slate-900 tracking-wide">MUGHIS LAPTOP STORE</p>
+              <p className="text-slate-600 font-medium">Owner: {ownerName} • Alamat: {address}</p>
+              <p className="text-slate-400">© 2026 Mughis Laptop Store. Hak Cipta Dilindungi.</p>
+            </div>
           </div>
 
           <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-6 font-bold text-xs sm:text-sm">

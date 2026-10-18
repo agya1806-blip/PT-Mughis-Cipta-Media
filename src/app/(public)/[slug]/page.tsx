@@ -68,23 +68,23 @@ export default async function PublicPage({ params }: { params: Promise<{ slug: s
             </p>
           </div>
           {/* Homepage Content */}
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-16">
+          <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-16">
             <Breadcrumb items={breadcrumbItems} />
             <div
               className="prose prose-green max-w-none mt-8"
               dangerouslySetInnerHTML={{ __html: page.content }}
             />
-          </div>
+          </main>
         </>
       ) : (
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16">
+        <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16">
           <Breadcrumb items={breadcrumbItems} />
           <h1 className="text-3xl font-bold text-green-dark mt-6 mb-8">{page.title}</h1>
           <div
             className="prose prose-green max-w-none"
             dangerouslySetInnerHTML={{ __html: page.content }}
           />
-        </div>
+        </main>
       )}
     </div>
   )

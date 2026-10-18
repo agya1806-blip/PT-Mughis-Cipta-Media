@@ -16,7 +16,7 @@ export async function POST(req: Request) {
     let assignedKey = `KEY-${Math.random().toString(36).substring(2, 8).toUpperCase()}-${Math.random().toString(36).substring(2, 8).toUpperCase()}`
 
     try {
-      const dbKey = await prisma.digitalLicense.findFirst({
+      const dbKey = await (prisma as any).digitalLicense?.findFirst({
         where: {
           productTitle: { contains: productTitle, mode: "insensitive" },
           isUsed: false
@@ -25,7 +25,7 @@ export async function POST(req: Request) {
 
       if (dbKey) {
         assignedKey = dbKey.keyCode
-        await prisma.digitalLicense.update({
+        await (prisma as any).digitalLicense?.update({
           where: { id: dbKey.id },
           data: { isUsed: true, usedByPhone: customerWa }
         })
@@ -35,7 +35,7 @@ export async function POST(req: Request) {
     }
 
     try {
-      await prisma.digitalOrder.create({
+      await (prisma as any).digitalOrder?.create({
         data: {
           orderId,
           productTitle,
